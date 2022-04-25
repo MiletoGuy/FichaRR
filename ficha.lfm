@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="FICHA_DE_PERSONAGEM_GAIA" title="Ficha de Personagem" name="frmFichaDePersonagem" theme="dark">
+
+	<import file="styles.xml"/>
+	<import file="templates.xml"/>
+	
+	<tabControl align="client" name="pgcPrincipal">
+		<tab title="Perfil e Atributos">
+			<import file="perfil.xml"/>
+		</tab>
+		
+		<tab title="Habilidades">
+			<import file="habilidades.xml"/>
+		</tab>		
+	</tabControl>		
+</form>

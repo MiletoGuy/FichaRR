@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout width="700" height="400" class="perfil">
+    <label text="Habilidades" class="titulo"/>
+</layout>

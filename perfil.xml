@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- ### TABELA PERFIL ### -->
+
+<rectangle class="fundo">
+     <scrollBox align="client">
+          <flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayout">
+
+               <!--TABELA DO PERFIL -->
+			<flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
+				<flowLayout  minWidth="320" maxWidth="1600" name="tabelaPerfil" avoidScale="true" autoHeight="true" vertAlign="trailing" maxControlsPerLine="2">								
+						<upperGridCampo field="nome" minWidth="100" titulo="Nome"/>
+						<upperGridCampo field="raca" titulo="Raça"/>
+						<upperGridCampo field="peso" titulo="Peso"/>									
+						<upperGridCampo field="classe" minWidth="100" titulo="Classe"/>
+						<upperGridCampo field="altura" titulo="Altura"/>
+						<upperGridCampo field="idade" titulo="Idade"/>
+						<upperGridCampo field="nivelClasse" titulo="Nivel de Classe"/>
+						<upperGridCampo field="sexo" titulo="Sexo"/>
+						<upperGridCampo field="divelProf" titulo="Nivel de Profissão"/>
+						<upperGridCampo field="nacionalidade" titulo="Nacionalidade"/>
+						<upperGridCampo field="divindade" titulo="Divindade"/>
+						<upperGridCampo field="pDestino" titulo="Pontos de Destino"/>
+				</flowLayout>
+			</flowLayout>	
+
+			<flowLineBreak lineSpacing="10"/>
+               <flowPart adjustHeightToLine="true" height="1" minScaledWidth="200" maxScaledWidth="1600">
+                    <horzLine strokeColor="#FFFFFF50" strokeSize="7" strokeCap="round"/>
+               </flowPart>
+               <flowLineBreak lineSpacing="10"/>
+
+               <!--TABELA DOS ATRIBUTOS-->
+               
+               <flowLayout minWidth="320" maxWidth="1600" name="tabelaAtributos" avoidScale="true" autoHeight="true" vertAlign="trailing" maxControlsPerLine="15">	
+                    <campoAtributo titulo="Constituição"/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="="/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="="/>
+                    <campoAtributo titulo=""/>
+                    <campoAtributo titulo="Força"/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="="/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="+"/>
+                    <campoAtributo titulo=""/>
+                    <sinal text="="/>
+                    <campoAtributo titulo=""/>
+          </flowLayout>	
+
+          </flowLayout>
+
+     </scrollBox>
+</rectangle>
