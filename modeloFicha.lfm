@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="FICHA_DE_PERSONAGEM_GAIA" 
+     title="Ficha de Personagem" name="frmFichaDePersonagem">
+
+     <style>
+     
+     .perfil label {
+          align: client;
+          horzTextAlign: trailing;
+     }
+
+     .perfil edit {
+          align: right;
+          margins: {left=10};
+          width: 200;
+          transparent: false;
+          horzTextAlign: leading;
+     }
+
+     .titulo label {
+          autoSize: true;
+          fontSize: 30;
+          horzTextAlign: center;
+          vertTextAlign: leading;
+     }
+
+     .atributos edit {
+
+     }
+
+     
+     </style>
+<!-- ### TABELA PERFIL ### -->
+     
+     <layout width="700" height="400" class="perfil">
+               <label text="Perfil" class="titulo"/>
+
+               <layout top="45" height="25" width="350">
+                    <label text="Nome:"/>  
+                    <edit/> 
+               </layout>
+               <layout top="45" right="400" height="25" width="350">
+                    <label text="Raça:"/>  
+                    <edit/> 
+               </layout>
+
+               <layout top="90" height="25" width="350">
+                    <label text="Peso:"/>  
+                    <edit/> 
+               </layout>
+               <layout top="90" right="400" height="25" width="350">
+                    <label text="Classe:"/>  
+                    <edit/> 
+               </layout>
+
+               <layout top="135" height="25" width="350">
+                    <label text="Altura:"/>  
+                    <edit/> 
+               </layout>
+               <layout top="135" right="400" height="25" width="350">
+                    <label text="Idade:"/>  
+                    <edit/> 
+               </layout>
+
+               <layout top="180" height="25" width="350">
+                    <label text="Nivel de Classe:"/>  
+                    <edit/> 
+               </layout>
+               <layout top="180" right="400" height="25" width="350">
+                    <label text="Sexo:"/>  
+                    <edit/> 
+               </layout>
+
+               <layout top="225" height="25" width="350">
+                    <label text="Nível de Profissão:"/>  
+                    <edit/> 
+               </layout>
+               <layout top="225" right="400" height="25" width="350">
+                    <label text="Nacionalidade"/>  
+                    <edit/> 
+               </layout>
+
+               <layout top="270" height="25" width="350">
+                    <label text="Divindade:"/>  
+                    <edit/> 
+               </layout>
+               <layout top="270" right="400" height="25" width="350">
+                    <label text="P. Destino"/>  
+                    <edit/> 
+               </layout>
+     </layout>
+
+     <layout top="400" width="700" height="400" class="atributos">
+          <label text="Atributos" class="titulo"/>
+     
+     </layout>
+
+
+
+
+        <!-- <layout top="90" height="25" width="150">
+                <label text="Vida:" align="client" horzTextAlign="trailing"/>  
+                <edit align="right" margins="{left=10}" width="50" type="number"/> 
+          </layout>
+          <layout top="135" height="25" width="150">
+                <label text="Constituição:" align="client" horzTextAlign="trailing"/>  
+                <edit align="right" margins="{left=10}" width="50" type="number"/> 
+          </layout>
+           <layout top="135" height="25" width="150">
+                <label text="Força:" align="client" horzTextAlign="trailing"/>  
+                <edit align="right" margins="{left=10}" width="50" type="number"/> 
+          </layout>
+           <layout top="180" height="25" width="150">
+                <label text="Destreza:" align="client" horzTextAlign="trailing"/>  
+                <edit align="right" margins="{left=10}" width="50" type="number"/> 
+          </layout> -->
+
+</form>
