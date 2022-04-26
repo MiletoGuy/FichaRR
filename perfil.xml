@@ -26,14 +26,14 @@
 			</flowLayout>	
 
 			<flowLineBreak lineSpacing="10"/>
-               <flowPart adjustHeightToLine="true" height="1" minScaledWidth="200" maxScaledWidth="1600">
-                    <horzLine strokeColor="#FFFFFF50" strokeSize="7" strokeCap="round"/>
+               <flowPart height="5" minScaledWidth="200" maxScaledWidth="1600">
+                    <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.2" top="2"/>
                </flowPart>
-               <flowLineBreak lineSpacing="10"/>
+            <flowLineBreak lineSpacing="10"/>
 
                <!--TABELA DOS ATRIBUTOS-->
                
-               <flowLayout minWidth="320" maxWidth="1600" name="tabelaAtributos" avoidScale="true" autoHeight="true" vertAlign="trailing" maxControlsPerLine="15">	
+               <flowLayout minWidth="320" maxWidth="1600" name="tabelaAtributos" avoidScale="true" autoHeight="true" vertAlign="trailing" maxControlsPerLine="15">
                     <campoAtributo titulo="Constituição"/>
                     <sinal text="+"/>
                     <campoAtributo titulo=""/>

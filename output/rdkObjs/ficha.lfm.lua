@@ -596,8 +596,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj.fraFrenteLayout);
-    obj.flowPart1:setAdjustHeightToLine(true);
-    obj.flowPart1:setHeight(1);
+    obj.flowPart1:setHeight(5);
     obj.flowPart1:setMinScaledWidth(200);
     obj.flowPart1:setMaxScaledWidth(1600);
     obj.flowPart1:setName("flowPart1");
@@ -605,8 +604,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.flowPart1);
     obj.horzLine1:setStrokeColor("#FFFFFF50");
-    obj.horzLine1:setStrokeSize(7);
+    obj.horzLine1:setStrokeSize(0.6);
     obj.horzLine1:setStrokeCap("round");
+    obj.horzLine1:setScaleY(0.2);
+    obj.horzLine1:setTop(2);
     obj.horzLine1:setName("horzLine1");
 
     obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
