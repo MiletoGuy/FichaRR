@@ -4,69 +4,149 @@
 <!-- ### TABELA PERFIL ### -->
 
 <rectangle class="fundo">
-     <scrollBox align="client">
-          <flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayout">
+    <scrollBox align="client">
+        <flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true"
+                    horzAlign="center" lineSpacing="2" name="perfilLayout">
 
-               <!--TABELA DO PERFIL -->
-			<flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
-				<flowLayout  minWidth="320" maxWidth="1600" name="tabelaPerfil" avoidScale="true" autoHeight="true" vertAlign="trailing" maxControlsPerLine="2">								
-						<upperGridCampo field="nome" minWidth="100" titulo="Nome"/>
-						<upperGridCampo field="raca" titulo="Raça"/>
-						<upperGridCampo field="peso" titulo="Peso"/>									
-						<upperGridCampo field="classe" minWidth="100" titulo="Classe"/>
-						<upperGridCampo field="altura" titulo="Altura"/>
-						<upperGridCampo field="idade" titulo="Idade"/>
-						<upperGridCampo field="nivelClasse" titulo="Nivel de Classe"/>
-						<upperGridCampo field="sexo" titulo="Sexo"/>
-						<upperGridCampo field="divelProf" titulo="Nivel de Profissão"/>
-						<upperGridCampo field="nacionalidade" titulo="Nacionalidade"/>
-						<upperGridCampo field="divindade" titulo="Divindade"/>
-						<upperGridCampo field="pDestino" titulo="Pontos de Destino"/>
-				</flowLayout>
-			</flowLayout>	
+            <!--TABELA DO PERFIL -->
+            <flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
+                <flowLayout minWidth="320" maxWidth="1600" name="tabelaPerfil" avoidScale="true" autoHeight="true"
+                            vertAlign="trailing" maxControlsPerLine="2">
+                    <upperGridCampo field="nome" minWidth="100" titulo="Nome"/>
+                    <upperGridCampo field="raca" titulo="Raça"/>
+                    <upperGridCampo field="peso" titulo="Peso"/>
+                    <upperGridCampo field="classe" minWidth="100" titulo="Classe"/>
+                    <upperGridCampo field="altura" titulo="Altura"/>
+                    <upperGridCampo field="idade" titulo="Idade"/>
+                    <upperGridCampo field="nivelClasse" titulo="Nivel de Classe"/>
+                    <upperGridCampo field="sexo" titulo="Sexo"/>
+                    <upperGridCampo field="divelProf" titulo="Nivel de Profissão"/>
+                    <upperGridCampo field="nacionalidade" titulo="Nacionalidade"/>
+                    <upperGridCampo field="divindade" titulo="Divindade"/>
+                    <upperGridCampo field="pDestino" titulo="Pontos de Destino"/>
+                </flowLayout>
+            </flowLayout>
 
-			<flowLineBreak lineSpacing="10"/>
-               <flowPart height="5" minScaledWidth="200" maxScaledWidth="1600">
-                    <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.2" top="2"/>
-               </flowPart>
+            <flowLineBreak lineSpacing="10"/>
+            <flowPart height="2" minScaledWidth="100" maxScaledWidth="1600">
+                <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.2" top="1"/>
+            </flowPart>
             <flowLineBreak lineSpacing="10"/>
 
-               <!--TABELA DOS ATRIBUTOS-->
-               
-               <flowLayout minWidth="320" maxWidth="1600" name="tabelaAtributos" avoidScale="true" autoHeight="true" vertAlign="trailing" maxControlsPerLine="15">
-                    <campoAtributo titulo="Constituição"/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="="/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="="/>
-                    <campoAtributo titulo=""/>
-                    <campoAtributo titulo="Força"/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="="/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="+"/>
-                    <campoAtributo titulo=""/>
-                    <sinal text="="/>
-                    <campoAtributo titulo=""/>
-          </flowLayout>	
+            <!--TABELA DOS ATRIBUTOS-->
+            <flowLayout minWidth="320" maxWidth="1600" name="topoAtributos" avoidScale="true" autoHeight="true"
+                        vertAlign="leading" maxControlsPerLine="9">
+                <tituloAtributo/>
+                <tituloAtributo text="Nível"/>
+                <tituloAtributo text="Classe"/>
+                <tituloAtributo text="Raça"/>
+                <tituloAtributo text="Treino"/>
+                <tituloAtributo text="Outros"/>
+                <tituloAtributo text="Base"/>
+                <tituloAtributo text="Equip."/>
+                <tituloAtributo text="Total"/>
+            </flowLayout>
+            <flowLineBreak lineSpacing="5"/>
+            <flowLayout minWidth="320" maxWidth="1600" name="tabelaDeAtributos" avoidScale="true" autoHeight="true"
+                        vertAlign="leading" maxControlsPerLine="16">
 
-          </flowLayout>
+                <tabelaAtributo titulo="Constituição" name="con"/>
+                <tabelaAtributo titulo="Força" name="for"/>
+                <tabelaAtributo titulo="Destreza" name="dex"/>
+                <tabelaAtributo titulo="Carisma" name="car"/>
+                <tabelaAtributo titulo="Inteligência" name="int"/>
+                <tabelaAtributo titulo="Sabedoria" name="sab"/>
+            </flowLayout>
 
-     </scrollBox>
+            <flowLineBreak lineSpacing="10"/>
+            <flowPart height="2" minScaledWidth="100" maxScaledWidth="1600">
+                <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.2" top="1"/>
+            </flowPart>
+            <flowLineBreak lineSpacing="10"/>
+
+            <!-- TABELA DE PONTOS BÔNUS E CONHECIMENTOS ESPECÍFICOS-->
+            <flowLayout minWidth="320" maxWidth="1600" name="topoAtributos2" avoidScale="true" autoHeight="true"
+                        vertAlign="leading">
+                <label text="Imagine duas tabelinhas bonitinhas e compactas com pontos bônus e conhecimentos específicos respectivamente" autoSize="true" height="10" width="1200"/>
+            </flowLayout>
+
+        </flowLayout>
+    </scrollBox>
+
+    <dataLink fields="{'conNivel', 'conClasse', 'conRaca', 'conTreino','conOutros', 'conBase', 'conEquip', 'conTotal',
+                       'forNivel', 'forClasse', 'forRaca', 'forTreino','forOutros', 'forBase', 'forEquip', 'forTotal',
+                       'dexNivel', 'dexClasse', 'dexRaca', 'dexTreino','dexOutros', 'dexBase', 'dexEquip', 'dexTotal',
+                       'carNivel', 'carClasse', 'carRaca', 'carTreino','carOutros', 'carBase', 'carEquip', 'carTotal',
+                       'intNivel', 'intClasse', 'intRaca', 'intTreino','intOutros', 'intBase', 'intEquip', 'intTotal',
+                       'sabNivel', 'sabClasse', 'sabRaca', 'sabTreino','sabOutros', 'sabBase', 'sabEquip', 'sabTotal'}">
+        <event name="onChange">
+
+            -- ###### SOMA CONSTITUIÇÃO ######
+
+            sheet.conBase = (tonumber(sheet.conNivel) or 0) +
+            (tonumber(sheet.conClasse) or 0) +
+            (tonumber(sheet.conRaca) or 0) +
+            (tonumber(sheet.conTreino) or 0) +
+            (tonumber(sheet.conOutros) or 0);
+
+            sheet.conTotal = (tonumber(sheet.conBase) or 0) +
+            (tonumber(sheet.conEquip) or 0);
+
+
+            -- ###### SOMA FORÇA ######
+
+            sheet.forBase = (tonumber(sheet.forNivel) or 0) +
+            (tonumber(sheet.forClasse) or 0) +
+            (tonumber(sheet.forRaca) or 0) +
+            (tonumber(sheet.forTreino) or 0) +
+            (tonumber(sheet.forOutros) or 0);
+
+            sheet.forTotal = (tonumber(sheet.forBase) or 0) +
+            (tonumber(sheet.forEquip) or 0);
+
+            -- ###### SOMA DESTREZA ######
+
+            sheet.dexBase = (tonumber(sheet.dexNivel) or 0) +
+            (tonumber(sheet.dexClasse) or 0) +
+            (tonumber(sheet.dexRaca) or 0) +
+            (tonumber(sheet.dexTreino) or 0) +
+            (tonumber(sheet.dexOutros) or 0);
+
+            sheet.dexTotal = (tonumber(sheet.dexBase) or 0) +
+            (tonumber(sheet.dexEquip) or 0);
+
+            -- ###### SOMA CARISMA ######
+
+            sheet.carBase = (tonumber(sheet.carNivel) or 0) +
+            (tonumber(sheet.carClasse) or 0) +
+            (tonumber(sheet.carRaca) or 0) +
+            (tonumber(sheet.carTreino) or 0) +
+            (tonumber(sheet.carOutros) or 0);
+
+            sheet.carTotal = (tonumber(sheet.carBase) or 0) +
+            (tonumber(sheet.carEquip) or 0);
+
+            -- ###### SOMA INTELIGÊNCIA ######
+
+            sheet.intBase = (tonumber(sheet.intNivel) or 0) +
+            (tonumber(sheet.intClasse) or 0) +
+            (tonumber(sheet.intRaca) or 0) +
+            (tonumber(sheet.intTreino) or 0) +
+            (tonumber(sheet.intOutros) or 0);
+
+            sheet.intTotal = (tonumber(sheet.intBase) or 0) +
+            (tonumber(sheet.intEquip) or 0);
+
+            -- ###### SOMA SABEDORIA ######
+
+            sheet.sabBase = (tonumber(sheet.sabNivel) or 0) +
+            (tonumber(sheet.sabClasse) or 0) +
+            (tonumber(sheet.sabRaca) or 0) +
+            (tonumber(sheet.sabTreino) or 0) +
+            (tonumber(sheet.sabOutros) or 0);
+
+            sheet.sabTotal = (tonumber(sheet.sabBase) or 0) +
+            (tonumber(sheet.sabEquip) or 0);
+        </event>
+    </dataLink>
 </rectangle>
