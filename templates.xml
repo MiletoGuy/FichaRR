@@ -8,7 +8,6 @@
 				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
 				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
 				  name="$(baseName)">
-				  
 				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
 				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
 				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
@@ -58,6 +57,18 @@
 		<campoAtributo titulo="" field="$(name)Equip" readOnly="false"/>
 		<sinal sinal="equals"/>
 		<campoAtributo titulo="" field="$(name)Total" readOnly="true"/>
+	</template>
+
+	<template name="campoPtBonus">
+		<flowPart  height="20" minWidth="60" maxWidth="120" name="$(baseName)">
+			<label text="$(text)" align="left" field="$(field)" fontSize="18" vertTextAlign="center" horzTextAlign="leading" fontStyle="bold"/>
+		</flowPart>
+	</template>
+
+	<template name="totalPtBonus">
+		<flowPart  height="10" minWidth="60" maxWidth="85" name="$(baseName)">
+			<label text="TOTAL" align="left" field="$(field)" fontSize="12" vertTextAlign="center" horzTextAlign="leading"/>
+		</flowPart>
 	</template>
 
 </group>

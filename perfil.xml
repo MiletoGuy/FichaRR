@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <!-- ### TABELA PERFIL ### -->
-
 <rectangle class="fundo">
     <scrollBox align="client">
         <flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true"
-                    horzAlign="center" lineSpacing="2" name="perfilLayout">
+                    horzAlign="center" lineSpacing="2" name="perfilLayout" maxWidth="1600">
 
             <!--TABELA DO PERFIL -->
             <flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
                 <flowLayout minWidth="320" maxWidth="1600" name="tabelaPerfil" avoidScale="true" autoHeight="true"
-                            vertAlign="trailing" maxControlsPerLine="2">
+                            vertAlign="trailing" maxControlsPerLine="2" horzAlign="center">
                     <upperGridCampo field="nome" minWidth="100" titulo="Nome"/>
                     <upperGridCampo field="raca" titulo="Raça"/>
                     <upperGridCampo field="peso" titulo="Peso"/>
@@ -29,14 +27,14 @@
 
             <flowLineBreak lineSpacing="10"/>
             <flowPart height="2" minScaledWidth="100" maxScaledWidth="1600">
-                <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.2" top="1"/>
+                <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.1" top="1"/>
             </flowPart>
             <flowLineBreak lineSpacing="10"/>
 
             <!--TABELA DOS ATRIBUTOS-->
+            <flowPart width="140"/>
             <flowLayout minWidth="320" maxWidth="1600" name="topoAtributos" avoidScale="true" autoHeight="true"
-                        vertAlign="leading" maxControlsPerLine="9">
-                <tituloAtributo/>
+                        vertAlign="leading" maxControlsPerLine="9" horzAlign="center">
                 <tituloAtributo text="Nível"/>
                 <tituloAtributo text="Classe"/>
                 <tituloAtributo text="Raça"/>
@@ -48,7 +46,7 @@
             </flowLayout>
             <flowLineBreak lineSpacing="5"/>
             <flowLayout minWidth="320" maxWidth="1600" name="tabelaDeAtributos" avoidScale="true" autoHeight="true"
-                        vertAlign="leading" maxControlsPerLine="16">
+                        vertAlign="leading" maxControlsPerLine="16" horzAlign="center">
 
                 <tabelaAtributo titulo="Constituição" name="con"/>
                 <tabelaAtributo titulo="Força" name="for"/>
@@ -60,16 +58,18 @@
 
             <flowLineBreak lineSpacing="10"/>
             <flowPart height="2" minScaledWidth="100" maxScaledWidth="1600">
-                <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.2" top="1"/>
+                <horzLine strokeColor="#FFFFFF50" strokeSize="0.6" strokeCap="round" scaleY="0.1" top="1"/>
             </flowPart>
             <flowLineBreak lineSpacing="10"/>
 
             <!-- TABELA DE PONTOS BÔNUS E CONHECIMENTOS ESPECÍFICOS-->
-            <flowLayout minWidth="320" maxWidth="1600" name="topoAtributos2" avoidScale="true" autoHeight="true"
-                        vertAlign="leading">
-                <label text="Imagine duas tabelinhas bonitinhas e compactas com pontos bônus e conhecimentos específicos respectivamente" autoSize="true" height="10" width="1200"/>
+            <flowLayout minWidth="320" maxWidth="1600" name="tabelaPontosBonus" avoidScale="true" autoHeight="true"
+                        vertAlign="leading" maxControlsPerLine="2" horzAlign="center">
+                <campoPtBonus text="Percepção"/>
+                <totalPtBonus/>
+                <campoPtBonus text="Intimidação"/>
+                <totalPtBonus/>
             </flowLayout>
-
         </flowLayout>
     </scrollBox>
 
