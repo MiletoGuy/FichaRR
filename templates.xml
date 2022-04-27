@@ -3,18 +3,17 @@
 <group>
 
     <template name="upperGridCampo">
-		<!-- baseName = uniqueName("UpperGridCampo"); -->	
-		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
-				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
-				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
-				  name="$(baseName)">
-				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
-				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
-				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
-				
-				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
-			</flowPart>					
-	</template>
+        <!-- baseName = uniqueName("UpperGridCampo"); -->
+        <flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)"
+                  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)"
+                  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+                  name="$(baseName)">
+            <edit align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
+            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+            <label align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading"
+                   wordWrap="true" textTrimming="none"/>
+        </flowPart>
+    </template>
 
     <template name="sinal">
         <flowPart name="$(baseName)" height="50" minScaledWidth="30" maxScaledWidth="50">
@@ -23,52 +22,92 @@
     </template>
 
     <template name="campoAtributo">
-		<!-- baseName = uniqueName("GridCampoSolido"); -->
+        <flowPart height="$(height or 50)" minScaledWidth="30"
+                  minWidth="30" maxWidth="35"
+                  maxScaledWidth="35" avoidScale="true"
+                  name="$(baseName)">
+            <edit align="top" class="infoNoTopo" field="$(field)" fontSize="15" transparent="true"
+                  vertTextAlign="center" type="number" readOnly="$(readOnly)"/>
+            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+        </flowPart>
+    </template>
 
-		<flowPart height="$(height or 50)" minScaledWidth="30"
-				  minWidth="30" maxWidth="35"
-				  maxScaledWidth="35" avoidScale="true"
-				  name="$(baseName)">
-				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="15" transparent="true" vertTextAlign="center" type="number" readOnly="$(readOnly)"/>
-				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
-			</flowPart>					
-	</template>
+    <template name="tituloAtributo">
+        <flowPart height="20" minScaledWidth="60" maxScaledWidth="85" name="$(baseName)">
+            <label text="$(text)" align="client" field="$(field)" fontSize="8" vertTextAlign="center"
+                   horzTextAlign="leading"/>
+        </flowPart>
+    </template>
 
-	<template name="tituloAtributo">
-		<flowPart height="20" minScaledWidth="60"  maxScaledWidth="85" name="$(baseName)">
-			<label text="$(text)" align="client" field="$(field)" fontSize="8" vertTextAlign="center" horzTextAlign="leading"/>
-		</flowPart>
-	</template>
+    <template name="tabelaAtributo">
+        <tituloAtributo text="$(titulo)" name="$(name)"/>
+        <campoAtributo field="$(name)Nivel" readOnly="false"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(name)Classe" readOnly="true"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(name)Raca" readOnly="true"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(name)Treino" readOnly="false"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(name)Outros" readOnly="false"/>
+        <sinal sinal="equals"/>
+        <campoAtributo titulo="" field="$(name)Base" readOnly="true"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(name)Equip" readOnly="false"/>
+        <sinal sinal="equals"/>
+        <campoAtributo titulo="" field="$(name)Total" readOnly="true"/>
+    </template>
 
-	<template name="tabelaAtributo">
-		<tituloAtributo text="$(titulo)" name="$(name)"/>
-		<campoAtributo field="$(name)Nivel" readOnly="false"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Classe" readOnly="true"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Raca" readOnly="true"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Treino" readOnly="false"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Outros" readOnly="false"/>
-		<sinal sinal="equals"/>
-		<campoAtributo titulo="" field="$(name)Base" readOnly="true"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Equip" readOnly="false"/>
-		<sinal sinal="equals"/>
-		<campoAtributo titulo="" field="$(name)Total" readOnly="true"/>
-	</template>
+    <template name="campoPtBonus">
+        <flowPart height="20" minWidth="180" maxWidth="180" name="$(baseName)" margins="{top=5, bottom=5,right=10}">
+            <label text="$(text)" align="left" fontSize="18" vertTextAlign="center"
+                   horzTextAlign="center" fontStyle="italic" width="200"/>
+            <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1"/>
+        </flowPart>
+    </template>
 
-	<template name="campoPtBonus">
-		<flowPart  height="20" minWidth="60" maxWidth="120" name="$(baseName)">
-			<label text="$(text)" align="left" field="$(field)" fontSize="18" vertTextAlign="center" horzTextAlign="leading" fontStyle="bold"/>
-		</flowPart>
-	</template>
+    <template name="totalPtBonus">
+        <flowLayout height="20" minWidth="150" maxWidth="200" maxControlsPerLine="3">
+            <button name="$(field)Minus" text="-" width="20" height="20"
+                    onClick="
+                        if sheet.$(field) > 0 then
+                           sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
+                           sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                        end"/>
+            <flowPart height="20" minWidth="20" maxWidth="20">
+                <edit align="client" field="$(field)" fontSize="12" transparent="true"
+                      vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+            </flowPart>
+            <button name="$(field)Plus" text="+" width="20" height="20"
+                    onClick="
+                        if sheet.pontosRestantes > 0 then
+                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
+                        else
+                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
+                        end"/>
+        </flowLayout>
+    </template>
 
-	<template name="totalPtBonus">
-		<flowPart  height="10" minWidth="60" maxWidth="85" name="$(baseName)">
-			<label text="TOTAL" align="left" field="$(field)" fontSize="12" vertTextAlign="center" horzTextAlign="leading"/>
-		</flowPart>
-	</template>
-
+    <template name="totalConhecimentos">
+        <flowLayout height="20" minWidth="150" maxWidth="200" maxControlsPerLine="3">
+            <button name="$(field)Minus" text="-" width="20" height="20"
+                    onClick="
+                        if sheet.$(field) > 0 then
+                           sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
+                           sheet.pontosDeConhecimento = tonumber(sheet.pontosDeConhecimento) + 1
+                        end"/>
+            <flowPart height="20" minWidth="20" maxWidth="20">
+                <edit align="client" field="$(field)" fontSize="12" transparent="true"
+                      vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+            </flowPart>
+            <button name="$(field)Plus" text="+" width="20" height="20"
+                    onClick="
+                        if sheet.pontosDeConhecimento > 0 then
+                            sheet.pontosDeConhecimento = tonumber(sheet.pontosDeConhecimento) - 1
+                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
+                        end"/>
+        </flowLayout>
+    </template>
 </group>

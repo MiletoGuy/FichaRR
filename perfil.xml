@@ -3,12 +3,24 @@
 <!-- ### TABELA PERFIL ### -->
 <rectangle class="fundo">
     <scrollBox align="client">
-        <flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true"
+        <flowLayout class="tile" align="top" height="800" margins="{left=10, right=10, top=10}" autoHeight="true"
                     horzAlign="center" lineSpacing="2" name="perfilLayout" maxWidth="1600">
 
             <!--TABELA DO PERFIL -->
-            <flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
-                <flowLayout minWidth="320" maxWidth="1600" name="tabelaPerfil" avoidScale="true" autoHeight="true"
+            <flowLayout minWidth="320" maxWidth="1600" name="tabelaDadosImagem" avoidScale="true" autoHeight="true"
+                        vertAlign="trailing" maxControlsPerLine="3" horzAlign="center">
+
+                <flowLayout minWidth="260" maxWidth="400" name="imagemDoPersonagem" avoidScale="true" autoHeight="true"
+                            vertAlign="trailing" horzAlign="center">
+                    <rectangle cornerType="innerLine" align="client"
+                               xradius="15" yradius="15"
+                               height="260" width="260">
+                        <image src="" style="autoFit" optimize="true" editable="true"
+                               height="230" width="230" left="15" top="15"/>
+                    </rectangle>
+                </flowLayout>
+
+                <flowLayout minWidth="320" maxWidth="400" name="dadosDoPersonagem" avoidScale="true" autoHeight="true"
                             vertAlign="trailing" maxControlsPerLine="2" horzAlign="center">
                     <upperGridCampo field="nome" minWidth="100" titulo="Nome"/>
                     <upperGridCampo field="raca" titulo="Raça"/>
@@ -22,6 +34,11 @@
                     <upperGridCampo field="nacionalidade" titulo="Nacionalidade"/>
                     <upperGridCampo field="divindade" titulo="Divindade"/>
                     <upperGridCampo field="pDestino" titulo="Pontos de Destino"/>
+                </flowLayout>
+
+                <flowLayout minWidth="320" maxWidth="400" name="dadosAdicionais" avoidScale="true" autoHeight="true"
+                            vertAlign="trailing" horzAlign="center" maxControlsPerLine="3">
+                    <label text="Imagine uma tabelinha dahora aqui" width="320"/>
                 </flowLayout>
             </flowLayout>
 
@@ -63,12 +80,76 @@
             <flowLineBreak lineSpacing="10"/>
 
             <!-- TABELA DE PONTOS BÔNUS E CONHECIMENTOS ESPECÍFICOS-->
-            <flowLayout minWidth="320" maxWidth="1600" name="tabelaPontosBonus" avoidScale="true" autoHeight="true"
-                        vertAlign="leading" maxControlsPerLine="2" horzAlign="center">
-                <campoPtBonus text="Percepção"/>
-                <totalPtBonus/>
-                <campoPtBonus text="Intimidação"/>
-                <totalPtBonus/>
+            <flowLayout minWidth="320" maxWidth="1600" name="layoutPtBonusEConhecimentos" avoidScale="true"
+                        autoHeight="true"
+                        vertAlign="leading" maxControlsPerLine="1" horzAlign="center" margins="{bottom=15}">
+
+                <flowLayout minWidth="320" maxWidth="1600" name="topoPtBonusEConhecimentos" avoidScale="true"
+                            autoHeight="true"
+                            vertAlign="leading" maxControlsPerLine="6" horzAlign="center" margins="{bottom=15}">
+
+                    <label text="Pontos Restantes: " width="150"/>
+                    <edit align="client" field="pontosRestantes" fontSize="12" transparent="true"
+                          vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+                    <label text="Pontos Treinados: " width="150"/>
+                    <edit align="client" field="pontosTreinados" fontSize="12" transparent="true"
+                          vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+                    <label text="Pontos de Conhecimento: " width="150"/>
+                    <edit align="client" field="pontosDeConhecimento" fontSize="12" transparent="true"
+                          vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+                    <button text="+" onClick="sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1"/>
+                    <button text="Zera"
+                            onClick="sheet.pontosRestantes = 0
+                                     sheet.pontosTreinados = 0
+                                     sheet.pontosDeConhecimento = 0"/>
+                    <button text="+" onClick="sheet.pontosDeConhecimento = tonumber(sheet.pontosDeConhecimento) + 1"/>
+                </flowLayout>
+
+                <flowLayout minWidth="320" maxWidth="1600" name="tabelaPtBonusEConhecimentos" avoidScale="true"
+                            autoHeight="true"
+                            vertAlign="leading" maxControlsPerLine="2" horzAlign="center" margins="{bottom=15}">
+
+                    <flowLayout minWidth="200" maxWidth="450" name="tabelaPontosBonus" avoidScale="true" autoHeight="true"
+                                vertAlign="leading" maxControlsPerLine="2" horzAlign="center">
+                        <campoPtBonus text="Percepção"/>
+                        <totalPtBonus field="percepcao"/>
+                        <campoPtBonus text="Intimidação"/>
+                        <totalPtBonus field="intimidacao"/>
+                        <campoPtBonus text="Persuasão"/>
+                        <totalPtBonus field="persuasao"/>
+                        <campoPtBonus text="Adestrar Animais"/>
+                        <totalPtBonus field="adestrarAnimais"/>
+                        <campoPtBonus text="Furtividade"/>
+                        <totalPtBonus field="furtividade"/>
+                        <campoPtBonus text="Intuição"/>
+                        <totalPtBonus field="intuicao"/>
+                        <campoPtBonus text="Didática"/>
+                        <totalPtBonus field="didatica"/>
+                    </flowLayout>
+
+                    <flowLayout minWidth="200" maxWidth="450" name="tabelaConhecimentosEspecificos" avoidScale="true"
+                                autoHeight="true"
+                                vertAlign="leading" maxControlsPerLine="2" horzAlign="center">
+                        <campoPtBonus text="Geografia"/>
+                        <totalConhecimentos field="geografia"/>
+                        <campoPtBonus text="História"/>
+                        <totalConhecimentos field="historia"/>
+                        <campoPtBonus text="Religião"/>
+                        <totalConhecimentos field="religiao"/>
+                        <campoPtBonus text="Fauna/Flora"/>
+                        <totalConhecimentos field="faunaflora"/>
+                        <campoPtBonus text="Linguagem Comum"/>
+                        <totalConhecimentos field="linguagemComum"/>
+                        <campoPtBonus text="Linguagem Oriental"/>
+                        <totalConhecimentos field="linguagemOriental"/>
+                        <campoPtBonus text="Linguagem Élfica"/>
+                        <totalConhecimentos field="linguagemElfica"/>
+                        <campoPtBonus text="Linguagem Anã"/>
+                        <totalConhecimentos field="linguagemAna"/>
+                        <campoPtBonus text="Linguagem Dracônica"/>
+                        <totalConhecimentos field="linguagemDraconica"/>
+                    </flowLayout>
+                </flowLayout>
             </flowLayout>
         </flowLayout>
     </scrollBox>
@@ -78,7 +159,10 @@
                        'dexNivel', 'dexClasse', 'dexRaca', 'dexTreino','dexOutros', 'dexBase', 'dexEquip', 'dexTotal',
                        'carNivel', 'carClasse', 'carRaca', 'carTreino','carOutros', 'carBase', 'carEquip', 'carTotal',
                        'intNivel', 'intClasse', 'intRaca', 'intTreino','intOutros', 'intBase', 'intEquip', 'intTotal',
-                       'sabNivel', 'sabClasse', 'sabRaca', 'sabTreino','sabOutros', 'sabBase', 'sabEquip', 'sabTotal'}">
+                       'sabNivel', 'sabClasse', 'sabRaca', 'sabTreino','sabOutros', 'sabBase', 'sabEquip', 'sabTotal',
+                       'percepcao', 'intimidacao', 'persuasao', 'adestrarAnimais', 'furtividade', 'intuicao', 'didatica',
+                       'geografia', 'historia', 'religiao', 'faunaflora', 'linguagemComum', 'linguagemOriental', 'linguagemElfica',
+                       'linguagemAna', 'linguagemDraconica', 'pontosRestantes', 'pontosTreinados', 'pontosDeConhecimento'}">
         <event name="onChange">
 
             -- ###### SOMA CONSTITUIÇÃO ######
@@ -147,6 +231,27 @@
 
             sheet.sabTotal = (tonumber(sheet.sabBase) or 0) +
             (tonumber(sheet.sabEquip) or 0);
+
+            -- ###### REMOVE VALORES NULOS ######
+            if sheet.percepcao == nil then sheet.percepcao = 0 end;
+            if sheet.indimidacao == nil then sheet.indimidacao = 0 end;
+            if sheet.persuasao == nil then sheet.persuasao = 0 end;
+            if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end;
+            if sheet.furtividade == nil then sheet.furtividade = 0 end;
+            if sheet.intuicao == nil then sheet.intuicao = 0 end;
+            if sheet.didatica == nil then sheet.didatica = 0 end;
+            if sheet.geografia == nil then sheet.geografia = 0 end;
+            if sheet.historia == nil then sheet.historia = 0 end;
+            if sheet.religiao == nil then sheet.religiao = 0 end;
+            if sheet.faunaflora == nil then sheet.faunaflora = 0 end;
+            if sheet.linguagemComum == nil then sheet.linguagemComum = 0 end;
+            if sheet.linguagemOriental == nil then sheet.linguagemOriental = 0 end;
+            if sheet.linguagemElfica == nil then sheet.linguagemElfica = 0 end;
+            if sheet.linguagemAna == nil then sheet.linguagemAna = 0 end;
+            if sheet.linguagemDraconica == nil then sheet.linguagemDraconica = 0 end;
+            if sheet.pontosRestantes == nil then sheet.pontosRestantes = 0 end;
+            if sheet.pontosTreinados == nil then sheet.pontosTreinados = 0 end;
+            if sheet.pontosDeConhecimento == nil then sheet.pontosDeConhecimento = 0 end;
         </event>
     </dataLink>
 </rectangle>
