@@ -22,24 +22,39 @@
 
                 <flowLayout minWidth="320" maxWidth="400" name="dadosDoPersonagem" avoidScale="true" autoHeight="true"
                             vertAlign="trailing" maxControlsPerLine="2" horzAlign="center">
-                    <upperGridCampo field="nome" minWidth="100" titulo="Nome"/>
-                    <upperGridCampo field="raca" titulo="Raça"/>
-                    <upperGridCampo field="peso" titulo="Peso"/>
-                    <upperGridCampo field="classe" minWidth="100" titulo="Classe"/>
-                    <upperGridCampo field="altura" titulo="Altura"/>
-                    <upperGridCampo field="idade" titulo="Idade"/>
-                    <upperGridCampo field="nivelClasse" titulo="Nivel de Classe"/>
-                    <upperGridCampo field="sexo" titulo="Sexo"/>
-                    <upperGridCampo field="divelProf" titulo="Nivel de Profissão"/>
-                    <upperGridCampo field="nacionalidade" titulo="Nacionalidade"/>
-                    <upperGridCampo field="divindade" titulo="Divindade"/>
-                    <upperGridCampo field="pDestino" titulo="Pontos de Destino"/>
+                    <campoPerfilTexto field="nome" minWidth="100" titulo="Nome"/>
+                    <campoPerfilTexto field="raca" titulo="Raça"/>
+                    <campoPerfilTexto field="peso" titulo="Peso"/>
+                    <campoPerfilTexto field="classe" minWidth="100" titulo="Classe"/>
+                    <campoPerfilTexto field="altura" titulo="Altura"/>
+                    <campoPerfilTexto field="idade" titulo="Idade"/>
+                    <campoPerfilNumero field="nivelClasse" titulo="Nivel de Classe"/>
+                    <campoPerfilTexto field="sexo" titulo="Sexo"/>
+                    <campoPerfilNumero field="nivelProfissao" titulo="Nivel de Profissão"/>
+                    <campoPerfilTexto field="nacionalidade" titulo="Nacionalidade"/>
+                    <campoPerfilTexto field="divindade" titulo="Divindade"/>
+                    <campoPerfilTexto field="pDestino" titulo="Pontos de Destino"/>
                 </flowLayout>
 
-                <flowLayout minWidth="320" maxWidth="400" name="dadosAdicionais" avoidScale="true" autoHeight="true"
+
+                <flowLayout minWidth="320" maxWidth="400" name="atributosDestreza" autoHeight="true"
                             vertAlign="trailing" horzAlign="center" maxControlsPerLine="3">
-                    <label text="Imagine uma tabelinha dahora aqui" width="320"/>
+                    <caixaAtributo titulo="Acerto"/>
+                    <layout align="client" height="0" width="0"/>
+                    <caixaAtributo titulo="Mira"/>
+                    <layout align="client" height="0" width="0"/>
+                    <rectangle cornerType="innerLine" align="client"
+                               xradius="7" yradius="7"
+                               height="30" width="30" color="black" margins="{left=2.5}">
+                        <label field="destrezaDisponivel" width="30" align="client" horzTextAlign="center" vertTextAlign="center" fontSize="14"/>
+                    </rectangle>
+                    <layout align="client" height="0" width="0"/>
+                    <caixaAtributo titulo="Esquiva"/>
+                    <layout align="client" height="0" width="0"/>
+                    <caixaAtributo titulo="Bloqueio"/>
                 </flowLayout>
+
+
             </flowLayout>
 
             <flowLineBreak lineSpacing="10"/>
@@ -65,12 +80,12 @@
             <flowLayout minWidth="320" maxWidth="1600" name="tabelaDeAtributos" avoidScale="true" autoHeight="true"
                         vertAlign="leading" maxControlsPerLine="16" horzAlign="center">
 
-                <tabelaAtributo titulo="Constituição" name="con"/>
-                <tabelaAtributo titulo="Força" name="for"/>
-                <tabelaAtributo titulo="Destreza" name="dex"/>
-                <tabelaAtributo titulo="Carisma" name="car"/>
-                <tabelaAtributo titulo="Inteligência" name="int"/>
-                <tabelaAtributo titulo="Sabedoria" name="sab"/>
+                <tabelaAtributo titulo="Constituição" field="con"/>
+                <tabelaAtributo titulo="Força" field="for"/>
+                <tabelaAtributo titulo="Destreza" field="dex"/>
+                <tabelaAtributo titulo="Carisma" field="car"/>
+                <tabelaAtributo titulo="Inteligência" field="int"/>
+                <tabelaAtributo titulo="Sabedoria" field="sab"/>
             </flowLayout>
 
             <flowLineBreak lineSpacing="10"/>
@@ -86,7 +101,7 @@
 
                 <flowLayout minWidth="320" maxWidth="1600" name="topoPtBonusEConhecimentos" avoidScale="true"
                             autoHeight="true"
-                            vertAlign="leading" maxControlsPerLine="6" horzAlign="center" margins="{bottom=15}">
+                            vertAlign="leading" maxControlsPerLine="8" horzAlign="center" margins="{bottom=15}">
 
                     <label text="Pontos Restantes: " width="150"/>
                     <edit align="client" field="pontosRestantes" fontSize="12" transparent="true"
@@ -97,19 +112,21 @@
                     <label text="Pontos de Conhecimento: " width="150"/>
                     <edit align="client" field="pontosDeConhecimento" fontSize="12" transparent="true"
                           vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+                    <label text="Pontos Con. Distribuidos: " width="150"/>
+                    <edit align="client" field="pontosDeConhecimentoDistribuidos" fontSize="12" transparent="true"
+                          vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
                     <button text="+" onClick="sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1"/>
                     <button text="Zera"
                             onClick="sheet.pontosRestantes = 0
-                                     sheet.pontosTreinados = 0
-                                     sheet.pontosDeConhecimento = 0"/>
-                    <button text="+" onClick="sheet.pontosDeConhecimento = tonumber(sheet.pontosDeConhecimento) + 1"/>
+                                     sheet.pontosTreinados = 0"/>
                 </flowLayout>
 
                 <flowLayout minWidth="320" maxWidth="1600" name="tabelaPtBonusEConhecimentos" avoidScale="true"
                             autoHeight="true"
                             vertAlign="leading" maxControlsPerLine="2" horzAlign="center" margins="{bottom=15}">
 
-                    <flowLayout minWidth="200" maxWidth="450" name="tabelaPontosBonus" avoidScale="true" autoHeight="true"
+                    <flowLayout minWidth="200" maxWidth="450" name="tabelaPontosBonus" avoidScale="true"
+                                autoHeight="true"
                                 vertAlign="leading" maxControlsPerLine="2" horzAlign="center">
                         <campoPtBonus text="Percepção"/>
                         <totalPtBonus field="percepcao"/>
@@ -154,87 +171,17 @@
         </flowLayout>
     </scrollBox>
 
-    <dataLink fields="{'conNivel', 'conClasse', 'conRaca', 'conTreino','conOutros', 'conBase', 'conEquip', 'conTotal',
-                       'forNivel', 'forClasse', 'forRaca', 'forTreino','forOutros', 'forBase', 'forEquip', 'forTotal',
-                       'dexNivel', 'dexClasse', 'dexRaca', 'dexTreino','dexOutros', 'dexBase', 'dexEquip', 'dexTotal',
-                       'carNivel', 'carClasse', 'carRaca', 'carTreino','carOutros', 'carBase', 'carEquip', 'carTotal',
-                       'intNivel', 'intClasse', 'intRaca', 'intTreino','intOutros', 'intBase', 'intEquip', 'intTotal',
-                       'sabNivel', 'sabClasse', 'sabRaca', 'sabTreino','sabOutros', 'sabBase', 'sabEquip', 'sabTotal',
-                       'percepcao', 'intimidacao', 'persuasao', 'adestrarAnimais', 'furtividade', 'intuicao', 'didatica',
+    <dataLink fields="{'percepcao', 'intimidacao', 'persuasao', 'adestrarAnimais', 'furtividade', 'intuicao', 'didatica',
                        'geografia', 'historia', 'religiao', 'faunaflora', 'linguagemComum', 'linguagemOriental', 'linguagemElfica',
-                       'linguagemAna', 'linguagemDraconica', 'pontosRestantes', 'pontosTreinados', 'pontosDeConhecimento'}">
+                       'linguagemAna', 'linguagemDraconica', 'pontosRestantes', 'pontosTreinados', 'pontosDeConhecimento',
+                       'pontosDeConhecimentoDistribuidos', 'destrezaDisponivel', 'dexTotal', 'atributoAcerto', 'atributoMira',
+                       'atributoEsquiva', 'atributoBloqueio'}">
         <event name="onChange">
 
-            -- ###### SOMA CONSTITUIÇÃO ######
-
-            sheet.conBase = (tonumber(sheet.conNivel) or 0) +
-            (tonumber(sheet.conClasse) or 0) +
-            (tonumber(sheet.conRaca) or 0) +
-            (tonumber(sheet.conTreino) or 0) +
-            (tonumber(sheet.conOutros) or 0);
-
-            sheet.conTotal = (tonumber(sheet.conBase) or 0) +
-            (tonumber(sheet.conEquip) or 0);
-
-
-            -- ###### SOMA FORÇA ######
-
-            sheet.forBase = (tonumber(sheet.forNivel) or 0) +
-            (tonumber(sheet.forClasse) or 0) +
-            (tonumber(sheet.forRaca) or 0) +
-            (tonumber(sheet.forTreino) or 0) +
-            (tonumber(sheet.forOutros) or 0);
-
-            sheet.forTotal = (tonumber(sheet.forBase) or 0) +
-            (tonumber(sheet.forEquip) or 0);
-
-            -- ###### SOMA DESTREZA ######
-
-            sheet.dexBase = (tonumber(sheet.dexNivel) or 0) +
-            (tonumber(sheet.dexClasse) or 0) +
-            (tonumber(sheet.dexRaca) or 0) +
-            (tonumber(sheet.dexTreino) or 0) +
-            (tonumber(sheet.dexOutros) or 0);
-
-            sheet.dexTotal = (tonumber(sheet.dexBase) or 0) +
-            (tonumber(sheet.dexEquip) or 0);
-
-            -- ###### SOMA CARISMA ######
-
-            sheet.carBase = (tonumber(sheet.carNivel) or 0) +
-            (tonumber(sheet.carClasse) or 0) +
-            (tonumber(sheet.carRaca) or 0) +
-            (tonumber(sheet.carTreino) or 0) +
-            (tonumber(sheet.carOutros) or 0);
-
-            sheet.carTotal = (tonumber(sheet.carBase) or 0) +
-            (tonumber(sheet.carEquip) or 0);
-
-            -- ###### SOMA INTELIGÊNCIA ######
-
-            sheet.intBase = (tonumber(sheet.intNivel) or 0) +
-            (tonumber(sheet.intClasse) or 0) +
-            (tonumber(sheet.intRaca) or 0) +
-            (tonumber(sheet.intTreino) or 0) +
-            (tonumber(sheet.intOutros) or 0);
-
-            sheet.intTotal = (tonumber(sheet.intBase) or 0) +
-            (tonumber(sheet.intEquip) or 0);
-
-            -- ###### SOMA SABEDORIA ######
-
-            sheet.sabBase = (tonumber(sheet.sabNivel) or 0) +
-            (tonumber(sheet.sabClasse) or 0) +
-            (tonumber(sheet.sabRaca) or 0) +
-            (tonumber(sheet.sabTreino) or 0) +
-            (tonumber(sheet.sabOutros) or 0);
-
-            sheet.sabTotal = (tonumber(sheet.sabBase) or 0) +
-            (tonumber(sheet.sabEquip) or 0);
-
             -- ###### REMOVE VALORES NULOS ######
+
             if sheet.percepcao == nil then sheet.percepcao = 0 end;
-            if sheet.indimidacao == nil then sheet.indimidacao = 0 end;
+            if sheet.intimidacao == nil then sheet.intimidacao = 0 end;
             if sheet.persuasao == nil then sheet.persuasao = 0 end;
             if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end;
             if sheet.furtividade == nil then sheet.furtividade = 0 end;
@@ -252,6 +199,21 @@
             if sheet.pontosRestantes == nil then sheet.pontosRestantes = 0 end;
             if sheet.pontosTreinados == nil then sheet.pontosTreinados = 0 end;
             if sheet.pontosDeConhecimento == nil then sheet.pontosDeConhecimento = 0 end;
+            if sheet.pontosDeConhecimentoDistribuidos == nill then sheet.pontosDeConhecimentoDistribuidos = 0 end;
+            if sheet.nivelProfissao == nill then sheet.nivelProfissao = 0 end;
+            if sheet.nivelClasse == nill then sheet.nivelClasse = 0 end;
+
+            -- ###### PONTOS DE CONHECIMENTOS ESPECÍFICOS ######
+            sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intTotal)/5)) -
+            tonumber(sheet.pontosDeConhecimentoDistribuidos)
+
+            sheet.destrezaDisponivel = sheet.dexTotal - (
+            (tonumber(sheet.atributoAcerto) or 0) +
+            (tonumber(sheet.atributoMira) or 0) +
+            (tonumber(sheet.atributoEsquiva) or 0) +
+            (tonumber(sheet.atributoBloqueio) or 0)
+            )
+
         </event>
     </dataLink>
 </rectangle>

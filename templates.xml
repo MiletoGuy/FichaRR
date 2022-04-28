@@ -2,8 +2,7 @@
 
 <group>
 
-    <template name="upperGridCampo">
-        <!-- baseName = uniqueName("UpperGridCampo"); -->
+    <template name="campoPerfilTexto">
         <flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)"
                   minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)"
                   maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
@@ -13,6 +12,49 @@
             <label align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading"
                    wordWrap="true" textTrimming="none"/>
         </flowPart>
+    </template>
+
+    <template name="campoPerfilNumero">
+        <flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)"
+                  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)"
+                  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+                  name="$(baseName)">
+            <edit align="top" class="infoNoTopo" field="$(field)" fontSize="13" type="number" readOnly="true"/>
+            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+            <label align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading"
+                   wordWrap="true" textTrimming="none"/>
+        </flowPart>
+    </template>
+
+    <template name="caixaAtributo">
+
+        <rectangle cornerType="innerLine" align="client"
+                   xradius="10" yradius="10"
+                   height="100" width="100" color="black"
+                   margins="{top=2, bottom=2, left=2, right=2}">
+            <edit class="atributo" align="top" field="atributo$(titulo)"
+                  height="20" type="number" min="0" width="20"/>
+            <label align="client" field="mod$(titulo)" horzTextAlign="center"
+                   vertTextAlign="center" fontSize="30" fontStyle="bold" width="60" height="20"/>
+            <label text="$(titulo)" vertTextAlign="trailing" horzTextAlign="center" align="bottom"/>
+        </rectangle>
+
+        <dataLink fields="'mod$(titulo)', 'atributo$(titulo)'">
+            <event name="onChange">
+                if (
+                    (tonumber(sheet.atributoAcerto) or 0) +
+                    (tonumber(sheet.atributoMira) or 0) +
+                    (tonumber(sheet.atributoEsquiva) or 0) +
+                    (tonumber(sheet.atributoBloqueio) or 0)
+                    ) > sheet.dexTotal
+                then
+                showMessage(sheet.dexTotal)
+                end
+
+                sheet.mod$(titulo) =tostring("+"..math.floor(tonumber(sheet.atributo$(titulo))/10))
+
+            </event>
+        </dataLink>
     </template>
 
     <template name="sinal">
@@ -27,9 +69,14 @@
                   maxScaledWidth="35" avoidScale="true"
                   name="$(baseName)">
             <edit align="top" class="infoNoTopo" field="$(field)" fontSize="15" transparent="true"
-                  vertTextAlign="center" type="number" readOnly="$(readOnly)"/>
+                  vertTextAlign="center" type="number" readOnly="$(readOnly)" horzTextAlign="center"/>
             <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
         </flowPart>
+        <dataLink field="$(field)">
+            <event name="onChange">
+                if sheet.$(field) == nil then sheet.$(field) = 0 end;
+            </event>
+        </dataLink>
     </template>
 
     <template name="tituloAtributo">
@@ -40,22 +87,37 @@
     </template>
 
     <template name="tabelaAtributo">
-        <tituloAtributo text="$(titulo)" name="$(name)"/>
-        <campoAtributo field="$(name)Nivel" readOnly="false"/>
+        <tituloAtributo text="$(titulo)"/>
+        <campoAtributo field="$(field)Nivel" readOnly="false"/>
         <sinal sinal="plus"/>
-        <campoAtributo titulo="" field="$(name)Classe" readOnly="true"/>
+        <campoAtributo titulo="" field="$(field)Classe" readOnly="true"/>
         <sinal sinal="plus"/>
-        <campoAtributo titulo="" field="$(name)Raca" readOnly="true"/>
+        <campoAtributo titulo="" field="$(field)Raca" readOnly="true"/>
         <sinal sinal="plus"/>
-        <campoAtributo titulo="" field="$(name)Treino" readOnly="false"/>
+        <campoAtributo titulo="" field="$(field)Treino" readOnly="false"/>
         <sinal sinal="plus"/>
-        <campoAtributo titulo="" field="$(name)Outros" readOnly="false"/>
+        <campoAtributo titulo="" field="$(field)Outros" readOnly="false"/>
         <sinal sinal="equals"/>
-        <campoAtributo titulo="" field="$(name)Base" readOnly="true"/>
+        <campoAtributo titulo="" field="$(field)Base" readOnly="true"/>
         <sinal sinal="plus"/>
-        <campoAtributo titulo="" field="$(name)Equip" readOnly="false"/>
+        <campoAtributo titulo="" field="$(field)Equip" readOnly="false"/>
         <sinal sinal="equals"/>
-        <campoAtributo titulo="" field="$(name)Total" readOnly="true"/>
+        <campoAtributo titulo="" field="$(field)Total" readOnly="true"/>
+
+        <dataLink fields="{'$(field)Nivel', '$(field)Classe', '$(field)Raca', '$(field)Treino',
+                           '$(field)Outros', '$(field)Base', '$(field)Equip', '$(field)Total'}">
+            <event name="onChange">
+
+                sheet.$(field)Base = (tonumber(sheet.$(field)Nivel) or 0) +
+                (tonumber(sheet.$(field)Classe) or 0) +
+                (tonumber(sheet.$(field)Raca) or 0) +
+                (tonumber(sheet.$(field)Treino) or 0) +
+                (tonumber(sheet.$(field)Outros) or 0);
+
+                sheet.$(field)Total = (tonumber(sheet.$(field)Base) or 0) +
+                (tonumber(sheet.$(field)Equip) or 0);
+            </event>
+        </dataLink>
     </template>
 
     <template name="campoPtBonus">
@@ -96,7 +158,7 @@
                     onClick="
                         if sheet.$(field) > 0 then
                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
-                           sheet.pontosDeConhecimento = tonumber(sheet.pontosDeConhecimento) + 1
+                           sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                         end"/>
             <flowPart height="20" minWidth="20" maxWidth="20">
                 <edit align="client" field="$(field)" fontSize="12" transparent="true"
@@ -105,7 +167,7 @@
             <button name="$(field)Plus" text="+" width="20" height="20"
                     onClick="
                         if sheet.pontosDeConhecimento > 0 then
-                            sheet.pontosDeConhecimento = tonumber(sheet.pontosDeConhecimento) - 1
+                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                             sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
                         end"/>
         </flowLayout>
