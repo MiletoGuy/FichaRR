@@ -57,22 +57,22 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.perfilLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.perfilLayout:setParent(obj.scrollBox1);
+    obj.perfilLayout:setName("perfilLayout");
     obj.perfilLayout:setAlign("top");
     obj.perfilLayout:setHeight(800);
     obj.perfilLayout:setMargins({left=10, right=10, top=10});
     obj.perfilLayout:setAutoHeight(true);
     obj.perfilLayout:setHorzAlign("center");
     obj.perfilLayout:setLineSpacing(2);
-    obj.perfilLayout:setName("perfilLayout");
     obj.perfilLayout:setMaxWidth(1600);
     obj.perfilLayout:setStepSizes({310, 420, 640, 760, 1150});
     obj.perfilLayout:setMinScaledWidth(300);
 
     obj.tabelaDadosImagem = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.tabelaDadosImagem:setParent(obj.perfilLayout);
+    obj.tabelaDadosImagem:setName("tabelaDadosImagem");
     obj.tabelaDadosImagem:setMinWidth(320);
     obj.tabelaDadosImagem:setMaxWidth(1600);
-    obj.tabelaDadosImagem:setName("tabelaDadosImagem");
     obj.tabelaDadosImagem:setAvoidScale(true);
     obj.tabelaDadosImagem:setAutoHeight(true);
     obj.tabelaDadosImagem:setVertAlign("trailing");
@@ -81,9 +81,9 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.imagemDoPersonagem = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.imagemDoPersonagem:setParent(obj.tabelaDadosImagem);
+    obj.imagemDoPersonagem:setName("imagemDoPersonagem");
     obj.imagemDoPersonagem:setMinWidth(260);
     obj.imagemDoPersonagem:setMaxWidth(400);
-    obj.imagemDoPersonagem:setName("imagemDoPersonagem");
     obj.imagemDoPersonagem:setAvoidScale(true);
     obj.imagemDoPersonagem:setAutoHeight(true);
     obj.imagemDoPersonagem:setVertAlign("trailing");
@@ -113,9 +113,9 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.dadosDoPersonagem = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.dadosDoPersonagem:setParent(obj.tabelaDadosImagem);
+    obj.dadosDoPersonagem:setName("dadosDoPersonagem");
     obj.dadosDoPersonagem:setMinWidth(320);
     obj.dadosDoPersonagem:setMaxWidth(400);
-    obj.dadosDoPersonagem:setName("dadosDoPersonagem");
     obj.dadosDoPersonagem:setAvoidScale(true);
     obj.dadosDoPersonagem:setAutoHeight(true);
     obj.dadosDoPersonagem:setVertAlign("trailing");
@@ -594,11 +594,21 @@ local function constructNew_frmFichaDePersonagem()
     obj.label12:setFontSize(12);
     obj.label12:setFontColor("#D0D0D0");
 
+    obj.dadosAdicionais = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.dadosAdicionais:setParent(obj.tabelaDadosImagem);
+    obj.dadosAdicionais:setName("dadosAdicionais");
+    obj.dadosAdicionais:setMinWidth(320);
+    obj.dadosAdicionais:setMaxWidth(400);
+    obj.dadosAdicionais:setAutoHeight(true);
+    obj.dadosAdicionais:setVertAlign("trailing");
+    obj.dadosAdicionais:setHorzAlign("center");
+    obj.dadosAdicionais:setMaxControlsPerLine(1);
+
     obj.atributosDestreza = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.atributosDestreza:setParent(obj.tabelaDadosImagem);
+    obj.atributosDestreza:setParent(obj.dadosAdicionais);
+    obj.atributosDestreza:setName("atributosDestreza");
     obj.atributosDestreza:setMinWidth(320);
     obj.atributosDestreza:setMaxWidth(400);
-    obj.atributosDestreza:setName("atributosDestreza");
     obj.atributosDestreza:setAutoHeight(true);
     obj.atributosDestreza:setVertAlign("trailing");
     obj.atributosDestreza:setHorzAlign("center");
@@ -854,6 +864,45 @@ local function constructNew_frmFichaDePersonagem()
     obj.dataLink4:setFields({'modBloqueio', 'atributoBloqueio'});
     obj.dataLink4:setName("dataLink4");
 
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label22:setParent(obj.dadosAdicionais);
+    obj.label22:setWidth(300);
+    obj.label22:setHeight(5);
+    obj.label22:setFontSize(12);
+    obj.label22:setText("Pontos de Experiência:");
+    obj.label22:setHorzTextAlign("center");
+    obj.label22:setVertTextAlign("leading");
+    obj.label22:setMargins({top=5,bottom=5});
+    obj.label22:setName("label22");
+
+    obj.progressBar1 = GUI.fromHandle(_obj_newObject("progressBar"));
+    obj.progressBar1:setParent(obj.dadosAdicionais);
+    obj.progressBar1:setWidth(250);
+    obj.progressBar1:setHeight(4);
+    obj.progressBar1:setMargins({top=5,bottom=5});
+    obj.progressBar1:setFieldMax("barraExpMax");
+    obj.progressBar1:setField("barraExpAtual");
+    obj.progressBar1:setHitTest(true);
+    obj.progressBar1:setMouseGlow(true);
+    obj.progressBar1:setColorMode("hl");
+    obj.progressBar1:setName("progressBar1");
+
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label23:setParent(obj.dadosAdicionais);
+    obj.label23:setWidth(300);
+    obj.label23:setHeight(5);
+    obj.label23:setFontSize(12);
+    obj.label23:setHorzTextAlign("trailing");
+    obj.label23:setVertTextAlign("trailing");
+    obj.label23:setMargins({top=10,bottom=5});
+    obj.label23:setField("barraExpTexto");
+    obj.label23:setName("label23");
+
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj.dadosAdicionais);
+    obj.dataLink5:setFields({'barraExpMax', 'barraExpAtual', 'barraExpTexto', 'nivelClasse'});
+    obj.dataLink5:setName("dataLink5");
+
     obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.perfilLayout);
     obj.flowLineBreak1:setLineSpacing(10);
@@ -903,15 +952,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart15:setMaxScaledWidth(85);
     obj.flowPart15:setName("flowPart15");
 
-    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label22:setParent(obj.flowPart15);
-    obj.label22:setText("Nível");
-    obj.label22:setAlign("client");
-    obj.label22:setField("");
-    obj.label22:setFontSize(8);
-    obj.label22:setVertTextAlign("center");
-    obj.label22:setHorzTextAlign("leading");
-    obj.label22:setName("label22");
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label24:setParent(obj.flowPart15);
+    obj.label24:setText("Nível");
+    obj.label24:setAlign("client");
+    obj.label24:setField("");
+    obj.label24:setFontSize(8);
+    obj.label24:setVertTextAlign("center");
+    obj.label24:setHorzTextAlign("leading");
+    obj.label24:setName("label24");
 
     obj.flowPart16 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart16:setParent(obj.topoAtributos);
@@ -920,15 +969,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart16:setMaxScaledWidth(85);
     obj.flowPart16:setName("flowPart16");
 
-    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label23:setParent(obj.flowPart16);
-    obj.label23:setText("Classe");
-    obj.label23:setAlign("client");
-    obj.label23:setField("");
-    obj.label23:setFontSize(8);
-    obj.label23:setVertTextAlign("center");
-    obj.label23:setHorzTextAlign("leading");
-    obj.label23:setName("label23");
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label25:setParent(obj.flowPart16);
+    obj.label25:setText("Classe");
+    obj.label25:setAlign("client");
+    obj.label25:setField("");
+    obj.label25:setFontSize(8);
+    obj.label25:setVertTextAlign("center");
+    obj.label25:setHorzTextAlign("leading");
+    obj.label25:setName("label25");
 
     obj.flowPart17 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart17:setParent(obj.topoAtributos);
@@ -937,15 +986,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart17:setMaxScaledWidth(85);
     obj.flowPart17:setName("flowPart17");
 
-    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label24:setParent(obj.flowPart17);
-    obj.label24:setText("Raça");
-    obj.label24:setAlign("client");
-    obj.label24:setField("");
-    obj.label24:setFontSize(8);
-    obj.label24:setVertTextAlign("center");
-    obj.label24:setHorzTextAlign("leading");
-    obj.label24:setName("label24");
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label26:setParent(obj.flowPart17);
+    obj.label26:setText("Raça");
+    obj.label26:setAlign("client");
+    obj.label26:setField("");
+    obj.label26:setFontSize(8);
+    obj.label26:setVertTextAlign("center");
+    obj.label26:setHorzTextAlign("leading");
+    obj.label26:setName("label26");
 
     obj.flowPart18 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart18:setParent(obj.topoAtributos);
@@ -954,15 +1003,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart18:setMaxScaledWidth(85);
     obj.flowPart18:setName("flowPart18");
 
-    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label25:setParent(obj.flowPart18);
-    obj.label25:setText("Treino");
-    obj.label25:setAlign("client");
-    obj.label25:setField("");
-    obj.label25:setFontSize(8);
-    obj.label25:setVertTextAlign("center");
-    obj.label25:setHorzTextAlign("leading");
-    obj.label25:setName("label25");
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label27:setParent(obj.flowPart18);
+    obj.label27:setText("Treino");
+    obj.label27:setAlign("client");
+    obj.label27:setField("");
+    obj.label27:setFontSize(8);
+    obj.label27:setVertTextAlign("center");
+    obj.label27:setHorzTextAlign("leading");
+    obj.label27:setName("label27");
 
     obj.flowPart19 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart19:setParent(obj.topoAtributos);
@@ -971,15 +1020,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart19:setMaxScaledWidth(85);
     obj.flowPart19:setName("flowPart19");
 
-    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label26:setParent(obj.flowPart19);
-    obj.label26:setText("Outros");
-    obj.label26:setAlign("client");
-    obj.label26:setField("");
-    obj.label26:setFontSize(8);
-    obj.label26:setVertTextAlign("center");
-    obj.label26:setHorzTextAlign("leading");
-    obj.label26:setName("label26");
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label28:setParent(obj.flowPart19);
+    obj.label28:setText("Outros");
+    obj.label28:setAlign("client");
+    obj.label28:setField("");
+    obj.label28:setFontSize(8);
+    obj.label28:setVertTextAlign("center");
+    obj.label28:setHorzTextAlign("leading");
+    obj.label28:setName("label28");
 
     obj.flowPart20 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart20:setParent(obj.topoAtributos);
@@ -988,15 +1037,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart20:setMaxScaledWidth(85);
     obj.flowPart20:setName("flowPart20");
 
-    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label27:setParent(obj.flowPart20);
-    obj.label27:setText("Base");
-    obj.label27:setAlign("client");
-    obj.label27:setField("");
-    obj.label27:setFontSize(8);
-    obj.label27:setVertTextAlign("center");
-    obj.label27:setHorzTextAlign("leading");
-    obj.label27:setName("label27");
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label29:setParent(obj.flowPart20);
+    obj.label29:setText("Base");
+    obj.label29:setAlign("client");
+    obj.label29:setField("");
+    obj.label29:setFontSize(8);
+    obj.label29:setVertTextAlign("center");
+    obj.label29:setHorzTextAlign("leading");
+    obj.label29:setName("label29");
 
     obj.flowPart21 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart21:setParent(obj.topoAtributos);
@@ -1005,15 +1054,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart21:setMaxScaledWidth(85);
     obj.flowPart21:setName("flowPart21");
 
-    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label28:setParent(obj.flowPart21);
-    obj.label28:setText("Equip.");
-    obj.label28:setAlign("client");
-    obj.label28:setField("");
-    obj.label28:setFontSize(8);
-    obj.label28:setVertTextAlign("center");
-    obj.label28:setHorzTextAlign("leading");
-    obj.label28:setName("label28");
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label30:setParent(obj.flowPart21);
+    obj.label30:setText("Equip.");
+    obj.label30:setAlign("client");
+    obj.label30:setField("");
+    obj.label30:setFontSize(8);
+    obj.label30:setVertTextAlign("center");
+    obj.label30:setHorzTextAlign("leading");
+    obj.label30:setName("label30");
 
     obj.flowPart22 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart22:setParent(obj.topoAtributos);
@@ -1022,15 +1071,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart22:setMaxScaledWidth(85);
     obj.flowPart22:setName("flowPart22");
 
-    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label29:setParent(obj.flowPart22);
-    obj.label29:setText("Total");
-    obj.label29:setAlign("client");
-    obj.label29:setField("");
-    obj.label29:setFontSize(8);
-    obj.label29:setVertTextAlign("center");
-    obj.label29:setHorzTextAlign("leading");
-    obj.label29:setName("label29");
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label31:setParent(obj.flowPart22);
+    obj.label31:setText("Total");
+    obj.label31:setAlign("client");
+    obj.label31:setField("");
+    obj.label31:setFontSize(8);
+    obj.label31:setVertTextAlign("center");
+    obj.label31:setHorzTextAlign("leading");
+    obj.label31:setName("label31");
 
     obj.flowLineBreak3 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak3:setParent(obj.perfilLayout);
@@ -1055,15 +1104,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart23:setMaxScaledWidth(85);
     obj.flowPart23:setName("flowPart23");
 
-    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label30:setParent(obj.flowPart23);
-    obj.label30:setText("Constituição");
-    obj.label30:setAlign("client");
-    obj.label30:setField("");
-    obj.label30:setFontSize(8);
-    obj.label30:setVertTextAlign("center");
-    obj.label30:setHorzTextAlign("leading");
-    obj.label30:setName("label30");
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label32:setParent(obj.flowPart23);
+    obj.label32:setText("Constituição");
+    obj.label32:setAlign("client");
+    obj.label32:setField("");
+    obj.label32:setFontSize(8);
+    obj.label32:setVertTextAlign("center");
+    obj.label32:setHorzTextAlign("leading");
+    obj.label32:setName("label32");
 
     obj.flowPart24 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart24:setParent(obj.tabelaDeAtributos);
@@ -1096,10 +1145,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine14:setStrokeSize(1);
     obj.horzLine14:setName("horzLine14");
 
-    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink5:setParent(obj.tabelaDeAtributos);
-    obj.dataLink5:setField("conNivel");
-    obj.dataLink5:setName("dataLink5");
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6:setParent(obj.tabelaDeAtributos);
+    obj.dataLink6:setField("conNivel");
+    obj.dataLink6:setName("dataLink6");
 
     obj.flowPart25 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart25:setParent(obj.tabelaDeAtributos);
@@ -1148,10 +1197,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine15:setStrokeSize(1);
     obj.horzLine15:setName("horzLine15");
 
-    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink6:setParent(obj.tabelaDeAtributos);
-    obj.dataLink6:setField("conClasse");
-    obj.dataLink6:setName("dataLink6");
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj.tabelaDeAtributos);
+    obj.dataLink7:setField("conClasse");
+    obj.dataLink7:setName("dataLink7");
 
     obj.flowPart27 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart27:setParent(obj.tabelaDeAtributos);
@@ -1200,10 +1249,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine16:setStrokeSize(1);
     obj.horzLine16:setName("horzLine16");
 
-    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink7:setParent(obj.tabelaDeAtributos);
-    obj.dataLink7:setField("conRaca");
-    obj.dataLink7:setName("dataLink7");
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8:setParent(obj.tabelaDeAtributos);
+    obj.dataLink8:setField("conRaca");
+    obj.dataLink8:setName("dataLink8");
 
     obj.flowPart29 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart29:setParent(obj.tabelaDeAtributos);
@@ -1252,10 +1301,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine17:setStrokeSize(1);
     obj.horzLine17:setName("horzLine17");
 
-    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink8:setParent(obj.tabelaDeAtributos);
-    obj.dataLink8:setField("conTreino");
-    obj.dataLink8:setName("dataLink8");
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9:setParent(obj.tabelaDeAtributos);
+    obj.dataLink9:setField("conTreino");
+    obj.dataLink9:setName("dataLink9");
 
     obj.flowPart31 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart31:setParent(obj.tabelaDeAtributos);
@@ -1304,10 +1353,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine18:setStrokeSize(1);
     obj.horzLine18:setName("horzLine18");
 
-    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink9:setParent(obj.tabelaDeAtributos);
-    obj.dataLink9:setField("conOutros");
-    obj.dataLink9:setName("dataLink9");
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10:setParent(obj.tabelaDeAtributos);
+    obj.dataLink10:setField("conOutros");
+    obj.dataLink10:setName("dataLink10");
 
     obj.flowPart33 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart33:setParent(obj.tabelaDeAtributos);
@@ -1356,10 +1405,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine19:setStrokeSize(1);
     obj.horzLine19:setName("horzLine19");
 
-    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink10:setParent(obj.tabelaDeAtributos);
-    obj.dataLink10:setField("conBase");
-    obj.dataLink10:setName("dataLink10");
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11:setParent(obj.tabelaDeAtributos);
+    obj.dataLink11:setField("conBase");
+    obj.dataLink11:setName("dataLink11");
 
     obj.flowPart35 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart35:setParent(obj.tabelaDeAtributos);
@@ -1408,10 +1457,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine20:setStrokeSize(1);
     obj.horzLine20:setName("horzLine20");
 
-    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink11:setParent(obj.tabelaDeAtributos);
-    obj.dataLink11:setField("conEquip");
-    obj.dataLink11:setName("dataLink11");
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12:setParent(obj.tabelaDeAtributos);
+    obj.dataLink12:setField("conEquip");
+    obj.dataLink12:setName("dataLink12");
 
     obj.flowPart37 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart37:setParent(obj.tabelaDeAtributos);
@@ -1460,16 +1509,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine21:setStrokeSize(1);
     obj.horzLine21:setName("horzLine21");
 
-    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink12:setParent(obj.tabelaDeAtributos);
-    obj.dataLink12:setField("conTotal");
-    obj.dataLink12:setName("dataLink12");
-
     obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.tabelaDeAtributos);
-    obj.dataLink13:setFields({'conNivel', 'conClasse', 'conRaca', 'conTreino',
-                           'conOutros', 'conBase', 'conEquip', 'conTotal'});
+    obj.dataLink13:setField("conTotal");
     obj.dataLink13:setName("dataLink13");
+
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14:setParent(obj.tabelaDeAtributos);
+    obj.dataLink14:setFields({'conNivel', 'conClasse', 'conRaca', 'conTreino',
+                           'conOutros', 'conBase', 'conEquip', 'conTotal'});
+    obj.dataLink14:setName("dataLink14");
 
     obj.flowPart39 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart39:setParent(obj.tabelaDeAtributos);
@@ -1478,15 +1527,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart39:setMaxScaledWidth(85);
     obj.flowPart39:setName("flowPart39");
 
-    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label31:setParent(obj.flowPart39);
-    obj.label31:setText("Força");
-    obj.label31:setAlign("client");
-    obj.label31:setField("");
-    obj.label31:setFontSize(8);
-    obj.label31:setVertTextAlign("center");
-    obj.label31:setHorzTextAlign("leading");
-    obj.label31:setName("label31");
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label33:setParent(obj.flowPart39);
+    obj.label33:setText("Força");
+    obj.label33:setAlign("client");
+    obj.label33:setField("");
+    obj.label33:setFontSize(8);
+    obj.label33:setVertTextAlign("center");
+    obj.label33:setHorzTextAlign("leading");
+    obj.label33:setName("label33");
 
     obj.flowPart40 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart40:setParent(obj.tabelaDeAtributos);
@@ -1519,10 +1568,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine22:setStrokeSize(1);
     obj.horzLine22:setName("horzLine22");
 
-    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink14:setParent(obj.tabelaDeAtributos);
-    obj.dataLink14:setField("forNivel");
-    obj.dataLink14:setName("dataLink14");
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15:setParent(obj.tabelaDeAtributos);
+    obj.dataLink15:setField("forNivel");
+    obj.dataLink15:setName("dataLink15");
 
     obj.flowPart41 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart41:setParent(obj.tabelaDeAtributos);
@@ -1571,10 +1620,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine23:setStrokeSize(1);
     obj.horzLine23:setName("horzLine23");
 
-    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink15:setParent(obj.tabelaDeAtributos);
-    obj.dataLink15:setField("forClasse");
-    obj.dataLink15:setName("dataLink15");
+    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16:setParent(obj.tabelaDeAtributos);
+    obj.dataLink16:setField("forClasse");
+    obj.dataLink16:setName("dataLink16");
 
     obj.flowPart43 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart43:setParent(obj.tabelaDeAtributos);
@@ -1623,10 +1672,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine24:setStrokeSize(1);
     obj.horzLine24:setName("horzLine24");
 
-    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink16:setParent(obj.tabelaDeAtributos);
-    obj.dataLink16:setField("forRaca");
-    obj.dataLink16:setName("dataLink16");
+    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17:setParent(obj.tabelaDeAtributos);
+    obj.dataLink17:setField("forRaca");
+    obj.dataLink17:setName("dataLink17");
 
     obj.flowPart45 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart45:setParent(obj.tabelaDeAtributos);
@@ -1675,10 +1724,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine25:setStrokeSize(1);
     obj.horzLine25:setName("horzLine25");
 
-    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink17:setParent(obj.tabelaDeAtributos);
-    obj.dataLink17:setField("forTreino");
-    obj.dataLink17:setName("dataLink17");
+    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18:setParent(obj.tabelaDeAtributos);
+    obj.dataLink18:setField("forTreino");
+    obj.dataLink18:setName("dataLink18");
 
     obj.flowPart47 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart47:setParent(obj.tabelaDeAtributos);
@@ -1727,10 +1776,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine26:setStrokeSize(1);
     obj.horzLine26:setName("horzLine26");
 
-    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink18:setParent(obj.tabelaDeAtributos);
-    obj.dataLink18:setField("forOutros");
-    obj.dataLink18:setName("dataLink18");
+    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19:setParent(obj.tabelaDeAtributos);
+    obj.dataLink19:setField("forOutros");
+    obj.dataLink19:setName("dataLink19");
 
     obj.flowPart49 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart49:setParent(obj.tabelaDeAtributos);
@@ -1779,10 +1828,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine27:setStrokeSize(1);
     obj.horzLine27:setName("horzLine27");
 
-    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink19:setParent(obj.tabelaDeAtributos);
-    obj.dataLink19:setField("forBase");
-    obj.dataLink19:setName("dataLink19");
+    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20:setParent(obj.tabelaDeAtributos);
+    obj.dataLink20:setField("forBase");
+    obj.dataLink20:setName("dataLink20");
 
     obj.flowPart51 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart51:setParent(obj.tabelaDeAtributos);
@@ -1831,10 +1880,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine28:setStrokeSize(1);
     obj.horzLine28:setName("horzLine28");
 
-    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink20:setParent(obj.tabelaDeAtributos);
-    obj.dataLink20:setField("forEquip");
-    obj.dataLink20:setName("dataLink20");
+    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21:setParent(obj.tabelaDeAtributos);
+    obj.dataLink21:setField("forEquip");
+    obj.dataLink21:setName("dataLink21");
 
     obj.flowPart53 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart53:setParent(obj.tabelaDeAtributos);
@@ -1883,16 +1932,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine29:setStrokeSize(1);
     obj.horzLine29:setName("horzLine29");
 
-    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink21:setParent(obj.tabelaDeAtributos);
-    obj.dataLink21:setField("forTotal");
-    obj.dataLink21:setName("dataLink21");
-
     obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.tabelaDeAtributos);
-    obj.dataLink22:setFields({'forNivel', 'forClasse', 'forRaca', 'forTreino',
-                           'forOutros', 'forBase', 'forEquip', 'forTotal'});
+    obj.dataLink22:setField("forTotal");
     obj.dataLink22:setName("dataLink22");
+
+    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23:setParent(obj.tabelaDeAtributos);
+    obj.dataLink23:setFields({'forNivel', 'forClasse', 'forRaca', 'forTreino',
+                           'forOutros', 'forBase', 'forEquip', 'forTotal'});
+    obj.dataLink23:setName("dataLink23");
 
     obj.flowPart55 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart55:setParent(obj.tabelaDeAtributos);
@@ -1901,15 +1950,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart55:setMaxScaledWidth(85);
     obj.flowPart55:setName("flowPart55");
 
-    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label32:setParent(obj.flowPart55);
-    obj.label32:setText("Destreza");
-    obj.label32:setAlign("client");
-    obj.label32:setField("");
-    obj.label32:setFontSize(8);
-    obj.label32:setVertTextAlign("center");
-    obj.label32:setHorzTextAlign("leading");
-    obj.label32:setName("label32");
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label34:setParent(obj.flowPart55);
+    obj.label34:setText("Destreza");
+    obj.label34:setAlign("client");
+    obj.label34:setField("");
+    obj.label34:setFontSize(8);
+    obj.label34:setVertTextAlign("center");
+    obj.label34:setHorzTextAlign("leading");
+    obj.label34:setName("label34");
 
     obj.flowPart56 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart56:setParent(obj.tabelaDeAtributos);
@@ -1942,10 +1991,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine30:setStrokeSize(1);
     obj.horzLine30:setName("horzLine30");
 
-    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink23:setParent(obj.tabelaDeAtributos);
-    obj.dataLink23:setField("dexNivel");
-    obj.dataLink23:setName("dataLink23");
+    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink24:setParent(obj.tabelaDeAtributos);
+    obj.dataLink24:setField("dexNivel");
+    obj.dataLink24:setName("dataLink24");
 
     obj.flowPart57 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart57:setParent(obj.tabelaDeAtributos);
@@ -1994,10 +2043,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine31:setStrokeSize(1);
     obj.horzLine31:setName("horzLine31");
 
-    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink24:setParent(obj.tabelaDeAtributos);
-    obj.dataLink24:setField("dexClasse");
-    obj.dataLink24:setName("dataLink24");
+    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25:setParent(obj.tabelaDeAtributos);
+    obj.dataLink25:setField("dexClasse");
+    obj.dataLink25:setName("dataLink25");
 
     obj.flowPart59 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart59:setParent(obj.tabelaDeAtributos);
@@ -2046,10 +2095,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine32:setStrokeSize(1);
     obj.horzLine32:setName("horzLine32");
 
-    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink25:setParent(obj.tabelaDeAtributos);
-    obj.dataLink25:setField("dexRaca");
-    obj.dataLink25:setName("dataLink25");
+    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26:setParent(obj.tabelaDeAtributos);
+    obj.dataLink26:setField("dexRaca");
+    obj.dataLink26:setName("dataLink26");
 
     obj.flowPart61 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart61:setParent(obj.tabelaDeAtributos);
@@ -2098,10 +2147,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine33:setStrokeSize(1);
     obj.horzLine33:setName("horzLine33");
 
-    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink26:setParent(obj.tabelaDeAtributos);
-    obj.dataLink26:setField("dexTreino");
-    obj.dataLink26:setName("dataLink26");
+    obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink27:setParent(obj.tabelaDeAtributos);
+    obj.dataLink27:setField("dexTreino");
+    obj.dataLink27:setName("dataLink27");
 
     obj.flowPart63 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart63:setParent(obj.tabelaDeAtributos);
@@ -2150,10 +2199,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine34:setStrokeSize(1);
     obj.horzLine34:setName("horzLine34");
 
-    obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink27:setParent(obj.tabelaDeAtributos);
-    obj.dataLink27:setField("dexOutros");
-    obj.dataLink27:setName("dataLink27");
+    obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink28:setParent(obj.tabelaDeAtributos);
+    obj.dataLink28:setField("dexOutros");
+    obj.dataLink28:setName("dataLink28");
 
     obj.flowPart65 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart65:setParent(obj.tabelaDeAtributos);
@@ -2202,10 +2251,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine35:setStrokeSize(1);
     obj.horzLine35:setName("horzLine35");
 
-    obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink28:setParent(obj.tabelaDeAtributos);
-    obj.dataLink28:setField("dexBase");
-    obj.dataLink28:setName("dataLink28");
+    obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink29:setParent(obj.tabelaDeAtributos);
+    obj.dataLink29:setField("dexBase");
+    obj.dataLink29:setName("dataLink29");
 
     obj.flowPart67 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart67:setParent(obj.tabelaDeAtributos);
@@ -2254,10 +2303,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine36:setStrokeSize(1);
     obj.horzLine36:setName("horzLine36");
 
-    obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink29:setParent(obj.tabelaDeAtributos);
-    obj.dataLink29:setField("dexEquip");
-    obj.dataLink29:setName("dataLink29");
+    obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink30:setParent(obj.tabelaDeAtributos);
+    obj.dataLink30:setField("dexEquip");
+    obj.dataLink30:setName("dataLink30");
 
     obj.flowPart69 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart69:setParent(obj.tabelaDeAtributos);
@@ -2306,16 +2355,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine37:setStrokeSize(1);
     obj.horzLine37:setName("horzLine37");
 
-    obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink30:setParent(obj.tabelaDeAtributos);
-    obj.dataLink30:setField("dexTotal");
-    obj.dataLink30:setName("dataLink30");
-
     obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.tabelaDeAtributos);
-    obj.dataLink31:setFields({'dexNivel', 'dexClasse', 'dexRaca', 'dexTreino',
-                           'dexOutros', 'dexBase', 'dexEquip', 'dexTotal'});
+    obj.dataLink31:setField("dexTotal");
     obj.dataLink31:setName("dataLink31");
+
+    obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink32:setParent(obj.tabelaDeAtributos);
+    obj.dataLink32:setFields({'dexNivel', 'dexClasse', 'dexRaca', 'dexTreino',
+                           'dexOutros', 'dexBase', 'dexEquip', 'dexTotal'});
+    obj.dataLink32:setName("dataLink32");
 
     obj.flowPart71 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart71:setParent(obj.tabelaDeAtributos);
@@ -2324,15 +2373,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart71:setMaxScaledWidth(85);
     obj.flowPart71:setName("flowPart71");
 
-    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label33:setParent(obj.flowPart71);
-    obj.label33:setText("Carisma");
-    obj.label33:setAlign("client");
-    obj.label33:setField("");
-    obj.label33:setFontSize(8);
-    obj.label33:setVertTextAlign("center");
-    obj.label33:setHorzTextAlign("leading");
-    obj.label33:setName("label33");
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label35:setParent(obj.flowPart71);
+    obj.label35:setText("Carisma");
+    obj.label35:setAlign("client");
+    obj.label35:setField("");
+    obj.label35:setFontSize(8);
+    obj.label35:setVertTextAlign("center");
+    obj.label35:setHorzTextAlign("leading");
+    obj.label35:setName("label35");
 
     obj.flowPart72 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart72:setParent(obj.tabelaDeAtributos);
@@ -2365,10 +2414,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine38:setStrokeSize(1);
     obj.horzLine38:setName("horzLine38");
 
-    obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink32:setParent(obj.tabelaDeAtributos);
-    obj.dataLink32:setField("carNivel");
-    obj.dataLink32:setName("dataLink32");
+    obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink33:setParent(obj.tabelaDeAtributos);
+    obj.dataLink33:setField("carNivel");
+    obj.dataLink33:setName("dataLink33");
 
     obj.flowPart73 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart73:setParent(obj.tabelaDeAtributos);
@@ -2417,10 +2466,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine39:setStrokeSize(1);
     obj.horzLine39:setName("horzLine39");
 
-    obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink33:setParent(obj.tabelaDeAtributos);
-    obj.dataLink33:setField("carClasse");
-    obj.dataLink33:setName("dataLink33");
+    obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink34:setParent(obj.tabelaDeAtributos);
+    obj.dataLink34:setField("carClasse");
+    obj.dataLink34:setName("dataLink34");
 
     obj.flowPart75 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart75:setParent(obj.tabelaDeAtributos);
@@ -2469,10 +2518,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine40:setStrokeSize(1);
     obj.horzLine40:setName("horzLine40");
 
-    obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink34:setParent(obj.tabelaDeAtributos);
-    obj.dataLink34:setField("carRaca");
-    obj.dataLink34:setName("dataLink34");
+    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink35:setParent(obj.tabelaDeAtributos);
+    obj.dataLink35:setField("carRaca");
+    obj.dataLink35:setName("dataLink35");
 
     obj.flowPart77 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart77:setParent(obj.tabelaDeAtributos);
@@ -2521,10 +2570,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine41:setStrokeSize(1);
     obj.horzLine41:setName("horzLine41");
 
-    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink35:setParent(obj.tabelaDeAtributos);
-    obj.dataLink35:setField("carTreino");
-    obj.dataLink35:setName("dataLink35");
+    obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink36:setParent(obj.tabelaDeAtributos);
+    obj.dataLink36:setField("carTreino");
+    obj.dataLink36:setName("dataLink36");
 
     obj.flowPart79 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart79:setParent(obj.tabelaDeAtributos);
@@ -2573,10 +2622,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine42:setStrokeSize(1);
     obj.horzLine42:setName("horzLine42");
 
-    obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink36:setParent(obj.tabelaDeAtributos);
-    obj.dataLink36:setField("carOutros");
-    obj.dataLink36:setName("dataLink36");
+    obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink37:setParent(obj.tabelaDeAtributos);
+    obj.dataLink37:setField("carOutros");
+    obj.dataLink37:setName("dataLink37");
 
     obj.flowPart81 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart81:setParent(obj.tabelaDeAtributos);
@@ -2625,10 +2674,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine43:setStrokeSize(1);
     obj.horzLine43:setName("horzLine43");
 
-    obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink37:setParent(obj.tabelaDeAtributos);
-    obj.dataLink37:setField("carBase");
-    obj.dataLink37:setName("dataLink37");
+    obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink38:setParent(obj.tabelaDeAtributos);
+    obj.dataLink38:setField("carBase");
+    obj.dataLink38:setName("dataLink38");
 
     obj.flowPart83 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart83:setParent(obj.tabelaDeAtributos);
@@ -2677,10 +2726,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine44:setStrokeSize(1);
     obj.horzLine44:setName("horzLine44");
 
-    obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink38:setParent(obj.tabelaDeAtributos);
-    obj.dataLink38:setField("carEquip");
-    obj.dataLink38:setName("dataLink38");
+    obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink39:setParent(obj.tabelaDeAtributos);
+    obj.dataLink39:setField("carEquip");
+    obj.dataLink39:setName("dataLink39");
 
     obj.flowPart85 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart85:setParent(obj.tabelaDeAtributos);
@@ -2729,16 +2778,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine45:setStrokeSize(1);
     obj.horzLine45:setName("horzLine45");
 
-    obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink39:setParent(obj.tabelaDeAtributos);
-    obj.dataLink39:setField("carTotal");
-    obj.dataLink39:setName("dataLink39");
-
     obj.dataLink40 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink40:setParent(obj.tabelaDeAtributos);
-    obj.dataLink40:setFields({'carNivel', 'carClasse', 'carRaca', 'carTreino',
-                           'carOutros', 'carBase', 'carEquip', 'carTotal'});
+    obj.dataLink40:setField("carTotal");
     obj.dataLink40:setName("dataLink40");
+
+    obj.dataLink41 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink41:setParent(obj.tabelaDeAtributos);
+    obj.dataLink41:setFields({'carNivel', 'carClasse', 'carRaca', 'carTreino',
+                           'carOutros', 'carBase', 'carEquip', 'carTotal'});
+    obj.dataLink41:setName("dataLink41");
 
     obj.flowPart87 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart87:setParent(obj.tabelaDeAtributos);
@@ -2747,15 +2796,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart87:setMaxScaledWidth(85);
     obj.flowPart87:setName("flowPart87");
 
-    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label34:setParent(obj.flowPart87);
-    obj.label34:setText("Inteligência");
-    obj.label34:setAlign("client");
-    obj.label34:setField("");
-    obj.label34:setFontSize(8);
-    obj.label34:setVertTextAlign("center");
-    obj.label34:setHorzTextAlign("leading");
-    obj.label34:setName("label34");
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label36:setParent(obj.flowPart87);
+    obj.label36:setText("Inteligência");
+    obj.label36:setAlign("client");
+    obj.label36:setField("");
+    obj.label36:setFontSize(8);
+    obj.label36:setVertTextAlign("center");
+    obj.label36:setHorzTextAlign("leading");
+    obj.label36:setName("label36");
 
     obj.flowPart88 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart88:setParent(obj.tabelaDeAtributos);
@@ -2788,10 +2837,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine46:setStrokeSize(1);
     obj.horzLine46:setName("horzLine46");
 
-    obj.dataLink41 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink41:setParent(obj.tabelaDeAtributos);
-    obj.dataLink41:setField("intNivel");
-    obj.dataLink41:setName("dataLink41");
+    obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink42:setParent(obj.tabelaDeAtributos);
+    obj.dataLink42:setField("intNivel");
+    obj.dataLink42:setName("dataLink42");
 
     obj.flowPart89 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart89:setParent(obj.tabelaDeAtributos);
@@ -2840,10 +2889,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine47:setStrokeSize(1);
     obj.horzLine47:setName("horzLine47");
 
-    obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink42:setParent(obj.tabelaDeAtributos);
-    obj.dataLink42:setField("intClasse");
-    obj.dataLink42:setName("dataLink42");
+    obj.dataLink43 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink43:setParent(obj.tabelaDeAtributos);
+    obj.dataLink43:setField("intClasse");
+    obj.dataLink43:setName("dataLink43");
 
     obj.flowPart91 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart91:setParent(obj.tabelaDeAtributos);
@@ -2892,10 +2941,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine48:setStrokeSize(1);
     obj.horzLine48:setName("horzLine48");
 
-    obj.dataLink43 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink43:setParent(obj.tabelaDeAtributos);
-    obj.dataLink43:setField("intRaca");
-    obj.dataLink43:setName("dataLink43");
+    obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink44:setParent(obj.tabelaDeAtributos);
+    obj.dataLink44:setField("intRaca");
+    obj.dataLink44:setName("dataLink44");
 
     obj.flowPart93 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart93:setParent(obj.tabelaDeAtributos);
@@ -2944,10 +2993,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine49:setStrokeSize(1);
     obj.horzLine49:setName("horzLine49");
 
-    obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink44:setParent(obj.tabelaDeAtributos);
-    obj.dataLink44:setField("intTreino");
-    obj.dataLink44:setName("dataLink44");
+    obj.dataLink45 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink45:setParent(obj.tabelaDeAtributos);
+    obj.dataLink45:setField("intTreino");
+    obj.dataLink45:setName("dataLink45");
 
     obj.flowPart95 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart95:setParent(obj.tabelaDeAtributos);
@@ -2996,10 +3045,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine50:setStrokeSize(1);
     obj.horzLine50:setName("horzLine50");
 
-    obj.dataLink45 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink45:setParent(obj.tabelaDeAtributos);
-    obj.dataLink45:setField("intOutros");
-    obj.dataLink45:setName("dataLink45");
+    obj.dataLink46 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink46:setParent(obj.tabelaDeAtributos);
+    obj.dataLink46:setField("intOutros");
+    obj.dataLink46:setName("dataLink46");
 
     obj.flowPart97 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart97:setParent(obj.tabelaDeAtributos);
@@ -3048,10 +3097,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine51:setStrokeSize(1);
     obj.horzLine51:setName("horzLine51");
 
-    obj.dataLink46 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink46:setParent(obj.tabelaDeAtributos);
-    obj.dataLink46:setField("intBase");
-    obj.dataLink46:setName("dataLink46");
+    obj.dataLink47 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink47:setParent(obj.tabelaDeAtributos);
+    obj.dataLink47:setField("intBase");
+    obj.dataLink47:setName("dataLink47");
 
     obj.flowPart99 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart99:setParent(obj.tabelaDeAtributos);
@@ -3100,10 +3149,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine52:setStrokeSize(1);
     obj.horzLine52:setName("horzLine52");
 
-    obj.dataLink47 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink47:setParent(obj.tabelaDeAtributos);
-    obj.dataLink47:setField("intEquip");
-    obj.dataLink47:setName("dataLink47");
+    obj.dataLink48 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink48:setParent(obj.tabelaDeAtributos);
+    obj.dataLink48:setField("intEquip");
+    obj.dataLink48:setName("dataLink48");
 
     obj.flowPart101 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart101:setParent(obj.tabelaDeAtributos);
@@ -3152,16 +3201,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine53:setStrokeSize(1);
     obj.horzLine53:setName("horzLine53");
 
-    obj.dataLink48 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink48:setParent(obj.tabelaDeAtributos);
-    obj.dataLink48:setField("intTotal");
-    obj.dataLink48:setName("dataLink48");
-
     obj.dataLink49 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink49:setParent(obj.tabelaDeAtributos);
-    obj.dataLink49:setFields({'intNivel', 'intClasse', 'intRaca', 'intTreino',
-                           'intOutros', 'intBase', 'intEquip', 'intTotal'});
+    obj.dataLink49:setField("intTotal");
     obj.dataLink49:setName("dataLink49");
+
+    obj.dataLink50 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink50:setParent(obj.tabelaDeAtributos);
+    obj.dataLink50:setFields({'intNivel', 'intClasse', 'intRaca', 'intTreino',
+                           'intOutros', 'intBase', 'intEquip', 'intTotal'});
+    obj.dataLink50:setName("dataLink50");
 
     obj.flowPart103 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart103:setParent(obj.tabelaDeAtributos);
@@ -3170,15 +3219,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart103:setMaxScaledWidth(85);
     obj.flowPart103:setName("flowPart103");
 
-    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label35:setParent(obj.flowPart103);
-    obj.label35:setText("Sabedoria");
-    obj.label35:setAlign("client");
-    obj.label35:setField("");
-    obj.label35:setFontSize(8);
-    obj.label35:setVertTextAlign("center");
-    obj.label35:setHorzTextAlign("leading");
-    obj.label35:setName("label35");
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label37:setParent(obj.flowPart103);
+    obj.label37:setText("Sabedoria");
+    obj.label37:setAlign("client");
+    obj.label37:setField("");
+    obj.label37:setFontSize(8);
+    obj.label37:setVertTextAlign("center");
+    obj.label37:setHorzTextAlign("leading");
+    obj.label37:setName("label37");
 
     obj.flowPart104 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart104:setParent(obj.tabelaDeAtributos);
@@ -3211,10 +3260,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine54:setStrokeSize(1);
     obj.horzLine54:setName("horzLine54");
 
-    obj.dataLink50 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink50:setParent(obj.tabelaDeAtributos);
-    obj.dataLink50:setField("sabNivel");
-    obj.dataLink50:setName("dataLink50");
+    obj.dataLink51 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink51:setParent(obj.tabelaDeAtributos);
+    obj.dataLink51:setField("sabNivel");
+    obj.dataLink51:setName("dataLink51");
 
     obj.flowPart105 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart105:setParent(obj.tabelaDeAtributos);
@@ -3263,10 +3312,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine55:setStrokeSize(1);
     obj.horzLine55:setName("horzLine55");
 
-    obj.dataLink51 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink51:setParent(obj.tabelaDeAtributos);
-    obj.dataLink51:setField("sabClasse");
-    obj.dataLink51:setName("dataLink51");
+    obj.dataLink52 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink52:setParent(obj.tabelaDeAtributos);
+    obj.dataLink52:setField("sabClasse");
+    obj.dataLink52:setName("dataLink52");
 
     obj.flowPart107 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart107:setParent(obj.tabelaDeAtributos);
@@ -3315,10 +3364,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine56:setStrokeSize(1);
     obj.horzLine56:setName("horzLine56");
 
-    obj.dataLink52 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink52:setParent(obj.tabelaDeAtributos);
-    obj.dataLink52:setField("sabRaca");
-    obj.dataLink52:setName("dataLink52");
+    obj.dataLink53 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink53:setParent(obj.tabelaDeAtributos);
+    obj.dataLink53:setField("sabRaca");
+    obj.dataLink53:setName("dataLink53");
 
     obj.flowPart109 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart109:setParent(obj.tabelaDeAtributos);
@@ -3367,10 +3416,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine57:setStrokeSize(1);
     obj.horzLine57:setName("horzLine57");
 
-    obj.dataLink53 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink53:setParent(obj.tabelaDeAtributos);
-    obj.dataLink53:setField("sabTreino");
-    obj.dataLink53:setName("dataLink53");
+    obj.dataLink54 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink54:setParent(obj.tabelaDeAtributos);
+    obj.dataLink54:setField("sabTreino");
+    obj.dataLink54:setName("dataLink54");
 
     obj.flowPart111 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart111:setParent(obj.tabelaDeAtributos);
@@ -3419,10 +3468,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine58:setStrokeSize(1);
     obj.horzLine58:setName("horzLine58");
 
-    obj.dataLink54 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink54:setParent(obj.tabelaDeAtributos);
-    obj.dataLink54:setField("sabOutros");
-    obj.dataLink54:setName("dataLink54");
+    obj.dataLink55 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink55:setParent(obj.tabelaDeAtributos);
+    obj.dataLink55:setField("sabOutros");
+    obj.dataLink55:setName("dataLink55");
 
     obj.flowPart113 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart113:setParent(obj.tabelaDeAtributos);
@@ -3471,10 +3520,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine59:setStrokeSize(1);
     obj.horzLine59:setName("horzLine59");
 
-    obj.dataLink55 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink55:setParent(obj.tabelaDeAtributos);
-    obj.dataLink55:setField("sabBase");
-    obj.dataLink55:setName("dataLink55");
+    obj.dataLink56 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink56:setParent(obj.tabelaDeAtributos);
+    obj.dataLink56:setField("sabBase");
+    obj.dataLink56:setName("dataLink56");
 
     obj.flowPart115 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart115:setParent(obj.tabelaDeAtributos);
@@ -3523,10 +3572,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine60:setStrokeSize(1);
     obj.horzLine60:setName("horzLine60");
 
-    obj.dataLink56 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink56:setParent(obj.tabelaDeAtributos);
-    obj.dataLink56:setField("sabEquip");
-    obj.dataLink56:setName("dataLink56");
+    obj.dataLink57 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink57:setParent(obj.tabelaDeAtributos);
+    obj.dataLink57:setField("sabEquip");
+    obj.dataLink57:setName("dataLink57");
 
     obj.flowPart117 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart117:setParent(obj.tabelaDeAtributos);
@@ -3575,16 +3624,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine61:setStrokeSize(1);
     obj.horzLine61:setName("horzLine61");
 
-    obj.dataLink57 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink57:setParent(obj.tabelaDeAtributos);
-    obj.dataLink57:setField("sabTotal");
-    obj.dataLink57:setName("dataLink57");
-
     obj.dataLink58 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink58:setParent(obj.tabelaDeAtributos);
-    obj.dataLink58:setFields({'sabNivel', 'sabClasse', 'sabRaca', 'sabTreino',
-                           'sabOutros', 'sabBase', 'sabEquip', 'sabTotal'});
+    obj.dataLink58:setField("sabTotal");
     obj.dataLink58:setName("dataLink58");
+
+    obj.dataLink59 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink59:setParent(obj.tabelaDeAtributos);
+    obj.dataLink59:setFields({'sabNivel', 'sabClasse', 'sabRaca', 'sabTreino',
+                           'sabOutros', 'sabBase', 'sabEquip', 'sabTotal'});
+    obj.dataLink59:setName("dataLink59");
 
     obj.flowLineBreak4 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak4:setParent(obj.perfilLayout);
@@ -3636,11 +3685,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.topoPtBonusEConhecimentos:setHorzAlign("center");
     obj.topoPtBonusEConhecimentos:setMargins({bottom=15});
 
-    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label36:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label36:setText("Pontos Restantes: ");
-    obj.label36:setWidth(150);
-    obj.label36:setName("label36");
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label38:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label38:setText("Pontos Restantes: ");
+    obj.label38:setWidth(150);
+    obj.label38:setName("label38");
 
     obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.topoPtBonusEConhecimentos);
@@ -3655,11 +3704,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit65:setMin(0);
     obj.edit65:setName("edit65");
 
-    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label37:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label37:setText("Pontos Treinados: ");
-    obj.label37:setWidth(150);
-    obj.label37:setName("label37");
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label39:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label39:setText("Pontos Treinados: ");
+    obj.label39:setWidth(150);
+    obj.label39:setName("label39");
 
     obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.topoPtBonusEConhecimentos);
@@ -3674,11 +3723,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit66:setMin(0);
     obj.edit66:setName("edit66");
 
-    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label38:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label38:setText("Pontos de Conhecimento: ");
-    obj.label38:setWidth(150);
-    obj.label38:setName("label38");
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label40:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label40:setText("Pontos de Conhecimento: ");
+    obj.label40:setWidth(150);
+    obj.label40:setName("label40");
 
     obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.topoPtBonusEConhecimentos);
@@ -3693,11 +3742,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit67:setMin(0);
     obj.edit67:setName("edit67");
 
-    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label39:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label39:setText("Pontos Con. Distribuidos: ");
-    obj.label39:setWidth(150);
-    obj.label39:setName("label39");
+    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label41:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label41:setText("Pontos Con. Distribuidos: ");
+    obj.label41:setWidth(150);
+    obj.label41:setName("label41");
 
     obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.topoPtBonusEConhecimentos);
@@ -3753,16 +3802,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart120:setName("flowPart120");
     obj.flowPart120:setMargins({top=5, bottom=5,right=10});
 
-    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label40:setParent(obj.flowPart120);
-    obj.label40:setText("Percepção");
-    obj.label40:setAlign("left");
-    obj.label40:setFontSize(18);
-    obj.label40:setVertTextAlign("center");
-    obj.label40:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label40, "fontStyle",  "italic");
-    obj.label40:setWidth(200);
-    obj.label40:setName("label40");
+    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label42:setParent(obj.flowPart120);
+    obj.label42:setText("Percepção");
+    obj.label42:setAlign("left");
+    obj.label42:setFontSize(18);
+    obj.label42:setVertTextAlign("center");
+    obj.label42:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label42, "fontStyle",  "italic");
+    obj.label42:setWidth(200);
+    obj.label42:setName("label42");
 
     obj.horzLine63 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine63:setParent(obj.flowPart120);
@@ -3821,16 +3870,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart122:setName("flowPart122");
     obj.flowPart122:setMargins({top=5, bottom=5,right=10});
 
-    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label41:setParent(obj.flowPart122);
-    obj.label41:setText("Intimidação");
-    obj.label41:setAlign("left");
-    obj.label41:setFontSize(18);
-    obj.label41:setVertTextAlign("center");
-    obj.label41:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label41, "fontStyle",  "italic");
-    obj.label41:setWidth(200);
-    obj.label41:setName("label41");
+    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label43:setParent(obj.flowPart122);
+    obj.label43:setText("Intimidação");
+    obj.label43:setAlign("left");
+    obj.label43:setFontSize(18);
+    obj.label43:setVertTextAlign("center");
+    obj.label43:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label43, "fontStyle",  "italic");
+    obj.label43:setWidth(200);
+    obj.label43:setName("label43");
 
     obj.horzLine64 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine64:setParent(obj.flowPart122);
@@ -3889,16 +3938,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart124:setName("flowPart124");
     obj.flowPart124:setMargins({top=5, bottom=5,right=10});
 
-    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label42:setParent(obj.flowPart124);
-    obj.label42:setText("Persuasão");
-    obj.label42:setAlign("left");
-    obj.label42:setFontSize(18);
-    obj.label42:setVertTextAlign("center");
-    obj.label42:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label42, "fontStyle",  "italic");
-    obj.label42:setWidth(200);
-    obj.label42:setName("label42");
+    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label44:setParent(obj.flowPart124);
+    obj.label44:setText("Persuasão");
+    obj.label44:setAlign("left");
+    obj.label44:setFontSize(18);
+    obj.label44:setVertTextAlign("center");
+    obj.label44:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label44, "fontStyle",  "italic");
+    obj.label44:setWidth(200);
+    obj.label44:setName("label44");
 
     obj.horzLine65 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine65:setParent(obj.flowPart124);
@@ -3957,16 +4006,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart126:setName("flowPart126");
     obj.flowPart126:setMargins({top=5, bottom=5,right=10});
 
-    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label43:setParent(obj.flowPart126);
-    obj.label43:setText("Adestrar Animais");
-    obj.label43:setAlign("left");
-    obj.label43:setFontSize(18);
-    obj.label43:setVertTextAlign("center");
-    obj.label43:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label43, "fontStyle",  "italic");
-    obj.label43:setWidth(200);
-    obj.label43:setName("label43");
+    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label45:setParent(obj.flowPart126);
+    obj.label45:setText("Adestrar Animais");
+    obj.label45:setAlign("left");
+    obj.label45:setFontSize(18);
+    obj.label45:setVertTextAlign("center");
+    obj.label45:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label45, "fontStyle",  "italic");
+    obj.label45:setWidth(200);
+    obj.label45:setName("label45");
 
     obj.horzLine66 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine66:setParent(obj.flowPart126);
@@ -4025,16 +4074,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart128:setName("flowPart128");
     obj.flowPart128:setMargins({top=5, bottom=5,right=10});
 
-    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label44:setParent(obj.flowPart128);
-    obj.label44:setText("Furtividade");
-    obj.label44:setAlign("left");
-    obj.label44:setFontSize(18);
-    obj.label44:setVertTextAlign("center");
-    obj.label44:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label44, "fontStyle",  "italic");
-    obj.label44:setWidth(200);
-    obj.label44:setName("label44");
+    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label46:setParent(obj.flowPart128);
+    obj.label46:setText("Furtividade");
+    obj.label46:setAlign("left");
+    obj.label46:setFontSize(18);
+    obj.label46:setVertTextAlign("center");
+    obj.label46:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label46, "fontStyle",  "italic");
+    obj.label46:setWidth(200);
+    obj.label46:setName("label46");
 
     obj.horzLine67 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine67:setParent(obj.flowPart128);
@@ -4093,16 +4142,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart130:setName("flowPart130");
     obj.flowPart130:setMargins({top=5, bottom=5,right=10});
 
-    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label45:setParent(obj.flowPart130);
-    obj.label45:setText("Intuição");
-    obj.label45:setAlign("left");
-    obj.label45:setFontSize(18);
-    obj.label45:setVertTextAlign("center");
-    obj.label45:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label45, "fontStyle",  "italic");
-    obj.label45:setWidth(200);
-    obj.label45:setName("label45");
+    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label47:setParent(obj.flowPart130);
+    obj.label47:setText("Intuição");
+    obj.label47:setAlign("left");
+    obj.label47:setFontSize(18);
+    obj.label47:setVertTextAlign("center");
+    obj.label47:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label47, "fontStyle",  "italic");
+    obj.label47:setWidth(200);
+    obj.label47:setName("label47");
 
     obj.horzLine68 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine68:setParent(obj.flowPart130);
@@ -4161,16 +4210,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart132:setName("flowPart132");
     obj.flowPart132:setMargins({top=5, bottom=5,right=10});
 
-    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label46:setParent(obj.flowPart132);
-    obj.label46:setText("Didática");
-    obj.label46:setAlign("left");
-    obj.label46:setFontSize(18);
-    obj.label46:setVertTextAlign("center");
-    obj.label46:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label46, "fontStyle",  "italic");
-    obj.label46:setWidth(200);
-    obj.label46:setName("label46");
+    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label48:setParent(obj.flowPart132);
+    obj.label48:setText("Didática");
+    obj.label48:setAlign("left");
+    obj.label48:setFontSize(18);
+    obj.label48:setVertTextAlign("center");
+    obj.label48:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label48, "fontStyle",  "italic");
+    obj.label48:setWidth(200);
+    obj.label48:setName("label48");
 
     obj.horzLine69 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine69:setParent(obj.flowPart132);
@@ -4240,16 +4289,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart134:setName("flowPart134");
     obj.flowPart134:setMargins({top=5, bottom=5,right=10});
 
-    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label47:setParent(obj.flowPart134);
-    obj.label47:setText("Geografia");
-    obj.label47:setAlign("left");
-    obj.label47:setFontSize(18);
-    obj.label47:setVertTextAlign("center");
-    obj.label47:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label47, "fontStyle",  "italic");
-    obj.label47:setWidth(200);
-    obj.label47:setName("label47");
+    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label49:setParent(obj.flowPart134);
+    obj.label49:setText("Geografia");
+    obj.label49:setAlign("left");
+    obj.label49:setFontSize(18);
+    obj.label49:setVertTextAlign("center");
+    obj.label49:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label49, "fontStyle",  "italic");
+    obj.label49:setWidth(200);
+    obj.label49:setName("label49");
 
     obj.horzLine70 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine70:setParent(obj.flowPart134);
@@ -4308,16 +4357,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart136:setName("flowPart136");
     obj.flowPart136:setMargins({top=5, bottom=5,right=10});
 
-    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label48:setParent(obj.flowPart136);
-    obj.label48:setText("História");
-    obj.label48:setAlign("left");
-    obj.label48:setFontSize(18);
-    obj.label48:setVertTextAlign("center");
-    obj.label48:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label48, "fontStyle",  "italic");
-    obj.label48:setWidth(200);
-    obj.label48:setName("label48");
+    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label50:setParent(obj.flowPart136);
+    obj.label50:setText("História");
+    obj.label50:setAlign("left");
+    obj.label50:setFontSize(18);
+    obj.label50:setVertTextAlign("center");
+    obj.label50:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label50, "fontStyle",  "italic");
+    obj.label50:setWidth(200);
+    obj.label50:setName("label50");
 
     obj.horzLine71 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine71:setParent(obj.flowPart136);
@@ -4376,16 +4425,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart138:setName("flowPart138");
     obj.flowPart138:setMargins({top=5, bottom=5,right=10});
 
-    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label49:setParent(obj.flowPart138);
-    obj.label49:setText("Religião");
-    obj.label49:setAlign("left");
-    obj.label49:setFontSize(18);
-    obj.label49:setVertTextAlign("center");
-    obj.label49:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label49, "fontStyle",  "italic");
-    obj.label49:setWidth(200);
-    obj.label49:setName("label49");
+    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label51:setParent(obj.flowPart138);
+    obj.label51:setText("Religião");
+    obj.label51:setAlign("left");
+    obj.label51:setFontSize(18);
+    obj.label51:setVertTextAlign("center");
+    obj.label51:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label51, "fontStyle",  "italic");
+    obj.label51:setWidth(200);
+    obj.label51:setName("label51");
 
     obj.horzLine72 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine72:setParent(obj.flowPart138);
@@ -4444,16 +4493,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart140:setName("flowPart140");
     obj.flowPart140:setMargins({top=5, bottom=5,right=10});
 
-    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label50:setParent(obj.flowPart140);
-    obj.label50:setText("Fauna/Flora");
-    obj.label50:setAlign("left");
-    obj.label50:setFontSize(18);
-    obj.label50:setVertTextAlign("center");
-    obj.label50:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label50, "fontStyle",  "italic");
-    obj.label50:setWidth(200);
-    obj.label50:setName("label50");
+    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label52:setParent(obj.flowPart140);
+    obj.label52:setText("Fauna/Flora");
+    obj.label52:setAlign("left");
+    obj.label52:setFontSize(18);
+    obj.label52:setVertTextAlign("center");
+    obj.label52:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label52, "fontStyle",  "italic");
+    obj.label52:setWidth(200);
+    obj.label52:setName("label52");
 
     obj.horzLine73 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine73:setParent(obj.flowPart140);
@@ -4512,16 +4561,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart142:setName("flowPart142");
     obj.flowPart142:setMargins({top=5, bottom=5,right=10});
 
-    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label51:setParent(obj.flowPart142);
-    obj.label51:setText("Linguagem Comum");
-    obj.label51:setAlign("left");
-    obj.label51:setFontSize(18);
-    obj.label51:setVertTextAlign("center");
-    obj.label51:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label51, "fontStyle",  "italic");
-    obj.label51:setWidth(200);
-    obj.label51:setName("label51");
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label53:setParent(obj.flowPart142);
+    obj.label53:setText("Linguagem Comum");
+    obj.label53:setAlign("left");
+    obj.label53:setFontSize(18);
+    obj.label53:setVertTextAlign("center");
+    obj.label53:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label53, "fontStyle",  "italic");
+    obj.label53:setWidth(200);
+    obj.label53:setName("label53");
 
     obj.horzLine74 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine74:setParent(obj.flowPart142);
@@ -4580,16 +4629,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart144:setName("flowPart144");
     obj.flowPart144:setMargins({top=5, bottom=5,right=10});
 
-    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label52:setParent(obj.flowPart144);
-    obj.label52:setText("Linguagem Oriental");
-    obj.label52:setAlign("left");
-    obj.label52:setFontSize(18);
-    obj.label52:setVertTextAlign("center");
-    obj.label52:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label52, "fontStyle",  "italic");
-    obj.label52:setWidth(200);
-    obj.label52:setName("label52");
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label54:setParent(obj.flowPart144);
+    obj.label54:setText("Linguagem Oriental");
+    obj.label54:setAlign("left");
+    obj.label54:setFontSize(18);
+    obj.label54:setVertTextAlign("center");
+    obj.label54:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label54, "fontStyle",  "italic");
+    obj.label54:setWidth(200);
+    obj.label54:setName("label54");
 
     obj.horzLine75 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine75:setParent(obj.flowPart144);
@@ -4648,16 +4697,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart146:setName("flowPart146");
     obj.flowPart146:setMargins({top=5, bottom=5,right=10});
 
-    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label53:setParent(obj.flowPart146);
-    obj.label53:setText("Linguagem Élfica");
-    obj.label53:setAlign("left");
-    obj.label53:setFontSize(18);
-    obj.label53:setVertTextAlign("center");
-    obj.label53:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label53, "fontStyle",  "italic");
-    obj.label53:setWidth(200);
-    obj.label53:setName("label53");
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label55:setParent(obj.flowPart146);
+    obj.label55:setText("Linguagem Élfica");
+    obj.label55:setAlign("left");
+    obj.label55:setFontSize(18);
+    obj.label55:setVertTextAlign("center");
+    obj.label55:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label55, "fontStyle",  "italic");
+    obj.label55:setWidth(200);
+    obj.label55:setName("label55");
 
     obj.horzLine76 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine76:setParent(obj.flowPart146);
@@ -4716,16 +4765,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart148:setName("flowPart148");
     obj.flowPart148:setMargins({top=5, bottom=5,right=10});
 
-    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label54:setParent(obj.flowPart148);
-    obj.label54:setText("Linguagem Anã");
-    obj.label54:setAlign("left");
-    obj.label54:setFontSize(18);
-    obj.label54:setVertTextAlign("center");
-    obj.label54:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label54, "fontStyle",  "italic");
-    obj.label54:setWidth(200);
-    obj.label54:setName("label54");
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label56:setParent(obj.flowPart148);
+    obj.label56:setText("Linguagem Anã");
+    obj.label56:setAlign("left");
+    obj.label56:setFontSize(18);
+    obj.label56:setVertTextAlign("center");
+    obj.label56:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label56, "fontStyle",  "italic");
+    obj.label56:setWidth(200);
+    obj.label56:setName("label56");
 
     obj.horzLine77 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine77:setParent(obj.flowPart148);
@@ -4784,16 +4833,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart150:setName("flowPart150");
     obj.flowPart150:setMargins({top=5, bottom=5,right=10});
 
-    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label55:setParent(obj.flowPart150);
-    obj.label55:setText("Linguagem Dracônica");
-    obj.label55:setAlign("left");
-    obj.label55:setFontSize(18);
-    obj.label55:setVertTextAlign("center");
-    obj.label55:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label55, "fontStyle",  "italic");
-    obj.label55:setWidth(200);
-    obj.label55:setName("label55");
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label57:setParent(obj.flowPart150);
+    obj.label57:setText("Linguagem Dracônica");
+    obj.label57:setAlign("left");
+    obj.label57:setFontSize(18);
+    obj.label57:setVertTextAlign("center");
+    obj.label57:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label57, "fontStyle",  "italic");
+    obj.label57:setWidth(200);
+    obj.label57:setName("label57");
 
     obj.horzLine78 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine78:setParent(obj.flowPart150);
@@ -4844,14 +4893,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.linguagemDraconicaPlus:setWidth(20);
     obj.linguagemDraconicaPlus:setHeight(20);
 
-    obj.dataLink59 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink59:setParent(obj.rectangle1);
-    obj.dataLink59:setFields({'percepcao', 'intimidacao', 'persuasao', 'adestrarAnimais', 'furtividade', 'intuicao', 'didatica',
+    obj.dataLink60 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink60:setParent(obj.rectangle1);
+    obj.dataLink60:setFields({'percepcao', 'intimidacao', 'persuasao', 'adestrarAnimais', 'furtividade', 'intuicao', 'didatica',
                        'geografia', 'historia', 'religiao', 'faunaflora', 'linguagemComum', 'linguagemOriental', 'linguagemElfica',
                        'linguagemAna', 'linguagemDraconica', 'pontosRestantes', 'pontosTreinados', 'pontosDeConhecimento',
                        'pontosDeConhecimentoDistribuidos', 'destrezaDisponivel', 'dexTotal', 'atributoAcerto', 'atributoMira',
-                       'atributoEsquiva', 'atributoBloqueio'});
-    obj.dataLink59:setName("dataLink59");
+                       'atributoEsquiva', 'atributoBloqueio', 'barraExpAtual', 'barraExpMax'});
+    obj.dataLink60:setName("dataLink60");
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.pgcPrincipal);
@@ -4864,12 +4913,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout5:setHeight(400);
     obj.layout5:setName("layout5");
 
-    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label56:setParent(obj.layout5);
-    obj.label56:setText("Habilidades");
-    obj.label56:setName("label56");
-    obj.label56:setAlign("client");
-    obj.label56:setHorzTextAlign("trailing");
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label58:setParent(obj.layout5);
+    obj.label58:setText("Habilidades");
+    obj.label58:setName("label58");
+    obj.label58:setAlign("client");
+    obj.label58:setHorzTextAlign("trailing");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
@@ -4931,47 +4980,85 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.modBloqueio =tostring("+"..math.floor(tonumber(sheet.atributoBloqueio)/10))
         end, obj);
 
-    obj._e_event4 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event4 = obj.progressBar1:addEventListener("onDblClick",
+        function (_)
+        end, obj);
+
+    obj._e_event5 = obj.dataLink5:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            local xpMax = tonumber(sheet.barraExpMax) or 0
+                                        local xpAtual = tonumber(sheet.barraExpAtual) or 0
+                                        local xpTexto = tostring(sheet.barraExpTexto) or "0/100"
+                                        local nivel = tonumber(sheet.nivelClasse) or 1
+                                        if nivel > 10 then
+                                            xpMax = (nivel - 10) * 1000
+                                        elseif nivel > 20 then
+                                            xpMax = (nivel - 10) * 10000
+                                        else
+                                            xpMax = (nivel - 10) * 100
+                                        end
+            
+                                        if xpAtual >= xpMax then
+                                            nivel = nivel + 1
+                                            xpAtual = 0
+                                            if nivel > 10 then
+                                                xpMax = (nivel - 10) * 1000
+                                            elseif nivel > 20 then
+                                                xpMax = (nivel - 20) * 10000
+                                            else
+                                                xpMax = nivel * 100
+                                            end
+                                        end
+            
+                                        xpTexto = tostring(xpAtual.."/"..xpMax)
+            
+                                        sheet.barraExpMax = xpMax
+                                        sheet.barraExpAtual = xpAtual
+                                        sheet.barraExpTexto = xpTexto
+                                        sheet.nivelClasse = nivel
+        end, obj);
+
+    obj._e_event6 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conNivel == nil then sheet.conNivel = 0 end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conClasse == nil then sheet.conClasse = 0 end;
         end, obj);
 
-    obj._e_event6 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conRaca == nil then sheet.conRaca = 0 end;
         end, obj);
 
-    obj._e_event7 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conTreino == nil then sheet.conTreino = 0 end;
         end, obj);
 
-    obj._e_event8 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conOutros == nil then sheet.conOutros = 0 end;
         end, obj);
 
-    obj._e_event9 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conBase == nil then sheet.conBase = 0 end;
         end, obj);
 
-    obj._e_event10 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conEquip == nil then sheet.conEquip = 0 end;
         end, obj);
 
-    obj._e_event11 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conTotal == nil then sheet.conTotal = 0 end;
         end, obj);
 
-    obj._e_event12 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink14:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.conBase = (tonumber(sheet.conNivel) or 0) +
                             (tonumber(sheet.conClasse) or 0) +
@@ -4983,47 +5070,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.conEquip) or 0);
         end, obj);
 
-    obj._e_event13 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink15:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forNivel == nil then sheet.forNivel = 0 end;
         end, obj);
 
-    obj._e_event14 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forClasse == nil then sheet.forClasse = 0 end;
         end, obj);
 
-    obj._e_event15 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink17:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forRaca == nil then sheet.forRaca = 0 end;
         end, obj);
 
-    obj._e_event16 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forTreino == nil then sheet.forTreino = 0 end;
         end, obj);
 
-    obj._e_event17 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event19 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forOutros == nil then sheet.forOutros = 0 end;
         end, obj);
 
-    obj._e_event18 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink20:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forBase == nil then sheet.forBase = 0 end;
         end, obj);
 
-    obj._e_event19 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forEquip == nil then sheet.forEquip = 0 end;
         end, obj);
 
-    obj._e_event20 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink22:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forTotal == nil then sheet.forTotal = 0 end;
         end, obj);
 
-    obj._e_event21 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink23:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.forBase = (tonumber(sheet.forNivel) or 0) +
                             (tonumber(sheet.forClasse) or 0) +
@@ -5035,47 +5122,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.forEquip) or 0);
         end, obj);
 
-    obj._e_event22 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink24:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexNivel == nil then sheet.dexNivel = 0 end;
         end, obj);
 
-    obj._e_event23 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event25 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexClasse == nil then sheet.dexClasse = 0 end;
         end, obj);
 
-    obj._e_event24 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink26:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexRaca == nil then sheet.dexRaca = 0 end;
         end, obj);
 
-    obj._e_event25 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink27:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexTreino == nil then sheet.dexTreino = 0 end;
         end, obj);
 
-    obj._e_event26 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink28:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexOutros == nil then sheet.dexOutros = 0 end;
         end, obj);
 
-    obj._e_event27 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink29:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexBase == nil then sheet.dexBase = 0 end;
         end, obj);
 
-    obj._e_event28 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink30:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexEquip == nil then sheet.dexEquip = 0 end;
         end, obj);
 
-    obj._e_event29 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexTotal == nil then sheet.dexTotal = 0 end;
         end, obj);
 
-    obj._e_event30 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink32:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.dexBase = (tonumber(sheet.dexNivel) or 0) +
                             (tonumber(sheet.dexClasse) or 0) +
@@ -5087,47 +5174,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.dexEquip) or 0);
         end, obj);
 
-    obj._e_event31 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink33:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carNivel == nil then sheet.carNivel = 0 end;
         end, obj);
 
-    obj._e_event32 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink34:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carClasse == nil then sheet.carClasse = 0 end;
         end, obj);
 
-    obj._e_event33 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event35 = obj.dataLink35:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carRaca == nil then sheet.carRaca = 0 end;
         end, obj);
 
-    obj._e_event34 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink36:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carTreino == nil then sheet.carTreino = 0 end;
         end, obj);
 
-    obj._e_event35 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink37:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carOutros == nil then sheet.carOutros = 0 end;
         end, obj);
 
-    obj._e_event36 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink38:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carBase == nil then sheet.carBase = 0 end;
         end, obj);
 
-    obj._e_event37 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event39 = obj.dataLink39:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carEquip == nil then sheet.carEquip = 0 end;
         end, obj);
 
-    obj._e_event38 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink40:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carTotal == nil then sheet.carTotal = 0 end;
         end, obj);
 
-    obj._e_event39 = obj.dataLink40:addEventListener("onChange",
+    obj._e_event41 = obj.dataLink41:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.carBase = (tonumber(sheet.carNivel) or 0) +
                             (tonumber(sheet.carClasse) or 0) +
@@ -5139,47 +5226,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.carEquip) or 0);
         end, obj);
 
-    obj._e_event40 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink42:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intNivel == nil then sheet.intNivel = 0 end;
         end, obj);
 
-    obj._e_event41 = obj.dataLink42:addEventListener("onChange",
+    obj._e_event43 = obj.dataLink43:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intClasse == nil then sheet.intClasse = 0 end;
         end, obj);
 
-    obj._e_event42 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event44 = obj.dataLink44:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intRaca == nil then sheet.intRaca = 0 end;
         end, obj);
 
-    obj._e_event43 = obj.dataLink44:addEventListener("onChange",
+    obj._e_event45 = obj.dataLink45:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intTreino == nil then sheet.intTreino = 0 end;
         end, obj);
 
-    obj._e_event44 = obj.dataLink45:addEventListener("onChange",
+    obj._e_event46 = obj.dataLink46:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intOutros == nil then sheet.intOutros = 0 end;
         end, obj);
 
-    obj._e_event45 = obj.dataLink46:addEventListener("onChange",
+    obj._e_event47 = obj.dataLink47:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intBase == nil then sheet.intBase = 0 end;
         end, obj);
 
-    obj._e_event46 = obj.dataLink47:addEventListener("onChange",
+    obj._e_event48 = obj.dataLink48:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intEquip == nil then sheet.intEquip = 0 end;
         end, obj);
 
-    obj._e_event47 = obj.dataLink48:addEventListener("onChange",
+    obj._e_event49 = obj.dataLink49:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intTotal == nil then sheet.intTotal = 0 end;
         end, obj);
 
-    obj._e_event48 = obj.dataLink49:addEventListener("onChange",
+    obj._e_event50 = obj.dataLink50:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.intBase = (tonumber(sheet.intNivel) or 0) +
                             (tonumber(sheet.intClasse) or 0) +
@@ -5191,47 +5278,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.intEquip) or 0);
         end, obj);
 
-    obj._e_event49 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event51 = obj.dataLink51:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabNivel == nil then sheet.sabNivel = 0 end;
         end, obj);
 
-    obj._e_event50 = obj.dataLink51:addEventListener("onChange",
+    obj._e_event52 = obj.dataLink52:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabClasse == nil then sheet.sabClasse = 0 end;
         end, obj);
 
-    obj._e_event51 = obj.dataLink52:addEventListener("onChange",
+    obj._e_event53 = obj.dataLink53:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabRaca == nil then sheet.sabRaca = 0 end;
         end, obj);
 
-    obj._e_event52 = obj.dataLink53:addEventListener("onChange",
+    obj._e_event54 = obj.dataLink54:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabTreino == nil then sheet.sabTreino = 0 end;
         end, obj);
 
-    obj._e_event53 = obj.dataLink54:addEventListener("onChange",
+    obj._e_event55 = obj.dataLink55:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabOutros == nil then sheet.sabOutros = 0 end;
         end, obj);
 
-    obj._e_event54 = obj.dataLink55:addEventListener("onChange",
+    obj._e_event56 = obj.dataLink56:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabBase == nil then sheet.sabBase = 0 end;
         end, obj);
 
-    obj._e_event55 = obj.dataLink56:addEventListener("onChange",
+    obj._e_event57 = obj.dataLink57:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabEquip == nil then sheet.sabEquip = 0 end;
         end, obj);
 
-    obj._e_event56 = obj.dataLink57:addEventListener("onChange",
+    obj._e_event58 = obj.dataLink58:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabTotal == nil then sheet.sabTotal = 0 end;
         end, obj);
 
-    obj._e_event57 = obj.dataLink58:addEventListener("onChange",
+    obj._e_event59 = obj.dataLink59:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.sabBase = (tonumber(sheet.sabNivel) or 0) +
                             (tonumber(sheet.sabClasse) or 0) +
@@ -5243,18 +5330,22 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.sabEquip) or 0);
         end, obj);
 
-    obj._e_event58 = obj.button1:addEventListener("onClick",
+    obj._e_event60 = obj.button1:addEventListener("onClick",
         function (_)
             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                                          sheet.barraExpAtual = tonumber(sheet.barraExpAtual) + 100
         end, obj);
 
-    obj._e_event59 = obj.button2:addEventListener("onClick",
+    obj._e_event61 = obj.button2:addEventListener("onClick",
         function (_)
             sheet.pontosRestantes = 0
                                                  sheet.pontosTreinados = 0
+                                                 sheet.barraExpMax = 0
+                                                 sheet.barraExpAtual = 0
+                                                 sheet.nivelClasse = 0
         end, obj);
 
-    obj._e_event60 = obj.percepcaoMinus:addEventListener("onClick",
+    obj._e_event62 = obj.percepcaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.percepcao > 0 then
@@ -5263,7 +5354,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event61 = obj.percepcaoPlus:addEventListener("onClick",
+    obj._e_event63 = obj.percepcaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5275,7 +5366,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event62 = obj.intimidacaoMinus:addEventListener("onClick",
+    obj._e_event64 = obj.intimidacaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.intimidacao > 0 then
@@ -5284,7 +5375,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event63 = obj.intimidacaoPlus:addEventListener("onClick",
+    obj._e_event65 = obj.intimidacaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5296,7 +5387,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event64 = obj.persuasaoMinus:addEventListener("onClick",
+    obj._e_event66 = obj.persuasaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.persuasao > 0 then
@@ -5305,7 +5396,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event65 = obj.persuasaoPlus:addEventListener("onClick",
+    obj._e_event67 = obj.persuasaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5317,7 +5408,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event66 = obj.adestrarAnimaisMinus:addEventListener("onClick",
+    obj._e_event68 = obj.adestrarAnimaisMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.adestrarAnimais > 0 then
@@ -5326,7 +5417,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event67 = obj.adestrarAnimaisPlus:addEventListener("onClick",
+    obj._e_event69 = obj.adestrarAnimaisPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5338,7 +5429,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event68 = obj.furtividadeMinus:addEventListener("onClick",
+    obj._e_event70 = obj.furtividadeMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.furtividade > 0 then
@@ -5347,7 +5438,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event69 = obj.furtividadePlus:addEventListener("onClick",
+    obj._e_event71 = obj.furtividadePlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5359,7 +5450,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event70 = obj.intuicaoMinus:addEventListener("onClick",
+    obj._e_event72 = obj.intuicaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.intuicao > 0 then
@@ -5368,7 +5459,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event71 = obj.intuicaoPlus:addEventListener("onClick",
+    obj._e_event73 = obj.intuicaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5380,7 +5471,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event72 = obj.didaticaMinus:addEventListener("onClick",
+    obj._e_event74 = obj.didaticaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.didatica > 0 then
@@ -5389,7 +5480,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event73 = obj.didaticaPlus:addEventListener("onClick",
+    obj._e_event75 = obj.didaticaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5401,7 +5492,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event74 = obj.geografiaMinus:addEventListener("onClick",
+    obj._e_event76 = obj.geografiaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.geografia > 0 then
@@ -5410,7 +5501,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event75 = obj.geografiaPlus:addEventListener("onClick",
+    obj._e_event77 = obj.geografiaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5419,7 +5510,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event76 = obj.historiaMinus:addEventListener("onClick",
+    obj._e_event78 = obj.historiaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.historia > 0 then
@@ -5428,7 +5519,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event77 = obj.historiaPlus:addEventListener("onClick",
+    obj._e_event79 = obj.historiaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5437,7 +5528,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event78 = obj.religiaoMinus:addEventListener("onClick",
+    obj._e_event80 = obj.religiaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.religiao > 0 then
@@ -5446,7 +5537,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event79 = obj.religiaoPlus:addEventListener("onClick",
+    obj._e_event81 = obj.religiaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5455,7 +5546,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event80 = obj.faunafloraMinus:addEventListener("onClick",
+    obj._e_event82 = obj.faunafloraMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.faunaflora > 0 then
@@ -5464,7 +5555,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event81 = obj.faunafloraPlus:addEventListener("onClick",
+    obj._e_event83 = obj.faunafloraPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5473,7 +5564,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event82 = obj.linguagemComumMinus:addEventListener("onClick",
+    obj._e_event84 = obj.linguagemComumMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemComum > 0 then
@@ -5482,7 +5573,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event83 = obj.linguagemComumPlus:addEventListener("onClick",
+    obj._e_event85 = obj.linguagemComumPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5491,7 +5582,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event84 = obj.linguagemOrientalMinus:addEventListener("onClick",
+    obj._e_event86 = obj.linguagemOrientalMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemOriental > 0 then
@@ -5500,7 +5591,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event85 = obj.linguagemOrientalPlus:addEventListener("onClick",
+    obj._e_event87 = obj.linguagemOrientalPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5509,7 +5600,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event86 = obj.linguagemElficaMinus:addEventListener("onClick",
+    obj._e_event88 = obj.linguagemElficaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemElfica > 0 then
@@ -5518,7 +5609,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event87 = obj.linguagemElficaPlus:addEventListener("onClick",
+    obj._e_event89 = obj.linguagemElficaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5527,7 +5618,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event88 = obj.linguagemAnaMinus:addEventListener("onClick",
+    obj._e_event90 = obj.linguagemAnaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemAna > 0 then
@@ -5536,7 +5627,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event89 = obj.linguagemAnaPlus:addEventListener("onClick",
+    obj._e_event91 = obj.linguagemAnaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5545,7 +5636,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event90 = obj.linguagemDraconicaMinus:addEventListener("onClick",
+    obj._e_event92 = obj.linguagemDraconicaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemDraconica > 0 then
@@ -5554,7 +5645,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event91 = obj.linguagemDraconicaPlus:addEventListener("onClick",
+    obj._e_event93 = obj.linguagemDraconicaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5563,7 +5654,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event92 = obj.dataLink59:addEventListener("onChange",
+    obj._e_event94 = obj.dataLink60:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             -- ###### REMOVE VALORES NULOS ######
             
@@ -5586,9 +5677,12 @@ local function constructNew_frmFichaDePersonagem()
                         if sheet.pontosRestantes == nil then sheet.pontosRestantes = 0 end;
                         if sheet.pontosTreinados == nil then sheet.pontosTreinados = 0 end;
                         if sheet.pontosDeConhecimento == nil then sheet.pontosDeConhecimento = 0 end;
-                        if sheet.pontosDeConhecimentoDistribuidos == nill then sheet.pontosDeConhecimentoDistribuidos = 0 end;
-                        if sheet.nivelProfissao == nill then sheet.nivelProfissao = 0 end;
-                        if sheet.nivelClasse == nill then sheet.nivelClasse = 0 end;
+                        if sheet.pontosDeConhecimentoDistribuidos == nil then sheet.pontosDeConhecimentoDistribuidos = 0 end;
+                        if sheet.nivelProfissao == nil then sheet.nivelProfissao = 0 end;
+                        if sheet.nivelClasse == nil then sheet.nivelClasse = 1 end;
+                        if sheet.nivelClasse == 0 then sheet.nivelClasse = 1 end;
+                        if sheet.barraExpAtual == nil then sheet.barraExpAtual = 0 end;
+                        if sheet.barraExpMax == nil then sheet.barraExpMax = 100 end;
             
                         -- ###### PONTOS DE CONHECIMENTOS ESPECÍFICOS ######
                         sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intTotal)/5)) -
@@ -5603,6 +5697,8 @@ local function constructNew_frmFichaDePersonagem()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event94);
+        __o_rrpgObjs.removeEventListenerById(self._e_event93);
         __o_rrpgObjs.removeEventListenerById(self._e_event92);
         __o_rrpgObjs.removeEventListenerById(self._e_event91);
         __o_rrpgObjs.removeEventListenerById(self._e_event90);
@@ -5852,6 +5948,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart113 ~= nil then self.flowPart113:destroy(); self.flowPart113 = nil; end;
         if self.percepcaoPlus ~= nil then self.percepcaoPlus:destroy(); self.percepcaoPlus = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
+        if self.dadosAdicionais ~= nil then self.dadosAdicionais:destroy(); self.dadosAdicionais = nil; end;
         if self.tabelaDeAtributos ~= nil then self.tabelaDeAtributos:destroy(); self.tabelaDeAtributos = nil; end;
         if self.perfilLayout ~= nil then self.perfilLayout:destroy(); self.perfilLayout = nil; end;
         if self.flowPart10 ~= nil then self.flowPart10:destroy(); self.flowPart10 = nil; end;
@@ -5875,8 +5972,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart144 ~= nil then self.flowPart144:destroy(); self.flowPart144 = nil; end;
         if self.flowLayout15 ~= nil then self.flowLayout15:destroy(); self.flowLayout15 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
-        if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
+        if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.horzLine38 ~= nil then self.horzLine38:destroy(); self.horzLine38 = nil; end;
         if self.flowPart97 ~= nil then self.flowPart97:destroy(); self.flowPart97 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
@@ -5992,8 +6089,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit73 ~= nil then self.edit73:destroy(); self.edit73 = nil; end;
         if self.linguagemAnaMinus ~= nil then self.linguagemAnaMinus:destroy(); self.linguagemAnaMinus = nil; end;
         if self.dataLink28 ~= nil then self.dataLink28:destroy(); self.dataLink28 = nil; end;
-        if self.image30 ~= nil then self.image30:destroy(); self.image30 = nil; end;
         if self.dataLink42 ~= nil then self.dataLink42:destroy(); self.dataLink42 = nil; end;
+        if self.image30 ~= nil then self.image30:destroy(); self.image30 = nil; end;
         if self.flowPart133 ~= nil then self.flowPart133:destroy(); self.flowPart133 = nil; end;
         if self.flowPart73 ~= nil then self.flowPart73:destroy(); self.flowPart73 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
@@ -6004,6 +6101,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.flowLayout13 ~= nil then self.flowLayout13:destroy(); self.flowLayout13 = nil; end;
+        if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.flowPart42 ~= nil then self.flowPart42:destroy(); self.flowPart42 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
         if self.image20 ~= nil then self.image20:destroy(); self.image20 = nil; end;
@@ -6058,6 +6156,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.image28 ~= nil then self.image28:destroy(); self.image28 = nil; end;
         if self.image8 ~= nil then self.image8:destroy(); self.image8 = nil; end;
+        if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
         if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
@@ -6139,8 +6238,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.image14 ~= nil then self.image14:destroy(); self.image14 = nil; end;
         if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.flowPart109 ~= nil then self.flowPart109:destroy(); self.flowPart109 = nil; end;
-        if self.flowPart130 ~= nil then self.flowPart130:destroy(); self.flowPart130 = nil; end;
         if self.dataLink59 ~= nil then self.dataLink59:destroy(); self.dataLink59 = nil; end;
+        if self.flowPart130 ~= nil then self.flowPart130:destroy(); self.flowPart130 = nil; end;
         if self.image33 ~= nil then self.image33:destroy(); self.image33 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
@@ -6177,6 +6276,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart114 ~= nil then self.flowPart114:destroy(); self.flowPart114 = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
         if self.linguagemComumPlus ~= nil then self.linguagemComumPlus:destroy(); self.linguagemComumPlus = nil; end;
+        if self.dataLink60 ~= nil then self.dataLink60:destroy(); self.dataLink60 = nil; end;
         if self.flowLayout9 ~= nil then self.flowLayout9:destroy(); self.flowLayout9 = nil; end;
         if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
         if self.image16 ~= nil then self.image16:destroy(); self.image16 = nil; end;
@@ -6251,9 +6351,10 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine13 ~= nil then self.horzLine13:destroy(); self.horzLine13 = nil; end;
         if self.flowPart112 ~= nil then self.flowPart112:destroy(); self.flowPart112 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
+        if self.progressBar1 ~= nil then self.progressBar1:destroy(); self.progressBar1 = nil; end;
         if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
-        if self.intimidacaoPlus ~= nil then self.intimidacaoPlus:destroy(); self.intimidacaoPlus = nil; end;
         if self.horzLine24 ~= nil then self.horzLine24:destroy(); self.horzLine24 = nil; end;
+        if self.intimidacaoPlus ~= nil then self.intimidacaoPlus:destroy(); self.intimidacaoPlus = nil; end;
         if self.horzLine65 ~= nil then self.horzLine65:destroy(); self.horzLine65 = nil; end;
         if self.horzLine77 ~= nil then self.horzLine77:destroy(); self.horzLine77 = nil; end;
         if self.dataLink50 ~= nil then self.dataLink50:destroy(); self.dataLink50 = nil; end;
