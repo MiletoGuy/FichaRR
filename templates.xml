@@ -27,7 +27,6 @@
     </template>
 
     <template name="caixaAtributo">
-
         <rectangle cornerType="innerLine" align="client"
                    xradius="10" yradius="10"
                    height="100" width="100" color="black"
@@ -38,7 +37,6 @@
                    vertTextAlign="center" fontSize="30" fontStyle="bold" width="60" height="20"/>
             <label text="$(titulo)" vertTextAlign="trailing" horzTextAlign="center" align="bottom"/>
         </rectangle>
-
         <dataLink fields="'mod$(titulo)', 'atributo$(titulo)'">
             <event name="onChange">
                 if (
@@ -48,13 +46,24 @@
                     (tonumber(sheet.atributoBloqueio) or 0)
                     ) > sheet.dexTotal
                 then
-                showMessage(sheet.dexTotal)
                 end
 
                 sheet.mod$(titulo) =tostring("+"..math.floor(tonumber(sheet.atributo$(titulo))/10))
-
             </event>
         </dataLink>
+    </template>
+
+    <template name="caixaVidaEDefesa">
+        <rectangle cornerType="innerLine" align="client"
+                   xradius="5" yradius="5"
+                   height="30" width="100" color="black"
+                   margins="{top=2, bottom=2, left=2, right=2}">
+            <label align="client" horzTextAlign="leading" text="$(text)" margins="{left=5, top=5}"
+                   vertTextAlign="center" fontSize="16" fontStyle="italic bold" width="60" height="20"/>
+            <label align="client" field="$(field)" horzTextAlign="trailing" margins="{right=8, top=5}"
+                   vertTextAlign="center" fontSize="17" fontStyle="bold" width="60" height="20"/>
+            <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1" margins="{left=10, right=10,bottom=5}"/>
+        </rectangle>
     </template>
 
     <template name="sinal">

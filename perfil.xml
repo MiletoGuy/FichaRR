@@ -38,6 +38,13 @@
 
                 <flowLayout name="dadosAdicionais" minWidth="320" maxWidth="400" autoHeight="true"
                             vertAlign="trailing" horzAlign="center" maxControlsPerLine="1">
+                    <flowLayout name="vidaEDefesa" minWidth="320" maxWidth="400" autoHeight="true"
+                    vertAlign="trailing" horzAlign="center" maxControlsPerLine="2">
+                        <caixaVidaEDefesa text="Vida:" field="atributoVida"/>
+                        <caixaVidaEDefesa text="Defesa:" field="atributoDefesa"/>
+
+
+                    </flowLayout>
                     <flowLayout name="atributosDestreza" minWidth="320" maxWidth="400" autoHeight="true"
                                 vertAlign="trailing" horzAlign="center" maxControlsPerLine="3">
                         <caixaAtributo titulo="Acerto"/>
@@ -55,40 +62,53 @@
                         <caixaAtributo titulo="Bloqueio"/>
                     </flowLayout>
                     <label width="300" height="5" fontSize="12" text="Pontos de Experiência:" horzTextAlign="center" vertTextAlign="leading" margins="{top=5,bottom=5}"/>
-                    <progressBar width="250" height="4" margins="{top=5,bottom=5}" fieldMax="barraExpMax" field="barraExpAtual" hitTest="true" mouseGlow="true" colorMode="hl" onDblClick=""/>
-                    <label width="300" height="5" fontSize="12" horzTextAlign="trailing" vertTextAlign="trailing" margins="{top=10,bottom=5}" field="barraExpTexto"/>
-                    <dataLink fields="{'barraExpMax', 'barraExpAtual', 'barraExpTexto', 'nivelClasse'}">
+                    <progressBar width="300" height="5" margins="{top=5,bottom=5}" fieldMax="barraExpMax" field="barraExpAtual" hitTest="true" mouseGlow="true" colorMode="hl" onDblClick=""/>
+                    <label width="300" height="5" fontSize="12" horzTextAlign="trailing" vertTextAlign="trailing" margins="{top=5,bottom=5}" field="barraExpTexto"/>
+                    <dataLink fields="{'barraExpMax', 'barraExpAtual', 'barraExpTexto', 'nivelClasse', 'atributoVida', 'conTotal', 'atributoDefesa'}">
                         <event name="onChange">
                             local xpMax = tonumber(sheet.barraExpMax) or 0
                             local xpAtual = tonumber(sheet.barraExpAtual) or 0
                             local xpTexto = tostring(sheet.barraExpTexto) or "0/100"
                             local nivel = tonumber(sheet.nivelClasse) or 1
-                            if nivel > 10 then
-                                xpMax = (nivel - 10) * 1000
-                            elseif nivel > 20 then
-                                xpMax = (nivel - 10) * 10000
+                            local vida = tonumber(sheet.atributoVida) or 0
+                            local con = tonumber(sheet.conTotal) or 0
+                            local defesa = tonumber(sheet.atributoDefesa) or 0
+
+                            if nivel > 27 then
+                                xpMax = 100000 + (100000 * (nivel - 28))
+                            elseif nivel > 18 then
+                                xpMax = 10000 + (10000 * (nivel - 19))
+                            elseif nivel > 9 then
+                                xpMax = 1000 + (1000 * (nivel - 10))
                             else
-                                xpMax = (nivel - 10) * 100
+                                xpMax = 100 * nivel
                             end
 
                             if xpAtual >= xpMax then
                                 nivel = nivel + 1
                                 xpAtual = 0
-                                if nivel > 10 then
-                                    xpMax = (nivel - 10) * 1000
-                                elseif nivel > 20 then
-                                    xpMax = (nivel - 20) * 10000
+                                if nivel > 27 then
+                                    xpMax = 100000 + (100000 * (nivel - 28))
+                                elseif nivel > 18 then
+                                    xpMax = 10000 + (10000 * (nivel - 19))
+                                elseif nivel > 9 then
+                                    xpMax = 1000 + (1000 * (nivel - 10))
                                 else
-                                    xpMax = nivel * 100
+                                    xpMax = 100 * nivel
                                 end
                             end
 
                             xpTexto = tostring(xpAtual.."/"..xpMax)
 
+                            vida = con
+                            defesa = math.floor(vida/2)
+
                             sheet.barraExpMax = xpMax
                             sheet.barraExpAtual = xpAtual
                             sheet.barraExpTexto = xpTexto
                             sheet.nivelClasse = nivel
+                            sheet.atributoVida = vida
+                            sheet.atributoDefesa = defesa
                         </event>
                     </dataLink>
                 </flowLayout>
@@ -159,9 +179,10 @@
                     <button text="Zera"
                             onClick="sheet.pontosRestantes = 0
                                      sheet.pontosTreinados = 0
-                                     sheet.barraExpMax = 0
                                      sheet.barraExpAtual = 0
-                                     sheet.nivelClasse = 0"/>
+                                     sheet.nivelClasse = 1
+                                     sheet.barraExpMax = 0
+                                     "/>
                 </flowLayout>
 
                 <flowLayout minWidth="320" maxWidth="1600" name="tabelaPtBonusEConhecimentos" avoidScale="true"

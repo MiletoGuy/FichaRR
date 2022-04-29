@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.04.27">
+    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.04.28">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/FichaRR.rpk" beforeDir="false" afterPath="$PROJECT_DIR$/output/FichaRR.rpk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/perfil.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/templates.xml" afterDir="false" />
     </list>
     <list id="e2e643b6-ebeb-411c-8b90-c3587032065d" name="ImagensChange" comment="Recuperando os png" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651084302753</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="alt_2022.04.28">
+      <created>1651188995289</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651188995289</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="alt_2022.04.27" />
-    <option name="LAST_COMMIT_MESSAGE" value="alt_2022.04.27" />
+    <MESSAGE value="alt_2022.04.28" />
+    <option name="LAST_COMMIT_MESSAGE" value="alt_2022.04.28" />
   </component>
 </project>
