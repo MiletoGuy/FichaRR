@@ -22,7 +22,7 @@
 
                 <flowLayout name="dadosDoPersonagem" minWidth="320" maxWidth="400" avoidScale="true" autoHeight="true"
                             vertAlign="trailing" maxControlsPerLine="2" horzAlign="center">
-                    <campoPerfilTexto field="nome" minWidth="100" titulo="Nome"/>
+                    <campoPerfilTexto field="nome" minWidth="100" titulo="Nome" baseName="nome"/>
                     <campoPerfilTexto field="raca" titulo="Raça"/>
                     <campoPerfilTexto field="peso" titulo="Peso"/>
                     <campoPerfilTexto field="classe" minWidth="100" titulo="Classe"/>
@@ -61,54 +61,20 @@
                         <layout align="client" height="0" width="0"/>
                         <caixaAtributo titulo="Bloqueio"/>
                     </flowLayout>
-                    <label width="300" height="5" fontSize="12" text="Pontos de Experiência:" horzTextAlign="center" vertTextAlign="leading" margins="{top=5,bottom=5}"/>
-                    <progressBar width="300" height="5" margins="{top=5,bottom=5}" fieldMax="barraExpMax" field="barraExpAtual" hitTest="true" mouseGlow="true" colorMode="hl" onDblClick=""/>
-                    <label width="300" height="5" fontSize="12" horzTextAlign="trailing" vertTextAlign="trailing" margins="{top=5,bottom=5}" field="barraExpTexto"/>
-                    <dataLink fields="{'barraExpMax', 'barraExpAtual', 'barraExpTexto', 'nivelClasse', 'atributoVida', 'conTotal', 'atributoDefesa'}">
+
+                    <barraDeExperiencia titulo="Classe" field="Classe"/>
+                    <barraDeExperiencia titulo="Profissão" field="Profissao"/>
+
+                    <dataLink fields="{'xpMaxClasse', 'xpAtualClasse', 'xpTextoClasse', 'nivelClasse', 'atributoVida', 'conTotal', 'atributoDefesa'}">
                         <event name="onChange">
-                            local xpMax = tonumber(sheet.barraExpMax) or 0
-                            local xpAtual = tonumber(sheet.barraExpAtual) or 0
-                            local xpTexto = tostring(sheet.barraExpTexto) or "0/100"
-                            local nivel = tonumber(sheet.nivelClasse) or 1
                             local vida = tonumber(sheet.atributoVida) or 0
                             local con = tonumber(sheet.conTotal) or 0
                             local defesa = tonumber(sheet.atributoDefesa) or 0
 
-                            if nivel > 27 then
-                                xpMax = 100000 + (100000 * (nivel - 28))
-                            elseif nivel > 18 then
-                                xpMax = 10000 + (10000 * (nivel - 19))
-                            elseif nivel > 9 then
-                                xpMax = 1000 + (1000 * (nivel - 10))
-                            else
-                                xpMax = 100 * nivel
-                            end
-
-                            if xpAtual >= xpMax then
-                                nivel = nivel + 1
-                                xpAtual = 0
-                                if nivel > 27 then
-                                    xpMax = 100000 + (100000 * (nivel - 28))
-                                elseif nivel > 18 then
-                                    xpMax = 10000 + (10000 * (nivel - 19))
-                                elseif nivel > 9 then
-                                    xpMax = 1000 + (1000 * (nivel - 10))
-                                else
-                                    xpMax = 100 * nivel
-                                end
-                            end
-
-                            xpTexto = tostring(xpAtual.."/"..xpMax)
-
                             vida = con
                             defesa = math.floor(vida/2)
-
-                            sheet.barraExpMax = xpMax
-                            sheet.barraExpAtual = xpAtual
-                            sheet.barraExpTexto = xpTexto
-                            sheet.nivelClasse = nivel
-                            sheet.atributoVida = vida
-                            sheet.atributoDefesa = defesa
+                            sheet.atributoVida = tonumber(sheet.conBase) or 0
+                            sheet.atributoDefesa = math.floor(tonumber((sheet.atributoVida) or 0) / 2)
                         </event>
                     </dataLink>
                 </flowLayout>
@@ -179,9 +145,8 @@
                     <button text="Zera"
                             onClick="sheet.pontosRestantes = 0
                                      sheet.pontosTreinados = 0
-                                     sheet.barraExpAtual = 0
+                                     sheet.xpAtualClasse = 0
                                      sheet.nivelClasse = 1
-                                     sheet.barraExpMax = 0
                                      "/>
                 </flowLayout>
 
@@ -267,8 +232,9 @@
             if sheet.nivelProfissao == nil then sheet.nivelProfissao = 0 end;
             if sheet.nivelClasse == nil then sheet.nivelClasse = 1 end;
             if sheet.nivelClasse == 0 then sheet.nivelClasse = 1 end;
-            if sheet.barraExpAtual == nil then sheet.barraExpAtual = 0 end;
-            if sheet.barraExpMax == nil then sheet.barraExpMax = 100 end;
+            if sheet.xpAtualClasse == nil then sheet.xpAtualClasse = 0 end;
+            if sheet.xpMaxClasse == nil then sheet.xpMaxClasse = 100 end;
+            if sheet.xpTextoClasse == nil then sheet.xpTextoClasse = "0/100" end;
 
             -- ###### PONTOS DE CONHECIMENTOS ESPECÍFICOS ######
             sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intTotal)/5)) -
@@ -280,6 +246,7 @@
             (tonumber(sheet.atributoEsquiva) or 0) +
             (tonumber(sheet.atributoBloqueio) or 0)
             )
+
 
         </event>
     </dataLink>

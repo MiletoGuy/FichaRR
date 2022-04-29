@@ -122,18 +122,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.dadosDoPersonagem:setMaxControlsPerLine(2);
     obj.dadosDoPersonagem:setHorzAlign("center");
 
-    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart1:setParent(obj.dadosDoPersonagem);
-    obj.flowPart1:setHeight(50);
-    obj.flowPart1:setMinScaledWidth(100);
-    obj.flowPart1:setMinWidth(100);
-    obj.flowPart1:setMaxWidth(233);
-    obj.flowPart1:setMaxScaledWidth(233);
-    obj.flowPart1:setAvoidScale(true);
-    obj.flowPart1:setName("flowPart1");
+    obj.nome = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.nome:setParent(obj.dadosDoPersonagem);
+    obj.nome:setHeight(50);
+    obj.nome:setMinScaledWidth(100);
+    obj.nome:setMinWidth(100);
+    obj.nome:setMaxWidth(233);
+    obj.nome:setMaxScaledWidth(233);
+    obj.nome:setAvoidScale(true);
+    obj.nome:setName("nome");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit1:setParent(obj.flowPart1);
+    obj.edit1:setParent(obj.nome);
     obj.edit1:setAlign("top");
     obj.edit1:setField("nome");
     obj.edit1:setFontSize(13);
@@ -144,14 +144,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit1:setWidth(195);
 
     obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine1:setParent(obj.flowPart1);
+    obj.horzLine1:setParent(obj.nome);
     obj.horzLine1:setAlign("top");
     obj.horzLine1:setStrokeColor("#FFFFFF50");
     obj.horzLine1:setStrokeSize(1);
     obj.horzLine1:setName("horzLine1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.flowPart1);
+    obj.label1:setParent(obj.nome);
     obj.label1:setAlign("top");
     obj.label1:setText("Nome");
     obj.label1:setVertTextAlign("leading");
@@ -160,6 +160,45 @@ local function constructNew_frmFichaDePersonagem()
     obj.label1:setName("label1");
     obj.label1:setFontSize(12);
     obj.label1:setFontColor("#D0D0D0");
+
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1:setParent(obj.dadosDoPersonagem);
+    obj.flowPart1:setHeight(50);
+    obj.flowPart1:setMinScaledWidth(100);
+    obj.flowPart1:setMinWidth(100);
+    obj.flowPart1:setMaxWidth(233);
+    obj.flowPart1:setMaxScaledWidth(233);
+    obj.flowPart1:setAvoidScale(true);
+    obj.flowPart1:setName("flowPart1");
+
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit2:setParent(obj.flowPart1);
+    obj.edit2:setAlign("top");
+    obj.edit2:setField("raca");
+    obj.edit2:setFontSize(13);
+    obj.edit2:setName("edit2");
+    obj.edit2:setHeight(30);
+    obj.edit2:setTransparent(true);
+    obj.edit2:setVertTextAlign("trailing");
+    obj.edit2:setWidth(195);
+
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2:setParent(obj.flowPart1);
+    obj.horzLine2:setAlign("top");
+    obj.horzLine2:setStrokeColor("#FFFFFF50");
+    obj.horzLine2:setStrokeSize(1);
+    obj.horzLine2:setName("horzLine2");
+
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label2:setParent(obj.flowPart1);
+    obj.label2:setAlign("top");
+    obj.label2:setText("Raça");
+    obj.label2:setVertTextAlign("leading");
+    obj.label2:setWordWrap(true);
+    obj.label2:setTextTrimming("none");
+    obj.label2:setName("label2");
+    obj.label2:setFontSize(12);
+    obj.label2:setFontColor("#D0D0D0");
 
     obj.flowPart2 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart2:setParent(obj.dadosDoPersonagem);
@@ -171,34 +210,34 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart2:setAvoidScale(true);
     obj.flowPart2:setName("flowPart2");
 
-    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit2:setParent(obj.flowPart2);
-    obj.edit2:setAlign("top");
-    obj.edit2:setField("raca");
-    obj.edit2:setFontSize(13);
-    obj.edit2:setName("edit2");
-    obj.edit2:setHeight(30);
-    obj.edit2:setTransparent(true);
-    obj.edit2:setVertTextAlign("trailing");
-    obj.edit2:setWidth(195);
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit3:setParent(obj.flowPart2);
+    obj.edit3:setAlign("top");
+    obj.edit3:setField("peso");
+    obj.edit3:setFontSize(13);
+    obj.edit3:setName("edit3");
+    obj.edit3:setHeight(30);
+    obj.edit3:setTransparent(true);
+    obj.edit3:setVertTextAlign("trailing");
+    obj.edit3:setWidth(195);
 
-    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine2:setParent(obj.flowPart2);
-    obj.horzLine2:setAlign("top");
-    obj.horzLine2:setStrokeColor("#FFFFFF50");
-    obj.horzLine2:setStrokeSize(1);
-    obj.horzLine2:setName("horzLine2");
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3:setParent(obj.flowPart2);
+    obj.horzLine3:setAlign("top");
+    obj.horzLine3:setStrokeColor("#FFFFFF50");
+    obj.horzLine3:setStrokeSize(1);
+    obj.horzLine3:setName("horzLine3");
 
-    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.flowPart2);
-    obj.label2:setAlign("top");
-    obj.label2:setText("Raça");
-    obj.label2:setVertTextAlign("leading");
-    obj.label2:setWordWrap(true);
-    obj.label2:setTextTrimming("none");
-    obj.label2:setName("label2");
-    obj.label2:setFontSize(12);
-    obj.label2:setFontColor("#D0D0D0");
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label3:setParent(obj.flowPart2);
+    obj.label3:setAlign("top");
+    obj.label3:setText("Peso");
+    obj.label3:setVertTextAlign("leading");
+    obj.label3:setWordWrap(true);
+    obj.label3:setTextTrimming("none");
+    obj.label3:setName("label3");
+    obj.label3:setFontSize(12);
+    obj.label3:setFontColor("#D0D0D0");
 
     obj.flowPart3 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart3:setParent(obj.dadosDoPersonagem);
@@ -210,34 +249,34 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart3:setAvoidScale(true);
     obj.flowPart3:setName("flowPart3");
 
-    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj.flowPart3);
-    obj.edit3:setAlign("top");
-    obj.edit3:setField("peso");
-    obj.edit3:setFontSize(13);
-    obj.edit3:setName("edit3");
-    obj.edit3:setHeight(30);
-    obj.edit3:setTransparent(true);
-    obj.edit3:setVertTextAlign("trailing");
-    obj.edit3:setWidth(195);
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit4:setParent(obj.flowPart3);
+    obj.edit4:setAlign("top");
+    obj.edit4:setField("classe");
+    obj.edit4:setFontSize(13);
+    obj.edit4:setName("edit4");
+    obj.edit4:setHeight(30);
+    obj.edit4:setTransparent(true);
+    obj.edit4:setVertTextAlign("trailing");
+    obj.edit4:setWidth(195);
 
-    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine3:setParent(obj.flowPart3);
-    obj.horzLine3:setAlign("top");
-    obj.horzLine3:setStrokeColor("#FFFFFF50");
-    obj.horzLine3:setStrokeSize(1);
-    obj.horzLine3:setName("horzLine3");
+    obj.horzLine4 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine4:setParent(obj.flowPart3);
+    obj.horzLine4:setAlign("top");
+    obj.horzLine4:setStrokeColor("#FFFFFF50");
+    obj.horzLine4:setStrokeSize(1);
+    obj.horzLine4:setName("horzLine4");
 
-    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label3:setParent(obj.flowPart3);
-    obj.label3:setAlign("top");
-    obj.label3:setText("Peso");
-    obj.label3:setVertTextAlign("leading");
-    obj.label3:setWordWrap(true);
-    obj.label3:setTextTrimming("none");
-    obj.label3:setName("label3");
-    obj.label3:setFontSize(12);
-    obj.label3:setFontColor("#D0D0D0");
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label4:setParent(obj.flowPart3);
+    obj.label4:setAlign("top");
+    obj.label4:setText("Classe");
+    obj.label4:setVertTextAlign("leading");
+    obj.label4:setWordWrap(true);
+    obj.label4:setTextTrimming("none");
+    obj.label4:setName("label4");
+    obj.label4:setFontSize(12);
+    obj.label4:setFontColor("#D0D0D0");
 
     obj.flowPart4 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart4:setParent(obj.dadosDoPersonagem);
@@ -249,34 +288,34 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart4:setAvoidScale(true);
     obj.flowPart4:setName("flowPart4");
 
-    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit4:setParent(obj.flowPart4);
-    obj.edit4:setAlign("top");
-    obj.edit4:setField("classe");
-    obj.edit4:setFontSize(13);
-    obj.edit4:setName("edit4");
-    obj.edit4:setHeight(30);
-    obj.edit4:setTransparent(true);
-    obj.edit4:setVertTextAlign("trailing");
-    obj.edit4:setWidth(195);
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit5:setParent(obj.flowPart4);
+    obj.edit5:setAlign("top");
+    obj.edit5:setField("altura");
+    obj.edit5:setFontSize(13);
+    obj.edit5:setName("edit5");
+    obj.edit5:setHeight(30);
+    obj.edit5:setTransparent(true);
+    obj.edit5:setVertTextAlign("trailing");
+    obj.edit5:setWidth(195);
 
-    obj.horzLine4 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine4:setParent(obj.flowPart4);
-    obj.horzLine4:setAlign("top");
-    obj.horzLine4:setStrokeColor("#FFFFFF50");
-    obj.horzLine4:setStrokeSize(1);
-    obj.horzLine4:setName("horzLine4");
+    obj.horzLine5 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine5:setParent(obj.flowPart4);
+    obj.horzLine5:setAlign("top");
+    obj.horzLine5:setStrokeColor("#FFFFFF50");
+    obj.horzLine5:setStrokeSize(1);
+    obj.horzLine5:setName("horzLine5");
 
-    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label4:setParent(obj.flowPart4);
-    obj.label4:setAlign("top");
-    obj.label4:setText("Classe");
-    obj.label4:setVertTextAlign("leading");
-    obj.label4:setWordWrap(true);
-    obj.label4:setTextTrimming("none");
-    obj.label4:setName("label4");
-    obj.label4:setFontSize(12);
-    obj.label4:setFontColor("#D0D0D0");
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label5:setParent(obj.flowPart4);
+    obj.label5:setAlign("top");
+    obj.label5:setText("Altura");
+    obj.label5:setVertTextAlign("leading");
+    obj.label5:setWordWrap(true);
+    obj.label5:setTextTrimming("none");
+    obj.label5:setName("label5");
+    obj.label5:setFontSize(12);
+    obj.label5:setFontColor("#D0D0D0");
 
     obj.flowPart5 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart5:setParent(obj.dadosDoPersonagem);
@@ -288,34 +327,34 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart5:setAvoidScale(true);
     obj.flowPart5:setName("flowPart5");
 
-    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit5:setParent(obj.flowPart5);
-    obj.edit5:setAlign("top");
-    obj.edit5:setField("altura");
-    obj.edit5:setFontSize(13);
-    obj.edit5:setName("edit5");
-    obj.edit5:setHeight(30);
-    obj.edit5:setTransparent(true);
-    obj.edit5:setVertTextAlign("trailing");
-    obj.edit5:setWidth(195);
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit6:setParent(obj.flowPart5);
+    obj.edit6:setAlign("top");
+    obj.edit6:setField("idade");
+    obj.edit6:setFontSize(13);
+    obj.edit6:setName("edit6");
+    obj.edit6:setHeight(30);
+    obj.edit6:setTransparent(true);
+    obj.edit6:setVertTextAlign("trailing");
+    obj.edit6:setWidth(195);
 
-    obj.horzLine5 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine5:setParent(obj.flowPart5);
-    obj.horzLine5:setAlign("top");
-    obj.horzLine5:setStrokeColor("#FFFFFF50");
-    obj.horzLine5:setStrokeSize(1);
-    obj.horzLine5:setName("horzLine5");
+    obj.horzLine6 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine6:setParent(obj.flowPart5);
+    obj.horzLine6:setAlign("top");
+    obj.horzLine6:setStrokeColor("#FFFFFF50");
+    obj.horzLine6:setStrokeSize(1);
+    obj.horzLine6:setName("horzLine6");
 
-    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label5:setParent(obj.flowPart5);
-    obj.label5:setAlign("top");
-    obj.label5:setText("Altura");
-    obj.label5:setVertTextAlign("leading");
-    obj.label5:setWordWrap(true);
-    obj.label5:setTextTrimming("none");
-    obj.label5:setName("label5");
-    obj.label5:setFontSize(12);
-    obj.label5:setFontColor("#D0D0D0");
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label6:setParent(obj.flowPart5);
+    obj.label6:setAlign("top");
+    obj.label6:setText("Idade");
+    obj.label6:setVertTextAlign("leading");
+    obj.label6:setWordWrap(true);
+    obj.label6:setTextTrimming("none");
+    obj.label6:setName("label6");
+    obj.label6:setFontSize(12);
+    obj.label6:setFontColor("#D0D0D0");
 
     obj.flowPart6 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart6:setParent(obj.dadosDoPersonagem);
@@ -327,47 +366,8 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart6:setAvoidScale(true);
     obj.flowPart6:setName("flowPart6");
 
-    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit6:setParent(obj.flowPart6);
-    obj.edit6:setAlign("top");
-    obj.edit6:setField("idade");
-    obj.edit6:setFontSize(13);
-    obj.edit6:setName("edit6");
-    obj.edit6:setHeight(30);
-    obj.edit6:setTransparent(true);
-    obj.edit6:setVertTextAlign("trailing");
-    obj.edit6:setWidth(195);
-
-    obj.horzLine6 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine6:setParent(obj.flowPart6);
-    obj.horzLine6:setAlign("top");
-    obj.horzLine6:setStrokeColor("#FFFFFF50");
-    obj.horzLine6:setStrokeSize(1);
-    obj.horzLine6:setName("horzLine6");
-
-    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label6:setParent(obj.flowPart6);
-    obj.label6:setAlign("top");
-    obj.label6:setText("Idade");
-    obj.label6:setVertTextAlign("leading");
-    obj.label6:setWordWrap(true);
-    obj.label6:setTextTrimming("none");
-    obj.label6:setName("label6");
-    obj.label6:setFontSize(12);
-    obj.label6:setFontColor("#D0D0D0");
-
-    obj.flowPart7 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart7:setParent(obj.dadosDoPersonagem);
-    obj.flowPart7:setHeight(50);
-    obj.flowPart7:setMinScaledWidth(100);
-    obj.flowPart7:setMinWidth(100);
-    obj.flowPart7:setMaxWidth(233);
-    obj.flowPart7:setMaxScaledWidth(233);
-    obj.flowPart7:setAvoidScale(true);
-    obj.flowPart7:setName("flowPart7");
-
     obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit7:setParent(obj.flowPart7);
+    obj.edit7:setParent(obj.flowPart6);
     obj.edit7:setAlign("top");
     obj.edit7:setField("nivelClasse");
     obj.edit7:setFontSize(13);
@@ -380,14 +380,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit7:setWidth(195);
 
     obj.horzLine7 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine7:setParent(obj.flowPart7);
+    obj.horzLine7:setParent(obj.flowPart6);
     obj.horzLine7:setAlign("top");
     obj.horzLine7:setStrokeColor("#FFFFFF50");
     obj.horzLine7:setStrokeSize(1);
     obj.horzLine7:setName("horzLine7");
 
     obj.label7 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label7:setParent(obj.flowPart7);
+    obj.label7:setParent(obj.flowPart6);
     obj.label7:setAlign("top");
     obj.label7:setText("Nivel de Classe");
     obj.label7:setVertTextAlign("leading");
@@ -396,6 +396,45 @@ local function constructNew_frmFichaDePersonagem()
     obj.label7:setName("label7");
     obj.label7:setFontSize(12);
     obj.label7:setFontColor("#D0D0D0");
+
+    obj.flowPart7 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart7:setParent(obj.dadosDoPersonagem);
+    obj.flowPart7:setHeight(50);
+    obj.flowPart7:setMinScaledWidth(100);
+    obj.flowPart7:setMinWidth(100);
+    obj.flowPart7:setMaxWidth(233);
+    obj.flowPart7:setMaxScaledWidth(233);
+    obj.flowPart7:setAvoidScale(true);
+    obj.flowPart7:setName("flowPart7");
+
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit8:setParent(obj.flowPart7);
+    obj.edit8:setAlign("top");
+    obj.edit8:setField("sexo");
+    obj.edit8:setFontSize(13);
+    obj.edit8:setName("edit8");
+    obj.edit8:setHeight(30);
+    obj.edit8:setTransparent(true);
+    obj.edit8:setVertTextAlign("trailing");
+    obj.edit8:setWidth(195);
+
+    obj.horzLine8 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine8:setParent(obj.flowPart7);
+    obj.horzLine8:setAlign("top");
+    obj.horzLine8:setStrokeColor("#FFFFFF50");
+    obj.horzLine8:setStrokeSize(1);
+    obj.horzLine8:setName("horzLine8");
+
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label8:setParent(obj.flowPart7);
+    obj.label8:setAlign("top");
+    obj.label8:setText("Sexo");
+    obj.label8:setVertTextAlign("leading");
+    obj.label8:setWordWrap(true);
+    obj.label8:setTextTrimming("none");
+    obj.label8:setName("label8");
+    obj.label8:setFontSize(12);
+    obj.label8:setFontColor("#D0D0D0");
 
     obj.flowPart8 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart8:setParent(obj.dadosDoPersonagem);
@@ -407,47 +446,8 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart8:setAvoidScale(true);
     obj.flowPart8:setName("flowPart8");
 
-    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit8:setParent(obj.flowPart8);
-    obj.edit8:setAlign("top");
-    obj.edit8:setField("sexo");
-    obj.edit8:setFontSize(13);
-    obj.edit8:setName("edit8");
-    obj.edit8:setHeight(30);
-    obj.edit8:setTransparent(true);
-    obj.edit8:setVertTextAlign("trailing");
-    obj.edit8:setWidth(195);
-
-    obj.horzLine8 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine8:setParent(obj.flowPart8);
-    obj.horzLine8:setAlign("top");
-    obj.horzLine8:setStrokeColor("#FFFFFF50");
-    obj.horzLine8:setStrokeSize(1);
-    obj.horzLine8:setName("horzLine8");
-
-    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label8:setParent(obj.flowPart8);
-    obj.label8:setAlign("top");
-    obj.label8:setText("Sexo");
-    obj.label8:setVertTextAlign("leading");
-    obj.label8:setWordWrap(true);
-    obj.label8:setTextTrimming("none");
-    obj.label8:setName("label8");
-    obj.label8:setFontSize(12);
-    obj.label8:setFontColor("#D0D0D0");
-
-    obj.flowPart9 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart9:setParent(obj.dadosDoPersonagem);
-    obj.flowPart9:setHeight(50);
-    obj.flowPart9:setMinScaledWidth(100);
-    obj.flowPart9:setMinWidth(100);
-    obj.flowPart9:setMaxWidth(233);
-    obj.flowPart9:setMaxScaledWidth(233);
-    obj.flowPart9:setAvoidScale(true);
-    obj.flowPart9:setName("flowPart9");
-
     obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit9:setParent(obj.flowPart9);
+    obj.edit9:setParent(obj.flowPart8);
     obj.edit9:setAlign("top");
     obj.edit9:setField("nivelProfissao");
     obj.edit9:setFontSize(13);
@@ -460,14 +460,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit9:setWidth(195);
 
     obj.horzLine9 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine9:setParent(obj.flowPart9);
+    obj.horzLine9:setParent(obj.flowPart8);
     obj.horzLine9:setAlign("top");
     obj.horzLine9:setStrokeColor("#FFFFFF50");
     obj.horzLine9:setStrokeSize(1);
     obj.horzLine9:setName("horzLine9");
 
     obj.label9 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label9:setParent(obj.flowPart9);
+    obj.label9:setParent(obj.flowPart8);
     obj.label9:setAlign("top");
     obj.label9:setText("Nivel de Profissão");
     obj.label9:setVertTextAlign("leading");
@@ -476,6 +476,45 @@ local function constructNew_frmFichaDePersonagem()
     obj.label9:setName("label9");
     obj.label9:setFontSize(12);
     obj.label9:setFontColor("#D0D0D0");
+
+    obj.flowPart9 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart9:setParent(obj.dadosDoPersonagem);
+    obj.flowPart9:setHeight(50);
+    obj.flowPart9:setMinScaledWidth(100);
+    obj.flowPart9:setMinWidth(100);
+    obj.flowPart9:setMaxWidth(233);
+    obj.flowPart9:setMaxScaledWidth(233);
+    obj.flowPart9:setAvoidScale(true);
+    obj.flowPart9:setName("flowPart9");
+
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit10:setParent(obj.flowPart9);
+    obj.edit10:setAlign("top");
+    obj.edit10:setField("nacionalidade");
+    obj.edit10:setFontSize(13);
+    obj.edit10:setName("edit10");
+    obj.edit10:setHeight(30);
+    obj.edit10:setTransparent(true);
+    obj.edit10:setVertTextAlign("trailing");
+    obj.edit10:setWidth(195);
+
+    obj.horzLine10 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine10:setParent(obj.flowPart9);
+    obj.horzLine10:setAlign("top");
+    obj.horzLine10:setStrokeColor("#FFFFFF50");
+    obj.horzLine10:setStrokeSize(1);
+    obj.horzLine10:setName("horzLine10");
+
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label10:setParent(obj.flowPart9);
+    obj.label10:setAlign("top");
+    obj.label10:setText("Nacionalidade");
+    obj.label10:setVertTextAlign("leading");
+    obj.label10:setWordWrap(true);
+    obj.label10:setTextTrimming("none");
+    obj.label10:setName("label10");
+    obj.label10:setFontSize(12);
+    obj.label10:setFontColor("#D0D0D0");
 
     obj.flowPart10 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart10:setParent(obj.dadosDoPersonagem);
@@ -487,34 +526,34 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart10:setAvoidScale(true);
     obj.flowPart10:setName("flowPart10");
 
-    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit10:setParent(obj.flowPart10);
-    obj.edit10:setAlign("top");
-    obj.edit10:setField("nacionalidade");
-    obj.edit10:setFontSize(13);
-    obj.edit10:setName("edit10");
-    obj.edit10:setHeight(30);
-    obj.edit10:setTransparent(true);
-    obj.edit10:setVertTextAlign("trailing");
-    obj.edit10:setWidth(195);
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit11:setParent(obj.flowPart10);
+    obj.edit11:setAlign("top");
+    obj.edit11:setField("divindade");
+    obj.edit11:setFontSize(13);
+    obj.edit11:setName("edit11");
+    obj.edit11:setHeight(30);
+    obj.edit11:setTransparent(true);
+    obj.edit11:setVertTextAlign("trailing");
+    obj.edit11:setWidth(195);
 
-    obj.horzLine10 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine10:setParent(obj.flowPart10);
-    obj.horzLine10:setAlign("top");
-    obj.horzLine10:setStrokeColor("#FFFFFF50");
-    obj.horzLine10:setStrokeSize(1);
-    obj.horzLine10:setName("horzLine10");
+    obj.horzLine11 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine11:setParent(obj.flowPart10);
+    obj.horzLine11:setAlign("top");
+    obj.horzLine11:setStrokeColor("#FFFFFF50");
+    obj.horzLine11:setStrokeSize(1);
+    obj.horzLine11:setName("horzLine11");
 
-    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label10:setParent(obj.flowPart10);
-    obj.label10:setAlign("top");
-    obj.label10:setText("Nacionalidade");
-    obj.label10:setVertTextAlign("leading");
-    obj.label10:setWordWrap(true);
-    obj.label10:setTextTrimming("none");
-    obj.label10:setName("label10");
-    obj.label10:setFontSize(12);
-    obj.label10:setFontColor("#D0D0D0");
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label11:setParent(obj.flowPart10);
+    obj.label11:setAlign("top");
+    obj.label11:setText("Divindade");
+    obj.label11:setVertTextAlign("leading");
+    obj.label11:setWordWrap(true);
+    obj.label11:setTextTrimming("none");
+    obj.label11:setName("label11");
+    obj.label11:setFontSize(12);
+    obj.label11:setFontColor("#D0D0D0");
 
     obj.flowPart11 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart11:setParent(obj.dadosDoPersonagem);
@@ -526,47 +565,8 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart11:setAvoidScale(true);
     obj.flowPart11:setName("flowPart11");
 
-    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit11:setParent(obj.flowPart11);
-    obj.edit11:setAlign("top");
-    obj.edit11:setField("divindade");
-    obj.edit11:setFontSize(13);
-    obj.edit11:setName("edit11");
-    obj.edit11:setHeight(30);
-    obj.edit11:setTransparent(true);
-    obj.edit11:setVertTextAlign("trailing");
-    obj.edit11:setWidth(195);
-
-    obj.horzLine11 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine11:setParent(obj.flowPart11);
-    obj.horzLine11:setAlign("top");
-    obj.horzLine11:setStrokeColor("#FFFFFF50");
-    obj.horzLine11:setStrokeSize(1);
-    obj.horzLine11:setName("horzLine11");
-
-    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label11:setParent(obj.flowPart11);
-    obj.label11:setAlign("top");
-    obj.label11:setText("Divindade");
-    obj.label11:setVertTextAlign("leading");
-    obj.label11:setWordWrap(true);
-    obj.label11:setTextTrimming("none");
-    obj.label11:setName("label11");
-    obj.label11:setFontSize(12);
-    obj.label11:setFontColor("#D0D0D0");
-
-    obj.flowPart12 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart12:setParent(obj.dadosDoPersonagem);
-    obj.flowPart12:setHeight(50);
-    obj.flowPart12:setMinScaledWidth(100);
-    obj.flowPart12:setMinWidth(100);
-    obj.flowPart12:setMaxWidth(233);
-    obj.flowPart12:setMaxScaledWidth(233);
-    obj.flowPart12:setAvoidScale(true);
-    obj.flowPart12:setName("flowPart12");
-
     obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit12:setParent(obj.flowPart12);
+    obj.edit12:setParent(obj.flowPart11);
     obj.edit12:setAlign("top");
     obj.edit12:setField("pDestino");
     obj.edit12:setFontSize(13);
@@ -577,14 +577,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit12:setWidth(195);
 
     obj.horzLine12 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine12:setParent(obj.flowPart12);
+    obj.horzLine12:setParent(obj.flowPart11);
     obj.horzLine12:setAlign("top");
     obj.horzLine12:setStrokeColor("#FFFFFF50");
     obj.horzLine12:setStrokeSize(1);
     obj.horzLine12:setName("horzLine12");
 
     obj.label12 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label12:setParent(obj.flowPart12);
+    obj.label12:setParent(obj.flowPart11);
     obj.label12:setAlign("top");
     obj.label12:setText("Pontos de Destino");
     obj.label12:setVertTextAlign("leading");
@@ -971,23 +971,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.label26:setWidth(300);
     obj.label26:setHeight(5);
     obj.label26:setFontSize(12);
-    obj.label26:setText("Pontos de Experiência:");
+    obj.label26:setText("Experiencia de Classe:");
     obj.label26:setHorzTextAlign("center");
     obj.label26:setVertTextAlign("leading");
     obj.label26:setMargins({top=5,bottom=5});
     obj.label26:setName("label26");
 
-    obj.progressBar1 = GUI.fromHandle(_obj_newObject("progressBar"));
-    obj.progressBar1:setParent(obj.dadosAdicionais);
-    obj.progressBar1:setWidth(300);
-    obj.progressBar1:setHeight(5);
-    obj.progressBar1:setMargins({top=5,bottom=5});
-    obj.progressBar1:setFieldMax("barraExpMax");
-    obj.progressBar1:setField("barraExpAtual");
-    obj.progressBar1:setHitTest(true);
-    obj.progressBar1:setMouseGlow(true);
-    obj.progressBar1:setColorMode("hl");
-    obj.progressBar1:setName("progressBar1");
+    obj.barraxpClasse = GUI.fromHandle(_obj_newObject("progressBar"));
+    obj.barraxpClasse:setParent(obj.dadosAdicionais);
+    obj.barraxpClasse:setWidth(300);
+    obj.barraxpClasse:setHeight(5);
+    obj.barraxpClasse:setMargins({top=5,bottom=5});
+    obj.barraxpClasse:setFieldMax("xpMaxClasse");
+    obj.barraxpClasse:setField("xpAtualClasse");
+    obj.barraxpClasse:setName("barraxpClasse");
+    obj.barraxpClasse:setHitTest(true);
+    obj.barraxpClasse:setMouseGlow(true);
+    obj.barraxpClasse:setColorMode("hl");
 
     obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.dadosAdicionais);
@@ -997,12 +997,162 @@ local function constructNew_frmFichaDePersonagem()
     obj.label27:setHorzTextAlign("trailing");
     obj.label27:setVertTextAlign("trailing");
     obj.label27:setMargins({top=5,bottom=5});
-    obj.label27:setField("barraExpTexto");
+    obj.label27:setField("xpTextoClasse");
     obj.label27:setName("label27");
+
+    obj.popupxpClasse = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popupxpClasse:setParent(obj.dadosAdicionais);
+    obj.popupxpClasse:setName("popupxpClasse");
+    obj.popupxpClasse:setWidth(300);
+    obj.popupxpClasse:setHeight(30);
+    obj.popupxpClasse:setBackOpacity(0.4);
+    obj.popupxpClasse:setLeft(600);
+
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1:setParent(obj.popupxpClasse);
+    obj.flowLayout1:setWidth(300);
+    obj.flowLayout1:setHeight(30);
+    obj.flowLayout1:setMaxControlsPerLine(3);
+    obj.flowLayout1:setName("flowLayout1");
+
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label28:setParent(obj.flowLayout1);
+    obj.label28:setText("Adicionar Experiência: ");
+    obj.label28:setWidth(150);
+    obj.label28:setHeight(30);
+    obj.label28:setMargins({left=10});
+    obj.label28:setHorzTextAlign("leading");
+    obj.label28:setVertTextAlign("center");
+    obj.label28:setAlign("left");
+    obj.label28:setName("label28");
+
+    obj.flowPart12 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart12:setParent(obj.flowLayout1);
+    obj.flowPart12:setHeight(30);
+    obj.flowPart12:setWidth(50);
+    obj.flowPart12:setName("flowPart12");
+
+    obj.somaxpClasse = GUI.fromHandle(_obj_newObject("edit"));
+    obj.somaxpClasse:setParent(obj.flowPart12);
+    obj.somaxpClasse:setName("somaxpClasse");
+    obj.somaxpClasse:setAlign("top");
+    obj.somaxpClasse:setField("somaxpClasse");
+    obj.somaxpClasse:setFontSize(15);
+    obj.somaxpClasse:setType("number");
+    obj.somaxpClasse:setTransparent(true);
+    obj.somaxpClasse:setHorzTextAlign("center");
+
+    obj.horzLine15 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine15:setParent(obj.flowPart12);
+    obj.horzLine15:setAlign("bottom");
+    obj.horzLine15:setStrokeColor("#FFFFFF50");
+    obj.horzLine15:setStrokeSize(1);
+    obj.horzLine15:setMargins({bottom=5});
+    obj.horzLine15:setName("horzLine15");
+
+    obj.okButtonClasse = GUI.fromHandle(_obj_newObject("button"));
+    obj.okButtonClasse:setParent(obj.flowLayout1);
+    obj.okButtonClasse:setText("ok");
+    obj.okButtonClasse:setHeight(20);
+    obj.okButtonClasse:setWidth(25);
+    obj.okButtonClasse:setMargins({right=5, left=50});
+    obj.okButtonClasse:setName("okButtonClasse");
+
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label29:setParent(obj.dadosAdicionais);
+    obj.label29:setWidth(300);
+    obj.label29:setHeight(5);
+    obj.label29:setFontSize(12);
+    obj.label29:setText("Experiencia de Profissão:");
+    obj.label29:setHorzTextAlign("center");
+    obj.label29:setVertTextAlign("leading");
+    obj.label29:setMargins({top=5,bottom=5});
+    obj.label29:setName("label29");
+
+    obj.barraxpProfissao = GUI.fromHandle(_obj_newObject("progressBar"));
+    obj.barraxpProfissao:setParent(obj.dadosAdicionais);
+    obj.barraxpProfissao:setWidth(300);
+    obj.barraxpProfissao:setHeight(5);
+    obj.barraxpProfissao:setMargins({top=5,bottom=5});
+    obj.barraxpProfissao:setFieldMax("xpMaxProfissao");
+    obj.barraxpProfissao:setField("xpAtualProfissao");
+    obj.barraxpProfissao:setName("barraxpProfissao");
+    obj.barraxpProfissao:setHitTest(true);
+    obj.barraxpProfissao:setMouseGlow(true);
+    obj.barraxpProfissao:setColorMode("hl");
+
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label30:setParent(obj.dadosAdicionais);
+    obj.label30:setWidth(300);
+    obj.label30:setHeight(5);
+    obj.label30:setFontSize(12);
+    obj.label30:setHorzTextAlign("trailing");
+    obj.label30:setVertTextAlign("trailing");
+    obj.label30:setMargins({top=5,bottom=5});
+    obj.label30:setField("xpTextoProfissao");
+    obj.label30:setName("label30");
+
+    obj.popupxpProfissao = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popupxpProfissao:setParent(obj.dadosAdicionais);
+    obj.popupxpProfissao:setName("popupxpProfissao");
+    obj.popupxpProfissao:setWidth(300);
+    obj.popupxpProfissao:setHeight(30);
+    obj.popupxpProfissao:setBackOpacity(0.4);
+    obj.popupxpProfissao:setLeft(600);
+
+    obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout2:setParent(obj.popupxpProfissao);
+    obj.flowLayout2:setWidth(300);
+    obj.flowLayout2:setHeight(30);
+    obj.flowLayout2:setMaxControlsPerLine(3);
+    obj.flowLayout2:setName("flowLayout2");
+
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label31:setParent(obj.flowLayout2);
+    obj.label31:setText("Adicionar Experiência: ");
+    obj.label31:setWidth(150);
+    obj.label31:setHeight(30);
+    obj.label31:setMargins({left=10});
+    obj.label31:setHorzTextAlign("leading");
+    obj.label31:setVertTextAlign("center");
+    obj.label31:setAlign("left");
+    obj.label31:setName("label31");
+
+    obj.flowPart13 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart13:setParent(obj.flowLayout2);
+    obj.flowPart13:setHeight(30);
+    obj.flowPart13:setWidth(50);
+    obj.flowPart13:setName("flowPart13");
+
+    obj.somaxpProfissao = GUI.fromHandle(_obj_newObject("edit"));
+    obj.somaxpProfissao:setParent(obj.flowPart13);
+    obj.somaxpProfissao:setName("somaxpProfissao");
+    obj.somaxpProfissao:setAlign("top");
+    obj.somaxpProfissao:setField("somaxpProfissao");
+    obj.somaxpProfissao:setFontSize(15);
+    obj.somaxpProfissao:setType("number");
+    obj.somaxpProfissao:setTransparent(true);
+    obj.somaxpProfissao:setHorzTextAlign("center");
+
+    obj.horzLine16 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine16:setParent(obj.flowPart13);
+    obj.horzLine16:setAlign("bottom");
+    obj.horzLine16:setStrokeColor("#FFFFFF50");
+    obj.horzLine16:setStrokeSize(1);
+    obj.horzLine16:setMargins({bottom=5});
+    obj.horzLine16:setName("horzLine16");
+
+    obj.okButtonProfissao = GUI.fromHandle(_obj_newObject("button"));
+    obj.okButtonProfissao:setParent(obj.flowLayout2);
+    obj.okButtonProfissao:setText("ok");
+    obj.okButtonProfissao:setHeight(20);
+    obj.okButtonProfissao:setWidth(25);
+    obj.okButtonProfissao:setMargins({right=5, left=50});
+    obj.okButtonProfissao:setName("okButtonProfissao");
 
     obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.dadosAdicionais);
-    obj.dataLink5:setFields({'barraExpMax', 'barraExpAtual', 'barraExpTexto', 'nivelClasse', 'atributoVida', 'conTotal', 'atributoDefesa'});
+    obj.dataLink5:setFields({'xpMaxClasse', 'xpAtualClasse', 'xpTextoClasse', 'nivelClasse', 'atributoVida', 'conTotal', 'atributoDefesa'});
     obj.dataLink5:setName("dataLink5");
 
     obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
@@ -1010,31 +1160,31 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLineBreak1:setLineSpacing(10);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.flowPart13 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart13:setParent(obj.perfilLayout);
-    obj.flowPart13:setHeight(2);
-    obj.flowPart13:setMinScaledWidth(100);
-    obj.flowPart13:setMaxScaledWidth(1600);
-    obj.flowPart13:setName("flowPart13");
+    obj.flowPart14 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart14:setParent(obj.perfilLayout);
+    obj.flowPart14:setHeight(2);
+    obj.flowPart14:setMinScaledWidth(100);
+    obj.flowPart14:setMaxScaledWidth(1600);
+    obj.flowPart14:setName("flowPart14");
 
-    obj.horzLine15 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine15:setParent(obj.flowPart13);
-    obj.horzLine15:setStrokeColor("#FFFFFF50");
-    obj.horzLine15:setStrokeSize(0.6);
-    obj.horzLine15:setStrokeCap("round");
-    obj.horzLine15:setScaleY(0.1);
-    obj.horzLine15:setTop(1);
-    obj.horzLine15:setName("horzLine15");
+    obj.horzLine17 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine17:setParent(obj.flowPart14);
+    obj.horzLine17:setStrokeColor("#FFFFFF50");
+    obj.horzLine17:setStrokeSize(0.6);
+    obj.horzLine17:setStrokeCap("round");
+    obj.horzLine17:setScaleY(0.1);
+    obj.horzLine17:setTop(1);
+    obj.horzLine17:setName("horzLine17");
 
     obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.perfilLayout);
     obj.flowLineBreak2:setLineSpacing(10);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.flowPart14 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart14:setParent(obj.perfilLayout);
-    obj.flowPart14:setWidth(140);
-    obj.flowPart14:setName("flowPart14");
+    obj.flowPart15 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart15:setParent(obj.perfilLayout);
+    obj.flowPart15:setWidth(140);
+    obj.flowPart15:setName("flowPart15");
 
     obj.topoAtributos = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.topoAtributos:setParent(obj.perfilLayout);
@@ -1047,23 +1197,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.topoAtributos:setMaxControlsPerLine(9);
     obj.topoAtributos:setHorzAlign("center");
 
-    obj.flowPart15 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart15:setParent(obj.topoAtributos);
-    obj.flowPart15:setHeight(20);
-    obj.flowPart15:setMinScaledWidth(60);
-    obj.flowPart15:setMaxScaledWidth(85);
-    obj.flowPart15:setName("flowPart15");
-
-    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label28:setParent(obj.flowPart15);
-    obj.label28:setText("Nível");
-    obj.label28:setAlign("client");
-    obj.label28:setField("");
-    obj.label28:setFontSize(8);
-    obj.label28:setVertTextAlign("center");
-    obj.label28:setHorzTextAlign("leading");
-    obj.label28:setName("label28");
-
     obj.flowPart16 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart16:setParent(obj.topoAtributos);
     obj.flowPart16:setHeight(20);
@@ -1071,15 +1204,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart16:setMaxScaledWidth(85);
     obj.flowPart16:setName("flowPart16");
 
-    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label29:setParent(obj.flowPart16);
-    obj.label29:setText("Classe");
-    obj.label29:setAlign("client");
-    obj.label29:setField("");
-    obj.label29:setFontSize(8);
-    obj.label29:setVertTextAlign("center");
-    obj.label29:setHorzTextAlign("leading");
-    obj.label29:setName("label29");
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label32:setParent(obj.flowPart16);
+    obj.label32:setText("Nível");
+    obj.label32:setAlign("client");
+    obj.label32:setField("");
+    obj.label32:setFontSize(8);
+    obj.label32:setVertTextAlign("center");
+    obj.label32:setHorzTextAlign("leading");
+    obj.label32:setName("label32");
 
     obj.flowPart17 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart17:setParent(obj.topoAtributos);
@@ -1088,15 +1221,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart17:setMaxScaledWidth(85);
     obj.flowPart17:setName("flowPart17");
 
-    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label30:setParent(obj.flowPart17);
-    obj.label30:setText("Raça");
-    obj.label30:setAlign("client");
-    obj.label30:setField("");
-    obj.label30:setFontSize(8);
-    obj.label30:setVertTextAlign("center");
-    obj.label30:setHorzTextAlign("leading");
-    obj.label30:setName("label30");
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label33:setParent(obj.flowPart17);
+    obj.label33:setText("Classe");
+    obj.label33:setAlign("client");
+    obj.label33:setField("");
+    obj.label33:setFontSize(8);
+    obj.label33:setVertTextAlign("center");
+    obj.label33:setHorzTextAlign("leading");
+    obj.label33:setName("label33");
 
     obj.flowPart18 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart18:setParent(obj.topoAtributos);
@@ -1105,15 +1238,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart18:setMaxScaledWidth(85);
     obj.flowPart18:setName("flowPart18");
 
-    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label31:setParent(obj.flowPart18);
-    obj.label31:setText("Treino");
-    obj.label31:setAlign("client");
-    obj.label31:setField("");
-    obj.label31:setFontSize(8);
-    obj.label31:setVertTextAlign("center");
-    obj.label31:setHorzTextAlign("leading");
-    obj.label31:setName("label31");
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label34:setParent(obj.flowPart18);
+    obj.label34:setText("Raça");
+    obj.label34:setAlign("client");
+    obj.label34:setField("");
+    obj.label34:setFontSize(8);
+    obj.label34:setVertTextAlign("center");
+    obj.label34:setHorzTextAlign("leading");
+    obj.label34:setName("label34");
 
     obj.flowPart19 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart19:setParent(obj.topoAtributos);
@@ -1122,15 +1255,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart19:setMaxScaledWidth(85);
     obj.flowPart19:setName("flowPart19");
 
-    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label32:setParent(obj.flowPart19);
-    obj.label32:setText("Outros");
-    obj.label32:setAlign("client");
-    obj.label32:setField("");
-    obj.label32:setFontSize(8);
-    obj.label32:setVertTextAlign("center");
-    obj.label32:setHorzTextAlign("leading");
-    obj.label32:setName("label32");
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label35:setParent(obj.flowPart19);
+    obj.label35:setText("Treino");
+    obj.label35:setAlign("client");
+    obj.label35:setField("");
+    obj.label35:setFontSize(8);
+    obj.label35:setVertTextAlign("center");
+    obj.label35:setHorzTextAlign("leading");
+    obj.label35:setName("label35");
 
     obj.flowPart20 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart20:setParent(obj.topoAtributos);
@@ -1139,15 +1272,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart20:setMaxScaledWidth(85);
     obj.flowPart20:setName("flowPart20");
 
-    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label33:setParent(obj.flowPart20);
-    obj.label33:setText("Base");
-    obj.label33:setAlign("client");
-    obj.label33:setField("");
-    obj.label33:setFontSize(8);
-    obj.label33:setVertTextAlign("center");
-    obj.label33:setHorzTextAlign("leading");
-    obj.label33:setName("label33");
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label36:setParent(obj.flowPart20);
+    obj.label36:setText("Outros");
+    obj.label36:setAlign("client");
+    obj.label36:setField("");
+    obj.label36:setFontSize(8);
+    obj.label36:setVertTextAlign("center");
+    obj.label36:setHorzTextAlign("leading");
+    obj.label36:setName("label36");
 
     obj.flowPart21 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart21:setParent(obj.topoAtributos);
@@ -1156,15 +1289,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart21:setMaxScaledWidth(85);
     obj.flowPart21:setName("flowPart21");
 
-    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label34:setParent(obj.flowPart21);
-    obj.label34:setText("Equip.");
-    obj.label34:setAlign("client");
-    obj.label34:setField("");
-    obj.label34:setFontSize(8);
-    obj.label34:setVertTextAlign("center");
-    obj.label34:setHorzTextAlign("leading");
-    obj.label34:setName("label34");
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label37:setParent(obj.flowPart21);
+    obj.label37:setText("Base");
+    obj.label37:setAlign("client");
+    obj.label37:setField("");
+    obj.label37:setFontSize(8);
+    obj.label37:setVertTextAlign("center");
+    obj.label37:setHorzTextAlign("leading");
+    obj.label37:setName("label37");
 
     obj.flowPart22 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart22:setParent(obj.topoAtributos);
@@ -1173,15 +1306,32 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart22:setMaxScaledWidth(85);
     obj.flowPart22:setName("flowPart22");
 
-    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label35:setParent(obj.flowPart22);
-    obj.label35:setText("Total");
-    obj.label35:setAlign("client");
-    obj.label35:setField("");
-    obj.label35:setFontSize(8);
-    obj.label35:setVertTextAlign("center");
-    obj.label35:setHorzTextAlign("leading");
-    obj.label35:setName("label35");
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label38:setParent(obj.flowPart22);
+    obj.label38:setText("Equip.");
+    obj.label38:setAlign("client");
+    obj.label38:setField("");
+    obj.label38:setFontSize(8);
+    obj.label38:setVertTextAlign("center");
+    obj.label38:setHorzTextAlign("leading");
+    obj.label38:setName("label38");
+
+    obj.flowPart23 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart23:setParent(obj.topoAtributos);
+    obj.flowPart23:setHeight(20);
+    obj.flowPart23:setMinScaledWidth(60);
+    obj.flowPart23:setMaxScaledWidth(85);
+    obj.flowPart23:setName("flowPart23");
+
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label39:setParent(obj.flowPart23);
+    obj.label39:setText("Total");
+    obj.label39:setAlign("client");
+    obj.label39:setField("");
+    obj.label39:setFontSize(8);
+    obj.label39:setVertTextAlign("center");
+    obj.label39:setHorzTextAlign("leading");
+    obj.label39:setName("label39");
 
     obj.flowLineBreak3 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak3:setParent(obj.perfilLayout);
@@ -1199,35 +1349,35 @@ local function constructNew_frmFichaDePersonagem()
     obj.tabelaDeAtributos:setMaxControlsPerLine(16);
     obj.tabelaDeAtributos:setHorzAlign("center");
 
-    obj.flowPart23 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart23:setParent(obj.tabelaDeAtributos);
-    obj.flowPart23:setHeight(20);
-    obj.flowPart23:setMinScaledWidth(60);
-    obj.flowPart23:setMaxScaledWidth(85);
-    obj.flowPart23:setName("flowPart23");
-
-    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label36:setParent(obj.flowPart23);
-    obj.label36:setText("Constituição");
-    obj.label36:setAlign("client");
-    obj.label36:setField("");
-    obj.label36:setFontSize(8);
-    obj.label36:setVertTextAlign("center");
-    obj.label36:setHorzTextAlign("leading");
-    obj.label36:setName("label36");
-
     obj.flowPart24 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart24:setParent(obj.tabelaDeAtributos);
-    obj.flowPart24:setHeight(50);
-    obj.flowPart24:setMinScaledWidth(30);
-    obj.flowPart24:setMinWidth(30);
-    obj.flowPart24:setMaxWidth(35);
-    obj.flowPart24:setMaxScaledWidth(35);
-    obj.flowPart24:setAvoidScale(true);
+    obj.flowPart24:setHeight(20);
+    obj.flowPart24:setMinScaledWidth(60);
+    obj.flowPart24:setMaxScaledWidth(85);
     obj.flowPart24:setName("flowPart24");
 
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label40:setParent(obj.flowPart24);
+    obj.label40:setText("Constituição");
+    obj.label40:setAlign("client");
+    obj.label40:setField("");
+    obj.label40:setFontSize(8);
+    obj.label40:setVertTextAlign("center");
+    obj.label40:setHorzTextAlign("leading");
+    obj.label40:setName("label40");
+
+    obj.flowPart25 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart25:setParent(obj.tabelaDeAtributos);
+    obj.flowPart25:setHeight(50);
+    obj.flowPart25:setMinScaledWidth(30);
+    obj.flowPart25:setMinWidth(30);
+    obj.flowPart25:setMaxWidth(35);
+    obj.flowPart25:setMaxScaledWidth(35);
+    obj.flowPart25:setAvoidScale(true);
+    obj.flowPart25:setName("flowPart25");
+
     obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit17:setParent(obj.flowPart24);
+    obj.edit17:setParent(obj.flowPart25);
     obj.edit17:setAlign("top");
     obj.edit17:setField("conNivel");
     obj.edit17:setFontSize(15);
@@ -1240,27 +1390,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit17:setHeight(30);
     obj.edit17:setWidth(195);
 
-    obj.horzLine16 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine16:setParent(obj.flowPart24);
-    obj.horzLine16:setAlign("top");
-    obj.horzLine16:setStrokeColor("#FFFFFF50");
-    obj.horzLine16:setStrokeSize(1);
-    obj.horzLine16:setName("horzLine16");
+    obj.horzLine18 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine18:setParent(obj.flowPart25);
+    obj.horzLine18:setAlign("top");
+    obj.horzLine18:setStrokeColor("#FFFFFF50");
+    obj.horzLine18:setStrokeSize(1);
+    obj.horzLine18:setName("horzLine18");
 
     obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.tabelaDeAtributos);
     obj.dataLink6:setField("conNivel");
     obj.dataLink6:setName("dataLink6");
 
-    obj.flowPart25 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart25:setParent(obj.tabelaDeAtributos);
-    obj.flowPart25:setName("flowPart25");
-    obj.flowPart25:setHeight(50);
-    obj.flowPart25:setMinScaledWidth(30);
-    obj.flowPart25:setMaxScaledWidth(50);
+    obj.flowPart26 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart26:setParent(obj.tabelaDeAtributos);
+    obj.flowPart26:setName("flowPart26");
+    obj.flowPart26:setHeight(50);
+    obj.flowPart26:setMinScaledWidth(30);
+    obj.flowPart26:setMaxScaledWidth(50);
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.flowPart25);
+    obj.image2:setParent(obj.flowPart26);
     obj.image2:setSRC("/imagens/plus.png");
     obj.image2:setHeight(15);
     obj.image2:setWidth(15);
@@ -1268,18 +1418,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image2:setTop(5);
     obj.image2:setName("image2");
 
-    obj.flowPart26 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart26:setParent(obj.tabelaDeAtributos);
-    obj.flowPart26:setHeight(50);
-    obj.flowPart26:setMinScaledWidth(30);
-    obj.flowPart26:setMinWidth(30);
-    obj.flowPart26:setMaxWidth(35);
-    obj.flowPart26:setMaxScaledWidth(35);
-    obj.flowPart26:setAvoidScale(true);
-    obj.flowPart26:setName("flowPart26");
+    obj.flowPart27 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart27:setParent(obj.tabelaDeAtributos);
+    obj.flowPart27:setHeight(50);
+    obj.flowPart27:setMinScaledWidth(30);
+    obj.flowPart27:setMinWidth(30);
+    obj.flowPart27:setMaxWidth(35);
+    obj.flowPart27:setMaxScaledWidth(35);
+    obj.flowPart27:setAvoidScale(true);
+    obj.flowPart27:setName("flowPart27");
 
     obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit18:setParent(obj.flowPart26);
+    obj.edit18:setParent(obj.flowPart27);
     obj.edit18:setAlign("top");
     obj.edit18:setField("conClasse");
     obj.edit18:setFontSize(15);
@@ -1292,27 +1442,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit18:setHeight(30);
     obj.edit18:setWidth(195);
 
-    obj.horzLine17 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine17:setParent(obj.flowPart26);
-    obj.horzLine17:setAlign("top");
-    obj.horzLine17:setStrokeColor("#FFFFFF50");
-    obj.horzLine17:setStrokeSize(1);
-    obj.horzLine17:setName("horzLine17");
+    obj.horzLine19 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine19:setParent(obj.flowPart27);
+    obj.horzLine19:setAlign("top");
+    obj.horzLine19:setStrokeColor("#FFFFFF50");
+    obj.horzLine19:setStrokeSize(1);
+    obj.horzLine19:setName("horzLine19");
 
     obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.tabelaDeAtributos);
     obj.dataLink7:setField("conClasse");
     obj.dataLink7:setName("dataLink7");
 
-    obj.flowPart27 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart27:setParent(obj.tabelaDeAtributos);
-    obj.flowPart27:setName("flowPart27");
-    obj.flowPart27:setHeight(50);
-    obj.flowPart27:setMinScaledWidth(30);
-    obj.flowPart27:setMaxScaledWidth(50);
+    obj.flowPart28 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart28:setParent(obj.tabelaDeAtributos);
+    obj.flowPart28:setName("flowPart28");
+    obj.flowPart28:setHeight(50);
+    obj.flowPart28:setMinScaledWidth(30);
+    obj.flowPart28:setMaxScaledWidth(50);
 
     obj.image3 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.flowPart27);
+    obj.image3:setParent(obj.flowPart28);
     obj.image3:setSRC("/imagens/plus.png");
     obj.image3:setHeight(15);
     obj.image3:setWidth(15);
@@ -1320,18 +1470,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image3:setTop(5);
     obj.image3:setName("image3");
 
-    obj.flowPart28 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart28:setParent(obj.tabelaDeAtributos);
-    obj.flowPart28:setHeight(50);
-    obj.flowPart28:setMinScaledWidth(30);
-    obj.flowPart28:setMinWidth(30);
-    obj.flowPart28:setMaxWidth(35);
-    obj.flowPart28:setMaxScaledWidth(35);
-    obj.flowPart28:setAvoidScale(true);
-    obj.flowPart28:setName("flowPart28");
+    obj.flowPart29 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart29:setParent(obj.tabelaDeAtributos);
+    obj.flowPart29:setHeight(50);
+    obj.flowPart29:setMinScaledWidth(30);
+    obj.flowPart29:setMinWidth(30);
+    obj.flowPart29:setMaxWidth(35);
+    obj.flowPart29:setMaxScaledWidth(35);
+    obj.flowPart29:setAvoidScale(true);
+    obj.flowPart29:setName("flowPart29");
 
     obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit19:setParent(obj.flowPart28);
+    obj.edit19:setParent(obj.flowPart29);
     obj.edit19:setAlign("top");
     obj.edit19:setField("conRaca");
     obj.edit19:setFontSize(15);
@@ -1344,27 +1494,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit19:setHeight(30);
     obj.edit19:setWidth(195);
 
-    obj.horzLine18 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine18:setParent(obj.flowPart28);
-    obj.horzLine18:setAlign("top");
-    obj.horzLine18:setStrokeColor("#FFFFFF50");
-    obj.horzLine18:setStrokeSize(1);
-    obj.horzLine18:setName("horzLine18");
+    obj.horzLine20 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine20:setParent(obj.flowPart29);
+    obj.horzLine20:setAlign("top");
+    obj.horzLine20:setStrokeColor("#FFFFFF50");
+    obj.horzLine20:setStrokeSize(1);
+    obj.horzLine20:setName("horzLine20");
 
     obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.tabelaDeAtributos);
     obj.dataLink8:setField("conRaca");
     obj.dataLink8:setName("dataLink8");
 
-    obj.flowPart29 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart29:setParent(obj.tabelaDeAtributos);
-    obj.flowPart29:setName("flowPart29");
-    obj.flowPart29:setHeight(50);
-    obj.flowPart29:setMinScaledWidth(30);
-    obj.flowPart29:setMaxScaledWidth(50);
+    obj.flowPart30 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart30:setParent(obj.tabelaDeAtributos);
+    obj.flowPart30:setName("flowPart30");
+    obj.flowPart30:setHeight(50);
+    obj.flowPart30:setMinScaledWidth(30);
+    obj.flowPart30:setMaxScaledWidth(50);
 
     obj.image4 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.flowPart29);
+    obj.image4:setParent(obj.flowPart30);
     obj.image4:setSRC("/imagens/plus.png");
     obj.image4:setHeight(15);
     obj.image4:setWidth(15);
@@ -1372,18 +1522,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image4:setTop(5);
     obj.image4:setName("image4");
 
-    obj.flowPart30 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart30:setParent(obj.tabelaDeAtributos);
-    obj.flowPart30:setHeight(50);
-    obj.flowPart30:setMinScaledWidth(30);
-    obj.flowPart30:setMinWidth(30);
-    obj.flowPart30:setMaxWidth(35);
-    obj.flowPart30:setMaxScaledWidth(35);
-    obj.flowPart30:setAvoidScale(true);
-    obj.flowPart30:setName("flowPart30");
+    obj.flowPart31 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart31:setParent(obj.tabelaDeAtributos);
+    obj.flowPart31:setHeight(50);
+    obj.flowPart31:setMinScaledWidth(30);
+    obj.flowPart31:setMinWidth(30);
+    obj.flowPart31:setMaxWidth(35);
+    obj.flowPart31:setMaxScaledWidth(35);
+    obj.flowPart31:setAvoidScale(true);
+    obj.flowPart31:setName("flowPart31");
 
     obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit20:setParent(obj.flowPart30);
+    obj.edit20:setParent(obj.flowPart31);
     obj.edit20:setAlign("top");
     obj.edit20:setField("conTreino");
     obj.edit20:setFontSize(15);
@@ -1396,27 +1546,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit20:setHeight(30);
     obj.edit20:setWidth(195);
 
-    obj.horzLine19 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine19:setParent(obj.flowPart30);
-    obj.horzLine19:setAlign("top");
-    obj.horzLine19:setStrokeColor("#FFFFFF50");
-    obj.horzLine19:setStrokeSize(1);
-    obj.horzLine19:setName("horzLine19");
+    obj.horzLine21 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine21:setParent(obj.flowPart31);
+    obj.horzLine21:setAlign("top");
+    obj.horzLine21:setStrokeColor("#FFFFFF50");
+    obj.horzLine21:setStrokeSize(1);
+    obj.horzLine21:setName("horzLine21");
 
     obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.tabelaDeAtributos);
     obj.dataLink9:setField("conTreino");
     obj.dataLink9:setName("dataLink9");
 
-    obj.flowPart31 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart31:setParent(obj.tabelaDeAtributos);
-    obj.flowPart31:setName("flowPart31");
-    obj.flowPart31:setHeight(50);
-    obj.flowPart31:setMinScaledWidth(30);
-    obj.flowPart31:setMaxScaledWidth(50);
+    obj.flowPart32 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart32:setParent(obj.tabelaDeAtributos);
+    obj.flowPart32:setName("flowPart32");
+    obj.flowPart32:setHeight(50);
+    obj.flowPart32:setMinScaledWidth(30);
+    obj.flowPart32:setMaxScaledWidth(50);
 
     obj.image5 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.flowPart31);
+    obj.image5:setParent(obj.flowPart32);
     obj.image5:setSRC("/imagens/plus.png");
     obj.image5:setHeight(15);
     obj.image5:setWidth(15);
@@ -1424,18 +1574,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image5:setTop(5);
     obj.image5:setName("image5");
 
-    obj.flowPart32 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart32:setParent(obj.tabelaDeAtributos);
-    obj.flowPart32:setHeight(50);
-    obj.flowPart32:setMinScaledWidth(30);
-    obj.flowPart32:setMinWidth(30);
-    obj.flowPart32:setMaxWidth(35);
-    obj.flowPart32:setMaxScaledWidth(35);
-    obj.flowPart32:setAvoidScale(true);
-    obj.flowPart32:setName("flowPart32");
+    obj.flowPart33 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart33:setParent(obj.tabelaDeAtributos);
+    obj.flowPart33:setHeight(50);
+    obj.flowPart33:setMinScaledWidth(30);
+    obj.flowPart33:setMinWidth(30);
+    obj.flowPart33:setMaxWidth(35);
+    obj.flowPart33:setMaxScaledWidth(35);
+    obj.flowPart33:setAvoidScale(true);
+    obj.flowPart33:setName("flowPart33");
 
     obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit21:setParent(obj.flowPart32);
+    obj.edit21:setParent(obj.flowPart33);
     obj.edit21:setAlign("top");
     obj.edit21:setField("conOutros");
     obj.edit21:setFontSize(15);
@@ -1448,27 +1598,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit21:setHeight(30);
     obj.edit21:setWidth(195);
 
-    obj.horzLine20 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine20:setParent(obj.flowPart32);
-    obj.horzLine20:setAlign("top");
-    obj.horzLine20:setStrokeColor("#FFFFFF50");
-    obj.horzLine20:setStrokeSize(1);
-    obj.horzLine20:setName("horzLine20");
+    obj.horzLine22 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine22:setParent(obj.flowPart33);
+    obj.horzLine22:setAlign("top");
+    obj.horzLine22:setStrokeColor("#FFFFFF50");
+    obj.horzLine22:setStrokeSize(1);
+    obj.horzLine22:setName("horzLine22");
 
     obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj.tabelaDeAtributos);
     obj.dataLink10:setField("conOutros");
     obj.dataLink10:setName("dataLink10");
 
-    obj.flowPart33 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart33:setParent(obj.tabelaDeAtributos);
-    obj.flowPart33:setName("flowPart33");
-    obj.flowPart33:setHeight(50);
-    obj.flowPart33:setMinScaledWidth(30);
-    obj.flowPart33:setMaxScaledWidth(50);
+    obj.flowPart34 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart34:setParent(obj.tabelaDeAtributos);
+    obj.flowPart34:setName("flowPart34");
+    obj.flowPart34:setHeight(50);
+    obj.flowPart34:setMinScaledWidth(30);
+    obj.flowPart34:setMaxScaledWidth(50);
 
     obj.image6 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image6:setParent(obj.flowPart33);
+    obj.image6:setParent(obj.flowPart34);
     obj.image6:setSRC("/imagens/equals.png");
     obj.image6:setHeight(15);
     obj.image6:setWidth(15);
@@ -1476,18 +1626,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image6:setTop(5);
     obj.image6:setName("image6");
 
-    obj.flowPart34 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart34:setParent(obj.tabelaDeAtributos);
-    obj.flowPart34:setHeight(50);
-    obj.flowPart34:setMinScaledWidth(30);
-    obj.flowPart34:setMinWidth(30);
-    obj.flowPart34:setMaxWidth(35);
-    obj.flowPart34:setMaxScaledWidth(35);
-    obj.flowPart34:setAvoidScale(true);
-    obj.flowPart34:setName("flowPart34");
+    obj.flowPart35 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart35:setParent(obj.tabelaDeAtributos);
+    obj.flowPart35:setHeight(50);
+    obj.flowPart35:setMinScaledWidth(30);
+    obj.flowPart35:setMinWidth(30);
+    obj.flowPart35:setMaxWidth(35);
+    obj.flowPart35:setMaxScaledWidth(35);
+    obj.flowPart35:setAvoidScale(true);
+    obj.flowPart35:setName("flowPart35");
 
     obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit22:setParent(obj.flowPart34);
+    obj.edit22:setParent(obj.flowPart35);
     obj.edit22:setAlign("top");
     obj.edit22:setField("conBase");
     obj.edit22:setFontSize(15);
@@ -1500,27 +1650,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit22:setHeight(30);
     obj.edit22:setWidth(195);
 
-    obj.horzLine21 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine21:setParent(obj.flowPart34);
-    obj.horzLine21:setAlign("top");
-    obj.horzLine21:setStrokeColor("#FFFFFF50");
-    obj.horzLine21:setStrokeSize(1);
-    obj.horzLine21:setName("horzLine21");
+    obj.horzLine23 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine23:setParent(obj.flowPart35);
+    obj.horzLine23:setAlign("top");
+    obj.horzLine23:setStrokeColor("#FFFFFF50");
+    obj.horzLine23:setStrokeSize(1);
+    obj.horzLine23:setName("horzLine23");
 
     obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.tabelaDeAtributos);
     obj.dataLink11:setField("conBase");
     obj.dataLink11:setName("dataLink11");
 
-    obj.flowPart35 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart35:setParent(obj.tabelaDeAtributos);
-    obj.flowPart35:setName("flowPart35");
-    obj.flowPart35:setHeight(50);
-    obj.flowPart35:setMinScaledWidth(30);
-    obj.flowPart35:setMaxScaledWidth(50);
+    obj.flowPart36 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart36:setParent(obj.tabelaDeAtributos);
+    obj.flowPart36:setName("flowPart36");
+    obj.flowPart36:setHeight(50);
+    obj.flowPart36:setMinScaledWidth(30);
+    obj.flowPart36:setMaxScaledWidth(50);
 
     obj.image7 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image7:setParent(obj.flowPart35);
+    obj.image7:setParent(obj.flowPart36);
     obj.image7:setSRC("/imagens/plus.png");
     obj.image7:setHeight(15);
     obj.image7:setWidth(15);
@@ -1528,18 +1678,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image7:setTop(5);
     obj.image7:setName("image7");
 
-    obj.flowPart36 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart36:setParent(obj.tabelaDeAtributos);
-    obj.flowPart36:setHeight(50);
-    obj.flowPart36:setMinScaledWidth(30);
-    obj.flowPart36:setMinWidth(30);
-    obj.flowPart36:setMaxWidth(35);
-    obj.flowPart36:setMaxScaledWidth(35);
-    obj.flowPart36:setAvoidScale(true);
-    obj.flowPart36:setName("flowPart36");
+    obj.flowPart37 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart37:setParent(obj.tabelaDeAtributos);
+    obj.flowPart37:setHeight(50);
+    obj.flowPart37:setMinScaledWidth(30);
+    obj.flowPart37:setMinWidth(30);
+    obj.flowPart37:setMaxWidth(35);
+    obj.flowPart37:setMaxScaledWidth(35);
+    obj.flowPart37:setAvoidScale(true);
+    obj.flowPart37:setName("flowPart37");
 
     obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit23:setParent(obj.flowPart36);
+    obj.edit23:setParent(obj.flowPart37);
     obj.edit23:setAlign("top");
     obj.edit23:setField("conEquip");
     obj.edit23:setFontSize(15);
@@ -1552,27 +1702,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit23:setHeight(30);
     obj.edit23:setWidth(195);
 
-    obj.horzLine22 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine22:setParent(obj.flowPart36);
-    obj.horzLine22:setAlign("top");
-    obj.horzLine22:setStrokeColor("#FFFFFF50");
-    obj.horzLine22:setStrokeSize(1);
-    obj.horzLine22:setName("horzLine22");
+    obj.horzLine24 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine24:setParent(obj.flowPart37);
+    obj.horzLine24:setAlign("top");
+    obj.horzLine24:setStrokeColor("#FFFFFF50");
+    obj.horzLine24:setStrokeSize(1);
+    obj.horzLine24:setName("horzLine24");
 
     obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj.tabelaDeAtributos);
     obj.dataLink12:setField("conEquip");
     obj.dataLink12:setName("dataLink12");
 
-    obj.flowPart37 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart37:setParent(obj.tabelaDeAtributos);
-    obj.flowPart37:setName("flowPart37");
-    obj.flowPart37:setHeight(50);
-    obj.flowPart37:setMinScaledWidth(30);
-    obj.flowPart37:setMaxScaledWidth(50);
+    obj.flowPart38 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart38:setParent(obj.tabelaDeAtributos);
+    obj.flowPart38:setName("flowPart38");
+    obj.flowPart38:setHeight(50);
+    obj.flowPart38:setMinScaledWidth(30);
+    obj.flowPart38:setMaxScaledWidth(50);
 
     obj.image8 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image8:setParent(obj.flowPart37);
+    obj.image8:setParent(obj.flowPart38);
     obj.image8:setSRC("/imagens/equals.png");
     obj.image8:setHeight(15);
     obj.image8:setWidth(15);
@@ -1580,18 +1730,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image8:setTop(5);
     obj.image8:setName("image8");
 
-    obj.flowPart38 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart38:setParent(obj.tabelaDeAtributos);
-    obj.flowPart38:setHeight(50);
-    obj.flowPart38:setMinScaledWidth(30);
-    obj.flowPart38:setMinWidth(30);
-    obj.flowPart38:setMaxWidth(35);
-    obj.flowPart38:setMaxScaledWidth(35);
-    obj.flowPart38:setAvoidScale(true);
-    obj.flowPart38:setName("flowPart38");
+    obj.flowPart39 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart39:setParent(obj.tabelaDeAtributos);
+    obj.flowPart39:setHeight(50);
+    obj.flowPart39:setMinScaledWidth(30);
+    obj.flowPart39:setMinWidth(30);
+    obj.flowPart39:setMaxWidth(35);
+    obj.flowPart39:setMaxScaledWidth(35);
+    obj.flowPart39:setAvoidScale(true);
+    obj.flowPart39:setName("flowPart39");
 
     obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit24:setParent(obj.flowPart38);
+    obj.edit24:setParent(obj.flowPart39);
     obj.edit24:setAlign("top");
     obj.edit24:setField("conTotal");
     obj.edit24:setFontSize(15);
@@ -1604,12 +1754,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit24:setHeight(30);
     obj.edit24:setWidth(195);
 
-    obj.horzLine23 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine23:setParent(obj.flowPart38);
-    obj.horzLine23:setAlign("top");
-    obj.horzLine23:setStrokeColor("#FFFFFF50");
-    obj.horzLine23:setStrokeSize(1);
-    obj.horzLine23:setName("horzLine23");
+    obj.horzLine25 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine25:setParent(obj.flowPart39);
+    obj.horzLine25:setAlign("top");
+    obj.horzLine25:setStrokeColor("#FFFFFF50");
+    obj.horzLine25:setStrokeSize(1);
+    obj.horzLine25:setName("horzLine25");
 
     obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.tabelaDeAtributos);
@@ -1622,35 +1772,35 @@ local function constructNew_frmFichaDePersonagem()
                            'conOutros', 'conBase', 'conEquip', 'conTotal'});
     obj.dataLink14:setName("dataLink14");
 
-    obj.flowPart39 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart39:setParent(obj.tabelaDeAtributos);
-    obj.flowPart39:setHeight(20);
-    obj.flowPart39:setMinScaledWidth(60);
-    obj.flowPart39:setMaxScaledWidth(85);
-    obj.flowPart39:setName("flowPart39");
-
-    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label37:setParent(obj.flowPart39);
-    obj.label37:setText("Força");
-    obj.label37:setAlign("client");
-    obj.label37:setField("");
-    obj.label37:setFontSize(8);
-    obj.label37:setVertTextAlign("center");
-    obj.label37:setHorzTextAlign("leading");
-    obj.label37:setName("label37");
-
     obj.flowPart40 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart40:setParent(obj.tabelaDeAtributos);
-    obj.flowPart40:setHeight(50);
-    obj.flowPart40:setMinScaledWidth(30);
-    obj.flowPart40:setMinWidth(30);
-    obj.flowPart40:setMaxWidth(35);
-    obj.flowPart40:setMaxScaledWidth(35);
-    obj.flowPart40:setAvoidScale(true);
+    obj.flowPart40:setHeight(20);
+    obj.flowPart40:setMinScaledWidth(60);
+    obj.flowPart40:setMaxScaledWidth(85);
     obj.flowPart40:setName("flowPart40");
 
+    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label41:setParent(obj.flowPart40);
+    obj.label41:setText("Força");
+    obj.label41:setAlign("client");
+    obj.label41:setField("");
+    obj.label41:setFontSize(8);
+    obj.label41:setVertTextAlign("center");
+    obj.label41:setHorzTextAlign("leading");
+    obj.label41:setName("label41");
+
+    obj.flowPart41 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart41:setParent(obj.tabelaDeAtributos);
+    obj.flowPart41:setHeight(50);
+    obj.flowPart41:setMinScaledWidth(30);
+    obj.flowPart41:setMinWidth(30);
+    obj.flowPart41:setMaxWidth(35);
+    obj.flowPart41:setMaxScaledWidth(35);
+    obj.flowPart41:setAvoidScale(true);
+    obj.flowPart41:setName("flowPart41");
+
     obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit25:setParent(obj.flowPart40);
+    obj.edit25:setParent(obj.flowPart41);
     obj.edit25:setAlign("top");
     obj.edit25:setField("forNivel");
     obj.edit25:setFontSize(15);
@@ -1663,27 +1813,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit25:setHeight(30);
     obj.edit25:setWidth(195);
 
-    obj.horzLine24 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine24:setParent(obj.flowPart40);
-    obj.horzLine24:setAlign("top");
-    obj.horzLine24:setStrokeColor("#FFFFFF50");
-    obj.horzLine24:setStrokeSize(1);
-    obj.horzLine24:setName("horzLine24");
+    obj.horzLine26 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine26:setParent(obj.flowPart41);
+    obj.horzLine26:setAlign("top");
+    obj.horzLine26:setStrokeColor("#FFFFFF50");
+    obj.horzLine26:setStrokeSize(1);
+    obj.horzLine26:setName("horzLine26");
 
     obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink15:setParent(obj.tabelaDeAtributos);
     obj.dataLink15:setField("forNivel");
     obj.dataLink15:setName("dataLink15");
 
-    obj.flowPart41 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart41:setParent(obj.tabelaDeAtributos);
-    obj.flowPart41:setName("flowPart41");
-    obj.flowPart41:setHeight(50);
-    obj.flowPart41:setMinScaledWidth(30);
-    obj.flowPart41:setMaxScaledWidth(50);
+    obj.flowPart42 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart42:setParent(obj.tabelaDeAtributos);
+    obj.flowPart42:setName("flowPart42");
+    obj.flowPart42:setHeight(50);
+    obj.flowPart42:setMinScaledWidth(30);
+    obj.flowPart42:setMaxScaledWidth(50);
 
     obj.image9 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image9:setParent(obj.flowPart41);
+    obj.image9:setParent(obj.flowPart42);
     obj.image9:setSRC("/imagens/plus.png");
     obj.image9:setHeight(15);
     obj.image9:setWidth(15);
@@ -1691,18 +1841,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image9:setTop(5);
     obj.image9:setName("image9");
 
-    obj.flowPart42 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart42:setParent(obj.tabelaDeAtributos);
-    obj.flowPart42:setHeight(50);
-    obj.flowPart42:setMinScaledWidth(30);
-    obj.flowPart42:setMinWidth(30);
-    obj.flowPart42:setMaxWidth(35);
-    obj.flowPart42:setMaxScaledWidth(35);
-    obj.flowPart42:setAvoidScale(true);
-    obj.flowPart42:setName("flowPart42");
+    obj.flowPart43 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart43:setParent(obj.tabelaDeAtributos);
+    obj.flowPart43:setHeight(50);
+    obj.flowPart43:setMinScaledWidth(30);
+    obj.flowPart43:setMinWidth(30);
+    obj.flowPart43:setMaxWidth(35);
+    obj.flowPart43:setMaxScaledWidth(35);
+    obj.flowPart43:setAvoidScale(true);
+    obj.flowPart43:setName("flowPart43");
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit26:setParent(obj.flowPart42);
+    obj.edit26:setParent(obj.flowPart43);
     obj.edit26:setAlign("top");
     obj.edit26:setField("forClasse");
     obj.edit26:setFontSize(15);
@@ -1715,27 +1865,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit26:setHeight(30);
     obj.edit26:setWidth(195);
 
-    obj.horzLine25 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine25:setParent(obj.flowPart42);
-    obj.horzLine25:setAlign("top");
-    obj.horzLine25:setStrokeColor("#FFFFFF50");
-    obj.horzLine25:setStrokeSize(1);
-    obj.horzLine25:setName("horzLine25");
+    obj.horzLine27 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine27:setParent(obj.flowPart43);
+    obj.horzLine27:setAlign("top");
+    obj.horzLine27:setStrokeColor("#FFFFFF50");
+    obj.horzLine27:setStrokeSize(1);
+    obj.horzLine27:setName("horzLine27");
 
     obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.tabelaDeAtributos);
     obj.dataLink16:setField("forClasse");
     obj.dataLink16:setName("dataLink16");
 
-    obj.flowPart43 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart43:setParent(obj.tabelaDeAtributos);
-    obj.flowPart43:setName("flowPart43");
-    obj.flowPart43:setHeight(50);
-    obj.flowPart43:setMinScaledWidth(30);
-    obj.flowPart43:setMaxScaledWidth(50);
+    obj.flowPart44 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart44:setParent(obj.tabelaDeAtributos);
+    obj.flowPart44:setName("flowPart44");
+    obj.flowPart44:setHeight(50);
+    obj.flowPart44:setMinScaledWidth(30);
+    obj.flowPart44:setMaxScaledWidth(50);
 
     obj.image10 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image10:setParent(obj.flowPart43);
+    obj.image10:setParent(obj.flowPart44);
     obj.image10:setSRC("/imagens/plus.png");
     obj.image10:setHeight(15);
     obj.image10:setWidth(15);
@@ -1743,18 +1893,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image10:setTop(5);
     obj.image10:setName("image10");
 
-    obj.flowPart44 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart44:setParent(obj.tabelaDeAtributos);
-    obj.flowPart44:setHeight(50);
-    obj.flowPart44:setMinScaledWidth(30);
-    obj.flowPart44:setMinWidth(30);
-    obj.flowPart44:setMaxWidth(35);
-    obj.flowPart44:setMaxScaledWidth(35);
-    obj.flowPart44:setAvoidScale(true);
-    obj.flowPart44:setName("flowPart44");
+    obj.flowPart45 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart45:setParent(obj.tabelaDeAtributos);
+    obj.flowPart45:setHeight(50);
+    obj.flowPart45:setMinScaledWidth(30);
+    obj.flowPart45:setMinWidth(30);
+    obj.flowPart45:setMaxWidth(35);
+    obj.flowPart45:setMaxScaledWidth(35);
+    obj.flowPart45:setAvoidScale(true);
+    obj.flowPart45:setName("flowPart45");
 
     obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit27:setParent(obj.flowPart44);
+    obj.edit27:setParent(obj.flowPart45);
     obj.edit27:setAlign("top");
     obj.edit27:setField("forRaca");
     obj.edit27:setFontSize(15);
@@ -1767,27 +1917,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit27:setHeight(30);
     obj.edit27:setWidth(195);
 
-    obj.horzLine26 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine26:setParent(obj.flowPart44);
-    obj.horzLine26:setAlign("top");
-    obj.horzLine26:setStrokeColor("#FFFFFF50");
-    obj.horzLine26:setStrokeSize(1);
-    obj.horzLine26:setName("horzLine26");
+    obj.horzLine28 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine28:setParent(obj.flowPart45);
+    obj.horzLine28:setAlign("top");
+    obj.horzLine28:setStrokeColor("#FFFFFF50");
+    obj.horzLine28:setStrokeSize(1);
+    obj.horzLine28:setName("horzLine28");
 
     obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.tabelaDeAtributos);
     obj.dataLink17:setField("forRaca");
     obj.dataLink17:setName("dataLink17");
 
-    obj.flowPart45 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart45:setParent(obj.tabelaDeAtributos);
-    obj.flowPart45:setName("flowPart45");
-    obj.flowPart45:setHeight(50);
-    obj.flowPart45:setMinScaledWidth(30);
-    obj.flowPart45:setMaxScaledWidth(50);
+    obj.flowPart46 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart46:setParent(obj.tabelaDeAtributos);
+    obj.flowPart46:setName("flowPart46");
+    obj.flowPart46:setHeight(50);
+    obj.flowPart46:setMinScaledWidth(30);
+    obj.flowPart46:setMaxScaledWidth(50);
 
     obj.image11 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image11:setParent(obj.flowPart45);
+    obj.image11:setParent(obj.flowPart46);
     obj.image11:setSRC("/imagens/plus.png");
     obj.image11:setHeight(15);
     obj.image11:setWidth(15);
@@ -1795,18 +1945,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image11:setTop(5);
     obj.image11:setName("image11");
 
-    obj.flowPart46 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart46:setParent(obj.tabelaDeAtributos);
-    obj.flowPart46:setHeight(50);
-    obj.flowPart46:setMinScaledWidth(30);
-    obj.flowPart46:setMinWidth(30);
-    obj.flowPart46:setMaxWidth(35);
-    obj.flowPart46:setMaxScaledWidth(35);
-    obj.flowPart46:setAvoidScale(true);
-    obj.flowPart46:setName("flowPart46");
+    obj.flowPart47 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart47:setParent(obj.tabelaDeAtributos);
+    obj.flowPart47:setHeight(50);
+    obj.flowPart47:setMinScaledWidth(30);
+    obj.flowPart47:setMinWidth(30);
+    obj.flowPart47:setMaxWidth(35);
+    obj.flowPart47:setMaxScaledWidth(35);
+    obj.flowPart47:setAvoidScale(true);
+    obj.flowPart47:setName("flowPart47");
 
     obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit28:setParent(obj.flowPart46);
+    obj.edit28:setParent(obj.flowPart47);
     obj.edit28:setAlign("top");
     obj.edit28:setField("forTreino");
     obj.edit28:setFontSize(15);
@@ -1819,27 +1969,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit28:setHeight(30);
     obj.edit28:setWidth(195);
 
-    obj.horzLine27 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine27:setParent(obj.flowPart46);
-    obj.horzLine27:setAlign("top");
-    obj.horzLine27:setStrokeColor("#FFFFFF50");
-    obj.horzLine27:setStrokeSize(1);
-    obj.horzLine27:setName("horzLine27");
+    obj.horzLine29 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine29:setParent(obj.flowPart47);
+    obj.horzLine29:setAlign("top");
+    obj.horzLine29:setStrokeColor("#FFFFFF50");
+    obj.horzLine29:setStrokeSize(1);
+    obj.horzLine29:setName("horzLine29");
 
     obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.tabelaDeAtributos);
     obj.dataLink18:setField("forTreino");
     obj.dataLink18:setName("dataLink18");
 
-    obj.flowPart47 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart47:setParent(obj.tabelaDeAtributos);
-    obj.flowPart47:setName("flowPart47");
-    obj.flowPart47:setHeight(50);
-    obj.flowPart47:setMinScaledWidth(30);
-    obj.flowPart47:setMaxScaledWidth(50);
+    obj.flowPart48 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart48:setParent(obj.tabelaDeAtributos);
+    obj.flowPart48:setName("flowPart48");
+    obj.flowPart48:setHeight(50);
+    obj.flowPart48:setMinScaledWidth(30);
+    obj.flowPart48:setMaxScaledWidth(50);
 
     obj.image12 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image12:setParent(obj.flowPart47);
+    obj.image12:setParent(obj.flowPart48);
     obj.image12:setSRC("/imagens/plus.png");
     obj.image12:setHeight(15);
     obj.image12:setWidth(15);
@@ -1847,18 +1997,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image12:setTop(5);
     obj.image12:setName("image12");
 
-    obj.flowPart48 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart48:setParent(obj.tabelaDeAtributos);
-    obj.flowPart48:setHeight(50);
-    obj.flowPart48:setMinScaledWidth(30);
-    obj.flowPart48:setMinWidth(30);
-    obj.flowPart48:setMaxWidth(35);
-    obj.flowPart48:setMaxScaledWidth(35);
-    obj.flowPart48:setAvoidScale(true);
-    obj.flowPart48:setName("flowPart48");
+    obj.flowPart49 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart49:setParent(obj.tabelaDeAtributos);
+    obj.flowPart49:setHeight(50);
+    obj.flowPart49:setMinScaledWidth(30);
+    obj.flowPart49:setMinWidth(30);
+    obj.flowPart49:setMaxWidth(35);
+    obj.flowPart49:setMaxScaledWidth(35);
+    obj.flowPart49:setAvoidScale(true);
+    obj.flowPart49:setName("flowPart49");
 
     obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit29:setParent(obj.flowPart48);
+    obj.edit29:setParent(obj.flowPart49);
     obj.edit29:setAlign("top");
     obj.edit29:setField("forOutros");
     obj.edit29:setFontSize(15);
@@ -1871,27 +2021,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit29:setHeight(30);
     obj.edit29:setWidth(195);
 
-    obj.horzLine28 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine28:setParent(obj.flowPart48);
-    obj.horzLine28:setAlign("top");
-    obj.horzLine28:setStrokeColor("#FFFFFF50");
-    obj.horzLine28:setStrokeSize(1);
-    obj.horzLine28:setName("horzLine28");
+    obj.horzLine30 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine30:setParent(obj.flowPart49);
+    obj.horzLine30:setAlign("top");
+    obj.horzLine30:setStrokeColor("#FFFFFF50");
+    obj.horzLine30:setStrokeSize(1);
+    obj.horzLine30:setName("horzLine30");
 
     obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink19:setParent(obj.tabelaDeAtributos);
     obj.dataLink19:setField("forOutros");
     obj.dataLink19:setName("dataLink19");
 
-    obj.flowPart49 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart49:setParent(obj.tabelaDeAtributos);
-    obj.flowPart49:setName("flowPart49");
-    obj.flowPart49:setHeight(50);
-    obj.flowPart49:setMinScaledWidth(30);
-    obj.flowPart49:setMaxScaledWidth(50);
+    obj.flowPart50 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart50:setParent(obj.tabelaDeAtributos);
+    obj.flowPart50:setName("flowPart50");
+    obj.flowPart50:setHeight(50);
+    obj.flowPart50:setMinScaledWidth(30);
+    obj.flowPart50:setMaxScaledWidth(50);
 
     obj.image13 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image13:setParent(obj.flowPart49);
+    obj.image13:setParent(obj.flowPart50);
     obj.image13:setSRC("/imagens/equals.png");
     obj.image13:setHeight(15);
     obj.image13:setWidth(15);
@@ -1899,18 +2049,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image13:setTop(5);
     obj.image13:setName("image13");
 
-    obj.flowPart50 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart50:setParent(obj.tabelaDeAtributos);
-    obj.flowPart50:setHeight(50);
-    obj.flowPart50:setMinScaledWidth(30);
-    obj.flowPart50:setMinWidth(30);
-    obj.flowPart50:setMaxWidth(35);
-    obj.flowPart50:setMaxScaledWidth(35);
-    obj.flowPart50:setAvoidScale(true);
-    obj.flowPart50:setName("flowPart50");
+    obj.flowPart51 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart51:setParent(obj.tabelaDeAtributos);
+    obj.flowPart51:setHeight(50);
+    obj.flowPart51:setMinScaledWidth(30);
+    obj.flowPart51:setMinWidth(30);
+    obj.flowPart51:setMaxWidth(35);
+    obj.flowPart51:setMaxScaledWidth(35);
+    obj.flowPart51:setAvoidScale(true);
+    obj.flowPart51:setName("flowPart51");
 
     obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit30:setParent(obj.flowPart50);
+    obj.edit30:setParent(obj.flowPart51);
     obj.edit30:setAlign("top");
     obj.edit30:setField("forBase");
     obj.edit30:setFontSize(15);
@@ -1923,27 +2073,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit30:setHeight(30);
     obj.edit30:setWidth(195);
 
-    obj.horzLine29 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine29:setParent(obj.flowPart50);
-    obj.horzLine29:setAlign("top");
-    obj.horzLine29:setStrokeColor("#FFFFFF50");
-    obj.horzLine29:setStrokeSize(1);
-    obj.horzLine29:setName("horzLine29");
+    obj.horzLine31 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine31:setParent(obj.flowPart51);
+    obj.horzLine31:setAlign("top");
+    obj.horzLine31:setStrokeColor("#FFFFFF50");
+    obj.horzLine31:setStrokeSize(1);
+    obj.horzLine31:setName("horzLine31");
 
     obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.tabelaDeAtributos);
     obj.dataLink20:setField("forBase");
     obj.dataLink20:setName("dataLink20");
 
-    obj.flowPart51 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart51:setParent(obj.tabelaDeAtributos);
-    obj.flowPart51:setName("flowPart51");
-    obj.flowPart51:setHeight(50);
-    obj.flowPart51:setMinScaledWidth(30);
-    obj.flowPart51:setMaxScaledWidth(50);
+    obj.flowPart52 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart52:setParent(obj.tabelaDeAtributos);
+    obj.flowPart52:setName("flowPart52");
+    obj.flowPart52:setHeight(50);
+    obj.flowPart52:setMinScaledWidth(30);
+    obj.flowPart52:setMaxScaledWidth(50);
 
     obj.image14 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image14:setParent(obj.flowPart51);
+    obj.image14:setParent(obj.flowPart52);
     obj.image14:setSRC("/imagens/plus.png");
     obj.image14:setHeight(15);
     obj.image14:setWidth(15);
@@ -1951,18 +2101,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image14:setTop(5);
     obj.image14:setName("image14");
 
-    obj.flowPart52 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart52:setParent(obj.tabelaDeAtributos);
-    obj.flowPart52:setHeight(50);
-    obj.flowPart52:setMinScaledWidth(30);
-    obj.flowPart52:setMinWidth(30);
-    obj.flowPart52:setMaxWidth(35);
-    obj.flowPart52:setMaxScaledWidth(35);
-    obj.flowPart52:setAvoidScale(true);
-    obj.flowPart52:setName("flowPart52");
+    obj.flowPart53 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart53:setParent(obj.tabelaDeAtributos);
+    obj.flowPart53:setHeight(50);
+    obj.flowPart53:setMinScaledWidth(30);
+    obj.flowPart53:setMinWidth(30);
+    obj.flowPart53:setMaxWidth(35);
+    obj.flowPart53:setMaxScaledWidth(35);
+    obj.flowPart53:setAvoidScale(true);
+    obj.flowPart53:setName("flowPart53");
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit31:setParent(obj.flowPart52);
+    obj.edit31:setParent(obj.flowPart53);
     obj.edit31:setAlign("top");
     obj.edit31:setField("forEquip");
     obj.edit31:setFontSize(15);
@@ -1975,27 +2125,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit31:setHeight(30);
     obj.edit31:setWidth(195);
 
-    obj.horzLine30 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine30:setParent(obj.flowPart52);
-    obj.horzLine30:setAlign("top");
-    obj.horzLine30:setStrokeColor("#FFFFFF50");
-    obj.horzLine30:setStrokeSize(1);
-    obj.horzLine30:setName("horzLine30");
+    obj.horzLine32 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine32:setParent(obj.flowPart53);
+    obj.horzLine32:setAlign("top");
+    obj.horzLine32:setStrokeColor("#FFFFFF50");
+    obj.horzLine32:setStrokeSize(1);
+    obj.horzLine32:setName("horzLine32");
 
     obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.tabelaDeAtributos);
     obj.dataLink21:setField("forEquip");
     obj.dataLink21:setName("dataLink21");
 
-    obj.flowPart53 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart53:setParent(obj.tabelaDeAtributos);
-    obj.flowPart53:setName("flowPart53");
-    obj.flowPart53:setHeight(50);
-    obj.flowPart53:setMinScaledWidth(30);
-    obj.flowPart53:setMaxScaledWidth(50);
+    obj.flowPart54 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart54:setParent(obj.tabelaDeAtributos);
+    obj.flowPart54:setName("flowPart54");
+    obj.flowPart54:setHeight(50);
+    obj.flowPart54:setMinScaledWidth(30);
+    obj.flowPart54:setMaxScaledWidth(50);
 
     obj.image15 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image15:setParent(obj.flowPart53);
+    obj.image15:setParent(obj.flowPart54);
     obj.image15:setSRC("/imagens/equals.png");
     obj.image15:setHeight(15);
     obj.image15:setWidth(15);
@@ -2003,18 +2153,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image15:setTop(5);
     obj.image15:setName("image15");
 
-    obj.flowPart54 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart54:setParent(obj.tabelaDeAtributos);
-    obj.flowPart54:setHeight(50);
-    obj.flowPart54:setMinScaledWidth(30);
-    obj.flowPart54:setMinWidth(30);
-    obj.flowPart54:setMaxWidth(35);
-    obj.flowPart54:setMaxScaledWidth(35);
-    obj.flowPart54:setAvoidScale(true);
-    obj.flowPart54:setName("flowPart54");
+    obj.flowPart55 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart55:setParent(obj.tabelaDeAtributos);
+    obj.flowPart55:setHeight(50);
+    obj.flowPart55:setMinScaledWidth(30);
+    obj.flowPart55:setMinWidth(30);
+    obj.flowPart55:setMaxWidth(35);
+    obj.flowPart55:setMaxScaledWidth(35);
+    obj.flowPart55:setAvoidScale(true);
+    obj.flowPart55:setName("flowPart55");
 
     obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit32:setParent(obj.flowPart54);
+    obj.edit32:setParent(obj.flowPart55);
     obj.edit32:setAlign("top");
     obj.edit32:setField("forTotal");
     obj.edit32:setFontSize(15);
@@ -2027,12 +2177,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit32:setHeight(30);
     obj.edit32:setWidth(195);
 
-    obj.horzLine31 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine31:setParent(obj.flowPart54);
-    obj.horzLine31:setAlign("top");
-    obj.horzLine31:setStrokeColor("#FFFFFF50");
-    obj.horzLine31:setStrokeSize(1);
-    obj.horzLine31:setName("horzLine31");
+    obj.horzLine33 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine33:setParent(obj.flowPart55);
+    obj.horzLine33:setAlign("top");
+    obj.horzLine33:setStrokeColor("#FFFFFF50");
+    obj.horzLine33:setStrokeSize(1);
+    obj.horzLine33:setName("horzLine33");
 
     obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.tabelaDeAtributos);
@@ -2045,35 +2195,35 @@ local function constructNew_frmFichaDePersonagem()
                            'forOutros', 'forBase', 'forEquip', 'forTotal'});
     obj.dataLink23:setName("dataLink23");
 
-    obj.flowPart55 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart55:setParent(obj.tabelaDeAtributos);
-    obj.flowPart55:setHeight(20);
-    obj.flowPart55:setMinScaledWidth(60);
-    obj.flowPart55:setMaxScaledWidth(85);
-    obj.flowPart55:setName("flowPart55");
-
-    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label38:setParent(obj.flowPart55);
-    obj.label38:setText("Destreza");
-    obj.label38:setAlign("client");
-    obj.label38:setField("");
-    obj.label38:setFontSize(8);
-    obj.label38:setVertTextAlign("center");
-    obj.label38:setHorzTextAlign("leading");
-    obj.label38:setName("label38");
-
     obj.flowPart56 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart56:setParent(obj.tabelaDeAtributos);
-    obj.flowPart56:setHeight(50);
-    obj.flowPart56:setMinScaledWidth(30);
-    obj.flowPart56:setMinWidth(30);
-    obj.flowPart56:setMaxWidth(35);
-    obj.flowPart56:setMaxScaledWidth(35);
-    obj.flowPart56:setAvoidScale(true);
+    obj.flowPart56:setHeight(20);
+    obj.flowPart56:setMinScaledWidth(60);
+    obj.flowPart56:setMaxScaledWidth(85);
     obj.flowPart56:setName("flowPart56");
 
+    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label42:setParent(obj.flowPart56);
+    obj.label42:setText("Destreza");
+    obj.label42:setAlign("client");
+    obj.label42:setField("");
+    obj.label42:setFontSize(8);
+    obj.label42:setVertTextAlign("center");
+    obj.label42:setHorzTextAlign("leading");
+    obj.label42:setName("label42");
+
+    obj.flowPart57 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart57:setParent(obj.tabelaDeAtributos);
+    obj.flowPart57:setHeight(50);
+    obj.flowPart57:setMinScaledWidth(30);
+    obj.flowPart57:setMinWidth(30);
+    obj.flowPart57:setMaxWidth(35);
+    obj.flowPart57:setMaxScaledWidth(35);
+    obj.flowPart57:setAvoidScale(true);
+    obj.flowPart57:setName("flowPart57");
+
     obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit33:setParent(obj.flowPart56);
+    obj.edit33:setParent(obj.flowPart57);
     obj.edit33:setAlign("top");
     obj.edit33:setField("dexNivel");
     obj.edit33:setFontSize(15);
@@ -2086,27 +2236,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit33:setHeight(30);
     obj.edit33:setWidth(195);
 
-    obj.horzLine32 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine32:setParent(obj.flowPart56);
-    obj.horzLine32:setAlign("top");
-    obj.horzLine32:setStrokeColor("#FFFFFF50");
-    obj.horzLine32:setStrokeSize(1);
-    obj.horzLine32:setName("horzLine32");
+    obj.horzLine34 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine34:setParent(obj.flowPart57);
+    obj.horzLine34:setAlign("top");
+    obj.horzLine34:setStrokeColor("#FFFFFF50");
+    obj.horzLine34:setStrokeSize(1);
+    obj.horzLine34:setName("horzLine34");
 
     obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.tabelaDeAtributos);
     obj.dataLink24:setField("dexNivel");
     obj.dataLink24:setName("dataLink24");
 
-    obj.flowPart57 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart57:setParent(obj.tabelaDeAtributos);
-    obj.flowPart57:setName("flowPart57");
-    obj.flowPart57:setHeight(50);
-    obj.flowPart57:setMinScaledWidth(30);
-    obj.flowPart57:setMaxScaledWidth(50);
+    obj.flowPart58 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart58:setParent(obj.tabelaDeAtributos);
+    obj.flowPart58:setName("flowPart58");
+    obj.flowPart58:setHeight(50);
+    obj.flowPart58:setMinScaledWidth(30);
+    obj.flowPart58:setMaxScaledWidth(50);
 
     obj.image16 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image16:setParent(obj.flowPart57);
+    obj.image16:setParent(obj.flowPart58);
     obj.image16:setSRC("/imagens/plus.png");
     obj.image16:setHeight(15);
     obj.image16:setWidth(15);
@@ -2114,18 +2264,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image16:setTop(5);
     obj.image16:setName("image16");
 
-    obj.flowPart58 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart58:setParent(obj.tabelaDeAtributos);
-    obj.flowPart58:setHeight(50);
-    obj.flowPart58:setMinScaledWidth(30);
-    obj.flowPart58:setMinWidth(30);
-    obj.flowPart58:setMaxWidth(35);
-    obj.flowPart58:setMaxScaledWidth(35);
-    obj.flowPart58:setAvoidScale(true);
-    obj.flowPart58:setName("flowPart58");
+    obj.flowPart59 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart59:setParent(obj.tabelaDeAtributos);
+    obj.flowPart59:setHeight(50);
+    obj.flowPart59:setMinScaledWidth(30);
+    obj.flowPart59:setMinWidth(30);
+    obj.flowPart59:setMaxWidth(35);
+    obj.flowPart59:setMaxScaledWidth(35);
+    obj.flowPart59:setAvoidScale(true);
+    obj.flowPart59:setName("flowPart59");
 
     obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit34:setParent(obj.flowPart58);
+    obj.edit34:setParent(obj.flowPart59);
     obj.edit34:setAlign("top");
     obj.edit34:setField("dexClasse");
     obj.edit34:setFontSize(15);
@@ -2138,27 +2288,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit34:setHeight(30);
     obj.edit34:setWidth(195);
 
-    obj.horzLine33 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine33:setParent(obj.flowPart58);
-    obj.horzLine33:setAlign("top");
-    obj.horzLine33:setStrokeColor("#FFFFFF50");
-    obj.horzLine33:setStrokeSize(1);
-    obj.horzLine33:setName("horzLine33");
+    obj.horzLine35 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine35:setParent(obj.flowPart59);
+    obj.horzLine35:setAlign("top");
+    obj.horzLine35:setStrokeColor("#FFFFFF50");
+    obj.horzLine35:setStrokeSize(1);
+    obj.horzLine35:setName("horzLine35");
 
     obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink25:setParent(obj.tabelaDeAtributos);
     obj.dataLink25:setField("dexClasse");
     obj.dataLink25:setName("dataLink25");
 
-    obj.flowPart59 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart59:setParent(obj.tabelaDeAtributos);
-    obj.flowPart59:setName("flowPart59");
-    obj.flowPart59:setHeight(50);
-    obj.flowPart59:setMinScaledWidth(30);
-    obj.flowPart59:setMaxScaledWidth(50);
+    obj.flowPart60 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart60:setParent(obj.tabelaDeAtributos);
+    obj.flowPart60:setName("flowPart60");
+    obj.flowPart60:setHeight(50);
+    obj.flowPart60:setMinScaledWidth(30);
+    obj.flowPart60:setMaxScaledWidth(50);
 
     obj.image17 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image17:setParent(obj.flowPart59);
+    obj.image17:setParent(obj.flowPart60);
     obj.image17:setSRC("/imagens/plus.png");
     obj.image17:setHeight(15);
     obj.image17:setWidth(15);
@@ -2166,18 +2316,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image17:setTop(5);
     obj.image17:setName("image17");
 
-    obj.flowPart60 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart60:setParent(obj.tabelaDeAtributos);
-    obj.flowPart60:setHeight(50);
-    obj.flowPart60:setMinScaledWidth(30);
-    obj.flowPart60:setMinWidth(30);
-    obj.flowPart60:setMaxWidth(35);
-    obj.flowPart60:setMaxScaledWidth(35);
-    obj.flowPart60:setAvoidScale(true);
-    obj.flowPart60:setName("flowPart60");
+    obj.flowPart61 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart61:setParent(obj.tabelaDeAtributos);
+    obj.flowPart61:setHeight(50);
+    obj.flowPart61:setMinScaledWidth(30);
+    obj.flowPart61:setMinWidth(30);
+    obj.flowPart61:setMaxWidth(35);
+    obj.flowPart61:setMaxScaledWidth(35);
+    obj.flowPart61:setAvoidScale(true);
+    obj.flowPart61:setName("flowPart61");
 
     obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit35:setParent(obj.flowPart60);
+    obj.edit35:setParent(obj.flowPart61);
     obj.edit35:setAlign("top");
     obj.edit35:setField("dexRaca");
     obj.edit35:setFontSize(15);
@@ -2190,27 +2340,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit35:setHeight(30);
     obj.edit35:setWidth(195);
 
-    obj.horzLine34 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine34:setParent(obj.flowPart60);
-    obj.horzLine34:setAlign("top");
-    obj.horzLine34:setStrokeColor("#FFFFFF50");
-    obj.horzLine34:setStrokeSize(1);
-    obj.horzLine34:setName("horzLine34");
+    obj.horzLine36 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine36:setParent(obj.flowPart61);
+    obj.horzLine36:setAlign("top");
+    obj.horzLine36:setStrokeColor("#FFFFFF50");
+    obj.horzLine36:setStrokeSize(1);
+    obj.horzLine36:setName("horzLine36");
 
     obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink26:setParent(obj.tabelaDeAtributos);
     obj.dataLink26:setField("dexRaca");
     obj.dataLink26:setName("dataLink26");
 
-    obj.flowPart61 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart61:setParent(obj.tabelaDeAtributos);
-    obj.flowPart61:setName("flowPart61");
-    obj.flowPart61:setHeight(50);
-    obj.flowPart61:setMinScaledWidth(30);
-    obj.flowPart61:setMaxScaledWidth(50);
+    obj.flowPart62 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart62:setParent(obj.tabelaDeAtributos);
+    obj.flowPart62:setName("flowPart62");
+    obj.flowPart62:setHeight(50);
+    obj.flowPart62:setMinScaledWidth(30);
+    obj.flowPart62:setMaxScaledWidth(50);
 
     obj.image18 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image18:setParent(obj.flowPart61);
+    obj.image18:setParent(obj.flowPart62);
     obj.image18:setSRC("/imagens/plus.png");
     obj.image18:setHeight(15);
     obj.image18:setWidth(15);
@@ -2218,18 +2368,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image18:setTop(5);
     obj.image18:setName("image18");
 
-    obj.flowPart62 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart62:setParent(obj.tabelaDeAtributos);
-    obj.flowPart62:setHeight(50);
-    obj.flowPart62:setMinScaledWidth(30);
-    obj.flowPart62:setMinWidth(30);
-    obj.flowPart62:setMaxWidth(35);
-    obj.flowPart62:setMaxScaledWidth(35);
-    obj.flowPart62:setAvoidScale(true);
-    obj.flowPart62:setName("flowPart62");
+    obj.flowPart63 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart63:setParent(obj.tabelaDeAtributos);
+    obj.flowPart63:setHeight(50);
+    obj.flowPart63:setMinScaledWidth(30);
+    obj.flowPart63:setMinWidth(30);
+    obj.flowPart63:setMaxWidth(35);
+    obj.flowPart63:setMaxScaledWidth(35);
+    obj.flowPart63:setAvoidScale(true);
+    obj.flowPart63:setName("flowPart63");
 
     obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit36:setParent(obj.flowPart62);
+    obj.edit36:setParent(obj.flowPart63);
     obj.edit36:setAlign("top");
     obj.edit36:setField("dexTreino");
     obj.edit36:setFontSize(15);
@@ -2242,27 +2392,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit36:setHeight(30);
     obj.edit36:setWidth(195);
 
-    obj.horzLine35 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine35:setParent(obj.flowPart62);
-    obj.horzLine35:setAlign("top");
-    obj.horzLine35:setStrokeColor("#FFFFFF50");
-    obj.horzLine35:setStrokeSize(1);
-    obj.horzLine35:setName("horzLine35");
+    obj.horzLine37 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine37:setParent(obj.flowPart63);
+    obj.horzLine37:setAlign("top");
+    obj.horzLine37:setStrokeColor("#FFFFFF50");
+    obj.horzLine37:setStrokeSize(1);
+    obj.horzLine37:setName("horzLine37");
 
     obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink27:setParent(obj.tabelaDeAtributos);
     obj.dataLink27:setField("dexTreino");
     obj.dataLink27:setName("dataLink27");
 
-    obj.flowPart63 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart63:setParent(obj.tabelaDeAtributos);
-    obj.flowPart63:setName("flowPart63");
-    obj.flowPart63:setHeight(50);
-    obj.flowPart63:setMinScaledWidth(30);
-    obj.flowPart63:setMaxScaledWidth(50);
+    obj.flowPart64 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart64:setParent(obj.tabelaDeAtributos);
+    obj.flowPart64:setName("flowPart64");
+    obj.flowPart64:setHeight(50);
+    obj.flowPart64:setMinScaledWidth(30);
+    obj.flowPart64:setMaxScaledWidth(50);
 
     obj.image19 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image19:setParent(obj.flowPart63);
+    obj.image19:setParent(obj.flowPart64);
     obj.image19:setSRC("/imagens/plus.png");
     obj.image19:setHeight(15);
     obj.image19:setWidth(15);
@@ -2270,18 +2420,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image19:setTop(5);
     obj.image19:setName("image19");
 
-    obj.flowPart64 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart64:setParent(obj.tabelaDeAtributos);
-    obj.flowPart64:setHeight(50);
-    obj.flowPart64:setMinScaledWidth(30);
-    obj.flowPart64:setMinWidth(30);
-    obj.flowPart64:setMaxWidth(35);
-    obj.flowPart64:setMaxScaledWidth(35);
-    obj.flowPart64:setAvoidScale(true);
-    obj.flowPart64:setName("flowPart64");
+    obj.flowPart65 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart65:setParent(obj.tabelaDeAtributos);
+    obj.flowPart65:setHeight(50);
+    obj.flowPart65:setMinScaledWidth(30);
+    obj.flowPart65:setMinWidth(30);
+    obj.flowPart65:setMaxWidth(35);
+    obj.flowPart65:setMaxScaledWidth(35);
+    obj.flowPart65:setAvoidScale(true);
+    obj.flowPart65:setName("flowPart65");
 
     obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit37:setParent(obj.flowPart64);
+    obj.edit37:setParent(obj.flowPart65);
     obj.edit37:setAlign("top");
     obj.edit37:setField("dexOutros");
     obj.edit37:setFontSize(15);
@@ -2294,27 +2444,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit37:setHeight(30);
     obj.edit37:setWidth(195);
 
-    obj.horzLine36 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine36:setParent(obj.flowPart64);
-    obj.horzLine36:setAlign("top");
-    obj.horzLine36:setStrokeColor("#FFFFFF50");
-    obj.horzLine36:setStrokeSize(1);
-    obj.horzLine36:setName("horzLine36");
+    obj.horzLine38 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine38:setParent(obj.flowPart65);
+    obj.horzLine38:setAlign("top");
+    obj.horzLine38:setStrokeColor("#FFFFFF50");
+    obj.horzLine38:setStrokeSize(1);
+    obj.horzLine38:setName("horzLine38");
 
     obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink28:setParent(obj.tabelaDeAtributos);
     obj.dataLink28:setField("dexOutros");
     obj.dataLink28:setName("dataLink28");
 
-    obj.flowPart65 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart65:setParent(obj.tabelaDeAtributos);
-    obj.flowPart65:setName("flowPart65");
-    obj.flowPart65:setHeight(50);
-    obj.flowPart65:setMinScaledWidth(30);
-    obj.flowPart65:setMaxScaledWidth(50);
+    obj.flowPart66 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart66:setParent(obj.tabelaDeAtributos);
+    obj.flowPart66:setName("flowPart66");
+    obj.flowPart66:setHeight(50);
+    obj.flowPart66:setMinScaledWidth(30);
+    obj.flowPart66:setMaxScaledWidth(50);
 
     obj.image20 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image20:setParent(obj.flowPart65);
+    obj.image20:setParent(obj.flowPart66);
     obj.image20:setSRC("/imagens/equals.png");
     obj.image20:setHeight(15);
     obj.image20:setWidth(15);
@@ -2322,18 +2472,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image20:setTop(5);
     obj.image20:setName("image20");
 
-    obj.flowPart66 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart66:setParent(obj.tabelaDeAtributos);
-    obj.flowPart66:setHeight(50);
-    obj.flowPart66:setMinScaledWidth(30);
-    obj.flowPart66:setMinWidth(30);
-    obj.flowPart66:setMaxWidth(35);
-    obj.flowPart66:setMaxScaledWidth(35);
-    obj.flowPart66:setAvoidScale(true);
-    obj.flowPart66:setName("flowPart66");
+    obj.flowPart67 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart67:setParent(obj.tabelaDeAtributos);
+    obj.flowPart67:setHeight(50);
+    obj.flowPart67:setMinScaledWidth(30);
+    obj.flowPart67:setMinWidth(30);
+    obj.flowPart67:setMaxWidth(35);
+    obj.flowPart67:setMaxScaledWidth(35);
+    obj.flowPart67:setAvoidScale(true);
+    obj.flowPart67:setName("flowPart67");
 
     obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit38:setParent(obj.flowPart66);
+    obj.edit38:setParent(obj.flowPart67);
     obj.edit38:setAlign("top");
     obj.edit38:setField("dexBase");
     obj.edit38:setFontSize(15);
@@ -2346,27 +2496,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit38:setHeight(30);
     obj.edit38:setWidth(195);
 
-    obj.horzLine37 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine37:setParent(obj.flowPart66);
-    obj.horzLine37:setAlign("top");
-    obj.horzLine37:setStrokeColor("#FFFFFF50");
-    obj.horzLine37:setStrokeSize(1);
-    obj.horzLine37:setName("horzLine37");
+    obj.horzLine39 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine39:setParent(obj.flowPart67);
+    obj.horzLine39:setAlign("top");
+    obj.horzLine39:setStrokeColor("#FFFFFF50");
+    obj.horzLine39:setStrokeSize(1);
+    obj.horzLine39:setName("horzLine39");
 
     obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink29:setParent(obj.tabelaDeAtributos);
     obj.dataLink29:setField("dexBase");
     obj.dataLink29:setName("dataLink29");
 
-    obj.flowPart67 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart67:setParent(obj.tabelaDeAtributos);
-    obj.flowPart67:setName("flowPart67");
-    obj.flowPart67:setHeight(50);
-    obj.flowPart67:setMinScaledWidth(30);
-    obj.flowPart67:setMaxScaledWidth(50);
+    obj.flowPart68 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart68:setParent(obj.tabelaDeAtributos);
+    obj.flowPart68:setName("flowPart68");
+    obj.flowPart68:setHeight(50);
+    obj.flowPart68:setMinScaledWidth(30);
+    obj.flowPart68:setMaxScaledWidth(50);
 
     obj.image21 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image21:setParent(obj.flowPart67);
+    obj.image21:setParent(obj.flowPart68);
     obj.image21:setSRC("/imagens/plus.png");
     obj.image21:setHeight(15);
     obj.image21:setWidth(15);
@@ -2374,18 +2524,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image21:setTop(5);
     obj.image21:setName("image21");
 
-    obj.flowPart68 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart68:setParent(obj.tabelaDeAtributos);
-    obj.flowPart68:setHeight(50);
-    obj.flowPart68:setMinScaledWidth(30);
-    obj.flowPart68:setMinWidth(30);
-    obj.flowPart68:setMaxWidth(35);
-    obj.flowPart68:setMaxScaledWidth(35);
-    obj.flowPart68:setAvoidScale(true);
-    obj.flowPart68:setName("flowPart68");
+    obj.flowPart69 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart69:setParent(obj.tabelaDeAtributos);
+    obj.flowPart69:setHeight(50);
+    obj.flowPart69:setMinScaledWidth(30);
+    obj.flowPart69:setMinWidth(30);
+    obj.flowPart69:setMaxWidth(35);
+    obj.flowPart69:setMaxScaledWidth(35);
+    obj.flowPart69:setAvoidScale(true);
+    obj.flowPart69:setName("flowPart69");
 
     obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit39:setParent(obj.flowPart68);
+    obj.edit39:setParent(obj.flowPart69);
     obj.edit39:setAlign("top");
     obj.edit39:setField("dexEquip");
     obj.edit39:setFontSize(15);
@@ -2398,27 +2548,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit39:setHeight(30);
     obj.edit39:setWidth(195);
 
-    obj.horzLine38 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine38:setParent(obj.flowPart68);
-    obj.horzLine38:setAlign("top");
-    obj.horzLine38:setStrokeColor("#FFFFFF50");
-    obj.horzLine38:setStrokeSize(1);
-    obj.horzLine38:setName("horzLine38");
+    obj.horzLine40 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine40:setParent(obj.flowPart69);
+    obj.horzLine40:setAlign("top");
+    obj.horzLine40:setStrokeColor("#FFFFFF50");
+    obj.horzLine40:setStrokeSize(1);
+    obj.horzLine40:setName("horzLine40");
 
     obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink30:setParent(obj.tabelaDeAtributos);
     obj.dataLink30:setField("dexEquip");
     obj.dataLink30:setName("dataLink30");
 
-    obj.flowPart69 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart69:setParent(obj.tabelaDeAtributos);
-    obj.flowPart69:setName("flowPart69");
-    obj.flowPart69:setHeight(50);
-    obj.flowPart69:setMinScaledWidth(30);
-    obj.flowPart69:setMaxScaledWidth(50);
+    obj.flowPart70 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart70:setParent(obj.tabelaDeAtributos);
+    obj.flowPart70:setName("flowPart70");
+    obj.flowPart70:setHeight(50);
+    obj.flowPart70:setMinScaledWidth(30);
+    obj.flowPart70:setMaxScaledWidth(50);
 
     obj.image22 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image22:setParent(obj.flowPart69);
+    obj.image22:setParent(obj.flowPart70);
     obj.image22:setSRC("/imagens/equals.png");
     obj.image22:setHeight(15);
     obj.image22:setWidth(15);
@@ -2426,18 +2576,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image22:setTop(5);
     obj.image22:setName("image22");
 
-    obj.flowPart70 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart70:setParent(obj.tabelaDeAtributos);
-    obj.flowPart70:setHeight(50);
-    obj.flowPart70:setMinScaledWidth(30);
-    obj.flowPart70:setMinWidth(30);
-    obj.flowPart70:setMaxWidth(35);
-    obj.flowPart70:setMaxScaledWidth(35);
-    obj.flowPart70:setAvoidScale(true);
-    obj.flowPart70:setName("flowPart70");
+    obj.flowPart71 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart71:setParent(obj.tabelaDeAtributos);
+    obj.flowPart71:setHeight(50);
+    obj.flowPart71:setMinScaledWidth(30);
+    obj.flowPart71:setMinWidth(30);
+    obj.flowPart71:setMaxWidth(35);
+    obj.flowPart71:setMaxScaledWidth(35);
+    obj.flowPart71:setAvoidScale(true);
+    obj.flowPart71:setName("flowPart71");
 
     obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit40:setParent(obj.flowPart70);
+    obj.edit40:setParent(obj.flowPart71);
     obj.edit40:setAlign("top");
     obj.edit40:setField("dexTotal");
     obj.edit40:setFontSize(15);
@@ -2450,12 +2600,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit40:setHeight(30);
     obj.edit40:setWidth(195);
 
-    obj.horzLine39 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine39:setParent(obj.flowPart70);
-    obj.horzLine39:setAlign("top");
-    obj.horzLine39:setStrokeColor("#FFFFFF50");
-    obj.horzLine39:setStrokeSize(1);
-    obj.horzLine39:setName("horzLine39");
+    obj.horzLine41 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine41:setParent(obj.flowPart71);
+    obj.horzLine41:setAlign("top");
+    obj.horzLine41:setStrokeColor("#FFFFFF50");
+    obj.horzLine41:setStrokeSize(1);
+    obj.horzLine41:setName("horzLine41");
 
     obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.tabelaDeAtributos);
@@ -2468,35 +2618,35 @@ local function constructNew_frmFichaDePersonagem()
                            'dexOutros', 'dexBase', 'dexEquip', 'dexTotal'});
     obj.dataLink32:setName("dataLink32");
 
-    obj.flowPart71 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart71:setParent(obj.tabelaDeAtributos);
-    obj.flowPart71:setHeight(20);
-    obj.flowPart71:setMinScaledWidth(60);
-    obj.flowPart71:setMaxScaledWidth(85);
-    obj.flowPart71:setName("flowPart71");
-
-    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label39:setParent(obj.flowPart71);
-    obj.label39:setText("Carisma");
-    obj.label39:setAlign("client");
-    obj.label39:setField("");
-    obj.label39:setFontSize(8);
-    obj.label39:setVertTextAlign("center");
-    obj.label39:setHorzTextAlign("leading");
-    obj.label39:setName("label39");
-
     obj.flowPart72 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart72:setParent(obj.tabelaDeAtributos);
-    obj.flowPart72:setHeight(50);
-    obj.flowPart72:setMinScaledWidth(30);
-    obj.flowPart72:setMinWidth(30);
-    obj.flowPart72:setMaxWidth(35);
-    obj.flowPart72:setMaxScaledWidth(35);
-    obj.flowPart72:setAvoidScale(true);
+    obj.flowPart72:setHeight(20);
+    obj.flowPart72:setMinScaledWidth(60);
+    obj.flowPart72:setMaxScaledWidth(85);
     obj.flowPart72:setName("flowPart72");
 
+    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label43:setParent(obj.flowPart72);
+    obj.label43:setText("Carisma");
+    obj.label43:setAlign("client");
+    obj.label43:setField("");
+    obj.label43:setFontSize(8);
+    obj.label43:setVertTextAlign("center");
+    obj.label43:setHorzTextAlign("leading");
+    obj.label43:setName("label43");
+
+    obj.flowPart73 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart73:setParent(obj.tabelaDeAtributos);
+    obj.flowPart73:setHeight(50);
+    obj.flowPart73:setMinScaledWidth(30);
+    obj.flowPart73:setMinWidth(30);
+    obj.flowPart73:setMaxWidth(35);
+    obj.flowPart73:setMaxScaledWidth(35);
+    obj.flowPart73:setAvoidScale(true);
+    obj.flowPart73:setName("flowPart73");
+
     obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit41:setParent(obj.flowPart72);
+    obj.edit41:setParent(obj.flowPart73);
     obj.edit41:setAlign("top");
     obj.edit41:setField("carNivel");
     obj.edit41:setFontSize(15);
@@ -2509,27 +2659,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit41:setHeight(30);
     obj.edit41:setWidth(195);
 
-    obj.horzLine40 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine40:setParent(obj.flowPart72);
-    obj.horzLine40:setAlign("top");
-    obj.horzLine40:setStrokeColor("#FFFFFF50");
-    obj.horzLine40:setStrokeSize(1);
-    obj.horzLine40:setName("horzLine40");
+    obj.horzLine42 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine42:setParent(obj.flowPart73);
+    obj.horzLine42:setAlign("top");
+    obj.horzLine42:setStrokeColor("#FFFFFF50");
+    obj.horzLine42:setStrokeSize(1);
+    obj.horzLine42:setName("horzLine42");
 
     obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink33:setParent(obj.tabelaDeAtributos);
     obj.dataLink33:setField("carNivel");
     obj.dataLink33:setName("dataLink33");
 
-    obj.flowPart73 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart73:setParent(obj.tabelaDeAtributos);
-    obj.flowPart73:setName("flowPart73");
-    obj.flowPart73:setHeight(50);
-    obj.flowPart73:setMinScaledWidth(30);
-    obj.flowPart73:setMaxScaledWidth(50);
+    obj.flowPart74 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart74:setParent(obj.tabelaDeAtributos);
+    obj.flowPart74:setName("flowPart74");
+    obj.flowPart74:setHeight(50);
+    obj.flowPart74:setMinScaledWidth(30);
+    obj.flowPart74:setMaxScaledWidth(50);
 
     obj.image23 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image23:setParent(obj.flowPart73);
+    obj.image23:setParent(obj.flowPart74);
     obj.image23:setSRC("/imagens/plus.png");
     obj.image23:setHeight(15);
     obj.image23:setWidth(15);
@@ -2537,18 +2687,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image23:setTop(5);
     obj.image23:setName("image23");
 
-    obj.flowPart74 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart74:setParent(obj.tabelaDeAtributos);
-    obj.flowPart74:setHeight(50);
-    obj.flowPart74:setMinScaledWidth(30);
-    obj.flowPart74:setMinWidth(30);
-    obj.flowPart74:setMaxWidth(35);
-    obj.flowPart74:setMaxScaledWidth(35);
-    obj.flowPart74:setAvoidScale(true);
-    obj.flowPart74:setName("flowPart74");
+    obj.flowPart75 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart75:setParent(obj.tabelaDeAtributos);
+    obj.flowPart75:setHeight(50);
+    obj.flowPart75:setMinScaledWidth(30);
+    obj.flowPart75:setMinWidth(30);
+    obj.flowPart75:setMaxWidth(35);
+    obj.flowPart75:setMaxScaledWidth(35);
+    obj.flowPart75:setAvoidScale(true);
+    obj.flowPart75:setName("flowPart75");
 
     obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit42:setParent(obj.flowPart74);
+    obj.edit42:setParent(obj.flowPart75);
     obj.edit42:setAlign("top");
     obj.edit42:setField("carClasse");
     obj.edit42:setFontSize(15);
@@ -2561,27 +2711,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit42:setHeight(30);
     obj.edit42:setWidth(195);
 
-    obj.horzLine41 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine41:setParent(obj.flowPart74);
-    obj.horzLine41:setAlign("top");
-    obj.horzLine41:setStrokeColor("#FFFFFF50");
-    obj.horzLine41:setStrokeSize(1);
-    obj.horzLine41:setName("horzLine41");
+    obj.horzLine43 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine43:setParent(obj.flowPart75);
+    obj.horzLine43:setAlign("top");
+    obj.horzLine43:setStrokeColor("#FFFFFF50");
+    obj.horzLine43:setStrokeSize(1);
+    obj.horzLine43:setName("horzLine43");
 
     obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink34:setParent(obj.tabelaDeAtributos);
     obj.dataLink34:setField("carClasse");
     obj.dataLink34:setName("dataLink34");
 
-    obj.flowPart75 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart75:setParent(obj.tabelaDeAtributos);
-    obj.flowPart75:setName("flowPart75");
-    obj.flowPart75:setHeight(50);
-    obj.flowPart75:setMinScaledWidth(30);
-    obj.flowPart75:setMaxScaledWidth(50);
+    obj.flowPart76 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart76:setParent(obj.tabelaDeAtributos);
+    obj.flowPart76:setName("flowPart76");
+    obj.flowPart76:setHeight(50);
+    obj.flowPart76:setMinScaledWidth(30);
+    obj.flowPart76:setMaxScaledWidth(50);
 
     obj.image24 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image24:setParent(obj.flowPart75);
+    obj.image24:setParent(obj.flowPart76);
     obj.image24:setSRC("/imagens/plus.png");
     obj.image24:setHeight(15);
     obj.image24:setWidth(15);
@@ -2589,18 +2739,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image24:setTop(5);
     obj.image24:setName("image24");
 
-    obj.flowPart76 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart76:setParent(obj.tabelaDeAtributos);
-    obj.flowPart76:setHeight(50);
-    obj.flowPart76:setMinScaledWidth(30);
-    obj.flowPart76:setMinWidth(30);
-    obj.flowPart76:setMaxWidth(35);
-    obj.flowPart76:setMaxScaledWidth(35);
-    obj.flowPart76:setAvoidScale(true);
-    obj.flowPart76:setName("flowPart76");
+    obj.flowPart77 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart77:setParent(obj.tabelaDeAtributos);
+    obj.flowPart77:setHeight(50);
+    obj.flowPart77:setMinScaledWidth(30);
+    obj.flowPart77:setMinWidth(30);
+    obj.flowPart77:setMaxWidth(35);
+    obj.flowPart77:setMaxScaledWidth(35);
+    obj.flowPart77:setAvoidScale(true);
+    obj.flowPart77:setName("flowPart77");
 
     obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit43:setParent(obj.flowPart76);
+    obj.edit43:setParent(obj.flowPart77);
     obj.edit43:setAlign("top");
     obj.edit43:setField("carRaca");
     obj.edit43:setFontSize(15);
@@ -2613,27 +2763,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit43:setHeight(30);
     obj.edit43:setWidth(195);
 
-    obj.horzLine42 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine42:setParent(obj.flowPart76);
-    obj.horzLine42:setAlign("top");
-    obj.horzLine42:setStrokeColor("#FFFFFF50");
-    obj.horzLine42:setStrokeSize(1);
-    obj.horzLine42:setName("horzLine42");
+    obj.horzLine44 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine44:setParent(obj.flowPart77);
+    obj.horzLine44:setAlign("top");
+    obj.horzLine44:setStrokeColor("#FFFFFF50");
+    obj.horzLine44:setStrokeSize(1);
+    obj.horzLine44:setName("horzLine44");
 
     obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink35:setParent(obj.tabelaDeAtributos);
     obj.dataLink35:setField("carRaca");
     obj.dataLink35:setName("dataLink35");
 
-    obj.flowPart77 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart77:setParent(obj.tabelaDeAtributos);
-    obj.flowPart77:setName("flowPart77");
-    obj.flowPart77:setHeight(50);
-    obj.flowPart77:setMinScaledWidth(30);
-    obj.flowPart77:setMaxScaledWidth(50);
+    obj.flowPart78 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart78:setParent(obj.tabelaDeAtributos);
+    obj.flowPart78:setName("flowPart78");
+    obj.flowPart78:setHeight(50);
+    obj.flowPart78:setMinScaledWidth(30);
+    obj.flowPart78:setMaxScaledWidth(50);
 
     obj.image25 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image25:setParent(obj.flowPart77);
+    obj.image25:setParent(obj.flowPart78);
     obj.image25:setSRC("/imagens/plus.png");
     obj.image25:setHeight(15);
     obj.image25:setWidth(15);
@@ -2641,18 +2791,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image25:setTop(5);
     obj.image25:setName("image25");
 
-    obj.flowPart78 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart78:setParent(obj.tabelaDeAtributos);
-    obj.flowPart78:setHeight(50);
-    obj.flowPart78:setMinScaledWidth(30);
-    obj.flowPart78:setMinWidth(30);
-    obj.flowPart78:setMaxWidth(35);
-    obj.flowPart78:setMaxScaledWidth(35);
-    obj.flowPart78:setAvoidScale(true);
-    obj.flowPart78:setName("flowPart78");
+    obj.flowPart79 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart79:setParent(obj.tabelaDeAtributos);
+    obj.flowPart79:setHeight(50);
+    obj.flowPart79:setMinScaledWidth(30);
+    obj.flowPart79:setMinWidth(30);
+    obj.flowPart79:setMaxWidth(35);
+    obj.flowPart79:setMaxScaledWidth(35);
+    obj.flowPart79:setAvoidScale(true);
+    obj.flowPart79:setName("flowPart79");
 
     obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit44:setParent(obj.flowPart78);
+    obj.edit44:setParent(obj.flowPart79);
     obj.edit44:setAlign("top");
     obj.edit44:setField("carTreino");
     obj.edit44:setFontSize(15);
@@ -2665,27 +2815,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit44:setHeight(30);
     obj.edit44:setWidth(195);
 
-    obj.horzLine43 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine43:setParent(obj.flowPart78);
-    obj.horzLine43:setAlign("top");
-    obj.horzLine43:setStrokeColor("#FFFFFF50");
-    obj.horzLine43:setStrokeSize(1);
-    obj.horzLine43:setName("horzLine43");
+    obj.horzLine45 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine45:setParent(obj.flowPart79);
+    obj.horzLine45:setAlign("top");
+    obj.horzLine45:setStrokeColor("#FFFFFF50");
+    obj.horzLine45:setStrokeSize(1);
+    obj.horzLine45:setName("horzLine45");
 
     obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink36:setParent(obj.tabelaDeAtributos);
     obj.dataLink36:setField("carTreino");
     obj.dataLink36:setName("dataLink36");
 
-    obj.flowPart79 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart79:setParent(obj.tabelaDeAtributos);
-    obj.flowPart79:setName("flowPart79");
-    obj.flowPart79:setHeight(50);
-    obj.flowPart79:setMinScaledWidth(30);
-    obj.flowPart79:setMaxScaledWidth(50);
+    obj.flowPart80 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart80:setParent(obj.tabelaDeAtributos);
+    obj.flowPart80:setName("flowPart80");
+    obj.flowPart80:setHeight(50);
+    obj.flowPart80:setMinScaledWidth(30);
+    obj.flowPart80:setMaxScaledWidth(50);
 
     obj.image26 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image26:setParent(obj.flowPart79);
+    obj.image26:setParent(obj.flowPart80);
     obj.image26:setSRC("/imagens/plus.png");
     obj.image26:setHeight(15);
     obj.image26:setWidth(15);
@@ -2693,18 +2843,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image26:setTop(5);
     obj.image26:setName("image26");
 
-    obj.flowPart80 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart80:setParent(obj.tabelaDeAtributos);
-    obj.flowPart80:setHeight(50);
-    obj.flowPart80:setMinScaledWidth(30);
-    obj.flowPart80:setMinWidth(30);
-    obj.flowPart80:setMaxWidth(35);
-    obj.flowPart80:setMaxScaledWidth(35);
-    obj.flowPart80:setAvoidScale(true);
-    obj.flowPart80:setName("flowPart80");
+    obj.flowPart81 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart81:setParent(obj.tabelaDeAtributos);
+    obj.flowPart81:setHeight(50);
+    obj.flowPart81:setMinScaledWidth(30);
+    obj.flowPart81:setMinWidth(30);
+    obj.flowPart81:setMaxWidth(35);
+    obj.flowPart81:setMaxScaledWidth(35);
+    obj.flowPart81:setAvoidScale(true);
+    obj.flowPart81:setName("flowPart81");
 
     obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit45:setParent(obj.flowPart80);
+    obj.edit45:setParent(obj.flowPart81);
     obj.edit45:setAlign("top");
     obj.edit45:setField("carOutros");
     obj.edit45:setFontSize(15);
@@ -2717,27 +2867,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit45:setHeight(30);
     obj.edit45:setWidth(195);
 
-    obj.horzLine44 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine44:setParent(obj.flowPart80);
-    obj.horzLine44:setAlign("top");
-    obj.horzLine44:setStrokeColor("#FFFFFF50");
-    obj.horzLine44:setStrokeSize(1);
-    obj.horzLine44:setName("horzLine44");
+    obj.horzLine46 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine46:setParent(obj.flowPart81);
+    obj.horzLine46:setAlign("top");
+    obj.horzLine46:setStrokeColor("#FFFFFF50");
+    obj.horzLine46:setStrokeSize(1);
+    obj.horzLine46:setName("horzLine46");
 
     obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink37:setParent(obj.tabelaDeAtributos);
     obj.dataLink37:setField("carOutros");
     obj.dataLink37:setName("dataLink37");
 
-    obj.flowPart81 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart81:setParent(obj.tabelaDeAtributos);
-    obj.flowPart81:setName("flowPart81");
-    obj.flowPart81:setHeight(50);
-    obj.flowPart81:setMinScaledWidth(30);
-    obj.flowPart81:setMaxScaledWidth(50);
+    obj.flowPart82 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart82:setParent(obj.tabelaDeAtributos);
+    obj.flowPart82:setName("flowPart82");
+    obj.flowPart82:setHeight(50);
+    obj.flowPart82:setMinScaledWidth(30);
+    obj.flowPart82:setMaxScaledWidth(50);
 
     obj.image27 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image27:setParent(obj.flowPart81);
+    obj.image27:setParent(obj.flowPart82);
     obj.image27:setSRC("/imagens/equals.png");
     obj.image27:setHeight(15);
     obj.image27:setWidth(15);
@@ -2745,18 +2895,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image27:setTop(5);
     obj.image27:setName("image27");
 
-    obj.flowPart82 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart82:setParent(obj.tabelaDeAtributos);
-    obj.flowPart82:setHeight(50);
-    obj.flowPart82:setMinScaledWidth(30);
-    obj.flowPart82:setMinWidth(30);
-    obj.flowPart82:setMaxWidth(35);
-    obj.flowPart82:setMaxScaledWidth(35);
-    obj.flowPart82:setAvoidScale(true);
-    obj.flowPart82:setName("flowPart82");
+    obj.flowPart83 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart83:setParent(obj.tabelaDeAtributos);
+    obj.flowPart83:setHeight(50);
+    obj.flowPart83:setMinScaledWidth(30);
+    obj.flowPart83:setMinWidth(30);
+    obj.flowPart83:setMaxWidth(35);
+    obj.flowPart83:setMaxScaledWidth(35);
+    obj.flowPart83:setAvoidScale(true);
+    obj.flowPart83:setName("flowPart83");
 
     obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit46:setParent(obj.flowPart82);
+    obj.edit46:setParent(obj.flowPart83);
     obj.edit46:setAlign("top");
     obj.edit46:setField("carBase");
     obj.edit46:setFontSize(15);
@@ -2769,27 +2919,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit46:setHeight(30);
     obj.edit46:setWidth(195);
 
-    obj.horzLine45 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine45:setParent(obj.flowPart82);
-    obj.horzLine45:setAlign("top");
-    obj.horzLine45:setStrokeColor("#FFFFFF50");
-    obj.horzLine45:setStrokeSize(1);
-    obj.horzLine45:setName("horzLine45");
+    obj.horzLine47 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine47:setParent(obj.flowPart83);
+    obj.horzLine47:setAlign("top");
+    obj.horzLine47:setStrokeColor("#FFFFFF50");
+    obj.horzLine47:setStrokeSize(1);
+    obj.horzLine47:setName("horzLine47");
 
     obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink38:setParent(obj.tabelaDeAtributos);
     obj.dataLink38:setField("carBase");
     obj.dataLink38:setName("dataLink38");
 
-    obj.flowPart83 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart83:setParent(obj.tabelaDeAtributos);
-    obj.flowPart83:setName("flowPart83");
-    obj.flowPart83:setHeight(50);
-    obj.flowPart83:setMinScaledWidth(30);
-    obj.flowPart83:setMaxScaledWidth(50);
+    obj.flowPart84 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart84:setParent(obj.tabelaDeAtributos);
+    obj.flowPart84:setName("flowPart84");
+    obj.flowPart84:setHeight(50);
+    obj.flowPart84:setMinScaledWidth(30);
+    obj.flowPart84:setMaxScaledWidth(50);
 
     obj.image28 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image28:setParent(obj.flowPart83);
+    obj.image28:setParent(obj.flowPart84);
     obj.image28:setSRC("/imagens/plus.png");
     obj.image28:setHeight(15);
     obj.image28:setWidth(15);
@@ -2797,18 +2947,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image28:setTop(5);
     obj.image28:setName("image28");
 
-    obj.flowPart84 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart84:setParent(obj.tabelaDeAtributos);
-    obj.flowPart84:setHeight(50);
-    obj.flowPart84:setMinScaledWidth(30);
-    obj.flowPart84:setMinWidth(30);
-    obj.flowPart84:setMaxWidth(35);
-    obj.flowPart84:setMaxScaledWidth(35);
-    obj.flowPart84:setAvoidScale(true);
-    obj.flowPart84:setName("flowPart84");
+    obj.flowPart85 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart85:setParent(obj.tabelaDeAtributos);
+    obj.flowPart85:setHeight(50);
+    obj.flowPart85:setMinScaledWidth(30);
+    obj.flowPart85:setMinWidth(30);
+    obj.flowPart85:setMaxWidth(35);
+    obj.flowPart85:setMaxScaledWidth(35);
+    obj.flowPart85:setAvoidScale(true);
+    obj.flowPart85:setName("flowPart85");
 
     obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit47:setParent(obj.flowPart84);
+    obj.edit47:setParent(obj.flowPart85);
     obj.edit47:setAlign("top");
     obj.edit47:setField("carEquip");
     obj.edit47:setFontSize(15);
@@ -2821,27 +2971,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit47:setHeight(30);
     obj.edit47:setWidth(195);
 
-    obj.horzLine46 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine46:setParent(obj.flowPart84);
-    obj.horzLine46:setAlign("top");
-    obj.horzLine46:setStrokeColor("#FFFFFF50");
-    obj.horzLine46:setStrokeSize(1);
-    obj.horzLine46:setName("horzLine46");
+    obj.horzLine48 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine48:setParent(obj.flowPart85);
+    obj.horzLine48:setAlign("top");
+    obj.horzLine48:setStrokeColor("#FFFFFF50");
+    obj.horzLine48:setStrokeSize(1);
+    obj.horzLine48:setName("horzLine48");
 
     obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink39:setParent(obj.tabelaDeAtributos);
     obj.dataLink39:setField("carEquip");
     obj.dataLink39:setName("dataLink39");
 
-    obj.flowPart85 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart85:setParent(obj.tabelaDeAtributos);
-    obj.flowPart85:setName("flowPart85");
-    obj.flowPart85:setHeight(50);
-    obj.flowPart85:setMinScaledWidth(30);
-    obj.flowPart85:setMaxScaledWidth(50);
+    obj.flowPart86 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart86:setParent(obj.tabelaDeAtributos);
+    obj.flowPart86:setName("flowPart86");
+    obj.flowPart86:setHeight(50);
+    obj.flowPart86:setMinScaledWidth(30);
+    obj.flowPart86:setMaxScaledWidth(50);
 
     obj.image29 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image29:setParent(obj.flowPart85);
+    obj.image29:setParent(obj.flowPart86);
     obj.image29:setSRC("/imagens/equals.png");
     obj.image29:setHeight(15);
     obj.image29:setWidth(15);
@@ -2849,18 +2999,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image29:setTop(5);
     obj.image29:setName("image29");
 
-    obj.flowPart86 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart86:setParent(obj.tabelaDeAtributos);
-    obj.flowPart86:setHeight(50);
-    obj.flowPart86:setMinScaledWidth(30);
-    obj.flowPart86:setMinWidth(30);
-    obj.flowPart86:setMaxWidth(35);
-    obj.flowPart86:setMaxScaledWidth(35);
-    obj.flowPart86:setAvoidScale(true);
-    obj.flowPart86:setName("flowPart86");
+    obj.flowPart87 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart87:setParent(obj.tabelaDeAtributos);
+    obj.flowPart87:setHeight(50);
+    obj.flowPart87:setMinScaledWidth(30);
+    obj.flowPart87:setMinWidth(30);
+    obj.flowPart87:setMaxWidth(35);
+    obj.flowPart87:setMaxScaledWidth(35);
+    obj.flowPart87:setAvoidScale(true);
+    obj.flowPart87:setName("flowPart87");
 
     obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit48:setParent(obj.flowPart86);
+    obj.edit48:setParent(obj.flowPart87);
     obj.edit48:setAlign("top");
     obj.edit48:setField("carTotal");
     obj.edit48:setFontSize(15);
@@ -2873,12 +3023,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit48:setHeight(30);
     obj.edit48:setWidth(195);
 
-    obj.horzLine47 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine47:setParent(obj.flowPart86);
-    obj.horzLine47:setAlign("top");
-    obj.horzLine47:setStrokeColor("#FFFFFF50");
-    obj.horzLine47:setStrokeSize(1);
-    obj.horzLine47:setName("horzLine47");
+    obj.horzLine49 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine49:setParent(obj.flowPart87);
+    obj.horzLine49:setAlign("top");
+    obj.horzLine49:setStrokeColor("#FFFFFF50");
+    obj.horzLine49:setStrokeSize(1);
+    obj.horzLine49:setName("horzLine49");
 
     obj.dataLink40 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink40:setParent(obj.tabelaDeAtributos);
@@ -2891,35 +3041,35 @@ local function constructNew_frmFichaDePersonagem()
                            'carOutros', 'carBase', 'carEquip', 'carTotal'});
     obj.dataLink41:setName("dataLink41");
 
-    obj.flowPart87 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart87:setParent(obj.tabelaDeAtributos);
-    obj.flowPart87:setHeight(20);
-    obj.flowPart87:setMinScaledWidth(60);
-    obj.flowPart87:setMaxScaledWidth(85);
-    obj.flowPart87:setName("flowPart87");
-
-    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label40:setParent(obj.flowPart87);
-    obj.label40:setText("Inteligência");
-    obj.label40:setAlign("client");
-    obj.label40:setField("");
-    obj.label40:setFontSize(8);
-    obj.label40:setVertTextAlign("center");
-    obj.label40:setHorzTextAlign("leading");
-    obj.label40:setName("label40");
-
     obj.flowPart88 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart88:setParent(obj.tabelaDeAtributos);
-    obj.flowPart88:setHeight(50);
-    obj.flowPart88:setMinScaledWidth(30);
-    obj.flowPart88:setMinWidth(30);
-    obj.flowPart88:setMaxWidth(35);
-    obj.flowPart88:setMaxScaledWidth(35);
-    obj.flowPart88:setAvoidScale(true);
+    obj.flowPart88:setHeight(20);
+    obj.flowPart88:setMinScaledWidth(60);
+    obj.flowPart88:setMaxScaledWidth(85);
     obj.flowPart88:setName("flowPart88");
 
+    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label44:setParent(obj.flowPart88);
+    obj.label44:setText("Inteligência");
+    obj.label44:setAlign("client");
+    obj.label44:setField("");
+    obj.label44:setFontSize(8);
+    obj.label44:setVertTextAlign("center");
+    obj.label44:setHorzTextAlign("leading");
+    obj.label44:setName("label44");
+
+    obj.flowPart89 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart89:setParent(obj.tabelaDeAtributos);
+    obj.flowPart89:setHeight(50);
+    obj.flowPart89:setMinScaledWidth(30);
+    obj.flowPart89:setMinWidth(30);
+    obj.flowPart89:setMaxWidth(35);
+    obj.flowPart89:setMaxScaledWidth(35);
+    obj.flowPart89:setAvoidScale(true);
+    obj.flowPart89:setName("flowPart89");
+
     obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit49:setParent(obj.flowPart88);
+    obj.edit49:setParent(obj.flowPart89);
     obj.edit49:setAlign("top");
     obj.edit49:setField("intNivel");
     obj.edit49:setFontSize(15);
@@ -2932,27 +3082,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit49:setHeight(30);
     obj.edit49:setWidth(195);
 
-    obj.horzLine48 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine48:setParent(obj.flowPart88);
-    obj.horzLine48:setAlign("top");
-    obj.horzLine48:setStrokeColor("#FFFFFF50");
-    obj.horzLine48:setStrokeSize(1);
-    obj.horzLine48:setName("horzLine48");
+    obj.horzLine50 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine50:setParent(obj.flowPart89);
+    obj.horzLine50:setAlign("top");
+    obj.horzLine50:setStrokeColor("#FFFFFF50");
+    obj.horzLine50:setStrokeSize(1);
+    obj.horzLine50:setName("horzLine50");
 
     obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink42:setParent(obj.tabelaDeAtributos);
     obj.dataLink42:setField("intNivel");
     obj.dataLink42:setName("dataLink42");
 
-    obj.flowPart89 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart89:setParent(obj.tabelaDeAtributos);
-    obj.flowPart89:setName("flowPart89");
-    obj.flowPart89:setHeight(50);
-    obj.flowPart89:setMinScaledWidth(30);
-    obj.flowPart89:setMaxScaledWidth(50);
+    obj.flowPart90 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart90:setParent(obj.tabelaDeAtributos);
+    obj.flowPart90:setName("flowPart90");
+    obj.flowPart90:setHeight(50);
+    obj.flowPart90:setMinScaledWidth(30);
+    obj.flowPart90:setMaxScaledWidth(50);
 
     obj.image30 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image30:setParent(obj.flowPart89);
+    obj.image30:setParent(obj.flowPart90);
     obj.image30:setSRC("/imagens/plus.png");
     obj.image30:setHeight(15);
     obj.image30:setWidth(15);
@@ -2960,18 +3110,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image30:setTop(5);
     obj.image30:setName("image30");
 
-    obj.flowPart90 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart90:setParent(obj.tabelaDeAtributos);
-    obj.flowPart90:setHeight(50);
-    obj.flowPart90:setMinScaledWidth(30);
-    obj.flowPart90:setMinWidth(30);
-    obj.flowPart90:setMaxWidth(35);
-    obj.flowPart90:setMaxScaledWidth(35);
-    obj.flowPart90:setAvoidScale(true);
-    obj.flowPart90:setName("flowPart90");
+    obj.flowPart91 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart91:setParent(obj.tabelaDeAtributos);
+    obj.flowPart91:setHeight(50);
+    obj.flowPart91:setMinScaledWidth(30);
+    obj.flowPart91:setMinWidth(30);
+    obj.flowPart91:setMaxWidth(35);
+    obj.flowPart91:setMaxScaledWidth(35);
+    obj.flowPart91:setAvoidScale(true);
+    obj.flowPart91:setName("flowPart91");
 
     obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit50:setParent(obj.flowPart90);
+    obj.edit50:setParent(obj.flowPart91);
     obj.edit50:setAlign("top");
     obj.edit50:setField("intClasse");
     obj.edit50:setFontSize(15);
@@ -2984,27 +3134,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit50:setHeight(30);
     obj.edit50:setWidth(195);
 
-    obj.horzLine49 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine49:setParent(obj.flowPart90);
-    obj.horzLine49:setAlign("top");
-    obj.horzLine49:setStrokeColor("#FFFFFF50");
-    obj.horzLine49:setStrokeSize(1);
-    obj.horzLine49:setName("horzLine49");
+    obj.horzLine51 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine51:setParent(obj.flowPart91);
+    obj.horzLine51:setAlign("top");
+    obj.horzLine51:setStrokeColor("#FFFFFF50");
+    obj.horzLine51:setStrokeSize(1);
+    obj.horzLine51:setName("horzLine51");
 
     obj.dataLink43 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink43:setParent(obj.tabelaDeAtributos);
     obj.dataLink43:setField("intClasse");
     obj.dataLink43:setName("dataLink43");
 
-    obj.flowPart91 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart91:setParent(obj.tabelaDeAtributos);
-    obj.flowPart91:setName("flowPart91");
-    obj.flowPart91:setHeight(50);
-    obj.flowPart91:setMinScaledWidth(30);
-    obj.flowPart91:setMaxScaledWidth(50);
+    obj.flowPart92 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart92:setParent(obj.tabelaDeAtributos);
+    obj.flowPart92:setName("flowPart92");
+    obj.flowPart92:setHeight(50);
+    obj.flowPart92:setMinScaledWidth(30);
+    obj.flowPart92:setMaxScaledWidth(50);
 
     obj.image31 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image31:setParent(obj.flowPart91);
+    obj.image31:setParent(obj.flowPart92);
     obj.image31:setSRC("/imagens/plus.png");
     obj.image31:setHeight(15);
     obj.image31:setWidth(15);
@@ -3012,18 +3162,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image31:setTop(5);
     obj.image31:setName("image31");
 
-    obj.flowPart92 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart92:setParent(obj.tabelaDeAtributos);
-    obj.flowPart92:setHeight(50);
-    obj.flowPart92:setMinScaledWidth(30);
-    obj.flowPart92:setMinWidth(30);
-    obj.flowPart92:setMaxWidth(35);
-    obj.flowPart92:setMaxScaledWidth(35);
-    obj.flowPart92:setAvoidScale(true);
-    obj.flowPart92:setName("flowPart92");
+    obj.flowPart93 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart93:setParent(obj.tabelaDeAtributos);
+    obj.flowPart93:setHeight(50);
+    obj.flowPart93:setMinScaledWidth(30);
+    obj.flowPart93:setMinWidth(30);
+    obj.flowPart93:setMaxWidth(35);
+    obj.flowPart93:setMaxScaledWidth(35);
+    obj.flowPart93:setAvoidScale(true);
+    obj.flowPart93:setName("flowPart93");
 
     obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit51:setParent(obj.flowPart92);
+    obj.edit51:setParent(obj.flowPart93);
     obj.edit51:setAlign("top");
     obj.edit51:setField("intRaca");
     obj.edit51:setFontSize(15);
@@ -3036,27 +3186,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit51:setHeight(30);
     obj.edit51:setWidth(195);
 
-    obj.horzLine50 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine50:setParent(obj.flowPart92);
-    obj.horzLine50:setAlign("top");
-    obj.horzLine50:setStrokeColor("#FFFFFF50");
-    obj.horzLine50:setStrokeSize(1);
-    obj.horzLine50:setName("horzLine50");
+    obj.horzLine52 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine52:setParent(obj.flowPart93);
+    obj.horzLine52:setAlign("top");
+    obj.horzLine52:setStrokeColor("#FFFFFF50");
+    obj.horzLine52:setStrokeSize(1);
+    obj.horzLine52:setName("horzLine52");
 
     obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink44:setParent(obj.tabelaDeAtributos);
     obj.dataLink44:setField("intRaca");
     obj.dataLink44:setName("dataLink44");
 
-    obj.flowPart93 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart93:setParent(obj.tabelaDeAtributos);
-    obj.flowPart93:setName("flowPart93");
-    obj.flowPart93:setHeight(50);
-    obj.flowPart93:setMinScaledWidth(30);
-    obj.flowPart93:setMaxScaledWidth(50);
+    obj.flowPart94 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart94:setParent(obj.tabelaDeAtributos);
+    obj.flowPart94:setName("flowPart94");
+    obj.flowPart94:setHeight(50);
+    obj.flowPart94:setMinScaledWidth(30);
+    obj.flowPart94:setMaxScaledWidth(50);
 
     obj.image32 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image32:setParent(obj.flowPart93);
+    obj.image32:setParent(obj.flowPart94);
     obj.image32:setSRC("/imagens/plus.png");
     obj.image32:setHeight(15);
     obj.image32:setWidth(15);
@@ -3064,18 +3214,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image32:setTop(5);
     obj.image32:setName("image32");
 
-    obj.flowPart94 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart94:setParent(obj.tabelaDeAtributos);
-    obj.flowPart94:setHeight(50);
-    obj.flowPart94:setMinScaledWidth(30);
-    obj.flowPart94:setMinWidth(30);
-    obj.flowPart94:setMaxWidth(35);
-    obj.flowPart94:setMaxScaledWidth(35);
-    obj.flowPart94:setAvoidScale(true);
-    obj.flowPart94:setName("flowPart94");
+    obj.flowPart95 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart95:setParent(obj.tabelaDeAtributos);
+    obj.flowPart95:setHeight(50);
+    obj.flowPart95:setMinScaledWidth(30);
+    obj.flowPart95:setMinWidth(30);
+    obj.flowPart95:setMaxWidth(35);
+    obj.flowPart95:setMaxScaledWidth(35);
+    obj.flowPart95:setAvoidScale(true);
+    obj.flowPart95:setName("flowPart95");
 
     obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit52:setParent(obj.flowPart94);
+    obj.edit52:setParent(obj.flowPart95);
     obj.edit52:setAlign("top");
     obj.edit52:setField("intTreino");
     obj.edit52:setFontSize(15);
@@ -3088,27 +3238,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit52:setHeight(30);
     obj.edit52:setWidth(195);
 
-    obj.horzLine51 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine51:setParent(obj.flowPart94);
-    obj.horzLine51:setAlign("top");
-    obj.horzLine51:setStrokeColor("#FFFFFF50");
-    obj.horzLine51:setStrokeSize(1);
-    obj.horzLine51:setName("horzLine51");
+    obj.horzLine53 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine53:setParent(obj.flowPart95);
+    obj.horzLine53:setAlign("top");
+    obj.horzLine53:setStrokeColor("#FFFFFF50");
+    obj.horzLine53:setStrokeSize(1);
+    obj.horzLine53:setName("horzLine53");
 
     obj.dataLink45 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink45:setParent(obj.tabelaDeAtributos);
     obj.dataLink45:setField("intTreino");
     obj.dataLink45:setName("dataLink45");
 
-    obj.flowPart95 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart95:setParent(obj.tabelaDeAtributos);
-    obj.flowPart95:setName("flowPart95");
-    obj.flowPart95:setHeight(50);
-    obj.flowPart95:setMinScaledWidth(30);
-    obj.flowPart95:setMaxScaledWidth(50);
+    obj.flowPart96 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart96:setParent(obj.tabelaDeAtributos);
+    obj.flowPart96:setName("flowPart96");
+    obj.flowPart96:setHeight(50);
+    obj.flowPart96:setMinScaledWidth(30);
+    obj.flowPart96:setMaxScaledWidth(50);
 
     obj.image33 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image33:setParent(obj.flowPart95);
+    obj.image33:setParent(obj.flowPart96);
     obj.image33:setSRC("/imagens/plus.png");
     obj.image33:setHeight(15);
     obj.image33:setWidth(15);
@@ -3116,18 +3266,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image33:setTop(5);
     obj.image33:setName("image33");
 
-    obj.flowPart96 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart96:setParent(obj.tabelaDeAtributos);
-    obj.flowPart96:setHeight(50);
-    obj.flowPart96:setMinScaledWidth(30);
-    obj.flowPart96:setMinWidth(30);
-    obj.flowPart96:setMaxWidth(35);
-    obj.flowPart96:setMaxScaledWidth(35);
-    obj.flowPart96:setAvoidScale(true);
-    obj.flowPart96:setName("flowPart96");
+    obj.flowPart97 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart97:setParent(obj.tabelaDeAtributos);
+    obj.flowPart97:setHeight(50);
+    obj.flowPart97:setMinScaledWidth(30);
+    obj.flowPart97:setMinWidth(30);
+    obj.flowPart97:setMaxWidth(35);
+    obj.flowPart97:setMaxScaledWidth(35);
+    obj.flowPart97:setAvoidScale(true);
+    obj.flowPart97:setName("flowPart97");
 
     obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit53:setParent(obj.flowPart96);
+    obj.edit53:setParent(obj.flowPart97);
     obj.edit53:setAlign("top");
     obj.edit53:setField("intOutros");
     obj.edit53:setFontSize(15);
@@ -3140,27 +3290,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit53:setHeight(30);
     obj.edit53:setWidth(195);
 
-    obj.horzLine52 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine52:setParent(obj.flowPart96);
-    obj.horzLine52:setAlign("top");
-    obj.horzLine52:setStrokeColor("#FFFFFF50");
-    obj.horzLine52:setStrokeSize(1);
-    obj.horzLine52:setName("horzLine52");
+    obj.horzLine54 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine54:setParent(obj.flowPart97);
+    obj.horzLine54:setAlign("top");
+    obj.horzLine54:setStrokeColor("#FFFFFF50");
+    obj.horzLine54:setStrokeSize(1);
+    obj.horzLine54:setName("horzLine54");
 
     obj.dataLink46 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink46:setParent(obj.tabelaDeAtributos);
     obj.dataLink46:setField("intOutros");
     obj.dataLink46:setName("dataLink46");
 
-    obj.flowPart97 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart97:setParent(obj.tabelaDeAtributos);
-    obj.flowPart97:setName("flowPart97");
-    obj.flowPart97:setHeight(50);
-    obj.flowPart97:setMinScaledWidth(30);
-    obj.flowPart97:setMaxScaledWidth(50);
+    obj.flowPart98 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart98:setParent(obj.tabelaDeAtributos);
+    obj.flowPart98:setName("flowPart98");
+    obj.flowPart98:setHeight(50);
+    obj.flowPart98:setMinScaledWidth(30);
+    obj.flowPart98:setMaxScaledWidth(50);
 
     obj.image34 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image34:setParent(obj.flowPart97);
+    obj.image34:setParent(obj.flowPart98);
     obj.image34:setSRC("/imagens/equals.png");
     obj.image34:setHeight(15);
     obj.image34:setWidth(15);
@@ -3168,18 +3318,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image34:setTop(5);
     obj.image34:setName("image34");
 
-    obj.flowPart98 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart98:setParent(obj.tabelaDeAtributos);
-    obj.flowPart98:setHeight(50);
-    obj.flowPart98:setMinScaledWidth(30);
-    obj.flowPart98:setMinWidth(30);
-    obj.flowPart98:setMaxWidth(35);
-    obj.flowPart98:setMaxScaledWidth(35);
-    obj.flowPart98:setAvoidScale(true);
-    obj.flowPart98:setName("flowPart98");
+    obj.flowPart99 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart99:setParent(obj.tabelaDeAtributos);
+    obj.flowPart99:setHeight(50);
+    obj.flowPart99:setMinScaledWidth(30);
+    obj.flowPart99:setMinWidth(30);
+    obj.flowPart99:setMaxWidth(35);
+    obj.flowPart99:setMaxScaledWidth(35);
+    obj.flowPart99:setAvoidScale(true);
+    obj.flowPart99:setName("flowPart99");
 
     obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit54:setParent(obj.flowPart98);
+    obj.edit54:setParent(obj.flowPart99);
     obj.edit54:setAlign("top");
     obj.edit54:setField("intBase");
     obj.edit54:setFontSize(15);
@@ -3192,27 +3342,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit54:setHeight(30);
     obj.edit54:setWidth(195);
 
-    obj.horzLine53 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine53:setParent(obj.flowPart98);
-    obj.horzLine53:setAlign("top");
-    obj.horzLine53:setStrokeColor("#FFFFFF50");
-    obj.horzLine53:setStrokeSize(1);
-    obj.horzLine53:setName("horzLine53");
+    obj.horzLine55 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine55:setParent(obj.flowPart99);
+    obj.horzLine55:setAlign("top");
+    obj.horzLine55:setStrokeColor("#FFFFFF50");
+    obj.horzLine55:setStrokeSize(1);
+    obj.horzLine55:setName("horzLine55");
 
     obj.dataLink47 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink47:setParent(obj.tabelaDeAtributos);
     obj.dataLink47:setField("intBase");
     obj.dataLink47:setName("dataLink47");
 
-    obj.flowPart99 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart99:setParent(obj.tabelaDeAtributos);
-    obj.flowPart99:setName("flowPart99");
-    obj.flowPart99:setHeight(50);
-    obj.flowPart99:setMinScaledWidth(30);
-    obj.flowPart99:setMaxScaledWidth(50);
+    obj.flowPart100 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart100:setParent(obj.tabelaDeAtributos);
+    obj.flowPart100:setName("flowPart100");
+    obj.flowPart100:setHeight(50);
+    obj.flowPart100:setMinScaledWidth(30);
+    obj.flowPart100:setMaxScaledWidth(50);
 
     obj.image35 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image35:setParent(obj.flowPart99);
+    obj.image35:setParent(obj.flowPart100);
     obj.image35:setSRC("/imagens/plus.png");
     obj.image35:setHeight(15);
     obj.image35:setWidth(15);
@@ -3220,18 +3370,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image35:setTop(5);
     obj.image35:setName("image35");
 
-    obj.flowPart100 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart100:setParent(obj.tabelaDeAtributos);
-    obj.flowPart100:setHeight(50);
-    obj.flowPart100:setMinScaledWidth(30);
-    obj.flowPart100:setMinWidth(30);
-    obj.flowPart100:setMaxWidth(35);
-    obj.flowPart100:setMaxScaledWidth(35);
-    obj.flowPart100:setAvoidScale(true);
-    obj.flowPart100:setName("flowPart100");
+    obj.flowPart101 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart101:setParent(obj.tabelaDeAtributos);
+    obj.flowPart101:setHeight(50);
+    obj.flowPart101:setMinScaledWidth(30);
+    obj.flowPart101:setMinWidth(30);
+    obj.flowPart101:setMaxWidth(35);
+    obj.flowPart101:setMaxScaledWidth(35);
+    obj.flowPart101:setAvoidScale(true);
+    obj.flowPart101:setName("flowPart101");
 
     obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit55:setParent(obj.flowPart100);
+    obj.edit55:setParent(obj.flowPart101);
     obj.edit55:setAlign("top");
     obj.edit55:setField("intEquip");
     obj.edit55:setFontSize(15);
@@ -3244,27 +3394,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit55:setHeight(30);
     obj.edit55:setWidth(195);
 
-    obj.horzLine54 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine54:setParent(obj.flowPart100);
-    obj.horzLine54:setAlign("top");
-    obj.horzLine54:setStrokeColor("#FFFFFF50");
-    obj.horzLine54:setStrokeSize(1);
-    obj.horzLine54:setName("horzLine54");
+    obj.horzLine56 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine56:setParent(obj.flowPart101);
+    obj.horzLine56:setAlign("top");
+    obj.horzLine56:setStrokeColor("#FFFFFF50");
+    obj.horzLine56:setStrokeSize(1);
+    obj.horzLine56:setName("horzLine56");
 
     obj.dataLink48 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink48:setParent(obj.tabelaDeAtributos);
     obj.dataLink48:setField("intEquip");
     obj.dataLink48:setName("dataLink48");
 
-    obj.flowPart101 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart101:setParent(obj.tabelaDeAtributos);
-    obj.flowPart101:setName("flowPart101");
-    obj.flowPart101:setHeight(50);
-    obj.flowPart101:setMinScaledWidth(30);
-    obj.flowPart101:setMaxScaledWidth(50);
+    obj.flowPart102 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart102:setParent(obj.tabelaDeAtributos);
+    obj.flowPart102:setName("flowPart102");
+    obj.flowPart102:setHeight(50);
+    obj.flowPart102:setMinScaledWidth(30);
+    obj.flowPart102:setMaxScaledWidth(50);
 
     obj.image36 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image36:setParent(obj.flowPart101);
+    obj.image36:setParent(obj.flowPart102);
     obj.image36:setSRC("/imagens/equals.png");
     obj.image36:setHeight(15);
     obj.image36:setWidth(15);
@@ -3272,18 +3422,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image36:setTop(5);
     obj.image36:setName("image36");
 
-    obj.flowPart102 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart102:setParent(obj.tabelaDeAtributos);
-    obj.flowPart102:setHeight(50);
-    obj.flowPart102:setMinScaledWidth(30);
-    obj.flowPart102:setMinWidth(30);
-    obj.flowPart102:setMaxWidth(35);
-    obj.flowPart102:setMaxScaledWidth(35);
-    obj.flowPart102:setAvoidScale(true);
-    obj.flowPart102:setName("flowPart102");
+    obj.flowPart103 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart103:setParent(obj.tabelaDeAtributos);
+    obj.flowPart103:setHeight(50);
+    obj.flowPart103:setMinScaledWidth(30);
+    obj.flowPart103:setMinWidth(30);
+    obj.flowPart103:setMaxWidth(35);
+    obj.flowPart103:setMaxScaledWidth(35);
+    obj.flowPart103:setAvoidScale(true);
+    obj.flowPart103:setName("flowPart103");
 
     obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit56:setParent(obj.flowPart102);
+    obj.edit56:setParent(obj.flowPart103);
     obj.edit56:setAlign("top");
     obj.edit56:setField("intTotal");
     obj.edit56:setFontSize(15);
@@ -3296,12 +3446,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit56:setHeight(30);
     obj.edit56:setWidth(195);
 
-    obj.horzLine55 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine55:setParent(obj.flowPart102);
-    obj.horzLine55:setAlign("top");
-    obj.horzLine55:setStrokeColor("#FFFFFF50");
-    obj.horzLine55:setStrokeSize(1);
-    obj.horzLine55:setName("horzLine55");
+    obj.horzLine57 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine57:setParent(obj.flowPart103);
+    obj.horzLine57:setAlign("top");
+    obj.horzLine57:setStrokeColor("#FFFFFF50");
+    obj.horzLine57:setStrokeSize(1);
+    obj.horzLine57:setName("horzLine57");
 
     obj.dataLink49 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink49:setParent(obj.tabelaDeAtributos);
@@ -3314,35 +3464,35 @@ local function constructNew_frmFichaDePersonagem()
                            'intOutros', 'intBase', 'intEquip', 'intTotal'});
     obj.dataLink50:setName("dataLink50");
 
-    obj.flowPart103 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart103:setParent(obj.tabelaDeAtributos);
-    obj.flowPart103:setHeight(20);
-    obj.flowPart103:setMinScaledWidth(60);
-    obj.flowPart103:setMaxScaledWidth(85);
-    obj.flowPart103:setName("flowPart103");
-
-    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label41:setParent(obj.flowPart103);
-    obj.label41:setText("Sabedoria");
-    obj.label41:setAlign("client");
-    obj.label41:setField("");
-    obj.label41:setFontSize(8);
-    obj.label41:setVertTextAlign("center");
-    obj.label41:setHorzTextAlign("leading");
-    obj.label41:setName("label41");
-
     obj.flowPart104 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart104:setParent(obj.tabelaDeAtributos);
-    obj.flowPart104:setHeight(50);
-    obj.flowPart104:setMinScaledWidth(30);
-    obj.flowPart104:setMinWidth(30);
-    obj.flowPart104:setMaxWidth(35);
-    obj.flowPart104:setMaxScaledWidth(35);
-    obj.flowPart104:setAvoidScale(true);
+    obj.flowPart104:setHeight(20);
+    obj.flowPart104:setMinScaledWidth(60);
+    obj.flowPart104:setMaxScaledWidth(85);
     obj.flowPart104:setName("flowPart104");
 
+    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label45:setParent(obj.flowPart104);
+    obj.label45:setText("Sabedoria");
+    obj.label45:setAlign("client");
+    obj.label45:setField("");
+    obj.label45:setFontSize(8);
+    obj.label45:setVertTextAlign("center");
+    obj.label45:setHorzTextAlign("leading");
+    obj.label45:setName("label45");
+
+    obj.flowPart105 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart105:setParent(obj.tabelaDeAtributos);
+    obj.flowPart105:setHeight(50);
+    obj.flowPart105:setMinScaledWidth(30);
+    obj.flowPart105:setMinWidth(30);
+    obj.flowPart105:setMaxWidth(35);
+    obj.flowPart105:setMaxScaledWidth(35);
+    obj.flowPart105:setAvoidScale(true);
+    obj.flowPart105:setName("flowPart105");
+
     obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit57:setParent(obj.flowPart104);
+    obj.edit57:setParent(obj.flowPart105);
     obj.edit57:setAlign("top");
     obj.edit57:setField("sabNivel");
     obj.edit57:setFontSize(15);
@@ -3355,27 +3505,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit57:setHeight(30);
     obj.edit57:setWidth(195);
 
-    obj.horzLine56 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine56:setParent(obj.flowPart104);
-    obj.horzLine56:setAlign("top");
-    obj.horzLine56:setStrokeColor("#FFFFFF50");
-    obj.horzLine56:setStrokeSize(1);
-    obj.horzLine56:setName("horzLine56");
+    obj.horzLine58 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine58:setParent(obj.flowPart105);
+    obj.horzLine58:setAlign("top");
+    obj.horzLine58:setStrokeColor("#FFFFFF50");
+    obj.horzLine58:setStrokeSize(1);
+    obj.horzLine58:setName("horzLine58");
 
     obj.dataLink51 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink51:setParent(obj.tabelaDeAtributos);
     obj.dataLink51:setField("sabNivel");
     obj.dataLink51:setName("dataLink51");
 
-    obj.flowPart105 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart105:setParent(obj.tabelaDeAtributos);
-    obj.flowPart105:setName("flowPart105");
-    obj.flowPart105:setHeight(50);
-    obj.flowPart105:setMinScaledWidth(30);
-    obj.flowPart105:setMaxScaledWidth(50);
+    obj.flowPart106 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart106:setParent(obj.tabelaDeAtributos);
+    obj.flowPart106:setName("flowPart106");
+    obj.flowPart106:setHeight(50);
+    obj.flowPart106:setMinScaledWidth(30);
+    obj.flowPart106:setMaxScaledWidth(50);
 
     obj.image37 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image37:setParent(obj.flowPart105);
+    obj.image37:setParent(obj.flowPart106);
     obj.image37:setSRC("/imagens/plus.png");
     obj.image37:setHeight(15);
     obj.image37:setWidth(15);
@@ -3383,18 +3533,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image37:setTop(5);
     obj.image37:setName("image37");
 
-    obj.flowPart106 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart106:setParent(obj.tabelaDeAtributos);
-    obj.flowPart106:setHeight(50);
-    obj.flowPart106:setMinScaledWidth(30);
-    obj.flowPart106:setMinWidth(30);
-    obj.flowPart106:setMaxWidth(35);
-    obj.flowPart106:setMaxScaledWidth(35);
-    obj.flowPart106:setAvoidScale(true);
-    obj.flowPart106:setName("flowPart106");
+    obj.flowPart107 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart107:setParent(obj.tabelaDeAtributos);
+    obj.flowPart107:setHeight(50);
+    obj.flowPart107:setMinScaledWidth(30);
+    obj.flowPart107:setMinWidth(30);
+    obj.flowPart107:setMaxWidth(35);
+    obj.flowPart107:setMaxScaledWidth(35);
+    obj.flowPart107:setAvoidScale(true);
+    obj.flowPart107:setName("flowPart107");
 
     obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit58:setParent(obj.flowPart106);
+    obj.edit58:setParent(obj.flowPart107);
     obj.edit58:setAlign("top");
     obj.edit58:setField("sabClasse");
     obj.edit58:setFontSize(15);
@@ -3407,27 +3557,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit58:setHeight(30);
     obj.edit58:setWidth(195);
 
-    obj.horzLine57 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine57:setParent(obj.flowPart106);
-    obj.horzLine57:setAlign("top");
-    obj.horzLine57:setStrokeColor("#FFFFFF50");
-    obj.horzLine57:setStrokeSize(1);
-    obj.horzLine57:setName("horzLine57");
+    obj.horzLine59 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine59:setParent(obj.flowPart107);
+    obj.horzLine59:setAlign("top");
+    obj.horzLine59:setStrokeColor("#FFFFFF50");
+    obj.horzLine59:setStrokeSize(1);
+    obj.horzLine59:setName("horzLine59");
 
     obj.dataLink52 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink52:setParent(obj.tabelaDeAtributos);
     obj.dataLink52:setField("sabClasse");
     obj.dataLink52:setName("dataLink52");
 
-    obj.flowPart107 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart107:setParent(obj.tabelaDeAtributos);
-    obj.flowPart107:setName("flowPart107");
-    obj.flowPart107:setHeight(50);
-    obj.flowPart107:setMinScaledWidth(30);
-    obj.flowPart107:setMaxScaledWidth(50);
+    obj.flowPart108 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart108:setParent(obj.tabelaDeAtributos);
+    obj.flowPart108:setName("flowPart108");
+    obj.flowPart108:setHeight(50);
+    obj.flowPart108:setMinScaledWidth(30);
+    obj.flowPart108:setMaxScaledWidth(50);
 
     obj.image38 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image38:setParent(obj.flowPart107);
+    obj.image38:setParent(obj.flowPart108);
     obj.image38:setSRC("/imagens/plus.png");
     obj.image38:setHeight(15);
     obj.image38:setWidth(15);
@@ -3435,18 +3585,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image38:setTop(5);
     obj.image38:setName("image38");
 
-    obj.flowPart108 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart108:setParent(obj.tabelaDeAtributos);
-    obj.flowPart108:setHeight(50);
-    obj.flowPart108:setMinScaledWidth(30);
-    obj.flowPart108:setMinWidth(30);
-    obj.flowPart108:setMaxWidth(35);
-    obj.flowPart108:setMaxScaledWidth(35);
-    obj.flowPart108:setAvoidScale(true);
-    obj.flowPart108:setName("flowPart108");
+    obj.flowPart109 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart109:setParent(obj.tabelaDeAtributos);
+    obj.flowPart109:setHeight(50);
+    obj.flowPart109:setMinScaledWidth(30);
+    obj.flowPart109:setMinWidth(30);
+    obj.flowPart109:setMaxWidth(35);
+    obj.flowPart109:setMaxScaledWidth(35);
+    obj.flowPart109:setAvoidScale(true);
+    obj.flowPart109:setName("flowPart109");
 
     obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit59:setParent(obj.flowPart108);
+    obj.edit59:setParent(obj.flowPart109);
     obj.edit59:setAlign("top");
     obj.edit59:setField("sabRaca");
     obj.edit59:setFontSize(15);
@@ -3459,27 +3609,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit59:setHeight(30);
     obj.edit59:setWidth(195);
 
-    obj.horzLine58 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine58:setParent(obj.flowPart108);
-    obj.horzLine58:setAlign("top");
-    obj.horzLine58:setStrokeColor("#FFFFFF50");
-    obj.horzLine58:setStrokeSize(1);
-    obj.horzLine58:setName("horzLine58");
+    obj.horzLine60 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine60:setParent(obj.flowPart109);
+    obj.horzLine60:setAlign("top");
+    obj.horzLine60:setStrokeColor("#FFFFFF50");
+    obj.horzLine60:setStrokeSize(1);
+    obj.horzLine60:setName("horzLine60");
 
     obj.dataLink53 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink53:setParent(obj.tabelaDeAtributos);
     obj.dataLink53:setField("sabRaca");
     obj.dataLink53:setName("dataLink53");
 
-    obj.flowPart109 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart109:setParent(obj.tabelaDeAtributos);
-    obj.flowPart109:setName("flowPart109");
-    obj.flowPart109:setHeight(50);
-    obj.flowPart109:setMinScaledWidth(30);
-    obj.flowPart109:setMaxScaledWidth(50);
+    obj.flowPart110 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart110:setParent(obj.tabelaDeAtributos);
+    obj.flowPart110:setName("flowPart110");
+    obj.flowPart110:setHeight(50);
+    obj.flowPart110:setMinScaledWidth(30);
+    obj.flowPart110:setMaxScaledWidth(50);
 
     obj.image39 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image39:setParent(obj.flowPart109);
+    obj.image39:setParent(obj.flowPart110);
     obj.image39:setSRC("/imagens/plus.png");
     obj.image39:setHeight(15);
     obj.image39:setWidth(15);
@@ -3487,18 +3637,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image39:setTop(5);
     obj.image39:setName("image39");
 
-    obj.flowPart110 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart110:setParent(obj.tabelaDeAtributos);
-    obj.flowPart110:setHeight(50);
-    obj.flowPart110:setMinScaledWidth(30);
-    obj.flowPart110:setMinWidth(30);
-    obj.flowPart110:setMaxWidth(35);
-    obj.flowPart110:setMaxScaledWidth(35);
-    obj.flowPart110:setAvoidScale(true);
-    obj.flowPart110:setName("flowPart110");
+    obj.flowPart111 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart111:setParent(obj.tabelaDeAtributos);
+    obj.flowPart111:setHeight(50);
+    obj.flowPart111:setMinScaledWidth(30);
+    obj.flowPart111:setMinWidth(30);
+    obj.flowPart111:setMaxWidth(35);
+    obj.flowPart111:setMaxScaledWidth(35);
+    obj.flowPart111:setAvoidScale(true);
+    obj.flowPart111:setName("flowPart111");
 
     obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit60:setParent(obj.flowPart110);
+    obj.edit60:setParent(obj.flowPart111);
     obj.edit60:setAlign("top");
     obj.edit60:setField("sabTreino");
     obj.edit60:setFontSize(15);
@@ -3511,27 +3661,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit60:setHeight(30);
     obj.edit60:setWidth(195);
 
-    obj.horzLine59 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine59:setParent(obj.flowPart110);
-    obj.horzLine59:setAlign("top");
-    obj.horzLine59:setStrokeColor("#FFFFFF50");
-    obj.horzLine59:setStrokeSize(1);
-    obj.horzLine59:setName("horzLine59");
+    obj.horzLine61 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine61:setParent(obj.flowPart111);
+    obj.horzLine61:setAlign("top");
+    obj.horzLine61:setStrokeColor("#FFFFFF50");
+    obj.horzLine61:setStrokeSize(1);
+    obj.horzLine61:setName("horzLine61");
 
     obj.dataLink54 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink54:setParent(obj.tabelaDeAtributos);
     obj.dataLink54:setField("sabTreino");
     obj.dataLink54:setName("dataLink54");
 
-    obj.flowPart111 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart111:setParent(obj.tabelaDeAtributos);
-    obj.flowPart111:setName("flowPart111");
-    obj.flowPart111:setHeight(50);
-    obj.flowPart111:setMinScaledWidth(30);
-    obj.flowPart111:setMaxScaledWidth(50);
+    obj.flowPart112 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart112:setParent(obj.tabelaDeAtributos);
+    obj.flowPart112:setName("flowPart112");
+    obj.flowPart112:setHeight(50);
+    obj.flowPart112:setMinScaledWidth(30);
+    obj.flowPart112:setMaxScaledWidth(50);
 
     obj.image40 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image40:setParent(obj.flowPart111);
+    obj.image40:setParent(obj.flowPart112);
     obj.image40:setSRC("/imagens/plus.png");
     obj.image40:setHeight(15);
     obj.image40:setWidth(15);
@@ -3539,18 +3689,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image40:setTop(5);
     obj.image40:setName("image40");
 
-    obj.flowPart112 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart112:setParent(obj.tabelaDeAtributos);
-    obj.flowPart112:setHeight(50);
-    obj.flowPart112:setMinScaledWidth(30);
-    obj.flowPart112:setMinWidth(30);
-    obj.flowPart112:setMaxWidth(35);
-    obj.flowPart112:setMaxScaledWidth(35);
-    obj.flowPart112:setAvoidScale(true);
-    obj.flowPart112:setName("flowPart112");
+    obj.flowPart113 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart113:setParent(obj.tabelaDeAtributos);
+    obj.flowPart113:setHeight(50);
+    obj.flowPart113:setMinScaledWidth(30);
+    obj.flowPart113:setMinWidth(30);
+    obj.flowPart113:setMaxWidth(35);
+    obj.flowPart113:setMaxScaledWidth(35);
+    obj.flowPart113:setAvoidScale(true);
+    obj.flowPart113:setName("flowPart113");
 
     obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit61:setParent(obj.flowPart112);
+    obj.edit61:setParent(obj.flowPart113);
     obj.edit61:setAlign("top");
     obj.edit61:setField("sabOutros");
     obj.edit61:setFontSize(15);
@@ -3563,27 +3713,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit61:setHeight(30);
     obj.edit61:setWidth(195);
 
-    obj.horzLine60 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine60:setParent(obj.flowPart112);
-    obj.horzLine60:setAlign("top");
-    obj.horzLine60:setStrokeColor("#FFFFFF50");
-    obj.horzLine60:setStrokeSize(1);
-    obj.horzLine60:setName("horzLine60");
+    obj.horzLine62 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine62:setParent(obj.flowPart113);
+    obj.horzLine62:setAlign("top");
+    obj.horzLine62:setStrokeColor("#FFFFFF50");
+    obj.horzLine62:setStrokeSize(1);
+    obj.horzLine62:setName("horzLine62");
 
     obj.dataLink55 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink55:setParent(obj.tabelaDeAtributos);
     obj.dataLink55:setField("sabOutros");
     obj.dataLink55:setName("dataLink55");
 
-    obj.flowPart113 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart113:setParent(obj.tabelaDeAtributos);
-    obj.flowPart113:setName("flowPart113");
-    obj.flowPart113:setHeight(50);
-    obj.flowPart113:setMinScaledWidth(30);
-    obj.flowPart113:setMaxScaledWidth(50);
+    obj.flowPart114 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart114:setParent(obj.tabelaDeAtributos);
+    obj.flowPart114:setName("flowPart114");
+    obj.flowPart114:setHeight(50);
+    obj.flowPart114:setMinScaledWidth(30);
+    obj.flowPart114:setMaxScaledWidth(50);
 
     obj.image41 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image41:setParent(obj.flowPart113);
+    obj.image41:setParent(obj.flowPart114);
     obj.image41:setSRC("/imagens/equals.png");
     obj.image41:setHeight(15);
     obj.image41:setWidth(15);
@@ -3591,18 +3741,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image41:setTop(5);
     obj.image41:setName("image41");
 
-    obj.flowPart114 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart114:setParent(obj.tabelaDeAtributos);
-    obj.flowPart114:setHeight(50);
-    obj.flowPart114:setMinScaledWidth(30);
-    obj.flowPart114:setMinWidth(30);
-    obj.flowPart114:setMaxWidth(35);
-    obj.flowPart114:setMaxScaledWidth(35);
-    obj.flowPart114:setAvoidScale(true);
-    obj.flowPart114:setName("flowPart114");
+    obj.flowPart115 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart115:setParent(obj.tabelaDeAtributos);
+    obj.flowPart115:setHeight(50);
+    obj.flowPart115:setMinScaledWidth(30);
+    obj.flowPart115:setMinWidth(30);
+    obj.flowPart115:setMaxWidth(35);
+    obj.flowPart115:setMaxScaledWidth(35);
+    obj.flowPart115:setAvoidScale(true);
+    obj.flowPart115:setName("flowPart115");
 
     obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit62:setParent(obj.flowPart114);
+    obj.edit62:setParent(obj.flowPart115);
     obj.edit62:setAlign("top");
     obj.edit62:setField("sabBase");
     obj.edit62:setFontSize(15);
@@ -3615,27 +3765,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit62:setHeight(30);
     obj.edit62:setWidth(195);
 
-    obj.horzLine61 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine61:setParent(obj.flowPart114);
-    obj.horzLine61:setAlign("top");
-    obj.horzLine61:setStrokeColor("#FFFFFF50");
-    obj.horzLine61:setStrokeSize(1);
-    obj.horzLine61:setName("horzLine61");
+    obj.horzLine63 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine63:setParent(obj.flowPart115);
+    obj.horzLine63:setAlign("top");
+    obj.horzLine63:setStrokeColor("#FFFFFF50");
+    obj.horzLine63:setStrokeSize(1);
+    obj.horzLine63:setName("horzLine63");
 
     obj.dataLink56 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink56:setParent(obj.tabelaDeAtributos);
     obj.dataLink56:setField("sabBase");
     obj.dataLink56:setName("dataLink56");
 
-    obj.flowPart115 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart115:setParent(obj.tabelaDeAtributos);
-    obj.flowPart115:setName("flowPart115");
-    obj.flowPart115:setHeight(50);
-    obj.flowPart115:setMinScaledWidth(30);
-    obj.flowPart115:setMaxScaledWidth(50);
+    obj.flowPart116 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart116:setParent(obj.tabelaDeAtributos);
+    obj.flowPart116:setName("flowPart116");
+    obj.flowPart116:setHeight(50);
+    obj.flowPart116:setMinScaledWidth(30);
+    obj.flowPart116:setMaxScaledWidth(50);
 
     obj.image42 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image42:setParent(obj.flowPart115);
+    obj.image42:setParent(obj.flowPart116);
     obj.image42:setSRC("/imagens/plus.png");
     obj.image42:setHeight(15);
     obj.image42:setWidth(15);
@@ -3643,18 +3793,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image42:setTop(5);
     obj.image42:setName("image42");
 
-    obj.flowPart116 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart116:setParent(obj.tabelaDeAtributos);
-    obj.flowPart116:setHeight(50);
-    obj.flowPart116:setMinScaledWidth(30);
-    obj.flowPart116:setMinWidth(30);
-    obj.flowPart116:setMaxWidth(35);
-    obj.flowPart116:setMaxScaledWidth(35);
-    obj.flowPart116:setAvoidScale(true);
-    obj.flowPart116:setName("flowPart116");
+    obj.flowPart117 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart117:setParent(obj.tabelaDeAtributos);
+    obj.flowPart117:setHeight(50);
+    obj.flowPart117:setMinScaledWidth(30);
+    obj.flowPart117:setMinWidth(30);
+    obj.flowPart117:setMaxWidth(35);
+    obj.flowPart117:setMaxScaledWidth(35);
+    obj.flowPart117:setAvoidScale(true);
+    obj.flowPart117:setName("flowPart117");
 
     obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit63:setParent(obj.flowPart116);
+    obj.edit63:setParent(obj.flowPart117);
     obj.edit63:setAlign("top");
     obj.edit63:setField("sabEquip");
     obj.edit63:setFontSize(15);
@@ -3667,27 +3817,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit63:setHeight(30);
     obj.edit63:setWidth(195);
 
-    obj.horzLine62 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine62:setParent(obj.flowPart116);
-    obj.horzLine62:setAlign("top");
-    obj.horzLine62:setStrokeColor("#FFFFFF50");
-    obj.horzLine62:setStrokeSize(1);
-    obj.horzLine62:setName("horzLine62");
+    obj.horzLine64 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine64:setParent(obj.flowPart117);
+    obj.horzLine64:setAlign("top");
+    obj.horzLine64:setStrokeColor("#FFFFFF50");
+    obj.horzLine64:setStrokeSize(1);
+    obj.horzLine64:setName("horzLine64");
 
     obj.dataLink57 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink57:setParent(obj.tabelaDeAtributos);
     obj.dataLink57:setField("sabEquip");
     obj.dataLink57:setName("dataLink57");
 
-    obj.flowPart117 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart117:setParent(obj.tabelaDeAtributos);
-    obj.flowPart117:setName("flowPart117");
-    obj.flowPart117:setHeight(50);
-    obj.flowPart117:setMinScaledWidth(30);
-    obj.flowPart117:setMaxScaledWidth(50);
+    obj.flowPart118 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart118:setParent(obj.tabelaDeAtributos);
+    obj.flowPart118:setName("flowPart118");
+    obj.flowPart118:setHeight(50);
+    obj.flowPart118:setMinScaledWidth(30);
+    obj.flowPart118:setMaxScaledWidth(50);
 
     obj.image43 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image43:setParent(obj.flowPart117);
+    obj.image43:setParent(obj.flowPart118);
     obj.image43:setSRC("/imagens/equals.png");
     obj.image43:setHeight(15);
     obj.image43:setWidth(15);
@@ -3695,18 +3845,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.image43:setTop(5);
     obj.image43:setName("image43");
 
-    obj.flowPart118 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart118:setParent(obj.tabelaDeAtributos);
-    obj.flowPart118:setHeight(50);
-    obj.flowPart118:setMinScaledWidth(30);
-    obj.flowPart118:setMinWidth(30);
-    obj.flowPart118:setMaxWidth(35);
-    obj.flowPart118:setMaxScaledWidth(35);
-    obj.flowPart118:setAvoidScale(true);
-    obj.flowPart118:setName("flowPart118");
+    obj.flowPart119 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart119:setParent(obj.tabelaDeAtributos);
+    obj.flowPart119:setHeight(50);
+    obj.flowPart119:setMinScaledWidth(30);
+    obj.flowPart119:setMinWidth(30);
+    obj.flowPart119:setMaxWidth(35);
+    obj.flowPart119:setMaxScaledWidth(35);
+    obj.flowPart119:setAvoidScale(true);
+    obj.flowPart119:setName("flowPart119");
 
     obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit64:setParent(obj.flowPart118);
+    obj.edit64:setParent(obj.flowPart119);
     obj.edit64:setAlign("top");
     obj.edit64:setField("sabTotal");
     obj.edit64:setFontSize(15);
@@ -3719,12 +3869,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit64:setHeight(30);
     obj.edit64:setWidth(195);
 
-    obj.horzLine63 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine63:setParent(obj.flowPart118);
-    obj.horzLine63:setAlign("top");
-    obj.horzLine63:setStrokeColor("#FFFFFF50");
-    obj.horzLine63:setStrokeSize(1);
-    obj.horzLine63:setName("horzLine63");
+    obj.horzLine65 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine65:setParent(obj.flowPart119);
+    obj.horzLine65:setAlign("top");
+    obj.horzLine65:setStrokeColor("#FFFFFF50");
+    obj.horzLine65:setStrokeSize(1);
+    obj.horzLine65:setName("horzLine65");
 
     obj.dataLink58 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink58:setParent(obj.tabelaDeAtributos);
@@ -3742,21 +3892,21 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLineBreak4:setLineSpacing(10);
     obj.flowLineBreak4:setName("flowLineBreak4");
 
-    obj.flowPart119 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart119:setParent(obj.perfilLayout);
-    obj.flowPart119:setHeight(2);
-    obj.flowPart119:setMinScaledWidth(100);
-    obj.flowPart119:setMaxScaledWidth(1600);
-    obj.flowPart119:setName("flowPart119");
+    obj.flowPart120 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart120:setParent(obj.perfilLayout);
+    obj.flowPart120:setHeight(2);
+    obj.flowPart120:setMinScaledWidth(100);
+    obj.flowPart120:setMaxScaledWidth(1600);
+    obj.flowPart120:setName("flowPart120");
 
-    obj.horzLine64 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine64:setParent(obj.flowPart119);
-    obj.horzLine64:setStrokeColor("#FFFFFF50");
-    obj.horzLine64:setStrokeSize(0.6);
-    obj.horzLine64:setStrokeCap("round");
-    obj.horzLine64:setScaleY(0.1);
-    obj.horzLine64:setTop(1);
-    obj.horzLine64:setName("horzLine64");
+    obj.horzLine66 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine66:setParent(obj.flowPart120);
+    obj.horzLine66:setStrokeColor("#FFFFFF50");
+    obj.horzLine66:setStrokeSize(0.6);
+    obj.horzLine66:setStrokeCap("round");
+    obj.horzLine66:setScaleY(0.1);
+    obj.horzLine66:setTop(1);
+    obj.horzLine66:setName("horzLine66");
 
     obj.flowLineBreak5 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak5:setParent(obj.perfilLayout);
@@ -3787,11 +3937,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.topoPtBonusEConhecimentos:setHorzAlign("center");
     obj.topoPtBonusEConhecimentos:setMargins({bottom=15});
 
-    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label42:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label42:setText("Pontos Restantes: ");
-    obj.label42:setWidth(150);
-    obj.label42:setName("label42");
+    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label46:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label46:setText("Pontos Restantes: ");
+    obj.label46:setWidth(150);
+    obj.label46:setName("label46");
 
     obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.topoPtBonusEConhecimentos);
@@ -3806,11 +3956,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit65:setMin(0);
     obj.edit65:setName("edit65");
 
-    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label43:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label43:setText("Pontos Treinados: ");
-    obj.label43:setWidth(150);
-    obj.label43:setName("label43");
+    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label47:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label47:setText("Pontos Treinados: ");
+    obj.label47:setWidth(150);
+    obj.label47:setName("label47");
 
     obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.topoPtBonusEConhecimentos);
@@ -3825,11 +3975,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit66:setMin(0);
     obj.edit66:setName("edit66");
 
-    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label44:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label44:setText("Pontos de Conhecimento: ");
-    obj.label44:setWidth(150);
-    obj.label44:setName("label44");
+    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label48:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label48:setText("Pontos de Conhecimento: ");
+    obj.label48:setWidth(150);
+    obj.label48:setName("label48");
 
     obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.topoPtBonusEConhecimentos);
@@ -3844,11 +3994,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit67:setMin(0);
     obj.edit67:setName("edit67");
 
-    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label45:setParent(obj.topoPtBonusEConhecimentos);
-    obj.label45:setText("Pontos Con. Distribuidos: ");
-    obj.label45:setWidth(150);
-    obj.label45:setName("label45");
+    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label49:setParent(obj.topoPtBonusEConhecimentos);
+    obj.label49:setText("Pontos Con. Distribuidos: ");
+    obj.label49:setWidth(150);
+    obj.label49:setName("label49");
 
     obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.topoPtBonusEConhecimentos);
@@ -3896,163 +4046,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.tabelaPontosBonus:setMaxControlsPerLine(2);
     obj.tabelaPontosBonus:setHorzAlign("center");
 
-    obj.flowPart120 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart120:setParent(obj.tabelaPontosBonus);
-    obj.flowPart120:setHeight(20);
-    obj.flowPart120:setMinWidth(180);
-    obj.flowPart120:setMaxWidth(180);
-    obj.flowPart120:setName("flowPart120");
-    obj.flowPart120:setMargins({top=5, bottom=5,right=10});
-
-    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label46:setParent(obj.flowPart120);
-    obj.label46:setText("Percepção");
-    obj.label46:setAlign("left");
-    obj.label46:setFontSize(18);
-    obj.label46:setVertTextAlign("center");
-    obj.label46:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label46, "fontStyle",  "italic");
-    obj.label46:setWidth(200);
-    obj.label46:setName("label46");
-
-    obj.horzLine65 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine65:setParent(obj.flowPart120);
-    obj.horzLine65:setAlign("bottom");
-    obj.horzLine65:setStrokeColor("#FFFFFF50");
-    obj.horzLine65:setStrokeSize(1);
-    obj.horzLine65:setName("horzLine65");
-
-    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout1:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout1:setHeight(20);
-    obj.flowLayout1:setMinWidth(150);
-    obj.flowLayout1:setMaxWidth(200);
-    obj.flowLayout1:setMaxControlsPerLine(3);
-    obj.flowLayout1:setName("flowLayout1");
-
-    obj.percepcaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.percepcaoMinus:setParent(obj.flowLayout1);
-    obj.percepcaoMinus:setName("percepcaoMinus");
-    obj.percepcaoMinus:setText("-");
-    obj.percepcaoMinus:setWidth(20);
-    obj.percepcaoMinus:setHeight(20);
-
     obj.flowPart121 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart121:setParent(obj.flowLayout1);
+    obj.flowPart121:setParent(obj.tabelaPontosBonus);
     obj.flowPart121:setHeight(20);
-    obj.flowPart121:setMinWidth(20);
-    obj.flowPart121:setMaxWidth(20);
+    obj.flowPart121:setMinWidth(180);
+    obj.flowPart121:setMaxWidth(180);
     obj.flowPart121:setName("flowPart121");
+    obj.flowPart121:setMargins({top=5, bottom=5,right=10});
 
-    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit69:setParent(obj.flowPart121);
-    obj.edit69:setAlign("client");
-    obj.edit69:setField("percepcao");
-    obj.edit69:setFontSize(12);
-    obj.edit69:setTransparent(true);
-    obj.edit69:setVertTextAlign("center");
-    obj.edit69:setHorzTextAlign("center");
-    obj.edit69:setType("number");
-    obj.edit69:setReadOnly(true);
-    obj.edit69:setMin(0);
-    obj.edit69:setName("edit69");
-
-    obj.percepcaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.percepcaoPlus:setParent(obj.flowLayout1);
-    obj.percepcaoPlus:setName("percepcaoPlus");
-    obj.percepcaoPlus:setText("+");
-    obj.percepcaoPlus:setWidth(20);
-    obj.percepcaoPlus:setHeight(20);
-
-    obj.flowPart122 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart122:setParent(obj.tabelaPontosBonus);
-    obj.flowPart122:setHeight(20);
-    obj.flowPart122:setMinWidth(180);
-    obj.flowPart122:setMaxWidth(180);
-    obj.flowPart122:setName("flowPart122");
-    obj.flowPart122:setMargins({top=5, bottom=5,right=10});
-
-    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label47:setParent(obj.flowPart122);
-    obj.label47:setText("Intimidação");
-    obj.label47:setAlign("left");
-    obj.label47:setFontSize(18);
-    obj.label47:setVertTextAlign("center");
-    obj.label47:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label47, "fontStyle",  "italic");
-    obj.label47:setWidth(200);
-    obj.label47:setName("label47");
-
-    obj.horzLine66 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine66:setParent(obj.flowPart122);
-    obj.horzLine66:setAlign("bottom");
-    obj.horzLine66:setStrokeColor("#FFFFFF50");
-    obj.horzLine66:setStrokeSize(1);
-    obj.horzLine66:setName("horzLine66");
-
-    obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout2:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout2:setHeight(20);
-    obj.flowLayout2:setMinWidth(150);
-    obj.flowLayout2:setMaxWidth(200);
-    obj.flowLayout2:setMaxControlsPerLine(3);
-    obj.flowLayout2:setName("flowLayout2");
-
-    obj.intimidacaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intimidacaoMinus:setParent(obj.flowLayout2);
-    obj.intimidacaoMinus:setName("intimidacaoMinus");
-    obj.intimidacaoMinus:setText("-");
-    obj.intimidacaoMinus:setWidth(20);
-    obj.intimidacaoMinus:setHeight(20);
-
-    obj.flowPart123 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart123:setParent(obj.flowLayout2);
-    obj.flowPart123:setHeight(20);
-    obj.flowPart123:setMinWidth(20);
-    obj.flowPart123:setMaxWidth(20);
-    obj.flowPart123:setName("flowPart123");
-
-    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit70:setParent(obj.flowPart123);
-    obj.edit70:setAlign("client");
-    obj.edit70:setField("intimidacao");
-    obj.edit70:setFontSize(12);
-    obj.edit70:setTransparent(true);
-    obj.edit70:setVertTextAlign("center");
-    obj.edit70:setHorzTextAlign("center");
-    obj.edit70:setType("number");
-    obj.edit70:setReadOnly(true);
-    obj.edit70:setMin(0);
-    obj.edit70:setName("edit70");
-
-    obj.intimidacaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intimidacaoPlus:setParent(obj.flowLayout2);
-    obj.intimidacaoPlus:setName("intimidacaoPlus");
-    obj.intimidacaoPlus:setText("+");
-    obj.intimidacaoPlus:setWidth(20);
-    obj.intimidacaoPlus:setHeight(20);
-
-    obj.flowPart124 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart124:setParent(obj.tabelaPontosBonus);
-    obj.flowPart124:setHeight(20);
-    obj.flowPart124:setMinWidth(180);
-    obj.flowPart124:setMaxWidth(180);
-    obj.flowPart124:setName("flowPart124");
-    obj.flowPart124:setMargins({top=5, bottom=5,right=10});
-
-    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label48:setParent(obj.flowPart124);
-    obj.label48:setText("Persuasão");
-    obj.label48:setAlign("left");
-    obj.label48:setFontSize(18);
-    obj.label48:setVertTextAlign("center");
-    obj.label48:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label48, "fontStyle",  "italic");
-    obj.label48:setWidth(200);
-    obj.label48:setName("label48");
+    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label50:setParent(obj.flowPart121);
+    obj.label50:setText("Percepção");
+    obj.label50:setAlign("left");
+    obj.label50:setFontSize(18);
+    obj.label50:setVertTextAlign("center");
+    obj.label50:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label50, "fontStyle",  "italic");
+    obj.label50:setWidth(200);
+    obj.label50:setName("label50");
 
     obj.horzLine67 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine67:setParent(obj.flowPart124);
+    obj.horzLine67:setParent(obj.flowPart121);
     obj.horzLine67:setAlign("bottom");
     obj.horzLine67:setStrokeColor("#FFFFFF50");
     obj.horzLine67:setStrokeSize(1);
@@ -4066,61 +4080,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout3:setMaxControlsPerLine(3);
     obj.flowLayout3:setName("flowLayout3");
 
-    obj.persuasaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.persuasaoMinus:setParent(obj.flowLayout3);
-    obj.persuasaoMinus:setName("persuasaoMinus");
-    obj.persuasaoMinus:setText("-");
-    obj.persuasaoMinus:setWidth(20);
-    obj.persuasaoMinus:setHeight(20);
+    obj.percepcaoMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.percepcaoMinus:setParent(obj.flowLayout3);
+    obj.percepcaoMinus:setName("percepcaoMinus");
+    obj.percepcaoMinus:setText("-");
+    obj.percepcaoMinus:setWidth(20);
+    obj.percepcaoMinus:setHeight(20);
 
-    obj.flowPart125 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart125:setParent(obj.flowLayout3);
-    obj.flowPart125:setHeight(20);
-    obj.flowPart125:setMinWidth(20);
-    obj.flowPart125:setMaxWidth(20);
-    obj.flowPart125:setName("flowPart125");
+    obj.flowPart122 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart122:setParent(obj.flowLayout3);
+    obj.flowPart122:setHeight(20);
+    obj.flowPart122:setMinWidth(20);
+    obj.flowPart122:setMaxWidth(20);
+    obj.flowPart122:setName("flowPart122");
 
-    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit71:setParent(obj.flowPart125);
-    obj.edit71:setAlign("client");
-    obj.edit71:setField("persuasao");
-    obj.edit71:setFontSize(12);
-    obj.edit71:setTransparent(true);
-    obj.edit71:setVertTextAlign("center");
-    obj.edit71:setHorzTextAlign("center");
-    obj.edit71:setType("number");
-    obj.edit71:setReadOnly(true);
-    obj.edit71:setMin(0);
-    obj.edit71:setName("edit71");
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit69:setParent(obj.flowPart122);
+    obj.edit69:setAlign("client");
+    obj.edit69:setField("percepcao");
+    obj.edit69:setFontSize(12);
+    obj.edit69:setTransparent(true);
+    obj.edit69:setVertTextAlign("center");
+    obj.edit69:setHorzTextAlign("center");
+    obj.edit69:setType("number");
+    obj.edit69:setReadOnly(true);
+    obj.edit69:setMin(0);
+    obj.edit69:setName("edit69");
 
-    obj.persuasaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.persuasaoPlus:setParent(obj.flowLayout3);
-    obj.persuasaoPlus:setName("persuasaoPlus");
-    obj.persuasaoPlus:setText("+");
-    obj.persuasaoPlus:setWidth(20);
-    obj.persuasaoPlus:setHeight(20);
+    obj.percepcaoPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.percepcaoPlus:setParent(obj.flowLayout3);
+    obj.percepcaoPlus:setName("percepcaoPlus");
+    obj.percepcaoPlus:setText("+");
+    obj.percepcaoPlus:setWidth(20);
+    obj.percepcaoPlus:setHeight(20);
 
-    obj.flowPart126 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart126:setParent(obj.tabelaPontosBonus);
-    obj.flowPart126:setHeight(20);
-    obj.flowPart126:setMinWidth(180);
-    obj.flowPart126:setMaxWidth(180);
-    obj.flowPart126:setName("flowPart126");
-    obj.flowPart126:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart123 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart123:setParent(obj.tabelaPontosBonus);
+    obj.flowPart123:setHeight(20);
+    obj.flowPart123:setMinWidth(180);
+    obj.flowPart123:setMaxWidth(180);
+    obj.flowPart123:setName("flowPart123");
+    obj.flowPart123:setMargins({top=5, bottom=5,right=10});
 
-    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label49:setParent(obj.flowPart126);
-    obj.label49:setText("Adestrar Animais");
-    obj.label49:setAlign("left");
-    obj.label49:setFontSize(18);
-    obj.label49:setVertTextAlign("center");
-    obj.label49:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label49, "fontStyle",  "italic");
-    obj.label49:setWidth(200);
-    obj.label49:setName("label49");
+    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label51:setParent(obj.flowPart123);
+    obj.label51:setText("Intimidação");
+    obj.label51:setAlign("left");
+    obj.label51:setFontSize(18);
+    obj.label51:setVertTextAlign("center");
+    obj.label51:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label51, "fontStyle",  "italic");
+    obj.label51:setWidth(200);
+    obj.label51:setName("label51");
 
     obj.horzLine68 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine68:setParent(obj.flowPart126);
+    obj.horzLine68:setParent(obj.flowPart123);
     obj.horzLine68:setAlign("bottom");
     obj.horzLine68:setStrokeColor("#FFFFFF50");
     obj.horzLine68:setStrokeSize(1);
@@ -4134,61 +4148,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout4:setMaxControlsPerLine(3);
     obj.flowLayout4:setName("flowLayout4");
 
-    obj.adestrarAnimaisMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.adestrarAnimaisMinus:setParent(obj.flowLayout4);
-    obj.adestrarAnimaisMinus:setName("adestrarAnimaisMinus");
-    obj.adestrarAnimaisMinus:setText("-");
-    obj.adestrarAnimaisMinus:setWidth(20);
-    obj.adestrarAnimaisMinus:setHeight(20);
+    obj.intimidacaoMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.intimidacaoMinus:setParent(obj.flowLayout4);
+    obj.intimidacaoMinus:setName("intimidacaoMinus");
+    obj.intimidacaoMinus:setText("-");
+    obj.intimidacaoMinus:setWidth(20);
+    obj.intimidacaoMinus:setHeight(20);
 
-    obj.flowPart127 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart127:setParent(obj.flowLayout4);
-    obj.flowPart127:setHeight(20);
-    obj.flowPart127:setMinWidth(20);
-    obj.flowPart127:setMaxWidth(20);
-    obj.flowPart127:setName("flowPart127");
+    obj.flowPart124 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart124:setParent(obj.flowLayout4);
+    obj.flowPart124:setHeight(20);
+    obj.flowPart124:setMinWidth(20);
+    obj.flowPart124:setMaxWidth(20);
+    obj.flowPart124:setName("flowPart124");
 
-    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit72:setParent(obj.flowPart127);
-    obj.edit72:setAlign("client");
-    obj.edit72:setField("adestrarAnimais");
-    obj.edit72:setFontSize(12);
-    obj.edit72:setTransparent(true);
-    obj.edit72:setVertTextAlign("center");
-    obj.edit72:setHorzTextAlign("center");
-    obj.edit72:setType("number");
-    obj.edit72:setReadOnly(true);
-    obj.edit72:setMin(0);
-    obj.edit72:setName("edit72");
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit70:setParent(obj.flowPart124);
+    obj.edit70:setAlign("client");
+    obj.edit70:setField("intimidacao");
+    obj.edit70:setFontSize(12);
+    obj.edit70:setTransparent(true);
+    obj.edit70:setVertTextAlign("center");
+    obj.edit70:setHorzTextAlign("center");
+    obj.edit70:setType("number");
+    obj.edit70:setReadOnly(true);
+    obj.edit70:setMin(0);
+    obj.edit70:setName("edit70");
 
-    obj.adestrarAnimaisPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.adestrarAnimaisPlus:setParent(obj.flowLayout4);
-    obj.adestrarAnimaisPlus:setName("adestrarAnimaisPlus");
-    obj.adestrarAnimaisPlus:setText("+");
-    obj.adestrarAnimaisPlus:setWidth(20);
-    obj.adestrarAnimaisPlus:setHeight(20);
+    obj.intimidacaoPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.intimidacaoPlus:setParent(obj.flowLayout4);
+    obj.intimidacaoPlus:setName("intimidacaoPlus");
+    obj.intimidacaoPlus:setText("+");
+    obj.intimidacaoPlus:setWidth(20);
+    obj.intimidacaoPlus:setHeight(20);
 
-    obj.flowPart128 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart128:setParent(obj.tabelaPontosBonus);
-    obj.flowPart128:setHeight(20);
-    obj.flowPart128:setMinWidth(180);
-    obj.flowPart128:setMaxWidth(180);
-    obj.flowPart128:setName("flowPart128");
-    obj.flowPart128:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart125 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart125:setParent(obj.tabelaPontosBonus);
+    obj.flowPart125:setHeight(20);
+    obj.flowPart125:setMinWidth(180);
+    obj.flowPart125:setMaxWidth(180);
+    obj.flowPart125:setName("flowPart125");
+    obj.flowPart125:setMargins({top=5, bottom=5,right=10});
 
-    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label50:setParent(obj.flowPart128);
-    obj.label50:setText("Furtividade");
-    obj.label50:setAlign("left");
-    obj.label50:setFontSize(18);
-    obj.label50:setVertTextAlign("center");
-    obj.label50:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label50, "fontStyle",  "italic");
-    obj.label50:setWidth(200);
-    obj.label50:setName("label50");
+    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label52:setParent(obj.flowPart125);
+    obj.label52:setText("Persuasão");
+    obj.label52:setAlign("left");
+    obj.label52:setFontSize(18);
+    obj.label52:setVertTextAlign("center");
+    obj.label52:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label52, "fontStyle",  "italic");
+    obj.label52:setWidth(200);
+    obj.label52:setName("label52");
 
     obj.horzLine69 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine69:setParent(obj.flowPart128);
+    obj.horzLine69:setParent(obj.flowPart125);
     obj.horzLine69:setAlign("bottom");
     obj.horzLine69:setStrokeColor("#FFFFFF50");
     obj.horzLine69:setStrokeSize(1);
@@ -4202,61 +4216,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout5:setMaxControlsPerLine(3);
     obj.flowLayout5:setName("flowLayout5");
 
-    obj.furtividadeMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.furtividadeMinus:setParent(obj.flowLayout5);
-    obj.furtividadeMinus:setName("furtividadeMinus");
-    obj.furtividadeMinus:setText("-");
-    obj.furtividadeMinus:setWidth(20);
-    obj.furtividadeMinus:setHeight(20);
+    obj.persuasaoMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.persuasaoMinus:setParent(obj.flowLayout5);
+    obj.persuasaoMinus:setName("persuasaoMinus");
+    obj.persuasaoMinus:setText("-");
+    obj.persuasaoMinus:setWidth(20);
+    obj.persuasaoMinus:setHeight(20);
 
-    obj.flowPart129 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart129:setParent(obj.flowLayout5);
-    obj.flowPart129:setHeight(20);
-    obj.flowPart129:setMinWidth(20);
-    obj.flowPart129:setMaxWidth(20);
-    obj.flowPart129:setName("flowPart129");
+    obj.flowPart126 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart126:setParent(obj.flowLayout5);
+    obj.flowPart126:setHeight(20);
+    obj.flowPart126:setMinWidth(20);
+    obj.flowPart126:setMaxWidth(20);
+    obj.flowPart126:setName("flowPart126");
 
-    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit73:setParent(obj.flowPart129);
-    obj.edit73:setAlign("client");
-    obj.edit73:setField("furtividade");
-    obj.edit73:setFontSize(12);
-    obj.edit73:setTransparent(true);
-    obj.edit73:setVertTextAlign("center");
-    obj.edit73:setHorzTextAlign("center");
-    obj.edit73:setType("number");
-    obj.edit73:setReadOnly(true);
-    obj.edit73:setMin(0);
-    obj.edit73:setName("edit73");
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit71:setParent(obj.flowPart126);
+    obj.edit71:setAlign("client");
+    obj.edit71:setField("persuasao");
+    obj.edit71:setFontSize(12);
+    obj.edit71:setTransparent(true);
+    obj.edit71:setVertTextAlign("center");
+    obj.edit71:setHorzTextAlign("center");
+    obj.edit71:setType("number");
+    obj.edit71:setReadOnly(true);
+    obj.edit71:setMin(0);
+    obj.edit71:setName("edit71");
 
-    obj.furtividadePlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.furtividadePlus:setParent(obj.flowLayout5);
-    obj.furtividadePlus:setName("furtividadePlus");
-    obj.furtividadePlus:setText("+");
-    obj.furtividadePlus:setWidth(20);
-    obj.furtividadePlus:setHeight(20);
+    obj.persuasaoPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.persuasaoPlus:setParent(obj.flowLayout5);
+    obj.persuasaoPlus:setName("persuasaoPlus");
+    obj.persuasaoPlus:setText("+");
+    obj.persuasaoPlus:setWidth(20);
+    obj.persuasaoPlus:setHeight(20);
 
-    obj.flowPart130 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart130:setParent(obj.tabelaPontosBonus);
-    obj.flowPart130:setHeight(20);
-    obj.flowPart130:setMinWidth(180);
-    obj.flowPart130:setMaxWidth(180);
-    obj.flowPart130:setName("flowPart130");
-    obj.flowPart130:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart127 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart127:setParent(obj.tabelaPontosBonus);
+    obj.flowPart127:setHeight(20);
+    obj.flowPart127:setMinWidth(180);
+    obj.flowPart127:setMaxWidth(180);
+    obj.flowPart127:setName("flowPart127");
+    obj.flowPart127:setMargins({top=5, bottom=5,right=10});
 
-    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label51:setParent(obj.flowPart130);
-    obj.label51:setText("Intuição");
-    obj.label51:setAlign("left");
-    obj.label51:setFontSize(18);
-    obj.label51:setVertTextAlign("center");
-    obj.label51:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label51, "fontStyle",  "italic");
-    obj.label51:setWidth(200);
-    obj.label51:setName("label51");
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label53:setParent(obj.flowPart127);
+    obj.label53:setText("Adestrar Animais");
+    obj.label53:setAlign("left");
+    obj.label53:setFontSize(18);
+    obj.label53:setVertTextAlign("center");
+    obj.label53:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label53, "fontStyle",  "italic");
+    obj.label53:setWidth(200);
+    obj.label53:setName("label53");
 
     obj.horzLine70 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine70:setParent(obj.flowPart130);
+    obj.horzLine70:setParent(obj.flowPart127);
     obj.horzLine70:setAlign("bottom");
     obj.horzLine70:setStrokeColor("#FFFFFF50");
     obj.horzLine70:setStrokeSize(1);
@@ -4270,61 +4284,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout6:setMaxControlsPerLine(3);
     obj.flowLayout6:setName("flowLayout6");
 
-    obj.intuicaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intuicaoMinus:setParent(obj.flowLayout6);
-    obj.intuicaoMinus:setName("intuicaoMinus");
-    obj.intuicaoMinus:setText("-");
-    obj.intuicaoMinus:setWidth(20);
-    obj.intuicaoMinus:setHeight(20);
+    obj.adestrarAnimaisMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.adestrarAnimaisMinus:setParent(obj.flowLayout6);
+    obj.adestrarAnimaisMinus:setName("adestrarAnimaisMinus");
+    obj.adestrarAnimaisMinus:setText("-");
+    obj.adestrarAnimaisMinus:setWidth(20);
+    obj.adestrarAnimaisMinus:setHeight(20);
 
-    obj.flowPart131 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart131:setParent(obj.flowLayout6);
-    obj.flowPart131:setHeight(20);
-    obj.flowPart131:setMinWidth(20);
-    obj.flowPart131:setMaxWidth(20);
-    obj.flowPart131:setName("flowPart131");
+    obj.flowPart128 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart128:setParent(obj.flowLayout6);
+    obj.flowPart128:setHeight(20);
+    obj.flowPart128:setMinWidth(20);
+    obj.flowPart128:setMaxWidth(20);
+    obj.flowPart128:setName("flowPart128");
 
-    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit74:setParent(obj.flowPart131);
-    obj.edit74:setAlign("client");
-    obj.edit74:setField("intuicao");
-    obj.edit74:setFontSize(12);
-    obj.edit74:setTransparent(true);
-    obj.edit74:setVertTextAlign("center");
-    obj.edit74:setHorzTextAlign("center");
-    obj.edit74:setType("number");
-    obj.edit74:setReadOnly(true);
-    obj.edit74:setMin(0);
-    obj.edit74:setName("edit74");
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit72:setParent(obj.flowPart128);
+    obj.edit72:setAlign("client");
+    obj.edit72:setField("adestrarAnimais");
+    obj.edit72:setFontSize(12);
+    obj.edit72:setTransparent(true);
+    obj.edit72:setVertTextAlign("center");
+    obj.edit72:setHorzTextAlign("center");
+    obj.edit72:setType("number");
+    obj.edit72:setReadOnly(true);
+    obj.edit72:setMin(0);
+    obj.edit72:setName("edit72");
 
-    obj.intuicaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intuicaoPlus:setParent(obj.flowLayout6);
-    obj.intuicaoPlus:setName("intuicaoPlus");
-    obj.intuicaoPlus:setText("+");
-    obj.intuicaoPlus:setWidth(20);
-    obj.intuicaoPlus:setHeight(20);
+    obj.adestrarAnimaisPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.adestrarAnimaisPlus:setParent(obj.flowLayout6);
+    obj.adestrarAnimaisPlus:setName("adestrarAnimaisPlus");
+    obj.adestrarAnimaisPlus:setText("+");
+    obj.adestrarAnimaisPlus:setWidth(20);
+    obj.adestrarAnimaisPlus:setHeight(20);
 
-    obj.flowPart132 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart132:setParent(obj.tabelaPontosBonus);
-    obj.flowPart132:setHeight(20);
-    obj.flowPart132:setMinWidth(180);
-    obj.flowPart132:setMaxWidth(180);
-    obj.flowPart132:setName("flowPart132");
-    obj.flowPart132:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart129 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart129:setParent(obj.tabelaPontosBonus);
+    obj.flowPart129:setHeight(20);
+    obj.flowPart129:setMinWidth(180);
+    obj.flowPart129:setMaxWidth(180);
+    obj.flowPart129:setName("flowPart129");
+    obj.flowPart129:setMargins({top=5, bottom=5,right=10});
 
-    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label52:setParent(obj.flowPart132);
-    obj.label52:setText("Didática");
-    obj.label52:setAlign("left");
-    obj.label52:setFontSize(18);
-    obj.label52:setVertTextAlign("center");
-    obj.label52:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label52, "fontStyle",  "italic");
-    obj.label52:setWidth(200);
-    obj.label52:setName("label52");
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label54:setParent(obj.flowPart129);
+    obj.label54:setText("Furtividade");
+    obj.label54:setAlign("left");
+    obj.label54:setFontSize(18);
+    obj.label54:setVertTextAlign("center");
+    obj.label54:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label54, "fontStyle",  "italic");
+    obj.label54:setWidth(200);
+    obj.label54:setName("label54");
 
     obj.horzLine71 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine71:setParent(obj.flowPart132);
+    obj.horzLine71:setParent(obj.flowPart129);
     obj.horzLine71:setAlign("bottom");
     obj.horzLine71:setStrokeColor("#FFFFFF50");
     obj.horzLine71:setStrokeSize(1);
@@ -4338,22 +4352,158 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout7:setMaxControlsPerLine(3);
     obj.flowLayout7:setName("flowLayout7");
 
+    obj.furtividadeMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.furtividadeMinus:setParent(obj.flowLayout7);
+    obj.furtividadeMinus:setName("furtividadeMinus");
+    obj.furtividadeMinus:setText("-");
+    obj.furtividadeMinus:setWidth(20);
+    obj.furtividadeMinus:setHeight(20);
+
+    obj.flowPart130 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart130:setParent(obj.flowLayout7);
+    obj.flowPart130:setHeight(20);
+    obj.flowPart130:setMinWidth(20);
+    obj.flowPart130:setMaxWidth(20);
+    obj.flowPart130:setName("flowPart130");
+
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit73:setParent(obj.flowPart130);
+    obj.edit73:setAlign("client");
+    obj.edit73:setField("furtividade");
+    obj.edit73:setFontSize(12);
+    obj.edit73:setTransparent(true);
+    obj.edit73:setVertTextAlign("center");
+    obj.edit73:setHorzTextAlign("center");
+    obj.edit73:setType("number");
+    obj.edit73:setReadOnly(true);
+    obj.edit73:setMin(0);
+    obj.edit73:setName("edit73");
+
+    obj.furtividadePlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.furtividadePlus:setParent(obj.flowLayout7);
+    obj.furtividadePlus:setName("furtividadePlus");
+    obj.furtividadePlus:setText("+");
+    obj.furtividadePlus:setWidth(20);
+    obj.furtividadePlus:setHeight(20);
+
+    obj.flowPart131 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart131:setParent(obj.tabelaPontosBonus);
+    obj.flowPart131:setHeight(20);
+    obj.flowPart131:setMinWidth(180);
+    obj.flowPart131:setMaxWidth(180);
+    obj.flowPart131:setName("flowPart131");
+    obj.flowPart131:setMargins({top=5, bottom=5,right=10});
+
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label55:setParent(obj.flowPart131);
+    obj.label55:setText("Intuição");
+    obj.label55:setAlign("left");
+    obj.label55:setFontSize(18);
+    obj.label55:setVertTextAlign("center");
+    obj.label55:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label55, "fontStyle",  "italic");
+    obj.label55:setWidth(200);
+    obj.label55:setName("label55");
+
+    obj.horzLine72 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine72:setParent(obj.flowPart131);
+    obj.horzLine72:setAlign("bottom");
+    obj.horzLine72:setStrokeColor("#FFFFFF50");
+    obj.horzLine72:setStrokeSize(1);
+    obj.horzLine72:setName("horzLine72");
+
+    obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout8:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout8:setHeight(20);
+    obj.flowLayout8:setMinWidth(150);
+    obj.flowLayout8:setMaxWidth(200);
+    obj.flowLayout8:setMaxControlsPerLine(3);
+    obj.flowLayout8:setName("flowLayout8");
+
+    obj.intuicaoMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.intuicaoMinus:setParent(obj.flowLayout8);
+    obj.intuicaoMinus:setName("intuicaoMinus");
+    obj.intuicaoMinus:setText("-");
+    obj.intuicaoMinus:setWidth(20);
+    obj.intuicaoMinus:setHeight(20);
+
+    obj.flowPart132 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart132:setParent(obj.flowLayout8);
+    obj.flowPart132:setHeight(20);
+    obj.flowPart132:setMinWidth(20);
+    obj.flowPart132:setMaxWidth(20);
+    obj.flowPart132:setName("flowPart132");
+
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit74:setParent(obj.flowPart132);
+    obj.edit74:setAlign("client");
+    obj.edit74:setField("intuicao");
+    obj.edit74:setFontSize(12);
+    obj.edit74:setTransparent(true);
+    obj.edit74:setVertTextAlign("center");
+    obj.edit74:setHorzTextAlign("center");
+    obj.edit74:setType("number");
+    obj.edit74:setReadOnly(true);
+    obj.edit74:setMin(0);
+    obj.edit74:setName("edit74");
+
+    obj.intuicaoPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.intuicaoPlus:setParent(obj.flowLayout8);
+    obj.intuicaoPlus:setName("intuicaoPlus");
+    obj.intuicaoPlus:setText("+");
+    obj.intuicaoPlus:setWidth(20);
+    obj.intuicaoPlus:setHeight(20);
+
+    obj.flowPart133 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart133:setParent(obj.tabelaPontosBonus);
+    obj.flowPart133:setHeight(20);
+    obj.flowPart133:setMinWidth(180);
+    obj.flowPart133:setMaxWidth(180);
+    obj.flowPart133:setName("flowPart133");
+    obj.flowPart133:setMargins({top=5, bottom=5,right=10});
+
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label56:setParent(obj.flowPart133);
+    obj.label56:setText("Didática");
+    obj.label56:setAlign("left");
+    obj.label56:setFontSize(18);
+    obj.label56:setVertTextAlign("center");
+    obj.label56:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label56, "fontStyle",  "italic");
+    obj.label56:setWidth(200);
+    obj.label56:setName("label56");
+
+    obj.horzLine73 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine73:setParent(obj.flowPart133);
+    obj.horzLine73:setAlign("bottom");
+    obj.horzLine73:setStrokeColor("#FFFFFF50");
+    obj.horzLine73:setStrokeSize(1);
+    obj.horzLine73:setName("horzLine73");
+
+    obj.flowLayout9 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout9:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout9:setHeight(20);
+    obj.flowLayout9:setMinWidth(150);
+    obj.flowLayout9:setMaxWidth(200);
+    obj.flowLayout9:setMaxControlsPerLine(3);
+    obj.flowLayout9:setName("flowLayout9");
+
     obj.didaticaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.didaticaMinus:setParent(obj.flowLayout7);
+    obj.didaticaMinus:setParent(obj.flowLayout9);
     obj.didaticaMinus:setName("didaticaMinus");
     obj.didaticaMinus:setText("-");
     obj.didaticaMinus:setWidth(20);
     obj.didaticaMinus:setHeight(20);
 
-    obj.flowPart133 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart133:setParent(obj.flowLayout7);
-    obj.flowPart133:setHeight(20);
-    obj.flowPart133:setMinWidth(20);
-    obj.flowPart133:setMaxWidth(20);
-    obj.flowPart133:setName("flowPart133");
+    obj.flowPart134 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart134:setParent(obj.flowLayout9);
+    obj.flowPart134:setHeight(20);
+    obj.flowPart134:setMinWidth(20);
+    obj.flowPart134:setMaxWidth(20);
+    obj.flowPart134:setName("flowPart134");
 
     obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit75:setParent(obj.flowPart133);
+    obj.edit75:setParent(obj.flowPart134);
     obj.edit75:setAlign("client");
     obj.edit75:setField("didatica");
     obj.edit75:setFontSize(12);
@@ -4366,7 +4516,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit75:setName("edit75");
 
     obj.didaticaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.didaticaPlus:setParent(obj.flowLayout7);
+    obj.didaticaPlus:setParent(obj.flowLayout9);
     obj.didaticaPlus:setName("didaticaPlus");
     obj.didaticaPlus:setText("+");
     obj.didaticaPlus:setWidth(20);
@@ -4383,163 +4533,27 @@ local function constructNew_frmFichaDePersonagem()
     obj.tabelaConhecimentosEspecificos:setMaxControlsPerLine(2);
     obj.tabelaConhecimentosEspecificos:setHorzAlign("center");
 
-    obj.flowPart134 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart134:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart134:setHeight(20);
-    obj.flowPart134:setMinWidth(180);
-    obj.flowPart134:setMaxWidth(180);
-    obj.flowPart134:setName("flowPart134");
-    obj.flowPart134:setMargins({top=5, bottom=5,right=10});
-
-    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label53:setParent(obj.flowPart134);
-    obj.label53:setText("Geografia");
-    obj.label53:setAlign("left");
-    obj.label53:setFontSize(18);
-    obj.label53:setVertTextAlign("center");
-    obj.label53:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label53, "fontStyle",  "italic");
-    obj.label53:setWidth(200);
-    obj.label53:setName("label53");
-
-    obj.horzLine72 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine72:setParent(obj.flowPart134);
-    obj.horzLine72:setAlign("bottom");
-    obj.horzLine72:setStrokeColor("#FFFFFF50");
-    obj.horzLine72:setStrokeSize(1);
-    obj.horzLine72:setName("horzLine72");
-
-    obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout8:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout8:setHeight(20);
-    obj.flowLayout8:setMinWidth(150);
-    obj.flowLayout8:setMaxWidth(200);
-    obj.flowLayout8:setMaxControlsPerLine(3);
-    obj.flowLayout8:setName("flowLayout8");
-
-    obj.geografiaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.geografiaMinus:setParent(obj.flowLayout8);
-    obj.geografiaMinus:setName("geografiaMinus");
-    obj.geografiaMinus:setText("-");
-    obj.geografiaMinus:setWidth(20);
-    obj.geografiaMinus:setHeight(20);
-
     obj.flowPart135 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart135:setParent(obj.flowLayout8);
+    obj.flowPart135:setParent(obj.tabelaConhecimentosEspecificos);
     obj.flowPart135:setHeight(20);
-    obj.flowPart135:setMinWidth(20);
-    obj.flowPart135:setMaxWidth(20);
+    obj.flowPart135:setMinWidth(180);
+    obj.flowPart135:setMaxWidth(180);
     obj.flowPart135:setName("flowPart135");
+    obj.flowPart135:setMargins({top=5, bottom=5,right=10});
 
-    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit76:setParent(obj.flowPart135);
-    obj.edit76:setAlign("client");
-    obj.edit76:setField("geografia");
-    obj.edit76:setFontSize(12);
-    obj.edit76:setTransparent(true);
-    obj.edit76:setVertTextAlign("center");
-    obj.edit76:setHorzTextAlign("center");
-    obj.edit76:setType("number");
-    obj.edit76:setReadOnly(true);
-    obj.edit76:setMin(0);
-    obj.edit76:setName("edit76");
-
-    obj.geografiaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.geografiaPlus:setParent(obj.flowLayout8);
-    obj.geografiaPlus:setName("geografiaPlus");
-    obj.geografiaPlus:setText("+");
-    obj.geografiaPlus:setWidth(20);
-    obj.geografiaPlus:setHeight(20);
-
-    obj.flowPart136 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart136:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart136:setHeight(20);
-    obj.flowPart136:setMinWidth(180);
-    obj.flowPart136:setMaxWidth(180);
-    obj.flowPart136:setName("flowPart136");
-    obj.flowPart136:setMargins({top=5, bottom=5,right=10});
-
-    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label54:setParent(obj.flowPart136);
-    obj.label54:setText("História");
-    obj.label54:setAlign("left");
-    obj.label54:setFontSize(18);
-    obj.label54:setVertTextAlign("center");
-    obj.label54:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label54, "fontStyle",  "italic");
-    obj.label54:setWidth(200);
-    obj.label54:setName("label54");
-
-    obj.horzLine73 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine73:setParent(obj.flowPart136);
-    obj.horzLine73:setAlign("bottom");
-    obj.horzLine73:setStrokeColor("#FFFFFF50");
-    obj.horzLine73:setStrokeSize(1);
-    obj.horzLine73:setName("horzLine73");
-
-    obj.flowLayout9 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout9:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout9:setHeight(20);
-    obj.flowLayout9:setMinWidth(150);
-    obj.flowLayout9:setMaxWidth(200);
-    obj.flowLayout9:setMaxControlsPerLine(3);
-    obj.flowLayout9:setName("flowLayout9");
-
-    obj.historiaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.historiaMinus:setParent(obj.flowLayout9);
-    obj.historiaMinus:setName("historiaMinus");
-    obj.historiaMinus:setText("-");
-    obj.historiaMinus:setWidth(20);
-    obj.historiaMinus:setHeight(20);
-
-    obj.flowPart137 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart137:setParent(obj.flowLayout9);
-    obj.flowPart137:setHeight(20);
-    obj.flowPart137:setMinWidth(20);
-    obj.flowPart137:setMaxWidth(20);
-    obj.flowPart137:setName("flowPart137");
-
-    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit77:setParent(obj.flowPart137);
-    obj.edit77:setAlign("client");
-    obj.edit77:setField("historia");
-    obj.edit77:setFontSize(12);
-    obj.edit77:setTransparent(true);
-    obj.edit77:setVertTextAlign("center");
-    obj.edit77:setHorzTextAlign("center");
-    obj.edit77:setType("number");
-    obj.edit77:setReadOnly(true);
-    obj.edit77:setMin(0);
-    obj.edit77:setName("edit77");
-
-    obj.historiaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.historiaPlus:setParent(obj.flowLayout9);
-    obj.historiaPlus:setName("historiaPlus");
-    obj.historiaPlus:setText("+");
-    obj.historiaPlus:setWidth(20);
-    obj.historiaPlus:setHeight(20);
-
-    obj.flowPart138 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart138:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart138:setHeight(20);
-    obj.flowPart138:setMinWidth(180);
-    obj.flowPart138:setMaxWidth(180);
-    obj.flowPart138:setName("flowPart138");
-    obj.flowPart138:setMargins({top=5, bottom=5,right=10});
-
-    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label55:setParent(obj.flowPart138);
-    obj.label55:setText("Religião");
-    obj.label55:setAlign("left");
-    obj.label55:setFontSize(18);
-    obj.label55:setVertTextAlign("center");
-    obj.label55:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label55, "fontStyle",  "italic");
-    obj.label55:setWidth(200);
-    obj.label55:setName("label55");
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label57:setParent(obj.flowPart135);
+    obj.label57:setText("Geografia");
+    obj.label57:setAlign("left");
+    obj.label57:setFontSize(18);
+    obj.label57:setVertTextAlign("center");
+    obj.label57:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label57, "fontStyle",  "italic");
+    obj.label57:setWidth(200);
+    obj.label57:setName("label57");
 
     obj.horzLine74 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine74:setParent(obj.flowPart138);
+    obj.horzLine74:setParent(obj.flowPart135);
     obj.horzLine74:setAlign("bottom");
     obj.horzLine74:setStrokeColor("#FFFFFF50");
     obj.horzLine74:setStrokeSize(1);
@@ -4553,61 +4567,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout10:setMaxControlsPerLine(3);
     obj.flowLayout10:setName("flowLayout10");
 
-    obj.religiaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.religiaoMinus:setParent(obj.flowLayout10);
-    obj.religiaoMinus:setName("religiaoMinus");
-    obj.religiaoMinus:setText("-");
-    obj.religiaoMinus:setWidth(20);
-    obj.religiaoMinus:setHeight(20);
+    obj.geografiaMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.geografiaMinus:setParent(obj.flowLayout10);
+    obj.geografiaMinus:setName("geografiaMinus");
+    obj.geografiaMinus:setText("-");
+    obj.geografiaMinus:setWidth(20);
+    obj.geografiaMinus:setHeight(20);
 
-    obj.flowPart139 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart139:setParent(obj.flowLayout10);
-    obj.flowPart139:setHeight(20);
-    obj.flowPart139:setMinWidth(20);
-    obj.flowPart139:setMaxWidth(20);
-    obj.flowPart139:setName("flowPart139");
+    obj.flowPart136 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart136:setParent(obj.flowLayout10);
+    obj.flowPart136:setHeight(20);
+    obj.flowPart136:setMinWidth(20);
+    obj.flowPart136:setMaxWidth(20);
+    obj.flowPart136:setName("flowPart136");
 
-    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit78:setParent(obj.flowPart139);
-    obj.edit78:setAlign("client");
-    obj.edit78:setField("religiao");
-    obj.edit78:setFontSize(12);
-    obj.edit78:setTransparent(true);
-    obj.edit78:setVertTextAlign("center");
-    obj.edit78:setHorzTextAlign("center");
-    obj.edit78:setType("number");
-    obj.edit78:setReadOnly(true);
-    obj.edit78:setMin(0);
-    obj.edit78:setName("edit78");
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit76:setParent(obj.flowPart136);
+    obj.edit76:setAlign("client");
+    obj.edit76:setField("geografia");
+    obj.edit76:setFontSize(12);
+    obj.edit76:setTransparent(true);
+    obj.edit76:setVertTextAlign("center");
+    obj.edit76:setHorzTextAlign("center");
+    obj.edit76:setType("number");
+    obj.edit76:setReadOnly(true);
+    obj.edit76:setMin(0);
+    obj.edit76:setName("edit76");
 
-    obj.religiaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.religiaoPlus:setParent(obj.flowLayout10);
-    obj.religiaoPlus:setName("religiaoPlus");
-    obj.religiaoPlus:setText("+");
-    obj.religiaoPlus:setWidth(20);
-    obj.religiaoPlus:setHeight(20);
+    obj.geografiaPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.geografiaPlus:setParent(obj.flowLayout10);
+    obj.geografiaPlus:setName("geografiaPlus");
+    obj.geografiaPlus:setText("+");
+    obj.geografiaPlus:setWidth(20);
+    obj.geografiaPlus:setHeight(20);
 
-    obj.flowPart140 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart140:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart140:setHeight(20);
-    obj.flowPart140:setMinWidth(180);
-    obj.flowPart140:setMaxWidth(180);
-    obj.flowPart140:setName("flowPart140");
-    obj.flowPart140:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart137 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart137:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart137:setHeight(20);
+    obj.flowPart137:setMinWidth(180);
+    obj.flowPart137:setMaxWidth(180);
+    obj.flowPart137:setName("flowPart137");
+    obj.flowPart137:setMargins({top=5, bottom=5,right=10});
 
-    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label56:setParent(obj.flowPart140);
-    obj.label56:setText("Fauna/Flora");
-    obj.label56:setAlign("left");
-    obj.label56:setFontSize(18);
-    obj.label56:setVertTextAlign("center");
-    obj.label56:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label56, "fontStyle",  "italic");
-    obj.label56:setWidth(200);
-    obj.label56:setName("label56");
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label58:setParent(obj.flowPart137);
+    obj.label58:setText("História");
+    obj.label58:setAlign("left");
+    obj.label58:setFontSize(18);
+    obj.label58:setVertTextAlign("center");
+    obj.label58:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label58, "fontStyle",  "italic");
+    obj.label58:setWidth(200);
+    obj.label58:setName("label58");
 
     obj.horzLine75 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine75:setParent(obj.flowPart140);
+    obj.horzLine75:setParent(obj.flowPart137);
     obj.horzLine75:setAlign("bottom");
     obj.horzLine75:setStrokeColor("#FFFFFF50");
     obj.horzLine75:setStrokeSize(1);
@@ -4621,61 +4635,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout11:setMaxControlsPerLine(3);
     obj.flowLayout11:setName("flowLayout11");
 
-    obj.faunafloraMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.faunafloraMinus:setParent(obj.flowLayout11);
-    obj.faunafloraMinus:setName("faunafloraMinus");
-    obj.faunafloraMinus:setText("-");
-    obj.faunafloraMinus:setWidth(20);
-    obj.faunafloraMinus:setHeight(20);
+    obj.historiaMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.historiaMinus:setParent(obj.flowLayout11);
+    obj.historiaMinus:setName("historiaMinus");
+    obj.historiaMinus:setText("-");
+    obj.historiaMinus:setWidth(20);
+    obj.historiaMinus:setHeight(20);
 
-    obj.flowPart141 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart141:setParent(obj.flowLayout11);
-    obj.flowPart141:setHeight(20);
-    obj.flowPart141:setMinWidth(20);
-    obj.flowPart141:setMaxWidth(20);
-    obj.flowPart141:setName("flowPart141");
+    obj.flowPart138 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart138:setParent(obj.flowLayout11);
+    obj.flowPart138:setHeight(20);
+    obj.flowPart138:setMinWidth(20);
+    obj.flowPart138:setMaxWidth(20);
+    obj.flowPart138:setName("flowPart138");
 
-    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit79:setParent(obj.flowPart141);
-    obj.edit79:setAlign("client");
-    obj.edit79:setField("faunaflora");
-    obj.edit79:setFontSize(12);
-    obj.edit79:setTransparent(true);
-    obj.edit79:setVertTextAlign("center");
-    obj.edit79:setHorzTextAlign("center");
-    obj.edit79:setType("number");
-    obj.edit79:setReadOnly(true);
-    obj.edit79:setMin(0);
-    obj.edit79:setName("edit79");
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit77:setParent(obj.flowPart138);
+    obj.edit77:setAlign("client");
+    obj.edit77:setField("historia");
+    obj.edit77:setFontSize(12);
+    obj.edit77:setTransparent(true);
+    obj.edit77:setVertTextAlign("center");
+    obj.edit77:setHorzTextAlign("center");
+    obj.edit77:setType("number");
+    obj.edit77:setReadOnly(true);
+    obj.edit77:setMin(0);
+    obj.edit77:setName("edit77");
 
-    obj.faunafloraPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.faunafloraPlus:setParent(obj.flowLayout11);
-    obj.faunafloraPlus:setName("faunafloraPlus");
-    obj.faunafloraPlus:setText("+");
-    obj.faunafloraPlus:setWidth(20);
-    obj.faunafloraPlus:setHeight(20);
+    obj.historiaPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.historiaPlus:setParent(obj.flowLayout11);
+    obj.historiaPlus:setName("historiaPlus");
+    obj.historiaPlus:setText("+");
+    obj.historiaPlus:setWidth(20);
+    obj.historiaPlus:setHeight(20);
 
-    obj.flowPart142 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart142:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart142:setHeight(20);
-    obj.flowPart142:setMinWidth(180);
-    obj.flowPart142:setMaxWidth(180);
-    obj.flowPart142:setName("flowPart142");
-    obj.flowPart142:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart139 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart139:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart139:setHeight(20);
+    obj.flowPart139:setMinWidth(180);
+    obj.flowPart139:setMaxWidth(180);
+    obj.flowPart139:setName("flowPart139");
+    obj.flowPart139:setMargins({top=5, bottom=5,right=10});
 
-    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label57:setParent(obj.flowPart142);
-    obj.label57:setText("Linguagem Comum");
-    obj.label57:setAlign("left");
-    obj.label57:setFontSize(18);
-    obj.label57:setVertTextAlign("center");
-    obj.label57:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label57, "fontStyle",  "italic");
-    obj.label57:setWidth(200);
-    obj.label57:setName("label57");
+    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label59:setParent(obj.flowPart139);
+    obj.label59:setText("Religião");
+    obj.label59:setAlign("left");
+    obj.label59:setFontSize(18);
+    obj.label59:setVertTextAlign("center");
+    obj.label59:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label59, "fontStyle",  "italic");
+    obj.label59:setWidth(200);
+    obj.label59:setName("label59");
 
     obj.horzLine76 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine76:setParent(obj.flowPart142);
+    obj.horzLine76:setParent(obj.flowPart139);
     obj.horzLine76:setAlign("bottom");
     obj.horzLine76:setStrokeColor("#FFFFFF50");
     obj.horzLine76:setStrokeSize(1);
@@ -4689,61 +4703,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout12:setMaxControlsPerLine(3);
     obj.flowLayout12:setName("flowLayout12");
 
-    obj.linguagemComumMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemComumMinus:setParent(obj.flowLayout12);
-    obj.linguagemComumMinus:setName("linguagemComumMinus");
-    obj.linguagemComumMinus:setText("-");
-    obj.linguagemComumMinus:setWidth(20);
-    obj.linguagemComumMinus:setHeight(20);
+    obj.religiaoMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.religiaoMinus:setParent(obj.flowLayout12);
+    obj.religiaoMinus:setName("religiaoMinus");
+    obj.religiaoMinus:setText("-");
+    obj.religiaoMinus:setWidth(20);
+    obj.religiaoMinus:setHeight(20);
 
-    obj.flowPart143 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart143:setParent(obj.flowLayout12);
-    obj.flowPart143:setHeight(20);
-    obj.flowPart143:setMinWidth(20);
-    obj.flowPart143:setMaxWidth(20);
-    obj.flowPart143:setName("flowPart143");
+    obj.flowPart140 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart140:setParent(obj.flowLayout12);
+    obj.flowPart140:setHeight(20);
+    obj.flowPart140:setMinWidth(20);
+    obj.flowPart140:setMaxWidth(20);
+    obj.flowPart140:setName("flowPart140");
 
-    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit80:setParent(obj.flowPart143);
-    obj.edit80:setAlign("client");
-    obj.edit80:setField("linguagemComum");
-    obj.edit80:setFontSize(12);
-    obj.edit80:setTransparent(true);
-    obj.edit80:setVertTextAlign("center");
-    obj.edit80:setHorzTextAlign("center");
-    obj.edit80:setType("number");
-    obj.edit80:setReadOnly(true);
-    obj.edit80:setMin(0);
-    obj.edit80:setName("edit80");
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit78:setParent(obj.flowPart140);
+    obj.edit78:setAlign("client");
+    obj.edit78:setField("religiao");
+    obj.edit78:setFontSize(12);
+    obj.edit78:setTransparent(true);
+    obj.edit78:setVertTextAlign("center");
+    obj.edit78:setHorzTextAlign("center");
+    obj.edit78:setType("number");
+    obj.edit78:setReadOnly(true);
+    obj.edit78:setMin(0);
+    obj.edit78:setName("edit78");
 
-    obj.linguagemComumPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemComumPlus:setParent(obj.flowLayout12);
-    obj.linguagemComumPlus:setName("linguagemComumPlus");
-    obj.linguagemComumPlus:setText("+");
-    obj.linguagemComumPlus:setWidth(20);
-    obj.linguagemComumPlus:setHeight(20);
+    obj.religiaoPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.religiaoPlus:setParent(obj.flowLayout12);
+    obj.religiaoPlus:setName("religiaoPlus");
+    obj.religiaoPlus:setText("+");
+    obj.religiaoPlus:setWidth(20);
+    obj.religiaoPlus:setHeight(20);
 
-    obj.flowPart144 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart144:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart144:setHeight(20);
-    obj.flowPart144:setMinWidth(180);
-    obj.flowPart144:setMaxWidth(180);
-    obj.flowPart144:setName("flowPart144");
-    obj.flowPart144:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart141 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart141:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart141:setHeight(20);
+    obj.flowPart141:setMinWidth(180);
+    obj.flowPart141:setMaxWidth(180);
+    obj.flowPart141:setName("flowPart141");
+    obj.flowPart141:setMargins({top=5, bottom=5,right=10});
 
-    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label58:setParent(obj.flowPart144);
-    obj.label58:setText("Linguagem Oriental");
-    obj.label58:setAlign("left");
-    obj.label58:setFontSize(18);
-    obj.label58:setVertTextAlign("center");
-    obj.label58:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label58, "fontStyle",  "italic");
-    obj.label58:setWidth(200);
-    obj.label58:setName("label58");
+    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label60:setParent(obj.flowPart141);
+    obj.label60:setText("Fauna/Flora");
+    obj.label60:setAlign("left");
+    obj.label60:setFontSize(18);
+    obj.label60:setVertTextAlign("center");
+    obj.label60:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label60, "fontStyle",  "italic");
+    obj.label60:setWidth(200);
+    obj.label60:setName("label60");
 
     obj.horzLine77 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine77:setParent(obj.flowPart144);
+    obj.horzLine77:setParent(obj.flowPart141);
     obj.horzLine77:setAlign("bottom");
     obj.horzLine77:setStrokeColor("#FFFFFF50");
     obj.horzLine77:setStrokeSize(1);
@@ -4757,61 +4771,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout13:setMaxControlsPerLine(3);
     obj.flowLayout13:setName("flowLayout13");
 
-    obj.linguagemOrientalMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemOrientalMinus:setParent(obj.flowLayout13);
-    obj.linguagemOrientalMinus:setName("linguagemOrientalMinus");
-    obj.linguagemOrientalMinus:setText("-");
-    obj.linguagemOrientalMinus:setWidth(20);
-    obj.linguagemOrientalMinus:setHeight(20);
+    obj.faunafloraMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.faunafloraMinus:setParent(obj.flowLayout13);
+    obj.faunafloraMinus:setName("faunafloraMinus");
+    obj.faunafloraMinus:setText("-");
+    obj.faunafloraMinus:setWidth(20);
+    obj.faunafloraMinus:setHeight(20);
 
-    obj.flowPart145 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart145:setParent(obj.flowLayout13);
-    obj.flowPart145:setHeight(20);
-    obj.flowPart145:setMinWidth(20);
-    obj.flowPart145:setMaxWidth(20);
-    obj.flowPart145:setName("flowPart145");
+    obj.flowPart142 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart142:setParent(obj.flowLayout13);
+    obj.flowPart142:setHeight(20);
+    obj.flowPart142:setMinWidth(20);
+    obj.flowPart142:setMaxWidth(20);
+    obj.flowPart142:setName("flowPart142");
 
-    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit81:setParent(obj.flowPart145);
-    obj.edit81:setAlign("client");
-    obj.edit81:setField("linguagemOriental");
-    obj.edit81:setFontSize(12);
-    obj.edit81:setTransparent(true);
-    obj.edit81:setVertTextAlign("center");
-    obj.edit81:setHorzTextAlign("center");
-    obj.edit81:setType("number");
-    obj.edit81:setReadOnly(true);
-    obj.edit81:setMin(0);
-    obj.edit81:setName("edit81");
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit79:setParent(obj.flowPart142);
+    obj.edit79:setAlign("client");
+    obj.edit79:setField("faunaflora");
+    obj.edit79:setFontSize(12);
+    obj.edit79:setTransparent(true);
+    obj.edit79:setVertTextAlign("center");
+    obj.edit79:setHorzTextAlign("center");
+    obj.edit79:setType("number");
+    obj.edit79:setReadOnly(true);
+    obj.edit79:setMin(0);
+    obj.edit79:setName("edit79");
 
-    obj.linguagemOrientalPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemOrientalPlus:setParent(obj.flowLayout13);
-    obj.linguagemOrientalPlus:setName("linguagemOrientalPlus");
-    obj.linguagemOrientalPlus:setText("+");
-    obj.linguagemOrientalPlus:setWidth(20);
-    obj.linguagemOrientalPlus:setHeight(20);
+    obj.faunafloraPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.faunafloraPlus:setParent(obj.flowLayout13);
+    obj.faunafloraPlus:setName("faunafloraPlus");
+    obj.faunafloraPlus:setText("+");
+    obj.faunafloraPlus:setWidth(20);
+    obj.faunafloraPlus:setHeight(20);
 
-    obj.flowPart146 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart146:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart146:setHeight(20);
-    obj.flowPart146:setMinWidth(180);
-    obj.flowPart146:setMaxWidth(180);
-    obj.flowPart146:setName("flowPart146");
-    obj.flowPart146:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart143 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart143:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart143:setHeight(20);
+    obj.flowPart143:setMinWidth(180);
+    obj.flowPart143:setMaxWidth(180);
+    obj.flowPart143:setName("flowPart143");
+    obj.flowPart143:setMargins({top=5, bottom=5,right=10});
 
-    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label59:setParent(obj.flowPart146);
-    obj.label59:setText("Linguagem Élfica");
-    obj.label59:setAlign("left");
-    obj.label59:setFontSize(18);
-    obj.label59:setVertTextAlign("center");
-    obj.label59:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label59, "fontStyle",  "italic");
-    obj.label59:setWidth(200);
-    obj.label59:setName("label59");
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label61:setParent(obj.flowPart143);
+    obj.label61:setText("Linguagem Comum");
+    obj.label61:setAlign("left");
+    obj.label61:setFontSize(18);
+    obj.label61:setVertTextAlign("center");
+    obj.label61:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label61, "fontStyle",  "italic");
+    obj.label61:setWidth(200);
+    obj.label61:setName("label61");
 
     obj.horzLine78 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine78:setParent(obj.flowPart146);
+    obj.horzLine78:setParent(obj.flowPart143);
     obj.horzLine78:setAlign("bottom");
     obj.horzLine78:setStrokeColor("#FFFFFF50");
     obj.horzLine78:setStrokeSize(1);
@@ -4825,61 +4839,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout14:setMaxControlsPerLine(3);
     obj.flowLayout14:setName("flowLayout14");
 
-    obj.linguagemElficaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemElficaMinus:setParent(obj.flowLayout14);
-    obj.linguagemElficaMinus:setName("linguagemElficaMinus");
-    obj.linguagemElficaMinus:setText("-");
-    obj.linguagemElficaMinus:setWidth(20);
-    obj.linguagemElficaMinus:setHeight(20);
+    obj.linguagemComumMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemComumMinus:setParent(obj.flowLayout14);
+    obj.linguagemComumMinus:setName("linguagemComumMinus");
+    obj.linguagemComumMinus:setText("-");
+    obj.linguagemComumMinus:setWidth(20);
+    obj.linguagemComumMinus:setHeight(20);
 
-    obj.flowPart147 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart147:setParent(obj.flowLayout14);
-    obj.flowPart147:setHeight(20);
-    obj.flowPart147:setMinWidth(20);
-    obj.flowPart147:setMaxWidth(20);
-    obj.flowPart147:setName("flowPart147");
+    obj.flowPart144 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart144:setParent(obj.flowLayout14);
+    obj.flowPart144:setHeight(20);
+    obj.flowPart144:setMinWidth(20);
+    obj.flowPart144:setMaxWidth(20);
+    obj.flowPart144:setName("flowPart144");
 
-    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit82:setParent(obj.flowPart147);
-    obj.edit82:setAlign("client");
-    obj.edit82:setField("linguagemElfica");
-    obj.edit82:setFontSize(12);
-    obj.edit82:setTransparent(true);
-    obj.edit82:setVertTextAlign("center");
-    obj.edit82:setHorzTextAlign("center");
-    obj.edit82:setType("number");
-    obj.edit82:setReadOnly(true);
-    obj.edit82:setMin(0);
-    obj.edit82:setName("edit82");
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit80:setParent(obj.flowPart144);
+    obj.edit80:setAlign("client");
+    obj.edit80:setField("linguagemComum");
+    obj.edit80:setFontSize(12);
+    obj.edit80:setTransparent(true);
+    obj.edit80:setVertTextAlign("center");
+    obj.edit80:setHorzTextAlign("center");
+    obj.edit80:setType("number");
+    obj.edit80:setReadOnly(true);
+    obj.edit80:setMin(0);
+    obj.edit80:setName("edit80");
 
-    obj.linguagemElficaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemElficaPlus:setParent(obj.flowLayout14);
-    obj.linguagemElficaPlus:setName("linguagemElficaPlus");
-    obj.linguagemElficaPlus:setText("+");
-    obj.linguagemElficaPlus:setWidth(20);
-    obj.linguagemElficaPlus:setHeight(20);
+    obj.linguagemComumPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemComumPlus:setParent(obj.flowLayout14);
+    obj.linguagemComumPlus:setName("linguagemComumPlus");
+    obj.linguagemComumPlus:setText("+");
+    obj.linguagemComumPlus:setWidth(20);
+    obj.linguagemComumPlus:setHeight(20);
 
-    obj.flowPart148 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart148:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart148:setHeight(20);
-    obj.flowPart148:setMinWidth(180);
-    obj.flowPart148:setMaxWidth(180);
-    obj.flowPart148:setName("flowPart148");
-    obj.flowPart148:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart145 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart145:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart145:setHeight(20);
+    obj.flowPart145:setMinWidth(180);
+    obj.flowPart145:setMaxWidth(180);
+    obj.flowPart145:setName("flowPart145");
+    obj.flowPart145:setMargins({top=5, bottom=5,right=10});
 
-    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label60:setParent(obj.flowPart148);
-    obj.label60:setText("Linguagem Anã");
-    obj.label60:setAlign("left");
-    obj.label60:setFontSize(18);
-    obj.label60:setVertTextAlign("center");
-    obj.label60:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label60, "fontStyle",  "italic");
-    obj.label60:setWidth(200);
-    obj.label60:setName("label60");
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label62:setParent(obj.flowPart145);
+    obj.label62:setText("Linguagem Oriental");
+    obj.label62:setAlign("left");
+    obj.label62:setFontSize(18);
+    obj.label62:setVertTextAlign("center");
+    obj.label62:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label62, "fontStyle",  "italic");
+    obj.label62:setWidth(200);
+    obj.label62:setName("label62");
 
     obj.horzLine79 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine79:setParent(obj.flowPart148);
+    obj.horzLine79:setParent(obj.flowPart145);
     obj.horzLine79:setAlign("bottom");
     obj.horzLine79:setStrokeColor("#FFFFFF50");
     obj.horzLine79:setStrokeSize(1);
@@ -4893,61 +4907,61 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout15:setMaxControlsPerLine(3);
     obj.flowLayout15:setName("flowLayout15");
 
-    obj.linguagemAnaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemAnaMinus:setParent(obj.flowLayout15);
-    obj.linguagemAnaMinus:setName("linguagemAnaMinus");
-    obj.linguagemAnaMinus:setText("-");
-    obj.linguagemAnaMinus:setWidth(20);
-    obj.linguagemAnaMinus:setHeight(20);
+    obj.linguagemOrientalMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemOrientalMinus:setParent(obj.flowLayout15);
+    obj.linguagemOrientalMinus:setName("linguagemOrientalMinus");
+    obj.linguagemOrientalMinus:setText("-");
+    obj.linguagemOrientalMinus:setWidth(20);
+    obj.linguagemOrientalMinus:setHeight(20);
 
-    obj.flowPart149 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart149:setParent(obj.flowLayout15);
-    obj.flowPart149:setHeight(20);
-    obj.flowPart149:setMinWidth(20);
-    obj.flowPart149:setMaxWidth(20);
-    obj.flowPart149:setName("flowPart149");
+    obj.flowPart146 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart146:setParent(obj.flowLayout15);
+    obj.flowPart146:setHeight(20);
+    obj.flowPart146:setMinWidth(20);
+    obj.flowPart146:setMaxWidth(20);
+    obj.flowPart146:setName("flowPart146");
 
-    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit83:setParent(obj.flowPart149);
-    obj.edit83:setAlign("client");
-    obj.edit83:setField("linguagemAna");
-    obj.edit83:setFontSize(12);
-    obj.edit83:setTransparent(true);
-    obj.edit83:setVertTextAlign("center");
-    obj.edit83:setHorzTextAlign("center");
-    obj.edit83:setType("number");
-    obj.edit83:setReadOnly(true);
-    obj.edit83:setMin(0);
-    obj.edit83:setName("edit83");
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit81:setParent(obj.flowPart146);
+    obj.edit81:setAlign("client");
+    obj.edit81:setField("linguagemOriental");
+    obj.edit81:setFontSize(12);
+    obj.edit81:setTransparent(true);
+    obj.edit81:setVertTextAlign("center");
+    obj.edit81:setHorzTextAlign("center");
+    obj.edit81:setType("number");
+    obj.edit81:setReadOnly(true);
+    obj.edit81:setMin(0);
+    obj.edit81:setName("edit81");
 
-    obj.linguagemAnaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemAnaPlus:setParent(obj.flowLayout15);
-    obj.linguagemAnaPlus:setName("linguagemAnaPlus");
-    obj.linguagemAnaPlus:setText("+");
-    obj.linguagemAnaPlus:setWidth(20);
-    obj.linguagemAnaPlus:setHeight(20);
+    obj.linguagemOrientalPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemOrientalPlus:setParent(obj.flowLayout15);
+    obj.linguagemOrientalPlus:setName("linguagemOrientalPlus");
+    obj.linguagemOrientalPlus:setText("+");
+    obj.linguagemOrientalPlus:setWidth(20);
+    obj.linguagemOrientalPlus:setHeight(20);
 
-    obj.flowPart150 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart150:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowPart150:setHeight(20);
-    obj.flowPart150:setMinWidth(180);
-    obj.flowPart150:setMaxWidth(180);
-    obj.flowPart150:setName("flowPart150");
-    obj.flowPart150:setMargins({top=5, bottom=5,right=10});
+    obj.flowPart147 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart147:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart147:setHeight(20);
+    obj.flowPart147:setMinWidth(180);
+    obj.flowPart147:setMaxWidth(180);
+    obj.flowPart147:setName("flowPart147");
+    obj.flowPart147:setMargins({top=5, bottom=5,right=10});
 
-    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label61:setParent(obj.flowPart150);
-    obj.label61:setText("Linguagem Dracônica");
-    obj.label61:setAlign("left");
-    obj.label61:setFontSize(18);
-    obj.label61:setVertTextAlign("center");
-    obj.label61:setHorzTextAlign("center");
-    lfm_setPropAsString(obj.label61, "fontStyle",  "italic");
-    obj.label61:setWidth(200);
-    obj.label61:setName("label61");
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label63:setParent(obj.flowPart147);
+    obj.label63:setText("Linguagem Élfica");
+    obj.label63:setAlign("left");
+    obj.label63:setFontSize(18);
+    obj.label63:setVertTextAlign("center");
+    obj.label63:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label63, "fontStyle",  "italic");
+    obj.label63:setWidth(200);
+    obj.label63:setName("label63");
 
     obj.horzLine80 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine80:setParent(obj.flowPart150);
+    obj.horzLine80:setParent(obj.flowPart147);
     obj.horzLine80:setAlign("bottom");
     obj.horzLine80:setStrokeColor("#FFFFFF50");
     obj.horzLine80:setStrokeSize(1);
@@ -4961,22 +4975,158 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowLayout16:setMaxControlsPerLine(3);
     obj.flowLayout16:setName("flowLayout16");
 
+    obj.linguagemElficaMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemElficaMinus:setParent(obj.flowLayout16);
+    obj.linguagemElficaMinus:setName("linguagemElficaMinus");
+    obj.linguagemElficaMinus:setText("-");
+    obj.linguagemElficaMinus:setWidth(20);
+    obj.linguagemElficaMinus:setHeight(20);
+
+    obj.flowPart148 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart148:setParent(obj.flowLayout16);
+    obj.flowPart148:setHeight(20);
+    obj.flowPart148:setMinWidth(20);
+    obj.flowPart148:setMaxWidth(20);
+    obj.flowPart148:setName("flowPart148");
+
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit82:setParent(obj.flowPart148);
+    obj.edit82:setAlign("client");
+    obj.edit82:setField("linguagemElfica");
+    obj.edit82:setFontSize(12);
+    obj.edit82:setTransparent(true);
+    obj.edit82:setVertTextAlign("center");
+    obj.edit82:setHorzTextAlign("center");
+    obj.edit82:setType("number");
+    obj.edit82:setReadOnly(true);
+    obj.edit82:setMin(0);
+    obj.edit82:setName("edit82");
+
+    obj.linguagemElficaPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemElficaPlus:setParent(obj.flowLayout16);
+    obj.linguagemElficaPlus:setName("linguagemElficaPlus");
+    obj.linguagemElficaPlus:setText("+");
+    obj.linguagemElficaPlus:setWidth(20);
+    obj.linguagemElficaPlus:setHeight(20);
+
+    obj.flowPart149 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart149:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart149:setHeight(20);
+    obj.flowPart149:setMinWidth(180);
+    obj.flowPart149:setMaxWidth(180);
+    obj.flowPart149:setName("flowPart149");
+    obj.flowPart149:setMargins({top=5, bottom=5,right=10});
+
+    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label64:setParent(obj.flowPart149);
+    obj.label64:setText("Linguagem Anã");
+    obj.label64:setAlign("left");
+    obj.label64:setFontSize(18);
+    obj.label64:setVertTextAlign("center");
+    obj.label64:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label64, "fontStyle",  "italic");
+    obj.label64:setWidth(200);
+    obj.label64:setName("label64");
+
+    obj.horzLine81 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine81:setParent(obj.flowPart149);
+    obj.horzLine81:setAlign("bottom");
+    obj.horzLine81:setStrokeColor("#FFFFFF50");
+    obj.horzLine81:setStrokeSize(1);
+    obj.horzLine81:setName("horzLine81");
+
+    obj.flowLayout17 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout17:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout17:setHeight(20);
+    obj.flowLayout17:setMinWidth(150);
+    obj.flowLayout17:setMaxWidth(200);
+    obj.flowLayout17:setMaxControlsPerLine(3);
+    obj.flowLayout17:setName("flowLayout17");
+
+    obj.linguagemAnaMinus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemAnaMinus:setParent(obj.flowLayout17);
+    obj.linguagemAnaMinus:setName("linguagemAnaMinus");
+    obj.linguagemAnaMinus:setText("-");
+    obj.linguagemAnaMinus:setWidth(20);
+    obj.linguagemAnaMinus:setHeight(20);
+
+    obj.flowPart150 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart150:setParent(obj.flowLayout17);
+    obj.flowPart150:setHeight(20);
+    obj.flowPart150:setMinWidth(20);
+    obj.flowPart150:setMaxWidth(20);
+    obj.flowPart150:setName("flowPart150");
+
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit83:setParent(obj.flowPart150);
+    obj.edit83:setAlign("client");
+    obj.edit83:setField("linguagemAna");
+    obj.edit83:setFontSize(12);
+    obj.edit83:setTransparent(true);
+    obj.edit83:setVertTextAlign("center");
+    obj.edit83:setHorzTextAlign("center");
+    obj.edit83:setType("number");
+    obj.edit83:setReadOnly(true);
+    obj.edit83:setMin(0);
+    obj.edit83:setName("edit83");
+
+    obj.linguagemAnaPlus = GUI.fromHandle(_obj_newObject("button"));
+    obj.linguagemAnaPlus:setParent(obj.flowLayout17);
+    obj.linguagemAnaPlus:setName("linguagemAnaPlus");
+    obj.linguagemAnaPlus:setText("+");
+    obj.linguagemAnaPlus:setWidth(20);
+    obj.linguagemAnaPlus:setHeight(20);
+
+    obj.flowPart151 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart151:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowPart151:setHeight(20);
+    obj.flowPart151:setMinWidth(180);
+    obj.flowPart151:setMaxWidth(180);
+    obj.flowPart151:setName("flowPart151");
+    obj.flowPart151:setMargins({top=5, bottom=5,right=10});
+
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label65:setParent(obj.flowPart151);
+    obj.label65:setText("Linguagem Dracônica");
+    obj.label65:setAlign("left");
+    obj.label65:setFontSize(18);
+    obj.label65:setVertTextAlign("center");
+    obj.label65:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label65, "fontStyle",  "italic");
+    obj.label65:setWidth(200);
+    obj.label65:setName("label65");
+
+    obj.horzLine82 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine82:setParent(obj.flowPart151);
+    obj.horzLine82:setAlign("bottom");
+    obj.horzLine82:setStrokeColor("#FFFFFF50");
+    obj.horzLine82:setStrokeSize(1);
+    obj.horzLine82:setName("horzLine82");
+
+    obj.flowLayout18 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout18:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout18:setHeight(20);
+    obj.flowLayout18:setMinWidth(150);
+    obj.flowLayout18:setMaxWidth(200);
+    obj.flowLayout18:setMaxControlsPerLine(3);
+    obj.flowLayout18:setName("flowLayout18");
+
     obj.linguagemDraconicaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemDraconicaMinus:setParent(obj.flowLayout16);
+    obj.linguagemDraconicaMinus:setParent(obj.flowLayout18);
     obj.linguagemDraconicaMinus:setName("linguagemDraconicaMinus");
     obj.linguagemDraconicaMinus:setText("-");
     obj.linguagemDraconicaMinus:setWidth(20);
     obj.linguagemDraconicaMinus:setHeight(20);
 
-    obj.flowPart151 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart151:setParent(obj.flowLayout16);
-    obj.flowPart151:setHeight(20);
-    obj.flowPart151:setMinWidth(20);
-    obj.flowPart151:setMaxWidth(20);
-    obj.flowPart151:setName("flowPart151");
+    obj.flowPart152 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart152:setParent(obj.flowLayout18);
+    obj.flowPart152:setHeight(20);
+    obj.flowPart152:setMinWidth(20);
+    obj.flowPart152:setMaxWidth(20);
+    obj.flowPart152:setName("flowPart152");
 
     obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit84:setParent(obj.flowPart151);
+    obj.edit84:setParent(obj.flowPart152);
     obj.edit84:setAlign("client");
     obj.edit84:setField("linguagemDraconica");
     obj.edit84:setFontSize(12);
@@ -4989,7 +5139,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit84:setName("edit84");
 
     obj.linguagemDraconicaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemDraconicaPlus:setParent(obj.flowLayout16);
+    obj.linguagemDraconicaPlus:setParent(obj.flowLayout18);
     obj.linguagemDraconicaPlus:setName("linguagemDraconicaPlus");
     obj.linguagemDraconicaPlus:setText("+");
     obj.linguagemDraconicaPlus:setWidth(20);
@@ -5015,12 +5165,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout5:setHeight(400);
     obj.layout5:setName("layout5");
 
-    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label62:setParent(obj.layout5);
-    obj.label62:setText("Habilidades");
-    obj.label62:setName("label62");
-    obj.label62:setAlign("client");
-    obj.label62:setHorzTextAlign("trailing");
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label66:setParent(obj.layout5);
+    obj.label66:setText("Habilidades");
+    obj.label66:setName("label66");
+    obj.label66:setAlign("client");
+    obj.label66:setHorzTextAlign("trailing");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
@@ -5033,7 +5183,7 @@ local function constructNew_frmFichaDePersonagem()
                             then
                             end
             
-                            sheet.modAcerto =tostring("+"..math.floor(tonumber(sheet.atributoAcerto)/10))
+                            sheet.modAcerto = tostring("+"..math.floor(tonumber(sheet.atributoAcerto)/10))
         end, obj);
 
     obj._e_event1 = obj.dataLink2:addEventListener("onChange",
@@ -5047,7 +5197,7 @@ local function constructNew_frmFichaDePersonagem()
                             then
                             end
             
-                            sheet.modMira =tostring("+"..math.floor(tonumber(sheet.atributoMira)/10))
+                            sheet.modMira = tostring("+"..math.floor(tonumber(sheet.atributoMira)/10))
         end, obj);
 
     obj._e_event2 = obj.dataLink3:addEventListener("onChange",
@@ -5061,7 +5211,7 @@ local function constructNew_frmFichaDePersonagem()
                             then
                             end
             
-                            sheet.modEsquiva =tostring("+"..math.floor(tonumber(sheet.atributoEsquiva)/10))
+                            sheet.modEsquiva = tostring("+"..math.floor(tonumber(sheet.atributoEsquiva)/10))
         end, obj);
 
     obj._e_event3 = obj.dataLink4:addEventListener("onChange",
@@ -5075,101 +5225,216 @@ local function constructNew_frmFichaDePersonagem()
                             then
                             end
             
-                            sheet.modBloqueio =tostring("+"..math.floor(tonumber(sheet.atributoBloqueio)/10))
+                            sheet.modBloqueio = tostring("+"..math.floor(tonumber(sheet.atributoBloqueio)/10))
         end, obj);
 
-    obj._e_event4 = obj.progressBar1:addEventListener("onDblClick",
+    obj._e_event4 = obj.barraxpClasse:addEventListener("onDblClick",
         function (_)
+            self.popupxpClasse:show('bottomCenter', self.barraxpClasse)
+                                             self.somaxpClasse:setFocus()
         end, obj);
 
-    obj._e_event5 = obj.dataLink5:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            local xpMax = tonumber(sheet.barraExpMax) or 0
-                                        local xpAtual = tonumber(sheet.barraExpAtual) or 0
-                                        local xpTexto = tostring(sheet.barraExpTexto) or "0/100"
-                                        local nivel = tonumber(sheet.nivelClasse) or 1
-                                        local vida = tonumber(sheet.atributoVida) or 0
-                                        local con = tonumber(sheet.conTotal) or 0
-                                        local defesa = tonumber(sheet.atributoDefesa) or 0
+    obj._e_event5 = obj.somaxpClasse:addEventListener("onKeyDown",
+        function (_, event)
             
-                                        if nivel > 27 then
-                                            xpMax = 100000 + (100000 * (nivel - 28))
-                                        elseif nivel > 18 then
-                                            xpMax = 10000 + (10000 * (nivel - 19))
-                                        elseif nivel > 9 then
-                                            xpMax = 1000 + (1000 * (nivel - 10))
-                                        else
-                                            xpMax = 100 * nivel
-                                        end
+                                    if event.keyCode == 13 then
+                                        local recebido = sheet.somaxpClasse or 0
+                                        local atual = sheet.xpAtualClasse or 0
+                                        local max = sheet.xpMaxClasse or 0
+                                        local nivel = sheet.nivelClasse
+                                        local total = atual + recebido
             
-                                        if xpAtual >= xpMax then
+                                        while total >= max do
+                                            showMessage('total: '..total..' max: '..max)
+                                            total = total - max
                                             nivel = nivel + 1
-                                            xpAtual = 0
                                             if nivel > 27 then
-                                                xpMax = 100000 + (100000 * (nivel - 28))
+                                                max = 100000 + (100000 * (nivel - 28))
                                             elseif nivel > 18 then
-                                                xpMax = 10000 + (10000 * (nivel - 19))
+                                                max = 10000 + (10000 * (nivel - 19))
                                             elseif nivel > 9 then
-                                                xpMax = 1000 + (1000 * (nivel - 10))
+                                                max = 1000 + (1000 * (nivel - 10))
                                             else
-                                                xpMax = 100 * nivel
+                                                max = 100 * nivel
                                             end
                                         end
             
-                                        xpTexto = tostring(xpAtual.."/"..xpMax)
+                                        atual = total
+            
+            
+            
+                                        sheet.nivelClasse = nivel
+                                        sheet.xpMaxClasse = max
+                                        sheet.xpTextoClasse = tostring(atual..'/'..max)
+                                        sheet.xpAtualClasse = atual
+                                        sheet.somaxpClasse = 0
+                                        self.popupxpClasse:close();
+                                    end
+        end, obj);
+
+    obj._e_event6 = obj.okButtonClasse:addEventListener("onClick",
+        function (_)
+            
+                                    local recebido = sheet.somaxpClasse or 0
+                                    local atual = sheet.xpAtualClasse or 0
+                                    local max = sheet.xpMaxClasse or 0
+                                    local nivel = sheet.nivelClasse
+                                    local total = atual + recebido
+            
+                                    while total >= max do
+                                        showMessage('total: '..total..' max: '..max)
+                                        total = total - max
+                                        nivel = nivel + 1
+                                        if nivel > 27 then
+                                            max = 100000 + (100000 * (nivel - 28))
+                                        elseif nivel > 18 then
+                                            max = 10000 + (10000 * (nivel - 19))
+                                        elseif nivel > 9 then
+                                            max = 1000 + (1000 * (nivel - 10))
+                                        else
+                                            max = 100 * nivel
+                                        end
+                                    end
+            
+                                    atual = total
+            
+                                    sheet.xpTextoClasse = tostring(atual..'/'..max)
+                                    sheet.nivelClasse = nivel
+                                    sheet.xpAtualClasse = atual
+                                    sheet.somaxpClasse = 0
+                                    self.popupxpClasse:close();
+        end, obj);
+
+    obj._e_event7 = obj.barraxpProfissao:addEventListener("onDblClick",
+        function (_)
+            self.popupxpProfissao:show('bottomCenter', self.barraxpProfissao)
+                                             self.somaxpProfissao:setFocus()
+        end, obj);
+
+    obj._e_event8 = obj.somaxpProfissao:addEventListener("onKeyDown",
+        function (_, event)
+            
+                                    if event.keyCode == 13 then
+                                        local recebido = sheet.somaxpProfissao or 0
+                                        local atual = sheet.xpAtualProfissao or 0
+                                        local max = sheet.xpMaxProfissao or 0
+                                        local nivel = sheet.nivelProfissao
+                                        local total = atual + recebido
+            
+                                        while total >= max do
+                                            showMessage('total: '..total..' max: '..max)
+                                            total = total - max
+                                            nivel = nivel + 1
+                                            if nivel > 27 then
+                                                max = 100000 + (100000 * (nivel - 28))
+                                            elseif nivel > 18 then
+                                                max = 10000 + (10000 * (nivel - 19))
+                                            elseif nivel > 9 then
+                                                max = 1000 + (1000 * (nivel - 10))
+                                            else
+                                                max = 100 * nivel
+                                            end
+                                        end
+            
+                                        atual = total
+            
+            
+            
+                                        sheet.nivelProfissao = nivel
+                                        sheet.xpMaxProfissao = max
+                                        sheet.xpTextoProfissao = tostring(atual..'/'..max)
+                                        sheet.xpAtualProfissao = atual
+                                        sheet.somaxpProfissao = 0
+                                        self.popupxpProfissao:close();
+                                    end
+        end, obj);
+
+    obj._e_event9 = obj.okButtonProfissao:addEventListener("onClick",
+        function (_)
+            
+                                    local recebido = sheet.somaxpProfissao or 0
+                                    local atual = sheet.xpAtualProfissao or 0
+                                    local max = sheet.xpMaxProfissao or 0
+                                    local nivel = sheet.nivelProfissao
+                                    local total = atual + recebido
+            
+                                    while total >= max do
+                                        showMessage('total: '..total..' max: '..max)
+                                        total = total - max
+                                        nivel = nivel + 1
+                                        if nivel > 27 then
+                                            max = 100000 + (100000 * (nivel - 28))
+                                        elseif nivel > 18 then
+                                            max = 10000 + (10000 * (nivel - 19))
+                                        elseif nivel > 9 then
+                                            max = 1000 + (1000 * (nivel - 10))
+                                        else
+                                            max = 100 * nivel
+                                        end
+                                    end
+            
+                                    atual = total
+            
+                                    sheet.xpTextoProfissao = tostring(atual..'/'..max)
+                                    sheet.nivelProfissao = nivel
+                                    sheet.xpAtualProfissao = atual
+                                    sheet.somaxpProfissao = 0
+                                    self.popupxpProfissao:close();
+        end, obj);
+
+    obj._e_event10 = obj.dataLink5:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            local vida = tonumber(sheet.atributoVida) or 0
+                                        local con = tonumber(sheet.conTotal) or 0
+                                        local defesa = tonumber(sheet.atributoDefesa) or 0
             
                                         vida = con
                                         defesa = math.floor(vida/2)
-            
-                                        sheet.barraExpMax = xpMax
-                                        sheet.barraExpAtual = xpAtual
-                                        sheet.barraExpTexto = xpTexto
-                                        sheet.nivelClasse = nivel
-                                        sheet.atributoVida = vida
-                                        sheet.atributoDefesa = defesa
+                                        sheet.atributoVida = tonumber(sheet.conBase) or 0
+                                        sheet.atributoDefesa = math.floor(tonumber((sheet.atributoVida) or 0) / 2)
         end, obj);
 
-    obj._e_event6 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conNivel == nil then sheet.conNivel = 0 end;
         end, obj);
 
-    obj._e_event7 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conClasse == nil then sheet.conClasse = 0 end;
         end, obj);
 
-    obj._e_event8 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conRaca == nil then sheet.conRaca = 0 end;
         end, obj);
 
-    obj._e_event9 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conTreino == nil then sheet.conTreino = 0 end;
         end, obj);
 
-    obj._e_event10 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conOutros == nil then sheet.conOutros = 0 end;
         end, obj);
 
-    obj._e_event11 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conBase == nil then sheet.conBase = 0 end;
         end, obj);
 
-    obj._e_event12 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conEquip == nil then sheet.conEquip = 0 end;
         end, obj);
 
-    obj._e_event13 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.conTotal == nil then sheet.conTotal = 0 end;
         end, obj);
 
-    obj._e_event14 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event19 = obj.dataLink14:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.conBase = (tonumber(sheet.conNivel) or 0) +
                             (tonumber(sheet.conClasse) or 0) +
@@ -5181,47 +5446,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.conEquip) or 0);
         end, obj);
 
-    obj._e_event15 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink15:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forNivel == nil then sheet.forNivel = 0 end;
         end, obj);
 
-    obj._e_event16 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forClasse == nil then sheet.forClasse = 0 end;
         end, obj);
 
-    obj._e_event17 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink17:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forRaca == nil then sheet.forRaca = 0 end;
         end, obj);
 
-    obj._e_event18 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forTreino == nil then sheet.forTreino = 0 end;
         end, obj);
 
-    obj._e_event19 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forOutros == nil then sheet.forOutros = 0 end;
         end, obj);
 
-    obj._e_event20 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event25 = obj.dataLink20:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forBase == nil then sheet.forBase = 0 end;
         end, obj);
 
-    obj._e_event21 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forEquip == nil then sheet.forEquip = 0 end;
         end, obj);
 
-    obj._e_event22 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink22:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.forTotal == nil then sheet.forTotal = 0 end;
         end, obj);
 
-    obj._e_event23 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink23:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.forBase = (tonumber(sheet.forNivel) or 0) +
                             (tonumber(sheet.forClasse) or 0) +
@@ -5233,47 +5498,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.forEquip) or 0);
         end, obj);
 
-    obj._e_event24 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink24:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexNivel == nil then sheet.dexNivel = 0 end;
         end, obj);
 
-    obj._e_event25 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexClasse == nil then sheet.dexClasse = 0 end;
         end, obj);
 
-    obj._e_event26 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink26:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexRaca == nil then sheet.dexRaca = 0 end;
         end, obj);
 
-    obj._e_event27 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink27:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexTreino == nil then sheet.dexTreino = 0 end;
         end, obj);
 
-    obj._e_event28 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink28:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexOutros == nil then sheet.dexOutros = 0 end;
         end, obj);
 
-    obj._e_event29 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink29:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexBase == nil then sheet.dexBase = 0 end;
         end, obj);
 
-    obj._e_event30 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event35 = obj.dataLink30:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexEquip == nil then sheet.dexEquip = 0 end;
         end, obj);
 
-    obj._e_event31 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.dexTotal == nil then sheet.dexTotal = 0 end;
         end, obj);
 
-    obj._e_event32 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink32:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.dexBase = (tonumber(sheet.dexNivel) or 0) +
                             (tonumber(sheet.dexClasse) or 0) +
@@ -5285,47 +5550,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.dexEquip) or 0);
         end, obj);
 
-    obj._e_event33 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink33:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carNivel == nil then sheet.carNivel = 0 end;
         end, obj);
 
-    obj._e_event34 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event39 = obj.dataLink34:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carClasse == nil then sheet.carClasse = 0 end;
         end, obj);
 
-    obj._e_event35 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink35:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carRaca == nil then sheet.carRaca = 0 end;
         end, obj);
 
-    obj._e_event36 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event41 = obj.dataLink36:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carTreino == nil then sheet.carTreino = 0 end;
         end, obj);
 
-    obj._e_event37 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink37:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carOutros == nil then sheet.carOutros = 0 end;
         end, obj);
 
-    obj._e_event38 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event43 = obj.dataLink38:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carBase == nil then sheet.carBase = 0 end;
         end, obj);
 
-    obj._e_event39 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event44 = obj.dataLink39:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carEquip == nil then sheet.carEquip = 0 end;
         end, obj);
 
-    obj._e_event40 = obj.dataLink40:addEventListener("onChange",
+    obj._e_event45 = obj.dataLink40:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.carTotal == nil then sheet.carTotal = 0 end;
         end, obj);
 
-    obj._e_event41 = obj.dataLink41:addEventListener("onChange",
+    obj._e_event46 = obj.dataLink41:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.carBase = (tonumber(sheet.carNivel) or 0) +
                             (tonumber(sheet.carClasse) or 0) +
@@ -5337,47 +5602,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.carEquip) or 0);
         end, obj);
 
-    obj._e_event42 = obj.dataLink42:addEventListener("onChange",
+    obj._e_event47 = obj.dataLink42:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intNivel == nil then sheet.intNivel = 0 end;
         end, obj);
 
-    obj._e_event43 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event48 = obj.dataLink43:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intClasse == nil then sheet.intClasse = 0 end;
         end, obj);
 
-    obj._e_event44 = obj.dataLink44:addEventListener("onChange",
+    obj._e_event49 = obj.dataLink44:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intRaca == nil then sheet.intRaca = 0 end;
         end, obj);
 
-    obj._e_event45 = obj.dataLink45:addEventListener("onChange",
+    obj._e_event50 = obj.dataLink45:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intTreino == nil then sheet.intTreino = 0 end;
         end, obj);
 
-    obj._e_event46 = obj.dataLink46:addEventListener("onChange",
+    obj._e_event51 = obj.dataLink46:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intOutros == nil then sheet.intOutros = 0 end;
         end, obj);
 
-    obj._e_event47 = obj.dataLink47:addEventListener("onChange",
+    obj._e_event52 = obj.dataLink47:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intBase == nil then sheet.intBase = 0 end;
         end, obj);
 
-    obj._e_event48 = obj.dataLink48:addEventListener("onChange",
+    obj._e_event53 = obj.dataLink48:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intEquip == nil then sheet.intEquip = 0 end;
         end, obj);
 
-    obj._e_event49 = obj.dataLink49:addEventListener("onChange",
+    obj._e_event54 = obj.dataLink49:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.intTotal == nil then sheet.intTotal = 0 end;
         end, obj);
 
-    obj._e_event50 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event55 = obj.dataLink50:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.intBase = (tonumber(sheet.intNivel) or 0) +
                             (tonumber(sheet.intClasse) or 0) +
@@ -5389,47 +5654,47 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.intEquip) or 0);
         end, obj);
 
-    obj._e_event51 = obj.dataLink51:addEventListener("onChange",
+    obj._e_event56 = obj.dataLink51:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabNivel == nil then sheet.sabNivel = 0 end;
         end, obj);
 
-    obj._e_event52 = obj.dataLink52:addEventListener("onChange",
+    obj._e_event57 = obj.dataLink52:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabClasse == nil then sheet.sabClasse = 0 end;
         end, obj);
 
-    obj._e_event53 = obj.dataLink53:addEventListener("onChange",
+    obj._e_event58 = obj.dataLink53:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabRaca == nil then sheet.sabRaca = 0 end;
         end, obj);
 
-    obj._e_event54 = obj.dataLink54:addEventListener("onChange",
+    obj._e_event59 = obj.dataLink54:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabTreino == nil then sheet.sabTreino = 0 end;
         end, obj);
 
-    obj._e_event55 = obj.dataLink55:addEventListener("onChange",
+    obj._e_event60 = obj.dataLink55:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabOutros == nil then sheet.sabOutros = 0 end;
         end, obj);
 
-    obj._e_event56 = obj.dataLink56:addEventListener("onChange",
+    obj._e_event61 = obj.dataLink56:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabBase == nil then sheet.sabBase = 0 end;
         end, obj);
 
-    obj._e_event57 = obj.dataLink57:addEventListener("onChange",
+    obj._e_event62 = obj.dataLink57:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabEquip == nil then sheet.sabEquip = 0 end;
         end, obj);
 
-    obj._e_event58 = obj.dataLink58:addEventListener("onChange",
+    obj._e_event63 = obj.dataLink58:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet.sabTotal == nil then sheet.sabTotal = 0 end;
         end, obj);
 
-    obj._e_event59 = obj.dataLink59:addEventListener("onChange",
+    obj._e_event64 = obj.dataLink59:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.sabBase = (tonumber(sheet.sabNivel) or 0) +
                             (tonumber(sheet.sabClasse) or 0) +
@@ -5441,23 +5706,22 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.sabEquip) or 0);
         end, obj);
 
-    obj._e_event60 = obj.button1:addEventListener("onClick",
+    obj._e_event65 = obj.button1:addEventListener("onClick",
         function (_)
             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
                                                           sheet.barraExpAtual = tonumber(sheet.barraExpAtual) + 100
         end, obj);
 
-    obj._e_event61 = obj.button2:addEventListener("onClick",
+    obj._e_event66 = obj.button2:addEventListener("onClick",
         function (_)
             sheet.pontosRestantes = 0
                                                  sheet.pontosTreinados = 0
-                                                 sheet.barraExpAtual = 0
+                                                 sheet.xpAtualClasse = 0
                                                  sheet.nivelClasse = 1
-                                                 sheet.barraExpMax = 0
                                                  
         end, obj);
 
-    obj._e_event62 = obj.percepcaoMinus:addEventListener("onClick",
+    obj._e_event67 = obj.percepcaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.percepcao > 0 then
@@ -5466,7 +5730,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event63 = obj.percepcaoPlus:addEventListener("onClick",
+    obj._e_event68 = obj.percepcaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5478,7 +5742,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event64 = obj.intimidacaoMinus:addEventListener("onClick",
+    obj._e_event69 = obj.intimidacaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.intimidacao > 0 then
@@ -5487,7 +5751,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event65 = obj.intimidacaoPlus:addEventListener("onClick",
+    obj._e_event70 = obj.intimidacaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5499,7 +5763,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event66 = obj.persuasaoMinus:addEventListener("onClick",
+    obj._e_event71 = obj.persuasaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.persuasao > 0 then
@@ -5508,7 +5772,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event67 = obj.persuasaoPlus:addEventListener("onClick",
+    obj._e_event72 = obj.persuasaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5520,7 +5784,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event68 = obj.adestrarAnimaisMinus:addEventListener("onClick",
+    obj._e_event73 = obj.adestrarAnimaisMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.adestrarAnimais > 0 then
@@ -5529,7 +5793,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event69 = obj.adestrarAnimaisPlus:addEventListener("onClick",
+    obj._e_event74 = obj.adestrarAnimaisPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5541,7 +5805,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event70 = obj.furtividadeMinus:addEventListener("onClick",
+    obj._e_event75 = obj.furtividadeMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.furtividade > 0 then
@@ -5550,7 +5814,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event71 = obj.furtividadePlus:addEventListener("onClick",
+    obj._e_event76 = obj.furtividadePlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5562,7 +5826,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event72 = obj.intuicaoMinus:addEventListener("onClick",
+    obj._e_event77 = obj.intuicaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.intuicao > 0 then
@@ -5571,7 +5835,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event73 = obj.intuicaoPlus:addEventListener("onClick",
+    obj._e_event78 = obj.intuicaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5583,7 +5847,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event74 = obj.didaticaMinus:addEventListener("onClick",
+    obj._e_event79 = obj.didaticaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.didatica > 0 then
@@ -5592,7 +5856,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event75 = obj.didaticaPlus:addEventListener("onClick",
+    obj._e_event80 = obj.didaticaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosRestantes > 0 then
@@ -5604,7 +5868,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event76 = obj.geografiaMinus:addEventListener("onClick",
+    obj._e_event81 = obj.geografiaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.geografia > 0 then
@@ -5613,7 +5877,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event77 = obj.geografiaPlus:addEventListener("onClick",
+    obj._e_event82 = obj.geografiaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5622,7 +5886,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event78 = obj.historiaMinus:addEventListener("onClick",
+    obj._e_event83 = obj.historiaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.historia > 0 then
@@ -5631,7 +5895,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event79 = obj.historiaPlus:addEventListener("onClick",
+    obj._e_event84 = obj.historiaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5640,7 +5904,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event80 = obj.religiaoMinus:addEventListener("onClick",
+    obj._e_event85 = obj.religiaoMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.religiao > 0 then
@@ -5649,7 +5913,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event81 = obj.religiaoPlus:addEventListener("onClick",
+    obj._e_event86 = obj.religiaoPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5658,7 +5922,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event82 = obj.faunafloraMinus:addEventListener("onClick",
+    obj._e_event87 = obj.faunafloraMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.faunaflora > 0 then
@@ -5667,7 +5931,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event83 = obj.faunafloraPlus:addEventListener("onClick",
+    obj._e_event88 = obj.faunafloraPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5676,7 +5940,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event84 = obj.linguagemComumMinus:addEventListener("onClick",
+    obj._e_event89 = obj.linguagemComumMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemComum > 0 then
@@ -5685,7 +5949,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event85 = obj.linguagemComumPlus:addEventListener("onClick",
+    obj._e_event90 = obj.linguagemComumPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5694,7 +5958,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event86 = obj.linguagemOrientalMinus:addEventListener("onClick",
+    obj._e_event91 = obj.linguagemOrientalMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemOriental > 0 then
@@ -5703,7 +5967,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event87 = obj.linguagemOrientalPlus:addEventListener("onClick",
+    obj._e_event92 = obj.linguagemOrientalPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5712,7 +5976,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event88 = obj.linguagemElficaMinus:addEventListener("onClick",
+    obj._e_event93 = obj.linguagemElficaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemElfica > 0 then
@@ -5721,7 +5985,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event89 = obj.linguagemElficaPlus:addEventListener("onClick",
+    obj._e_event94 = obj.linguagemElficaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5730,7 +5994,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event90 = obj.linguagemAnaMinus:addEventListener("onClick",
+    obj._e_event95 = obj.linguagemAnaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemAna > 0 then
@@ -5739,7 +6003,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event91 = obj.linguagemAnaPlus:addEventListener("onClick",
+    obj._e_event96 = obj.linguagemAnaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5748,7 +6012,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event92 = obj.linguagemDraconicaMinus:addEventListener("onClick",
+    obj._e_event97 = obj.linguagemDraconicaMinus:addEventListener("onClick",
         function (_)
             
                                     if sheet.linguagemDraconica > 0 then
@@ -5757,7 +6021,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event93 = obj.linguagemDraconicaPlus:addEventListener("onClick",
+    obj._e_event98 = obj.linguagemDraconicaPlus:addEventListener("onClick",
         function (_)
             
                                     if sheet.pontosDeConhecimento > 0 then
@@ -5766,7 +6030,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event94 = obj.dataLink60:addEventListener("onChange",
+    obj._e_event99 = obj.dataLink60:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             -- ###### REMOVE VALORES NULOS ######
             
@@ -5793,8 +6057,9 @@ local function constructNew_frmFichaDePersonagem()
                         if sheet.nivelProfissao == nil then sheet.nivelProfissao = 0 end;
                         if sheet.nivelClasse == nil then sheet.nivelClasse = 1 end;
                         if sheet.nivelClasse == 0 then sheet.nivelClasse = 1 end;
-                        if sheet.barraExpAtual == nil then sheet.barraExpAtual = 0 end;
-                        if sheet.barraExpMax == nil then sheet.barraExpMax = 100 end;
+                        if sheet.xpAtualClasse == nil then sheet.xpAtualClasse = 0 end;
+                        if sheet.xpMaxClasse == nil then sheet.xpMaxClasse = 100 end;
+                        if sheet.xpTextoClasse == nil then sheet.xpTextoClasse = "0/100" end;
             
                         -- ###### PONTOS DE CONHECIMENTOS ESPECÍFICOS ######
                         sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intTotal)/5)) -
@@ -5809,6 +6074,11 @@ local function constructNew_frmFichaDePersonagem()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event99);
+        __o_rrpgObjs.removeEventListenerById(self._e_event98);
+        __o_rrpgObjs.removeEventListenerById(self._e_event97);
+        __o_rrpgObjs.removeEventListenerById(self._e_event96);
+        __o_rrpgObjs.removeEventListenerById(self._e_event95);
         __o_rrpgObjs.removeEventListenerById(self._e_event94);
         __o_rrpgObjs.removeEventListenerById(self._e_event93);
         __o_rrpgObjs.removeEventListenerById(self._e_event92);
@@ -5940,10 +6210,11 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine69 ~= nil then self.horzLine69:destroy(); self.horzLine69 = nil; end;
         if self.linguagemElficaPlus ~= nil then self.linguagemElficaPlus:destroy(); self.linguagemElficaPlus = nil; end;
         if self.flowPart106 ~= nil then self.flowPart106:destroy(); self.flowPart106 = nil; end;
-        if self.flowPart13 ~= nil then self.flowPart13:destroy(); self.flowPart13 = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
+        if self.flowPart13 ~= nil then self.flowPart13:destroy(); self.flowPart13 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.horzLine70 ~= nil then self.horzLine70:destroy(); self.horzLine70 = nil; end;
+        if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
         if self.edit76 ~= nil then self.edit76:destroy(); self.edit76 = nil; end;
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
@@ -5986,6 +6257,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart150 ~= nil then self.flowPart150:destroy(); self.flowPart150 = nil; end;
         if self.edit69 ~= nil then self.edit69:destroy(); self.edit69 = nil; end;
         if self.flowPart140 ~= nil then self.flowPart140:destroy(); self.flowPart140 = nil; end;
+        if self.barraxpClasse ~= nil then self.barraxpClasse:destroy(); self.barraxpClasse = nil; end;
         if self.flowPart34 ~= nil then self.flowPart34:destroy(); self.flowPart34 = nil; end;
         if self.flowPart54 ~= nil then self.flowPart54:destroy(); self.flowPart54 = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
@@ -5995,10 +6267,12 @@ local function constructNew_frmFichaDePersonagem()
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
         if self.flowPart43 ~= nil then self.flowPart43:destroy(); self.flowPart43 = nil; end;
+        if self.okButtonProfissao ~= nil then self.okButtonProfissao:destroy(); self.okButtonProfissao = nil; end;
         if self.edit77 ~= nil then self.edit77:destroy(); self.edit77 = nil; end;
         if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
-        if self.image42 ~= nil then self.image42:destroy(); self.image42 = nil; end;
+        if self.popupxpClasse ~= nil then self.popupxpClasse:destroy(); self.popupxpClasse = nil; end;
         if self.horzLine41 ~= nil then self.horzLine41:destroy(); self.horzLine41 = nil; end;
+        if self.image42 ~= nil then self.image42:destroy(); self.image42 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.flowPart57 ~= nil then self.flowPart57:destroy(); self.flowPart57 = nil; end;
@@ -6054,6 +6328,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
         if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
         if self.flowLineBreak2 ~= nil then self.flowLineBreak2:destroy(); self.flowLineBreak2 = nil; end;
+        if self.flowPart152 ~= nil then self.flowPart152:destroy(); self.flowPart152 = nil; end;
         if self.flowPart15 ~= nil then self.flowPart15:destroy(); self.flowPart15 = nil; end;
         if self.edit60 ~= nil then self.edit60:destroy(); self.edit60 = nil; end;
         if self.flowLayout8 ~= nil then self.flowLayout8:destroy(); self.flowLayout8 = nil; end;
@@ -6080,6 +6355,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart92 ~= nil then self.flowPart92:destroy(); self.flowPart92 = nil; end;
         if self.flowPart72 ~= nil then self.flowPart72:destroy(); self.flowPart72 = nil; end;
         if self.horzLine71 ~= nil then self.horzLine71:destroy(); self.horzLine71 = nil; end;
+        if self.flowLayout18 ~= nil then self.flowLayout18:destroy(); self.flowLayout18 = nil; end;
         if self.flowPart40 ~= nil then self.flowPart40:destroy(); self.flowPart40 = nil; end;
         if self.image38 ~= nil then self.image38:destroy(); self.image38 = nil; end;
         if self.flowPart75 ~= nil then self.flowPart75:destroy(); self.flowPart75 = nil; end;
@@ -6087,32 +6363,33 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart144 ~= nil then self.flowPart144:destroy(); self.flowPart144 = nil; end;
         if self.flowLayout15 ~= nil then self.flowLayout15:destroy(); self.flowLayout15 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
+        if self.okButtonClasse ~= nil then self.okButtonClasse:destroy(); self.okButtonClasse = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.horzLine38 ~= nil then self.horzLine38:destroy(); self.horzLine38 = nil; end;
-        if self.flowPart97 ~= nil then self.flowPart97:destroy(); self.flowPart97 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.flowPart18 ~= nil then self.flowPart18:destroy(); self.flowPart18 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
+        if self.flowPart97 ~= nil then self.flowPart97:destroy(); self.flowPart97 = nil; end;
         if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
-        if self.flowPart102 ~= nil then self.flowPart102:destroy(); self.flowPart102 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.horzLine23 ~= nil then self.horzLine23:destroy(); self.horzLine23 = nil; end;
         if self.image25 ~= nil then self.image25:destroy(); self.image25 = nil; end;
+        if self.flowPart102 ~= nil then self.flowPart102:destroy(); self.flowPart102 = nil; end;
         if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
         if self.flowPart116 ~= nil then self.flowPart116:destroy(); self.flowPart116 = nil; end;
         if self.flowPart118 ~= nil then self.flowPart118:destroy(); self.flowPart118 = nil; end;
-        if self.geografiaPlus ~= nil then self.geografiaPlus:destroy(); self.geografiaPlus = nil; end;
         if self.horzLine22 ~= nil then self.horzLine22:destroy(); self.horzLine22 = nil; end;
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
         if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
-        if self.flowLayout12 ~= nil then self.flowLayout12:destroy(); self.flowLayout12 = nil; end;
+        if self.geografiaPlus ~= nil then self.geografiaPlus:destroy(); self.geografiaPlus = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
+        if self.flowLayout12 ~= nil then self.flowLayout12:destroy(); self.flowLayout12 = nil; end;
         if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
-        if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.horzLine53 ~= nil then self.horzLine53:destroy(); self.horzLine53 = nil; end;
         if self.horzLine72 ~= nil then self.horzLine72:destroy(); self.horzLine72 = nil; end;
@@ -6152,8 +6429,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
         if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
-        if self.flowPart126 ~= nil then self.flowPart126:destroy(); self.flowPart126 = nil; end;
         if self.flowLayout4 ~= nil then self.flowLayout4:destroy(); self.flowLayout4 = nil; end;
+        if self.flowPart126 ~= nil then self.flowPart126:destroy(); self.flowPart126 = nil; end;
         if self.edit81 ~= nil then self.edit81:destroy(); self.edit81 = nil; end;
         if self.horzLine58 ~= nil then self.horzLine58:destroy(); self.horzLine58 = nil; end;
         if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
@@ -6189,6 +6466,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.image15 ~= nil then self.image15:destroy(); self.image15 = nil; end;
         if self.image36 ~= nil then self.image36:destroy(); self.image36 = nil; end;
         if self.didaticaPlus ~= nil then self.didaticaPlus:destroy(); self.didaticaPlus = nil; end;
+        if self.nome ~= nil then self.nome:destroy(); self.nome = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.flowPart85 ~= nil then self.flowPart85:destroy(); self.flowPart85 = nil; end;
         if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
@@ -6196,6 +6474,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
+        if self.barraxpProfissao ~= nil then self.barraxpProfissao:destroy(); self.barraxpProfissao = nil; end;
         if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
         if self.religiaoPlus ~= nil then self.religiaoPlus:destroy(); self.religiaoPlus = nil; end;
         if self.flowPart24 ~= nil then self.flowPart24:destroy(); self.flowPart24 = nil; end;
@@ -6208,8 +6487,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.dataLink42 ~= nil then self.dataLink42:destroy(); self.dataLink42 = nil; end;
         if self.image30 ~= nil then self.image30:destroy(); self.image30 = nil; end;
         if self.flowPart133 ~= nil then self.flowPart133:destroy(); self.flowPart133 = nil; end;
-        if self.flowPart73 ~= nil then self.flowPart73:destroy(); self.flowPart73 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
+        if self.flowPart73 ~= nil then self.flowPart73:destroy(); self.flowPart73 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.horzLine75 ~= nil then self.horzLine75:destroy(); self.horzLine75 = nil; end;
         if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
@@ -6264,10 +6543,12 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.image29 ~= nil then self.image29:destroy(); self.image29 = nil; end;
         if self.horzLine28 ~= nil then self.horzLine28:destroy(); self.horzLine28 = nil; end;
+        if self.popupxpProfissao ~= nil then self.popupxpProfissao:destroy(); self.popupxpProfissao = nil; end;
         if self.edit79 ~= nil then self.edit79:destroy(); self.edit79 = nil; end;
         if self.horzLine34 ~= nil then self.horzLine34:destroy(); self.horzLine34 = nil; end;
         if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
         if self.image27 ~= nil then self.image27:destroy(); self.image27 = nil; end;
+        if self.somaxpProfissao ~= nil then self.somaxpProfissao:destroy(); self.somaxpProfissao = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.flowPart105 ~= nil then self.flowPart105:destroy(); self.flowPart105 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
@@ -6276,6 +6557,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
         if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
+        if self.horzLine81 ~= nil then self.horzLine81:destroy(); self.horzLine81 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.horzLine57 ~= nil then self.horzLine57:destroy(); self.horzLine57 = nil; end;
         if self.persuasaoPlus ~= nil then self.persuasaoPlus:destroy(); self.persuasaoPlus = nil; end;
@@ -6310,6 +6592,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart30 ~= nil then self.flowPart30:destroy(); self.flowPart30 = nil; end;
         if self.horzLine49 ~= nil then self.horzLine49:destroy(); self.horzLine49 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
+        if self.somaxpClasse ~= nil then self.somaxpClasse:destroy(); self.somaxpClasse = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.intimidacaoMinus ~= nil then self.intimidacaoMinus:destroy(); self.intimidacaoMinus = nil; end;
         if self.dataLink56 ~= nil then self.dataLink56:destroy(); self.dataLink56 = nil; end;
@@ -6346,12 +6629,13 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart83 ~= nil then self.flowPart83:destroy(); self.flowPart83 = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
         if self.flowPart117 ~= nil then self.flowPart117:destroy(); self.flowPart117 = nil; end;
-        if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
+        if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.flowPart46 ~= nil then self.flowPart46:destroy(); self.flowPart46 = nil; end;
         if self.label55 ~= nil then self.label55:destroy(); self.label55 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.edit80 ~= nil then self.edit80:destroy(); self.edit80 = nil; end;
+        if self.label66 ~= nil then self.label66:destroy(); self.label66 = nil; end;
         if self.edit35 ~= nil then self.edit35:destroy(); self.edit35 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.image14 ~= nil then self.image14:destroy(); self.image14 = nil; end;
@@ -6363,6 +6647,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
+        if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.flowPart50 ~= nil then self.flowPart50:destroy(); self.flowPart50 = nil; end;
         if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
@@ -6376,6 +6661,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart67 ~= nil then self.flowPart67:destroy(); self.flowPart67 = nil; end;
         if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
         if self.flowPart31 ~= nil then self.flowPart31:destroy(); self.flowPart31 = nil; end;
+        if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
         if self.horzLine46 ~= nil then self.horzLine46:destroy(); self.horzLine46 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
         if self.horzLine51 ~= nil then self.horzLine51:destroy(); self.horzLine51 = nil; end;
@@ -6389,6 +6675,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.dataLink41 ~= nil then self.dataLink41:destroy(); self.dataLink41 = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
         if self.flowPart148 ~= nil then self.flowPart148:destroy(); self.flowPart148 = nil; end;
+        if self.horzLine82 ~= nil then self.horzLine82:destroy(); self.horzLine82 = nil; end;
         if self.flowPart64 ~= nil then self.flowPart64:destroy(); self.flowPart64 = nil; end;
         if self.adestrarAnimaisMinus ~= nil then self.adestrarAnimaisMinus:destroy(); self.adestrarAnimaisMinus = nil; end;
         if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
@@ -6407,6 +6694,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine73 ~= nil then self.horzLine73:destroy(); self.horzLine73 = nil; end;
         if self.flowLineBreak1 ~= nil then self.flowLineBreak1:destroy(); self.flowLineBreak1 = nil; end;
         if self.flowPart81 ~= nil then self.flowPart81:destroy(); self.flowPart81 = nil; end;
+        if self.flowLayout17 ~= nil then self.flowLayout17:destroy(); self.flowLayout17 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.horzLine12 ~= nil then self.horzLine12:destroy(); self.horzLine12 = nil; end;
         if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
@@ -6415,8 +6703,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLineBreak3 ~= nil then self.flowLineBreak3:destroy(); self.flowLineBreak3 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.flowLayout11 ~= nil then self.flowLayout11:destroy(); self.flowLayout11 = nil; end;
-        if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
         if self.flowPart134 ~= nil then self.flowPart134:destroy(); self.flowPart134 = nil; end;
+        if self.edit75 ~= nil then self.edit75:destroy(); self.edit75 = nil; end;
         if self.horzLine32 ~= nil then self.horzLine32:destroy(); self.horzLine32 = nil; end;
         if self.edit65 ~= nil then self.edit65:destroy(); self.edit65 = nil; end;
         if self.flowPart98 ~= nil then self.flowPart98:destroy(); self.flowPart98 = nil; end;
@@ -6438,9 +6726,9 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine68 ~= nil then self.horzLine68:destroy(); self.horzLine68 = nil; end;
         if self.horzLine78 ~= nil then self.horzLine78:destroy(); self.horzLine78 = nil; end;
         if self.flowPart86 ~= nil then self.flowPart86:destroy(); self.flowPart86 = nil; end;
-        if self.linguagemDraconicaMinus ~= nil then self.linguagemDraconicaMinus:destroy(); self.linguagemDraconicaMinus = nil; end;
-        if self.flowPart111 ~= nil then self.flowPart111:destroy(); self.flowPart111 = nil; end;
         if self.flowPart151 ~= nil then self.flowPart151:destroy(); self.flowPart151 = nil; end;
+        if self.flowPart111 ~= nil then self.flowPart111:destroy(); self.flowPart111 = nil; end;
+        if self.linguagemDraconicaMinus ~= nil then self.linguagemDraconicaMinus:destroy(); self.linguagemDraconicaMinus = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
         if self.flowPart82 ~= nil then self.flowPart82:destroy(); self.flowPart82 = nil; end;
         if self.flowPart146 ~= nil then self.flowPart146:destroy(); self.flowPart146 = nil; end;
@@ -6472,10 +6760,9 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine13 ~= nil then self.horzLine13:destroy(); self.horzLine13 = nil; end;
         if self.flowPart112 ~= nil then self.flowPart112:destroy(); self.flowPart112 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
-        if self.progressBar1 ~= nil then self.progressBar1:destroy(); self.progressBar1 = nil; end;
         if self.dataLink46 ~= nil then self.dataLink46:destroy(); self.dataLink46 = nil; end;
-        if self.horzLine24 ~= nil then self.horzLine24:destroy(); self.horzLine24 = nil; end;
         if self.horzLine65 ~= nil then self.horzLine65:destroy(); self.horzLine65 = nil; end;
+        if self.horzLine24 ~= nil then self.horzLine24:destroy(); self.horzLine24 = nil; end;
         if self.intimidacaoPlus ~= nil then self.intimidacaoPlus:destroy(); self.intimidacaoPlus = nil; end;
         if self.horzLine77 ~= nil then self.horzLine77:destroy(); self.horzLine77 = nil; end;
         if self.dataLink50 ~= nil then self.dataLink50:destroy(); self.dataLink50 = nil; end;
