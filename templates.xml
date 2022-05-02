@@ -7,22 +7,21 @@
                   maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
                   name="$(baseName)">
             <edit align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
-            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1" margins="{right=5}"/>
             <label align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading"
                    wordWrap="true" textTrimming="none"/>
         </flowPart>
     </template>
 
     <template name="campoPerfilNumero">
-        <flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)"
-                  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)"
-                  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
-                  name="$(baseName)">
-            <edit align="top" class="infoNoTopo" field="$(field)" fontSize="13" type="number" readOnly="true"/>
-            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
-            <label align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading"
-                   wordWrap="true" textTrimming="none"/>
-        </flowPart>
+        <rectangle cornerType="bevel" align="client"
+                   yradius="100" xradius="20"  strokeColor="silver" strokeSize="2"
+                   height="75" width="100" color="black"
+                   margins="{top=2, bottom=2, left=2, right=2}">
+            <label align="client" field="$(field)" horzTextAlign="center"
+                   vertTextAlign="center" fontSize="25" fontStyle="bold" width="60" height="20" margins="{top=10}"/>
+            <label text="$(titulo)" vertTextAlign="trailing" horzTextAlign="center" align="bottom"  margins="{bottom=5}" fontSize="14"/>
+        </rectangle>
     </template>
 
     <template name="caixaAtributo">
@@ -33,7 +32,7 @@
             <edit class="atributo" align="top" field="atributo$(titulo)"
                   height="20" type="number" min="0" width="20"/>
             <label align="client" field="mod$(titulo)" horzTextAlign="center"
-                   vertTextAlign="center" fontSize="30" fontStyle="bold" width="60" height="20"/>
+                   vertTextAlign="center" fontSize="30" fontStyle="bold" width="60" height="20" margins="{bottom=8}"/>
             <label text="$(titulo)" vertTextAlign="trailing" horzTextAlign="center" align="bottom"/>
         </rectangle>
         <dataLink fields="'mod$(titulo)', 'atributo$(titulo)'">
@@ -59,14 +58,14 @@
     <template name="barraDeExperiencia">
         <label width="300" height="5" fontSize="12" text="Experiência de $(titulo):"
                horzTextAlign="center" vertTextAlign="leading" margins="{top=5,bottom=5}"/>
-        <progressBar width="300" height="5" margins="{top=5,bottom=5}" fieldMax="xpMax$(field)" field="xpAtual$(field)" name="barraxp$(field)"
-                     hitTest="true" mouseGlow="true" colorMode="hl"
+        <progressBar width="250" height="5" margins="{top=5,bottom=5}" fieldMax="xpMax$(field)" field="xpAtual$(field)" name="barraxp$(field)"
+                     hitTest="true" mouseGlow="true" colorMode="hl" color="$(color)"
                      onDblClick="self.popupxp$(field):show('bottomCenter', self.barraxp$(field))
                                  self.somaxp$(field):setFocus()"/>
-        <label width="300" height="5" fontSize="12" horzTextAlign="trailing" vertTextAlign="trailing" margins="{top=5,bottom=5}" field="xpTexto$(field)"/>
+        <label width="250" height="5" fontSize="12" horzTextAlign="trailing" vertTextAlign="trailing" margins="{top=5,bottom=5}" field="xpTexto$(field)"/>
 
         <popup name="popupxp$(field)" width="300" height="30" backOpacity="0.4" left="600">
-            <flowLayout width="300" height="30" maxControlsPerLine="3">
+            <flowLayout width="250" height="30" maxControlsPerLine="3">
                 <label text="Adicionar Experiência: " width="150" height="30" margins="{left=10}" horzTextAlign="leading" vertTextAlign="center" align="left"/>
                 <flowPart height="30" width="50">
                     <edit name="somaxp$(field)" align="top" field="somaxp$(field)" fontSize="15" type="number" transparent="true" horzTextAlign="center"
@@ -80,7 +79,7 @@
                             local total = atual + recebido
 
 
-                            if $(field) == 'Classe' then
+                            if self.barraxp$(field) == self.barraxpClasse then
                                 while total >= max do
 
                                     total = total - max

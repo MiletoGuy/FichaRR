@@ -5,12 +5,13 @@
 	<import file="templates.xml"/>
 	
 	<tabControl align="client" name="pgcPrincipal">
+	<tab title="Habilidades">
+    			<import file="habilidades.xml"/>
+    		</tab>
 		<tab title="Perfil e Atributos">
 			<import file="perfil.xml"/>
 		</tab>
 		
-		<tab title="Habilidades">
-			<import file="habilidades.xml"/>
-		</tab>		
+
 	</tabControl>		
 </form>

@@ -6,20 +6,21 @@
 
            <rectangle cornerType="innerLine" align="client"
                       xradius="10" yradius="10"
-                      height="100" width="400">
-                <flowLayout height="100" width="450" maxControlsPerLine="2">
-                    <flowPart width="200" height="20" align="left" margins="{left=10,top=5}">
-                    <label text="Nome da Habilidade" fontStyle="bold italic" fontSize="18" fontColor="black"
-                           vertTextAlign="center" horzTextAlign="center" width="200"/>
-                    <horzLine align="bottom" strokeSize="1" strokeColor="black" margins="{left=15,right=15}"/>
+                      height="100" width="400" color="#40000000" strokeColor="black" strokeSize="2">
+                <flowLayout height="100" width="400" maxControlsPerLine="2">
+                    <flowPart width="350" height="25" align="left" margins="{left=10,top=5}">
+                    <edit textPrompt="Nome da Habilidade" fontSize="15" transparent="true"
+                           vertTextAlign="center" horzTextAlign="leading" width="200" />
+                    <horzLine align="bottom" strokeSize="1" strokeColor="black"/>
                     </flowPart>
                     <flowPart height="20" width="20" align="right" margins="{right=10, top=5}">
                     <rectangle cornerType="innerLine" align="client"
                                xradius="3" yradius="3"
                                height="20" width="20"
-                               color="black">
-                    <edit height="20" width="20" horzTextAlign="center" vertTextAlign="center" fontSize="15" fontStyle="bold" type="number" transparent="true" field="cargas"/>
-                    </rectangle>z
+                               color="#40000000" strokeColor="black" strokeSize="2">
+                    <edit height="20" width="20" horzTextAlign="center" vertTextAlign="center" fontSize="15" fontStyle="bold" fontColor="black"
+                          type="number" transparent="true" field="cargas"/>
+                    </rectangle>
                     </flowPart>
                 </flowLayout>
            </rectangle>
