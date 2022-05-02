@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <group>
-
     <template name="campoPerfilTexto">
         <flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)"
                   minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)"
@@ -39,15 +38,6 @@
         </rectangle>
         <dataLink fields="'mod$(titulo)', 'atributo$(titulo)'">
             <event name="onChange">
-                if (
-                    (tonumber(sheet.atributoAcerto) or 0) +
-                    (tonumber(sheet.atributoMira) or 0) +
-                    (tonumber(sheet.atributoEsquiva) or 0) +
-                    (tonumber(sheet.atributoBloqueio) or 0)
-                    ) > sheet.dexTotal
-                then
-                end
-
                 sheet.mod$(titulo) = tostring("+"..math.floor(tonumber(sheet.atributo$(titulo))/10))
             </event>
         </dataLink>
@@ -67,7 +57,7 @@
     </template>
 
     <template name="barraDeExperiencia">
-        <label width="300" height="5" fontSize="12" text="Experiencia de $(titulo):"
+        <label width="300" height="5" fontSize="12" text="Experiência de $(titulo):"
                horzTextAlign="center" vertTextAlign="leading" margins="{top=5,bottom=5}"/>
         <progressBar width="300" height="5" margins="{top=5,bottom=5}" fieldMax="xpMax$(field)" field="xpAtual$(field)" name="barraxp$(field)"
                      hitTest="true" mouseGlow="true" colorMode="hl"
@@ -82,14 +72,61 @@
                     <edit name="somaxp$(field)" align="top" field="somaxp$(field)" fontSize="15" type="number" transparent="true" horzTextAlign="center"
                           onKeyDown="
                         if event.keyCode == 13 then
+                            self.okButton$(field):setFocus()
                             local recebido = sheet.somaxp$(field) or 0
                             local atual = sheet.xpAtual$(field) or 0
                             local max = sheet.xpMax$(field) or 0
                             local nivel = sheet.nivel$(field)
                             local total = atual + recebido
 
+
+                            if $(field) == 'Classe' then
+                                while total >= max do
+
+                                    total = total - max
+                                    nivel = nivel + 1
+                                    if nivel > 27 then
+                                        max = 100000 + (100000 * (nivel - 28))
+                                    elseif nivel > 18 then
+                                        max = 10000 + (10000 * (nivel - 19))
+                                    elseif nivel > 9 then
+                                        max = 1000 + (1000 * (nivel - 10))
+                                    else
+                                        max = 100 * nivel
+                                    end
+                                end
+                            else
+                                while total >= max do
+                                    total = total - max
+                                    nivel = nivel + 1
+                                    max = 5 * nivel
+                                end
+                            end
+
+
+                            atual = total
+
+                            sheet.nivel$(field) = nivel
+                            sheet.xpMax$(field) = max
+                            sheet.xpTexto$(field) = tostring(atual..'/'..max)
+                            sheet.xpAtual$(field) = atual
+                            sheet.somaxp$(field) = 0
+                            self.popupxp$(field):close();
+                        end">
+
+                    </edit>
+                    <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1" margins="{bottom=5}"/>
+                </flowPart>
+                <button text="ok" height="20" width="25" margins="{right=5, left=50}" name="okButton$(field)"
+                        onClick="
+                         local recebido = sheet.somaxp$(field) or 0
+                            local atual = sheet.xpAtual$(field) or 0
+                            local max = sheet.xpMax$(field) or 0
+                            local nivel = sheet.nivel$(field)
+                            local total = atual + recebido
+
                             while total >= max do
-                                showMessage('total: '..total..' max: '..max)
+
                                 total = total - max
                                 nivel = nivel + 1
                                 if nivel > 27 then
@@ -110,42 +147,7 @@
                             sheet.xpTexto$(field) = tostring(atual..'/'..max)
                             sheet.xpAtual$(field) = atual
                             sheet.somaxp$(field) = 0
-                            self.popupxp$(field):close();
-                        end">
-
-                    </edit>
-                    <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1" margins="{bottom=5}"/>
-                </flowPart>
-                <button text="ok" height="20" width="25" margins="{right=5, left=50}" name="okButton$(field)"
-                        onClick="
-                        local recebido = sheet.somaxp$(field) or 0
-                        local atual = sheet.xpAtual$(field) or 0
-                        local max = sheet.xpMax$(field) or 0
-                        local nivel = sheet.nivel$(field)
-                        local total = atual + recebido
-
-                        while total >= max do
-                            showMessage('total: '..total..' max: '..max)
-                            total = total - max
-                            nivel = nivel + 1
-                            if nivel > 27 then
-                                max = 100000 + (100000 * (nivel - 28))
-                            elseif nivel > 18 then
-                                max = 10000 + (10000 * (nivel - 19))
-                            elseif nivel > 9 then
-                                max = 1000 + (1000 * (nivel - 10))
-                            else
-                                max = 100 * nivel
-                            end
-                        end
-
-                        atual = total
-
-                        sheet.xpTexto$(field) = tostring(atual..'/'..max)
-                        sheet.nivel$(field) = nivel
-                        sheet.xpAtual$(field) = atual
-                        sheet.somaxp$(field) = 0
-                        self.popupxp$(field):close();"/>
+                            self.popupxp$(field):close();"/>
 
             </flowLayout>
         </popup>

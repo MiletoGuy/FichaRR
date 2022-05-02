@@ -146,7 +146,13 @@
                             onClick="sheet.pontosRestantes = 0
                                      sheet.pontosTreinados = 0
                                      sheet.xpAtualClasse = 0
+                                     sheet.xpMaxClasse = 100
+                                     sheet.xpTextoClasse = '0/100'
                                      sheet.nivelClasse = 1
+                                     sheet.xpAtualProfissao = 0
+                                     sheet.nivelProfissao = 1
+                                     sheet.xpMaxProfissao = 5
+                                     sheet.xpTextoProfissao = '0/5'
                                      "/>
                 </flowLayout>
 
@@ -204,7 +210,8 @@
                        'geografia', 'historia', 'religiao', 'faunaflora', 'linguagemComum', 'linguagemOriental', 'linguagemElfica',
                        'linguagemAna', 'linguagemDraconica', 'pontosRestantes', 'pontosTreinados', 'pontosDeConhecimento',
                        'pontosDeConhecimentoDistribuidos', 'destrezaDisponivel', 'dexTotal', 'atributoAcerto', 'atributoMira',
-                       'atributoEsquiva', 'atributoBloqueio', 'barraExpAtual', 'barraExpMax'}">
+                       'atributoEsquiva', 'atributoBloqueio','xpAtualClasse', 'xpMaxClasse','xpTextoClasse', 'nivelClasse', 'xpAtualProfissao',
+                       'xpMaxProfissao', 'xpTextoProfissao', 'nivelProfissao'}">
         <event name="onChange">
 
             -- ###### REMOVE VALORES NULOS ######
@@ -234,7 +241,11 @@
             if sheet.nivelClasse == 0 then sheet.nivelClasse = 1 end;
             if sheet.xpAtualClasse == nil then sheet.xpAtualClasse = 0 end;
             if sheet.xpMaxClasse == nil then sheet.xpMaxClasse = 100 end;
-            if sheet.xpTextoClasse == nil then sheet.xpTextoClasse = "0/100" end;
+            if sheet.xpTextoClasse == nil then sheet.xpTextoClasse = '0/100' end;
+            if sheet.xpAtualProfissao == nil then sheet.xpAtualProfissao = 0 end;
+            if sheet.xpMaxProfissao == nil then sheet.xpMaxProfissao = 0 end;
+            if sheet.xpTextoProfissao == nil then sheet.xpTextoProfissao = '0/5' end;
+
 
             -- ###### PONTOS DE CONHECIMENTOS ESPECÍFICOS ######
             sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intTotal)/5)) -
@@ -246,6 +257,18 @@
             (tonumber(sheet.atributoEsquiva) or 0) +
             (tonumber(sheet.atributoBloqueio) or 0)
             )
+
+            if sheet.nivelClasse > 27 then
+                sheet.xpMaxClasse = 100000 + (100000 * (nivel - 28))
+            elseif sheet.nivelClasse > 18 then
+                sheet.xpMaxClasse = 10000 + (10000 * (sheet.nivelClasse - 19))
+            elseif sheet.nivelClasse > 9 then
+                sheet.xpMaxClasse = 1000 + (1000 * (sheet.nivelClasse - 10))
+            else
+                sheet.xpMaxClasse = 100 * sheet.nivelClasse
+            end
+
+            sheet.xpMaxProfissao = sheet.nivelProfissao * 5
 
 
         </event>

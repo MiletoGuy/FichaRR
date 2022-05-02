@@ -971,7 +971,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label26:setWidth(300);
     obj.label26:setHeight(5);
     obj.label26:setFontSize(12);
-    obj.label26:setText("Experiencia de Classe:");
+    obj.label26:setText("Experiência de Classe:");
     obj.label26:setHorzTextAlign("center");
     obj.label26:setVertTextAlign("leading");
     obj.label26:setMargins({top=5,bottom=5});
@@ -1063,7 +1063,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label29:setWidth(300);
     obj.label29:setHeight(5);
     obj.label29:setFontSize(12);
-    obj.label29:setText("Experiencia de Profissão:");
+    obj.label29:setText("Experiência de Profissão:");
     obj.label29:setHorzTextAlign("center");
     obj.label29:setVertTextAlign("leading");
     obj.label29:setMargins({top=5,bottom=5});
@@ -5151,7 +5151,8 @@ local function constructNew_frmFichaDePersonagem()
                        'geografia', 'historia', 'religiao', 'faunaflora', 'linguagemComum', 'linguagemOriental', 'linguagemElfica',
                        'linguagemAna', 'linguagemDraconica', 'pontosRestantes', 'pontosTreinados', 'pontosDeConhecimento',
                        'pontosDeConhecimentoDistribuidos', 'destrezaDisponivel', 'dexTotal', 'atributoAcerto', 'atributoMira',
-                       'atributoEsquiva', 'atributoBloqueio', 'barraExpAtual', 'barraExpMax'});
+                       'atributoEsquiva', 'atributoBloqueio','xpAtualClasse', 'xpMaxClasse','xpTextoClasse', 'nivelClasse', 'xpAtualProfissao',
+                       'xpMaxProfissao', 'xpTextoProfissao', 'nivelProfissao'});
     obj.dataLink60:setName("dataLink60");
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
@@ -5159,73 +5160,126 @@ local function constructNew_frmFichaDePersonagem()
     obj.tab2:setTitle("Habilidades");
     obj.tab2:setName("tab2");
 
-    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout5:setParent(obj.tab2);
-    obj.layout5:setWidth(700);
-    obj.layout5:setHeight(400);
-    obj.layout5:setName("layout5");
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10:setParent(obj.tab2);
+    obj.rectangle10:setName("rectangle10");
+    obj.rectangle10:setAlign("client");
+    obj.rectangle10:setColor("#40000000");
+    obj.rectangle10:setXradius(10);
+    obj.rectangle10:setYradius(10);
+
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2:setParent(obj.rectangle10);
+    obj.scrollBox2:setAlign("client");
+    obj.scrollBox2:setName("scrollBox2");
+
+    obj.habilidadesLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.habilidadesLayout:setParent(obj.scrollBox2);
+    obj.habilidadesLayout:setName("habilidadesLayout");
+    obj.habilidadesLayout:setAlign("top");
+    obj.habilidadesLayout:setHeight(800);
+    obj.habilidadesLayout:setMargins({left=10, right=10, top=10});
+    obj.habilidadesLayout:setAutoHeight(true);
+    obj.habilidadesLayout:setHorzAlign("center");
+    obj.habilidadesLayout:setLineSpacing(2);
+    obj.habilidadesLayout:setMaxWidth(1600);
+    obj.habilidadesLayout:setStepSizes({310, 420, 640, 760, 1150});
+    obj.habilidadesLayout:setMinScaledWidth(300);
+
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11:setParent(obj.habilidadesLayout);
+    obj.rectangle11:setCornerType("innerLine");
+    obj.rectangle11:setAlign("client");
+    obj.rectangle11:setXradius(10);
+    obj.rectangle11:setYradius(10);
+    obj.rectangle11:setHeight(100);
+    obj.rectangle11:setWidth(400);
+    obj.rectangle11:setName("rectangle11");
+
+    obj.flowLayout19 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout19:setParent(obj.rectangle11);
+    obj.flowLayout19:setHeight(100);
+    obj.flowLayout19:setWidth(450);
+    obj.flowLayout19:setMaxControlsPerLine(2);
+    obj.flowLayout19:setName("flowLayout19");
+
+    obj.flowPart153 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart153:setParent(obj.flowLayout19);
+    obj.flowPart153:setWidth(200);
+    obj.flowPart153:setHeight(20);
+    obj.flowPart153:setAlign("left");
+    obj.flowPart153:setMargins({left=10,top=5});
+    obj.flowPart153:setName("flowPart153");
 
     obj.label66 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label66:setParent(obj.layout5);
-    obj.label66:setText("Habilidades");
+    obj.label66:setParent(obj.flowPart153);
+    obj.label66:setText("Nome da Habilidade");
+    lfm_setPropAsString(obj.label66, "fontStyle",  "bold italic");
+    obj.label66:setFontSize(18);
+    obj.label66:setFontColor("black");
+    obj.label66:setVertTextAlign("center");
+    obj.label66:setHorzTextAlign("center");
+    obj.label66:setWidth(200);
     obj.label66:setName("label66");
-    obj.label66:setAlign("client");
-    obj.label66:setHorzTextAlign("trailing");
+
+    obj.horzLine83 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine83:setParent(obj.flowPart153);
+    obj.horzLine83:setAlign("bottom");
+    obj.horzLine83:setStrokeSize(1);
+    obj.horzLine83:setStrokeColor("black");
+    obj.horzLine83:setMargins({left=15,right=15});
+    obj.horzLine83:setName("horzLine83");
+
+    obj.flowPart154 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart154:setParent(obj.flowLayout19);
+    obj.flowPart154:setHeight(20);
+    obj.flowPart154:setWidth(20);
+    obj.flowPart154:setAlign("right");
+    obj.flowPart154:setMargins({right=10, top=5});
+    obj.flowPart154:setName("flowPart154");
+
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12:setParent(obj.flowPart154);
+    obj.rectangle12:setCornerType("innerLine");
+    obj.rectangle12:setAlign("client");
+    obj.rectangle12:setXradius(3);
+    obj.rectangle12:setYradius(3);
+    obj.rectangle12:setHeight(20);
+    obj.rectangle12:setWidth(20);
+    obj.rectangle12:setColor("black");
+    obj.rectangle12:setName("rectangle12");
+
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit85:setParent(obj.rectangle12);
+    obj.edit85:setHeight(20);
+    obj.edit85:setWidth(20);
+    obj.edit85:setHorzTextAlign("center");
+    obj.edit85:setVertTextAlign("center");
+    obj.edit85:setFontSize(15);
+    lfm_setPropAsString(obj.edit85, "fontStyle",  "bold");
+    obj.edit85:setType("number");
+    obj.edit85:setTransparent(true);
+    obj.edit85:setField("cargas");
+    obj.edit85:setName("edit85");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            if (
-                                (tonumber(sheet.atributoAcerto) or 0) +
-                                (tonumber(sheet.atributoMira) or 0) +
-                                (tonumber(sheet.atributoEsquiva) or 0) +
-                                (tonumber(sheet.atributoBloqueio) or 0)
-                                ) > sheet.dexTotal
-                            then
-                            end
-            
-                            sheet.modAcerto = tostring("+"..math.floor(tonumber(sheet.atributoAcerto)/10))
+            sheet.modAcerto = tostring("+"..math.floor(tonumber(sheet.atributoAcerto)/10))
         end, obj);
 
     obj._e_event1 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            if (
-                                (tonumber(sheet.atributoAcerto) or 0) +
-                                (tonumber(sheet.atributoMira) or 0) +
-                                (tonumber(sheet.atributoEsquiva) or 0) +
-                                (tonumber(sheet.atributoBloqueio) or 0)
-                                ) > sheet.dexTotal
-                            then
-                            end
-            
-                            sheet.modMira = tostring("+"..math.floor(tonumber(sheet.atributoMira)/10))
+            sheet.modMira = tostring("+"..math.floor(tonumber(sheet.atributoMira)/10))
         end, obj);
 
     obj._e_event2 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            if (
-                                (tonumber(sheet.atributoAcerto) or 0) +
-                                (tonumber(sheet.atributoMira) or 0) +
-                                (tonumber(sheet.atributoEsquiva) or 0) +
-                                (tonumber(sheet.atributoBloqueio) or 0)
-                                ) > sheet.dexTotal
-                            then
-                            end
-            
-                            sheet.modEsquiva = tostring("+"..math.floor(tonumber(sheet.atributoEsquiva)/10))
+            sheet.modEsquiva = tostring("+"..math.floor(tonumber(sheet.atributoEsquiva)/10))
         end, obj);
 
     obj._e_event3 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            if (
-                                (tonumber(sheet.atributoAcerto) or 0) +
-                                (tonumber(sheet.atributoMira) or 0) +
-                                (tonumber(sheet.atributoEsquiva) or 0) +
-                                (tonumber(sheet.atributoBloqueio) or 0)
-                                ) > sheet.dexTotal
-                            then
-                            end
-            
-                            sheet.modBloqueio = tostring("+"..math.floor(tonumber(sheet.atributoBloqueio)/10))
+            sheet.modBloqueio = tostring("+"..math.floor(tonumber(sheet.atributoBloqueio)/10))
         end, obj);
 
     obj._e_event4 = obj.barraxpClasse:addEventListener("onDblClick",
@@ -5238,30 +5292,39 @@ local function constructNew_frmFichaDePersonagem()
         function (_, event)
             
                                     if event.keyCode == 13 then
+                                        self.okButtonClasse:setFocus()
                                         local recebido = sheet.somaxpClasse or 0
                                         local atual = sheet.xpAtualClasse or 0
                                         local max = sheet.xpMaxClasse or 0
                                         local nivel = sheet.nivelClasse
                                         local total = atual + recebido
             
-                                        while total >= max do
-                                            showMessage('total: '..total..' max: '..max)
-                                            total = total - max
-                                            nivel = nivel + 1
-                                            if nivel > 27 then
-                                                max = 100000 + (100000 * (nivel - 28))
-                                            elseif nivel > 18 then
-                                                max = 10000 + (10000 * (nivel - 19))
-                                            elseif nivel > 9 then
-                                                max = 1000 + (1000 * (nivel - 10))
-                                            else
-                                                max = 100 * nivel
+            
+                                        if Classe == 'Classe' then
+                                            while total >= max do
+            
+                                                total = total - max
+                                                nivel = nivel + 1
+                                                if nivel > 27 then
+                                                    max = 100000 + (100000 * (nivel - 28))
+                                                elseif nivel > 18 then
+                                                    max = 10000 + (10000 * (nivel - 19))
+                                                elseif nivel > 9 then
+                                                    max = 1000 + (1000 * (nivel - 10))
+                                                else
+                                                    max = 100 * nivel
+                                                end
+                                            end
+                                        else
+                                            while total >= max do
+                                                total = total - max
+                                                nivel = nivel + 1
+                                                max = 5 * nivel
                                             end
                                         end
             
+            
                                         atual = total
-            
-            
             
                                         sheet.nivelClasse = nivel
                                         sheet.xpMaxClasse = max
@@ -5275,54 +5338,14 @@ local function constructNew_frmFichaDePersonagem()
     obj._e_event6 = obj.okButtonClasse:addEventListener("onClick",
         function (_)
             
-                                    local recebido = sheet.somaxpClasse or 0
-                                    local atual = sheet.xpAtualClasse or 0
-                                    local max = sheet.xpMaxClasse or 0
-                                    local nivel = sheet.nivelClasse
-                                    local total = atual + recebido
-            
-                                    while total >= max do
-                                        showMessage('total: '..total..' max: '..max)
-                                        total = total - max
-                                        nivel = nivel + 1
-                                        if nivel > 27 then
-                                            max = 100000 + (100000 * (nivel - 28))
-                                        elseif nivel > 18 then
-                                            max = 10000 + (10000 * (nivel - 19))
-                                        elseif nivel > 9 then
-                                            max = 1000 + (1000 * (nivel - 10))
-                                        else
-                                            max = 100 * nivel
-                                        end
-                                    end
-            
-                                    atual = total
-            
-                                    sheet.xpTextoClasse = tostring(atual..'/'..max)
-                                    sheet.nivelClasse = nivel
-                                    sheet.xpAtualClasse = atual
-                                    sheet.somaxpClasse = 0
-                                    self.popupxpClasse:close();
-        end, obj);
-
-    obj._e_event7 = obj.barraxpProfissao:addEventListener("onDblClick",
-        function (_)
-            self.popupxpProfissao:show('bottomCenter', self.barraxpProfissao)
-                                             self.somaxpProfissao:setFocus()
-        end, obj);
-
-    obj._e_event8 = obj.somaxpProfissao:addEventListener("onKeyDown",
-        function (_, event)
-            
-                                    if event.keyCode == 13 then
-                                        local recebido = sheet.somaxpProfissao or 0
-                                        local atual = sheet.xpAtualProfissao or 0
-                                        local max = sheet.xpMaxProfissao or 0
-                                        local nivel = sheet.nivelProfissao
+                                     local recebido = sheet.somaxpClasse or 0
+                                        local atual = sheet.xpAtualClasse or 0
+                                        local max = sheet.xpMaxClasse or 0
+                                        local nivel = sheet.nivelClasse
                                         local total = atual + recebido
             
                                         while total >= max do
-                                            showMessage('total: '..total..' max: '..max)
+            
                                             total = total - max
                                             nivel = nivel + 1
                                             if nivel > 27 then
@@ -5338,7 +5361,57 @@ local function constructNew_frmFichaDePersonagem()
             
                                         atual = total
             
+                                        sheet.nivelClasse = nivel
+                                        sheet.xpMaxClasse = max
+                                        sheet.xpTextoClasse = tostring(atual..'/'..max)
+                                        sheet.xpAtualClasse = atual
+                                        sheet.somaxpClasse = 0
+                                        self.popupxpClasse:close();
+        end, obj);
+
+    obj._e_event7 = obj.barraxpProfissao:addEventListener("onDblClick",
+        function (_)
+            self.popupxpProfissao:show('bottomCenter', self.barraxpProfissao)
+                                             self.somaxpProfissao:setFocus()
+        end, obj);
+
+    obj._e_event8 = obj.somaxpProfissao:addEventListener("onKeyDown",
+        function (_, event)
             
+                                    if event.keyCode == 13 then
+                                        self.okButtonProfissao:setFocus()
+                                        local recebido = sheet.somaxpProfissao or 0
+                                        local atual = sheet.xpAtualProfissao or 0
+                                        local max = sheet.xpMaxProfissao or 0
+                                        local nivel = sheet.nivelProfissao
+                                        local total = atual + recebido
+            
+            
+                                        if Profissao == 'Classe' then
+                                            while total >= max do
+            
+                                                total = total - max
+                                                nivel = nivel + 1
+                                                if nivel > 27 then
+                                                    max = 100000 + (100000 * (nivel - 28))
+                                                elseif nivel > 18 then
+                                                    max = 10000 + (10000 * (nivel - 19))
+                                                elseif nivel > 9 then
+                                                    max = 1000 + (1000 * (nivel - 10))
+                                                else
+                                                    max = 100 * nivel
+                                                end
+                                            end
+                                        else
+                                            while total >= max do
+                                                total = total - max
+                                                nivel = nivel + 1
+                                                max = 5 * nivel
+                                            end
+                                        end
+            
+            
+                                        atual = total
             
                                         sheet.nivelProfissao = nivel
                                         sheet.xpMaxProfissao = max
@@ -5352,34 +5425,35 @@ local function constructNew_frmFichaDePersonagem()
     obj._e_event9 = obj.okButtonProfissao:addEventListener("onClick",
         function (_)
             
-                                    local recebido = sheet.somaxpProfissao or 0
-                                    local atual = sheet.xpAtualProfissao or 0
-                                    local max = sheet.xpMaxProfissao or 0
-                                    local nivel = sheet.nivelProfissao
-                                    local total = atual + recebido
+                                     local recebido = sheet.somaxpProfissao or 0
+                                        local atual = sheet.xpAtualProfissao or 0
+                                        local max = sheet.xpMaxProfissao or 0
+                                        local nivel = sheet.nivelProfissao
+                                        local total = atual + recebido
             
-                                    while total >= max do
-                                        showMessage('total: '..total..' max: '..max)
-                                        total = total - max
-                                        nivel = nivel + 1
-                                        if nivel > 27 then
-                                            max = 100000 + (100000 * (nivel - 28))
-                                        elseif nivel > 18 then
-                                            max = 10000 + (10000 * (nivel - 19))
-                                        elseif nivel > 9 then
-                                            max = 1000 + (1000 * (nivel - 10))
-                                        else
-                                            max = 100 * nivel
+                                        while total >= max do
+            
+                                            total = total - max
+                                            nivel = nivel + 1
+                                            if nivel > 27 then
+                                                max = 100000 + (100000 * (nivel - 28))
+                                            elseif nivel > 18 then
+                                                max = 10000 + (10000 * (nivel - 19))
+                                            elseif nivel > 9 then
+                                                max = 1000 + (1000 * (nivel - 10))
+                                            else
+                                                max = 100 * nivel
+                                            end
                                         end
-                                    end
             
-                                    atual = total
+                                        atual = total
             
-                                    sheet.xpTextoProfissao = tostring(atual..'/'..max)
-                                    sheet.nivelProfissao = nivel
-                                    sheet.xpAtualProfissao = atual
-                                    sheet.somaxpProfissao = 0
-                                    self.popupxpProfissao:close();
+                                        sheet.nivelProfissao = nivel
+                                        sheet.xpMaxProfissao = max
+                                        sheet.xpTextoProfissao = tostring(atual..'/'..max)
+                                        sheet.xpAtualProfissao = atual
+                                        sheet.somaxpProfissao = 0
+                                        self.popupxpProfissao:close();
         end, obj);
 
     obj._e_event10 = obj.dataLink5:addEventListener("onChange",
@@ -5717,7 +5791,13 @@ local function constructNew_frmFichaDePersonagem()
             sheet.pontosRestantes = 0
                                                  sheet.pontosTreinados = 0
                                                  sheet.xpAtualClasse = 0
+                                                 sheet.xpMaxClasse = 100
+                                                 sheet.xpTextoClasse = '0/100'
                                                  sheet.nivelClasse = 1
+                                                 sheet.xpAtualProfissao = 0
+                                                 sheet.nivelProfissao = 1
+                                                 sheet.xpMaxProfissao = 5
+                                                 sheet.xpTextoProfissao = '0/5'
                                                  
         end, obj);
 
@@ -6059,7 +6139,11 @@ local function constructNew_frmFichaDePersonagem()
                         if sheet.nivelClasse == 0 then sheet.nivelClasse = 1 end;
                         if sheet.xpAtualClasse == nil then sheet.xpAtualClasse = 0 end;
                         if sheet.xpMaxClasse == nil then sheet.xpMaxClasse = 100 end;
-                        if sheet.xpTextoClasse == nil then sheet.xpTextoClasse = "0/100" end;
+                        if sheet.xpTextoClasse == nil then sheet.xpTextoClasse = '0/100' end;
+                        if sheet.xpAtualProfissao == nil then sheet.xpAtualProfissao = 0 end;
+                        if sheet.xpMaxProfissao == nil then sheet.xpMaxProfissao = 0 end;
+                        if sheet.xpTextoProfissao == nil then sheet.xpTextoProfissao = '0/5' end;
+            
             
                         -- ###### PONTOS DE CONHECIMENTOS ESPECÍFICOS ######
                         sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intTotal)/5)) -
@@ -6071,6 +6155,18 @@ local function constructNew_frmFichaDePersonagem()
                         (tonumber(sheet.atributoEsquiva) or 0) +
                         (tonumber(sheet.atributoBloqueio) or 0)
                         )
+            
+                        if sheet.nivelClasse > 27 then
+                            sheet.xpMaxClasse = 100000 + (100000 * (nivel - 28))
+                        elseif sheet.nivelClasse > 18 then
+                            sheet.xpMaxClasse = 10000 + (10000 * (sheet.nivelClasse - 19))
+                        elseif sheet.nivelClasse > 9 then
+                            sheet.xpMaxClasse = 1000 + (1000 * (sheet.nivelClasse - 10))
+                        else
+                            sheet.xpMaxClasse = 100 * sheet.nivelClasse
+                        end
+            
+                        sheet.xpMaxProfissao = sheet.nivelProfissao * 5
         end, obj);
 
     function obj:_releaseEvents()
@@ -6205,6 +6301,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart129 ~= nil then self.flowPart129:destroy(); self.flowPart129 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
         if self.flowPart32 ~= nil then self.flowPart32:destroy(); self.flowPart32 = nil; end;
+        if self.flowLayout19 ~= nil then self.flowLayout19:destroy(); self.flowLayout19 = nil; end;
         if self.horzLine47 ~= nil then self.horzLine47:destroy(); self.horzLine47 = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
         if self.horzLine69 ~= nil then self.horzLine69:destroy(); self.horzLine69 = nil; end;
@@ -6284,7 +6381,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart22 ~= nil then self.flowPart22:destroy(); self.flowPart22 = nil; end;
         if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
         if self.edit66 ~= nil then self.edit66:destroy(); self.edit66 = nil; end;
-        if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.dadosDoPersonagem ~= nil then self.dadosDoPersonagem:destroy(); self.dadosDoPersonagem = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
@@ -6306,6 +6402,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart39 ~= nil then self.flowPart39:destroy(); self.flowPart39 = nil; end;
         if self.image37 ~= nil then self.image37:destroy(); self.image37 = nil; end;
         if self.edit67 ~= nil then self.edit67:destroy(); self.edit67 = nil; end;
+        if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.horzLine62 ~= nil then self.horzLine62:destroy(); self.horzLine62 = nil; end;
         if self.linguagemAnaPlus ~= nil then self.linguagemAnaPlus:destroy(); self.linguagemAnaPlus = nil; end;
         if self.flowPart60 ~= nil then self.flowPart60:destroy(); self.flowPart60 = nil; end;
@@ -6393,6 +6490,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.horzLine53 ~= nil then self.horzLine53:destroy(); self.horzLine53 = nil; end;
         if self.horzLine72 ~= nil then self.horzLine72:destroy(); self.horzLine72 = nil; end;
+        if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.flowPart48 ~= nil then self.flowPart48:destroy(); self.flowPart48 = nil; end;
         if self.image35 ~= nil then self.image35:destroy(); self.image35 = nil; end;
@@ -6435,6 +6533,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine58 ~= nil then self.horzLine58:destroy(); self.horzLine58 = nil; end;
         if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
         if self.horzLine20 ~= nil then self.horzLine20:destroy(); self.horzLine20 = nil; end;
+        if self.horzLine83 ~= nil then self.horzLine83:destroy(); self.horzLine83 = nil; end;
         if self.horzLine31 ~= nil then self.horzLine31:destroy(); self.horzLine31 = nil; end;
         if self.adestrarAnimaisPlus ~= nil then self.adestrarAnimaisPlus:destroy(); self.adestrarAnimaisPlus = nil; end;
         if self.edit37 ~= nil then self.edit37:destroy(); self.edit37 = nil; end;
@@ -6493,6 +6592,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine75 ~= nil then self.horzLine75:destroy(); self.horzLine75 = nil; end;
         if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.intuicaoPlus ~= nil then self.intuicaoPlus:destroy(); self.intuicaoPlus = nil; end;
+        if self.flowPart154 ~= nil then self.flowPart154:destroy(); self.flowPart154 = nil; end;
         if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
@@ -6500,6 +6600,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart42 ~= nil then self.flowPart42:destroy(); self.flowPart42 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
         if self.image20 ~= nil then self.image20:destroy(); self.image20 = nil; end;
+        if self.edit85 ~= nil then self.edit85:destroy(); self.edit85 = nil; end;
         if self.horzLine10 ~= nil then self.horzLine10:destroy(); self.horzLine10 = nil; end;
         if self.horzLine45 ~= nil then self.horzLine45:destroy(); self.horzLine45 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
@@ -6518,6 +6619,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
         if self.dataLink53 ~= nil then self.dataLink53:destroy(); self.dataLink53 = nil; end;
+        if self.habilidadesLayout ~= nil then self.habilidadesLayout:destroy(); self.habilidadesLayout = nil; end;
         if self.edit34 ~= nil then self.edit34:destroy(); self.edit34 = nil; end;
         if self.label31 ~= nil then self.label31:destroy(); self.label31 = nil; end;
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
@@ -6528,6 +6630,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
         if self.intuicaoMinus ~= nil then self.intuicaoMinus:destroy(); self.intuicaoMinus = nil; end;
         if self.linguagemOrientalPlus ~= nil then self.linguagemOrientalPlus:destroy(); self.linguagemOrientalPlus = nil; end;
+        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.horzLine40 ~= nil then self.horzLine40:destroy(); self.horzLine40 = nil; end;
         if self.flowPart131 ~= nil then self.flowPart131:destroy(); self.flowPart131 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
@@ -6617,6 +6720,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart120 ~= nil then self.flowPart120:destroy(); self.flowPart120 = nil; end;
         if self.horzLine74 ~= nil then self.horzLine74:destroy(); self.horzLine74 = nil; end;
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
+        if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
         if self.dataLink31 ~= nil then self.dataLink31:destroy(); self.dataLink31 = nil; end;
         if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
         if self.flowPart14 ~= nil then self.flowPart14:destroy(); self.flowPart14 = nil; end;
@@ -6695,6 +6799,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLineBreak1 ~= nil then self.flowLineBreak1:destroy(); self.flowLineBreak1 = nil; end;
         if self.flowPart81 ~= nil then self.flowPart81:destroy(); self.flowPart81 = nil; end;
         if self.flowLayout17 ~= nil then self.flowLayout17:destroy(); self.flowLayout17 = nil; end;
+        if self.flowPart153 ~= nil then self.flowPart153:destroy(); self.flowPart153 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.horzLine12 ~= nil then self.horzLine12:destroy(); self.horzLine12 = nil; end;
         if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
