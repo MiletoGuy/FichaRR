@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form formType="sheetTemplate" dataType="FICHA_DE_PERSONAGEM_GAIA" title="Ficha de Personagem" name="frmFichaDePersonagem" theme="dark">
+<form formType="sheetTemplate" dataType="FICHA_DE_PERSONAGEM_GAIA" title="Ficha de Gaia" name="frmFichaDePersonagem" theme="dark">
 
 	<import file="styles.xml"/>
 	<import file="templates.xml"/>

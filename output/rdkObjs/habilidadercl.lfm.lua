@@ -64,7 +64,7 @@ local function constructNew_habilidadercl()
     obj.edit1:setTextPrompt("Nome da Habilidade");
     obj.edit1:setFontSize(15);
     obj.edit1:setTransparent(true);
-    obj.edit1:setField("habilidadeNome");
+    obj.edit1:setField("habilidadeNome($baseName)");
     obj.edit1:setVertTextAlign("center");
     obj.edit1:setHorzTextAlign("leading");
     obj.edit1:setWidth(280);
@@ -142,6 +142,21 @@ local function constructNew_habilidadercl()
     obj.flowLayout2:setMargins({top=5,left=15});
     obj.flowLayout2:setName("flowLayout2");
 
+    obj.habilidadeTipoComboBox = GUI.fromHandle(_obj_newObject("comboBox"));
+    obj.habilidadeTipoComboBox:setParent(obj.flowLayout2);
+    obj.habilidadeTipoComboBox:setWidth(150);
+    obj.habilidadeTipoComboBox:setField("habilidadeTipo");
+    obj.habilidadeTipoComboBox:setTransparent(true);
+    obj.habilidadeTipoComboBox:setLeft(35);
+    obj.habilidadeTipoComboBox:setFontSize(16);
+    lfm_setPropAsString(obj.habilidadeTipoComboBox, "fontStyle",  "italic bold");
+    obj.habilidadeTipoComboBox:setFontColor("silver");
+    obj.habilidadeTipoComboBox:setName("habilidadeTipoComboBox");
+    obj.habilidadeTipoComboBox:setItems({'Benção', 'Brasão','Canção', 'Conjuração', 'Combo', 'Dança', 'Evocação', 'Ilusão',
+                           'Ki', 'Kokyuu (呼吸)', 'Magia', 'Magia Nula', 'Maldição','Od', 'Postura', 'Sinal'});
+    obj.habilidadeTipoComboBox:setValues({'bencao', 'brasao', 'cancao', 'conjuracao', 'combo', 'danca', 'evocacao', 'ilusao',
+                           'ki', 'kokyuu', 'magia', 'magiaNula', 'maldicao', 'od', 'postura', 'sinal'});
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.flowLayout2);
     obj.button1:setText("usar");
@@ -152,108 +167,19 @@ local function constructNew_habilidadercl()
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.flowLayout2);
-    obj.button2:setText("editar");
+    obj.button2:setText("i");
     obj.button2:setHeight(20);
-    obj.button2:setWidth(50);
+    obj.button2:setWidth(20);
     obj.button2:setMargins({left=5,right=5});
     obj.button2:setName("button2");
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.flowLayout2);
-    obj.button3:setText("i");
+    obj.button3:setText("excluir");
     obj.button3:setHeight(20);
-    obj.button3:setWidth(20);
+    obj.button3:setWidth(50);
     obj.button3:setMargins({left=5,right=5});
     obj.button3:setName("button3");
-
-    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.flowLayout2);
-    obj.button4:setText("excluir");
-    obj.button4:setHeight(20);
-    obj.button4:setWidth(50);
-    obj.button4:setMargins({left=5,right=5});
-    obj.button4:setName("button4");
-
-    obj.editaHabilidade = GUI.fromHandle(_obj_newObject("popup"));
-    obj.editaHabilidade:setParent(obj);
-    obj.editaHabilidade:setName("editaHabilidade");
-    obj.editaHabilidade:setHeight(400);
-    obj.editaHabilidade:setWidth(752);
-    obj.editaHabilidade:setBackOpacity(0.5);
-
-    obj.flowLayout3 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout3:setParent(obj.editaHabilidade);
-    obj.flowLayout3:setAlign("client");
-    obj.flowLayout3:setMaxControlsPerLine(1);
-    obj.flowLayout3:setMargins({left=10,right=10,top=10,bottom=10});
-    obj.flowLayout3:setName("flowLayout3");
-
-    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.flowLayout3);
-    obj.rectangle4:setCornerType("innerLine");
-    obj.rectangle4:setXradius(10);
-    obj.rectangle4:setYradius(10);
-    obj.rectangle4:setHeight(200);
-    obj.rectangle4:setWidth(732);
-    obj.rectangle4:setColor("silver");
-    obj.rectangle4:setStrokeColor("black");
-    obj.rectangle4:setStrokeSize(2);
-    obj.rectangle4:setName("rectangle4");
-
-    obj.flowLayout4 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout4:setParent(obj.rectangle4);
-    obj.flowLayout4:setHeight(200);
-    obj.flowLayout4:setWidth(732);
-    obj.flowLayout4:setPadding({left=10,right=10,top=10,bottom=10});
-    obj.flowLayout4:setAlign("client");
-    obj.flowLayout4:setName("flowLayout4");
-
-    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.flowLayout4);
-    obj.richEdit1:setHeight(200);
-    obj.richEdit1:setWidth(712);
-    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#40000000");
-    lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
-    obj.richEdit1:setAlign("client");
-    obj.richEdit1:setName("richEdit1");
-
-    obj.flowPart3 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart3:setParent(obj.flowLayout3);
-    obj.flowPart3:setWidth(135);
-    obj.flowPart3:setHeight(20);
-    obj.flowPart3:setName("flowPart3");
-
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.flowPart3);
-    obj.label1:setText("Máximo de Cargas:");
-    obj.label1:setHeight(20);
-    obj.label1:setWidth(110);
-    obj.label1:setHorzTextAlign("leading");
-    obj.label1:setVertTextAlign("center");
-    obj.label1:setAlign("left");
-    obj.label1:setName("label1");
-
-    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj.flowPart3);
-    obj.edit3:setHeight(20);
-    obj.edit3:setWidth(25);
-    obj.edit3:setHorzTextAlign("center");
-    obj.edit3:setVertTextAlign("center");
-    obj.edit3:setFontSize(15);
-    obj.edit3:setAlign("right");
-    obj.edit3:setField("habilidadeCargasMax");
-    lfm_setPropAsString(obj.edit3, "fontStyle",  "bold");
-    obj.edit3:setType("number");
-    obj.edit3:setTransparent(true);
-    obj.edit3:setName("edit3");
-
-    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine2:setParent(obj.flowPart3);
-    obj.horzLine2:setAlign("bottom");
-    obj.horzLine2:setStrokeColor("#FFFFFF50");
-    obj.horzLine2:setStrokeSize(1);
-    obj.horzLine2:setMargins({right=5});
-    obj.horzLine2:setName("horzLine2");
 
 
 			local function askForDelete()
@@ -264,20 +190,37 @@ local function constructNew_habilidadercl()
 										end;
 									 end);
 			end;
+
+			local function showHabilidadePopup()
+			    local pop = self:findControlByName("editaHabilidade");
+
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:show();
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de habilidade para exibir");
+				end;
+			end;
+
+
+
+
 			
 
 
-    obj._e_event0 = obj.button2:addEventListener("onClick",
+    obj._e_event0 = obj.habilidadeTipoComboBox:addEventListener("onChange",
         function (_)
-            self.editaHabilidade:show()
+            if sheet.habilidadeTipo == 'bencao' then
+                                                     showMessage('verificado')
+                                                     self.sheet.fontColor = 'black' end;
         end, obj);
 
-    obj._e_event1 = obj.button3:addEventListener("onClick",
+    obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            showMessage(NDB.getChildNodes(NDB.getRoot(self.sheet)))
+            showHabilidadePopup();
         end, obj);
 
-    obj._e_event2 = obj.button4:addEventListener("onClick",
+    obj._e_event2 = obj.button3:addEventListener("onClick",
         function (_)
             askForDelete();
         end, obj);
@@ -297,30 +240,21 @@ local function constructNew_habilidadercl()
           self:setNodeDatabase(nil);
         end;
 
-        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
-        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
-        if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
-        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.flowLayout2 ~= nil then self.flowLayout2:destroy(); self.flowLayout2 = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
-        if self.editaHabilidade ~= nil then self.editaHabilidade:destroy(); self.editaHabilidade = nil; end;
-        if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
+        if self.habilidadeTipoComboBox ~= nil then self.habilidadeTipoComboBox:destroy(); self.habilidadeTipoComboBox = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.flowLayout4 ~= nil then self.flowLayout4:destroy(); self.flowLayout4 = nil; end;
-        if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
         self:_oldLFMDestroy();
     end;
 
