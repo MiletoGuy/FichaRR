@@ -30,6 +30,54 @@ local function constructNew_habilidadercl()
     obj:setHeight(70);
     obj:setMargins({top=2,bottom=2});
 
+
+                local function possui(campo, valor)
+			        if string.find(campo, valor) ~= nil then
+			            return true
+			        else
+			            return false
+			        end
+			    end
+
+			    local function valorBase(campo)
+                    local classe = sheet.classe
+                    local raca = sheet.raca
+
+                    if campo == 'magia' then
+                        if possui(classe,'Arcanista') then return 2
+                        end
+
+                    elseif campo == 'linguagemComum' then
+                        if possui(raca,'Elfo') then return 8
+                        end
+
+                    elseif campo == 'linguagemElfica' then
+                        if possui(raca,'Elfo') then return 8
+                        end
+
+                    elseif campo == 'linguagemAna' then
+                        if possui(classe,'Arcanista') then return 2
+                        end
+
+                    elseif campo == 'percepcao' then
+                        if possui(raca,'Elfo') then return 4
+                        end
+
+                    else return 0
+                    end
+			    end
+
+                local function sobeNivel(campo)
+                    if campo == 'classe' then
+                        sheet.nivelClasse = sheet.nivelClasse + 1
+                        sheet.pontosRestantes = sheet.pontosRestantes + 2
+                    elseif campo == 'profissao' then
+                        sheet.nivelProfissao = sheet.nivelProfissao + 1
+                    end
+                end
+			
+
+
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setCornerType("innerLine");
@@ -152,9 +200,9 @@ local function constructNew_habilidadercl()
     lfm_setPropAsString(obj.habilidadeTipoComboBox, "fontStyle",  "italic bold");
     obj.habilidadeTipoComboBox:setFontColor("silver");
     obj.habilidadeTipoComboBox:setName("habilidadeTipoComboBox");
-    obj.habilidadeTipoComboBox:setItems({'Benção', 'Brasão','Canção', 'Conjuração', 'Combo', 'Dança', 'Evocação', 'Ilusão',
+    obj.habilidadeTipoComboBox:setItems({'Benção', 'Brasão','Canção', 'Conjuração', 'Combo', 'Dança', 'Evocação','Habilidade', 'Ilusão',
                            'Ki', 'Kokyuu (呼吸)', 'Magia', 'Magia Nula', 'Maldição','Od', 'Postura', 'Sinal'});
-    obj.habilidadeTipoComboBox:setValues({'bencao', 'brasao', 'cancao', 'conjuracao', 'combo', 'danca', 'evocacao', 'ilusao',
+    obj.habilidadeTipoComboBox:setValues({'bencao', 'brasao', 'cancao', 'conjuracao', 'combo', 'danca', 'evocacao','habilidade', 'ilusao',
                            'ki', 'kokyuu', 'magia', 'magiaNula', 'maldicao', 'od', 'postura', 'sinal'});
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
@@ -201,8 +249,6 @@ local function constructNew_habilidadercl()
 					showMessage("Ops, bug.. nao encontrei o popup de habilidade para exibir");
 				end;
 			end;
-
-
 
 
 			

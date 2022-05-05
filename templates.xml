@@ -36,9 +36,33 @@
                    vertTextAlign="center" fontSize="30" fontStyle="bold" width="60" height="20" margins="{bottom=8}"/>
             <label text="$(titulo)" vertTextAlign="trailing" horzTextAlign="center" align="bottom"/>
         </rectangle>
-        <dataLink fields="'mod$(titulo)', 'atributo$(titulo)'">
+        <dataLink fields="'mod$(titulo)', 'atributo$(titulo)', 'classe', 'destrezaDisponivel', 'dexBase', 'atributoAcerto', 'atributoMira',
+                          'atributoEsquiva', 'atributoBloqueio'">
             <event name="onChange">
-                sheet.mod$(titulo) = tostring("+"..math.floor(tonumber(sheet.atributo$(titulo))/10))
+                local nome = '$(titulo)'
+                local valor = 0
+
+                if sheet.classe == 'Arcanista' then
+                if nome == 'Acerto' then
+                valor = 6
+                elseif nome == 'Mira' then
+                valor = 16
+                elseif nome == 'Esquiva' then
+                valor = 10
+                elseif nome == 'Bloqueio' then
+                valor = 4
+                end
+                end
+
+                sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0 + 36) - (
+                (tonumber(sheet.atributoAcerto) or 0) +
+                (tonumber(sheet.atributoMira) or 0) +
+                (tonumber(sheet.atributoEsquiva) or 0) +
+                (tonumber(sheet.atributoBloqueio) or 0)
+                )
+
+                sheet.mod$(titulo) = tostring("+"..math.floor(tonumber(sheet.atributo$(titulo) + valor)/10))
+
             </event>
         </dataLink>
     </template>
@@ -88,6 +112,7 @@
                                 while total >= max do
 
                                     total = total - max
+                                    sobeNivel('classe');
                                     nivel = nivel + 1
                                     if nivel > 27 then
                                         max = 100000 + (100000 * (nivel - 28))
@@ -102,6 +127,7 @@
                             else
                                 while total >= max do
                                     total = total - max
+                                    sobeNivel('profissao');
                                     nivel = nivel + 1
                                     max = 5 * nivel
                                 end
@@ -110,7 +136,6 @@
 
                             atual = total
 
-                            sheet.nivel$(field) = nivel
                             sheet.xpMax$(field) = max
                             sheet.xpTexto$(field) = tostring(atual..'/'..max)
                             sheet.xpAtual$(field) = atual
@@ -126,12 +151,13 @@
                          local recebido = sheet.somaxp$(field) or 0
                             local atual = sheet.xpAtual$(field) or 0
                             local max = sheet.xpMax$(field) or 0
-                            local nivel = sheet.nivel$(field)
+
                             local total = atual + recebido
 
                             while total >= max do
 
                                 total = total - max
+                                sobeNivel('classe');
                                 nivel = nivel + 1
                                 if nivel > 27 then
                                     max = 100000 + (100000 * (nivel - 28))
@@ -146,7 +172,7 @@
 
                             atual = total
 
-                            sheet.nivel$(field) = nivel
+
                             sheet.xpMax$(field) = max
                             sheet.xpTexto$(field) = tostring(atual..'/'..max)
                             sheet.xpAtual$(field) = atual
@@ -232,7 +258,7 @@
         <flowLayout height="20" minWidth="150" maxWidth="200" maxControlsPerLine="3">
             <button name="$(field)Minus" text="-" width="20" height="20"
                     onClick="
-                        if sheet.$(field) > 0 then
+                        if sheet.$(field) > valorBase('$(field)') then
                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
                         end"/>
@@ -242,6 +268,7 @@
             </flowPart>
             <button name="$(field)Plus" text="+" width="20" height="20"
                     onClick="
+                        if sheet.$(field) == 0 then sheet.$(field) = valorBase('$(field)') end
                         if sheet.pontosRestantes > 0 then
                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                             sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
@@ -256,7 +283,7 @@
         <flowLayout height="20" minWidth="150" maxWidth="200" maxControlsPerLine="3">
             <button name="$(field)Minus" text="-" width="20" height="20"
                     onClick="
-                        if sheet.$(field) > 0 then
+                        if sheet.$(field) > valorBase('$(field)') then
                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                         end"/>
@@ -266,6 +293,7 @@
             </flowPart>
             <button name="$(field)Plus" text="+" width="20" height="20"
                     onClick="
+                        if sheet.$(field) == 0 then sheet.$(field) = valorBase('$(field)') end
                         if sheet.pontosDeConhecimento > 0 then
                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                             sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
@@ -279,7 +307,8 @@
                    height="60" width="400" color="#40000000" strokeColor="black" strokeSize="2">
             <flowLayout height="60" width="400" maxControlsPerLine="3">
                 <flowPart width="280" height="25" align="left" margins="{left=10,top=5}">
-                    <edit textPrompt="Nome da Habilidade" fontSize="15" transparent="true" field="habilidadeNome($baseName)"
+                    <edit textPrompt="Nome da Habilidade" fontSize="15" transparent="true"
+                          field="habilidadeNome($baseName)"
                           vertTextAlign="center" horzTextAlign="leading" width="280"/>
                     <horzLine align="bottom" strokeSize="1" strokeColor="black"/>
                 </flowPart>
@@ -302,13 +331,14 @@
                     </rectangle>
                 </flowPart>
                 <flowLayout height="35" width="400" align="client" margins="{top=5,left=15}">
-                    <comboBox  width="150" field="habilidadeTipo$(baseName)" transparent="true" left="35" fontSize="16" fontStyle="italic bold" fontColor="silver"
-                               onChange="if sheet.habilidadeTipo$(baseName) == 'bencao' then
+                    <comboBox width="150" field="habilidadeTipo$(baseName)" transparent="true" left="35" fontSize="16"
+                              fontStyle="italic bold" fontColor="silver"
+                              onChange="if sheet.habilidadeTipo$(baseName) == 'bencao' then
                                          showMessage('verificado')
                                          self.sheet.fontColor = 'black' end;" name="habilidadeTipoComboBox$(baseName)"
-                               items="{'Benção', 'Brasão','Canção', 'Conjuração', 'Combo', 'Dança', 'Evocação', 'Ilusão',
+                              items="{'Benção', 'Brasão','Canção', 'Conjuração', 'Combo', 'Dança', 'Evocação','Habilidade', 'Ilusão',
                            'Ki', 'Kokyuu (呼吸)', 'Magia', 'Magia Nula', 'Maldição','Od', 'Postura', 'Sinal'}"
-                               values="{'bencao', 'brasao', 'cancao', 'conjuracao', 'combo', 'danca', 'evocacao', 'ilusao',
+                              values="{'bencao', 'brasao', 'cancao', 'conjuracao', 'combo', 'danca', 'evocacao','habilidade', 'ilusao',
                            'ki', 'kokyuu', 'magia', 'magiaNula', 'maldicao', 'od', 'postura', 'sinal'}"
                     />
                     <button text="usar" height="20" width="50" margins="{left=5,right=5}"/>
@@ -343,9 +373,56 @@
 			end;
 
 
-
-
 			]]>
         </script>
     </template>
+
+    <script>
+        <![CDATA[
+                local function possui(campo, valor)
+			        if string.find(campo, valor) ~= nil then
+			            return true
+			        else
+			            return false
+			        end
+			    end
+
+			    local function valorBase(campo)
+                    local classe = sheet.classe
+                    local raca = sheet.raca
+
+                    if campo == 'magia' then
+                        if possui(classe,'Arcanista') then return 2
+                        end
+
+                    elseif campo == 'linguagemComum' then
+                        if possui(raca,'Elfo') then return 8
+                        end
+
+                    elseif campo == 'linguagemElfica' then
+                        if possui(raca,'Elfo') then return 8
+                        end
+
+                    elseif campo == 'linguagemAna' then
+                        if possui(classe,'Arcanista') then return 2
+                        end
+
+                    elseif campo == 'percepcao' then
+                        if possui(raca,'Elfo') then return 4
+                        end
+
+                    else return 0
+                    end
+			    end
+
+                local function sobeNivel(campo)
+                    if campo == 'classe' then
+                        sheet.nivelClasse = sheet.nivelClasse + 1
+                        sheet.pontosRestantes = sheet.pontosRestantes + 2
+                    elseif campo == 'profissao' then
+                        sheet.nivelProfissao = sheet.nivelProfissao + 1
+                    end
+                end
+			]]>
+    </script>
 </group>

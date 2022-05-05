@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form formType="sheetTemplate" dataType="FICHA_DE_PERSONAGEM_GAIA" title="Ficha de Gaia" name="frmFichaDePersonagem" theme="dark">
+<form formType="sheetTemplate" dataType="FICHA_DE_PERSONAGEM_GAIA" title="Ficha de Gaia" name="frmFichaDePersonagem"
+      theme="dark">
 
-	<import file="styles.xml"/>
-	<import file="templates.xml"/>
-	
-	<tabControl align="client" name="pgcPrincipal">
-	<tab title="Habilidades">
-    			<import file="habilidades.xml"/>
-    		</tab>
-		<tab title="Perfil e Atributos">
-			<import file="perfil.xml"/>
-		</tab>
-		
+    <import file="styles.xml"/>
+    <import file="templates.xml"/>
 
-	</tabControl>		
+    <tabControl align="client" name="pgcPrincipal">
+
+        <tab title="Perfil e Atributos">
+            <import file="perfil.xml"/>
+        </tab>
+
+        <tab title="Habilidades">
+            <import file="habilidades.xml"/>
+        </tab>
+
+        <tab title="Inventário">
+            <import file="inventario.xml"/>
+        </tab>
+
+
+        <tab title="Anotações">
+            <rectangle class="fundo">
+                <scrollBox align="client">
+                    <richEdit align="client" backgroundColor="#40000000" field="anotacoes"/>
+                </scrollBox>
+
+            </rectangle>
+        </tab>
+
+
+    </tabControl>
 </form>

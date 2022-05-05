@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.03">
+      <change afterPath="$PROJECT_DIR$/inventario.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ficha.lfm" beforeDir="false" afterPath="$PROJECT_DIR$/ficha.lfm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habilidades.xml" beforeDir="false" afterPath="$PROJECT_DIR$/habilidades.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/FichaRR.rpk" beforeDir="false" afterPath="$PROJECT_DIR$/output/FichaRR.rpk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/perfil.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/templates.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +59,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Coisas\FichaRR" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Coisas\FichaRR\frames\atributos" />
     </key>
@@ -73,7 +77,7 @@
       <workItem from="1650938783375" duration="28000" />
       <workItem from="1650939612322" duration="2410000" />
       <workItem from="1650984055980" duration="12238000" />
-      <workItem from="1651665487450" duration="24790000" />
+      <workItem from="1651665487450" duration="44621000" />
     </task>
     <task id="LOCAL-00001" summary="alt_2022.04.27">
       <created>1651084302753</created>
@@ -89,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651601180724</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="alt_2022.05.03">
+      <created>1651691223466</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1651691223466</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

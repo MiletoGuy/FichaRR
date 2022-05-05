@@ -10,14 +10,16 @@
                 sheet.nivelClasse = 1
                 sheet.nivelProfissao = 1
                 sheet.xpMaxClasse = 100
-                sheet.xpMaxProfissao = 5
                 sheet.xpTextoClasse = '0/100'
+                sheet.xpMaxProfissao = 5
                 sheet.xpTextoProfissao = '0/5'
-                sheet.pontosDeConhecimento = 0
-                sheet.pontosDeConhecimentoDistribuidos = 0
                 sheet.pontosTreinados = 0
-                sheet.pontosRestantes = 0
+                sheet.pontosRestantes = 2
                 sheet.pDestino = 0
+                sheet.atributoAcerto = 0
+                sheet.atributoMira = 0
+                sheet.atributoEsquiva = 0
+                sheet.atributoBloqueio = 0
 
 "/>
         <flowLayout name="perfilLayout" class="tile" align="top" height="800" margins="{left=10, right=10, top=10}"
@@ -33,8 +35,7 @@
                     <rectangle cornerType="innerLine" align="client"
                                xradius="15" yradius="15"
                                height="250" width="250">
-                        <image src="" style="autoFit" optimize="true" editable="true"
-                               height="230" width="230" left="15" top="15"/>
+                        <image src="" style="autoFit" optimize="true" editable="true" align="client" field="imagem" margins="{left=5,right=5,top=5,bottom=5}"/>
                     </rectangle>
                 </flowLayout>
 
@@ -242,7 +243,7 @@
                        'linguagemAna', 'linguagemDraconica', 'pontosRestantes', 'pontosTreinados', 'pontosDeConhecimento',
                        'pontosDeConhecimentoDistribuidos', 'destrezaDisponivel', 'dexTotal', 'atributoAcerto', 'atributoMira',
                        'atributoEsquiva', 'atributoBloqueio','xpAtualClasse', 'xpMaxClasse','xpTextoClasse', 'nivelClasse', 'xpAtualProfissao',
-                       'xpMaxProfissao', 'xpTextoProfissao', 'nivelProfissao'}">
+                       'xpMaxProfissao', 'xpTextoProfissao', 'nivelProfissao', 'intBase'}">
         <event name="onChange">
 
             -- ###### REMOVE VALORES NULOS ######
@@ -264,7 +265,7 @@
             if sheet.linguagemElfica == nil then sheet.linguagemElfica = 0 end;
             if sheet.linguagemAna == nil then sheet.linguagemAna = 0 end;
             if sheet.linguagemDraconica == nil then sheet.linguagemDraconica = 0 end;
-            if sheet.pontosRestantes == nil then sheet.pontosRestantes = 0 end;
+            if sheet.pontosRestantes == nil then sheet.pontosRestantes = 2 end;
             if sheet.pontosTreinados == nil then sheet.pontosTreinados = 0 end;
             if sheet.pontosDeConhecimento == nil then sheet.pontosDeConhecimento = 0 end;
             if sheet.pontosDeConhecimentoDistribuidos == nil then sheet.pontosDeConhecimentoDistribuidos = 0 end;
@@ -277,18 +278,12 @@
             if sheet.xpAtualProfissao == nil then sheet.xpAtualProfissao = 0 end;
             if sheet.xpMaxProfissao == nil then sheet.xpMaxProfissao = 0 end;
             if sheet.xpTextoProfissao == nil then sheet.xpTextoProfissao = '0/5' end;
+            if sheet.destrezaDisponivel == nil then sheet.destrezaDisponivel = 0 end;
 
 
             -- ###### PONTOS DE CONHECIMENTOS ESPECÍFICOS ######
             sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intBase)/5)) -
             tonumber(sheet.pontosDeConhecimentoDistribuidos)
-
-            sheet.destrezaDisponivel = sheet.dexBase - (
-            (tonumber(sheet.atributoAcerto) or 0) +
-            (tonumber(sheet.atributoMira) or 0) +
-            (tonumber(sheet.atributoEsquiva) or 0) +
-            (tonumber(sheet.atributoBloqueio) or 0)
-            )
 
         </event>
     </dataLink>
