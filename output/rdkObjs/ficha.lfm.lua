@@ -6614,7 +6614,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine96:setAlign("bottom");
     obj.horzLine96:setStrokeColor("#FFFFFF50");
     obj.horzLine96:setStrokeSize(1);
-    obj.horzLine96:setMargins({right=5,left=5});
+    obj.horzLine96:setMargins({right=5});
     obj.horzLine96:setName("horzLine96");
 
     obj.flowPart181 = GUI.fromHandle(_obj_newObject("flowPart"));
@@ -6632,198 +6632,618 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart182 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart182:setParent(obj.flowLayout48);
     obj.flowPart182:setHeight(20);
-    obj.flowPart182:setWidth(150);
+    obj.flowPart182:setWidth(30);
+    obj.flowPart182:setMargins({left=5});
     obj.flowPart182:setName("flowPart182");
 
+    obj.buttonbronze = GUI.fromHandle(_obj_newObject("button"));
+    obj.buttonbronze:setParent(obj.flowPart182);
+    obj.buttonbronze:setName("buttonbronze");
+    obj.buttonbronze:setAlign("client");
+    obj.buttonbronze:setText("-/+");
+
+    obj.popupRiquezasbronze = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popupRiquezasbronze:setParent(obj.flowLayout48);
+    obj.popupRiquezasbronze:setName("popupRiquezasbronze");
+    obj.popupRiquezasbronze:setWidth(185);
+    obj.popupRiquezasbronze:setHeight(50);
+    obj.popupRiquezasbronze:setBackOpacity(0.4);
+
+    obj.flowLayout49 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout49:setParent(obj.popupRiquezasbronze);
+    obj.flowLayout49:setAlign("client");
+    obj.flowLayout49:setMaxControlsPerLine(3);
+    obj.flowLayout49:setName("flowLayout49");
+
+    obj.flowPart183 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart183:setParent(obj.flowLayout49);
+    obj.flowPart183:setHeight(20);
+    obj.flowPart183:setWidth(110);
+    obj.flowPart183:setName("flowPart183");
+
     obj.label86 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label86:setParent(obj.flowPart182);
-    obj.label86:setText("Prata: ");
-    obj.label86:setAlign("client");
+    obj.label86:setParent(obj.flowPart183);
+    obj.label86:setText("Somar Riquezas: ");
+    obj.label86:setHorzTextAlign("center");
+    obj.label86:setVertTextAlign("center");
     obj.label86:setName("label86");
 
+    obj.flowPart184 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart184:setParent(obj.flowLayout49);
+    obj.flowPart184:setHeight(20);
+    obj.flowPart184:setWidth(30);
+    obj.flowPart184:setName("flowPart184");
+
+    obj.somaRiquezasEditbronze = GUI.fromHandle(_obj_newObject("edit"));
+    obj.somaRiquezasEditbronze:setParent(obj.flowPart184);
+    obj.somaRiquezasEditbronze:setType("number");
+    obj.somaRiquezasEditbronze:setAlign("client");
+    obj.somaRiquezasEditbronze:setField("somaRiquezasbronze");
+    obj.somaRiquezasEditbronze:setName("somaRiquezasEditbronze");
+    obj.somaRiquezasEditbronze:setHorzTextAlign("center");
+    obj.somaRiquezasEditbronze:setVertTextAlign("center");
+    obj.somaRiquezasEditbronze:setTransparent(true);
+
     obj.horzLine97 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine97:setParent(obj.flowPart182);
+    obj.horzLine97:setParent(obj.flowPart184);
     obj.horzLine97:setAlign("bottom");
     obj.horzLine97:setStrokeColor("#FFFFFF50");
     obj.horzLine97:setStrokeSize(1);
-    obj.horzLine97:setMargins({right=5,left=5});
     obj.horzLine97:setName("horzLine97");
 
-    obj.flowPart183 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart183:setParent(obj.flowLayout48);
-    obj.flowPart183:setHeight(20);
-    obj.flowPart183:setWidth(30);
-    obj.flowPart183:setName("flowPart183");
-
-    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit85:setParent(obj.flowPart183);
-    obj.edit85:setAlign("client");
-    obj.edit85:setField("prata");
-    obj.edit85:setName("edit85");
-
-    obj.flowPart184 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart184:setParent(obj.flowLayout48);
-    obj.flowPart184:setHeight(20);
-    obj.flowPart184:setWidth(150);
-    obj.flowPart184:setName("flowPart184");
-
-    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label87:setParent(obj.flowPart184);
-    obj.label87:setText("Ouro: ");
-    obj.label87:setAlign("client");
-    obj.label87:setName("label87");
-
-    obj.horzLine98 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine98:setParent(obj.flowPart184);
-    obj.horzLine98:setAlign("bottom");
-    obj.horzLine98:setStrokeColor("#FFFFFF50");
-    obj.horzLine98:setStrokeSize(1);
-    obj.horzLine98:setMargins({right=5,left=5});
-    obj.horzLine98:setName("horzLine98");
-
     obj.flowPart185 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart185:setParent(obj.flowLayout48);
+    obj.flowPart185:setParent(obj.flowLayout49);
     obj.flowPart185:setHeight(20);
-    obj.flowPart185:setWidth(30);
+    obj.flowPart185:setWidth(25);
     obj.flowPart185:setName("flowPart185");
 
-    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit86:setParent(obj.flowPart185);
-    obj.edit86:setAlign("client");
-    obj.edit86:setField("ouro");
-    obj.edit86:setName("edit86");
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button17:setParent(obj.flowPart185);
+    obj.button17:setText("ok");
+    obj.button17:setHeight(20);
+    obj.button17:setWidth(25);
+    obj.button17:setName("button17");
 
     obj.flowPart186 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart186:setParent(obj.flowLayout48);
+    obj.flowPart186:setParent(obj.flowLayout49);
     obj.flowPart186:setHeight(20);
-    obj.flowPart186:setWidth(150);
+    obj.flowPart186:setWidth(40);
     obj.flowPart186:setName("flowPart186");
 
-    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label88:setParent(obj.flowPart186);
-    obj.label88:setText("Platina: ");
-    obj.label88:setAlign("client");
-    obj.label88:setName("label88");
-
-    obj.horzLine99 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine99:setParent(obj.flowPart186);
-    obj.horzLine99:setAlign("bottom");
-    obj.horzLine99:setStrokeColor("#FFFFFF50");
-    obj.horzLine99:setStrokeSize(1);
-    obj.horzLine99:setMargins({right=5,left=5});
-    obj.horzLine99:setName("horzLine99");
+    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton1:setParent(obj.flowPart186);
+    obj.radioButton1:setText("-");
+    obj.radioButton1:setGroupName("groupRiquezasbronze");
+    obj.radioButton1:setField("radioButtonRiquezasbronze");
+    obj.radioButton1:setFieldValue("-");
+    obj.radioButton1:setVertTextAlign("center");
+    obj.radioButton1:setName("radioButton1");
 
     obj.flowPart187 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart187:setParent(obj.flowLayout48);
+    obj.flowPart187:setParent(obj.flowLayout49);
     obj.flowPart187:setHeight(20);
-    obj.flowPart187:setWidth(30);
+    obj.flowPart187:setWidth(40);
     obj.flowPart187:setName("flowPart187");
 
-    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit87:setParent(obj.flowPart187);
-    obj.edit87:setAlign("client");
-    obj.edit87:setField("platina");
-    obj.edit87:setName("edit87");
-
-    obj.flowLayout49 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout49:setParent(obj.riquezas);
-    obj.flowLayout49:setAutoHeight(true);
-    obj.flowLayout49:setMinWidth(150);
-    obj.flowLayout49:setMaxWidth(300);
-    obj.flowLayout49:setName("flowLayout49");
+    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton2:setParent(obj.flowPart187);
+    obj.radioButton2:setText("+");
+    obj.radioButton2:setGroupName("groupRiquezasbronze");
+    obj.radioButton2:setField("radioButtonRiquezasbronze");
+    obj.radioButton2:setFieldValue("+");
+    obj.radioButton2:setVertTextAlign("center");
+    obj.radioButton2:setName("radioButton2");
 
     obj.flowPart188 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart188:setParent(obj.flowLayout49);
+    obj.flowPart188:setParent(obj.flowLayout48);
     obj.flowPart188:setHeight(20);
     obj.flowPart188:setWidth(150);
     obj.flowPart188:setName("flowPart188");
 
-    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label89:setParent(obj.flowPart188);
-    obj.label89:setText("Gemas Raras: ");
-    obj.label89:setAlign("client");
-    obj.label89:setName("label89");
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label87:setParent(obj.flowPart188);
+    obj.label87:setText("Prata: ");
+    obj.label87:setAlign("client");
+    obj.label87:setName("label87");
 
-    obj.horzLine100 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine100:setParent(obj.flowPart188);
-    obj.horzLine100:setAlign("bottom");
-    obj.horzLine100:setStrokeColor("#FFFFFF50");
-    obj.horzLine100:setStrokeSize(1);
-    obj.horzLine100:setMargins({right=5,left=5});
-    obj.horzLine100:setName("horzLine100");
+    obj.horzLine98 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine98:setParent(obj.flowPart188);
+    obj.horzLine98:setAlign("bottom");
+    obj.horzLine98:setStrokeColor("#FFFFFF50");
+    obj.horzLine98:setStrokeSize(1);
+    obj.horzLine98:setMargins({right=5});
+    obj.horzLine98:setName("horzLine98");
 
     obj.flowPart189 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart189:setParent(obj.flowLayout49);
+    obj.flowPart189:setParent(obj.flowLayout48);
     obj.flowPart189:setHeight(20);
     obj.flowPart189:setWidth(30);
     obj.flowPart189:setName("flowPart189");
 
-    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit88:setParent(obj.flowPart189);
-    obj.edit88:setAlign("client");
-    obj.edit88:setField("raras");
-    obj.edit88:setName("edit88");
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit85:setParent(obj.flowPart189);
+    obj.edit85:setAlign("client");
+    obj.edit85:setField("prata");
+    obj.edit85:setName("edit85");
 
     obj.flowPart190 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart190:setParent(obj.flowLayout49);
+    obj.flowPart190:setParent(obj.flowLayout48);
     obj.flowPart190:setHeight(20);
-    obj.flowPart190:setWidth(150);
+    obj.flowPart190:setWidth(30);
+    obj.flowPart190:setMargins({left=5});
     obj.flowPart190:setName("flowPart190");
 
+    obj.buttonprata = GUI.fromHandle(_obj_newObject("button"));
+    obj.buttonprata:setParent(obj.flowPart190);
+    obj.buttonprata:setName("buttonprata");
+    obj.buttonprata:setAlign("client");
+    obj.buttonprata:setText("-/+");
+
+    obj.popupRiquezasprata = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popupRiquezasprata:setParent(obj.flowLayout48);
+    obj.popupRiquezasprata:setName("popupRiquezasprata");
+    obj.popupRiquezasprata:setWidth(185);
+    obj.popupRiquezasprata:setHeight(50);
+    obj.popupRiquezasprata:setBackOpacity(0.4);
+
+    obj.flowLayout50 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout50:setParent(obj.popupRiquezasprata);
+    obj.flowLayout50:setAlign("client");
+    obj.flowLayout50:setMaxControlsPerLine(3);
+    obj.flowLayout50:setName("flowLayout50");
+
+    obj.flowPart191 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart191:setParent(obj.flowLayout50);
+    obj.flowPart191:setHeight(20);
+    obj.flowPart191:setWidth(110);
+    obj.flowPart191:setName("flowPart191");
+
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label88:setParent(obj.flowPart191);
+    obj.label88:setText("Somar Riquezas: ");
+    obj.label88:setHorzTextAlign("center");
+    obj.label88:setVertTextAlign("center");
+    obj.label88:setName("label88");
+
+    obj.flowPart192 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart192:setParent(obj.flowLayout50);
+    obj.flowPart192:setHeight(20);
+    obj.flowPart192:setWidth(30);
+    obj.flowPart192:setName("flowPart192");
+
+    obj.somaRiquezasEditprata = GUI.fromHandle(_obj_newObject("edit"));
+    obj.somaRiquezasEditprata:setParent(obj.flowPart192);
+    obj.somaRiquezasEditprata:setType("number");
+    obj.somaRiquezasEditprata:setAlign("client");
+    obj.somaRiquezasEditprata:setField("somaRiquezasprata");
+    obj.somaRiquezasEditprata:setName("somaRiquezasEditprata");
+    obj.somaRiquezasEditprata:setHorzTextAlign("center");
+    obj.somaRiquezasEditprata:setVertTextAlign("center");
+    obj.somaRiquezasEditprata:setTransparent(true);
+
+    obj.horzLine99 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine99:setParent(obj.flowPart192);
+    obj.horzLine99:setAlign("bottom");
+    obj.horzLine99:setStrokeColor("#FFFFFF50");
+    obj.horzLine99:setStrokeSize(1);
+    obj.horzLine99:setName("horzLine99");
+
+    obj.flowPart193 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart193:setParent(obj.flowLayout50);
+    obj.flowPart193:setHeight(20);
+    obj.flowPart193:setWidth(25);
+    obj.flowPart193:setName("flowPart193");
+
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button18:setParent(obj.flowPart193);
+    obj.button18:setText("ok");
+    obj.button18:setHeight(20);
+    obj.button18:setWidth(25);
+    obj.button18:setName("button18");
+
+    obj.flowPart194 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart194:setParent(obj.flowLayout50);
+    obj.flowPart194:setHeight(20);
+    obj.flowPart194:setWidth(40);
+    obj.flowPart194:setName("flowPart194");
+
+    obj.radioButton3 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton3:setParent(obj.flowPart194);
+    obj.radioButton3:setText("-");
+    obj.radioButton3:setGroupName("groupRiquezasprata");
+    obj.radioButton3:setField("radioButtonRiquezasprata");
+    obj.radioButton3:setFieldValue("-");
+    obj.radioButton3:setVertTextAlign("center");
+    obj.radioButton3:setName("radioButton3");
+
+    obj.flowPart195 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart195:setParent(obj.flowLayout50);
+    obj.flowPart195:setHeight(20);
+    obj.flowPart195:setWidth(40);
+    obj.flowPart195:setName("flowPart195");
+
+    obj.radioButton4 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton4:setParent(obj.flowPart195);
+    obj.radioButton4:setText("+");
+    obj.radioButton4:setGroupName("groupRiquezasprata");
+    obj.radioButton4:setField("radioButtonRiquezasprata");
+    obj.radioButton4:setFieldValue("+");
+    obj.radioButton4:setVertTextAlign("center");
+    obj.radioButton4:setName("radioButton4");
+
+    obj.flowPart196 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart196:setParent(obj.flowLayout48);
+    obj.flowPart196:setHeight(20);
+    obj.flowPart196:setWidth(150);
+    obj.flowPart196:setName("flowPart196");
+
+    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label89:setParent(obj.flowPart196);
+    obj.label89:setText("Ouro: ");
+    obj.label89:setAlign("client");
+    obj.label89:setName("label89");
+
+    obj.horzLine100 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine100:setParent(obj.flowPart196);
+    obj.horzLine100:setAlign("bottom");
+    obj.horzLine100:setStrokeColor("#FFFFFF50");
+    obj.horzLine100:setStrokeSize(1);
+    obj.horzLine100:setMargins({right=5});
+    obj.horzLine100:setName("horzLine100");
+
+    obj.flowPart197 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart197:setParent(obj.flowLayout48);
+    obj.flowPart197:setHeight(20);
+    obj.flowPart197:setWidth(30);
+    obj.flowPart197:setName("flowPart197");
+
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit86:setParent(obj.flowPart197);
+    obj.edit86:setAlign("client");
+    obj.edit86:setField("ouro");
+    obj.edit86:setName("edit86");
+
+    obj.flowPart198 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart198:setParent(obj.flowLayout48);
+    obj.flowPart198:setHeight(20);
+    obj.flowPart198:setWidth(30);
+    obj.flowPart198:setMargins({left=5});
+    obj.flowPart198:setName("flowPart198");
+
+    obj.buttonouro = GUI.fromHandle(_obj_newObject("button"));
+    obj.buttonouro:setParent(obj.flowPart198);
+    obj.buttonouro:setName("buttonouro");
+    obj.buttonouro:setAlign("client");
+    obj.buttonouro:setText("-/+");
+
+    obj.popupRiquezasouro = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popupRiquezasouro:setParent(obj.flowLayout48);
+    obj.popupRiquezasouro:setName("popupRiquezasouro");
+    obj.popupRiquezasouro:setWidth(185);
+    obj.popupRiquezasouro:setHeight(50);
+    obj.popupRiquezasouro:setBackOpacity(0.4);
+
+    obj.flowLayout51 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout51:setParent(obj.popupRiquezasouro);
+    obj.flowLayout51:setAlign("client");
+    obj.flowLayout51:setMaxControlsPerLine(3);
+    obj.flowLayout51:setName("flowLayout51");
+
+    obj.flowPart199 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart199:setParent(obj.flowLayout51);
+    obj.flowPart199:setHeight(20);
+    obj.flowPart199:setWidth(110);
+    obj.flowPart199:setName("flowPart199");
+
     obj.label90 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label90:setParent(obj.flowPart190);
-    obj.label90:setText("Gemas Preciosas: ");
-    obj.label90:setAlign("client");
+    obj.label90:setParent(obj.flowPart199);
+    obj.label90:setText("Somar Riquezas: ");
+    obj.label90:setHorzTextAlign("center");
+    obj.label90:setVertTextAlign("center");
     obj.label90:setName("label90");
 
+    obj.flowPart200 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart200:setParent(obj.flowLayout51);
+    obj.flowPart200:setHeight(20);
+    obj.flowPart200:setWidth(30);
+    obj.flowPart200:setName("flowPart200");
+
+    obj.somaRiquezasEditouro = GUI.fromHandle(_obj_newObject("edit"));
+    obj.somaRiquezasEditouro:setParent(obj.flowPart200);
+    obj.somaRiquezasEditouro:setType("number");
+    obj.somaRiquezasEditouro:setAlign("client");
+    obj.somaRiquezasEditouro:setField("somaRiquezasouro");
+    obj.somaRiquezasEditouro:setName("somaRiquezasEditouro");
+    obj.somaRiquezasEditouro:setHorzTextAlign("center");
+    obj.somaRiquezasEditouro:setVertTextAlign("center");
+    obj.somaRiquezasEditouro:setTransparent(true);
+
     obj.horzLine101 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine101:setParent(obj.flowPart190);
+    obj.horzLine101:setParent(obj.flowPart200);
     obj.horzLine101:setAlign("bottom");
     obj.horzLine101:setStrokeColor("#FFFFFF50");
     obj.horzLine101:setStrokeSize(1);
-    obj.horzLine101:setMargins({right=5,left=5});
     obj.horzLine101:setName("horzLine101");
 
-    obj.flowPart191 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart191:setParent(obj.flowLayout49);
-    obj.flowPart191:setHeight(20);
-    obj.flowPart191:setWidth(30);
-    obj.flowPart191:setName("flowPart191");
+    obj.flowPart201 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart201:setParent(obj.flowLayout51);
+    obj.flowPart201:setHeight(20);
+    obj.flowPart201:setWidth(25);
+    obj.flowPart201:setName("flowPart201");
 
-    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit89:setParent(obj.flowPart191);
-    obj.edit89:setAlign("client");
-    obj.edit89:setField("preciosas");
-    obj.edit89:setName("edit89");
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button19:setParent(obj.flowPart201);
+    obj.button19:setText("ok");
+    obj.button19:setHeight(20);
+    obj.button19:setWidth(25);
+    obj.button19:setName("button19");
 
-    obj.flowPart192 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart192:setParent(obj.flowLayout49);
-    obj.flowPart192:setHeight(20);
-    obj.flowPart192:setWidth(150);
-    obj.flowPart192:setName("flowPart192");
+    obj.flowPart202 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart202:setParent(obj.flowLayout51);
+    obj.flowPart202:setHeight(20);
+    obj.flowPart202:setWidth(40);
+    obj.flowPart202:setName("flowPart202");
+
+    obj.radioButton5 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton5:setParent(obj.flowPart202);
+    obj.radioButton5:setText("-");
+    obj.radioButton5:setGroupName("groupRiquezasouro");
+    obj.radioButton5:setField("radioButtonRiquezasouro");
+    obj.radioButton5:setFieldValue("-");
+    obj.radioButton5:setVertTextAlign("center");
+    obj.radioButton5:setName("radioButton5");
+
+    obj.flowPart203 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart203:setParent(obj.flowLayout51);
+    obj.flowPart203:setHeight(20);
+    obj.flowPart203:setWidth(40);
+    obj.flowPart203:setName("flowPart203");
+
+    obj.radioButton6 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton6:setParent(obj.flowPart203);
+    obj.radioButton6:setText("+");
+    obj.radioButton6:setGroupName("groupRiquezasouro");
+    obj.radioButton6:setField("radioButtonRiquezasouro");
+    obj.radioButton6:setFieldValue("+");
+    obj.radioButton6:setVertTextAlign("center");
+    obj.radioButton6:setName("radioButton6");
+
+    obj.flowPart204 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart204:setParent(obj.flowLayout48);
+    obj.flowPart204:setHeight(20);
+    obj.flowPart204:setWidth(150);
+    obj.flowPart204:setName("flowPart204");
 
     obj.label91 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label91:setParent(obj.flowPart192);
-    obj.label91:setText("Gemas Desconhecidas: ");
+    obj.label91:setParent(obj.flowPart204);
+    obj.label91:setText("Platina: ");
     obj.label91:setAlign("client");
     obj.label91:setName("label91");
 
     obj.horzLine102 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine102:setParent(obj.flowPart192);
+    obj.horzLine102:setParent(obj.flowPart204);
     obj.horzLine102:setAlign("bottom");
     obj.horzLine102:setStrokeColor("#FFFFFF50");
     obj.horzLine102:setStrokeSize(1);
-    obj.horzLine102:setMargins({right=5,left=5});
+    obj.horzLine102:setMargins({right=5});
     obj.horzLine102:setName("horzLine102");
 
-    obj.flowPart193 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart193:setParent(obj.flowLayout49);
-    obj.flowPart193:setHeight(20);
-    obj.flowPart193:setWidth(30);
-    obj.flowPart193:setName("flowPart193");
+    obj.flowPart205 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart205:setParent(obj.flowLayout48);
+    obj.flowPart205:setHeight(20);
+    obj.flowPart205:setWidth(30);
+    obj.flowPart205:setName("flowPart205");
+
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit87:setParent(obj.flowPart205);
+    obj.edit87:setAlign("client");
+    obj.edit87:setField("platina");
+    obj.edit87:setName("edit87");
+
+    obj.flowPart206 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart206:setParent(obj.flowLayout48);
+    obj.flowPart206:setHeight(20);
+    obj.flowPart206:setWidth(30);
+    obj.flowPart206:setMargins({left=5});
+    obj.flowPart206:setName("flowPart206");
+
+    obj.buttonplatina = GUI.fromHandle(_obj_newObject("button"));
+    obj.buttonplatina:setParent(obj.flowPart206);
+    obj.buttonplatina:setName("buttonplatina");
+    obj.buttonplatina:setAlign("client");
+    obj.buttonplatina:setText("-/+");
+
+    obj.popupRiquezasplatina = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popupRiquezasplatina:setParent(obj.flowLayout48);
+    obj.popupRiquezasplatina:setName("popupRiquezasplatina");
+    obj.popupRiquezasplatina:setWidth(185);
+    obj.popupRiquezasplatina:setHeight(50);
+    obj.popupRiquezasplatina:setBackOpacity(0.4);
+
+    obj.flowLayout52 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout52:setParent(obj.popupRiquezasplatina);
+    obj.flowLayout52:setAlign("client");
+    obj.flowLayout52:setMaxControlsPerLine(3);
+    obj.flowLayout52:setName("flowLayout52");
+
+    obj.flowPart207 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart207:setParent(obj.flowLayout52);
+    obj.flowPart207:setHeight(20);
+    obj.flowPart207:setWidth(110);
+    obj.flowPart207:setName("flowPart207");
+
+    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label92:setParent(obj.flowPart207);
+    obj.label92:setText("Somar Riquezas: ");
+    obj.label92:setHorzTextAlign("center");
+    obj.label92:setVertTextAlign("center");
+    obj.label92:setName("label92");
+
+    obj.flowPart208 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart208:setParent(obj.flowLayout52);
+    obj.flowPart208:setHeight(20);
+    obj.flowPart208:setWidth(30);
+    obj.flowPart208:setName("flowPart208");
+
+    obj.somaRiquezasEditplatina = GUI.fromHandle(_obj_newObject("edit"));
+    obj.somaRiquezasEditplatina:setParent(obj.flowPart208);
+    obj.somaRiquezasEditplatina:setType("number");
+    obj.somaRiquezasEditplatina:setAlign("client");
+    obj.somaRiquezasEditplatina:setField("somaRiquezasplatina");
+    obj.somaRiquezasEditplatina:setName("somaRiquezasEditplatina");
+    obj.somaRiquezasEditplatina:setHorzTextAlign("center");
+    obj.somaRiquezasEditplatina:setVertTextAlign("center");
+    obj.somaRiquezasEditplatina:setTransparent(true);
+
+    obj.horzLine103 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine103:setParent(obj.flowPart208);
+    obj.horzLine103:setAlign("bottom");
+    obj.horzLine103:setStrokeColor("#FFFFFF50");
+    obj.horzLine103:setStrokeSize(1);
+    obj.horzLine103:setName("horzLine103");
+
+    obj.flowPart209 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart209:setParent(obj.flowLayout52);
+    obj.flowPart209:setHeight(20);
+    obj.flowPart209:setWidth(25);
+    obj.flowPart209:setName("flowPart209");
+
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button20:setParent(obj.flowPart209);
+    obj.button20:setText("ok");
+    obj.button20:setHeight(20);
+    obj.button20:setWidth(25);
+    obj.button20:setName("button20");
+
+    obj.flowPart210 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart210:setParent(obj.flowLayout52);
+    obj.flowPart210:setHeight(20);
+    obj.flowPart210:setWidth(40);
+    obj.flowPart210:setName("flowPart210");
+
+    obj.radioButton7 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton7:setParent(obj.flowPart210);
+    obj.radioButton7:setText("-");
+    obj.radioButton7:setGroupName("groupRiquezasplatina");
+    obj.radioButton7:setField("radioButtonRiquezasplatina");
+    obj.radioButton7:setFieldValue("-");
+    obj.radioButton7:setVertTextAlign("center");
+    obj.radioButton7:setName("radioButton7");
+
+    obj.flowPart211 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart211:setParent(obj.flowLayout52);
+    obj.flowPart211:setHeight(20);
+    obj.flowPart211:setWidth(40);
+    obj.flowPart211:setName("flowPart211");
+
+    obj.radioButton8 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton8:setParent(obj.flowPart211);
+    obj.radioButton8:setText("+");
+    obj.radioButton8:setGroupName("groupRiquezasplatina");
+    obj.radioButton8:setField("radioButtonRiquezasplatina");
+    obj.radioButton8:setFieldValue("+");
+    obj.radioButton8:setVertTextAlign("center");
+    obj.radioButton8:setName("radioButton8");
+
+    obj.flowLayout53 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout53:setParent(obj.riquezas);
+    obj.flowLayout53:setAutoHeight(true);
+    obj.flowLayout53:setMinWidth(150);
+    obj.flowLayout53:setMaxWidth(300);
+    obj.flowLayout53:setName("flowLayout53");
+
+    obj.flowPart212 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart212:setParent(obj.flowLayout53);
+    obj.flowPart212:setHeight(20);
+    obj.flowPart212:setWidth(150);
+    obj.flowPart212:setName("flowPart212");
+
+    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label93:setParent(obj.flowPart212);
+    obj.label93:setText("Gemas Raras: ");
+    obj.label93:setAlign("client");
+    obj.label93:setName("label93");
+
+    obj.horzLine104 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine104:setParent(obj.flowPart212);
+    obj.horzLine104:setAlign("bottom");
+    obj.horzLine104:setStrokeColor("#FFFFFF50");
+    obj.horzLine104:setStrokeSize(1);
+    obj.horzLine104:setMargins({right=5});
+    obj.horzLine104:setName("horzLine104");
+
+    obj.flowPart213 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart213:setParent(obj.flowLayout53);
+    obj.flowPart213:setHeight(20);
+    obj.flowPart213:setWidth(30);
+    obj.flowPart213:setName("flowPart213");
+
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit88:setParent(obj.flowPart213);
+    obj.edit88:setAlign("client");
+    obj.edit88:setField("raras");
+    obj.edit88:setName("edit88");
+
+    obj.flowPart214 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart214:setParent(obj.flowLayout53);
+    obj.flowPart214:setHeight(20);
+    obj.flowPart214:setWidth(150);
+    obj.flowPart214:setName("flowPart214");
+
+    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label94:setParent(obj.flowPart214);
+    obj.label94:setText("Gemas Preciosas: ");
+    obj.label94:setAlign("client");
+    obj.label94:setName("label94");
+
+    obj.horzLine105 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine105:setParent(obj.flowPart214);
+    obj.horzLine105:setAlign("bottom");
+    obj.horzLine105:setStrokeColor("#FFFFFF50");
+    obj.horzLine105:setStrokeSize(1);
+    obj.horzLine105:setMargins({right=5});
+    obj.horzLine105:setName("horzLine105");
+
+    obj.flowPart215 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart215:setParent(obj.flowLayout53);
+    obj.flowPart215:setHeight(20);
+    obj.flowPart215:setWidth(30);
+    obj.flowPart215:setName("flowPart215");
+
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit89:setParent(obj.flowPart215);
+    obj.edit89:setAlign("client");
+    obj.edit89:setField("preciosas");
+    obj.edit89:setName("edit89");
+
+    obj.flowPart216 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart216:setParent(obj.flowLayout53);
+    obj.flowPart216:setHeight(20);
+    obj.flowPart216:setWidth(150);
+    obj.flowPart216:setName("flowPart216");
+
+    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label95:setParent(obj.flowPart216);
+    obj.label95:setText("Gemas Desconhecidas: ");
+    obj.label95:setAlign("client");
+    obj.label95:setName("label95");
+
+    obj.horzLine106 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine106:setParent(obj.flowPart216);
+    obj.horzLine106:setAlign("bottom");
+    obj.horzLine106:setStrokeColor("#FFFFFF50");
+    obj.horzLine106:setStrokeSize(1);
+    obj.horzLine106:setMargins({right=5});
+    obj.horzLine106:setName("horzLine106");
+
+    obj.flowPart217 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart217:setParent(obj.flowLayout53);
+    obj.flowPart217:setHeight(20);
+    obj.flowPart217:setWidth(30);
+    obj.flowPart217:setName("flowPart217");
 
     obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit90:setParent(obj.flowPart193);
+    obj.edit90:setParent(obj.flowPart217);
     obj.edit90:setAlign("client");
     obj.edit90:setField("desconhecidas");
     obj.edit90:setName("edit90");
@@ -7952,7 +8372,343 @@ local function constructNew_frmFichaDePersonagem()
             self.rclHabilidadesextras:append();
         end, obj);
 
+    obj._e_event116 = obj.buttonbronze:addEventListener("onClick",
+        function (_)
+            self.popupRiquezasbronze:show('right',self.buttonbronze)
+                                         self.somaRiquezasEditbronze:setFocus()
+                                        
+        end, obj);
+
+    obj._e_event117 = obj.somaRiquezasEditbronze:addEventListener("onKeyDown",
+        function (_, event)
+        end, obj);
+
+    obj._e_event118 = obj.button17:addEventListener("onClick",
+        function (_)
+            
+                                                local moeda = sheet.bronze
+                                                local op = sheet.radioButtonRiquezasbronze
+                                                local dif = sheet.somaRiquezasbronze
+                                                local atual = sheet.bronze
+                                                local bronze = sheet.bronze
+                                                local prata = sheet.prata
+                                                local ouro = sheet.ouro
+                                                local platina = sheet.platina
+            
+                                                showMessage(moeda..': '..atual..op..dif)
+            
+                                                if op == '-' then
+                                                    if dif > atual then
+                                                        if moeda == 'bronze' then
+                                                            if prata > 0 then
+                                                                prata = prata - 1
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'prata' then
+                                                            if ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = (prata + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = (prata + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'ouro' then
+                                                            if platina > 0 then
+                                                               platina = platina - 1
+                                                               ouro = (ouro + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        else showMessage('Pobre. Você não tem dinheiro.')
+                                                        end
+                                                    else
+                                                        atual = atual - dif
+                                                    end
+            
+                                                elseif op == '+' then
+                                                    atual = atual + dif
+                                                else showMessage('Deu ruim man.. vê se o botão de + ou - ta selecionado')
+                                                end
+            
+                                                sheet.bronze = bronze
+                                                sheet.prata = prata
+                                                sheet.ouro = ouro
+                                                sheet.platina = platina
+                                                sheet.somaRiquezasbronze = 0
+                                                self.popupRiquezasbronze:close();
+                                                
+        end, obj);
+
+    obj._e_event119 = obj.buttonprata:addEventListener("onClick",
+        function (_)
+            self.popupRiquezasprata:show('right',self.buttonprata)
+                                         self.somaRiquezasEditprata:setFocus()
+                                        
+        end, obj);
+
+    obj._e_event120 = obj.somaRiquezasEditprata:addEventListener("onKeyDown",
+        function (_, event)
+        end, obj);
+
+    obj._e_event121 = obj.button18:addEventListener("onClick",
+        function (_)
+            
+                                                local moeda = sheet.prata
+                                                local op = sheet.radioButtonRiquezasprata
+                                                local dif = sheet.somaRiquezasprata
+                                                local atual = sheet.prata
+                                                local bronze = sheet.bronze
+                                                local prata = sheet.prata
+                                                local ouro = sheet.ouro
+                                                local platina = sheet.platina
+            
+                                                showMessage(moeda..': '..atual..op..dif)
+            
+                                                if op == '-' then
+                                                    if dif > atual then
+                                                        if moeda == 'bronze' then
+                                                            if prata > 0 then
+                                                                prata = prata - 1
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'prata' then
+                                                            if ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = (prata + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = (prata + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'ouro' then
+                                                            if platina > 0 then
+                                                               platina = platina - 1
+                                                               ouro = (ouro + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        else showMessage('Pobre. Você não tem dinheiro.')
+                                                        end
+                                                    else
+                                                        atual = atual - dif
+                                                    end
+            
+                                                elseif op == '+' then
+                                                    atual = atual + dif
+                                                else showMessage('Deu ruim man.. vê se o botão de + ou - ta selecionado')
+                                                end
+            
+                                                sheet.bronze = bronze
+                                                sheet.prata = prata
+                                                sheet.ouro = ouro
+                                                sheet.platina = platina
+                                                sheet.somaRiquezasprata = 0
+                                                self.popupRiquezasprata:close();
+                                                
+        end, obj);
+
+    obj._e_event122 = obj.buttonouro:addEventListener("onClick",
+        function (_)
+            self.popupRiquezasouro:show('right',self.buttonouro)
+                                         self.somaRiquezasEditouro:setFocus()
+                                        
+        end, obj);
+
+    obj._e_event123 = obj.somaRiquezasEditouro:addEventListener("onKeyDown",
+        function (_, event)
+        end, obj);
+
+    obj._e_event124 = obj.button19:addEventListener("onClick",
+        function (_)
+            
+                                                local moeda = sheet.ouro
+                                                local op = sheet.radioButtonRiquezasouro
+                                                local dif = sheet.somaRiquezasouro
+                                                local atual = sheet.ouro
+                                                local bronze = sheet.bronze
+                                                local prata = sheet.prata
+                                                local ouro = sheet.ouro
+                                                local platina = sheet.platina
+            
+                                                showMessage(moeda..': '..atual..op..dif)
+            
+                                                if op == '-' then
+                                                    if dif > atual then
+                                                        if moeda == 'bronze' then
+                                                            if prata > 0 then
+                                                                prata = prata - 1
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'prata' then
+                                                            if ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = (prata + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = (prata + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'ouro' then
+                                                            if platina > 0 then
+                                                               platina = platina - 1
+                                                               ouro = (ouro + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        else showMessage('Pobre. Você não tem dinheiro.')
+                                                        end
+                                                    else
+                                                        atual = atual - dif
+                                                    end
+            
+                                                elseif op == '+' then
+                                                    atual = atual + dif
+                                                else showMessage('Deu ruim man.. vê se o botão de + ou - ta selecionado')
+                                                end
+            
+                                                sheet.bronze = bronze
+                                                sheet.prata = prata
+                                                sheet.ouro = ouro
+                                                sheet.platina = platina
+                                                sheet.somaRiquezasouro = 0
+                                                self.popupRiquezasouro:close();
+                                                
+        end, obj);
+
+    obj._e_event125 = obj.buttonplatina:addEventListener("onClick",
+        function (_)
+            self.popupRiquezasplatina:show('right',self.buttonplatina)
+                                         self.somaRiquezasEditplatina:setFocus()
+                                        
+        end, obj);
+
+    obj._e_event126 = obj.somaRiquezasEditplatina:addEventListener("onKeyDown",
+        function (_, event)
+        end, obj);
+
+    obj._e_event127 = obj.button20:addEventListener("onClick",
+        function (_)
+            
+                                                local moeda = sheet.platina
+                                                local op = sheet.radioButtonRiquezasplatina
+                                                local dif = sheet.somaRiquezasplatina
+                                                local atual = sheet.platina
+                                                local bronze = sheet.bronze
+                                                local prata = sheet.prata
+                                                local ouro = sheet.ouro
+                                                local platina = sheet.platina
+            
+                                                showMessage(moeda..': '..atual..op..dif)
+            
+                                                if op == '-' then
+                                                    if dif > atual then
+                                                        if moeda == 'bronze' then
+                                                            if prata > 0 then
+                                                                prata = prata - 1
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = prata + 99
+                                                                bronze = (bronze + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'prata' then
+                                                            if ouro > 0 then
+                                                                ouro = ouro - 1
+                                                                prata = (prata + 100) - dif
+                                                            elseif platina > 0 then
+                                                                platina = platina - 1
+                                                                ouro = ouro + 99
+                                                                prata = (prata + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        elseif moeda == 'ouro' then
+                                                            if platina > 0 then
+                                                               platina = platina - 1
+                                                               ouro = (ouro + 100) - dif
+                                                            else
+                                                                showMessage('Pobre. Você não tem dinheiro.')
+                                                            end
+                                                        else showMessage('Pobre. Você não tem dinheiro.')
+                                                        end
+                                                    else
+                                                        atual = atual - dif
+                                                    end
+            
+                                                elseif op == '+' then
+                                                    atual = atual + dif
+                                                else showMessage('Deu ruim man.. vê se o botão de + ou - ta selecionado')
+                                                end
+            
+                                                sheet.bronze = bronze
+                                                sheet.prata = prata
+                                                sheet.ouro = ouro
+                                                sheet.platina = platina
+                                                sheet.somaRiquezasplatina = 0
+                                                self.popupRiquezasplatina:close();
+                                                
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event127);
+        __o_rrpgObjs.removeEventListenerById(self._e_event126);
+        __o_rrpgObjs.removeEventListenerById(self._e_event125);
+        __o_rrpgObjs.removeEventListenerById(self._e_event124);
+        __o_rrpgObjs.removeEventListenerById(self._e_event123);
+        __o_rrpgObjs.removeEventListenerById(self._e_event122);
+        __o_rrpgObjs.removeEventListenerById(self._e_event121);
+        __o_rrpgObjs.removeEventListenerById(self._e_event120);
+        __o_rrpgObjs.removeEventListenerById(self._e_event119);
+        __o_rrpgObjs.removeEventListenerById(self._e_event118);
+        __o_rrpgObjs.removeEventListenerById(self._e_event117);
+        __o_rrpgObjs.removeEventListenerById(self._e_event116);
         __o_rrpgObjs.removeEventListenerById(self._e_event115);
         __o_rrpgObjs.removeEventListenerById(self._e_event114);
         __o_rrpgObjs.removeEventListenerById(self._e_event113);
@@ -8164,8 +8920,10 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart152 ~= nil then self.flowPart152:destroy(); self.flowPart152 = nil; end;
         if self.flowPart169 ~= nil then self.flowPart169:destroy(); self.flowPart169 = nil; end;
         if self.flowLayout8 ~= nil then self.flowLayout8:destroy(); self.flowLayout8 = nil; end;
+        if self.flowPart215 ~= nil then self.flowPart215:destroy(); self.flowPart215 = nil; end;
         if self.image34 ~= nil then self.image34:destroy(); self.image34 = nil; end;
         if self.flowPart113 ~= nil then self.flowPart113:destroy(); self.flowPart113 = nil; end;
+        if self.flowPart199 ~= nil then self.flowPart199:destroy(); self.flowPart199 = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
         if self.dadosAdicionais ~= nil then self.dadosAdicionais:destroy(); self.dadosAdicionais = nil; end;
         if self.dataLink40 ~= nil then self.dataLink40:destroy(); self.dataLink40 = nil; end;
@@ -8178,7 +8936,9 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLayout18 ~= nil then self.flowLayout18:destroy(); self.flowLayout18 = nil; end;
         if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
         if self.flowPart40 ~= nil then self.flowPart40:destroy(); self.flowPart40 = nil; end;
+        if self.popupRiquezasbronze ~= nil then self.popupRiquezasbronze:destroy(); self.popupRiquezasbronze = nil; end;
         if self.flowPart144 ~= nil then self.flowPart144:destroy(); self.flowPart144 = nil; end;
+        if self.radioButton3 ~= nil then self.radioButton3:destroy(); self.radioButton3 = nil; end;
         if self.flowLayout15 ~= nil then self.flowLayout15:destroy(); self.flowLayout15 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.okButtonClasse ~= nil then self.okButtonClasse:destroy(); self.okButtonClasse = nil; end;
@@ -8196,6 +8956,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
         if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
         if self.flowPart183 ~= nil then self.flowPart183:destroy(); self.flowPart183 = nil; end;
+        if self.somaRiquezasEditbronze ~= nil then self.somaRiquezasEditbronze:destroy(); self.somaRiquezasEditbronze = nil; end;
+        if self.popupRiquezasplatina ~= nil then self.popupRiquezasplatina:destroy(); self.popupRiquezasplatina = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
@@ -8209,8 +8971,10 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.flowPart91 ~= nil then self.flowPart91:destroy(); self.flowPart91 = nil; end;
         if self.flowLayout7 ~= nil then self.flowLayout7:destroy(); self.flowLayout7 = nil; end;
+        if self.flowPart205 ~= nil then self.flowPart205:destroy(); self.flowPart205 = nil; end;
         if self.flowLayout10 ~= nil then self.flowLayout10:destroy(); self.flowLayout10 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
+        if self.flowLayout53 ~= nil then self.flowLayout53:destroy(); self.flowLayout53 = nil; end;
         if self.tabelaPontosBonus ~= nil then self.tabelaPontosBonus:destroy(); self.tabelaPontosBonus = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.horzLine64 ~= nil then self.horzLine64:destroy(); self.horzLine64 = nil; end;
@@ -8222,6 +8986,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart71 ~= nil then self.flowPart71:destroy(); self.flowPart71 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.dataLink35 ~= nil then self.dataLink35:destroy(); self.dataLink35 = nil; end;
+        if self.flowPart195 ~= nil then self.flowPart195:destroy(); self.flowPart195 = nil; end;
         if self.horzLine94 ~= nil then self.horzLine94:destroy(); self.horzLine94 = nil; end;
         if self.edit81 ~= nil then self.edit81:destroy(); self.edit81 = nil; end;
         if self.flowPart188 ~= nil then self.flowPart188:destroy(); self.flowPart188 = nil; end;
@@ -8236,6 +9001,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
         if self.button10 ~= nil then self.button10:destroy(); self.button10 = nil; end;
         if self.flowLayout45 ~= nil then self.flowLayout45:destroy(); self.flowLayout45 = nil; end;
+        if self.radioButton2 ~= nil then self.radioButton2:destroy(); self.radioButton2 = nil; end;
         if self.edit87 ~= nil then self.edit87:destroy(); self.edit87 = nil; end;
         if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
         if self.horzLine26 ~= nil then self.horzLine26:destroy(); self.horzLine26 = nil; end;
@@ -8250,8 +9016,10 @@ local function constructNew_frmFichaDePersonagem()
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.dataLink57 ~= nil then self.dataLink57:destroy(); self.dataLink57 = nil; end;
+        if self.button18 ~= nil then self.button18:destroy(); self.button18 = nil; end;
         if self.image15 ~= nil then self.image15:destroy(); self.image15 = nil; end;
         if self.scrollBox4 ~= nil then self.scrollBox4:destroy(); self.scrollBox4 = nil; end;
+        if self.radioButton8 ~= nil then self.radioButton8:destroy(); self.radioButton8 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
         if self.flowLayout37 ~= nil then self.flowLayout37:destroy(); self.flowLayout37 = nil; end;
@@ -8272,6 +9040,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLayout13 ~= nil then self.flowLayout13:destroy(); self.flowLayout13 = nil; end;
         if self.flowPart42 ~= nil then self.flowPart42:destroy(); self.flowPart42 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
+        if self.flowPart198 ~= nil then self.flowPart198:destroy(); self.flowPart198 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
         if self.flowPart187 ~= nil then self.flowPart187:destroy(); self.flowPart187 = nil; end;
         if self.flowPart192 ~= nil then self.flowPart192:destroy(); self.flowPart192 = nil; end;
@@ -8279,10 +9048,12 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine45 ~= nil then self.horzLine45:destroy(); self.horzLine45 = nil; end;
         if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
+        if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
         if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
         if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.flowPart16 ~= nil then self.flowPart16:destroy(); self.flowPart16 = nil; end;
+        if self.somaRiquezasEditprata ~= nil then self.somaRiquezasEditprata:destroy(); self.somaRiquezasEditprata = nil; end;
         if self.dataLink53 ~= nil then self.dataLink53:destroy(); self.dataLink53 = nil; end;
         if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
@@ -8295,6 +9066,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit68 ~= nil then self.edit68:destroy(); self.edit68 = nil; end;
         if self.edit72 ~= nil then self.edit72:destroy(); self.edit72 = nil; end;
         if self.flowLayout39 ~= nil then self.flowLayout39:destroy(); self.flowLayout39 = nil; end;
+        if self.buttonplatina ~= nil then self.buttonplatina:destroy(); self.buttonplatina = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.horzLine44 ~= nil then self.horzLine44:destroy(); self.horzLine44 = nil; end;
         if self.image29 ~= nil then self.image29:destroy(); self.image29 = nil; end;
@@ -8307,16 +9079,21 @@ local function constructNew_frmFichaDePersonagem()
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.flowPart105 ~= nil then self.flowPart105:destroy(); self.flowPart105 = nil; end;
         if self.rclHabilidadesnivel10 ~= nil then self.rclHabilidadesnivel10:destroy(); self.rclHabilidadesnivel10 = nil; end;
+        if self.flowPart202 ~= nil then self.flowPart202:destroy(); self.flowPart202 = nil; end;
         if self.image28 ~= nil then self.image28:destroy(); self.image28 = nil; end;
         if self.horzLine84 ~= nil then self.horzLine84:destroy(); self.horzLine84 = nil; end;
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.flowPart174 ~= nil then self.flowPart174:destroy(); self.flowPart174 = nil; end;
         if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
         if self.horzLine81 ~= nil then self.horzLine81:destroy(); self.horzLine81 = nil; end;
+        if self.radioButton1 ~= nil then self.radioButton1:destroy(); self.radioButton1 = nil; end;
         if self.horzLine57 ~= nil then self.horzLine57:destroy(); self.horzLine57 = nil; end;
         if self.persuasaoPlus ~= nil then self.persuasaoPlus:destroy(); self.persuasaoPlus = nil; end;
         if self.flowLayout49 ~= nil then self.flowLayout49:destroy(); self.flowLayout49 = nil; end;
         if self.horzLine33 ~= nil then self.horzLine33:destroy(); self.horzLine33 = nil; end;
+        if self.flowPart197 ~= nil then self.flowPart197:destroy(); self.flowPart197 = nil; end;
+        if self.flowPart214 ~= nil then self.flowPart214:destroy(); self.flowPart214 = nil; end;
+        if self.horzLine105 ~= nil then self.horzLine105:destroy(); self.horzLine105 = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.flowLayout40 ~= nil then self.flowLayout40:destroy(); self.flowLayout40 = nil; end;
@@ -8353,7 +9130,9 @@ local function constructNew_frmFichaDePersonagem()
         if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
         if self.flowLayout48 ~= nil then self.flowLayout48:destroy(); self.flowLayout48 = nil; end;
         if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
+        if self.label95 ~= nil then self.label95:destroy(); self.label95 = nil; end;
         if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
+        if self.flowPart210 ~= nil then self.flowPart210:destroy(); self.flowPart210 = nil; end;
         if self.horzLine43 ~= nil then self.horzLine43:destroy(); self.horzLine43 = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
         if self.flowPart117 ~= nil then self.flowPart117:destroy(); self.flowPart117 = nil; end;
@@ -8371,6 +9150,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
+        if self.flowPart204 ~= nil then self.flowPart204:destroy(); self.flowPart204 = nil; end;
         if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.rectangle29 ~= nil then self.rectangle29:destroy(); self.rectangle29 = nil; end;
@@ -8394,6 +9174,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.adestrarAnimaisMinus ~= nil then self.adestrarAnimaisMinus:destroy(); self.adestrarAnimaisMinus = nil; end;
         if self.dataLink60 ~= nil then self.dataLink60:destroy(); self.dataLink60 = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
+        if self.horzLine106 ~= nil then self.horzLine106:destroy(); self.horzLine106 = nil; end;
         if self.flowLayout9 ~= nil then self.flowLayout9:destroy(); self.flowLayout9 = nil; end;
         if self.image16 ~= nil then self.image16:destroy(); self.image16 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
@@ -8412,14 +9193,17 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart134 ~= nil then self.flowPart134:destroy(); self.flowPart134 = nil; end;
         if self.horzLine18 ~= nil then self.horzLine18:destroy(); self.horzLine18 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.flowPart211 ~= nil then self.flowPart211:destroy(); self.flowPart211 = nil; end;
         if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
         if self.flowPart36 ~= nil then self.flowPart36:destroy(); self.flowPart36 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.flowPart137 ~= nil then self.flowPart137:destroy(); self.flowPart137 = nil; end;
         if self.horzLine78 ~= nil then self.horzLine78:destroy(); self.horzLine78 = nil; end;
         if self.flowPart151 ~= nil then self.flowPart151:destroy(); self.flowPart151 = nil; end;
+        if self.flowPart217 ~= nil then self.flowPart217:destroy(); self.flowPart217 = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
         if self.flowPart82 ~= nil then self.flowPart82:destroy(); self.flowPart82 = nil; end;
+        if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
         if self.edit48 ~= nil then self.edit48:destroy(); self.edit48 = nil; end;
         if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
         if self.flowPart84 ~= nil then self.flowPart84:destroy(); self.flowPart84 = nil; end;
@@ -8431,6 +9215,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart65 ~= nil then self.flowPart65:destroy(); self.flowPart65 = nil; end;
         if self.horzLine55 ~= nil then self.horzLine55:destroy(); self.horzLine55 = nil; end;
         if self.intimidacaoPlus ~= nil then self.intimidacaoPlus:destroy(); self.intimidacaoPlus = nil; end;
+        if self.flowPart200 ~= nil then self.flowPart200:destroy(); self.flowPart200 = nil; end;
         if self.image23 ~= nil then self.image23:destroy(); self.image23 = nil; end;
         if self.image31 ~= nil then self.image31:destroy(); self.image31 = nil; end;
         if self.flowPart112 ~= nil then self.flowPart112:destroy(); self.flowPart112 = nil; end;
@@ -8461,14 +9246,19 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine90 ~= nil then self.horzLine90:destroy(); self.horzLine90 = nil; end;
         if self.flowPart32 ~= nil then self.flowPart32:destroy(); self.flowPart32 = nil; end;
         if self.flowLayout19 ~= nil then self.flowLayout19:destroy(); self.flowLayout19 = nil; end;
+        if self.popupRiquezasprata ~= nil then self.popupRiquezasprata:destroy(); self.popupRiquezasprata = nil; end;
         if self.horzLine69 ~= nil then self.horzLine69:destroy(); self.horzLine69 = nil; end;
+        if self.label92 ~= nil then self.label92:destroy(); self.label92 = nil; end;
         if self.flowPart13 ~= nil then self.flowPart13:destroy(); self.flowPart13 = nil; end;
+        if self.buttonprata ~= nil then self.buttonprata:destroy(); self.buttonprata = nil; end;
+        if self.radioButton7 ~= nil then self.radioButton7:destroy(); self.radioButton7 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.horzLine70 ~= nil then self.horzLine70:destroy(); self.horzLine70 = nil; end;
         if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
         if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
+        if self.radioButton6 ~= nil then self.radioButton6:destroy(); self.radioButton6 = nil; end;
         if self.horzLine14 ~= nil then self.horzLine14:destroy(); self.horzLine14 = nil; end;
         if self.flowPart157 ~= nil then self.flowPart157:destroy(); self.flowPart157 = nil; end;
         if self.flowPart178 ~= nil then self.flowPart178:destroy(); self.flowPart178 = nil; end;
@@ -8480,6 +9270,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine97 ~= nil then self.horzLine97:destroy(); self.horzLine97 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.flowPart19 ~= nil then self.flowPart19:destroy(); self.flowPart19 = nil; end;
+        if self.flowPart203 ~= nil then self.flowPart203:destroy(); self.flowPart203 = nil; end;
         if self.flowPart161 ~= nil then self.flowPart161:destroy(); self.flowPart161 = nil; end;
         if self.dataLink44 ~= nil then self.dataLink44:destroy(); self.dataLink44 = nil; end;
         if self.rclHabilidadesnivel11 ~= nil then self.rclHabilidadesnivel11:destroy(); self.rclHabilidadesnivel11 = nil; end;
@@ -8487,6 +9278,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLayout30 ~= nil then self.flowLayout30:destroy(); self.flowLayout30 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.dataLink9 ~= nil then self.dataLink9:destroy(); self.dataLink9 = nil; end;
+        if self.buttonbronze ~= nil then self.buttonbronze:destroy(); self.buttonbronze = nil; end;
         if self.flowPart89 ~= nil then self.flowPart89:destroy(); self.flowPart89 = nil; end;
         if self.horzLine30 ~= nil then self.horzLine30:destroy(); self.horzLine30 = nil; end;
         if self.flowPart68 ~= nil then self.flowPart68:destroy(); self.flowPart68 = nil; end;
@@ -8519,6 +9311,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLayout33 ~= nil then self.flowLayout33:destroy(); self.flowLayout33 = nil; end;
         if self.edit66 ~= nil then self.edit66:destroy(); self.edit66 = nil; end;
         if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
+        if self.label94 ~= nil then self.label94:destroy(); self.label94 = nil; end;
         if self.dadosDoPersonagem ~= nil then self.dadosDoPersonagem:destroy(); self.dadosDoPersonagem = nil; end;
         if self.flowPart59 ~= nil then self.flowPart59:destroy(); self.flowPart59 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
@@ -8533,11 +9326,13 @@ local function constructNew_frmFichaDePersonagem()
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.flowPart39 ~= nil then self.flowPart39:destroy(); self.flowPart39 = nil; end;
         if self.horzLine62 ~= nil then self.horzLine62:destroy(); self.horzLine62 = nil; end;
+        if self.popupRiquezasouro ~= nil then self.popupRiquezasouro:destroy(); self.popupRiquezasouro = nil; end;
         if self.dadosGerais ~= nil then self.dadosGerais:destroy(); self.dadosGerais = nil; end;
         if self.flowPart60 ~= nil then self.flowPart60:destroy(); self.flowPart60 = nil; end;
         if self.horzLine80 ~= nil then self.horzLine80:destroy(); self.horzLine80 = nil; end;
         if self.flowPart28 ~= nil then self.flowPart28:destroy(); self.flowPart28 = nil; end;
         if self.horzLine101 ~= nil then self.horzLine101:destroy(); self.horzLine101 = nil; end;
+        if self.flowPart209 ~= nil then self.flowPart209:destroy(); self.flowPart209 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
         if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
         if self.flowPart87 ~= nil then self.flowPart87:destroy(); self.flowPart87 = nil; end;
@@ -8546,6 +9341,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit83 ~= nil then self.edit83:destroy(); self.edit83 = nil; end;
         if self.vidaEDefesa ~= nil then self.vidaEDefesa:destroy(); self.vidaEDefesa = nil; end;
         if self.historiaPlus ~= nil then self.historiaPlus:destroy(); self.historiaPlus = nil; end;
+        if self.buttonouro ~= nil then self.buttonouro:destroy(); self.buttonouro = nil; end;
         if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
         if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
         if self.flowPart15 ~= nil then self.flowPart15:destroy(); self.flowPart15 = nil; end;
@@ -8569,6 +9365,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.image38 ~= nil then self.image38:destroy(); self.image38 = nil; end;
         if self.flowPart75 ~= nil then self.flowPart75:destroy(); self.flowPart75 = nil; end;
         if self.horzLine39 ~= nil then self.horzLine39:destroy(); self.horzLine39 = nil; end;
+        if self.flowLayout51 ~= nil then self.flowLayout51:destroy(); self.flowLayout51 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.flowPart97 ~= nil then self.flowPart97:destroy(); self.flowPart97 = nil; end;
@@ -8583,6 +9380,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.image25 ~= nil then self.image25:destroy(); self.image25 = nil; end;
         if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
         if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
+        if self.label93 ~= nil then self.label93:destroy(); self.label93 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.horzLine53 ~= nil then self.horzLine53:destroy(); self.horzLine53 = nil; end;
         if self.horzLine72 ~= nil then self.horzLine72:destroy(); self.horzLine72 = nil; end;
@@ -8615,6 +9413,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart176 ~= nil then self.flowPart176:destroy(); self.flowPart176 = nil; end;
         if self.dataLink54 ~= nil then self.dataLink54:destroy(); self.dataLink54 = nil; end;
         if self.dataLink24 ~= nil then self.dataLink24:destroy(); self.dataLink24 = nil; end;
+        if self.flowPart208 ~= nil then self.flowPart208:destroy(); self.flowPart208 = nil; end;
         if self.flowPart126 ~= nil then self.flowPart126:destroy(); self.flowPart126 = nil; end;
         if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.horzLine58 ~= nil then self.horzLine58:destroy(); self.horzLine58 = nil; end;
@@ -8628,6 +9427,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.rclHabilidadesnivel4 ~= nil then self.rclHabilidadesnivel4:destroy(); self.rclHabilidadesnivel4 = nil; end;
+        if self.flowPart216 ~= nil then self.flowPart216:destroy(); self.flowPart216 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.flowPart149 ~= nil then self.flowPart149:destroy(); self.flowPart149 = nil; end;
@@ -8650,6 +9450,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
         if self.religiaoPlus ~= nil then self.religiaoPlus:destroy(); self.religiaoPlus = nil; end;
         if self.barraxpProfissao ~= nil then self.barraxpProfissao:destroy(); self.barraxpProfissao = nil; end;
+        if self.radioButton5 ~= nil then self.radioButton5:destroy(); self.radioButton5 = nil; end;
         if self.dadosNomeNivel ~= nil then self.dadosNomeNivel:destroy(); self.dadosNomeNivel = nil; end;
         if self.flowPart24 ~= nil then self.flowPart24:destroy(); self.flowPart24 = nil; end;
         if self.flowPart77 ~= nil then self.flowPart77:destroy(); self.flowPart77 = nil; end;
@@ -8659,6 +9460,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine96 ~= nil then self.horzLine96:destroy(); self.horzLine96 = nil; end;
         if self.image30 ~= nil then self.image30:destroy(); self.image30 = nil; end;
         if self.dataLink42 ~= nil then self.dataLink42:destroy(); self.dataLink42 = nil; end;
+        if self.flowPart207 ~= nil then self.flowPart207:destroy(); self.flowPart207 = nil; end;
         if self.flowPart133 ~= nil then self.flowPart133:destroy(); self.flowPart133 = nil; end;
         if self.flowPart154 ~= nil then self.flowPart154:destroy(); self.flowPart154 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
@@ -8691,6 +9493,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         if self.horzLine87 ~= nil then self.horzLine87:destroy(); self.horzLine87 = nil; end;
+        if self.flowLayout52 ~= nil then self.flowLayout52:destroy(); self.flowLayout52 = nil; end;
+        if self.somaRiquezasEditplatina ~= nil then self.somaRiquezasEditplatina:destroy(); self.somaRiquezasEditplatina = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.flowPart160 ~= nil then self.flowPart160:destroy(); self.flowPart160 = nil; end;
         if self.horzLine98 ~= nil then self.horzLine98:destroy(); self.horzLine98 = nil; end;
@@ -8751,8 +9555,10 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart62 ~= nil then self.flowPart62:destroy(); self.flowPart62 = nil; end;
         if self.flowPart49 ~= nil then self.flowPart49:destroy(); self.flowPart49 = nil; end;
         if self.flowPart120 ~= nil then self.flowPart120:destroy(); self.flowPart120 = nil; end;
+        if self.flowPart212 ~= nil then self.flowPart212:destroy(); self.flowPart212 = nil; end;
         if self.flowPart14 ~= nil then self.flowPart14:destroy(); self.flowPart14 = nil; end;
         if self.horzLine79 ~= nil then self.horzLine79:destroy(); self.horzLine79 = nil; end;
+        if self.flowPart201 ~= nil then self.flowPart201:destroy(); self.flowPart201 = nil; end;
         if self.horzLine61 ~= nil then self.horzLine61:destroy(); self.horzLine61 = nil; end;
         if self.rclHabilidadesnivel8 ~= nil then self.rclHabilidadesnivel8:destroy(); self.rclHabilidadesnivel8 = nil; end;
         if self.flowPart164 ~= nil then self.flowPart164:destroy(); self.flowPart164 = nil; end;
@@ -8760,8 +9566,10 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart83 ~= nil then self.flowPart83:destroy(); self.flowPart83 = nil; end;
         if self.flowPart175 ~= nil then self.flowPart175:destroy(); self.flowPart175 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
+        if self.somaRiquezasEditouro ~= nil then self.somaRiquezasEditouro:destroy(); self.somaRiquezasEditouro = nil; end;
         if self.flowPart172 ~= nil then self.flowPart172:destroy(); self.flowPart172 = nil; end;
         if self.edit35 ~= nil then self.edit35:destroy(); self.edit35 = nil; end;
+        if self.radioButton4 ~= nil then self.radioButton4:destroy(); self.radioButton4 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.dataLink59 ~= nil then self.dataLink59:destroy(); self.dataLink59 = nil; end;
         if self.flowPart130 ~= nil then self.flowPart130:destroy(); self.flowPart130 = nil; end;
@@ -8788,10 +9596,13 @@ local function constructNew_frmFichaDePersonagem()
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
         if self.horzLine82 ~= nil then self.horzLine82:destroy(); self.horzLine82 = nil; end;
         if self.flowPart182 ~= nil then self.flowPart182:destroy(); self.flowPart182 = nil; end;
+        if self.horzLine104 ~= nil then self.horzLine104:destroy(); self.horzLine104 = nil; end;
         if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
         if self.image40 ~= nil then self.image40:destroy(); self.image40 = nil; end;
         if self.flowPart114 ~= nil then self.flowPart114:destroy(); self.flowPart114 = nil; end;
         if self.linguagemComumPlus ~= nil then self.linguagemComumPlus:destroy(); self.linguagemComumPlus = nil; end;
+        if self.flowPart194 ~= nil then self.flowPart194:destroy(); self.flowPart194 = nil; end;
+        if self.flowLayout50 ~= nil then self.flowLayout50:destroy(); self.flowLayout50 = nil; end;
         if self.horzLine102 ~= nil then self.horzLine102:destroy(); self.horzLine102 = nil; end;
         if self.dataLink17 ~= nil then self.dataLink17:destroy(); self.dataLink17 = nil; end;
         if self.tabelaPtBonusEConhecimentos ~= nil then self.tabelaPtBonusEConhecimentos:destroy(); self.tabelaPtBonusEConhecimentos = nil; end;
@@ -8814,11 +9625,13 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart98 ~= nil then self.flowPart98:destroy(); self.flowPart98 = nil; end;
         if self.flowPart63 ~= nil then self.flowPart63:destroy(); self.flowPart63 = nil; end;
         if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
+        if self.horzLine103 ~= nil then self.horzLine103:destroy(); self.horzLine103 = nil; end;
         if self.flowPart70 ~= nil then self.flowPart70:destroy(); self.flowPart70 = nil; end;
         if self.flowPart11 ~= nil then self.flowPart11:destroy(); self.flowPart11 = nil; end;
         if self.dataLink52 ~= nil then self.dataLink52:destroy(); self.dataLink52 = nil; end;
         if self.flowPart185 ~= nil then self.flowPart185:destroy(); self.flowPart185 = nil; end;
         if self.button12 ~= nil then self.button12:destroy(); self.button12 = nil; end;
+        if self.flowPart196 ~= nil then self.flowPart196:destroy(); self.flowPart196 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
         if self.horzLine15 ~= nil then self.horzLine15:destroy(); self.horzLine15 = nil; end;
         if self.image17 ~= nil then self.image17:destroy(); self.image17 = nil; end;
@@ -8845,10 +9658,13 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart21 ~= nil then self.flowPart21:destroy(); self.flowPart21 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
         if self.dataLink51 ~= nil then self.dataLink51:destroy(); self.dataLink51 = nil; end;
+        if self.flowPart213 ~= nil then self.flowPart213:destroy(); self.flowPart213 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.horzLine13 ~= nil then self.horzLine13:destroy(); self.horzLine13 = nil; end;
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.horzLine24 ~= nil then self.horzLine24:destroy(); self.horzLine24 = nil; end;
+        if self.flowPart206 ~= nil then self.flowPart206:destroy(); self.flowPart206 = nil; end;
+        if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
         if self.image43 ~= nil then self.image43:destroy(); self.image43 = nil; end;
         if self.image21 ~= nil then self.image21:destroy(); self.image21 = nil; end;
         if self.edit20 ~= nil then self.edit20:destroy(); self.edit20 = nil; end;
