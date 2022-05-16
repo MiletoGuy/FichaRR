@@ -257,7 +257,6 @@ local function constructNew_habilidadercl()
     obj._e_event0 = obj.habilidadeTipoComboBox:addEventListener("onChange",
         function (_)
             if sheet.habilidadeTipo == 'bencao' then
-                                                     showMessage('verificado')
                                                      self.sheet.fontColor = 'black' end;
         end, obj);
 

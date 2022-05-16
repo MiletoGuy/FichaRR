@@ -196,7 +196,7 @@
                                             elseif gema == 'desconhecidas' then
                                                 desconhecidas = atual - dif
                                             else
-                                                showMessaege('Deu ruim.')
+                                                showMessage('Deu ruim.')
                                             end
                                         end
                                     elseif op == '+' then
@@ -207,7 +207,7 @@
                                             elseif gema == 'desconhecidas' then
                                                 desconhecidsa = atual + dif
                                             else
-                                                showMessaege('Deu ruim.')
+                                                showMessage('Deu ruim.')
                                          end
                                     else
                                          showMessage('Deu ruim man.. vê se o botão de + ou - ta selecionado')

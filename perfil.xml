@@ -115,7 +115,7 @@
                     <barraDeExperiencia titulo="Profissão" field="Profissao" color="orange"/>
 
                     <dataLink
-                            fields="{'xpMaxClasse', 'xpAtualClasse', 'xpTextoClasse', 'nivelClasse', 'atributoVida', 'conTotal', 'atributoDefesa'}">
+                            fields="{'atributoVida', 'conBase', 'atributoDefesa'}">
                         <event name="onChange">
                             sheet.atributoVida = tonumber(sheet.conBase) or 0
                             sheet.atributoDefesa = math.floor(tonumber((sheet.atributoVida) or 0) / 2)
