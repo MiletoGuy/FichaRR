@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.05">
-      <change afterPath="$PROJECT_DIR$/fields.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2022_9_00_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2022_9_00_AM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_4_2022_8_36_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_4_2022_8_36_PM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_5_2022_5_40_PM_[Default_Changelist]/FichaRR.rpk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_5_2022_5_40_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_5_2022_5_40_PM__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.08">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_10_2022_8_51_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_10_2022_8_51_AM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventario.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fields.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fields.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/FichaRR.rpk" beforeDir="false" afterPath="$PROJECT_DIR$/output/FichaRR.rpk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/perfil.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/templates.xml" afterDir="false" />
     </list>
+    <list id="e2e643b6-ebeb-411c-8b90-c3587032065d" name="ImagensChange" comment="Recuperando os png" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,9 +60,6 @@
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Coisas\FichaRR" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Coisas\FichaRR\frames\atributos" />
     </key>
@@ -84,11 +75,9 @@
       <workItem from="1650938783375" duration="28000" />
       <workItem from="1650939612322" duration="2410000" />
       <workItem from="1650984055980" duration="12238000" />
-      <workItem from="1651665487450" duration="44621000" />
-      <workItem from="1652272188662" duration="588000" />
-      <workItem from="1652452564131" duration="25000" />
-      <workItem from="1652705002679" duration="9252000" />
-      <workItem from="1652720521158" duration="6043000" />
+      <workItem from="1651665487450" duration="24790000" />
+      <workItem from="1651799754177" duration="594000" />
+      <workItem from="1651866363119" duration="699000" />
     </task>
     <task id="LOCAL-00001" summary="alt_2022.04.27">
       <created>1651084302753</created>
@@ -104,21 +93,7 @@
       <option name="project" value="LOCAL" />
       <updated>1651601180724</updated>
     </task>
-    <task id="LOCAL-00003" summary="alt_2022.05.03">
-      <created>1651691223466</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1651691223466</updated>
-    </task>
-    <task id="LOCAL-00004" summary="alt_2022.05.05">
-      <created>1652204842520</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1652204842521</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +125,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="alt_2022.04.27" />
     <MESSAGE value="alt_2022.05.03" />
-    <MESSAGE value="alt_2022.05.05" />
-    <option name="LAST_COMMIT_MESSAGE" value="alt_2022.05.05" />
+    <option name="LAST_COMMIT_MESSAGE" value="alt_2022.05.03" />
   </component>
 </project>

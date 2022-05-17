@@ -20,7 +20,28 @@
                 sheet.atributoMira = 0
                 sheet.atributoEsquiva = 0
                 sheet.atributoBloqueio = 0
-
+                sheet.classeAcerto = 0
+                sheet.armaAcerto = 0
+                sheet.armaduraAcerto = 0
+                sheet.extraAcerto = 0
+                sheet.classeMira = 0
+                sheet.armaMira = 0
+                sheet.armaduraMira = 0
+                sheet.extraMira = 0
+                sheet.classeEsquiva = 0
+                sheet.armaEsquiva = 0
+                sheet.armaduraEsquiva = 0
+                sheet.extraEsquiva = 0
+                sheet.classeBloqueio = 0
+                sheet.armaBloqueio = 0
+                sheet.armaduraBloqueio = 0
+                sheet.extraBloqueio = 0
+                sheet.conVida = 0
+                sheet.armaVida = 0
+                sheet.armaduraVida = 0
+                sheet.outroVida = 0
+                sheet.extraVida = 0
+                sheet.totalDefesa = 0
 "/>
         <flowLayout name="perfilLayout" class="tile" align="top" height="800" margins="{left=10, right=10, top=10}"
                     autoHeight="true"
@@ -88,9 +109,47 @@
                             vertAlign="trailing" horzAlign="center" maxControlsPerLine="1">
                     <flowLayout name="vidaEDefesa" minWidth="250" maxWidth="400" autoHeight="true"
                                 vertAlign="trailing" horzAlign="center" maxControlsPerLine="2">
-                        <caixaVidaEDefesa text="Vida:" field="atributoVida"/>
-                        <caixaVidaEDefesa text="Defesa:" field="atributoDefesa"/>
+                        <caixaVidaEDefesa text="Vida:" field="Vida"/>
+                        <caixaVidaEDefesa text="Defesa:" field="Defesa"/>
 
+                        <popup name="popupVida" width="126" height="130" backOpacity="0" left="600">
+                            <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}" maxControlsPerLine="2">
+                                <nomeAtributoPopup text="Const."/>
+                                <nomeAtributoPopup horzTextAlign="center" field="conVida"/>
+                                <nomeAtributoPopup text="Arma"/>
+                                <valorAtributoPopup horzTextAlign="center" field="armaVida"/>
+                                <nomeAtributoPopup text="Armadura"/>
+                                <valorAtributoPopup horzTextAlign="center" field="armaduraVida"/>
+                                <nomeAtributoPopup text="Outro"/>
+                                <valorAtributoPopup horzTextAlign="center" field="outroVida"/>
+                                <nomeAtributoPopup text="Extra"/>
+                                <valorAtributoPopup horzTextAlign="center" field="extraVida"/>
+                                <nomeAtributoPopup text="Total" fontColor="#808000d9"/>
+                                <nomeAtributoPopup horzTextAlign="center" fontColor="#808000d9" field="totalVida"/>
+                            </flowLayout>
+                        </popup>
+
+                        <popup name="popupDefesa" width="126" height="30" backOpacity="0" left="600">
+                            <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}" maxControlsPerLine="2">
+                                <nomeAtributoPopup text="Total" fontColor="#808000d9"/>
+                                <valorAtributoPopup horzTextAlign="center" field="totalDefesa" fontColor="#808000d9"/>
+                            </flowLayout>
+                        </popup>
+                        <dataLink fields="'conVida','armaVida', 'armaduraVida',
+                          'outroVida','extraVida', 'totalVida', 'conBase','Defesa','Vida','totalDefesa'">
+                            <event name="onChange">
+                                sheet.conVida = sheet.conBase
+                                sheet.totalVida = (tonumber(sheet.conVida) or 0) +
+                                (tonumber(sheet.armaVida) or 0) +
+                                (tonumber(sheet.armaduraVida) or 0) +
+                                (tonumber(sheet.outroVida) or 0) +
+                                (tonumber(sheet.extraVida) or 0)
+
+                                sheet.Vida = sheet.totalVida
+                                sheet.Defesa = sheet.totalDefesa
+
+                            </event>
+                        </dataLink>
 
                     </flowLayout>
                     <flowLayout name="atributosDestreza" minWidth="250" maxWidth="400" autoHeight="true"
@@ -113,14 +172,6 @@
 
                     <barraDeExperiencia titulo="Classe" field="Classe" color="green"/>
                     <barraDeExperiencia titulo="Profissão" field="Profissao" color="orange"/>
-
-                    <dataLink
-                            fields="{'atributoVida', 'conBase', 'atributoDefesa'}">
-                        <event name="onChange">
-                            sheet.atributoVida = tonumber(sheet.conBase) or 0
-                            sheet.atributoDefesa = math.floor(tonumber((sheet.atributoVida) or 0) / 2)
-                        </event>
-                    </dataLink>
                 </flowLayout>
 
 

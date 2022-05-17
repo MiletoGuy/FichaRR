@@ -25,17 +25,24 @@
         </rectangle>
     </template>
 
-    <template name="campoAtributoPopup">
+    <template name="nomeAtributoPopup">
         <flowPart height="20" width="58">
             <label text="$(text)" align="client" horzTextAlign="$(horzTextAlign or 'leading')"
                    fontColor="$(fontColor or 'white')" field="$(field)"/>
         </flowPart>
     </template>
 
+    <template name="valorAtributoPopup">
+        <flowPart height="20" width="58">
+            <edit align="client" horzTextAlign="$(horzTextAlign or 'leading')" transparent="true"
+                  fontColor="$(fontColor or 'white')" field="$(field)"/>
+        </flowPart>
+    </template>
+
+    <!-- aqui eu usei $(titulo) como o field -->
     <template name="caixaAtributo">
         <rectangle cornerType="innerLine" align="client" hitTest="true" name="rectangle$(titulo)"
-                   onClick="self.popup$(titulo):show('bottomCenter',self.rectangle$(titulo))
-                            "
+                   onClick="self.popup$(titulo):show('bottomCenter',self.rectangle$(titulo))"
                    xradius="10" yradius="10"
                    height="100" width="100" color="black"
                    margins="{top=2, bottom=2, left=2, right=2}">
@@ -47,58 +54,49 @@
         </rectangle>
         <popup name="popup$(titulo)" width="126" height="150" backOpacity="0" left="600">
             <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}" maxControlsPerLine="2">
-                <campoAtributoPopup text="Destreza"/>
-                <campoAtributoPopup horzTextAlign="center" field="destreza$(titulo)"/>
-                <campoAtributoPopup text="Classe"/>
-                <campoAtributoPopup horzTextAlign="center" field="classe$(titulo)"/>
-                <campoAtributoPopup text="Base" fontColor="#808000d9"/>
-                <campoAtributoPopup horzTextAlign="center" fontColor="#808000d9" field="base$(titulo)"/>
-                <campoAtributoPopup text="Arma"/>
-                <campoAtributoPopup horzTextAlign="center" field="arma$(titulo)"/>
-                <campoAtributoPopup text="Armadura"/>
-                <campoAtributoPopup horzTextAlign="center" field="armadura$(titulo)"/>
-                <campoAtributoPopup text="Extra"/>
-                <campoAtributoPopup horzTextAlign="center" field="extra$(titulo)"/>
-                <campoAtributoPopup text="Total" fontColor="#808000d9"/>
-                <campoAtributoPopup horzTextAlign="center" fontColor="#808000d9" field="total$(titulo)"/>
+                <nomeAtributoPopup text="Destreza"/>
+                <nomeAtributoPopup horzTextAlign="center" field="destreza$(titulo)"/>
+                <nomeAtributoPopup text="Classe"/>
+                <valorAtributoPopup horzTextAlign="center" field="classe$(titulo)"/>
+                <nomeAtributoPopup text="Base" fontColor="#808000d9"/>
+                <nomeAtributoPopup horzTextAlign="center" fontColor="#808000d9" field="base$(titulo)"/>
+                <nomeAtributoPopup text="Arma"/>
+                <valorAtributoPopup horzTextAlign="center" field="arma$(titulo)"/>
+                <nomeAtributoPopup text="Armadura"/>
+                <valorAtributoPopup horzTextAlign="center" field="armadura$(titulo)"/>
+                <nomeAtributoPopup text="Extra"/>
+                <valorAtributoPopup horzTextAlign="center" field="extra$(titulo)"/>
+                <nomeAtributoPopup text="Total" fontColor="#808000d9"/>
+                <nomeAtributoPopup horzTextAlign="center" fontColor="#808000d9" field="total$(titulo)"/>
             </flowLayout>
         </popup>
         <dataLink fields="'mod$(titulo)', 'atributo$(titulo)', 'classe', 'destrezaDisponivel', 'dexBase', 'atributoAcerto', 'atributoMira',
                           'atributoEsquiva', 'atributoBloqueio', 'destreza$(titulo)', 'classe$(titulo)', 'base$(titulo)', 'arma$(titulo)', 'armadura$(titulo)',
-                          'extra$(titulo)', 'total($titulo)'">
+                          'extra$(titulo)', 'total$(titulo)'">
             <event name="onChange">
-                local nome = '$(titulo)'
-                local valor = 0
-
-                if sheet.classe == 'Arcanista' then
-                    if nome == 'Acerto' then
-                        valor = 6
-                    elseif nome == 'Mira' then
-                        valor = 16
-                    elseif nome == 'Esquiva' then
-                        valor = 10
-                    elseif nome == 'Bloqueio' then
-                        valor = 4
-                    end
-                end
-
                 sheet.destreza$(titulo) = tonumber(sheet.atributo$(titulo)) or 0
+                sheet.base$(titulo) = (tonumber(sheet.destreza$(titulo)) or 0) + (tonumber(sheet.classe$(titulo)) or 0)
+                sheet.total$(titulo) = (tonumber(sheet.base$(titulo)) or 0) +
+                                        (tonumber(sheet.arma$(titulo)) or 0) +
+                                        (tonumber(sheet.armadura$(titulo)) or 0) +
+                                        (tonumber(sheet.extra$(titulo)) or 0)
 
-                sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0 + 36) - (
+                sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0) - (
                 (tonumber(sheet.atributoAcerto) or 0) +
                 (tonumber(sheet.atributoMira) or 0) +
                 (tonumber(sheet.atributoEsquiva) or 0) +
                 (tonumber(sheet.atributoBloqueio) or 0)
                 )
 
-                sheet.mod$(titulo) = tostring("+"..math.floor(tonumber(sheet.atributo$(titulo) + valor)/10))
+                sheet.mod$(titulo) = tostring("+"..math.floor(tonumber(sheet.total$(titulo))/10))
 
             </event>
         </dataLink>
     </template>
 
     <template name="caixaVidaEDefesa">
-        <rectangle cornerType="innerLine" align="client"
+        <rectangle cornerType="innerLine" align="client" name="rectangle$(field)"
+                   onClick="self.popup$(field):show('bottomCenter',self.rectangle$(field))"
                    xradius="5" yradius="5"
                    height="30" width="100" color="black"
                    margins="{top=2, bottom=2, left=2, right=2}">
