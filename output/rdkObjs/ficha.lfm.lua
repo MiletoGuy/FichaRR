@@ -105,7 +105,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
-    obj.button1:setText("Inicia");
+    obj.button1:setText("reset");
     obj.button1:setName("button1");
 
     obj.perfilLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
