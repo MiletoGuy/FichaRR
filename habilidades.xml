@@ -1,4 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout width="700" height="400" class="perfil">
-    <label text="Habilidades" class="titulo"/>
-</layout>
+
+<rectangle class="fundo">
+    <scrollBox align="client">
+<!--        <script>-->
+<!--            <![CDATA[-->
+<!--			local function teste()-->
+<!--			   showMessage(NDB.getRoot(sheet.habilidadeNome))-->
+<!--			end;-->
+<!--			]]>-->
+<!--        </script>-->
+<!--        <button text="teste" width="50" onClick="teste();"/>-->
+        <template name="listaHabilidades">
+            <flowLayout  align="top"
+                         autoHeight="true" maxControlsPerLine="1"
+                         horzAlign="center" maxWidth="406">
+                <rectangle cornerType="bevel" align="client"
+                           xradius="10" yradius="20"
+                           height="40" width="400" color="black" strokeColor="silver" strokeSize="2">
+                    <flowLayout width="400" height="40" maxControlsPerLine="1" horzAlign="center">
+                        <flowPart height="20" width="$(width or 75)" vertAlign="center" align="client" margins="{top=10}">
+                            <label text="$(titulo)" fontSize="18" fontStyle="italic bold" align="client" horzTextAlign="center"/>
+                            <horzLine align="bottom" strokeSize="1" strokeColor="silver"/>
+
+                        </flowPart>
+                    </flowLayout>
+                    <flowPart width="16" height="20" left="375" top="10">
+                        <button align="client" height="16" text="+" width="16" horzTextAlign="center"
+                                onClick="self.rclHabilidades$(baseName):append();"/>
+                    </flowPart>
+                </rectangle>
+                <recordList name="rclHabilidades$(baseName)" field="habilidades$(baseName)" templateForm="habilidadercl" align="client"
+                            minHeight="70"
+                            width="400" autoHeight="true" hitTest="false"/>
+            </flowLayout>
+        </template>
+
+        <flowLayout name="habilidadesLayout" class="tile" align="top" height="800" margins="{left=10, right=10, top=10}"
+                    autoHeight="true"
+                    horzAlign="center" lineSpacing="2" maxWidth="1600" orientation="vertical" maxColumns="3">
+
+        <listaHabilidades titulo="Habilidades Base" baseName="base" width="150"/>
+        <listaHabilidades titulo="Nível 1" baseName="nivel1"/>
+        <listaHabilidades titulo="Nível 2" baseName="nivel2"/>
+        <listaHabilidades titulo="Nível 3" baseName="nivel3"/>
+        <listaHabilidades titulo="Nível 4" baseName="nivel4"/>
+        <listaHabilidades titulo="Nível 5" baseName="nivel5"/>
+        <listaHabilidades titulo="Nível 6" baseName="nivel6"/>
+        <listaHabilidades titulo="Nível 7" baseName="nivel7"/>
+        <listaHabilidades titulo="Nível 8" baseName="nivel8"/>
+        <listaHabilidades titulo="Nível 9" baseName="nivel9"/>
+        <listaHabilidades titulo="Nível 10" baseName="nivel10"/>
+        <listaHabilidades titulo="Nível 11" baseName="nivel11"/>
+        <listaHabilidades titulo="Extras" baseName="extras" width="60"/>
+
+        </flowLayout>
+    </scrollBox>
+
+    <popup name="editaHabilidade" height="400" width="752" backOpacity="0.5">
+        <flowLayout align="client" maxControlsPerLine="1" margins="{left=10,right=10,top=10,bottom=10}">
+            <rectangle cornerType="innerLine"
+                       xradius="10" yradius="10"
+                       height="300" width="732" color="silver" strokeColor="black" strokeSize="2">
+                <flowLayout height="300" width="732" padding="{left=10,right=10,top=10,bottom=10}"
+                            align="client">
+                    <richEdit height="280" width="712" backgroundColor="#40000000" field="descricao"
+                              defaultFontColor="white" align="client"/>
+                </flowLayout>
+            </rectangle>
+            <flowPart width="135" height="20">
+                <label text="Máximo de Cargas:" height="20" width="110" horzTextAlign="leading"
+                       vertTextAlign="center" align="left"/>
+                <edit height="20" width="25" horzTextAlign="center" vertTextAlign="center" fontSize="15"
+                      align="right" field="cargasMax"
+                      fontStyle="bold"
+                      type="number" transparent="true"/>
+                <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1" margins="{right=5}"/>
+            </flowPart>
+            <flowPart width="135" height="20">
+                <label text="Tipo:" height="20" width="35" horzTextAlign="leading"
+                       vertTextAlign="center" align="left"/>
+                <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1" margins="{right=5}" width="35"/>
+            </flowPart>
+        </flowLayout>
+    </popup>
+</rectangle>

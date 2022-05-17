@@ -1,20 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <group>
+    <template name="campoPerfilTexto">
+        <flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)"
+                  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)"
+                  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
+                  name="$(baseName)">
+            <edit align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
+            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1" margins="{right=5}"/>
+            <label align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading"
+                   wordWrap="true" textTrimming="none"/>
+        </flowPart>
+    </template>
 
-    <template name="upperGridCampo">
-		<!-- baseName = uniqueName("UpperGridCampo"); -->	
-		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
-				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 233)" 
-				  maxScaledWidth="$(maxScaledWidth or maxWidth or 233)" avoidScale="true"
-				  name="$(baseName)">
-				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="13"/>
-				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
-				<label name="lab$(baseName)" align="top" class="tituloCampo" text="$(titulo)" vertTextAlign="leading" wordWrap="true" textTrimming="none"/>															
-				
-				<script>    self.$(baseName):setHeight(self.edt$(baseName):getHeight() + self.lab$(baseName):getHeight() + self.lin$(baseName):getHeight());</script>								
-			</flowPart>					
-	</template>
+    <template name="campoPerfilNumero">
+        <rectangle cornerType="bevel" align="client"
+                   yradius="100" xradius="20" strokeColor="silver" strokeSize="2"
+                   height="75" width="100" color="black"
+                   margins="{top=2, bottom=2, left=2, right=2}">
+            <label align="client" field="$(field)" horzTextAlign="center"
+                   vertTextAlign="center" fontSize="25" fontStyle="bold" width="60" height="20" margins="{top=10}"/>
+            <label text="$(titulo)" vertTextAlign="trailing" horzTextAlign="center" align="bottom" margins="{bottom=5}"
+                   fontSize="14"/>
+        </rectangle>
+    </template>
+
+    <template name="nomeAtributoPopup">
+        <flowPart height="20" width="58">
+            <label text="$(text)" align="client" horzTextAlign="$(horzTextAlign or 'leading')"
+                   fontColor="$(fontColor or 'white')" field="$(field)"/>
+        </flowPart>
+    </template>
+
+    <template name="valorAtributoPopup">
+        <flowPart height="20" width="58">
+            <edit align="client" horzTextAlign="$(horzTextAlign or 'leading')" transparent="true"
+                  fontColor="$(fontColor or 'white')" field="$(field)"/>
+        </flowPart>
+    </template>
+
+    <!-- aqui eu usei $(titulo) como o field -->
+    <template name="caixaAtributo">
+        <rectangle cornerType="innerLine" align="client" hitTest="true" name="rectangle$(titulo)"
+                   onClick="self.popup$(titulo):show('bottomCenter',self.rectangle$(titulo))"
+                   xradius="10" yradius="10"
+                   height="100" width="100" color="black"
+                   margins="{top=2, bottom=2, left=2, right=2}">
+            <edit class="atributo" align="top" field="atributo$(titulo)"
+                  height="20" type="number" min="0" width="20"/>
+            <label align="client" field="mod$(titulo)" horzTextAlign="center"
+                   vertTextAlign="center" fontSize="30" fontStyle="bold" width="60" height="20" margins="{bottom=8}"/>
+            <label text="$(titulo)" vertTextAlign="trailing" horzTextAlign="center" align="bottom"/>
+        </rectangle>
+        <popup name="popup$(titulo)" width="126" height="150" backOpacity="0" left="600">
+            <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}" maxControlsPerLine="2">
+                <nomeAtributoPopup text="Destreza"/>
+                <nomeAtributoPopup horzTextAlign="center" field="destreza$(titulo)"/>
+                <nomeAtributoPopup text="Classe"/>
+                <valorAtributoPopup horzTextAlign="center" field="classe$(titulo)"/>
+                <nomeAtributoPopup text="Base" fontColor="#808000d9"/>
+                <nomeAtributoPopup horzTextAlign="center" fontColor="#808000d9" field="base$(titulo)"/>
+                <nomeAtributoPopup text="Arma"/>
+                <valorAtributoPopup horzTextAlign="center" field="arma$(titulo)"/>
+                <nomeAtributoPopup text="Armadura"/>
+                <valorAtributoPopup horzTextAlign="center" field="armadura$(titulo)"/>
+                <nomeAtributoPopup text="Extra"/>
+                <valorAtributoPopup horzTextAlign="center" field="extra$(titulo)"/>
+                <nomeAtributoPopup text="Total" fontColor="#808000d9"/>
+                <nomeAtributoPopup horzTextAlign="center" fontColor="#808000d9" field="total$(titulo)"/>
+            </flowLayout>
+        </popup>
+        <dataLink fields="'mod$(titulo)', 'atributo$(titulo)', 'classe', 'destrezaDisponivel', 'dexBase', 'atributoAcerto', 'atributoMira',
+                          'atributoEsquiva', 'atributoBloqueio', 'destreza$(titulo)', 'classe$(titulo)', 'base$(titulo)', 'arma$(titulo)', 'armadura$(titulo)',
+                          'extra$(titulo)', 'total$(titulo)'">
+            <event name="onChange">
+                sheet.destreza$(titulo) = tonumber(sheet.atributo$(titulo)) or 0
+                sheet.base$(titulo) = (tonumber(sheet.destreza$(titulo)) or 0) + (tonumber(sheet.classe$(titulo)) or 0)
+                sheet.total$(titulo) = (tonumber(sheet.base$(titulo)) or 0) +
+                                        (tonumber(sheet.arma$(titulo)) or 0) +
+                                        (tonumber(sheet.armadura$(titulo)) or 0) +
+                                        (tonumber(sheet.extra$(titulo)) or 0)
+
+                sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0) - (
+                (tonumber(sheet.atributoAcerto) or 0) +
+                (tonumber(sheet.atributoMira) or 0) +
+                (tonumber(sheet.atributoEsquiva) or 0) +
+                (tonumber(sheet.atributoBloqueio) or 0)
+                )
+
+                sheet.mod$(titulo) = tostring("+"..math.floor(tonumber(sheet.total$(titulo))/10))
+
+            </event>
+        </dataLink>
+    </template>
+
+    <template name="caixaVidaEDefesa">
+        <rectangle cornerType="innerLine" align="client" name="rectangle$(field)"
+                   onClick="self.popup$(field):show('bottomCenter',self.rectangle$(field))"
+                   xradius="5" yradius="5"
+                   height="30" width="100" color="black"
+                   margins="{top=2, bottom=2, left=2, right=2}">
+            <label align="client" horzTextAlign="leading" text="$(text)" margins="{left=5, top=5}"
+                   vertTextAlign="center" fontSize="16" fontStyle="italic bold" width="60" height="20"/>
+            <label align="client" field="$(field)" horzTextAlign="trailing" margins="{right=8, top=5}"
+                   vertTextAlign="center" fontSize="17" fontStyle="bold" width="60" height="20"/>
+            <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1" margins="{left=10, right=10,bottom=5}"/>
+        </rectangle>
+    </template>
+
+    <template name="barraDeExperiencia">
+        <label width="300" height="5" fontSize="12" text="Experiência de $(titulo):"
+               horzTextAlign="center" vertTextAlign="leading" margins="{top=5,bottom=5}"/>
+        <progressBar width="250" height="5" margins="{top=5,bottom=5}" fieldMax="xpMax$(field)" field="xpAtual$(field)"
+                     name="barraxp$(field)"
+                     hitTest="true" mouseGlow="true" colorMode="hl" color="$(color)"
+                     onDblClick="self.popupxp$(field):show('bottomCenter', self.barraxp$(field))
+                                 self.somaxp$(field):setFocus()"/>
+        <label width="250" height="5" fontSize="12" horzTextAlign="trailing" vertTextAlign="trailing"
+               margins="{top=5,bottom=5}" field="xpTexto$(field)"/>
+
+        <popup name="popupxp$(field)" width="300" height="30" backOpacity="0.4" left="600">
+            <flowLayout width="250" height="30" maxControlsPerLine="3">
+                <label text="Adicionar Experiência: " width="150" height="30" margins="{left=10}"
+                       horzTextAlign="leading" vertTextAlign="center" align="left"/>
+                <flowPart height="30" width="50">
+                    <edit name="somaxp$(field)" align="top" field="somaxp$(field)" fontSize="15" type="number"
+                          transparent="true" horzTextAlign="center"
+                          onKeyDown="
+                        if event.keyCode == 13 then
+                            self.okButton$(field):setFocus()
+                            local recebido = sheet.somaxp$(field) or 0
+                            local atual = sheet.xpAtual$(field) or 0
+                            local max = sheet.xpMax$(field) or 0
+                            local nivel = sheet.nivel$(field)
+                            local total = atual + recebido
+
+
+                            if self.barraxp$(field) == self.barraxpClasse then
+                                while total >= max do
+
+                                    total = total - max
+                                    sobeNivel('classe');
+                                    nivel = nivel + 1
+                                    if nivel > 27 then
+                                        max = 100000 + (100000 * (nivel - 28))
+                                    elseif nivel > 18 then
+                                        max = 10000 + (10000 * (nivel - 19))
+                                    elseif nivel > 9 then
+                                        max = 1000 + (1000 * (nivel - 10))
+                                    else
+                                        max = 100 * nivel
+                                    end
+                                end
+                            else
+                                while total >= max do
+                                    total = total - max
+                                    sobeNivel('profissao');
+                                    nivel = nivel + 1
+                                    max = 5 * nivel
+                                end
+                            end
+
+
+                            atual = total
+
+                            sheet.xpMax$(field) = max
+                            sheet.xpTexto$(field) = tostring(atual..'/'..max)
+                            sheet.xpAtual$(field) = atual
+                            sheet.somaxp$(field) = 0
+                            self.popupxp$(field):close();
+                        end">
+
+                    </edit>
+                    <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1" margins="{bottom=5}"/>
+                </flowPart>
+                <button text="ok" height="20" width="25" margins="{right=5, left=50}" name="okButton$(field)"
+                        onClick="
+                         local recebido = sheet.somaxp$(field) or 0
+                            local atual = sheet.xpAtual$(field) or 0
+                            local max = sheet.xpMax$(field) or 0
+
+                            local total = atual + recebido
+
+                            while total >= max do
+
+                                total = total - max
+                                sobeNivel('classe');
+                                nivel = nivel + 1
+                                if nivel > 27 then
+                                    max = 100000 + (100000 * (nivel - 28))
+                                elseif nivel > 18 then
+                                    max = 10000 + (10000 * (nivel - 19))
+                                elseif nivel > 9 then
+                                    max = 1000 + (1000 * (nivel - 10))
+                                else
+                                    max = 100 * nivel
+                                end
+                            end
+
+                            atual = total
+
+
+                            sheet.xpMax$(field) = max
+                            sheet.xpTexto$(field) = tostring(atual..'/'..max)
+                            sheet.xpAtual$(field) = atual
+                            sheet.somaxp$(field) = 0
+                            self.popupxp$(field):close();"/>
+
+            </flowLayout>
+        </popup>
+    </template>
 
     <template name="sinal">
         <flowPart name="$(baseName)" height="50" minScaledWidth="30" maxScaledWidth="50">
@@ -23,52 +218,233 @@
     </template>
 
     <template name="campoAtributo">
-		<!-- baseName = uniqueName("GridCampoSolido"); -->
+        <flowPart height="$(height or 50)" minScaledWidth="30"
+                  minWidth="30" maxWidth="35"
+                  maxScaledWidth="35" avoidScale="true"
+                  name="$(baseName)">
+            <edit align="top" class="infoNoTopo" field="$(field)" fontSize="15" transparent="true"
+                  vertTextAlign="center" type="number" readOnly="$(readOnly or 'false')" horzTextAlign="center"/>
+            <horzLine align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
+        </flowPart>
+    </template>
 
-		<flowPart height="$(height or 50)" minScaledWidth="30"
-				  minWidth="30" maxWidth="35"
-				  maxScaledWidth="35" avoidScale="true"
-				  name="$(baseName)">
-				<edit name="edt$(baseName)" align="top" class="infoNoTopo" field="$(field)" fontSize="15" transparent="true" vertTextAlign="center" type="number" readOnly="$(readOnly)"/>
-				<horzLine name="lin$(baseName)" align="top" strokeColor="#FFFFFF50" strokeSize="1"/>
-			</flowPart>					
-	</template>
+    <template name="tituloAtributo">
+        <flowPart height="20" minScaledWidth="60" maxScaledWidth="85" name="$(baseName)">
+            <label text="$(text)" align="client" fontSize="8"
+                   vertTextAlign="center" horzTextAlign="leading"/>
+        </flowPart>
+    </template>
 
-	<template name="tituloAtributo">
-		<flowPart height="20" minScaledWidth="60"  maxScaledWidth="85" name="$(baseName)">
-			<label text="$(text)" align="client" field="$(field)" fontSize="8" vertTextAlign="center" horzTextAlign="leading"/>
-		</flowPart>
-	</template>
+    <template name="tabelaAtributo">
+        <tituloAtributo text="$(titulo)"/>
+        <campoAtributo field="$(field)Nivel"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(field)Classe"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(field)Raca"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(field)Treino"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(field)Outros"/>
+        <sinal sinal="equals"/>
+        <campoAtributo titulo="" field="$(field)Base"/>
+        <sinal sinal="plus"/>
+        <campoAtributo titulo="" field="$(field)Equip"/>
+        <sinal sinal="equals"/>
+        <campoAtributo titulo="" field="$(field)Total"/>
 
-	<template name="tabelaAtributo">
-		<tituloAtributo text="$(titulo)" name="$(name)"/>
-		<campoAtributo field="$(name)Nivel" readOnly="false"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Classe" readOnly="true"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Raca" readOnly="true"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Treino" readOnly="false"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Outros" readOnly="false"/>
-		<sinal sinal="equals"/>
-		<campoAtributo titulo="" field="$(name)Base" readOnly="true"/>
-		<sinal sinal="plus"/>
-		<campoAtributo titulo="" field="$(name)Equip" readOnly="false"/>
-		<sinal sinal="equals"/>
-		<campoAtributo titulo="" field="$(name)Total" readOnly="true"/>
-	</template>
+        <dataLink fields="{'$(field)Nivel', '$(field)Classe', '$(field)Raca', '$(field)Treino',
+                           '$(field)Outros', '$(field)Base', '$(field)Equip', '$(field)Total'}">
+            <event name="onChange">
 
-	<template name="campoPtBonus">
-		<flowPart  height="20" minWidth="60" maxWidth="120" name="$(baseName)">
-			<label text="$(text)" align="left" field="$(field)" fontSize="18" vertTextAlign="center" horzTextAlign="leading" fontStyle="bold"/>
-		</flowPart>
-	</template>
+                sheet.$(field)Base = (tonumber(sheet.$(field)Nivel) or 0) +
+                (tonumber(sheet.$(field)Classe) or 0) +
+                (tonumber(sheet.$(field)Raca) or 0) +
+                (tonumber(sheet.$(field)Treino) or 0) +
+                (tonumber(sheet.$(field)Outros) or 0);
 
-	<template name="totalPtBonus">
-		<flowPart  height="10" minWidth="60" maxWidth="85" name="$(baseName)">
-			<label text="TOTAL" align="left" field="$(field)" fontSize="12" vertTextAlign="center" horzTextAlign="leading"/>
-		</flowPart>
-	</template>
+                sheet.$(field)Total = (tonumber(sheet.$(field)Base) or 0) +
+                (tonumber(sheet.$(field)Equip) or 0);
+            </event>
+        </dataLink>
+    </template>
 
+    <template name="campoPtBonus">
+        <flowPart height="20" minWidth="180" maxWidth="180" name="$(baseName)" margins="{top=5, bottom=5,right=10}">
+            <label text="$(text)" align="left" fontSize="18" vertTextAlign="center"
+                   horzTextAlign="center" fontStyle="italic" width="200"/>
+            <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1"/>
+        </flowPart>
+    </template>
+
+    <template name="totalPtBonus">
+        <flowLayout height="20" minWidth="150" maxWidth="200" maxControlsPerLine="3">
+            <button name="$(field)Minus" text="-" width="20" height="20"
+                    onClick="
+                        if sheet.$(field) > valorBase('$(field)') then
+                           sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
+                           sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                        end"/>
+            <flowPart height="20" minWidth="20" maxWidth="20">
+                <edit align="client" field="$(field)" fontSize="12" transparent="true"
+                      vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+            </flowPart>
+            <button name="$(field)Plus" text="+" width="20" height="20"
+                    onClick="
+                        if sheet.$(field) == 0 then sheet.$(field) = valorBase('$(field)') end
+                        if sheet.pontosRestantes > 0 then
+                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
+                        else
+                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
+                        end"/>
+        </flowLayout>
+    </template>
+
+    <template name="totalConhecimentos">
+        <flowLayout height="20" minWidth="150" maxWidth="200" maxControlsPerLine="3">
+            <button name="$(field)Minus" text="-" width="20" height="20"
+                    onClick="
+                        if sheet.$(field) > valorBase('$(field)') then
+                           sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
+                           sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                        end"/>
+            <flowPart height="20" minWidth="20" maxWidth="20">
+                <edit align="client" field="$(field)" fontSize="12" transparent="true"
+                      vertTextAlign="center" horzTextAlign="center" type="number" readOnly="true" min="0"/>
+            </flowPart>
+            <button name="$(field)Plus" text="+" width="20" height="20"
+                    onClick="
+                        if sheet.$(field) == 0 then sheet.$(field) = valorBase('$(field)') end
+                        if sheet.pontosDeConhecimento > 0 then
+                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                            sheet.$(field) = (tonumber(sheet.$(field)) or 0) + 1
+                        end"/>
+        </flowLayout>
+    </template>
+
+    <template name="habilidadeContent">
+        <rectangle cornerType="innerLine" align="client"
+                   xradius="10" yradius="10" margins="{left=5,right=5,top=5,bottom=5}"
+                   height="60" width="400" color="#40000000" strokeColor="black" strokeSize="2">
+            <flowLayout height="60" width="400" maxControlsPerLine="3">
+                <flowPart width="280" height="25" align="left" margins="{left=10,top=5}">
+                    <edit textPrompt="Nome da Habilidade" fontSize="15" transparent="true"
+                          field="habilidadeNome($baseName)"
+                          vertTextAlign="center" horzTextAlign="leading" width="280"/>
+                    <horzLine align="bottom" strokeSize="1" strokeColor="black"/>
+                </flowPart>
+                <rectangle cornerType="innerLine" align="client"
+                           xradius="3" yradius="3" margins="{left=5,right=5}"
+                           height="20" width="55"
+                           color="#40000000" strokeColor="black" strokeSize="2">
+                    <comboBox width="50" items="{'', 'C', 'C+','B', 'B+', 'A', 'A+', 'S', 'S+'}"
+                              field="habilidadeRank$(baseName)"
+                              transparent="true"/>
+                </rectangle>
+                <flowPart height="20" width="30" align="right" margins="{right=10, top=5}">
+                    <rectangle cornerType="innerLine" align="client"
+                               xradius="3" yradius="3"
+                               height="20" width="30"
+                               color="#40000000" strokeColor="black" strokeSize="2">
+                        <edit height="20" width="30" horzTextAlign="center" vertTextAlign="center" fontSize="15"
+                              fontStyle="bold" fontColor="black" field="habilidadeCargas$(baseName)"
+                              type="number" transparent="true"/>
+                    </rectangle>
+                </flowPart>
+                <flowLayout height="35" width="400" align="client" margins="{top=5,left=15}">
+                    <comboBox width="150" field="habilidadeTipo$(baseName)" transparent="true" left="35" fontSize="16"
+                              fontStyle="italic bold" fontColor="silver"
+                              onChange="if sheet.habilidadeTipo$(baseName) == 'bencao' then
+                                         self.sheet.fontColor = 'black' end;" name="habilidadeTipoComboBox$(baseName)"
+                              items="{'Benção', 'Brasão','Canção', 'Conjuração', 'Combo', 'Dança', 'Evocação','Habilidade', 'Ilusão',
+                           'Ki', 'Kokyuu (呼吸)', 'Magia', 'Magia Nula', 'Maldição','Od', 'Postura', 'Sinal'}"
+                              values="{'bencao', 'brasao', 'cancao', 'conjuracao', 'combo', 'danca', 'evocacao','habilidade', 'ilusao',
+                           'ki', 'kokyuu', 'magia', 'magiaNula', 'maldicao', 'od', 'postura', 'sinal'}"
+                    />
+                    <button text="usar" height="20" width="50" margins="{left=5,right=5}"/>
+                    <button text="i" height="20" width="20" margins="{left=5,right=5}"
+                            onClick="showHabilidadePopup();"/>
+                    <button text="excluir" height="20" width="50" margins="{left=5,right=5}"
+                            onClick="askForDelete();"/>
+                </flowLayout>
+            </flowLayout>
+
+        </rectangle>
+        <script>
+            <![CDATA[
+			local function askForDelete()
+				Dialogs.confirmYesNo("Deseja realmente apagar esta habilidade?",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+
+			local function showHabilidadePopup()
+			    local pop = self:findControlByName("editaHabilidade");
+
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:show();
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de habilidade para exibir");
+				end;
+			end;
+
+
+			]]>
+        </script>
+    </template>
+
+    <script>
+        <![CDATA[
+                local function possui(campo, valor)
+			        if string.find(campo, valor) ~= nil then
+			            return true
+			        else
+			            return false
+			        end
+			    end
+
+			    local function valorBase(campo)
+                    local classe = sheet.classe
+                    local raca = sheet.raca
+
+                    if campo == 'magia' then
+                        if possui(classe,'Arcanista') then return 2
+                        end
+
+                    elseif campo == 'linguagemComum' then
+                        if possui(raca,'Elfo') then return 8
+                        end
+
+                    elseif campo == 'linguagemElfica' then
+                        if possui(raca,'Elfo') then return 8
+                        end
+
+                    elseif campo == 'linguagemAna' then
+                        if possui(classe,'Arcanista') then return 2
+                        end
+
+                    elseif campo == 'percepcao' then
+                        if possui(raca,'Elfo') then return 4
+                        end
+
+                    else return 0
+                    end
+			    end
+
+                local function sobeNivel(campo)
+                    if campo == 'classe' then
+                        sheet.nivelClasse = sheet.nivelClasse + 1
+                        sheet.pontosRestantes = sheet.pontosRestantes + 2
+                    elseif campo == 'profissao' then
+                        sheet.nivelProfissao = sheet.nivelProfissao + 1
+                    end
+                end
+			]]>
+    </script>
 </group>
