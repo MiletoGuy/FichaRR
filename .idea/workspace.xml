@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.08">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_10_2022_8_51_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_10_2022_8_51_AM__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.16">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_10_2022_8_51_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_10_2022_8_51_AM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fields.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fields.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/FichaRR.rpk" beforeDir="false" afterPath="$PROJECT_DIR$/output/FichaRR.rpk" afterDir="false" />
@@ -23,10 +24,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="ALPHA_1.1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -60,6 +62,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Coisas\FichaRR" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Coisas\FichaRR\frames\atributos" />
     </key>
