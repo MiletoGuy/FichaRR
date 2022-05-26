@@ -15,6 +15,7 @@
                 sheet.xpTextoProfissao = '0/5'
                 sheet.pontosTreinados = 0
                 sheet.pontosRestantes = 2
+                sheet.pontosDeConhecimentoDistribuidos = 0
                 sheet.pDestino = 0
                 sheet.atributoAcerto = 0
                 sheet.atributoMira = 0

@@ -8492,6 +8492,7 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.xpTextoProfissao = '0/5'
                             sheet.pontosTreinados = 0
                             sheet.pontosRestantes = 2
+                            sheet.pontosDeConhecimentoDistribuidos = 0
                             sheet.pDestino = 0
                             sheet.atributoAcerto = 0
                             sheet.atributoMira = 0
@@ -8949,12 +8950,26 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.percepcao == nil then sheet.percepcao = 0 end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
@@ -8985,12 +9000,26 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.intimidacao == nil then sheet.intimidacao = 0 end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
@@ -9021,12 +9050,26 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.persuasao == nil then sheet.persuasao = 0 end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
@@ -9057,12 +9100,26 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                        end
                                     end
         end, obj);
 
@@ -9093,12 +9150,26 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.furtividade == nil then sheet.furtividade = 0 end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                        end
                                     end
         end, obj);
 
@@ -9129,12 +9200,26 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.intuicao == nil then sheet.intuicao = 0 end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
@@ -9165,12 +9250,26 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.didatica == nil then sheet.didatica = 0 end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.didatica = (tonumber(sheet.didatica) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                        end
                                     end
         end, obj);
 
@@ -9178,8 +9277,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.geografia > 0 then
-                                       sheet.geografia = (tonumber(sheet.geografia) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.geografia = (tonumber(sheet.geografia) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9190,6 +9291,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.geografia = (tonumber(sheet.geografia) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.geografia = (tonumber(sheet.geografia) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9197,8 +9305,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.historia > 0 then
-                                       sheet.historia = (tonumber(sheet.historia) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.historia = (tonumber(sheet.historia) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9209,6 +9319,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.historia = (tonumber(sheet.historia) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.historia = (tonumber(sheet.historia) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9216,8 +9333,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.religiao > 0 then
-                                       sheet.religiao = (tonumber(sheet.religiao) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.religiao = (tonumber(sheet.religiao) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9228,6 +9347,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.religiao = (tonumber(sheet.religiao) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.religiao = (tonumber(sheet.religiao) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9235,8 +9361,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.magia > 0 then
-                                       sheet.magia = (tonumber(sheet.magia) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.magia = (tonumber(sheet.magia) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9247,6 +9375,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.magia = (tonumber(sheet.magia) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.magia = (tonumber(sheet.magia) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9254,8 +9389,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.faunaflora > 0 then
-                                       sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9266,6 +9403,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9273,8 +9417,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.linguagemComum > 0 then
-                                       sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9285,6 +9431,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9292,8 +9445,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.linguagemOriental > 0 then
-                                       sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9304,6 +9459,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9311,8 +9473,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.linguagemElfica > 0 then
-                                       sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9323,6 +9487,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9330,8 +9501,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.linguagemAna > 0 then
-                                       sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9342,6 +9515,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
@@ -9349,8 +9529,10 @@ local function constructNew_frmFichaDePersonagem()
         function (_)
             
                                     if sheet.linguagemDraconica > 0 then
-                                       sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
@@ -9361,6 +9543,13 @@ local function constructNew_frmFichaDePersonagem()
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
