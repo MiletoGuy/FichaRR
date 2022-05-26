@@ -41,34 +41,6 @@ local function constructNew_frmFichaDePersonagem()
 			        end
 			    end
 
-			    local function valorBase(campo)
-                    local classe = sheet.classe
-                    local raca = sheet.raca
-
-                    if campo == 'magia' then
-                        if possui(classe,'Arcanista') then return 2
-                        end
-
-                    elseif campo == 'linguagemComum' then
-                        if possui(raca,'Elfo') then return 8
-                        end
-
-                    elseif campo == 'linguagemElfica' then
-                        if possui(raca,'Elfo') then return 8
-                        end
-
-                    elseif campo == 'linguagemAna' then
-                        if possui(classe,'Arcanista') then return 2
-                        end
-
-                    elseif campo == 'percepcao' then
-                        if possui(raca,'Elfo') then return 4
-                        end
-
-                    else return 0
-                    end
-			    end
-
                 local function sobeNivel(campo)
                     if campo == 'classe' then
                         sheet.nivelClasse = sheet.nivelClasse + 1
@@ -77,6 +49,17 @@ local function constructNew_frmFichaDePersonagem()
                         sheet.nivelProfissao = sheet.nivelProfissao + 1
                     end
                 end
+
+                local function removerPonto()
+				Dialogs.confirmYesNo("Deseja reduzir dos pontos treinados?",
+									 function (confirmado)
+										if confirmado then
+											sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1;
+										else
+										    sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+										end;
+									 end);
+			end;
 			
 
 
@@ -8509,6 +8492,7 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.xpTextoProfissao = '0/5'
                             sheet.pontosTreinados = 0
                             sheet.pontosRestantes = 2
+                            sheet.pontosDeConhecimentoDistribuidos = 0
                             sheet.pDestino = 0
                             sheet.atributoAcerto = 0
                             sheet.atributoMira = 0
@@ -8536,6 +8520,22 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.outroVida = 0
                             sheet.extraVida = 0
                             sheet.totalDefesa = 0
+                            sheet.percepcao = 0
+                            sheet.intimidacao = 0
+                            sheet.persuasao = 0
+                            sheet.adestrarAnimais = 0
+                            sheet.furtividade = 0
+                            sheet.intuicao = 0
+                            sheet.didatica = 0
+                            sheet.geografia = 0
+                            sheet.historia = 0
+                            sheet.magia = 0
+                            sheet.faunaflora = 0
+                            sheet.linguagemComum = 0
+                            sheet.linguagemOriental = 0
+                            sheet.linguagemElfica = 0
+                            sheet.linguagemAna = 0
+                            sheet.linguagemDraconica = 0
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
@@ -8926,344 +8926,630 @@ local function constructNew_frmFichaDePersonagem()
     obj._e_event26 = obj.percepcaoMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.percepcao > valorBase('percepcao') then
-                                       sheet.percepcao = (tonumber(sheet.percepcao) or 0) - 1
-                                       sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                    if sheet.percepcao == nil then sheet.percepcao = 0 end
+                                    if sheet.percepcao > 0 then
+                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
+                                            if sheet.pontosTreinados > 0 then
+                                            removerPonto();
+                                            sheet.percepcao = sheet.percepcao - 1
+                                            else
+                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
+                                                sheet.percepcao = sheet.percepcao - 1
+                                            end
+                                        else
+                                            if sheet.pontosTreinados > 0 then
+                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
+                                                sheet.percepcao = sheet.percepcao - 1
+                                            end
+                                        end
+            
                                     end
         end, obj);
 
     obj._e_event27 = obj.percepcaoPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.percepcao == 0 then sheet.percepcao = valorBase('percepcao') end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                    if sheet.percepcao == nil then sheet.percepcao = 0 end
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event28 = obj.intimidacaoMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.intimidacao > valorBase('intimidacao') then
-                                       sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) - 1
-                                       sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                    if sheet.intimidacao == nil then sheet.intimidacao = 0 end
+                                    if sheet.intimidacao > 0 then
+                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
+                                            if sheet.pontosTreinados > 0 then
+                                            removerPonto();
+                                            sheet.intimidacao = sheet.intimidacao - 1
+                                            else
+                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
+                                                sheet.intimidacao = sheet.intimidacao - 1
+                                            end
+                                        else
+                                            if sheet.pontosTreinados > 0 then
+                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
+                                                sheet.intimidacao = sheet.intimidacao - 1
+                                            end
+                                        end
+            
                                     end
         end, obj);
 
     obj._e_event29 = obj.intimidacaoPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.intimidacao == 0 then sheet.intimidacao = valorBase('intimidacao') end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                    if sheet.intimidacao == nil then sheet.intimidacao = 0 end
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event30 = obj.persuasaoMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.persuasao > valorBase('persuasao') then
-                                       sheet.persuasao = (tonumber(sheet.persuasao) or 0) - 1
-                                       sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                    if sheet.persuasao == nil then sheet.persuasao = 0 end
+                                    if sheet.persuasao > 0 then
+                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
+                                            if sheet.pontosTreinados > 0 then
+                                            removerPonto();
+                                            sheet.persuasao = sheet.persuasao - 1
+                                            else
+                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
+                                                sheet.persuasao = sheet.persuasao - 1
+                                            end
+                                        else
+                                            if sheet.pontosTreinados > 0 then
+                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
+                                                sheet.persuasao = sheet.persuasao - 1
+                                            end
+                                        end
+            
                                     end
         end, obj);
 
     obj._e_event31 = obj.persuasaoPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.persuasao == 0 then sheet.persuasao = valorBase('persuasao') end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                    if sheet.persuasao == nil then sheet.persuasao = 0 end
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event32 = obj.adestrarAnimaisMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.adestrarAnimais > valorBase('adestrarAnimais') then
-                                       sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) - 1
-                                       sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                    if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end
+                                    if sheet.adestrarAnimais > 0 then
+                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
+                                            if sheet.pontosTreinados > 0 then
+                                            removerPonto();
+                                            sheet.adestrarAnimais = sheet.adestrarAnimais - 1
+                                            else
+                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
+                                                sheet.adestrarAnimais = sheet.adestrarAnimais - 1
+                                            end
+                                        else
+                                            if sheet.pontosTreinados > 0 then
+                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
+                                                sheet.adestrarAnimais = sheet.adestrarAnimais - 1
+                                            end
+                                        end
+            
                                     end
         end, obj);
 
     obj._e_event33 = obj.adestrarAnimaisPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.adestrarAnimais == 0 then sheet.adestrarAnimais = valorBase('adestrarAnimais') end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                    if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event34 = obj.furtividadeMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.furtividade > valorBase('furtividade') then
-                                       sheet.furtividade = (tonumber(sheet.furtividade) or 0) - 1
-                                       sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                    if sheet.furtividade == nil then sheet.furtividade = 0 end
+                                    if sheet.furtividade > 0 then
+                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
+                                            if sheet.pontosTreinados > 0 then
+                                            removerPonto();
+                                            sheet.furtividade = sheet.furtividade - 1
+                                            else
+                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
+                                                sheet.furtividade = sheet.furtividade - 1
+                                            end
+                                        else
+                                            if sheet.pontosTreinados > 0 then
+                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
+                                                sheet.furtividade = sheet.furtividade - 1
+                                            end
+                                        end
+            
                                     end
         end, obj);
 
     obj._e_event35 = obj.furtividadePlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.furtividade == 0 then sheet.furtividade = valorBase('furtividade') end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                    if sheet.furtividade == nil then sheet.furtividade = 0 end
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event36 = obj.intuicaoMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.intuicao > valorBase('intuicao') then
-                                       sheet.intuicao = (tonumber(sheet.intuicao) or 0) - 1
-                                       sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                    if sheet.intuicao == nil then sheet.intuicao = 0 end
+                                    if sheet.intuicao > 0 then
+                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
+                                            if sheet.pontosTreinados > 0 then
+                                            removerPonto();
+                                            sheet.intuicao = sheet.intuicao - 1
+                                            else
+                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
+                                                sheet.intuicao = sheet.intuicao - 1
+                                            end
+                                        else
+                                            if sheet.pontosTreinados > 0 then
+                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
+                                                sheet.intuicao = sheet.intuicao - 1
+                                            end
+                                        end
+            
                                     end
         end, obj);
 
     obj._e_event37 = obj.intuicaoPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.intuicao == 0 then sheet.intuicao = valorBase('intuicao') end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                    if sheet.intuicao == nil then sheet.intuicao = 0 end
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event38 = obj.didaticaMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.didatica > valorBase('didatica') then
-                                       sheet.didatica = (tonumber(sheet.didatica) or 0) - 1
-                                       sheet.pontosRestantes = tonumber(sheet.pontosRestantes) + 1
+                                    if sheet.didatica == nil then sheet.didatica = 0 end
+                                    if sheet.didatica > 0 then
+                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
+                                            if sheet.pontosTreinados > 0 then
+                                            removerPonto();
+                                            sheet.didatica = sheet.didatica - 1
+                                            else
+                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
+                                                sheet.didatica = sheet.didatica - 1
+                                            end
+                                        else
+                                            if sheet.pontosTreinados > 0 then
+                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
+                                                sheet.didatica = sheet.didatica - 1
+                                            end
+                                        end
+            
                                     end
         end, obj);
 
     obj._e_event39 = obj.didaticaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.didatica == 0 then sheet.didatica = valorBase('didatica') end
-                                    if sheet.pontosRestantes > 0 then
-                                        sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                        sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                    if sheet.didatica == nil then sheet.didatica = 0 end
+                                    if sheet.nivelClasse == 1 then
+                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.didatica = (tonumber(sheet.didatica) or 0) + 1;
+                                            else
+                                                if sheet.pontosRestantes > 0 then
+                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                                    sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                                end
+                                            end
+                                         end)
                                     else
-                                        sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
-                                        sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                        if sheet.pontosRestantes > 0 then
+                                            sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
+                                            sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                        else
+                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                            sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event40 = obj.geografiaMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.geografia > valorBase('geografia') then
-                                       sheet.geografia = (tonumber(sheet.geografia) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.geografia > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.geografia = (tonumber(sheet.geografia) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event41 = obj.geografiaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.geografia == 0 then sheet.geografia = valorBase('geografia') end
+                                    if sheet.geografia == nil then sheet.geografia = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.geografia = (tonumber(sheet.geografia) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.geografia = (tonumber(sheet.geografia) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event42 = obj.historiaMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.historia > valorBase('historia') then
-                                       sheet.historia = (tonumber(sheet.historia) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.historia > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.historia = (tonumber(sheet.historia) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event43 = obj.historiaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.historia == 0 then sheet.historia = valorBase('historia') end
+                                    if sheet.historia == nil then sheet.historia = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.historia = (tonumber(sheet.historia) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.historia = (tonumber(sheet.historia) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event44 = obj.religiaoMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.religiao > valorBase('religiao') then
-                                       sheet.religiao = (tonumber(sheet.religiao) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.religiao > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.religiao = (tonumber(sheet.religiao) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event45 = obj.religiaoPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.religiao == 0 then sheet.religiao = valorBase('religiao') end
+                                    if sheet.religiao == nil then sheet.religiao = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.religiao = (tonumber(sheet.religiao) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.religiao = (tonumber(sheet.religiao) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event46 = obj.magiaMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.magia > valorBase('magia') then
-                                       sheet.magia = (tonumber(sheet.magia) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.magia > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.magia = (tonumber(sheet.magia) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event47 = obj.magiaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.magia == 0 then sheet.magia = valorBase('magia') end
+                                    if sheet.magia == nil then sheet.magia = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.magia = (tonumber(sheet.magia) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.magia = (tonumber(sheet.magia) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event48 = obj.faunafloraMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.faunaflora > valorBase('faunaflora') then
-                                       sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.faunaflora > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event49 = obj.faunafloraPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.faunaflora == 0 then sheet.faunaflora = valorBase('faunaflora') end
+                                    if sheet.faunaflora == nil then sheet.faunaflora = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event50 = obj.linguagemComumMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemComum > valorBase('linguagemComum') then
-                                       sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.linguagemComum > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event51 = obj.linguagemComumPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemComum == 0 then sheet.linguagemComum = valorBase('linguagemComum') end
+                                    if sheet.linguagemComum == nil then sheet.linguagemComum = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event52 = obj.linguagemOrientalMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemOriental > valorBase('linguagemOriental') then
-                                       sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.linguagemOriental > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event53 = obj.linguagemOrientalPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemOriental == 0 then sheet.linguagemOriental = valorBase('linguagemOriental') end
+                                    if sheet.linguagemOriental == nil then sheet.linguagemOriental = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event54 = obj.linguagemElficaMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemElfica > valorBase('linguagemElfica') then
-                                       sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.linguagemElfica > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event55 = obj.linguagemElficaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemElfica == 0 then sheet.linguagemElfica = valorBase('linguagemElfica') end
+                                    if sheet.linguagemElfica == nil then sheet.linguagemElfica = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event56 = obj.linguagemAnaMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemAna > valorBase('linguagemAna') then
-                                       sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.linguagemAna > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event57 = obj.linguagemAnaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemAna == 0 then sheet.linguagemAna = valorBase('linguagemAna') end
+                                    if sheet.linguagemAna == nil then sheet.linguagemAna = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 
     obj._e_event58 = obj.linguagemDraconicaMinus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemDraconica > valorBase('linguagemDraconica') then
-                                       sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) - 1
-                                       sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                    if sheet.linguagemDraconica > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                            sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) - 1
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
                                     end
         end, obj);
 
     obj._e_event59 = obj.linguagemDraconicaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemDraconica == 0 then sheet.linguagemDraconica = valorBase('linguagemDraconica') end
+                                    if sheet.linguagemDraconica == nil then sheet.linguagemDraconica = 0 end
                                     if sheet.pontosDeConhecimento > 0 then
                                         sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
                                         sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1
+                                    else
+                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
+                                         function (confirmado)
+                                            if confirmado then
+                                                sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1;
+                                            end
+                                         end)
                                     end
         end, obj);
 

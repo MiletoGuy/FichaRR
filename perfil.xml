@@ -15,6 +15,7 @@
                 sheet.xpTextoProfissao = '0/5'
                 sheet.pontosTreinados = 0
                 sheet.pontosRestantes = 2
+                sheet.pontosDeConhecimentoDistribuidos = 0
                 sheet.pDestino = 0
                 sheet.atributoAcerto = 0
                 sheet.atributoMira = 0
@@ -42,6 +43,22 @@
                 sheet.outroVida = 0
                 sheet.extraVida = 0
                 sheet.totalDefesa = 0
+                sheet.percepcao = 0
+                sheet.intimidacao = 0
+                sheet.persuasao = 0
+                sheet.adestrarAnimais = 0
+                sheet.furtividade = 0
+                sheet.intuicao = 0
+                sheet.didatica = 0
+                sheet.geografia = 0
+                sheet.historia = 0
+                sheet.magia = 0
+                sheet.faunaflora = 0
+                sheet.linguagemComum = 0
+                sheet.linguagemOriental = 0
+                sheet.linguagemElfica = 0
+                sheet.linguagemAna = 0
+                sheet.linguagemDraconica = 0
 "/>
         <flowLayout name="perfilLayout" class="tile" align="top" height="800" margins="{left=10, right=10, top=10}"
                     autoHeight="true"

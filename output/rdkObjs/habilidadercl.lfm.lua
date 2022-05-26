@@ -39,34 +39,6 @@ local function constructNew_habilidadercl()
 			        end
 			    end
 
-			    local function valorBase(campo)
-                    local classe = sheet.classe
-                    local raca = sheet.raca
-
-                    if campo == 'magia' then
-                        if possui(classe,'Arcanista') then return 2
-                        end
-
-                    elseif campo == 'linguagemComum' then
-                        if possui(raca,'Elfo') then return 8
-                        end
-
-                    elseif campo == 'linguagemElfica' then
-                        if possui(raca,'Elfo') then return 8
-                        end
-
-                    elseif campo == 'linguagemAna' then
-                        if possui(classe,'Arcanista') then return 2
-                        end
-
-                    elseif campo == 'percepcao' then
-                        if possui(raca,'Elfo') then return 4
-                        end
-
-                    else return 0
-                    end
-			    end
-
                 local function sobeNivel(campo)
                     if campo == 'classe' then
                         sheet.nivelClasse = sheet.nivelClasse + 1
@@ -75,6 +47,17 @@ local function constructNew_habilidadercl()
                         sheet.nivelProfissao = sheet.nivelProfissao + 1
                     end
                 end
+
+                local function removerPonto()
+				Dialogs.confirmYesNo("Deseja reduzir dos pontos treinados?",
+									 function (confirmado)
+										if confirmado then
+											sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1;
+										else
+										    sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+										end;
+									 end);
+			end;
 			
 
 
