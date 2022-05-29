@@ -3,63 +3,27 @@
 <!-- ### TABELA PERFIL ### -->
 <rectangle class="fundo">
     <scrollBox align="client">
-        <button text="Inicia"
-                onClick="
-                sheet.xpAtualClasse = 0
-                sheet.xpAtualProfissao = 0
-                sheet.nivelClasse = 1
-                sheet.nivelProfissao = 1
-                sheet.xpMaxClasse = 100
-                sheet.xpTextoClasse = '0/100'
-                sheet.xpMaxProfissao = 5
-                sheet.xpTextoProfissao = '0/5'
-                sheet.pontosTreinados = 0
-                sheet.pontosRestantes = 2
-                sheet.pontosDeConhecimentoDistribuidos = 0
-                sheet.pDestino = 0
-                sheet.atributoAcerto = 0
-                sheet.atributoMira = 0
-                sheet.atributoEsquiva = 0
-                sheet.atributoBloqueio = 0
-                sheet.classeAcerto = 0
-                sheet.armaAcerto = 0
-                sheet.armaduraAcerto = 0
-                sheet.extraAcerto = 0
-                sheet.classeMira = 0
-                sheet.armaMira = 0
-                sheet.armaduraMira = 0
-                sheet.extraMira = 0
-                sheet.classeEsquiva = 0
-                sheet.armaEsquiva = 0
-                sheet.armaduraEsquiva = 0
-                sheet.extraEsquiva = 0
-                sheet.classeBloqueio = 0
-                sheet.armaBloqueio = 0
-                sheet.armaduraBloqueio = 0
-                sheet.extraBloqueio = 0
-                sheet.conVida = 0
-                sheet.armaVida = 0
-                sheet.armaduraVida = 0
-                sheet.outroVida = 0
-                sheet.extraVida = 0
-                sheet.totalDefesa = 0
-                sheet.percepcao = 0
-                sheet.intimidacao = 0
-                sheet.persuasao = 0
-                sheet.adestrarAnimais = 0
-                sheet.furtividade = 0
-                sheet.intuicao = 0
-                sheet.didatica = 0
-                sheet.geografia = 0
-                sheet.historia = 0
-                sheet.magia = 0
-                sheet.faunaflora = 0
-                sheet.linguagemComum = 0
-                sheet.linguagemOriental = 0
-                sheet.linguagemElfica = 0
-                sheet.linguagemAna = 0
-                sheet.linguagemDraconica = 0
-"/>
+
+        <image src="/imagens/settings.png" height="25" width="25" left="5" top="5"
+               hitTest="true" onClick="self.popupConfig:show()"/>
+
+        <popup name="popupConfig" width="400" height="500">
+            <flowLayout width="400" height="500" padding="{left=5,right=5,top=5,bottom=5}"
+                        maxControlsPerLine="2" lineSpacing="5">
+                <button text="Reset Nível" onClick="resetNivel();" width="185" margins="{left=5,right=5}"/>
+                <button text="Reset Pontos Bônus" onClick="resetPontosBonus();" width="185" margins="{left=5,right=5}"/>
+                <button text="Reset Atributos de Destreza" onClick="resetDestreza();" width="185"
+                        margins="{left=5,right=5}"/>
+                <button text="Reset Tabela Atributos" onClick="resetTabelaAtributos();" width="185"
+                        margins="{left=5,right=5}"/>
+                <button text="Reset Conhecimentos" onClick="resetConhecimentos();" width="185"
+                        margins="{left=5,right=5}"/>
+                <button text="Reset Total" onClick="resetTotal();" width="185" margins="{left=5,right=5}"/>
+                <checkBox text="Alterar valores Classe/Raça" field="addValorBase" width="185" margins="{left=5,right=5}" checked="false"/>
+                <button text="Teste" onClick="showMessage(sheet.addValorBase)" width="185" margins="{left=5,right=5}"/>
+            </flowLayout>
+        </popup>
+
         <flowLayout name="perfilLayout" class="tile" align="top" height="800" margins="{left=10, right=10, top=10}"
                     autoHeight="true"
                     horzAlign="center" lineSpacing="2" maxWidth="1600">
@@ -73,7 +37,8 @@
                     <rectangle cornerType="innerLine" align="client"
                                xradius="15" yradius="15"
                                height="250" width="250">
-                        <image src="" style="autoFit" optimize="true" editable="true" align="client" field="imagem" margins="{left=5,right=5,top=5,bottom=5}"/>
+                        <image src="" style="autoFit" optimize="true" editable="true" align="client" field="imagem"
+                               margins="{left=5,right=5,top=5,bottom=5}"/>
                     </rectangle>
                 </flowLayout>
 
@@ -82,11 +47,12 @@
                     <flowLayout name="dadosDestaque" minWidth="250" maxWidth="800" avoidScale="true" autoHeight="true"
                                 vertAlign="trailing" maxControlsPerLine="2" horzAlign="center">
 
-                        <flowLayout name="dadosNomeNivel" minWidth="200" maxWidth="400" avoidScale="true" autoHeight="true"
+                        <flowLayout name="dadosNomeNivel" minWidth="200" maxWidth="400" avoidScale="true"
+                                    autoHeight="true"
                                     vertAlign="trailing" maxControlsPerLine="2" horzAlign="center">
-                        <campoPerfilTexto field="nome" minWidth="100" titulo="Nome" baseName="nome"/>
-                        <campoPerfilTexto field="raca" titulo="Raça"/>
-                        <campoPerfilTexto field="classe" minWidth="100" titulo="Classe" maxWidth="400"/>
+                            <campoPerfilTexto field="nome" minWidth="100" titulo="Nome" baseName="nome"/>
+                            <campoPerfilTexto field="raca" titulo="Raça"/>
+                            <campoPerfilTexto field="classe" minWidth="100" titulo="Classe" maxWidth="400"/>
                         </flowLayout>
                         <flowLayout name="dadosDeNivel" minWidth="200" maxWidth="400" avoidScale="true"
                                     autoHeight="true"
@@ -130,7 +96,8 @@
                         <caixaVidaEDefesa text="Defesa:" field="Defesa"/>
 
                         <popup name="popupVida" width="126" height="130" backOpacity="0" left="600">
-                            <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}" maxControlsPerLine="2">
+                            <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}"
+                                        maxControlsPerLine="2">
                                 <nomeAtributoPopup text="Const."/>
                                 <nomeAtributoPopup horzTextAlign="center" field="conVida"/>
                                 <nomeAtributoPopup text="Arma"/>
@@ -147,7 +114,8 @@
                         </popup>
 
                         <popup name="popupDefesa" width="126" height="30" backOpacity="0" left="600">
-                            <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}" maxControlsPerLine="2">
+                            <flowLayout width="126" height="150" padding="{top=5,bottom=5,left=5,right=5}"
+                                        maxControlsPerLine="2">
                                 <nomeAtributoPopup text="Total" fontColor="#808000d9"/>
                                 <valorAtributoPopup horzTextAlign="center" field="totalDefesa" fontColor="#808000d9"/>
                             </flowLayout>
@@ -355,4 +323,126 @@
 
         </event>
     </dataLink>
+    <script>
+        <![CDATA[
+
+            local function resetNivel()
+                sheet.xpAtualClasse = 0
+                sheet.xpAtualProfissao = 0
+                sheet.nivelClasse = 1
+                sheet.nivelProfissao = 1
+                sheet.xpMaxClasse = 100
+                sheet.xpTextoClasse = '0/100'
+                sheet.xpMaxProfissao = 5
+                sheet.xpTextoProfissao = '0/5'
+                sheet.pontosTreinados = 0
+                sheet.pontosRestantes = 2
+            end;
+
+            local function resetPontosBonus()
+                sheet.pontosTreinados = 0
+                sheet.pontosRestantes = tonumber(sheet.nivelClasse) * 2
+                sheet.percepcao = 0
+                sheet.intimidacao = 0
+                sheet.persuasao = 0
+                sheet.adestrarAnimais = 0
+                sheet.furtividade = 0
+                sheet.intuicao = 0
+                sheet.didatica = 0
+            end;
+
+            local function resetDestreza()
+                sheet.atributoAcerto = 0
+                sheet.atributoMira = 0
+                sheet.atributoEsquiva = 0
+                sheet.atributoBloqueio = 0
+                sheet.classeAcerto = 0
+                sheet.armaAcerto = 0
+                sheet.armaduraAcerto = 0
+                sheet.extraAcerto = 0
+                sheet.classeMira = 0
+                sheet.armaMira = 0
+                sheet.armaduraMira = 0
+                sheet.extraMira = 0
+                sheet.classeEsquiva = 0
+                sheet.armaEsquiva = 0
+                sheet.armaduraEsquiva = 0
+                sheet.extraEsquiva = 0
+                sheet.classeBloqueio = 0
+                sheet.armaBloqueio = 0
+                sheet.armaduraBloqueio = 0
+                sheet.extraBloqueio = 0
+            end
+
+            local function resetTabelaAtributos()
+                sheet.conNivel = 0
+                sheet.conClasse = 0
+                sheet.conRaca = 0
+                sheet.conTreino = 0
+                sheet.conOutros = 0
+                sheet.conEquip = 0
+                sheet.forNivel = 0
+                sheet.forClasse = 0
+                sheet.forRaca = 0
+                sheet.forTreino = 0
+                sheet.forOutros = 0
+                sheet.forEquip = 0
+                sheet.dexNivel = 0
+                sheet.dexClasse = 0
+                sheet.dexRaca = 0
+                sheet.dexTreino = 0
+                sheet.dexOutros = 0
+                sheet.dexEquip = 0
+                sheet.carNivel = 0
+                sheet.carClasse = 0
+                sheet.carRaca = 0
+                sheet.carTreino = 0
+                sheet.carOutros = 0
+                sheet.carEquip = 0
+                sheet.intNivel = 0
+                sheet.intClasse = 0
+                sheet.intRaca = 0
+                sheet.intTreino = 0
+                sheet.intOutros = 0
+                sheet.intEquip = 0
+                sheet.sabNivel = 0
+                sheet.sabClasse = 0
+                sheet.sabRaca = 0
+                sheet.sabTreino = 0
+                sheet.sabOutros = 0
+                sheet.sabEquip = 0
+            end
+
+            local function resetConhecimentos()
+                sheet.geografia = 0
+                sheet.historia = 0
+                sheet.religiao = 0
+                sheet.magia = 0
+                sheet.faunaflora = 0
+                sheet.linguagemComum = 0
+                sheet.linguagemOriental = 0
+                sheet.linguagemElfica = 0
+                sheet.linguagemAna = 0
+                sheet.linguagemDraconica = 0
+                sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intBase)/5)) -
+                tonumber(sheet.pontosDeConhecimentoDistribuidos)
+                sheet.pontosDeConhecimentoDistribuidos = 0
+
+            end
+
+            local function resetTotal()
+				Dialogs.confirmYesNo("Deseja realmente limpar a ficha inteira?",
+									 function (confirmado)
+										if confirmado then
+											resetNivel()
+											resetPontosBonus()
+											resetDestreza()
+											resetTabelaAtributos()
+											resetConhecimentos()
+										end;
+									 end);
+			end;
+
+        ]]>
+    </script>
 </rectangle>

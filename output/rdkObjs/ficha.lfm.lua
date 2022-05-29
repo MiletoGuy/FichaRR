@@ -33,14 +33,6 @@ local function constructNew_frmFichaDePersonagem()
     obj:setTheme("dark");
 
 
-                local function possui(campo, valor)
-			        if string.find(campo, valor) ~= nil then
-			            return true
-			        else
-			            return false
-			        end
-			    end
-
                 local function sobeNivel(campo)
                     if campo == 'classe' then
                         sheet.nivelClasse = sheet.nivelClasse + 1
@@ -49,17 +41,6 @@ local function constructNew_frmFichaDePersonagem()
                         sheet.nivelProfissao = sheet.nivelProfissao + 1
                     end
                 end
-
-                local function removerPonto()
-				Dialogs.confirmYesNo("Deseja reduzir dos pontos treinados?",
-									 function (confirmado)
-										if confirmado then
-											sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1;
-										else
-										    sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
-										end;
-									 end);
-			end;
 			
 
 
@@ -86,10 +67,88 @@ local function constructNew_frmFichaDePersonagem()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image1:setParent(obj.scrollBox1);
+    obj.image1:setSRC("/imagens/settings.png");
+    obj.image1:setHeight(25);
+    obj.image1:setWidth(25);
+    obj.image1:setLeft(5);
+    obj.image1:setTop(5);
+    obj.image1:setHitTest(true);
+    obj.image1:setName("image1");
+
+    obj.popupConfig = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popupConfig:setParent(obj.scrollBox1);
+    obj.popupConfig:setName("popupConfig");
+    obj.popupConfig:setWidth(400);
+    obj.popupConfig:setHeight(500);
+
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1:setParent(obj.popupConfig);
+    obj.flowLayout1:setWidth(400);
+    obj.flowLayout1:setHeight(500);
+    obj.flowLayout1:setPadding({left=5,right=5,top=5,bottom=5});
+    obj.flowLayout1:setMaxControlsPerLine(2);
+    obj.flowLayout1:setLineSpacing(5);
+    obj.flowLayout1:setName("flowLayout1");
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.scrollBox1);
-    obj.button1:setText("reset");
+    obj.button1:setParent(obj.flowLayout1);
+    obj.button1:setText("Reset Nível");
+    obj.button1:setWidth(185);
+    obj.button1:setMargins({left=5,right=5});
     obj.button1:setName("button1");
+
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.flowLayout1);
+    obj.button2:setText("Reset Pontos Bônus");
+    obj.button2:setWidth(185);
+    obj.button2:setMargins({left=5,right=5});
+    obj.button2:setName("button2");
+
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.flowLayout1);
+    obj.button3:setText("Reset Atributos de Destreza");
+    obj.button3:setWidth(185);
+    obj.button3:setMargins({left=5,right=5});
+    obj.button3:setName("button3");
+
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.flowLayout1);
+    obj.button4:setText("Reset Tabela Atributos");
+    obj.button4:setWidth(185);
+    obj.button4:setMargins({left=5,right=5});
+    obj.button4:setName("button4");
+
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.flowLayout1);
+    obj.button5:setText("Reset Conhecimentos");
+    obj.button5:setWidth(185);
+    obj.button5:setMargins({left=5,right=5});
+    obj.button5:setName("button5");
+
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.flowLayout1);
+    obj.button6:setText("Reset Total");
+    obj.button6:setWidth(185);
+    obj.button6:setMargins({left=5,right=5});
+    obj.button6:setName("button6");
+
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.flowLayout1);
+    obj.checkBox1:setText("Alterar valores Classe/Raça");
+    obj.checkBox1:setField("addValorBase");
+    obj.checkBox1:setWidth(185);
+    obj.checkBox1:setMargins({left=5,right=5});
+    obj.checkBox1:setChecked(false);
+    obj.checkBox1:setName("checkBox1");
+
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button7:setParent(obj.flowLayout1);
+    obj.button7:setText("Teste");
+    obj.button7:setWidth(185);
+    obj.button7:setMargins({left=5,right=5});
+    obj.button7:setName("button7");
 
     obj.perfilLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.perfilLayout:setParent(obj.scrollBox1);
@@ -135,16 +194,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle2:setWidth(250);
     obj.rectangle2:setName("rectangle2");
 
-    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image1:setParent(obj.rectangle2);
-    obj.image1:setSRC("");
-    obj.image1:setStyle("autoFit");
-    obj.image1:setOptimize(true);
-    obj.image1:setEditable(true);
-    obj.image1:setAlign("client");
-    obj.image1:setField("imagem");
-    obj.image1:setMargins({left=5,right=5,top=5,bottom=5});
-    obj.image1:setName("image1");
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image2:setParent(obj.rectangle2);
+    obj.image2:setSRC("");
+    obj.image2:setStyle("autoFit");
+    obj.image2:setOptimize(true);
+    obj.image2:setEditable(true);
+    obj.image2:setAlign("client");
+    obj.image2:setField("imagem");
+    obj.image2:setMargins({left=5,right=5,top=5,bottom=5});
+    obj.image2:setName("image2");
 
     obj.dadosDoPersonagem = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.dadosDoPersonagem:setParent(obj.tabelaDadosImagem);
@@ -391,12 +450,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.label7:setFontSize(14);
     obj.label7:setName("label7");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.dadosDeNivel);
-    obj.button2:setText("-");
-    obj.button2:setWidth(20);
-    obj.button2:setHeight(20);
-    obj.button2:setName("button2");
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button8:setParent(obj.dadosDeNivel);
+    obj.button8:setText("-");
+    obj.button8:setWidth(20);
+    obj.button8:setHeight(20);
+    obj.button8:setName("button8");
 
     obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.dadosDeNivel);
@@ -435,12 +494,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.label9:setFontSize(14);
     obj.label9:setName("label9");
 
-    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button3:setParent(obj.dadosDeNivel);
-    obj.button3:setText("+");
-    obj.button3:setWidth(20);
-    obj.button3:setHeight(20);
-    obj.button3:setName("button3");
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button9:setParent(obj.dadosDeNivel);
+    obj.button9:setText("+");
+    obj.button9:setWidth(20);
+    obj.button9:setHeight(20);
+    obj.button9:setName("button9");
 
     obj.dadosGerais = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.dadosGerais:setParent(obj.dadosDoPersonagem);
@@ -813,16 +872,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupVida:setBackOpacity(0);
     obj.popupVida:setLeft(600);
 
-    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout1:setParent(obj.popupVida);
-    obj.flowLayout1:setWidth(126);
-    obj.flowLayout1:setHeight(150);
-    obj.flowLayout1:setPadding({top=5,bottom=5,left=5,right=5});
-    obj.flowLayout1:setMaxControlsPerLine(2);
-    obj.flowLayout1:setName("flowLayout1");
+    obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout2:setParent(obj.popupVida);
+    obj.flowLayout2:setWidth(126);
+    obj.flowLayout2:setHeight(150);
+    obj.flowLayout2:setPadding({top=5,bottom=5,left=5,right=5});
+    obj.flowLayout2:setMaxControlsPerLine(2);
+    obj.flowLayout2:setName("flowLayout2");
 
     obj.flowPart9 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart9:setParent(obj.flowLayout1);
+    obj.flowPart9:setParent(obj.flowLayout2);
     obj.flowPart9:setHeight(20);
     obj.flowPart9:setWidth(58);
     obj.flowPart9:setName("flowPart9");
@@ -837,7 +896,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label20:setName("label20");
 
     obj.flowPart10 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart10:setParent(obj.flowLayout1);
+    obj.flowPart10:setParent(obj.flowLayout2);
     obj.flowPart10:setHeight(20);
     obj.flowPart10:setWidth(58);
     obj.flowPart10:setName("flowPart10");
@@ -852,7 +911,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label21:setName("label21");
 
     obj.flowPart11 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart11:setParent(obj.flowLayout1);
+    obj.flowPart11:setParent(obj.flowLayout2);
     obj.flowPart11:setHeight(20);
     obj.flowPart11:setWidth(58);
     obj.flowPart11:setName("flowPart11");
@@ -867,7 +926,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label22:setName("label22");
 
     obj.flowPart12 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart12:setParent(obj.flowLayout1);
+    obj.flowPart12:setParent(obj.flowLayout2);
     obj.flowPart12:setHeight(20);
     obj.flowPart12:setWidth(58);
     obj.flowPart12:setName("flowPart12");
@@ -882,7 +941,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit10:setName("edit10");
 
     obj.flowPart13 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart13:setParent(obj.flowLayout1);
+    obj.flowPart13:setParent(obj.flowLayout2);
     obj.flowPart13:setHeight(20);
     obj.flowPart13:setWidth(58);
     obj.flowPart13:setName("flowPart13");
@@ -897,7 +956,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label23:setName("label23");
 
     obj.flowPart14 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart14:setParent(obj.flowLayout1);
+    obj.flowPart14:setParent(obj.flowLayout2);
     obj.flowPart14:setHeight(20);
     obj.flowPart14:setWidth(58);
     obj.flowPart14:setName("flowPart14");
@@ -912,7 +971,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit11:setName("edit11");
 
     obj.flowPart15 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart15:setParent(obj.flowLayout1);
+    obj.flowPart15:setParent(obj.flowLayout2);
     obj.flowPart15:setHeight(20);
     obj.flowPart15:setWidth(58);
     obj.flowPart15:setName("flowPart15");
@@ -927,7 +986,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label24:setName("label24");
 
     obj.flowPart16 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart16:setParent(obj.flowLayout1);
+    obj.flowPart16:setParent(obj.flowLayout2);
     obj.flowPart16:setHeight(20);
     obj.flowPart16:setWidth(58);
     obj.flowPart16:setName("flowPart16");
@@ -942,7 +1001,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit12:setName("edit12");
 
     obj.flowPart17 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart17:setParent(obj.flowLayout1);
+    obj.flowPart17:setParent(obj.flowLayout2);
     obj.flowPart17:setHeight(20);
     obj.flowPart17:setWidth(58);
     obj.flowPart17:setName("flowPart17");
@@ -957,7 +1016,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label25:setName("label25");
 
     obj.flowPart18 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart18:setParent(obj.flowLayout1);
+    obj.flowPart18:setParent(obj.flowLayout2);
     obj.flowPart18:setHeight(20);
     obj.flowPart18:setWidth(58);
     obj.flowPart18:setName("flowPart18");
@@ -972,7 +1031,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit13:setName("edit13");
 
     obj.flowPart19 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart19:setParent(obj.flowLayout1);
+    obj.flowPart19:setParent(obj.flowLayout2);
     obj.flowPart19:setHeight(20);
     obj.flowPart19:setWidth(58);
     obj.flowPart19:setName("flowPart19");
@@ -987,7 +1046,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label26:setName("label26");
 
     obj.flowPart20 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart20:setParent(obj.flowLayout1);
+    obj.flowPart20:setParent(obj.flowLayout2);
     obj.flowPart20:setHeight(20);
     obj.flowPart20:setWidth(58);
     obj.flowPart20:setName("flowPart20");
@@ -1009,16 +1068,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupDefesa:setBackOpacity(0);
     obj.popupDefesa:setLeft(600);
 
-    obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout2:setParent(obj.popupDefesa);
-    obj.flowLayout2:setWidth(126);
-    obj.flowLayout2:setHeight(150);
-    obj.flowLayout2:setPadding({top=5,bottom=5,left=5,right=5});
-    obj.flowLayout2:setMaxControlsPerLine(2);
-    obj.flowLayout2:setName("flowLayout2");
+    obj.flowLayout3 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout3:setParent(obj.popupDefesa);
+    obj.flowLayout3:setWidth(126);
+    obj.flowLayout3:setHeight(150);
+    obj.flowLayout3:setPadding({top=5,bottom=5,left=5,right=5});
+    obj.flowLayout3:setMaxControlsPerLine(2);
+    obj.flowLayout3:setName("flowLayout3");
 
     obj.flowPart21 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart21:setParent(obj.flowLayout2);
+    obj.flowPart21:setParent(obj.flowLayout3);
     obj.flowPart21:setHeight(20);
     obj.flowPart21:setWidth(58);
     obj.flowPart21:setName("flowPart21");
@@ -1033,7 +1092,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label28:setName("label28");
 
     obj.flowPart22 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart22:setParent(obj.flowLayout2);
+    obj.flowPart22:setParent(obj.flowLayout3);
     obj.flowPart22:setHeight(20);
     obj.flowPart22:setWidth(58);
     obj.flowPart22:setName("flowPart22");
@@ -1118,16 +1177,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupAcerto:setBackOpacity(0);
     obj.popupAcerto:setLeft(600);
 
-    obj.flowLayout3 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout3:setParent(obj.popupAcerto);
-    obj.flowLayout3:setWidth(126);
-    obj.flowLayout3:setHeight(150);
-    obj.flowLayout3:setPadding({top=5,bottom=5,left=5,right=5});
-    obj.flowLayout3:setMaxControlsPerLine(2);
-    obj.flowLayout3:setName("flowLayout3");
+    obj.flowLayout4 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout4:setParent(obj.popupAcerto);
+    obj.flowLayout4:setWidth(126);
+    obj.flowLayout4:setHeight(150);
+    obj.flowLayout4:setPadding({top=5,bottom=5,left=5,right=5});
+    obj.flowLayout4:setMaxControlsPerLine(2);
+    obj.flowLayout4:setName("flowLayout4");
 
     obj.flowPart23 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart23:setParent(obj.flowLayout3);
+    obj.flowPart23:setParent(obj.flowLayout4);
     obj.flowPart23:setHeight(20);
     obj.flowPart23:setWidth(58);
     obj.flowPart23:setName("flowPart23");
@@ -1142,7 +1201,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label31:setName("label31");
 
     obj.flowPart24 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart24:setParent(obj.flowLayout3);
+    obj.flowPart24:setParent(obj.flowLayout4);
     obj.flowPart24:setHeight(20);
     obj.flowPart24:setWidth(58);
     obj.flowPart24:setName("flowPart24");
@@ -1157,7 +1216,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label32:setName("label32");
 
     obj.flowPart25 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart25:setParent(obj.flowLayout3);
+    obj.flowPart25:setParent(obj.flowLayout4);
     obj.flowPart25:setHeight(20);
     obj.flowPart25:setWidth(58);
     obj.flowPart25:setName("flowPart25");
@@ -1172,7 +1231,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label33:setName("label33");
 
     obj.flowPart26 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart26:setParent(obj.flowLayout3);
+    obj.flowPart26:setParent(obj.flowLayout4);
     obj.flowPart26:setHeight(20);
     obj.flowPart26:setWidth(58);
     obj.flowPart26:setName("flowPart26");
@@ -1187,7 +1246,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit16:setName("edit16");
 
     obj.flowPart27 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart27:setParent(obj.flowLayout3);
+    obj.flowPart27:setParent(obj.flowLayout4);
     obj.flowPart27:setHeight(20);
     obj.flowPart27:setWidth(58);
     obj.flowPart27:setName("flowPart27");
@@ -1202,7 +1261,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label34:setName("label34");
 
     obj.flowPart28 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart28:setParent(obj.flowLayout3);
+    obj.flowPart28:setParent(obj.flowLayout4);
     obj.flowPart28:setHeight(20);
     obj.flowPart28:setWidth(58);
     obj.flowPart28:setName("flowPart28");
@@ -1217,7 +1276,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label35:setName("label35");
 
     obj.flowPart29 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart29:setParent(obj.flowLayout3);
+    obj.flowPart29:setParent(obj.flowLayout4);
     obj.flowPart29:setHeight(20);
     obj.flowPart29:setWidth(58);
     obj.flowPart29:setName("flowPart29");
@@ -1232,7 +1291,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label36:setName("label36");
 
     obj.flowPart30 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart30:setParent(obj.flowLayout3);
+    obj.flowPart30:setParent(obj.flowLayout4);
     obj.flowPart30:setHeight(20);
     obj.flowPart30:setWidth(58);
     obj.flowPart30:setName("flowPart30");
@@ -1247,7 +1306,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit17:setName("edit17");
 
     obj.flowPart31 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart31:setParent(obj.flowLayout3);
+    obj.flowPart31:setParent(obj.flowLayout4);
     obj.flowPart31:setHeight(20);
     obj.flowPart31:setWidth(58);
     obj.flowPart31:setName("flowPart31");
@@ -1262,7 +1321,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label37:setName("label37");
 
     obj.flowPart32 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart32:setParent(obj.flowLayout3);
+    obj.flowPart32:setParent(obj.flowLayout4);
     obj.flowPart32:setHeight(20);
     obj.flowPart32:setWidth(58);
     obj.flowPart32:setName("flowPart32");
@@ -1277,7 +1336,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit18:setName("edit18");
 
     obj.flowPart33 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart33:setParent(obj.flowLayout3);
+    obj.flowPart33:setParent(obj.flowLayout4);
     obj.flowPart33:setHeight(20);
     obj.flowPart33:setWidth(58);
     obj.flowPart33:setName("flowPart33");
@@ -1292,7 +1351,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label38:setName("label38");
 
     obj.flowPart34 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart34:setParent(obj.flowLayout3);
+    obj.flowPart34:setParent(obj.flowLayout4);
     obj.flowPart34:setHeight(20);
     obj.flowPart34:setWidth(58);
     obj.flowPart34:setName("flowPart34");
@@ -1307,7 +1366,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit19:setName("edit19");
 
     obj.flowPart35 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart35:setParent(obj.flowLayout3);
+    obj.flowPart35:setParent(obj.flowLayout4);
     obj.flowPart35:setHeight(20);
     obj.flowPart35:setWidth(58);
     obj.flowPart35:setName("flowPart35");
@@ -1322,7 +1381,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label39:setName("label39");
 
     obj.flowPart36 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart36:setParent(obj.flowLayout3);
+    obj.flowPart36:setParent(obj.flowLayout4);
     obj.flowPart36:setHeight(20);
     obj.flowPart36:setWidth(58);
     obj.flowPart36:setName("flowPart36");
@@ -1405,16 +1464,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupMira:setBackOpacity(0);
     obj.popupMira:setLeft(600);
 
-    obj.flowLayout4 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout4:setParent(obj.popupMira);
-    obj.flowLayout4:setWidth(126);
-    obj.flowLayout4:setHeight(150);
-    obj.flowLayout4:setPadding({top=5,bottom=5,left=5,right=5});
-    obj.flowLayout4:setMaxControlsPerLine(2);
-    obj.flowLayout4:setName("flowLayout4");
+    obj.flowLayout5 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout5:setParent(obj.popupMira);
+    obj.flowLayout5:setWidth(126);
+    obj.flowLayout5:setHeight(150);
+    obj.flowLayout5:setPadding({top=5,bottom=5,left=5,right=5});
+    obj.flowLayout5:setMaxControlsPerLine(2);
+    obj.flowLayout5:setName("flowLayout5");
 
     obj.flowPart37 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart37:setParent(obj.flowLayout4);
+    obj.flowPart37:setParent(obj.flowLayout5);
     obj.flowPart37:setHeight(20);
     obj.flowPart37:setWidth(58);
     obj.flowPart37:setName("flowPart37");
@@ -1429,7 +1488,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label43:setName("label43");
 
     obj.flowPart38 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart38:setParent(obj.flowLayout4);
+    obj.flowPart38:setParent(obj.flowLayout5);
     obj.flowPart38:setHeight(20);
     obj.flowPart38:setWidth(58);
     obj.flowPart38:setName("flowPart38");
@@ -1444,7 +1503,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label44:setName("label44");
 
     obj.flowPart39 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart39:setParent(obj.flowLayout4);
+    obj.flowPart39:setParent(obj.flowLayout5);
     obj.flowPart39:setHeight(20);
     obj.flowPart39:setWidth(58);
     obj.flowPart39:setName("flowPart39");
@@ -1459,7 +1518,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label45:setName("label45");
 
     obj.flowPart40 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart40:setParent(obj.flowLayout4);
+    obj.flowPart40:setParent(obj.flowLayout5);
     obj.flowPart40:setHeight(20);
     obj.flowPart40:setWidth(58);
     obj.flowPart40:setName("flowPart40");
@@ -1474,7 +1533,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit21:setName("edit21");
 
     obj.flowPart41 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart41:setParent(obj.flowLayout4);
+    obj.flowPart41:setParent(obj.flowLayout5);
     obj.flowPart41:setHeight(20);
     obj.flowPart41:setWidth(58);
     obj.flowPart41:setName("flowPart41");
@@ -1489,7 +1548,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label46:setName("label46");
 
     obj.flowPart42 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart42:setParent(obj.flowLayout4);
+    obj.flowPart42:setParent(obj.flowLayout5);
     obj.flowPart42:setHeight(20);
     obj.flowPart42:setWidth(58);
     obj.flowPart42:setName("flowPart42");
@@ -1504,7 +1563,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label47:setName("label47");
 
     obj.flowPart43 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart43:setParent(obj.flowLayout4);
+    obj.flowPart43:setParent(obj.flowLayout5);
     obj.flowPart43:setHeight(20);
     obj.flowPart43:setWidth(58);
     obj.flowPart43:setName("flowPart43");
@@ -1519,7 +1578,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label48:setName("label48");
 
     obj.flowPart44 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart44:setParent(obj.flowLayout4);
+    obj.flowPart44:setParent(obj.flowLayout5);
     obj.flowPart44:setHeight(20);
     obj.flowPart44:setWidth(58);
     obj.flowPart44:setName("flowPart44");
@@ -1534,7 +1593,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit22:setName("edit22");
 
     obj.flowPart45 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart45:setParent(obj.flowLayout4);
+    obj.flowPart45:setParent(obj.flowLayout5);
     obj.flowPart45:setHeight(20);
     obj.flowPart45:setWidth(58);
     obj.flowPart45:setName("flowPart45");
@@ -1549,7 +1608,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label49:setName("label49");
 
     obj.flowPart46 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart46:setParent(obj.flowLayout4);
+    obj.flowPart46:setParent(obj.flowLayout5);
     obj.flowPart46:setHeight(20);
     obj.flowPart46:setWidth(58);
     obj.flowPart46:setName("flowPart46");
@@ -1564,7 +1623,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit23:setName("edit23");
 
     obj.flowPart47 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart47:setParent(obj.flowLayout4);
+    obj.flowPart47:setParent(obj.flowLayout5);
     obj.flowPart47:setHeight(20);
     obj.flowPart47:setWidth(58);
     obj.flowPart47:setName("flowPart47");
@@ -1579,7 +1638,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label50:setName("label50");
 
     obj.flowPart48 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart48:setParent(obj.flowLayout4);
+    obj.flowPart48:setParent(obj.flowLayout5);
     obj.flowPart48:setHeight(20);
     obj.flowPart48:setWidth(58);
     obj.flowPart48:setName("flowPart48");
@@ -1594,7 +1653,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit24:setName("edit24");
 
     obj.flowPart49 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart49:setParent(obj.flowLayout4);
+    obj.flowPart49:setParent(obj.flowLayout5);
     obj.flowPart49:setHeight(20);
     obj.flowPart49:setWidth(58);
     obj.flowPart49:setName("flowPart49");
@@ -1609,7 +1668,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label51:setName("label51");
 
     obj.flowPart50 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart50:setParent(obj.flowLayout4);
+    obj.flowPart50:setParent(obj.flowLayout5);
     obj.flowPart50:setHeight(20);
     obj.flowPart50:setWidth(58);
     obj.flowPart50:setName("flowPart50");
@@ -1721,16 +1780,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupEsquiva:setBackOpacity(0);
     obj.popupEsquiva:setLeft(600);
 
-    obj.flowLayout5 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout5:setParent(obj.popupEsquiva);
-    obj.flowLayout5:setWidth(126);
-    obj.flowLayout5:setHeight(150);
-    obj.flowLayout5:setPadding({top=5,bottom=5,left=5,right=5});
-    obj.flowLayout5:setMaxControlsPerLine(2);
-    obj.flowLayout5:setName("flowLayout5");
+    obj.flowLayout6 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout6:setParent(obj.popupEsquiva);
+    obj.flowLayout6:setWidth(126);
+    obj.flowLayout6:setHeight(150);
+    obj.flowLayout6:setPadding({top=5,bottom=5,left=5,right=5});
+    obj.flowLayout6:setMaxControlsPerLine(2);
+    obj.flowLayout6:setName("flowLayout6");
 
     obj.flowPart51 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart51:setParent(obj.flowLayout5);
+    obj.flowPart51:setParent(obj.flowLayout6);
     obj.flowPart51:setHeight(20);
     obj.flowPart51:setWidth(58);
     obj.flowPart51:setName("flowPart51");
@@ -1745,7 +1804,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label56:setName("label56");
 
     obj.flowPart52 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart52:setParent(obj.flowLayout5);
+    obj.flowPart52:setParent(obj.flowLayout6);
     obj.flowPart52:setHeight(20);
     obj.flowPart52:setWidth(58);
     obj.flowPart52:setName("flowPart52");
@@ -1760,7 +1819,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label57:setName("label57");
 
     obj.flowPart53 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart53:setParent(obj.flowLayout5);
+    obj.flowPart53:setParent(obj.flowLayout6);
     obj.flowPart53:setHeight(20);
     obj.flowPart53:setWidth(58);
     obj.flowPart53:setName("flowPart53");
@@ -1775,7 +1834,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label58:setName("label58");
 
     obj.flowPart54 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart54:setParent(obj.flowLayout5);
+    obj.flowPart54:setParent(obj.flowLayout6);
     obj.flowPart54:setHeight(20);
     obj.flowPart54:setWidth(58);
     obj.flowPart54:setName("flowPart54");
@@ -1790,7 +1849,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit26:setName("edit26");
 
     obj.flowPart55 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart55:setParent(obj.flowLayout5);
+    obj.flowPart55:setParent(obj.flowLayout6);
     obj.flowPart55:setHeight(20);
     obj.flowPart55:setWidth(58);
     obj.flowPart55:setName("flowPart55");
@@ -1805,7 +1864,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label59:setName("label59");
 
     obj.flowPart56 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart56:setParent(obj.flowLayout5);
+    obj.flowPart56:setParent(obj.flowLayout6);
     obj.flowPart56:setHeight(20);
     obj.flowPart56:setWidth(58);
     obj.flowPart56:setName("flowPart56");
@@ -1820,7 +1879,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label60:setName("label60");
 
     obj.flowPart57 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart57:setParent(obj.flowLayout5);
+    obj.flowPart57:setParent(obj.flowLayout6);
     obj.flowPart57:setHeight(20);
     obj.flowPart57:setWidth(58);
     obj.flowPart57:setName("flowPart57");
@@ -1835,7 +1894,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label61:setName("label61");
 
     obj.flowPart58 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart58:setParent(obj.flowLayout5);
+    obj.flowPart58:setParent(obj.flowLayout6);
     obj.flowPart58:setHeight(20);
     obj.flowPart58:setWidth(58);
     obj.flowPart58:setName("flowPart58");
@@ -1850,7 +1909,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit27:setName("edit27");
 
     obj.flowPart59 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart59:setParent(obj.flowLayout5);
+    obj.flowPart59:setParent(obj.flowLayout6);
     obj.flowPart59:setHeight(20);
     obj.flowPart59:setWidth(58);
     obj.flowPart59:setName("flowPart59");
@@ -1865,7 +1924,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label62:setName("label62");
 
     obj.flowPart60 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart60:setParent(obj.flowLayout5);
+    obj.flowPart60:setParent(obj.flowLayout6);
     obj.flowPart60:setHeight(20);
     obj.flowPart60:setWidth(58);
     obj.flowPart60:setName("flowPart60");
@@ -1880,7 +1939,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit28:setName("edit28");
 
     obj.flowPart61 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart61:setParent(obj.flowLayout5);
+    obj.flowPart61:setParent(obj.flowLayout6);
     obj.flowPart61:setHeight(20);
     obj.flowPart61:setWidth(58);
     obj.flowPart61:setName("flowPart61");
@@ -1895,7 +1954,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label63:setName("label63");
 
     obj.flowPart62 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart62:setParent(obj.flowLayout5);
+    obj.flowPart62:setParent(obj.flowLayout6);
     obj.flowPart62:setHeight(20);
     obj.flowPart62:setWidth(58);
     obj.flowPart62:setName("flowPart62");
@@ -1910,7 +1969,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit29:setName("edit29");
 
     obj.flowPart63 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart63:setParent(obj.flowLayout5);
+    obj.flowPart63:setParent(obj.flowLayout6);
     obj.flowPart63:setHeight(20);
     obj.flowPart63:setWidth(58);
     obj.flowPart63:setName("flowPart63");
@@ -1925,7 +1984,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label64:setName("label64");
 
     obj.flowPart64 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart64:setParent(obj.flowLayout5);
+    obj.flowPart64:setParent(obj.flowLayout6);
     obj.flowPart64:setHeight(20);
     obj.flowPart64:setWidth(58);
     obj.flowPart64:setName("flowPart64");
@@ -2008,16 +2067,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupBloqueio:setBackOpacity(0);
     obj.popupBloqueio:setLeft(600);
 
-    obj.flowLayout6 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout6:setParent(obj.popupBloqueio);
-    obj.flowLayout6:setWidth(126);
-    obj.flowLayout6:setHeight(150);
-    obj.flowLayout6:setPadding({top=5,bottom=5,left=5,right=5});
-    obj.flowLayout6:setMaxControlsPerLine(2);
-    obj.flowLayout6:setName("flowLayout6");
+    obj.flowLayout7 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout7:setParent(obj.popupBloqueio);
+    obj.flowLayout7:setWidth(126);
+    obj.flowLayout7:setHeight(150);
+    obj.flowLayout7:setPadding({top=5,bottom=5,left=5,right=5});
+    obj.flowLayout7:setMaxControlsPerLine(2);
+    obj.flowLayout7:setName("flowLayout7");
 
     obj.flowPart65 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart65:setParent(obj.flowLayout6);
+    obj.flowPart65:setParent(obj.flowLayout7);
     obj.flowPart65:setHeight(20);
     obj.flowPart65:setWidth(58);
     obj.flowPart65:setName("flowPart65");
@@ -2032,7 +2091,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label68:setName("label68");
 
     obj.flowPart66 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart66:setParent(obj.flowLayout6);
+    obj.flowPart66:setParent(obj.flowLayout7);
     obj.flowPart66:setHeight(20);
     obj.flowPart66:setWidth(58);
     obj.flowPart66:setName("flowPart66");
@@ -2047,7 +2106,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label69:setName("label69");
 
     obj.flowPart67 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart67:setParent(obj.flowLayout6);
+    obj.flowPart67:setParent(obj.flowLayout7);
     obj.flowPart67:setHeight(20);
     obj.flowPart67:setWidth(58);
     obj.flowPart67:setName("flowPart67");
@@ -2062,7 +2121,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label70:setName("label70");
 
     obj.flowPart68 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart68:setParent(obj.flowLayout6);
+    obj.flowPart68:setParent(obj.flowLayout7);
     obj.flowPart68:setHeight(20);
     obj.flowPart68:setWidth(58);
     obj.flowPart68:setName("flowPart68");
@@ -2077,7 +2136,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit31:setName("edit31");
 
     obj.flowPart69 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart69:setParent(obj.flowLayout6);
+    obj.flowPart69:setParent(obj.flowLayout7);
     obj.flowPart69:setHeight(20);
     obj.flowPart69:setWidth(58);
     obj.flowPart69:setName("flowPart69");
@@ -2092,7 +2151,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label71:setName("label71");
 
     obj.flowPart70 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart70:setParent(obj.flowLayout6);
+    obj.flowPart70:setParent(obj.flowLayout7);
     obj.flowPart70:setHeight(20);
     obj.flowPart70:setWidth(58);
     obj.flowPart70:setName("flowPart70");
@@ -2107,7 +2166,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label72:setName("label72");
 
     obj.flowPart71 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart71:setParent(obj.flowLayout6);
+    obj.flowPart71:setParent(obj.flowLayout7);
     obj.flowPart71:setHeight(20);
     obj.flowPart71:setWidth(58);
     obj.flowPart71:setName("flowPart71");
@@ -2122,7 +2181,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label73:setName("label73");
 
     obj.flowPart72 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart72:setParent(obj.flowLayout6);
+    obj.flowPart72:setParent(obj.flowLayout7);
     obj.flowPart72:setHeight(20);
     obj.flowPart72:setWidth(58);
     obj.flowPart72:setName("flowPart72");
@@ -2137,7 +2196,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit32:setName("edit32");
 
     obj.flowPart73 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart73:setParent(obj.flowLayout6);
+    obj.flowPart73:setParent(obj.flowLayout7);
     obj.flowPart73:setHeight(20);
     obj.flowPart73:setWidth(58);
     obj.flowPart73:setName("flowPart73");
@@ -2152,7 +2211,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label74:setName("label74");
 
     obj.flowPart74 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart74:setParent(obj.flowLayout6);
+    obj.flowPart74:setParent(obj.flowLayout7);
     obj.flowPart74:setHeight(20);
     obj.flowPart74:setWidth(58);
     obj.flowPart74:setName("flowPart74");
@@ -2167,7 +2226,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit33:setName("edit33");
 
     obj.flowPart75 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart75:setParent(obj.flowLayout6);
+    obj.flowPart75:setParent(obj.flowLayout7);
     obj.flowPart75:setHeight(20);
     obj.flowPart75:setWidth(58);
     obj.flowPart75:setName("flowPart75");
@@ -2182,7 +2241,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label75:setName("label75");
 
     obj.flowPart76 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart76:setParent(obj.flowLayout6);
+    obj.flowPart76:setParent(obj.flowLayout7);
     obj.flowPart76:setHeight(20);
     obj.flowPart76:setWidth(58);
     obj.flowPart76:setName("flowPart76");
@@ -2197,7 +2256,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit34:setName("edit34");
 
     obj.flowPart77 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart77:setParent(obj.flowLayout6);
+    obj.flowPart77:setParent(obj.flowLayout7);
     obj.flowPart77:setHeight(20);
     obj.flowPart77:setWidth(58);
     obj.flowPart77:setName("flowPart77");
@@ -2212,7 +2271,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label76:setName("label76");
 
     obj.flowPart78 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart78:setParent(obj.flowLayout6);
+    obj.flowPart78:setParent(obj.flowLayout7);
     obj.flowPart78:setHeight(20);
     obj.flowPart78:setWidth(58);
     obj.flowPart78:setName("flowPart78");
@@ -2276,15 +2335,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupxpClasse:setBackOpacity(0.4);
     obj.popupxpClasse:setLeft(600);
 
-    obj.flowLayout7 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout7:setParent(obj.popupxpClasse);
-    obj.flowLayout7:setWidth(250);
-    obj.flowLayout7:setHeight(30);
-    obj.flowLayout7:setMaxControlsPerLine(3);
-    obj.flowLayout7:setName("flowLayout7");
+    obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout8:setParent(obj.popupxpClasse);
+    obj.flowLayout8:setWidth(250);
+    obj.flowLayout8:setHeight(30);
+    obj.flowLayout8:setMaxControlsPerLine(3);
+    obj.flowLayout8:setName("flowLayout8");
 
     obj.label80 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label80:setParent(obj.flowLayout7);
+    obj.label80:setParent(obj.flowLayout8);
     obj.label80:setText("Adicionar Experiência: ");
     obj.label80:setWidth(150);
     obj.label80:setHeight(30);
@@ -2295,7 +2354,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label80:setName("label80");
 
     obj.flowPart79 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart79:setParent(obj.flowLayout7);
+    obj.flowPart79:setParent(obj.flowLayout8);
     obj.flowPart79:setHeight(30);
     obj.flowPart79:setWidth(50);
     obj.flowPart79:setName("flowPart79");
@@ -2319,7 +2378,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine12:setName("horzLine12");
 
     obj.okButtonClasse = GUI.fromHandle(_obj_newObject("button"));
-    obj.okButtonClasse:setParent(obj.flowLayout7);
+    obj.okButtonClasse:setParent(obj.flowLayout8);
     obj.okButtonClasse:setText("ok");
     obj.okButtonClasse:setHeight(20);
     obj.okButtonClasse:setWidth(25);
@@ -2369,15 +2428,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.popupxpProfissao:setBackOpacity(0.4);
     obj.popupxpProfissao:setLeft(600);
 
-    obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout8:setParent(obj.popupxpProfissao);
-    obj.flowLayout8:setWidth(250);
-    obj.flowLayout8:setHeight(30);
-    obj.flowLayout8:setMaxControlsPerLine(3);
-    obj.flowLayout8:setName("flowLayout8");
+    obj.flowLayout9 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout9:setParent(obj.popupxpProfissao);
+    obj.flowLayout9:setWidth(250);
+    obj.flowLayout9:setHeight(30);
+    obj.flowLayout9:setMaxControlsPerLine(3);
+    obj.flowLayout9:setName("flowLayout9");
 
     obj.label83 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label83:setParent(obj.flowLayout8);
+    obj.label83:setParent(obj.flowLayout9);
     obj.label83:setText("Adicionar Experiência: ");
     obj.label83:setWidth(150);
     obj.label83:setHeight(30);
@@ -2388,7 +2447,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label83:setName("label83");
 
     obj.flowPart80 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart80:setParent(obj.flowLayout8);
+    obj.flowPart80:setParent(obj.flowLayout9);
     obj.flowPart80:setHeight(30);
     obj.flowPart80:setWidth(50);
     obj.flowPart80:setName("flowPart80");
@@ -2412,7 +2471,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine13:setName("horzLine13");
 
     obj.okButtonProfissao = GUI.fromHandle(_obj_newObject("button"));
-    obj.okButtonProfissao:setParent(obj.flowLayout8);
+    obj.okButtonProfissao:setParent(obj.flowLayout9);
     obj.okButtonProfissao:setText("ok");
     obj.okButtonProfissao:setHeight(20);
     obj.okButtonProfissao:setWidth(25);
@@ -2659,14 +2718,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart93:setMinScaledWidth(30);
     obj.flowPart93:setMaxScaledWidth(50);
 
-    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.flowPart93);
-    obj.image2:setSRC("/imagens/plus.png");
-    obj.image2:setHeight(15);
-    obj.image2:setWidth(15);
-    obj.image2:setLeft(15);
-    obj.image2:setTop(5);
-    obj.image2:setName("image2");
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image3:setParent(obj.flowPart93);
+    obj.image3:setSRC("/imagens/plus.png");
+    obj.image3:setHeight(15);
+    obj.image3:setWidth(15);
+    obj.image3:setLeft(15);
+    obj.image3:setTop(5);
+    obj.image3:setName("image3");
 
     obj.flowPart94 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart94:setParent(obj.tabelaDeAtributos);
@@ -2706,14 +2765,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart95:setMinScaledWidth(30);
     obj.flowPart95:setMaxScaledWidth(50);
 
-    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.flowPart95);
-    obj.image3:setSRC("/imagens/plus.png");
-    obj.image3:setHeight(15);
-    obj.image3:setWidth(15);
-    obj.image3:setLeft(15);
-    obj.image3:setTop(5);
-    obj.image3:setName("image3");
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image4:setParent(obj.flowPart95);
+    obj.image4:setSRC("/imagens/plus.png");
+    obj.image4:setHeight(15);
+    obj.image4:setWidth(15);
+    obj.image4:setLeft(15);
+    obj.image4:setTop(5);
+    obj.image4:setName("image4");
 
     obj.flowPart96 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart96:setParent(obj.tabelaDeAtributos);
@@ -2753,14 +2812,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart97:setMinScaledWidth(30);
     obj.flowPart97:setMaxScaledWidth(50);
 
-    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.flowPart97);
-    obj.image4:setSRC("/imagens/plus.png");
-    obj.image4:setHeight(15);
-    obj.image4:setWidth(15);
-    obj.image4:setLeft(15);
-    obj.image4:setTop(5);
-    obj.image4:setName("image4");
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image5:setParent(obj.flowPart97);
+    obj.image5:setSRC("/imagens/plus.png");
+    obj.image5:setHeight(15);
+    obj.image5:setWidth(15);
+    obj.image5:setLeft(15);
+    obj.image5:setTop(5);
+    obj.image5:setName("image5");
 
     obj.flowPart98 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart98:setParent(obj.tabelaDeAtributos);
@@ -2800,14 +2859,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart99:setMinScaledWidth(30);
     obj.flowPart99:setMaxScaledWidth(50);
 
-    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.flowPart99);
-    obj.image5:setSRC("/imagens/plus.png");
-    obj.image5:setHeight(15);
-    obj.image5:setWidth(15);
-    obj.image5:setLeft(15);
-    obj.image5:setTop(5);
-    obj.image5:setName("image5");
+    obj.image6 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image6:setParent(obj.flowPart99);
+    obj.image6:setSRC("/imagens/plus.png");
+    obj.image6:setHeight(15);
+    obj.image6:setWidth(15);
+    obj.image6:setLeft(15);
+    obj.image6:setTop(5);
+    obj.image6:setName("image6");
 
     obj.flowPart100 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart100:setParent(obj.tabelaDeAtributos);
@@ -2847,14 +2906,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart101:setMinScaledWidth(30);
     obj.flowPart101:setMaxScaledWidth(50);
 
-    obj.image6 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image6:setParent(obj.flowPart101);
-    obj.image6:setSRC("/imagens/equals.png");
-    obj.image6:setHeight(15);
-    obj.image6:setWidth(15);
-    obj.image6:setLeft(15);
-    obj.image6:setTop(5);
-    obj.image6:setName("image6");
+    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image7:setParent(obj.flowPart101);
+    obj.image7:setSRC("/imagens/equals.png");
+    obj.image7:setHeight(15);
+    obj.image7:setWidth(15);
+    obj.image7:setLeft(15);
+    obj.image7:setTop(5);
+    obj.image7:setName("image7");
 
     obj.flowPart102 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart102:setParent(obj.tabelaDeAtributos);
@@ -2894,14 +2953,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart103:setMinScaledWidth(30);
     obj.flowPart103:setMaxScaledWidth(50);
 
-    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image7:setParent(obj.flowPart103);
-    obj.image7:setSRC("/imagens/plus.png");
-    obj.image7:setHeight(15);
-    obj.image7:setWidth(15);
-    obj.image7:setLeft(15);
-    obj.image7:setTop(5);
-    obj.image7:setName("image7");
+    obj.image8 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image8:setParent(obj.flowPart103);
+    obj.image8:setSRC("/imagens/plus.png");
+    obj.image8:setHeight(15);
+    obj.image8:setWidth(15);
+    obj.image8:setLeft(15);
+    obj.image8:setTop(5);
+    obj.image8:setName("image8");
 
     obj.flowPart104 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart104:setParent(obj.tabelaDeAtributos);
@@ -2941,14 +3000,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart105:setMinScaledWidth(30);
     obj.flowPart105:setMaxScaledWidth(50);
 
-    obj.image8 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image8:setParent(obj.flowPart105);
-    obj.image8:setSRC("/imagens/equals.png");
-    obj.image8:setHeight(15);
-    obj.image8:setWidth(15);
-    obj.image8:setLeft(15);
-    obj.image8:setTop(5);
-    obj.image8:setName("image8");
+    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image9:setParent(obj.flowPart105);
+    obj.image9:setSRC("/imagens/equals.png");
+    obj.image9:setHeight(15);
+    obj.image9:setWidth(15);
+    obj.image9:setLeft(15);
+    obj.image9:setTop(5);
+    obj.image9:setName("image9");
 
     obj.flowPart106 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart106:setParent(obj.tabelaDeAtributos);
@@ -3041,14 +3100,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart109:setMinScaledWidth(30);
     obj.flowPart109:setMaxScaledWidth(50);
 
-    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image9:setParent(obj.flowPart109);
-    obj.image9:setSRC("/imagens/plus.png");
-    obj.image9:setHeight(15);
-    obj.image9:setWidth(15);
-    obj.image9:setLeft(15);
-    obj.image9:setTop(5);
-    obj.image9:setName("image9");
+    obj.image10 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image10:setParent(obj.flowPart109);
+    obj.image10:setSRC("/imagens/plus.png");
+    obj.image10:setHeight(15);
+    obj.image10:setWidth(15);
+    obj.image10:setLeft(15);
+    obj.image10:setTop(5);
+    obj.image10:setName("image10");
 
     obj.flowPart110 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart110:setParent(obj.tabelaDeAtributos);
@@ -3088,14 +3147,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart111:setMinScaledWidth(30);
     obj.flowPart111:setMaxScaledWidth(50);
 
-    obj.image10 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image10:setParent(obj.flowPart111);
-    obj.image10:setSRC("/imagens/plus.png");
-    obj.image10:setHeight(15);
-    obj.image10:setWidth(15);
-    obj.image10:setLeft(15);
-    obj.image10:setTop(5);
-    obj.image10:setName("image10");
+    obj.image11 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image11:setParent(obj.flowPart111);
+    obj.image11:setSRC("/imagens/plus.png");
+    obj.image11:setHeight(15);
+    obj.image11:setWidth(15);
+    obj.image11:setLeft(15);
+    obj.image11:setTop(5);
+    obj.image11:setName("image11");
 
     obj.flowPart112 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart112:setParent(obj.tabelaDeAtributos);
@@ -3135,14 +3194,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart113:setMinScaledWidth(30);
     obj.flowPart113:setMaxScaledWidth(50);
 
-    obj.image11 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image11:setParent(obj.flowPart113);
-    obj.image11:setSRC("/imagens/plus.png");
-    obj.image11:setHeight(15);
-    obj.image11:setWidth(15);
-    obj.image11:setLeft(15);
-    obj.image11:setTop(5);
-    obj.image11:setName("image11");
+    obj.image12 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image12:setParent(obj.flowPart113);
+    obj.image12:setSRC("/imagens/plus.png");
+    obj.image12:setHeight(15);
+    obj.image12:setWidth(15);
+    obj.image12:setLeft(15);
+    obj.image12:setTop(5);
+    obj.image12:setName("image12");
 
     obj.flowPart114 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart114:setParent(obj.tabelaDeAtributos);
@@ -3182,14 +3241,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart115:setMinScaledWidth(30);
     obj.flowPart115:setMaxScaledWidth(50);
 
-    obj.image12 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image12:setParent(obj.flowPart115);
-    obj.image12:setSRC("/imagens/plus.png");
-    obj.image12:setHeight(15);
-    obj.image12:setWidth(15);
-    obj.image12:setLeft(15);
-    obj.image12:setTop(5);
-    obj.image12:setName("image12");
+    obj.image13 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image13:setParent(obj.flowPart115);
+    obj.image13:setSRC("/imagens/plus.png");
+    obj.image13:setHeight(15);
+    obj.image13:setWidth(15);
+    obj.image13:setLeft(15);
+    obj.image13:setTop(5);
+    obj.image13:setName("image13");
 
     obj.flowPart116 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart116:setParent(obj.tabelaDeAtributos);
@@ -3229,14 +3288,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart117:setMinScaledWidth(30);
     obj.flowPart117:setMaxScaledWidth(50);
 
-    obj.image13 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image13:setParent(obj.flowPart117);
-    obj.image13:setSRC("/imagens/equals.png");
-    obj.image13:setHeight(15);
-    obj.image13:setWidth(15);
-    obj.image13:setLeft(15);
-    obj.image13:setTop(5);
-    obj.image13:setName("image13");
+    obj.image14 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image14:setParent(obj.flowPart117);
+    obj.image14:setSRC("/imagens/equals.png");
+    obj.image14:setHeight(15);
+    obj.image14:setWidth(15);
+    obj.image14:setLeft(15);
+    obj.image14:setTop(5);
+    obj.image14:setName("image14");
 
     obj.flowPart118 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart118:setParent(obj.tabelaDeAtributos);
@@ -3276,14 +3335,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart119:setMinScaledWidth(30);
     obj.flowPart119:setMaxScaledWidth(50);
 
-    obj.image14 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image14:setParent(obj.flowPart119);
-    obj.image14:setSRC("/imagens/plus.png");
-    obj.image14:setHeight(15);
-    obj.image14:setWidth(15);
-    obj.image14:setLeft(15);
-    obj.image14:setTop(5);
-    obj.image14:setName("image14");
+    obj.image15 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image15:setParent(obj.flowPart119);
+    obj.image15:setSRC("/imagens/plus.png");
+    obj.image15:setHeight(15);
+    obj.image15:setWidth(15);
+    obj.image15:setLeft(15);
+    obj.image15:setTop(5);
+    obj.image15:setName("image15");
 
     obj.flowPart120 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart120:setParent(obj.tabelaDeAtributos);
@@ -3323,14 +3382,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart121:setMinScaledWidth(30);
     obj.flowPart121:setMaxScaledWidth(50);
 
-    obj.image15 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image15:setParent(obj.flowPart121);
-    obj.image15:setSRC("/imagens/equals.png");
-    obj.image15:setHeight(15);
-    obj.image15:setWidth(15);
-    obj.image15:setLeft(15);
-    obj.image15:setTop(5);
-    obj.image15:setName("image15");
+    obj.image16 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image16:setParent(obj.flowPart121);
+    obj.image16:setSRC("/imagens/equals.png");
+    obj.image16:setHeight(15);
+    obj.image16:setWidth(15);
+    obj.image16:setLeft(15);
+    obj.image16:setTop(5);
+    obj.image16:setName("image16");
 
     obj.flowPart122 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart122:setParent(obj.tabelaDeAtributos);
@@ -3423,14 +3482,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart125:setMinScaledWidth(30);
     obj.flowPart125:setMaxScaledWidth(50);
 
-    obj.image16 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image16:setParent(obj.flowPart125);
-    obj.image16:setSRC("/imagens/plus.png");
-    obj.image16:setHeight(15);
-    obj.image16:setWidth(15);
-    obj.image16:setLeft(15);
-    obj.image16:setTop(5);
-    obj.image16:setName("image16");
+    obj.image17 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image17:setParent(obj.flowPart125);
+    obj.image17:setSRC("/imagens/plus.png");
+    obj.image17:setHeight(15);
+    obj.image17:setWidth(15);
+    obj.image17:setLeft(15);
+    obj.image17:setTop(5);
+    obj.image17:setName("image17");
 
     obj.flowPart126 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart126:setParent(obj.tabelaDeAtributos);
@@ -3470,14 +3529,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart127:setMinScaledWidth(30);
     obj.flowPart127:setMaxScaledWidth(50);
 
-    obj.image17 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image17:setParent(obj.flowPart127);
-    obj.image17:setSRC("/imagens/plus.png");
-    obj.image17:setHeight(15);
-    obj.image17:setWidth(15);
-    obj.image17:setLeft(15);
-    obj.image17:setTop(5);
-    obj.image17:setName("image17");
+    obj.image18 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image18:setParent(obj.flowPart127);
+    obj.image18:setSRC("/imagens/plus.png");
+    obj.image18:setHeight(15);
+    obj.image18:setWidth(15);
+    obj.image18:setLeft(15);
+    obj.image18:setTop(5);
+    obj.image18:setName("image18");
 
     obj.flowPart128 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart128:setParent(obj.tabelaDeAtributos);
@@ -3517,14 +3576,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart129:setMinScaledWidth(30);
     obj.flowPart129:setMaxScaledWidth(50);
 
-    obj.image18 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image18:setParent(obj.flowPart129);
-    obj.image18:setSRC("/imagens/plus.png");
-    obj.image18:setHeight(15);
-    obj.image18:setWidth(15);
-    obj.image18:setLeft(15);
-    obj.image18:setTop(5);
-    obj.image18:setName("image18");
+    obj.image19 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image19:setParent(obj.flowPart129);
+    obj.image19:setSRC("/imagens/plus.png");
+    obj.image19:setHeight(15);
+    obj.image19:setWidth(15);
+    obj.image19:setLeft(15);
+    obj.image19:setTop(5);
+    obj.image19:setName("image19");
 
     obj.flowPart130 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart130:setParent(obj.tabelaDeAtributos);
@@ -3564,14 +3623,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart131:setMinScaledWidth(30);
     obj.flowPart131:setMaxScaledWidth(50);
 
-    obj.image19 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image19:setParent(obj.flowPart131);
-    obj.image19:setSRC("/imagens/plus.png");
-    obj.image19:setHeight(15);
-    obj.image19:setWidth(15);
-    obj.image19:setLeft(15);
-    obj.image19:setTop(5);
-    obj.image19:setName("image19");
+    obj.image20 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image20:setParent(obj.flowPart131);
+    obj.image20:setSRC("/imagens/plus.png");
+    obj.image20:setHeight(15);
+    obj.image20:setWidth(15);
+    obj.image20:setLeft(15);
+    obj.image20:setTop(5);
+    obj.image20:setName("image20");
 
     obj.flowPart132 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart132:setParent(obj.tabelaDeAtributos);
@@ -3611,14 +3670,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart133:setMinScaledWidth(30);
     obj.flowPart133:setMaxScaledWidth(50);
 
-    obj.image20 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image20:setParent(obj.flowPart133);
-    obj.image20:setSRC("/imagens/equals.png");
-    obj.image20:setHeight(15);
-    obj.image20:setWidth(15);
-    obj.image20:setLeft(15);
-    obj.image20:setTop(5);
-    obj.image20:setName("image20");
+    obj.image21 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image21:setParent(obj.flowPart133);
+    obj.image21:setSRC("/imagens/equals.png");
+    obj.image21:setHeight(15);
+    obj.image21:setWidth(15);
+    obj.image21:setLeft(15);
+    obj.image21:setTop(5);
+    obj.image21:setName("image21");
 
     obj.flowPart134 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart134:setParent(obj.tabelaDeAtributos);
@@ -3658,14 +3717,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart135:setMinScaledWidth(30);
     obj.flowPart135:setMaxScaledWidth(50);
 
-    obj.image21 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image21:setParent(obj.flowPart135);
-    obj.image21:setSRC("/imagens/plus.png");
-    obj.image21:setHeight(15);
-    obj.image21:setWidth(15);
-    obj.image21:setLeft(15);
-    obj.image21:setTop(5);
-    obj.image21:setName("image21");
+    obj.image22 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image22:setParent(obj.flowPart135);
+    obj.image22:setSRC("/imagens/plus.png");
+    obj.image22:setHeight(15);
+    obj.image22:setWidth(15);
+    obj.image22:setLeft(15);
+    obj.image22:setTop(5);
+    obj.image22:setName("image22");
 
     obj.flowPart136 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart136:setParent(obj.tabelaDeAtributos);
@@ -3705,14 +3764,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart137:setMinScaledWidth(30);
     obj.flowPart137:setMaxScaledWidth(50);
 
-    obj.image22 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image22:setParent(obj.flowPart137);
-    obj.image22:setSRC("/imagens/equals.png");
-    obj.image22:setHeight(15);
-    obj.image22:setWidth(15);
-    obj.image22:setLeft(15);
-    obj.image22:setTop(5);
-    obj.image22:setName("image22");
+    obj.image23 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image23:setParent(obj.flowPart137);
+    obj.image23:setSRC("/imagens/equals.png");
+    obj.image23:setHeight(15);
+    obj.image23:setWidth(15);
+    obj.image23:setLeft(15);
+    obj.image23:setTop(5);
+    obj.image23:setName("image23");
 
     obj.flowPart138 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart138:setParent(obj.tabelaDeAtributos);
@@ -3805,14 +3864,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart141:setMinScaledWidth(30);
     obj.flowPart141:setMaxScaledWidth(50);
 
-    obj.image23 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image23:setParent(obj.flowPart141);
-    obj.image23:setSRC("/imagens/plus.png");
-    obj.image23:setHeight(15);
-    obj.image23:setWidth(15);
-    obj.image23:setLeft(15);
-    obj.image23:setTop(5);
-    obj.image23:setName("image23");
+    obj.image24 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image24:setParent(obj.flowPart141);
+    obj.image24:setSRC("/imagens/plus.png");
+    obj.image24:setHeight(15);
+    obj.image24:setWidth(15);
+    obj.image24:setLeft(15);
+    obj.image24:setTop(5);
+    obj.image24:setName("image24");
 
     obj.flowPart142 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart142:setParent(obj.tabelaDeAtributos);
@@ -3852,14 +3911,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart143:setMinScaledWidth(30);
     obj.flowPart143:setMaxScaledWidth(50);
 
-    obj.image24 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image24:setParent(obj.flowPart143);
-    obj.image24:setSRC("/imagens/plus.png");
-    obj.image24:setHeight(15);
-    obj.image24:setWidth(15);
-    obj.image24:setLeft(15);
-    obj.image24:setTop(5);
-    obj.image24:setName("image24");
+    obj.image25 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image25:setParent(obj.flowPart143);
+    obj.image25:setSRC("/imagens/plus.png");
+    obj.image25:setHeight(15);
+    obj.image25:setWidth(15);
+    obj.image25:setLeft(15);
+    obj.image25:setTop(5);
+    obj.image25:setName("image25");
 
     obj.flowPart144 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart144:setParent(obj.tabelaDeAtributos);
@@ -3899,14 +3958,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart145:setMinScaledWidth(30);
     obj.flowPart145:setMaxScaledWidth(50);
 
-    obj.image25 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image25:setParent(obj.flowPart145);
-    obj.image25:setSRC("/imagens/plus.png");
-    obj.image25:setHeight(15);
-    obj.image25:setWidth(15);
-    obj.image25:setLeft(15);
-    obj.image25:setTop(5);
-    obj.image25:setName("image25");
+    obj.image26 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image26:setParent(obj.flowPart145);
+    obj.image26:setSRC("/imagens/plus.png");
+    obj.image26:setHeight(15);
+    obj.image26:setWidth(15);
+    obj.image26:setLeft(15);
+    obj.image26:setTop(5);
+    obj.image26:setName("image26");
 
     obj.flowPart146 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart146:setParent(obj.tabelaDeAtributos);
@@ -3946,14 +4005,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart147:setMinScaledWidth(30);
     obj.flowPart147:setMaxScaledWidth(50);
 
-    obj.image26 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image26:setParent(obj.flowPart147);
-    obj.image26:setSRC("/imagens/plus.png");
-    obj.image26:setHeight(15);
-    obj.image26:setWidth(15);
-    obj.image26:setLeft(15);
-    obj.image26:setTop(5);
-    obj.image26:setName("image26");
+    obj.image27 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image27:setParent(obj.flowPart147);
+    obj.image27:setSRC("/imagens/plus.png");
+    obj.image27:setHeight(15);
+    obj.image27:setWidth(15);
+    obj.image27:setLeft(15);
+    obj.image27:setTop(5);
+    obj.image27:setName("image27");
 
     obj.flowPart148 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart148:setParent(obj.tabelaDeAtributos);
@@ -3993,14 +4052,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart149:setMinScaledWidth(30);
     obj.flowPart149:setMaxScaledWidth(50);
 
-    obj.image27 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image27:setParent(obj.flowPart149);
-    obj.image27:setSRC("/imagens/equals.png");
-    obj.image27:setHeight(15);
-    obj.image27:setWidth(15);
-    obj.image27:setLeft(15);
-    obj.image27:setTop(5);
-    obj.image27:setName("image27");
+    obj.image28 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image28:setParent(obj.flowPart149);
+    obj.image28:setSRC("/imagens/equals.png");
+    obj.image28:setHeight(15);
+    obj.image28:setWidth(15);
+    obj.image28:setLeft(15);
+    obj.image28:setTop(5);
+    obj.image28:setName("image28");
 
     obj.flowPart150 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart150:setParent(obj.tabelaDeAtributos);
@@ -4040,14 +4099,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart151:setMinScaledWidth(30);
     obj.flowPart151:setMaxScaledWidth(50);
 
-    obj.image28 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image28:setParent(obj.flowPart151);
-    obj.image28:setSRC("/imagens/plus.png");
-    obj.image28:setHeight(15);
-    obj.image28:setWidth(15);
-    obj.image28:setLeft(15);
-    obj.image28:setTop(5);
-    obj.image28:setName("image28");
+    obj.image29 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image29:setParent(obj.flowPart151);
+    obj.image29:setSRC("/imagens/plus.png");
+    obj.image29:setHeight(15);
+    obj.image29:setWidth(15);
+    obj.image29:setLeft(15);
+    obj.image29:setTop(5);
+    obj.image29:setName("image29");
 
     obj.flowPart152 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart152:setParent(obj.tabelaDeAtributos);
@@ -4087,14 +4146,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart153:setMinScaledWidth(30);
     obj.flowPart153:setMaxScaledWidth(50);
 
-    obj.image29 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image29:setParent(obj.flowPart153);
-    obj.image29:setSRC("/imagens/equals.png");
-    obj.image29:setHeight(15);
-    obj.image29:setWidth(15);
-    obj.image29:setLeft(15);
-    obj.image29:setTop(5);
-    obj.image29:setName("image29");
+    obj.image30 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image30:setParent(obj.flowPart153);
+    obj.image30:setSRC("/imagens/equals.png");
+    obj.image30:setHeight(15);
+    obj.image30:setWidth(15);
+    obj.image30:setLeft(15);
+    obj.image30:setTop(5);
+    obj.image30:setName("image30");
 
     obj.flowPart154 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart154:setParent(obj.tabelaDeAtributos);
@@ -4187,14 +4246,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart157:setMinScaledWidth(30);
     obj.flowPart157:setMaxScaledWidth(50);
 
-    obj.image30 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image30:setParent(obj.flowPart157);
-    obj.image30:setSRC("/imagens/plus.png");
-    obj.image30:setHeight(15);
-    obj.image30:setWidth(15);
-    obj.image30:setLeft(15);
-    obj.image30:setTop(5);
-    obj.image30:setName("image30");
+    obj.image31 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image31:setParent(obj.flowPart157);
+    obj.image31:setSRC("/imagens/plus.png");
+    obj.image31:setHeight(15);
+    obj.image31:setWidth(15);
+    obj.image31:setLeft(15);
+    obj.image31:setTop(5);
+    obj.image31:setName("image31");
 
     obj.flowPart158 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart158:setParent(obj.tabelaDeAtributos);
@@ -4234,14 +4293,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart159:setMinScaledWidth(30);
     obj.flowPart159:setMaxScaledWidth(50);
 
-    obj.image31 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image31:setParent(obj.flowPart159);
-    obj.image31:setSRC("/imagens/plus.png");
-    obj.image31:setHeight(15);
-    obj.image31:setWidth(15);
-    obj.image31:setLeft(15);
-    obj.image31:setTop(5);
-    obj.image31:setName("image31");
+    obj.image32 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image32:setParent(obj.flowPart159);
+    obj.image32:setSRC("/imagens/plus.png");
+    obj.image32:setHeight(15);
+    obj.image32:setWidth(15);
+    obj.image32:setLeft(15);
+    obj.image32:setTop(5);
+    obj.image32:setName("image32");
 
     obj.flowPart160 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart160:setParent(obj.tabelaDeAtributos);
@@ -4281,14 +4340,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart161:setMinScaledWidth(30);
     obj.flowPart161:setMaxScaledWidth(50);
 
-    obj.image32 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image32:setParent(obj.flowPart161);
-    obj.image32:setSRC("/imagens/plus.png");
-    obj.image32:setHeight(15);
-    obj.image32:setWidth(15);
-    obj.image32:setLeft(15);
-    obj.image32:setTop(5);
-    obj.image32:setName("image32");
+    obj.image33 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image33:setParent(obj.flowPart161);
+    obj.image33:setSRC("/imagens/plus.png");
+    obj.image33:setHeight(15);
+    obj.image33:setWidth(15);
+    obj.image33:setLeft(15);
+    obj.image33:setTop(5);
+    obj.image33:setName("image33");
 
     obj.flowPart162 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart162:setParent(obj.tabelaDeAtributos);
@@ -4328,14 +4387,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart163:setMinScaledWidth(30);
     obj.flowPart163:setMaxScaledWidth(50);
 
-    obj.image33 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image33:setParent(obj.flowPart163);
-    obj.image33:setSRC("/imagens/plus.png");
-    obj.image33:setHeight(15);
-    obj.image33:setWidth(15);
-    obj.image33:setLeft(15);
-    obj.image33:setTop(5);
-    obj.image33:setName("image33");
+    obj.image34 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image34:setParent(obj.flowPart163);
+    obj.image34:setSRC("/imagens/plus.png");
+    obj.image34:setHeight(15);
+    obj.image34:setWidth(15);
+    obj.image34:setLeft(15);
+    obj.image34:setTop(5);
+    obj.image34:setName("image34");
 
     obj.flowPart164 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart164:setParent(obj.tabelaDeAtributos);
@@ -4375,14 +4434,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart165:setMinScaledWidth(30);
     obj.flowPart165:setMaxScaledWidth(50);
 
-    obj.image34 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image34:setParent(obj.flowPart165);
-    obj.image34:setSRC("/imagens/equals.png");
-    obj.image34:setHeight(15);
-    obj.image34:setWidth(15);
-    obj.image34:setLeft(15);
-    obj.image34:setTop(5);
-    obj.image34:setName("image34");
+    obj.image35 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image35:setParent(obj.flowPart165);
+    obj.image35:setSRC("/imagens/equals.png");
+    obj.image35:setHeight(15);
+    obj.image35:setWidth(15);
+    obj.image35:setLeft(15);
+    obj.image35:setTop(5);
+    obj.image35:setName("image35");
 
     obj.flowPart166 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart166:setParent(obj.tabelaDeAtributos);
@@ -4422,14 +4481,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart167:setMinScaledWidth(30);
     obj.flowPart167:setMaxScaledWidth(50);
 
-    obj.image35 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image35:setParent(obj.flowPart167);
-    obj.image35:setSRC("/imagens/plus.png");
-    obj.image35:setHeight(15);
-    obj.image35:setWidth(15);
-    obj.image35:setLeft(15);
-    obj.image35:setTop(5);
-    obj.image35:setName("image35");
+    obj.image36 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image36:setParent(obj.flowPart167);
+    obj.image36:setSRC("/imagens/plus.png");
+    obj.image36:setHeight(15);
+    obj.image36:setWidth(15);
+    obj.image36:setLeft(15);
+    obj.image36:setTop(5);
+    obj.image36:setName("image36");
 
     obj.flowPart168 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart168:setParent(obj.tabelaDeAtributos);
@@ -4469,14 +4528,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart169:setMinScaledWidth(30);
     obj.flowPart169:setMaxScaledWidth(50);
 
-    obj.image36 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image36:setParent(obj.flowPart169);
-    obj.image36:setSRC("/imagens/equals.png");
-    obj.image36:setHeight(15);
-    obj.image36:setWidth(15);
-    obj.image36:setLeft(15);
-    obj.image36:setTop(5);
-    obj.image36:setName("image36");
+    obj.image37 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image37:setParent(obj.flowPart169);
+    obj.image37:setSRC("/imagens/equals.png");
+    obj.image37:setHeight(15);
+    obj.image37:setWidth(15);
+    obj.image37:setLeft(15);
+    obj.image37:setTop(5);
+    obj.image37:setName("image37");
 
     obj.flowPart170 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart170:setParent(obj.tabelaDeAtributos);
@@ -4569,14 +4628,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart173:setMinScaledWidth(30);
     obj.flowPart173:setMaxScaledWidth(50);
 
-    obj.image37 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image37:setParent(obj.flowPart173);
-    obj.image37:setSRC("/imagens/plus.png");
-    obj.image37:setHeight(15);
-    obj.image37:setWidth(15);
-    obj.image37:setLeft(15);
-    obj.image37:setTop(5);
-    obj.image37:setName("image37");
+    obj.image38 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image38:setParent(obj.flowPart173);
+    obj.image38:setSRC("/imagens/plus.png");
+    obj.image38:setHeight(15);
+    obj.image38:setWidth(15);
+    obj.image38:setLeft(15);
+    obj.image38:setTop(5);
+    obj.image38:setName("image38");
 
     obj.flowPart174 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart174:setParent(obj.tabelaDeAtributos);
@@ -4616,14 +4675,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart175:setMinScaledWidth(30);
     obj.flowPart175:setMaxScaledWidth(50);
 
-    obj.image38 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image38:setParent(obj.flowPart175);
-    obj.image38:setSRC("/imagens/plus.png");
-    obj.image38:setHeight(15);
-    obj.image38:setWidth(15);
-    obj.image38:setLeft(15);
-    obj.image38:setTop(5);
-    obj.image38:setName("image38");
+    obj.image39 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image39:setParent(obj.flowPart175);
+    obj.image39:setSRC("/imagens/plus.png");
+    obj.image39:setHeight(15);
+    obj.image39:setWidth(15);
+    obj.image39:setLeft(15);
+    obj.image39:setTop(5);
+    obj.image39:setName("image39");
 
     obj.flowPart176 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart176:setParent(obj.tabelaDeAtributos);
@@ -4663,14 +4722,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart177:setMinScaledWidth(30);
     obj.flowPart177:setMaxScaledWidth(50);
 
-    obj.image39 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image39:setParent(obj.flowPart177);
-    obj.image39:setSRC("/imagens/plus.png");
-    obj.image39:setHeight(15);
-    obj.image39:setWidth(15);
-    obj.image39:setLeft(15);
-    obj.image39:setTop(5);
-    obj.image39:setName("image39");
+    obj.image40 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image40:setParent(obj.flowPart177);
+    obj.image40:setSRC("/imagens/plus.png");
+    obj.image40:setHeight(15);
+    obj.image40:setWidth(15);
+    obj.image40:setLeft(15);
+    obj.image40:setTop(5);
+    obj.image40:setName("image40");
 
     obj.flowPart178 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart178:setParent(obj.tabelaDeAtributos);
@@ -4710,14 +4769,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart179:setMinScaledWidth(30);
     obj.flowPart179:setMaxScaledWidth(50);
 
-    obj.image40 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image40:setParent(obj.flowPart179);
-    obj.image40:setSRC("/imagens/plus.png");
-    obj.image40:setHeight(15);
-    obj.image40:setWidth(15);
-    obj.image40:setLeft(15);
-    obj.image40:setTop(5);
-    obj.image40:setName("image40");
+    obj.image41 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image41:setParent(obj.flowPart179);
+    obj.image41:setSRC("/imagens/plus.png");
+    obj.image41:setHeight(15);
+    obj.image41:setWidth(15);
+    obj.image41:setLeft(15);
+    obj.image41:setTop(5);
+    obj.image41:setName("image41");
 
     obj.flowPart180 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart180:setParent(obj.tabelaDeAtributos);
@@ -4757,14 +4816,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart181:setMinScaledWidth(30);
     obj.flowPart181:setMaxScaledWidth(50);
 
-    obj.image41 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image41:setParent(obj.flowPart181);
-    obj.image41:setSRC("/imagens/equals.png");
-    obj.image41:setHeight(15);
-    obj.image41:setWidth(15);
-    obj.image41:setLeft(15);
-    obj.image41:setTop(5);
-    obj.image41:setName("image41");
+    obj.image42 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image42:setParent(obj.flowPart181);
+    obj.image42:setSRC("/imagens/equals.png");
+    obj.image42:setHeight(15);
+    obj.image42:setWidth(15);
+    obj.image42:setLeft(15);
+    obj.image42:setTop(5);
+    obj.image42:setName("image42");
 
     obj.flowPart182 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart182:setParent(obj.tabelaDeAtributos);
@@ -4804,14 +4863,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart183:setMinScaledWidth(30);
     obj.flowPart183:setMaxScaledWidth(50);
 
-    obj.image42 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image42:setParent(obj.flowPart183);
-    obj.image42:setSRC("/imagens/plus.png");
-    obj.image42:setHeight(15);
-    obj.image42:setWidth(15);
-    obj.image42:setLeft(15);
-    obj.image42:setTop(5);
-    obj.image42:setName("image42");
+    obj.image43 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image43:setParent(obj.flowPart183);
+    obj.image43:setSRC("/imagens/plus.png");
+    obj.image43:setHeight(15);
+    obj.image43:setWidth(15);
+    obj.image43:setLeft(15);
+    obj.image43:setTop(5);
+    obj.image43:setName("image43");
 
     obj.flowPart184 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart184:setParent(obj.tabelaDeAtributos);
@@ -4851,14 +4910,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart185:setMinScaledWidth(30);
     obj.flowPart185:setMaxScaledWidth(50);
 
-    obj.image43 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image43:setParent(obj.flowPart185);
-    obj.image43:setSRC("/imagens/equals.png");
-    obj.image43:setHeight(15);
-    obj.image43:setWidth(15);
-    obj.image43:setLeft(15);
-    obj.image43:setTop(5);
-    obj.image43:setName("image43");
+    obj.image44 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image44:setParent(obj.flowPart185);
+    obj.image44:setSRC("/imagens/equals.png");
+    obj.image44:setHeight(15);
+    obj.image44:setWidth(15);
+    obj.image44:setLeft(15);
+    obj.image44:setTop(5);
+    obj.image44:setName("image44");
 
     obj.flowPart186 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart186:setParent(obj.tabelaDeAtributos);
@@ -5072,23 +5131,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine64:setStrokeSize(1);
     obj.horzLine64:setName("horzLine64");
 
-    obj.flowLayout9 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout9:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout9:setHeight(20);
-    obj.flowLayout9:setMinWidth(150);
-    obj.flowLayout9:setMaxWidth(200);
-    obj.flowLayout9:setMaxControlsPerLine(3);
-    obj.flowLayout9:setName("flowLayout9");
+    obj.flowLayout10 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout10:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout10:setHeight(20);
+    obj.flowLayout10:setMinWidth(150);
+    obj.flowLayout10:setMaxWidth(200);
+    obj.flowLayout10:setMaxControlsPerLine(3);
+    obj.flowLayout10:setName("flowLayout10");
 
     obj.percepcaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.percepcaoMinus:setParent(obj.flowLayout9);
+    obj.percepcaoMinus:setParent(obj.flowLayout10);
     obj.percepcaoMinus:setName("percepcaoMinus");
     obj.percepcaoMinus:setText("-");
     obj.percepcaoMinus:setWidth(20);
     obj.percepcaoMinus:setHeight(20);
 
     obj.flowPart189 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart189:setParent(obj.flowLayout9);
+    obj.flowPart189:setParent(obj.flowLayout10);
     obj.flowPart189:setHeight(20);
     obj.flowPart189:setMinWidth(20);
     obj.flowPart189:setMaxWidth(20);
@@ -5108,7 +5167,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit87:setName("edit87");
 
     obj.percepcaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.percepcaoPlus:setParent(obj.flowLayout9);
+    obj.percepcaoPlus:setParent(obj.flowLayout10);
     obj.percepcaoPlus:setName("percepcaoPlus");
     obj.percepcaoPlus:setText("+");
     obj.percepcaoPlus:setWidth(20);
@@ -5140,23 +5199,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine65:setStrokeSize(1);
     obj.horzLine65:setName("horzLine65");
 
-    obj.flowLayout10 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout10:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout10:setHeight(20);
-    obj.flowLayout10:setMinWidth(150);
-    obj.flowLayout10:setMaxWidth(200);
-    obj.flowLayout10:setMaxControlsPerLine(3);
-    obj.flowLayout10:setName("flowLayout10");
+    obj.flowLayout11 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout11:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout11:setHeight(20);
+    obj.flowLayout11:setMinWidth(150);
+    obj.flowLayout11:setMaxWidth(200);
+    obj.flowLayout11:setMaxControlsPerLine(3);
+    obj.flowLayout11:setName("flowLayout11");
 
     obj.intimidacaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intimidacaoMinus:setParent(obj.flowLayout10);
+    obj.intimidacaoMinus:setParent(obj.flowLayout11);
     obj.intimidacaoMinus:setName("intimidacaoMinus");
     obj.intimidacaoMinus:setText("-");
     obj.intimidacaoMinus:setWidth(20);
     obj.intimidacaoMinus:setHeight(20);
 
     obj.flowPart191 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart191:setParent(obj.flowLayout10);
+    obj.flowPart191:setParent(obj.flowLayout11);
     obj.flowPart191:setHeight(20);
     obj.flowPart191:setMinWidth(20);
     obj.flowPart191:setMaxWidth(20);
@@ -5176,7 +5235,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit88:setName("edit88");
 
     obj.intimidacaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intimidacaoPlus:setParent(obj.flowLayout10);
+    obj.intimidacaoPlus:setParent(obj.flowLayout11);
     obj.intimidacaoPlus:setName("intimidacaoPlus");
     obj.intimidacaoPlus:setText("+");
     obj.intimidacaoPlus:setWidth(20);
@@ -5208,23 +5267,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine66:setStrokeSize(1);
     obj.horzLine66:setName("horzLine66");
 
-    obj.flowLayout11 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout11:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout11:setHeight(20);
-    obj.flowLayout11:setMinWidth(150);
-    obj.flowLayout11:setMaxWidth(200);
-    obj.flowLayout11:setMaxControlsPerLine(3);
-    obj.flowLayout11:setName("flowLayout11");
+    obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout12:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout12:setHeight(20);
+    obj.flowLayout12:setMinWidth(150);
+    obj.flowLayout12:setMaxWidth(200);
+    obj.flowLayout12:setMaxControlsPerLine(3);
+    obj.flowLayout12:setName("flowLayout12");
 
     obj.persuasaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.persuasaoMinus:setParent(obj.flowLayout11);
+    obj.persuasaoMinus:setParent(obj.flowLayout12);
     obj.persuasaoMinus:setName("persuasaoMinus");
     obj.persuasaoMinus:setText("-");
     obj.persuasaoMinus:setWidth(20);
     obj.persuasaoMinus:setHeight(20);
 
     obj.flowPart193 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart193:setParent(obj.flowLayout11);
+    obj.flowPart193:setParent(obj.flowLayout12);
     obj.flowPart193:setHeight(20);
     obj.flowPart193:setMinWidth(20);
     obj.flowPart193:setMaxWidth(20);
@@ -5244,7 +5303,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit89:setName("edit89");
 
     obj.persuasaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.persuasaoPlus:setParent(obj.flowLayout11);
+    obj.persuasaoPlus:setParent(obj.flowLayout12);
     obj.persuasaoPlus:setName("persuasaoPlus");
     obj.persuasaoPlus:setText("+");
     obj.persuasaoPlus:setWidth(20);
@@ -5276,23 +5335,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine67:setStrokeSize(1);
     obj.horzLine67:setName("horzLine67");
 
-    obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout12:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout12:setHeight(20);
-    obj.flowLayout12:setMinWidth(150);
-    obj.flowLayout12:setMaxWidth(200);
-    obj.flowLayout12:setMaxControlsPerLine(3);
-    obj.flowLayout12:setName("flowLayout12");
+    obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout13:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout13:setHeight(20);
+    obj.flowLayout13:setMinWidth(150);
+    obj.flowLayout13:setMaxWidth(200);
+    obj.flowLayout13:setMaxControlsPerLine(3);
+    obj.flowLayout13:setName("flowLayout13");
 
     obj.adestrarAnimaisMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.adestrarAnimaisMinus:setParent(obj.flowLayout12);
+    obj.adestrarAnimaisMinus:setParent(obj.flowLayout13);
     obj.adestrarAnimaisMinus:setName("adestrarAnimaisMinus");
     obj.adestrarAnimaisMinus:setText("-");
     obj.adestrarAnimaisMinus:setWidth(20);
     obj.adestrarAnimaisMinus:setHeight(20);
 
     obj.flowPart195 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart195:setParent(obj.flowLayout12);
+    obj.flowPart195:setParent(obj.flowLayout13);
     obj.flowPart195:setHeight(20);
     obj.flowPart195:setMinWidth(20);
     obj.flowPart195:setMaxWidth(20);
@@ -5312,7 +5371,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit90:setName("edit90");
 
     obj.adestrarAnimaisPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.adestrarAnimaisPlus:setParent(obj.flowLayout12);
+    obj.adestrarAnimaisPlus:setParent(obj.flowLayout13);
     obj.adestrarAnimaisPlus:setName("adestrarAnimaisPlus");
     obj.adestrarAnimaisPlus:setText("+");
     obj.adestrarAnimaisPlus:setWidth(20);
@@ -5344,23 +5403,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine68:setStrokeSize(1);
     obj.horzLine68:setName("horzLine68");
 
-    obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout13:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout13:setHeight(20);
-    obj.flowLayout13:setMinWidth(150);
-    obj.flowLayout13:setMaxWidth(200);
-    obj.flowLayout13:setMaxControlsPerLine(3);
-    obj.flowLayout13:setName("flowLayout13");
+    obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout14:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout14:setHeight(20);
+    obj.flowLayout14:setMinWidth(150);
+    obj.flowLayout14:setMaxWidth(200);
+    obj.flowLayout14:setMaxControlsPerLine(3);
+    obj.flowLayout14:setName("flowLayout14");
 
     obj.furtividadeMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.furtividadeMinus:setParent(obj.flowLayout13);
+    obj.furtividadeMinus:setParent(obj.flowLayout14);
     obj.furtividadeMinus:setName("furtividadeMinus");
     obj.furtividadeMinus:setText("-");
     obj.furtividadeMinus:setWidth(20);
     obj.furtividadeMinus:setHeight(20);
 
     obj.flowPart197 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart197:setParent(obj.flowLayout13);
+    obj.flowPart197:setParent(obj.flowLayout14);
     obj.flowPart197:setHeight(20);
     obj.flowPart197:setMinWidth(20);
     obj.flowPart197:setMaxWidth(20);
@@ -5380,7 +5439,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit91:setName("edit91");
 
     obj.furtividadePlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.furtividadePlus:setParent(obj.flowLayout13);
+    obj.furtividadePlus:setParent(obj.flowLayout14);
     obj.furtividadePlus:setName("furtividadePlus");
     obj.furtividadePlus:setText("+");
     obj.furtividadePlus:setWidth(20);
@@ -5412,23 +5471,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine69:setStrokeSize(1);
     obj.horzLine69:setName("horzLine69");
 
-    obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout14:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout14:setHeight(20);
-    obj.flowLayout14:setMinWidth(150);
-    obj.flowLayout14:setMaxWidth(200);
-    obj.flowLayout14:setMaxControlsPerLine(3);
-    obj.flowLayout14:setName("flowLayout14");
+    obj.flowLayout15 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout15:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout15:setHeight(20);
+    obj.flowLayout15:setMinWidth(150);
+    obj.flowLayout15:setMaxWidth(200);
+    obj.flowLayout15:setMaxControlsPerLine(3);
+    obj.flowLayout15:setName("flowLayout15");
 
     obj.intuicaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intuicaoMinus:setParent(obj.flowLayout14);
+    obj.intuicaoMinus:setParent(obj.flowLayout15);
     obj.intuicaoMinus:setName("intuicaoMinus");
     obj.intuicaoMinus:setText("-");
     obj.intuicaoMinus:setWidth(20);
     obj.intuicaoMinus:setHeight(20);
 
     obj.flowPart199 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart199:setParent(obj.flowLayout14);
+    obj.flowPart199:setParent(obj.flowLayout15);
     obj.flowPart199:setHeight(20);
     obj.flowPart199:setMinWidth(20);
     obj.flowPart199:setMaxWidth(20);
@@ -5448,7 +5507,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit92:setName("edit92");
 
     obj.intuicaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.intuicaoPlus:setParent(obj.flowLayout14);
+    obj.intuicaoPlus:setParent(obj.flowLayout15);
     obj.intuicaoPlus:setName("intuicaoPlus");
     obj.intuicaoPlus:setText("+");
     obj.intuicaoPlus:setWidth(20);
@@ -5480,23 +5539,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine70:setStrokeSize(1);
     obj.horzLine70:setName("horzLine70");
 
-    obj.flowLayout15 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout15:setParent(obj.tabelaPontosBonus);
-    obj.flowLayout15:setHeight(20);
-    obj.flowLayout15:setMinWidth(150);
-    obj.flowLayout15:setMaxWidth(200);
-    obj.flowLayout15:setMaxControlsPerLine(3);
-    obj.flowLayout15:setName("flowLayout15");
+    obj.flowLayout16 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout16:setParent(obj.tabelaPontosBonus);
+    obj.flowLayout16:setHeight(20);
+    obj.flowLayout16:setMinWidth(150);
+    obj.flowLayout16:setMaxWidth(200);
+    obj.flowLayout16:setMaxControlsPerLine(3);
+    obj.flowLayout16:setName("flowLayout16");
 
     obj.didaticaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.didaticaMinus:setParent(obj.flowLayout15);
+    obj.didaticaMinus:setParent(obj.flowLayout16);
     obj.didaticaMinus:setName("didaticaMinus");
     obj.didaticaMinus:setText("-");
     obj.didaticaMinus:setWidth(20);
     obj.didaticaMinus:setHeight(20);
 
     obj.flowPart201 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart201:setParent(obj.flowLayout15);
+    obj.flowPart201:setParent(obj.flowLayout16);
     obj.flowPart201:setHeight(20);
     obj.flowPart201:setMinWidth(20);
     obj.flowPart201:setMaxWidth(20);
@@ -5516,7 +5575,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit93:setName("edit93");
 
     obj.didaticaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.didaticaPlus:setParent(obj.flowLayout15);
+    obj.didaticaPlus:setParent(obj.flowLayout16);
     obj.didaticaPlus:setName("didaticaPlus");
     obj.didaticaPlus:setText("+");
     obj.didaticaPlus:setWidth(20);
@@ -5559,23 +5618,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine71:setStrokeSize(1);
     obj.horzLine71:setName("horzLine71");
 
-    obj.flowLayout16 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout16:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout16:setHeight(20);
-    obj.flowLayout16:setMinWidth(150);
-    obj.flowLayout16:setMaxWidth(200);
-    obj.flowLayout16:setMaxControlsPerLine(3);
-    obj.flowLayout16:setName("flowLayout16");
+    obj.flowLayout17 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout17:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout17:setHeight(20);
+    obj.flowLayout17:setMinWidth(150);
+    obj.flowLayout17:setMaxWidth(200);
+    obj.flowLayout17:setMaxControlsPerLine(3);
+    obj.flowLayout17:setName("flowLayout17");
 
     obj.geografiaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.geografiaMinus:setParent(obj.flowLayout16);
+    obj.geografiaMinus:setParent(obj.flowLayout17);
     obj.geografiaMinus:setName("geografiaMinus");
     obj.geografiaMinus:setText("-");
     obj.geografiaMinus:setWidth(20);
     obj.geografiaMinus:setHeight(20);
 
     obj.flowPart203 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart203:setParent(obj.flowLayout16);
+    obj.flowPart203:setParent(obj.flowLayout17);
     obj.flowPart203:setHeight(20);
     obj.flowPart203:setMinWidth(20);
     obj.flowPart203:setMaxWidth(20);
@@ -5595,7 +5654,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit94:setName("edit94");
 
     obj.geografiaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.geografiaPlus:setParent(obj.flowLayout16);
+    obj.geografiaPlus:setParent(obj.flowLayout17);
     obj.geografiaPlus:setName("geografiaPlus");
     obj.geografiaPlus:setText("+");
     obj.geografiaPlus:setWidth(20);
@@ -5627,23 +5686,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine72:setStrokeSize(1);
     obj.horzLine72:setName("horzLine72");
 
-    obj.flowLayout17 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout17:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout17:setHeight(20);
-    obj.flowLayout17:setMinWidth(150);
-    obj.flowLayout17:setMaxWidth(200);
-    obj.flowLayout17:setMaxControlsPerLine(3);
-    obj.flowLayout17:setName("flowLayout17");
+    obj.flowLayout18 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout18:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout18:setHeight(20);
+    obj.flowLayout18:setMinWidth(150);
+    obj.flowLayout18:setMaxWidth(200);
+    obj.flowLayout18:setMaxControlsPerLine(3);
+    obj.flowLayout18:setName("flowLayout18");
 
     obj.historiaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.historiaMinus:setParent(obj.flowLayout17);
+    obj.historiaMinus:setParent(obj.flowLayout18);
     obj.historiaMinus:setName("historiaMinus");
     obj.historiaMinus:setText("-");
     obj.historiaMinus:setWidth(20);
     obj.historiaMinus:setHeight(20);
 
     obj.flowPart205 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart205:setParent(obj.flowLayout17);
+    obj.flowPart205:setParent(obj.flowLayout18);
     obj.flowPart205:setHeight(20);
     obj.flowPart205:setMinWidth(20);
     obj.flowPart205:setMaxWidth(20);
@@ -5663,7 +5722,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit95:setName("edit95");
 
     obj.historiaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.historiaPlus:setParent(obj.flowLayout17);
+    obj.historiaPlus:setParent(obj.flowLayout18);
     obj.historiaPlus:setName("historiaPlus");
     obj.historiaPlus:setText("+");
     obj.historiaPlus:setWidth(20);
@@ -5695,23 +5754,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine73:setStrokeSize(1);
     obj.horzLine73:setName("horzLine73");
 
-    obj.flowLayout18 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout18:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout18:setHeight(20);
-    obj.flowLayout18:setMinWidth(150);
-    obj.flowLayout18:setMaxWidth(200);
-    obj.flowLayout18:setMaxControlsPerLine(3);
-    obj.flowLayout18:setName("flowLayout18");
+    obj.flowLayout19 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout19:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout19:setHeight(20);
+    obj.flowLayout19:setMinWidth(150);
+    obj.flowLayout19:setMaxWidth(200);
+    obj.flowLayout19:setMaxControlsPerLine(3);
+    obj.flowLayout19:setName("flowLayout19");
 
     obj.religiaoMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.religiaoMinus:setParent(obj.flowLayout18);
+    obj.religiaoMinus:setParent(obj.flowLayout19);
     obj.religiaoMinus:setName("religiaoMinus");
     obj.religiaoMinus:setText("-");
     obj.religiaoMinus:setWidth(20);
     obj.religiaoMinus:setHeight(20);
 
     obj.flowPart207 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart207:setParent(obj.flowLayout18);
+    obj.flowPart207:setParent(obj.flowLayout19);
     obj.flowPart207:setHeight(20);
     obj.flowPart207:setMinWidth(20);
     obj.flowPart207:setMaxWidth(20);
@@ -5731,7 +5790,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit96:setName("edit96");
 
     obj.religiaoPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.religiaoPlus:setParent(obj.flowLayout18);
+    obj.religiaoPlus:setParent(obj.flowLayout19);
     obj.religiaoPlus:setName("religiaoPlus");
     obj.religiaoPlus:setText("+");
     obj.religiaoPlus:setWidth(20);
@@ -5763,23 +5822,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine74:setStrokeSize(1);
     obj.horzLine74:setName("horzLine74");
 
-    obj.flowLayout19 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout19:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout19:setHeight(20);
-    obj.flowLayout19:setMinWidth(150);
-    obj.flowLayout19:setMaxWidth(200);
-    obj.flowLayout19:setMaxControlsPerLine(3);
-    obj.flowLayout19:setName("flowLayout19");
+    obj.flowLayout20 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout20:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout20:setHeight(20);
+    obj.flowLayout20:setMinWidth(150);
+    obj.flowLayout20:setMaxWidth(200);
+    obj.flowLayout20:setMaxControlsPerLine(3);
+    obj.flowLayout20:setName("flowLayout20");
 
     obj.magiaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.magiaMinus:setParent(obj.flowLayout19);
+    obj.magiaMinus:setParent(obj.flowLayout20);
     obj.magiaMinus:setName("magiaMinus");
     obj.magiaMinus:setText("-");
     obj.magiaMinus:setWidth(20);
     obj.magiaMinus:setHeight(20);
 
     obj.flowPart209 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart209:setParent(obj.flowLayout19);
+    obj.flowPart209:setParent(obj.flowLayout20);
     obj.flowPart209:setHeight(20);
     obj.flowPart209:setMinWidth(20);
     obj.flowPart209:setMaxWidth(20);
@@ -5799,7 +5858,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit97:setName("edit97");
 
     obj.magiaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.magiaPlus:setParent(obj.flowLayout19);
+    obj.magiaPlus:setParent(obj.flowLayout20);
     obj.magiaPlus:setName("magiaPlus");
     obj.magiaPlus:setText("+");
     obj.magiaPlus:setWidth(20);
@@ -5831,23 +5890,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine75:setStrokeSize(1);
     obj.horzLine75:setName("horzLine75");
 
-    obj.flowLayout20 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout20:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout20:setHeight(20);
-    obj.flowLayout20:setMinWidth(150);
-    obj.flowLayout20:setMaxWidth(200);
-    obj.flowLayout20:setMaxControlsPerLine(3);
-    obj.flowLayout20:setName("flowLayout20");
+    obj.flowLayout21 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout21:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout21:setHeight(20);
+    obj.flowLayout21:setMinWidth(150);
+    obj.flowLayout21:setMaxWidth(200);
+    obj.flowLayout21:setMaxControlsPerLine(3);
+    obj.flowLayout21:setName("flowLayout21");
 
     obj.faunafloraMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.faunafloraMinus:setParent(obj.flowLayout20);
+    obj.faunafloraMinus:setParent(obj.flowLayout21);
     obj.faunafloraMinus:setName("faunafloraMinus");
     obj.faunafloraMinus:setText("-");
     obj.faunafloraMinus:setWidth(20);
     obj.faunafloraMinus:setHeight(20);
 
     obj.flowPart211 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart211:setParent(obj.flowLayout20);
+    obj.flowPart211:setParent(obj.flowLayout21);
     obj.flowPart211:setHeight(20);
     obj.flowPart211:setMinWidth(20);
     obj.flowPart211:setMaxWidth(20);
@@ -5867,7 +5926,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit98:setName("edit98");
 
     obj.faunafloraPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.faunafloraPlus:setParent(obj.flowLayout20);
+    obj.faunafloraPlus:setParent(obj.flowLayout21);
     obj.faunafloraPlus:setName("faunafloraPlus");
     obj.faunafloraPlus:setText("+");
     obj.faunafloraPlus:setWidth(20);
@@ -5899,23 +5958,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine76:setStrokeSize(1);
     obj.horzLine76:setName("horzLine76");
 
-    obj.flowLayout21 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout21:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout21:setHeight(20);
-    obj.flowLayout21:setMinWidth(150);
-    obj.flowLayout21:setMaxWidth(200);
-    obj.flowLayout21:setMaxControlsPerLine(3);
-    obj.flowLayout21:setName("flowLayout21");
+    obj.flowLayout22 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout22:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout22:setHeight(20);
+    obj.flowLayout22:setMinWidth(150);
+    obj.flowLayout22:setMaxWidth(200);
+    obj.flowLayout22:setMaxControlsPerLine(3);
+    obj.flowLayout22:setName("flowLayout22");
 
     obj.linguagemComumMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemComumMinus:setParent(obj.flowLayout21);
+    obj.linguagemComumMinus:setParent(obj.flowLayout22);
     obj.linguagemComumMinus:setName("linguagemComumMinus");
     obj.linguagemComumMinus:setText("-");
     obj.linguagemComumMinus:setWidth(20);
     obj.linguagemComumMinus:setHeight(20);
 
     obj.flowPart213 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart213:setParent(obj.flowLayout21);
+    obj.flowPart213:setParent(obj.flowLayout22);
     obj.flowPart213:setHeight(20);
     obj.flowPart213:setMinWidth(20);
     obj.flowPart213:setMaxWidth(20);
@@ -5935,7 +5994,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit99:setName("edit99");
 
     obj.linguagemComumPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemComumPlus:setParent(obj.flowLayout21);
+    obj.linguagemComumPlus:setParent(obj.flowLayout22);
     obj.linguagemComumPlus:setName("linguagemComumPlus");
     obj.linguagemComumPlus:setText("+");
     obj.linguagemComumPlus:setWidth(20);
@@ -5967,23 +6026,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine77:setStrokeSize(1);
     obj.horzLine77:setName("horzLine77");
 
-    obj.flowLayout22 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout22:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout22:setHeight(20);
-    obj.flowLayout22:setMinWidth(150);
-    obj.flowLayout22:setMaxWidth(200);
-    obj.flowLayout22:setMaxControlsPerLine(3);
-    obj.flowLayout22:setName("flowLayout22");
+    obj.flowLayout23 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout23:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout23:setHeight(20);
+    obj.flowLayout23:setMinWidth(150);
+    obj.flowLayout23:setMaxWidth(200);
+    obj.flowLayout23:setMaxControlsPerLine(3);
+    obj.flowLayout23:setName("flowLayout23");
 
     obj.linguagemOrientalMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemOrientalMinus:setParent(obj.flowLayout22);
+    obj.linguagemOrientalMinus:setParent(obj.flowLayout23);
     obj.linguagemOrientalMinus:setName("linguagemOrientalMinus");
     obj.linguagemOrientalMinus:setText("-");
     obj.linguagemOrientalMinus:setWidth(20);
     obj.linguagemOrientalMinus:setHeight(20);
 
     obj.flowPart215 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart215:setParent(obj.flowLayout22);
+    obj.flowPart215:setParent(obj.flowLayout23);
     obj.flowPart215:setHeight(20);
     obj.flowPart215:setMinWidth(20);
     obj.flowPart215:setMaxWidth(20);
@@ -6003,7 +6062,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit100:setName("edit100");
 
     obj.linguagemOrientalPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemOrientalPlus:setParent(obj.flowLayout22);
+    obj.linguagemOrientalPlus:setParent(obj.flowLayout23);
     obj.linguagemOrientalPlus:setName("linguagemOrientalPlus");
     obj.linguagemOrientalPlus:setText("+");
     obj.linguagemOrientalPlus:setWidth(20);
@@ -6035,23 +6094,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine78:setStrokeSize(1);
     obj.horzLine78:setName("horzLine78");
 
-    obj.flowLayout23 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout23:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout23:setHeight(20);
-    obj.flowLayout23:setMinWidth(150);
-    obj.flowLayout23:setMaxWidth(200);
-    obj.flowLayout23:setMaxControlsPerLine(3);
-    obj.flowLayout23:setName("flowLayout23");
+    obj.flowLayout24 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout24:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout24:setHeight(20);
+    obj.flowLayout24:setMinWidth(150);
+    obj.flowLayout24:setMaxWidth(200);
+    obj.flowLayout24:setMaxControlsPerLine(3);
+    obj.flowLayout24:setName("flowLayout24");
 
     obj.linguagemElficaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemElficaMinus:setParent(obj.flowLayout23);
+    obj.linguagemElficaMinus:setParent(obj.flowLayout24);
     obj.linguagemElficaMinus:setName("linguagemElficaMinus");
     obj.linguagemElficaMinus:setText("-");
     obj.linguagemElficaMinus:setWidth(20);
     obj.linguagemElficaMinus:setHeight(20);
 
     obj.flowPart217 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart217:setParent(obj.flowLayout23);
+    obj.flowPart217:setParent(obj.flowLayout24);
     obj.flowPart217:setHeight(20);
     obj.flowPart217:setMinWidth(20);
     obj.flowPart217:setMaxWidth(20);
@@ -6071,7 +6130,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit101:setName("edit101");
 
     obj.linguagemElficaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemElficaPlus:setParent(obj.flowLayout23);
+    obj.linguagemElficaPlus:setParent(obj.flowLayout24);
     obj.linguagemElficaPlus:setName("linguagemElficaPlus");
     obj.linguagemElficaPlus:setText("+");
     obj.linguagemElficaPlus:setWidth(20);
@@ -6103,23 +6162,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine79:setStrokeSize(1);
     obj.horzLine79:setName("horzLine79");
 
-    obj.flowLayout24 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout24:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout24:setHeight(20);
-    obj.flowLayout24:setMinWidth(150);
-    obj.flowLayout24:setMaxWidth(200);
-    obj.flowLayout24:setMaxControlsPerLine(3);
-    obj.flowLayout24:setName("flowLayout24");
+    obj.flowLayout25 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout25:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout25:setHeight(20);
+    obj.flowLayout25:setMinWidth(150);
+    obj.flowLayout25:setMaxWidth(200);
+    obj.flowLayout25:setMaxControlsPerLine(3);
+    obj.flowLayout25:setName("flowLayout25");
 
     obj.linguagemAnaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemAnaMinus:setParent(obj.flowLayout24);
+    obj.linguagemAnaMinus:setParent(obj.flowLayout25);
     obj.linguagemAnaMinus:setName("linguagemAnaMinus");
     obj.linguagemAnaMinus:setText("-");
     obj.linguagemAnaMinus:setWidth(20);
     obj.linguagemAnaMinus:setHeight(20);
 
     obj.flowPart219 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart219:setParent(obj.flowLayout24);
+    obj.flowPart219:setParent(obj.flowLayout25);
     obj.flowPart219:setHeight(20);
     obj.flowPart219:setMinWidth(20);
     obj.flowPart219:setMaxWidth(20);
@@ -6139,7 +6198,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit102:setName("edit102");
 
     obj.linguagemAnaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemAnaPlus:setParent(obj.flowLayout24);
+    obj.linguagemAnaPlus:setParent(obj.flowLayout25);
     obj.linguagemAnaPlus:setName("linguagemAnaPlus");
     obj.linguagemAnaPlus:setText("+");
     obj.linguagemAnaPlus:setWidth(20);
@@ -6171,23 +6230,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine80:setStrokeSize(1);
     obj.horzLine80:setName("horzLine80");
 
-    obj.flowLayout25 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout25:setParent(obj.tabelaConhecimentosEspecificos);
-    obj.flowLayout25:setHeight(20);
-    obj.flowLayout25:setMinWidth(150);
-    obj.flowLayout25:setMaxWidth(200);
-    obj.flowLayout25:setMaxControlsPerLine(3);
-    obj.flowLayout25:setName("flowLayout25");
+    obj.flowLayout26 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout26:setParent(obj.tabelaConhecimentosEspecificos);
+    obj.flowLayout26:setHeight(20);
+    obj.flowLayout26:setMinWidth(150);
+    obj.flowLayout26:setMaxWidth(200);
+    obj.flowLayout26:setMaxControlsPerLine(3);
+    obj.flowLayout26:setName("flowLayout26");
 
     obj.linguagemDraconicaMinus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemDraconicaMinus:setParent(obj.flowLayout25);
+    obj.linguagemDraconicaMinus:setParent(obj.flowLayout26);
     obj.linguagemDraconicaMinus:setName("linguagemDraconicaMinus");
     obj.linguagemDraconicaMinus:setText("-");
     obj.linguagemDraconicaMinus:setWidth(20);
     obj.linguagemDraconicaMinus:setHeight(20);
 
     obj.flowPart221 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart221:setParent(obj.flowLayout25);
+    obj.flowPart221:setParent(obj.flowLayout26);
     obj.flowPart221:setHeight(20);
     obj.flowPart221:setMinWidth(20);
     obj.flowPart221:setMaxWidth(20);
@@ -6207,7 +6266,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit103:setName("edit103");
 
     obj.linguagemDraconicaPlus = GUI.fromHandle(_obj_newObject("button"));
-    obj.linguagemDraconicaPlus:setParent(obj.flowLayout25);
+    obj.linguagemDraconicaPlus:setParent(obj.flowLayout26);
     obj.linguagemDraconicaPlus:setName("linguagemDraconicaPlus");
     obj.linguagemDraconicaPlus:setText("+");
     obj.linguagemDraconicaPlus:setWidth(20);
@@ -6222,6 +6281,128 @@ local function constructNew_frmFichaDePersonagem()
                        'atributoEsquiva', 'atributoBloqueio','xpAtualClasse', 'xpMaxClasse','xpTextoClasse', 'nivelClasse', 'xpAtualProfissao',
                        'xpMaxProfissao', 'xpTextoProfissao', 'nivelProfissao', 'intBase'});
     obj.dataLink12:setName("dataLink12");
+
+
+
+            local function resetNivel()
+                sheet.xpAtualClasse = 0
+                sheet.xpAtualProfissao = 0
+                sheet.nivelClasse = 1
+                sheet.nivelProfissao = 1
+                sheet.xpMaxClasse = 100
+                sheet.xpTextoClasse = '0/100'
+                sheet.xpMaxProfissao = 5
+                sheet.xpTextoProfissao = '0/5'
+                sheet.pontosTreinados = 0
+                sheet.pontosRestantes = 2
+            end;
+
+            local function resetPontosBonus()
+                sheet.pontosTreinados = 0
+                sheet.pontosRestantes = tonumber(sheet.nivelClasse) * 2
+                sheet.percepcao = 0
+                sheet.intimidacao = 0
+                sheet.persuasao = 0
+                sheet.adestrarAnimais = 0
+                sheet.furtividade = 0
+                sheet.intuicao = 0
+                sheet.didatica = 0
+            end;
+
+            local function resetDestreza()
+                sheet.atributoAcerto = 0
+                sheet.atributoMira = 0
+                sheet.atributoEsquiva = 0
+                sheet.atributoBloqueio = 0
+                sheet.classeAcerto = 0
+                sheet.armaAcerto = 0
+                sheet.armaduraAcerto = 0
+                sheet.extraAcerto = 0
+                sheet.classeMira = 0
+                sheet.armaMira = 0
+                sheet.armaduraMira = 0
+                sheet.extraMira = 0
+                sheet.classeEsquiva = 0
+                sheet.armaEsquiva = 0
+                sheet.armaduraEsquiva = 0
+                sheet.extraEsquiva = 0
+                sheet.classeBloqueio = 0
+                sheet.armaBloqueio = 0
+                sheet.armaduraBloqueio = 0
+                sheet.extraBloqueio = 0
+            end
+
+            local function resetTabelaAtributos()
+                sheet.conNivel = 0
+                sheet.conClasse = 0
+                sheet.conRaca = 0
+                sheet.conTreino = 0
+                sheet.conOutros = 0
+                sheet.conEquip = 0
+                sheet.forNivel = 0
+                sheet.forClasse = 0
+                sheet.forRaca = 0
+                sheet.forTreino = 0
+                sheet.forOutros = 0
+                sheet.forEquip = 0
+                sheet.dexNivel = 0
+                sheet.dexClasse = 0
+                sheet.dexRaca = 0
+                sheet.dexTreino = 0
+                sheet.dexOutros = 0
+                sheet.dexEquip = 0
+                sheet.carNivel = 0
+                sheet.carClasse = 0
+                sheet.carRaca = 0
+                sheet.carTreino = 0
+                sheet.carOutros = 0
+                sheet.carEquip = 0
+                sheet.intNivel = 0
+                sheet.intClasse = 0
+                sheet.intRaca = 0
+                sheet.intTreino = 0
+                sheet.intOutros = 0
+                sheet.intEquip = 0
+                sheet.sabNivel = 0
+                sheet.sabClasse = 0
+                sheet.sabRaca = 0
+                sheet.sabTreino = 0
+                sheet.sabOutros = 0
+                sheet.sabEquip = 0
+            end
+
+            local function resetConhecimentos()
+                sheet.geografia = 0
+                sheet.historia = 0
+                sheet.religiao = 0
+                sheet.magia = 0
+                sheet.faunaflora = 0
+                sheet.linguagemComum = 0
+                sheet.linguagemOriental = 0
+                sheet.linguagemElfica = 0
+                sheet.linguagemAna = 0
+                sheet.linguagemDraconica = 0
+                sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intBase)/5)) -
+                tonumber(sheet.pontosDeConhecimentoDistribuidos)
+                sheet.pontosDeConhecimentoDistribuidos = 0
+
+            end
+
+            local function resetTotal()
+				Dialogs.confirmYesNo("Deseja realmente limpar a ficha inteira?",
+									 function (confirmado)
+										if confirmado then
+											resetNivel()
+											resetPontosBonus()
+											resetDestreza()
+											resetTabelaAtributos()
+											resetConhecimentos()
+										end;
+									 end);
+			end;
+
+        
+
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.pgcPrincipal);
@@ -6256,17 +6437,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.habilidadesLayout:setStepSizes({310, 420, 640, 760, 1150});
     obj.habilidadesLayout:setMinScaledWidth(300);
 
-    obj.flowLayout26 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout26:setParent(obj.habilidadesLayout);
-    obj.flowLayout26:setAlign("top");
-    obj.flowLayout26:setAutoHeight(true);
-    obj.flowLayout26:setMaxControlsPerLine(1);
-    obj.flowLayout26:setHorzAlign("center");
-    obj.flowLayout26:setMaxWidth(406);
-    obj.flowLayout26:setName("flowLayout26");
+    obj.flowLayout27 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout27:setParent(obj.habilidadesLayout);
+    obj.flowLayout27:setAlign("top");
+    obj.flowLayout27:setAutoHeight(true);
+    obj.flowLayout27:setMaxControlsPerLine(1);
+    obj.flowLayout27:setHorzAlign("center");
+    obj.flowLayout27:setMaxWidth(406);
+    obj.flowLayout27:setName("flowLayout27");
 
     obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle8:setParent(obj.flowLayout26);
+    obj.rectangle8:setParent(obj.flowLayout27);
     obj.rectangle8:setCornerType("bevel");
     obj.rectangle8:setAlign("client");
     obj.rectangle8:setXradius(10);
@@ -6278,16 +6459,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle8:setStrokeSize(2);
     obj.rectangle8:setName("rectangle8");
 
-    obj.flowLayout27 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout27:setParent(obj.rectangle8);
-    obj.flowLayout27:setWidth(400);
-    obj.flowLayout27:setHeight(40);
-    obj.flowLayout27:setMaxControlsPerLine(1);
-    obj.flowLayout27:setHorzAlign("center");
-    obj.flowLayout27:setName("flowLayout27");
+    obj.flowLayout28 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout28:setParent(obj.rectangle8);
+    obj.flowLayout28:setWidth(400);
+    obj.flowLayout28:setHeight(40);
+    obj.flowLayout28:setMaxControlsPerLine(1);
+    obj.flowLayout28:setHorzAlign("center");
+    obj.flowLayout28:setName("flowLayout28");
 
     obj.flowPart222 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart222:setParent(obj.flowLayout27);
+    obj.flowPart222:setParent(obj.flowLayout28);
     obj.flowPart222:setHeight(20);
     obj.flowPart222:setWidth(150);
     obj.flowPart222:setVertAlign("center");
@@ -6319,17 +6500,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart223:setTop(10);
     obj.flowPart223:setName("flowPart223");
 
-    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.flowPart223);
-    obj.button4:setAlign("client");
-    obj.button4:setHeight(16);
-    obj.button4:setText("+");
-    obj.button4:setWidth(16);
-    obj.button4:setHorzTextAlign("center");
-    obj.button4:setName("button4");
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button10:setParent(obj.flowPart223);
+    obj.button10:setAlign("client");
+    obj.button10:setHeight(16);
+    obj.button10:setText("+");
+    obj.button10:setWidth(16);
+    obj.button10:setHorzTextAlign("center");
+    obj.button10:setName("button10");
 
     obj.rclHabilidadesbase = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesbase:setParent(obj.flowLayout26);
+    obj.rclHabilidadesbase:setParent(obj.flowLayout27);
     obj.rclHabilidadesbase:setName("rclHabilidadesbase");
     obj.rclHabilidadesbase:setField("habilidadesbase");
     obj.rclHabilidadesbase:setTemplateForm("habilidadercl");
@@ -6339,17 +6520,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesbase:setAutoHeight(true);
     obj.rclHabilidadesbase:setHitTest(false);
 
-    obj.flowLayout28 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout28:setParent(obj.habilidadesLayout);
-    obj.flowLayout28:setAlign("top");
-    obj.flowLayout28:setAutoHeight(true);
-    obj.flowLayout28:setMaxControlsPerLine(1);
-    obj.flowLayout28:setHorzAlign("center");
-    obj.flowLayout28:setMaxWidth(406);
-    obj.flowLayout28:setName("flowLayout28");
+    obj.flowLayout29 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout29:setParent(obj.habilidadesLayout);
+    obj.flowLayout29:setAlign("top");
+    obj.flowLayout29:setAutoHeight(true);
+    obj.flowLayout29:setMaxControlsPerLine(1);
+    obj.flowLayout29:setHorzAlign("center");
+    obj.flowLayout29:setMaxWidth(406);
+    obj.flowLayout29:setName("flowLayout29");
 
     obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle9:setParent(obj.flowLayout28);
+    obj.rectangle9:setParent(obj.flowLayout29);
     obj.rectangle9:setCornerType("bevel");
     obj.rectangle9:setAlign("client");
     obj.rectangle9:setXradius(10);
@@ -6361,16 +6542,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle9:setStrokeSize(2);
     obj.rectangle9:setName("rectangle9");
 
-    obj.flowLayout29 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout29:setParent(obj.rectangle9);
-    obj.flowLayout29:setWidth(400);
-    obj.flowLayout29:setHeight(40);
-    obj.flowLayout29:setMaxControlsPerLine(1);
-    obj.flowLayout29:setHorzAlign("center");
-    obj.flowLayout29:setName("flowLayout29");
+    obj.flowLayout30 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout30:setParent(obj.rectangle9);
+    obj.flowLayout30:setWidth(400);
+    obj.flowLayout30:setHeight(40);
+    obj.flowLayout30:setMaxControlsPerLine(1);
+    obj.flowLayout30:setHorzAlign("center");
+    obj.flowLayout30:setName("flowLayout30");
 
     obj.flowPart224 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart224:setParent(obj.flowLayout29);
+    obj.flowPart224:setParent(obj.flowLayout30);
     obj.flowPart224:setHeight(20);
     obj.flowPart224:setWidth(75);
     obj.flowPart224:setVertAlign("center");
@@ -6402,17 +6583,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart225:setTop(10);
     obj.flowPart225:setName("flowPart225");
 
-    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.flowPart225);
-    obj.button5:setAlign("client");
-    obj.button5:setHeight(16);
-    obj.button5:setText("+");
-    obj.button5:setWidth(16);
-    obj.button5:setHorzTextAlign("center");
-    obj.button5:setName("button5");
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button11:setParent(obj.flowPart225);
+    obj.button11:setAlign("client");
+    obj.button11:setHeight(16);
+    obj.button11:setText("+");
+    obj.button11:setWidth(16);
+    obj.button11:setHorzTextAlign("center");
+    obj.button11:setName("button11");
 
     obj.rclHabilidadesnivel1 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel1:setParent(obj.flowLayout28);
+    obj.rclHabilidadesnivel1:setParent(obj.flowLayout29);
     obj.rclHabilidadesnivel1:setName("rclHabilidadesnivel1");
     obj.rclHabilidadesnivel1:setField("habilidadesnivel1");
     obj.rclHabilidadesnivel1:setTemplateForm("habilidadercl");
@@ -6422,17 +6603,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel1:setAutoHeight(true);
     obj.rclHabilidadesnivel1:setHitTest(false);
 
-    obj.flowLayout30 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout30:setParent(obj.habilidadesLayout);
-    obj.flowLayout30:setAlign("top");
-    obj.flowLayout30:setAutoHeight(true);
-    obj.flowLayout30:setMaxControlsPerLine(1);
-    obj.flowLayout30:setHorzAlign("center");
-    obj.flowLayout30:setMaxWidth(406);
-    obj.flowLayout30:setName("flowLayout30");
+    obj.flowLayout31 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout31:setParent(obj.habilidadesLayout);
+    obj.flowLayout31:setAlign("top");
+    obj.flowLayout31:setAutoHeight(true);
+    obj.flowLayout31:setMaxControlsPerLine(1);
+    obj.flowLayout31:setHorzAlign("center");
+    obj.flowLayout31:setMaxWidth(406);
+    obj.flowLayout31:setName("flowLayout31");
 
     obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle10:setParent(obj.flowLayout30);
+    obj.rectangle10:setParent(obj.flowLayout31);
     obj.rectangle10:setCornerType("bevel");
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setXradius(10);
@@ -6444,16 +6625,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle10:setStrokeSize(2);
     obj.rectangle10:setName("rectangle10");
 
-    obj.flowLayout31 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout31:setParent(obj.rectangle10);
-    obj.flowLayout31:setWidth(400);
-    obj.flowLayout31:setHeight(40);
-    obj.flowLayout31:setMaxControlsPerLine(1);
-    obj.flowLayout31:setHorzAlign("center");
-    obj.flowLayout31:setName("flowLayout31");
+    obj.flowLayout32 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout32:setParent(obj.rectangle10);
+    obj.flowLayout32:setWidth(400);
+    obj.flowLayout32:setHeight(40);
+    obj.flowLayout32:setMaxControlsPerLine(1);
+    obj.flowLayout32:setHorzAlign("center");
+    obj.flowLayout32:setName("flowLayout32");
 
     obj.flowPart226 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart226:setParent(obj.flowLayout31);
+    obj.flowPart226:setParent(obj.flowLayout32);
     obj.flowPart226:setHeight(20);
     obj.flowPart226:setWidth(75);
     obj.flowPart226:setVertAlign("center");
@@ -6485,17 +6666,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart227:setTop(10);
     obj.flowPart227:setName("flowPart227");
 
-    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.flowPart227);
-    obj.button6:setAlign("client");
-    obj.button6:setHeight(16);
-    obj.button6:setText("+");
-    obj.button6:setWidth(16);
-    obj.button6:setHorzTextAlign("center");
-    obj.button6:setName("button6");
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button12:setParent(obj.flowPart227);
+    obj.button12:setAlign("client");
+    obj.button12:setHeight(16);
+    obj.button12:setText("+");
+    obj.button12:setWidth(16);
+    obj.button12:setHorzTextAlign("center");
+    obj.button12:setName("button12");
 
     obj.rclHabilidadesnivel2 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel2:setParent(obj.flowLayout30);
+    obj.rclHabilidadesnivel2:setParent(obj.flowLayout31);
     obj.rclHabilidadesnivel2:setName("rclHabilidadesnivel2");
     obj.rclHabilidadesnivel2:setField("habilidadesnivel2");
     obj.rclHabilidadesnivel2:setTemplateForm("habilidadercl");
@@ -6505,17 +6686,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel2:setAutoHeight(true);
     obj.rclHabilidadesnivel2:setHitTest(false);
 
-    obj.flowLayout32 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout32:setParent(obj.habilidadesLayout);
-    obj.flowLayout32:setAlign("top");
-    obj.flowLayout32:setAutoHeight(true);
-    obj.flowLayout32:setMaxControlsPerLine(1);
-    obj.flowLayout32:setHorzAlign("center");
-    obj.flowLayout32:setMaxWidth(406);
-    obj.flowLayout32:setName("flowLayout32");
+    obj.flowLayout33 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout33:setParent(obj.habilidadesLayout);
+    obj.flowLayout33:setAlign("top");
+    obj.flowLayout33:setAutoHeight(true);
+    obj.flowLayout33:setMaxControlsPerLine(1);
+    obj.flowLayout33:setHorzAlign("center");
+    obj.flowLayout33:setMaxWidth(406);
+    obj.flowLayout33:setName("flowLayout33");
 
     obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle11:setParent(obj.flowLayout32);
+    obj.rectangle11:setParent(obj.flowLayout33);
     obj.rectangle11:setCornerType("bevel");
     obj.rectangle11:setAlign("client");
     obj.rectangle11:setXradius(10);
@@ -6527,16 +6708,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle11:setStrokeSize(2);
     obj.rectangle11:setName("rectangle11");
 
-    obj.flowLayout33 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout33:setParent(obj.rectangle11);
-    obj.flowLayout33:setWidth(400);
-    obj.flowLayout33:setHeight(40);
-    obj.flowLayout33:setMaxControlsPerLine(1);
-    obj.flowLayout33:setHorzAlign("center");
-    obj.flowLayout33:setName("flowLayout33");
+    obj.flowLayout34 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout34:setParent(obj.rectangle11);
+    obj.flowLayout34:setWidth(400);
+    obj.flowLayout34:setHeight(40);
+    obj.flowLayout34:setMaxControlsPerLine(1);
+    obj.flowLayout34:setHorzAlign("center");
+    obj.flowLayout34:setName("flowLayout34");
 
     obj.flowPart228 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart228:setParent(obj.flowLayout33);
+    obj.flowPart228:setParent(obj.flowLayout34);
     obj.flowPart228:setHeight(20);
     obj.flowPart228:setWidth(75);
     obj.flowPart228:setVertAlign("center");
@@ -6568,17 +6749,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart229:setTop(10);
     obj.flowPart229:setName("flowPart229");
 
-    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.flowPart229);
-    obj.button7:setAlign("client");
-    obj.button7:setHeight(16);
-    obj.button7:setText("+");
-    obj.button7:setWidth(16);
-    obj.button7:setHorzTextAlign("center");
-    obj.button7:setName("button7");
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button13:setParent(obj.flowPart229);
+    obj.button13:setAlign("client");
+    obj.button13:setHeight(16);
+    obj.button13:setText("+");
+    obj.button13:setWidth(16);
+    obj.button13:setHorzTextAlign("center");
+    obj.button13:setName("button13");
 
     obj.rclHabilidadesnivel3 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel3:setParent(obj.flowLayout32);
+    obj.rclHabilidadesnivel3:setParent(obj.flowLayout33);
     obj.rclHabilidadesnivel3:setName("rclHabilidadesnivel3");
     obj.rclHabilidadesnivel3:setField("habilidadesnivel3");
     obj.rclHabilidadesnivel3:setTemplateForm("habilidadercl");
@@ -6588,17 +6769,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel3:setAutoHeight(true);
     obj.rclHabilidadesnivel3:setHitTest(false);
 
-    obj.flowLayout34 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout34:setParent(obj.habilidadesLayout);
-    obj.flowLayout34:setAlign("top");
-    obj.flowLayout34:setAutoHeight(true);
-    obj.flowLayout34:setMaxControlsPerLine(1);
-    obj.flowLayout34:setHorzAlign("center");
-    obj.flowLayout34:setMaxWidth(406);
-    obj.flowLayout34:setName("flowLayout34");
+    obj.flowLayout35 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout35:setParent(obj.habilidadesLayout);
+    obj.flowLayout35:setAlign("top");
+    obj.flowLayout35:setAutoHeight(true);
+    obj.flowLayout35:setMaxControlsPerLine(1);
+    obj.flowLayout35:setHorzAlign("center");
+    obj.flowLayout35:setMaxWidth(406);
+    obj.flowLayout35:setName("flowLayout35");
 
     obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle12:setParent(obj.flowLayout34);
+    obj.rectangle12:setParent(obj.flowLayout35);
     obj.rectangle12:setCornerType("bevel");
     obj.rectangle12:setAlign("client");
     obj.rectangle12:setXradius(10);
@@ -6610,16 +6791,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle12:setStrokeSize(2);
     obj.rectangle12:setName("rectangle12");
 
-    obj.flowLayout35 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout35:setParent(obj.rectangle12);
-    obj.flowLayout35:setWidth(400);
-    obj.flowLayout35:setHeight(40);
-    obj.flowLayout35:setMaxControlsPerLine(1);
-    obj.flowLayout35:setHorzAlign("center");
-    obj.flowLayout35:setName("flowLayout35");
+    obj.flowLayout36 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout36:setParent(obj.rectangle12);
+    obj.flowLayout36:setWidth(400);
+    obj.flowLayout36:setHeight(40);
+    obj.flowLayout36:setMaxControlsPerLine(1);
+    obj.flowLayout36:setHorzAlign("center");
+    obj.flowLayout36:setName("flowLayout36");
 
     obj.flowPart230 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart230:setParent(obj.flowLayout35);
+    obj.flowPart230:setParent(obj.flowLayout36);
     obj.flowPart230:setHeight(20);
     obj.flowPart230:setWidth(75);
     obj.flowPart230:setVertAlign("center");
@@ -6651,17 +6832,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart231:setTop(10);
     obj.flowPart231:setName("flowPart231");
 
-    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.flowPart231);
-    obj.button8:setAlign("client");
-    obj.button8:setHeight(16);
-    obj.button8:setText("+");
-    obj.button8:setWidth(16);
-    obj.button8:setHorzTextAlign("center");
-    obj.button8:setName("button8");
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button14:setParent(obj.flowPart231);
+    obj.button14:setAlign("client");
+    obj.button14:setHeight(16);
+    obj.button14:setText("+");
+    obj.button14:setWidth(16);
+    obj.button14:setHorzTextAlign("center");
+    obj.button14:setName("button14");
 
     obj.rclHabilidadesnivel4 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel4:setParent(obj.flowLayout34);
+    obj.rclHabilidadesnivel4:setParent(obj.flowLayout35);
     obj.rclHabilidadesnivel4:setName("rclHabilidadesnivel4");
     obj.rclHabilidadesnivel4:setField("habilidadesnivel4");
     obj.rclHabilidadesnivel4:setTemplateForm("habilidadercl");
@@ -6671,17 +6852,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel4:setAutoHeight(true);
     obj.rclHabilidadesnivel4:setHitTest(false);
 
-    obj.flowLayout36 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout36:setParent(obj.habilidadesLayout);
-    obj.flowLayout36:setAlign("top");
-    obj.flowLayout36:setAutoHeight(true);
-    obj.flowLayout36:setMaxControlsPerLine(1);
-    obj.flowLayout36:setHorzAlign("center");
-    obj.flowLayout36:setMaxWidth(406);
-    obj.flowLayout36:setName("flowLayout36");
+    obj.flowLayout37 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout37:setParent(obj.habilidadesLayout);
+    obj.flowLayout37:setAlign("top");
+    obj.flowLayout37:setAutoHeight(true);
+    obj.flowLayout37:setMaxControlsPerLine(1);
+    obj.flowLayout37:setHorzAlign("center");
+    obj.flowLayout37:setMaxWidth(406);
+    obj.flowLayout37:setName("flowLayout37");
 
     obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle13:setParent(obj.flowLayout36);
+    obj.rectangle13:setParent(obj.flowLayout37);
     obj.rectangle13:setCornerType("bevel");
     obj.rectangle13:setAlign("client");
     obj.rectangle13:setXradius(10);
@@ -6693,16 +6874,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle13:setStrokeSize(2);
     obj.rectangle13:setName("rectangle13");
 
-    obj.flowLayout37 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout37:setParent(obj.rectangle13);
-    obj.flowLayout37:setWidth(400);
-    obj.flowLayout37:setHeight(40);
-    obj.flowLayout37:setMaxControlsPerLine(1);
-    obj.flowLayout37:setHorzAlign("center");
-    obj.flowLayout37:setName("flowLayout37");
+    obj.flowLayout38 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout38:setParent(obj.rectangle13);
+    obj.flowLayout38:setWidth(400);
+    obj.flowLayout38:setHeight(40);
+    obj.flowLayout38:setMaxControlsPerLine(1);
+    obj.flowLayout38:setHorzAlign("center");
+    obj.flowLayout38:setName("flowLayout38");
 
     obj.flowPart232 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart232:setParent(obj.flowLayout37);
+    obj.flowPart232:setParent(obj.flowLayout38);
     obj.flowPart232:setHeight(20);
     obj.flowPart232:setWidth(75);
     obj.flowPart232:setVertAlign("center");
@@ -6734,17 +6915,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart233:setTop(10);
     obj.flowPart233:setName("flowPart233");
 
-    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.flowPart233);
-    obj.button9:setAlign("client");
-    obj.button9:setHeight(16);
-    obj.button9:setText("+");
-    obj.button9:setWidth(16);
-    obj.button9:setHorzTextAlign("center");
-    obj.button9:setName("button9");
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button15:setParent(obj.flowPart233);
+    obj.button15:setAlign("client");
+    obj.button15:setHeight(16);
+    obj.button15:setText("+");
+    obj.button15:setWidth(16);
+    obj.button15:setHorzTextAlign("center");
+    obj.button15:setName("button15");
 
     obj.rclHabilidadesnivel5 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel5:setParent(obj.flowLayout36);
+    obj.rclHabilidadesnivel5:setParent(obj.flowLayout37);
     obj.rclHabilidadesnivel5:setName("rclHabilidadesnivel5");
     obj.rclHabilidadesnivel5:setField("habilidadesnivel5");
     obj.rclHabilidadesnivel5:setTemplateForm("habilidadercl");
@@ -6754,17 +6935,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel5:setAutoHeight(true);
     obj.rclHabilidadesnivel5:setHitTest(false);
 
-    obj.flowLayout38 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout38:setParent(obj.habilidadesLayout);
-    obj.flowLayout38:setAlign("top");
-    obj.flowLayout38:setAutoHeight(true);
-    obj.flowLayout38:setMaxControlsPerLine(1);
-    obj.flowLayout38:setHorzAlign("center");
-    obj.flowLayout38:setMaxWidth(406);
-    obj.flowLayout38:setName("flowLayout38");
+    obj.flowLayout39 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout39:setParent(obj.habilidadesLayout);
+    obj.flowLayout39:setAlign("top");
+    obj.flowLayout39:setAutoHeight(true);
+    obj.flowLayout39:setMaxControlsPerLine(1);
+    obj.flowLayout39:setHorzAlign("center");
+    obj.flowLayout39:setMaxWidth(406);
+    obj.flowLayout39:setName("flowLayout39");
 
     obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle14:setParent(obj.flowLayout38);
+    obj.rectangle14:setParent(obj.flowLayout39);
     obj.rectangle14:setCornerType("bevel");
     obj.rectangle14:setAlign("client");
     obj.rectangle14:setXradius(10);
@@ -6776,16 +6957,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle14:setStrokeSize(2);
     obj.rectangle14:setName("rectangle14");
 
-    obj.flowLayout39 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout39:setParent(obj.rectangle14);
-    obj.flowLayout39:setWidth(400);
-    obj.flowLayout39:setHeight(40);
-    obj.flowLayout39:setMaxControlsPerLine(1);
-    obj.flowLayout39:setHorzAlign("center");
-    obj.flowLayout39:setName("flowLayout39");
+    obj.flowLayout40 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout40:setParent(obj.rectangle14);
+    obj.flowLayout40:setWidth(400);
+    obj.flowLayout40:setHeight(40);
+    obj.flowLayout40:setMaxControlsPerLine(1);
+    obj.flowLayout40:setHorzAlign("center");
+    obj.flowLayout40:setName("flowLayout40");
 
     obj.flowPart234 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart234:setParent(obj.flowLayout39);
+    obj.flowPart234:setParent(obj.flowLayout40);
     obj.flowPart234:setHeight(20);
     obj.flowPart234:setWidth(75);
     obj.flowPart234:setVertAlign("center");
@@ -6817,17 +6998,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart235:setTop(10);
     obj.flowPart235:setName("flowPart235");
 
-    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button10:setParent(obj.flowPart235);
-    obj.button10:setAlign("client");
-    obj.button10:setHeight(16);
-    obj.button10:setText("+");
-    obj.button10:setWidth(16);
-    obj.button10:setHorzTextAlign("center");
-    obj.button10:setName("button10");
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button16:setParent(obj.flowPart235);
+    obj.button16:setAlign("client");
+    obj.button16:setHeight(16);
+    obj.button16:setText("+");
+    obj.button16:setWidth(16);
+    obj.button16:setHorzTextAlign("center");
+    obj.button16:setName("button16");
 
     obj.rclHabilidadesnivel6 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel6:setParent(obj.flowLayout38);
+    obj.rclHabilidadesnivel6:setParent(obj.flowLayout39);
     obj.rclHabilidadesnivel6:setName("rclHabilidadesnivel6");
     obj.rclHabilidadesnivel6:setField("habilidadesnivel6");
     obj.rclHabilidadesnivel6:setTemplateForm("habilidadercl");
@@ -6837,17 +7018,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel6:setAutoHeight(true);
     obj.rclHabilidadesnivel6:setHitTest(false);
 
-    obj.flowLayout40 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout40:setParent(obj.habilidadesLayout);
-    obj.flowLayout40:setAlign("top");
-    obj.flowLayout40:setAutoHeight(true);
-    obj.flowLayout40:setMaxControlsPerLine(1);
-    obj.flowLayout40:setHorzAlign("center");
-    obj.flowLayout40:setMaxWidth(406);
-    obj.flowLayout40:setName("flowLayout40");
+    obj.flowLayout41 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout41:setParent(obj.habilidadesLayout);
+    obj.flowLayout41:setAlign("top");
+    obj.flowLayout41:setAutoHeight(true);
+    obj.flowLayout41:setMaxControlsPerLine(1);
+    obj.flowLayout41:setHorzAlign("center");
+    obj.flowLayout41:setMaxWidth(406);
+    obj.flowLayout41:setName("flowLayout41");
 
     obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle15:setParent(obj.flowLayout40);
+    obj.rectangle15:setParent(obj.flowLayout41);
     obj.rectangle15:setCornerType("bevel");
     obj.rectangle15:setAlign("client");
     obj.rectangle15:setXradius(10);
@@ -6859,16 +7040,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle15:setStrokeSize(2);
     obj.rectangle15:setName("rectangle15");
 
-    obj.flowLayout41 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout41:setParent(obj.rectangle15);
-    obj.flowLayout41:setWidth(400);
-    obj.flowLayout41:setHeight(40);
-    obj.flowLayout41:setMaxControlsPerLine(1);
-    obj.flowLayout41:setHorzAlign("center");
-    obj.flowLayout41:setName("flowLayout41");
+    obj.flowLayout42 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout42:setParent(obj.rectangle15);
+    obj.flowLayout42:setWidth(400);
+    obj.flowLayout42:setHeight(40);
+    obj.flowLayout42:setMaxControlsPerLine(1);
+    obj.flowLayout42:setHorzAlign("center");
+    obj.flowLayout42:setName("flowLayout42");
 
     obj.flowPart236 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart236:setParent(obj.flowLayout41);
+    obj.flowPart236:setParent(obj.flowLayout42);
     obj.flowPart236:setHeight(20);
     obj.flowPart236:setWidth(75);
     obj.flowPart236:setVertAlign("center");
@@ -6900,17 +7081,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart237:setTop(10);
     obj.flowPart237:setName("flowPart237");
 
-    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button11:setParent(obj.flowPart237);
-    obj.button11:setAlign("client");
-    obj.button11:setHeight(16);
-    obj.button11:setText("+");
-    obj.button11:setWidth(16);
-    obj.button11:setHorzTextAlign("center");
-    obj.button11:setName("button11");
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button17:setParent(obj.flowPart237);
+    obj.button17:setAlign("client");
+    obj.button17:setHeight(16);
+    obj.button17:setText("+");
+    obj.button17:setWidth(16);
+    obj.button17:setHorzTextAlign("center");
+    obj.button17:setName("button17");
 
     obj.rclHabilidadesnivel7 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel7:setParent(obj.flowLayout40);
+    obj.rclHabilidadesnivel7:setParent(obj.flowLayout41);
     obj.rclHabilidadesnivel7:setName("rclHabilidadesnivel7");
     obj.rclHabilidadesnivel7:setField("habilidadesnivel7");
     obj.rclHabilidadesnivel7:setTemplateForm("habilidadercl");
@@ -6920,17 +7101,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel7:setAutoHeight(true);
     obj.rclHabilidadesnivel7:setHitTest(false);
 
-    obj.flowLayout42 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout42:setParent(obj.habilidadesLayout);
-    obj.flowLayout42:setAlign("top");
-    obj.flowLayout42:setAutoHeight(true);
-    obj.flowLayout42:setMaxControlsPerLine(1);
-    obj.flowLayout42:setHorzAlign("center");
-    obj.flowLayout42:setMaxWidth(406);
-    obj.flowLayout42:setName("flowLayout42");
+    obj.flowLayout43 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout43:setParent(obj.habilidadesLayout);
+    obj.flowLayout43:setAlign("top");
+    obj.flowLayout43:setAutoHeight(true);
+    obj.flowLayout43:setMaxControlsPerLine(1);
+    obj.flowLayout43:setHorzAlign("center");
+    obj.flowLayout43:setMaxWidth(406);
+    obj.flowLayout43:setName("flowLayout43");
 
     obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle16:setParent(obj.flowLayout42);
+    obj.rectangle16:setParent(obj.flowLayout43);
     obj.rectangle16:setCornerType("bevel");
     obj.rectangle16:setAlign("client");
     obj.rectangle16:setXradius(10);
@@ -6942,16 +7123,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle16:setStrokeSize(2);
     obj.rectangle16:setName("rectangle16");
 
-    obj.flowLayout43 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout43:setParent(obj.rectangle16);
-    obj.flowLayout43:setWidth(400);
-    obj.flowLayout43:setHeight(40);
-    obj.flowLayout43:setMaxControlsPerLine(1);
-    obj.flowLayout43:setHorzAlign("center");
-    obj.flowLayout43:setName("flowLayout43");
+    obj.flowLayout44 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout44:setParent(obj.rectangle16);
+    obj.flowLayout44:setWidth(400);
+    obj.flowLayout44:setHeight(40);
+    obj.flowLayout44:setMaxControlsPerLine(1);
+    obj.flowLayout44:setHorzAlign("center");
+    obj.flowLayout44:setName("flowLayout44");
 
     obj.flowPart238 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart238:setParent(obj.flowLayout43);
+    obj.flowPart238:setParent(obj.flowLayout44);
     obj.flowPart238:setHeight(20);
     obj.flowPart238:setWidth(75);
     obj.flowPart238:setVertAlign("center");
@@ -6983,17 +7164,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart239:setTop(10);
     obj.flowPart239:setName("flowPart239");
 
-    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button12:setParent(obj.flowPart239);
-    obj.button12:setAlign("client");
-    obj.button12:setHeight(16);
-    obj.button12:setText("+");
-    obj.button12:setWidth(16);
-    obj.button12:setHorzTextAlign("center");
-    obj.button12:setName("button12");
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button18:setParent(obj.flowPart239);
+    obj.button18:setAlign("client");
+    obj.button18:setHeight(16);
+    obj.button18:setText("+");
+    obj.button18:setWidth(16);
+    obj.button18:setHorzTextAlign("center");
+    obj.button18:setName("button18");
 
     obj.rclHabilidadesnivel8 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel8:setParent(obj.flowLayout42);
+    obj.rclHabilidadesnivel8:setParent(obj.flowLayout43);
     obj.rclHabilidadesnivel8:setName("rclHabilidadesnivel8");
     obj.rclHabilidadesnivel8:setField("habilidadesnivel8");
     obj.rclHabilidadesnivel8:setTemplateForm("habilidadercl");
@@ -7003,17 +7184,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel8:setAutoHeight(true);
     obj.rclHabilidadesnivel8:setHitTest(false);
 
-    obj.flowLayout44 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout44:setParent(obj.habilidadesLayout);
-    obj.flowLayout44:setAlign("top");
-    obj.flowLayout44:setAutoHeight(true);
-    obj.flowLayout44:setMaxControlsPerLine(1);
-    obj.flowLayout44:setHorzAlign("center");
-    obj.flowLayout44:setMaxWidth(406);
-    obj.flowLayout44:setName("flowLayout44");
+    obj.flowLayout45 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout45:setParent(obj.habilidadesLayout);
+    obj.flowLayout45:setAlign("top");
+    obj.flowLayout45:setAutoHeight(true);
+    obj.flowLayout45:setMaxControlsPerLine(1);
+    obj.flowLayout45:setHorzAlign("center");
+    obj.flowLayout45:setMaxWidth(406);
+    obj.flowLayout45:setName("flowLayout45");
 
     obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj.flowLayout44);
+    obj.rectangle17:setParent(obj.flowLayout45);
     obj.rectangle17:setCornerType("bevel");
     obj.rectangle17:setAlign("client");
     obj.rectangle17:setXradius(10);
@@ -7025,16 +7206,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle17:setStrokeSize(2);
     obj.rectangle17:setName("rectangle17");
 
-    obj.flowLayout45 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout45:setParent(obj.rectangle17);
-    obj.flowLayout45:setWidth(400);
-    obj.flowLayout45:setHeight(40);
-    obj.flowLayout45:setMaxControlsPerLine(1);
-    obj.flowLayout45:setHorzAlign("center");
-    obj.flowLayout45:setName("flowLayout45");
+    obj.flowLayout46 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout46:setParent(obj.rectangle17);
+    obj.flowLayout46:setWidth(400);
+    obj.flowLayout46:setHeight(40);
+    obj.flowLayout46:setMaxControlsPerLine(1);
+    obj.flowLayout46:setHorzAlign("center");
+    obj.flowLayout46:setName("flowLayout46");
 
     obj.flowPart240 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart240:setParent(obj.flowLayout45);
+    obj.flowPart240:setParent(obj.flowLayout46);
     obj.flowPart240:setHeight(20);
     obj.flowPart240:setWidth(75);
     obj.flowPart240:setVertAlign("center");
@@ -7066,17 +7247,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart241:setTop(10);
     obj.flowPart241:setName("flowPart241");
 
-    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button13:setParent(obj.flowPart241);
-    obj.button13:setAlign("client");
-    obj.button13:setHeight(16);
-    obj.button13:setText("+");
-    obj.button13:setWidth(16);
-    obj.button13:setHorzTextAlign("center");
-    obj.button13:setName("button13");
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button19:setParent(obj.flowPart241);
+    obj.button19:setAlign("client");
+    obj.button19:setHeight(16);
+    obj.button19:setText("+");
+    obj.button19:setWidth(16);
+    obj.button19:setHorzTextAlign("center");
+    obj.button19:setName("button19");
 
     obj.rclHabilidadesnivel9 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel9:setParent(obj.flowLayout44);
+    obj.rclHabilidadesnivel9:setParent(obj.flowLayout45);
     obj.rclHabilidadesnivel9:setName("rclHabilidadesnivel9");
     obj.rclHabilidadesnivel9:setField("habilidadesnivel9");
     obj.rclHabilidadesnivel9:setTemplateForm("habilidadercl");
@@ -7086,17 +7267,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel9:setAutoHeight(true);
     obj.rclHabilidadesnivel9:setHitTest(false);
 
-    obj.flowLayout46 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout46:setParent(obj.habilidadesLayout);
-    obj.flowLayout46:setAlign("top");
-    obj.flowLayout46:setAutoHeight(true);
-    obj.flowLayout46:setMaxControlsPerLine(1);
-    obj.flowLayout46:setHorzAlign("center");
-    obj.flowLayout46:setMaxWidth(406);
-    obj.flowLayout46:setName("flowLayout46");
+    obj.flowLayout47 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout47:setParent(obj.habilidadesLayout);
+    obj.flowLayout47:setAlign("top");
+    obj.flowLayout47:setAutoHeight(true);
+    obj.flowLayout47:setMaxControlsPerLine(1);
+    obj.flowLayout47:setHorzAlign("center");
+    obj.flowLayout47:setMaxWidth(406);
+    obj.flowLayout47:setName("flowLayout47");
 
     obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle18:setParent(obj.flowLayout46);
+    obj.rectangle18:setParent(obj.flowLayout47);
     obj.rectangle18:setCornerType("bevel");
     obj.rectangle18:setAlign("client");
     obj.rectangle18:setXradius(10);
@@ -7108,16 +7289,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle18:setStrokeSize(2);
     obj.rectangle18:setName("rectangle18");
 
-    obj.flowLayout47 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout47:setParent(obj.rectangle18);
-    obj.flowLayout47:setWidth(400);
-    obj.flowLayout47:setHeight(40);
-    obj.flowLayout47:setMaxControlsPerLine(1);
-    obj.flowLayout47:setHorzAlign("center");
-    obj.flowLayout47:setName("flowLayout47");
+    obj.flowLayout48 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout48:setParent(obj.rectangle18);
+    obj.flowLayout48:setWidth(400);
+    obj.flowLayout48:setHeight(40);
+    obj.flowLayout48:setMaxControlsPerLine(1);
+    obj.flowLayout48:setHorzAlign("center");
+    obj.flowLayout48:setName("flowLayout48");
 
     obj.flowPart242 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart242:setParent(obj.flowLayout47);
+    obj.flowPart242:setParent(obj.flowLayout48);
     obj.flowPart242:setHeight(20);
     obj.flowPart242:setWidth(75);
     obj.flowPart242:setVertAlign("center");
@@ -7149,17 +7330,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart243:setTop(10);
     obj.flowPart243:setName("flowPart243");
 
-    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button14:setParent(obj.flowPart243);
-    obj.button14:setAlign("client");
-    obj.button14:setHeight(16);
-    obj.button14:setText("+");
-    obj.button14:setWidth(16);
-    obj.button14:setHorzTextAlign("center");
-    obj.button14:setName("button14");
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button20:setParent(obj.flowPart243);
+    obj.button20:setAlign("client");
+    obj.button20:setHeight(16);
+    obj.button20:setText("+");
+    obj.button20:setWidth(16);
+    obj.button20:setHorzTextAlign("center");
+    obj.button20:setName("button20");
 
     obj.rclHabilidadesnivel10 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel10:setParent(obj.flowLayout46);
+    obj.rclHabilidadesnivel10:setParent(obj.flowLayout47);
     obj.rclHabilidadesnivel10:setName("rclHabilidadesnivel10");
     obj.rclHabilidadesnivel10:setField("habilidadesnivel10");
     obj.rclHabilidadesnivel10:setTemplateForm("habilidadercl");
@@ -7169,17 +7350,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel10:setAutoHeight(true);
     obj.rclHabilidadesnivel10:setHitTest(false);
 
-    obj.flowLayout48 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout48:setParent(obj.habilidadesLayout);
-    obj.flowLayout48:setAlign("top");
-    obj.flowLayout48:setAutoHeight(true);
-    obj.flowLayout48:setMaxControlsPerLine(1);
-    obj.flowLayout48:setHorzAlign("center");
-    obj.flowLayout48:setMaxWidth(406);
-    obj.flowLayout48:setName("flowLayout48");
+    obj.flowLayout49 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout49:setParent(obj.habilidadesLayout);
+    obj.flowLayout49:setAlign("top");
+    obj.flowLayout49:setAutoHeight(true);
+    obj.flowLayout49:setMaxControlsPerLine(1);
+    obj.flowLayout49:setHorzAlign("center");
+    obj.flowLayout49:setMaxWidth(406);
+    obj.flowLayout49:setName("flowLayout49");
 
     obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle19:setParent(obj.flowLayout48);
+    obj.rectangle19:setParent(obj.flowLayout49);
     obj.rectangle19:setCornerType("bevel");
     obj.rectangle19:setAlign("client");
     obj.rectangle19:setXradius(10);
@@ -7191,16 +7372,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle19:setStrokeSize(2);
     obj.rectangle19:setName("rectangle19");
 
-    obj.flowLayout49 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout49:setParent(obj.rectangle19);
-    obj.flowLayout49:setWidth(400);
-    obj.flowLayout49:setHeight(40);
-    obj.flowLayout49:setMaxControlsPerLine(1);
-    obj.flowLayout49:setHorzAlign("center");
-    obj.flowLayout49:setName("flowLayout49");
+    obj.flowLayout50 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout50:setParent(obj.rectangle19);
+    obj.flowLayout50:setWidth(400);
+    obj.flowLayout50:setHeight(40);
+    obj.flowLayout50:setMaxControlsPerLine(1);
+    obj.flowLayout50:setHorzAlign("center");
+    obj.flowLayout50:setName("flowLayout50");
 
     obj.flowPart244 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart244:setParent(obj.flowLayout49);
+    obj.flowPart244:setParent(obj.flowLayout50);
     obj.flowPart244:setHeight(20);
     obj.flowPart244:setWidth(75);
     obj.flowPart244:setVertAlign("center");
@@ -7232,17 +7413,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart245:setTop(10);
     obj.flowPart245:setName("flowPart245");
 
-    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button15:setParent(obj.flowPart245);
-    obj.button15:setAlign("client");
-    obj.button15:setHeight(16);
-    obj.button15:setText("+");
-    obj.button15:setWidth(16);
-    obj.button15:setHorzTextAlign("center");
-    obj.button15:setName("button15");
+    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button21:setParent(obj.flowPart245);
+    obj.button21:setAlign("client");
+    obj.button21:setHeight(16);
+    obj.button21:setText("+");
+    obj.button21:setWidth(16);
+    obj.button21:setHorzTextAlign("center");
+    obj.button21:setName("button21");
 
     obj.rclHabilidadesnivel11 = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesnivel11:setParent(obj.flowLayout48);
+    obj.rclHabilidadesnivel11:setParent(obj.flowLayout49);
     obj.rclHabilidadesnivel11:setName("rclHabilidadesnivel11");
     obj.rclHabilidadesnivel11:setField("habilidadesnivel11");
     obj.rclHabilidadesnivel11:setTemplateForm("habilidadercl");
@@ -7252,17 +7433,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclHabilidadesnivel11:setAutoHeight(true);
     obj.rclHabilidadesnivel11:setHitTest(false);
 
-    obj.flowLayout50 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout50:setParent(obj.habilidadesLayout);
-    obj.flowLayout50:setAlign("top");
-    obj.flowLayout50:setAutoHeight(true);
-    obj.flowLayout50:setMaxControlsPerLine(1);
-    obj.flowLayout50:setHorzAlign("center");
-    obj.flowLayout50:setMaxWidth(406);
-    obj.flowLayout50:setName("flowLayout50");
+    obj.flowLayout51 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout51:setParent(obj.habilidadesLayout);
+    obj.flowLayout51:setAlign("top");
+    obj.flowLayout51:setAutoHeight(true);
+    obj.flowLayout51:setMaxControlsPerLine(1);
+    obj.flowLayout51:setHorzAlign("center");
+    obj.flowLayout51:setMaxWidth(406);
+    obj.flowLayout51:setName("flowLayout51");
 
     obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle20:setParent(obj.flowLayout50);
+    obj.rectangle20:setParent(obj.flowLayout51);
     obj.rectangle20:setCornerType("bevel");
     obj.rectangle20:setAlign("client");
     obj.rectangle20:setXradius(10);
@@ -7274,16 +7455,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle20:setStrokeSize(2);
     obj.rectangle20:setName("rectangle20");
 
-    obj.flowLayout51 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout51:setParent(obj.rectangle20);
-    obj.flowLayout51:setWidth(400);
-    obj.flowLayout51:setHeight(40);
-    obj.flowLayout51:setMaxControlsPerLine(1);
-    obj.flowLayout51:setHorzAlign("center");
-    obj.flowLayout51:setName("flowLayout51");
+    obj.flowLayout52 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout52:setParent(obj.rectangle20);
+    obj.flowLayout52:setWidth(400);
+    obj.flowLayout52:setHeight(40);
+    obj.flowLayout52:setMaxControlsPerLine(1);
+    obj.flowLayout52:setHorzAlign("center");
+    obj.flowLayout52:setName("flowLayout52");
 
     obj.flowPart246 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart246:setParent(obj.flowLayout51);
+    obj.flowPart246:setParent(obj.flowLayout52);
     obj.flowPart246:setHeight(20);
     obj.flowPart246:setWidth(60);
     obj.flowPart246:setVertAlign("center");
@@ -7315,17 +7496,17 @@ local function constructNew_frmFichaDePersonagem()
     obj.flowPart247:setTop(10);
     obj.flowPart247:setName("flowPart247");
 
-    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button16:setParent(obj.flowPart247);
-    obj.button16:setAlign("client");
-    obj.button16:setHeight(16);
-    obj.button16:setText("+");
-    obj.button16:setWidth(16);
-    obj.button16:setHorzTextAlign("center");
-    obj.button16:setName("button16");
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button22:setParent(obj.flowPart247);
+    obj.button22:setAlign("client");
+    obj.button22:setHeight(16);
+    obj.button22:setText("+");
+    obj.button22:setWidth(16);
+    obj.button22:setHorzTextAlign("center");
+    obj.button22:setName("button22");
 
     obj.rclHabilidadesextras = GUI.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidadesextras:setParent(obj.flowLayout50);
+    obj.rclHabilidadesextras:setParent(obj.flowLayout51);
     obj.rclHabilidadesextras:setName("rclHabilidadesextras");
     obj.rclHabilidadesextras:setField("habilidadesextras");
     obj.rclHabilidadesextras:setTemplateForm("habilidadercl");
@@ -7342,15 +7523,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.editaHabilidade:setWidth(752);
     obj.editaHabilidade:setBackOpacity(0.5);
 
-    obj.flowLayout52 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout52:setParent(obj.editaHabilidade);
-    obj.flowLayout52:setAlign("client");
-    obj.flowLayout52:setMaxControlsPerLine(1);
-    obj.flowLayout52:setMargins({left=10,right=10,top=10,bottom=10});
-    obj.flowLayout52:setName("flowLayout52");
+    obj.flowLayout53 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout53:setParent(obj.editaHabilidade);
+    obj.flowLayout53:setAlign("client");
+    obj.flowLayout53:setMaxControlsPerLine(1);
+    obj.flowLayout53:setMargins({left=10,right=10,top=10,bottom=10});
+    obj.flowLayout53:setName("flowLayout53");
 
     obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle21:setParent(obj.flowLayout52);
+    obj.rectangle21:setParent(obj.flowLayout53);
     obj.rectangle21:setCornerType("innerLine");
     obj.rectangle21:setXradius(10);
     obj.rectangle21:setYradius(10);
@@ -7361,16 +7542,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle21:setStrokeSize(2);
     obj.rectangle21:setName("rectangle21");
 
-    obj.flowLayout53 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout53:setParent(obj.rectangle21);
-    obj.flowLayout53:setHeight(300);
-    obj.flowLayout53:setWidth(732);
-    obj.flowLayout53:setPadding({left=10,right=10,top=10,bottom=10});
-    obj.flowLayout53:setAlign("client");
-    obj.flowLayout53:setName("flowLayout53");
+    obj.flowLayout54 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout54:setParent(obj.rectangle21);
+    obj.flowLayout54:setHeight(300);
+    obj.flowLayout54:setWidth(732);
+    obj.flowLayout54:setPadding({left=10,right=10,top=10,bottom=10});
+    obj.flowLayout54:setAlign("client");
+    obj.flowLayout54:setName("flowLayout54");
 
     obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.flowLayout53);
+    obj.richEdit1:setParent(obj.flowLayout54);
     obj.richEdit1:setHeight(280);
     obj.richEdit1:setWidth(712);
     lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#40000000");
@@ -7380,7 +7561,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.richEdit1:setName("richEdit1");
 
     obj.flowPart248 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart248:setParent(obj.flowLayout52);
+    obj.flowPart248:setParent(obj.flowLayout53);
     obj.flowPart248:setWidth(135);
     obj.flowPart248:setHeight(20);
     obj.flowPart248:setName("flowPart248");
@@ -7418,7 +7599,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine94:setName("horzLine94");
 
     obj.flowPart249 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart249:setParent(obj.flowLayout52);
+    obj.flowPart249:setParent(obj.flowLayout53);
     obj.flowPart249:setWidth(135);
     obj.flowPart249:setHeight(20);
     obj.flowPart249:setName("flowPart249");
@@ -7474,15 +7655,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.riquezas:setStepSizes({310, 420, 640, 760, 1150});
     obj.riquezas:setMinScaledWidth(300);
 
-    obj.flowLayout54 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout54:setParent(obj.riquezas);
-    obj.flowLayout54:setAutoHeight(true);
-    obj.flowLayout54:setMinWidth(150);
-    obj.flowLayout54:setMaxWidth(300);
-    obj.flowLayout54:setName("flowLayout54");
+    obj.flowLayout55 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout55:setParent(obj.riquezas);
+    obj.flowLayout55:setAutoHeight(true);
+    obj.flowLayout55:setMinWidth(150);
+    obj.flowLayout55:setMaxWidth(300);
+    obj.flowLayout55:setName("flowLayout55");
 
     obj.flowPart250 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart250:setParent(obj.flowLayout54);
+    obj.flowPart250:setParent(obj.flowLayout55);
     obj.flowPart250:setHeight(20);
     obj.flowPart250:setWidth(150);
     obj.flowPart250:setName("flowPart250");
@@ -7502,7 +7683,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine96:setName("horzLine96");
 
     obj.flowPart251 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart251:setParent(obj.flowLayout54);
+    obj.flowPart251:setParent(obj.flowLayout55);
     obj.flowPart251:setHeight(20);
     obj.flowPart251:setWidth(30);
     obj.flowPart251:setName("flowPart251");
@@ -7514,7 +7695,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit105:setName("edit105");
 
     obj.flowPart252 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart252:setParent(obj.flowLayout54);
+    obj.flowPart252:setParent(obj.flowLayout55);
     obj.flowPart252:setHeight(20);
     obj.flowPart252:setWidth(30);
     obj.flowPart252:setMargins({left=5});
@@ -7527,20 +7708,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.buttonbronze:setText("-/+");
 
     obj.popupRiquezasbronze = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popupRiquezasbronze:setParent(obj.flowLayout54);
+    obj.popupRiquezasbronze:setParent(obj.flowLayout55);
     obj.popupRiquezasbronze:setName("popupRiquezasbronze");
     obj.popupRiquezasbronze:setWidth(185);
     obj.popupRiquezasbronze:setHeight(50);
     obj.popupRiquezasbronze:setBackOpacity(0.4);
 
-    obj.flowLayout55 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout55:setParent(obj.popupRiquezasbronze);
-    obj.flowLayout55:setAlign("client");
-    obj.flowLayout55:setMaxControlsPerLine(3);
-    obj.flowLayout55:setName("flowLayout55");
+    obj.flowLayout56 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout56:setParent(obj.popupRiquezasbronze);
+    obj.flowLayout56:setAlign("client");
+    obj.flowLayout56:setMaxControlsPerLine(3);
+    obj.flowLayout56:setName("flowLayout56");
 
     obj.flowPart253 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart253:setParent(obj.flowLayout55);
+    obj.flowPart253:setParent(obj.flowLayout56);
     obj.flowPart253:setHeight(20);
     obj.flowPart253:setWidth(110);
     obj.flowPart253:setName("flowPart253");
@@ -7553,7 +7734,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label134:setName("label134");
 
     obj.flowPart254 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart254:setParent(obj.flowLayout55);
+    obj.flowPart254:setParent(obj.flowLayout56);
     obj.flowPart254:setHeight(20);
     obj.flowPart254:setWidth(30);
     obj.flowPart254:setName("flowPart254");
@@ -7576,20 +7757,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine97:setName("horzLine97");
 
     obj.flowPart255 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart255:setParent(obj.flowLayout55);
+    obj.flowPart255:setParent(obj.flowLayout56);
     obj.flowPart255:setHeight(20);
     obj.flowPart255:setWidth(25);
     obj.flowPart255:setName("flowPart255");
 
-    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button17:setParent(obj.flowPart255);
-    obj.button17:setText("ok");
-    obj.button17:setHeight(20);
-    obj.button17:setWidth(25);
-    obj.button17:setName("button17");
+    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button23:setParent(obj.flowPart255);
+    obj.button23:setText("ok");
+    obj.button23:setHeight(20);
+    obj.button23:setWidth(25);
+    obj.button23:setName("button23");
 
     obj.flowPart256 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart256:setParent(obj.flowLayout55);
+    obj.flowPart256:setParent(obj.flowLayout56);
     obj.flowPart256:setHeight(20);
     obj.flowPart256:setWidth(40);
     obj.flowPart256:setName("flowPart256");
@@ -7604,7 +7785,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton1:setName("radioButton1");
 
     obj.flowPart257 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart257:setParent(obj.flowLayout55);
+    obj.flowPart257:setParent(obj.flowLayout56);
     obj.flowPart257:setHeight(20);
     obj.flowPart257:setWidth(40);
     obj.flowPart257:setName("flowPart257");
@@ -7619,7 +7800,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton2:setName("radioButton2");
 
     obj.flowPart258 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart258:setParent(obj.flowLayout54);
+    obj.flowPart258:setParent(obj.flowLayout55);
     obj.flowPart258:setHeight(20);
     obj.flowPart258:setWidth(150);
     obj.flowPart258:setName("flowPart258");
@@ -7639,7 +7820,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine98:setName("horzLine98");
 
     obj.flowPart259 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart259:setParent(obj.flowLayout54);
+    obj.flowPart259:setParent(obj.flowLayout55);
     obj.flowPart259:setHeight(20);
     obj.flowPart259:setWidth(30);
     obj.flowPart259:setName("flowPart259");
@@ -7651,7 +7832,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit106:setName("edit106");
 
     obj.flowPart260 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart260:setParent(obj.flowLayout54);
+    obj.flowPart260:setParent(obj.flowLayout55);
     obj.flowPart260:setHeight(20);
     obj.flowPart260:setWidth(30);
     obj.flowPart260:setMargins({left=5});
@@ -7664,20 +7845,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.buttonprata:setText("-/+");
 
     obj.popupRiquezasprata = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popupRiquezasprata:setParent(obj.flowLayout54);
+    obj.popupRiquezasprata:setParent(obj.flowLayout55);
     obj.popupRiquezasprata:setName("popupRiquezasprata");
     obj.popupRiquezasprata:setWidth(185);
     obj.popupRiquezasprata:setHeight(50);
     obj.popupRiquezasprata:setBackOpacity(0.4);
 
-    obj.flowLayout56 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout56:setParent(obj.popupRiquezasprata);
-    obj.flowLayout56:setAlign("client");
-    obj.flowLayout56:setMaxControlsPerLine(3);
-    obj.flowLayout56:setName("flowLayout56");
+    obj.flowLayout57 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout57:setParent(obj.popupRiquezasprata);
+    obj.flowLayout57:setAlign("client");
+    obj.flowLayout57:setMaxControlsPerLine(3);
+    obj.flowLayout57:setName("flowLayout57");
 
     obj.flowPart261 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart261:setParent(obj.flowLayout56);
+    obj.flowPart261:setParent(obj.flowLayout57);
     obj.flowPart261:setHeight(20);
     obj.flowPart261:setWidth(110);
     obj.flowPart261:setName("flowPart261");
@@ -7690,7 +7871,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label135:setName("label135");
 
     obj.flowPart262 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart262:setParent(obj.flowLayout56);
+    obj.flowPart262:setParent(obj.flowLayout57);
     obj.flowPart262:setHeight(20);
     obj.flowPart262:setWidth(30);
     obj.flowPart262:setName("flowPart262");
@@ -7713,20 +7894,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine99:setName("horzLine99");
 
     obj.flowPart263 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart263:setParent(obj.flowLayout56);
+    obj.flowPart263:setParent(obj.flowLayout57);
     obj.flowPart263:setHeight(20);
     obj.flowPart263:setWidth(25);
     obj.flowPart263:setName("flowPart263");
 
-    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button18:setParent(obj.flowPart263);
-    obj.button18:setText("ok");
-    obj.button18:setHeight(20);
-    obj.button18:setWidth(25);
-    obj.button18:setName("button18");
+    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button24:setParent(obj.flowPart263);
+    obj.button24:setText("ok");
+    obj.button24:setHeight(20);
+    obj.button24:setWidth(25);
+    obj.button24:setName("button24");
 
     obj.flowPart264 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart264:setParent(obj.flowLayout56);
+    obj.flowPart264:setParent(obj.flowLayout57);
     obj.flowPart264:setHeight(20);
     obj.flowPart264:setWidth(40);
     obj.flowPart264:setName("flowPart264");
@@ -7741,7 +7922,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton3:setName("radioButton3");
 
     obj.flowPart265 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart265:setParent(obj.flowLayout56);
+    obj.flowPart265:setParent(obj.flowLayout57);
     obj.flowPart265:setHeight(20);
     obj.flowPart265:setWidth(40);
     obj.flowPart265:setName("flowPart265");
@@ -7756,7 +7937,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton4:setName("radioButton4");
 
     obj.flowPart266 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart266:setParent(obj.flowLayout54);
+    obj.flowPart266:setParent(obj.flowLayout55);
     obj.flowPart266:setHeight(20);
     obj.flowPart266:setWidth(150);
     obj.flowPart266:setName("flowPart266");
@@ -7776,7 +7957,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine100:setName("horzLine100");
 
     obj.flowPart267 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart267:setParent(obj.flowLayout54);
+    obj.flowPart267:setParent(obj.flowLayout55);
     obj.flowPart267:setHeight(20);
     obj.flowPart267:setWidth(30);
     obj.flowPart267:setName("flowPart267");
@@ -7788,7 +7969,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit107:setName("edit107");
 
     obj.flowPart268 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart268:setParent(obj.flowLayout54);
+    obj.flowPart268:setParent(obj.flowLayout55);
     obj.flowPart268:setHeight(20);
     obj.flowPart268:setWidth(30);
     obj.flowPart268:setMargins({left=5});
@@ -7801,20 +7982,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.buttonouro:setText("-/+");
 
     obj.popupRiquezasouro = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popupRiquezasouro:setParent(obj.flowLayout54);
+    obj.popupRiquezasouro:setParent(obj.flowLayout55);
     obj.popupRiquezasouro:setName("popupRiquezasouro");
     obj.popupRiquezasouro:setWidth(185);
     obj.popupRiquezasouro:setHeight(50);
     obj.popupRiquezasouro:setBackOpacity(0.4);
 
-    obj.flowLayout57 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout57:setParent(obj.popupRiquezasouro);
-    obj.flowLayout57:setAlign("client");
-    obj.flowLayout57:setMaxControlsPerLine(3);
-    obj.flowLayout57:setName("flowLayout57");
+    obj.flowLayout58 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout58:setParent(obj.popupRiquezasouro);
+    obj.flowLayout58:setAlign("client");
+    obj.flowLayout58:setMaxControlsPerLine(3);
+    obj.flowLayout58:setName("flowLayout58");
 
     obj.flowPart269 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart269:setParent(obj.flowLayout57);
+    obj.flowPart269:setParent(obj.flowLayout58);
     obj.flowPart269:setHeight(20);
     obj.flowPart269:setWidth(110);
     obj.flowPart269:setName("flowPart269");
@@ -7827,7 +8008,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label136:setName("label136");
 
     obj.flowPart270 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart270:setParent(obj.flowLayout57);
+    obj.flowPart270:setParent(obj.flowLayout58);
     obj.flowPart270:setHeight(20);
     obj.flowPart270:setWidth(30);
     obj.flowPart270:setName("flowPart270");
@@ -7850,20 +8031,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine101:setName("horzLine101");
 
     obj.flowPart271 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart271:setParent(obj.flowLayout57);
+    obj.flowPart271:setParent(obj.flowLayout58);
     obj.flowPart271:setHeight(20);
     obj.flowPart271:setWidth(25);
     obj.flowPart271:setName("flowPart271");
 
-    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button19:setParent(obj.flowPart271);
-    obj.button19:setText("ok");
-    obj.button19:setHeight(20);
-    obj.button19:setWidth(25);
-    obj.button19:setName("button19");
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button25:setParent(obj.flowPart271);
+    obj.button25:setText("ok");
+    obj.button25:setHeight(20);
+    obj.button25:setWidth(25);
+    obj.button25:setName("button25");
 
     obj.flowPart272 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart272:setParent(obj.flowLayout57);
+    obj.flowPart272:setParent(obj.flowLayout58);
     obj.flowPart272:setHeight(20);
     obj.flowPart272:setWidth(40);
     obj.flowPart272:setName("flowPart272");
@@ -7878,7 +8059,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton5:setName("radioButton5");
 
     obj.flowPart273 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart273:setParent(obj.flowLayout57);
+    obj.flowPart273:setParent(obj.flowLayout58);
     obj.flowPart273:setHeight(20);
     obj.flowPart273:setWidth(40);
     obj.flowPart273:setName("flowPart273");
@@ -7893,7 +8074,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton6:setName("radioButton6");
 
     obj.flowPart274 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart274:setParent(obj.flowLayout54);
+    obj.flowPart274:setParent(obj.flowLayout55);
     obj.flowPart274:setHeight(20);
     obj.flowPart274:setWidth(150);
     obj.flowPart274:setName("flowPart274");
@@ -7913,7 +8094,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine102:setName("horzLine102");
 
     obj.flowPart275 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart275:setParent(obj.flowLayout54);
+    obj.flowPart275:setParent(obj.flowLayout55);
     obj.flowPart275:setHeight(20);
     obj.flowPart275:setWidth(30);
     obj.flowPart275:setName("flowPart275");
@@ -7925,7 +8106,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit108:setName("edit108");
 
     obj.flowPart276 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart276:setParent(obj.flowLayout54);
+    obj.flowPart276:setParent(obj.flowLayout55);
     obj.flowPart276:setHeight(20);
     obj.flowPart276:setWidth(30);
     obj.flowPart276:setMargins({left=5});
@@ -7938,20 +8119,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.buttonplatina:setText("-/+");
 
     obj.popupRiquezasplatina = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popupRiquezasplatina:setParent(obj.flowLayout54);
+    obj.popupRiquezasplatina:setParent(obj.flowLayout55);
     obj.popupRiquezasplatina:setName("popupRiquezasplatina");
     obj.popupRiquezasplatina:setWidth(185);
     obj.popupRiquezasplatina:setHeight(50);
     obj.popupRiquezasplatina:setBackOpacity(0.4);
 
-    obj.flowLayout58 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout58:setParent(obj.popupRiquezasplatina);
-    obj.flowLayout58:setAlign("client");
-    obj.flowLayout58:setMaxControlsPerLine(3);
-    obj.flowLayout58:setName("flowLayout58");
+    obj.flowLayout59 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout59:setParent(obj.popupRiquezasplatina);
+    obj.flowLayout59:setAlign("client");
+    obj.flowLayout59:setMaxControlsPerLine(3);
+    obj.flowLayout59:setName("flowLayout59");
 
     obj.flowPart277 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart277:setParent(obj.flowLayout58);
+    obj.flowPart277:setParent(obj.flowLayout59);
     obj.flowPart277:setHeight(20);
     obj.flowPart277:setWidth(110);
     obj.flowPart277:setName("flowPart277");
@@ -7964,7 +8145,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label137:setName("label137");
 
     obj.flowPart278 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart278:setParent(obj.flowLayout58);
+    obj.flowPart278:setParent(obj.flowLayout59);
     obj.flowPart278:setHeight(20);
     obj.flowPart278:setWidth(30);
     obj.flowPart278:setName("flowPart278");
@@ -7987,20 +8168,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine103:setName("horzLine103");
 
     obj.flowPart279 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart279:setParent(obj.flowLayout58);
+    obj.flowPart279:setParent(obj.flowLayout59);
     obj.flowPart279:setHeight(20);
     obj.flowPart279:setWidth(25);
     obj.flowPart279:setName("flowPart279");
 
-    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button20:setParent(obj.flowPart279);
-    obj.button20:setText("ok");
-    obj.button20:setHeight(20);
-    obj.button20:setWidth(25);
-    obj.button20:setName("button20");
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button26:setParent(obj.flowPart279);
+    obj.button26:setText("ok");
+    obj.button26:setHeight(20);
+    obj.button26:setWidth(25);
+    obj.button26:setName("button26");
 
     obj.flowPart280 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart280:setParent(obj.flowLayout58);
+    obj.flowPart280:setParent(obj.flowLayout59);
     obj.flowPart280:setHeight(20);
     obj.flowPart280:setWidth(40);
     obj.flowPart280:setName("flowPart280");
@@ -8015,7 +8196,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton7:setName("radioButton7");
 
     obj.flowPart281 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart281:setParent(obj.flowLayout58);
+    obj.flowPart281:setParent(obj.flowLayout59);
     obj.flowPart281:setHeight(20);
     obj.flowPart281:setWidth(40);
     obj.flowPart281:setName("flowPart281");
@@ -8029,15 +8210,15 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton8:setVertTextAlign("center");
     obj.radioButton8:setName("radioButton8");
 
-    obj.flowLayout59 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout59:setParent(obj.riquezas);
-    obj.flowLayout59:setAutoHeight(true);
-    obj.flowLayout59:setMinWidth(150);
-    obj.flowLayout59:setMaxWidth(300);
-    obj.flowLayout59:setName("flowLayout59");
+    obj.flowLayout60 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout60:setParent(obj.riquezas);
+    obj.flowLayout60:setAutoHeight(true);
+    obj.flowLayout60:setMinWidth(150);
+    obj.flowLayout60:setMaxWidth(300);
+    obj.flowLayout60:setName("flowLayout60");
 
     obj.flowPart282 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart282:setParent(obj.flowLayout59);
+    obj.flowPart282:setParent(obj.flowLayout60);
     obj.flowPart282:setHeight(20);
     obj.flowPart282:setWidth(150);
     obj.flowPart282:setName("flowPart282");
@@ -8057,7 +8238,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine104:setName("horzLine104");
 
     obj.flowPart283 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart283:setParent(obj.flowLayout59);
+    obj.flowPart283:setParent(obj.flowLayout60);
     obj.flowPart283:setHeight(20);
     obj.flowPart283:setWidth(30);
     obj.flowPart283:setName("flowPart283");
@@ -8069,7 +8250,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit109:setName("edit109");
 
     obj.flowPart284 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart284:setParent(obj.flowLayout59);
+    obj.flowPart284:setParent(obj.flowLayout60);
     obj.flowPart284:setHeight(20);
     obj.flowPart284:setWidth(30);
     obj.flowPart284:setMargins({left=5});
@@ -8082,20 +8263,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.buttonraras:setText("-/+");
 
     obj.popupRiquezasraras = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popupRiquezasraras:setParent(obj.flowLayout59);
+    obj.popupRiquezasraras:setParent(obj.flowLayout60);
     obj.popupRiquezasraras:setName("popupRiquezasraras");
     obj.popupRiquezasraras:setWidth(185);
     obj.popupRiquezasraras:setHeight(50);
     obj.popupRiquezasraras:setBackOpacity(0.4);
 
-    obj.flowLayout60 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout60:setParent(obj.popupRiquezasraras);
-    obj.flowLayout60:setAlign("client");
-    obj.flowLayout60:setMaxControlsPerLine(3);
-    obj.flowLayout60:setName("flowLayout60");
+    obj.flowLayout61 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout61:setParent(obj.popupRiquezasraras);
+    obj.flowLayout61:setAlign("client");
+    obj.flowLayout61:setMaxControlsPerLine(3);
+    obj.flowLayout61:setName("flowLayout61");
 
     obj.flowPart285 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart285:setParent(obj.flowLayout60);
+    obj.flowPart285:setParent(obj.flowLayout61);
     obj.flowPart285:setHeight(20);
     obj.flowPart285:setWidth(110);
     obj.flowPart285:setName("flowPart285");
@@ -8108,7 +8289,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label139:setName("label139");
 
     obj.flowPart286 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart286:setParent(obj.flowLayout60);
+    obj.flowPart286:setParent(obj.flowLayout61);
     obj.flowPart286:setHeight(20);
     obj.flowPart286:setWidth(30);
     obj.flowPart286:setName("flowPart286");
@@ -8131,20 +8312,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine105:setName("horzLine105");
 
     obj.flowPart287 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart287:setParent(obj.flowLayout60);
+    obj.flowPart287:setParent(obj.flowLayout61);
     obj.flowPart287:setHeight(20);
     obj.flowPart287:setWidth(25);
     obj.flowPart287:setName("flowPart287");
 
-    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button21:setParent(obj.flowPart287);
-    obj.button21:setText("ok");
-    obj.button21:setHeight(20);
-    obj.button21:setWidth(25);
-    obj.button21:setName("button21");
+    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button27:setParent(obj.flowPart287);
+    obj.button27:setText("ok");
+    obj.button27:setHeight(20);
+    obj.button27:setWidth(25);
+    obj.button27:setName("button27");
 
     obj.flowPart288 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart288:setParent(obj.flowLayout60);
+    obj.flowPart288:setParent(obj.flowLayout61);
     obj.flowPart288:setHeight(20);
     obj.flowPart288:setWidth(40);
     obj.flowPart288:setName("flowPart288");
@@ -8159,7 +8340,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton9:setName("radioButton9");
 
     obj.flowPart289 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart289:setParent(obj.flowLayout60);
+    obj.flowPart289:setParent(obj.flowLayout61);
     obj.flowPart289:setHeight(20);
     obj.flowPart289:setWidth(40);
     obj.flowPart289:setName("flowPart289");
@@ -8174,7 +8355,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton10:setName("radioButton10");
 
     obj.flowPart290 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart290:setParent(obj.flowLayout59);
+    obj.flowPart290:setParent(obj.flowLayout60);
     obj.flowPart290:setHeight(20);
     obj.flowPart290:setWidth(150);
     obj.flowPart290:setName("flowPart290");
@@ -8194,7 +8375,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine106:setName("horzLine106");
 
     obj.flowPart291 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart291:setParent(obj.flowLayout59);
+    obj.flowPart291:setParent(obj.flowLayout60);
     obj.flowPart291:setHeight(20);
     obj.flowPart291:setWidth(30);
     obj.flowPart291:setName("flowPart291");
@@ -8206,7 +8387,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit110:setName("edit110");
 
     obj.flowPart292 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart292:setParent(obj.flowLayout59);
+    obj.flowPart292:setParent(obj.flowLayout60);
     obj.flowPart292:setHeight(20);
     obj.flowPart292:setWidth(30);
     obj.flowPart292:setMargins({left=5});
@@ -8219,20 +8400,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.buttonpreciosas:setText("-/+");
 
     obj.popupRiquezaspreciosas = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popupRiquezaspreciosas:setParent(obj.flowLayout59);
+    obj.popupRiquezaspreciosas:setParent(obj.flowLayout60);
     obj.popupRiquezaspreciosas:setName("popupRiquezaspreciosas");
     obj.popupRiquezaspreciosas:setWidth(185);
     obj.popupRiquezaspreciosas:setHeight(50);
     obj.popupRiquezaspreciosas:setBackOpacity(0.4);
 
-    obj.flowLayout61 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout61:setParent(obj.popupRiquezaspreciosas);
-    obj.flowLayout61:setAlign("client");
-    obj.flowLayout61:setMaxControlsPerLine(3);
-    obj.flowLayout61:setName("flowLayout61");
+    obj.flowLayout62 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout62:setParent(obj.popupRiquezaspreciosas);
+    obj.flowLayout62:setAlign("client");
+    obj.flowLayout62:setMaxControlsPerLine(3);
+    obj.flowLayout62:setName("flowLayout62");
 
     obj.flowPart293 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart293:setParent(obj.flowLayout61);
+    obj.flowPart293:setParent(obj.flowLayout62);
     obj.flowPart293:setHeight(20);
     obj.flowPart293:setWidth(110);
     obj.flowPart293:setName("flowPart293");
@@ -8245,7 +8426,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label141:setName("label141");
 
     obj.flowPart294 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart294:setParent(obj.flowLayout61);
+    obj.flowPart294:setParent(obj.flowLayout62);
     obj.flowPart294:setHeight(20);
     obj.flowPart294:setWidth(30);
     obj.flowPart294:setName("flowPart294");
@@ -8268,20 +8449,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine107:setName("horzLine107");
 
     obj.flowPart295 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart295:setParent(obj.flowLayout61);
+    obj.flowPart295:setParent(obj.flowLayout62);
     obj.flowPart295:setHeight(20);
     obj.flowPart295:setWidth(25);
     obj.flowPart295:setName("flowPart295");
 
-    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button22:setParent(obj.flowPart295);
-    obj.button22:setText("ok");
-    obj.button22:setHeight(20);
-    obj.button22:setWidth(25);
-    obj.button22:setName("button22");
+    obj.button28 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button28:setParent(obj.flowPart295);
+    obj.button28:setText("ok");
+    obj.button28:setHeight(20);
+    obj.button28:setWidth(25);
+    obj.button28:setName("button28");
 
     obj.flowPart296 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart296:setParent(obj.flowLayout61);
+    obj.flowPart296:setParent(obj.flowLayout62);
     obj.flowPart296:setHeight(20);
     obj.flowPart296:setWidth(40);
     obj.flowPart296:setName("flowPart296");
@@ -8296,7 +8477,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton11:setName("radioButton11");
 
     obj.flowPart297 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart297:setParent(obj.flowLayout61);
+    obj.flowPart297:setParent(obj.flowLayout62);
     obj.flowPart297:setHeight(20);
     obj.flowPart297:setWidth(40);
     obj.flowPart297:setName("flowPart297");
@@ -8311,7 +8492,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton12:setName("radioButton12");
 
     obj.flowPart298 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart298:setParent(obj.flowLayout59);
+    obj.flowPart298:setParent(obj.flowLayout60);
     obj.flowPart298:setHeight(20);
     obj.flowPart298:setWidth(150);
     obj.flowPart298:setName("flowPart298");
@@ -8331,7 +8512,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine108:setName("horzLine108");
 
     obj.flowPart299 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart299:setParent(obj.flowLayout59);
+    obj.flowPart299:setParent(obj.flowLayout60);
     obj.flowPart299:setHeight(20);
     obj.flowPart299:setWidth(30);
     obj.flowPart299:setName("flowPart299");
@@ -8343,7 +8524,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit111:setName("edit111");
 
     obj.flowPart300 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart300:setParent(obj.flowLayout59);
+    obj.flowPart300:setParent(obj.flowLayout60);
     obj.flowPart300:setHeight(20);
     obj.flowPart300:setWidth(30);
     obj.flowPart300:setMargins({left=5});
@@ -8356,20 +8537,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.buttondesconhecidas:setText("-/+");
 
     obj.popupRiquezasdesconhecidas = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popupRiquezasdesconhecidas:setParent(obj.flowLayout59);
+    obj.popupRiquezasdesconhecidas:setParent(obj.flowLayout60);
     obj.popupRiquezasdesconhecidas:setName("popupRiquezasdesconhecidas");
     obj.popupRiquezasdesconhecidas:setWidth(185);
     obj.popupRiquezasdesconhecidas:setHeight(50);
     obj.popupRiquezasdesconhecidas:setBackOpacity(0.4);
 
-    obj.flowLayout62 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout62:setParent(obj.popupRiquezasdesconhecidas);
-    obj.flowLayout62:setAlign("client");
-    obj.flowLayout62:setMaxControlsPerLine(3);
-    obj.flowLayout62:setName("flowLayout62");
+    obj.flowLayout63 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout63:setParent(obj.popupRiquezasdesconhecidas);
+    obj.flowLayout63:setAlign("client");
+    obj.flowLayout63:setMaxControlsPerLine(3);
+    obj.flowLayout63:setName("flowLayout63");
 
     obj.flowPart301 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart301:setParent(obj.flowLayout62);
+    obj.flowPart301:setParent(obj.flowLayout63);
     obj.flowPart301:setHeight(20);
     obj.flowPart301:setWidth(110);
     obj.flowPart301:setName("flowPart301");
@@ -8382,7 +8563,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.label143:setName("label143");
 
     obj.flowPart302 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart302:setParent(obj.flowLayout62);
+    obj.flowPart302:setParent(obj.flowLayout63);
     obj.flowPart302:setHeight(20);
     obj.flowPart302:setWidth(30);
     obj.flowPart302:setName("flowPart302");
@@ -8405,20 +8586,20 @@ local function constructNew_frmFichaDePersonagem()
     obj.horzLine109:setName("horzLine109");
 
     obj.flowPart303 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart303:setParent(obj.flowLayout62);
+    obj.flowPart303:setParent(obj.flowLayout63);
     obj.flowPart303:setHeight(20);
     obj.flowPart303:setWidth(25);
     obj.flowPart303:setName("flowPart303");
 
-    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button23:setParent(obj.flowPart303);
-    obj.button23:setText("ok");
-    obj.button23:setHeight(20);
-    obj.button23:setWidth(25);
-    obj.button23:setName("button23");
+    obj.button29 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button29:setParent(obj.flowPart303);
+    obj.button29:setText("ok");
+    obj.button29:setHeight(20);
+    obj.button29:setWidth(25);
+    obj.button29:setName("button29");
 
     obj.flowPart304 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart304:setParent(obj.flowLayout62);
+    obj.flowPart304:setParent(obj.flowLayout63);
     obj.flowPart304:setHeight(20);
     obj.flowPart304:setWidth(40);
     obj.flowPart304:setName("flowPart304");
@@ -8433,7 +8614,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton13:setName("radioButton13");
 
     obj.flowPart305 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart305:setParent(obj.flowLayout62);
+    obj.flowPart305:setParent(obj.flowLayout63);
     obj.flowPart305:setHeight(20);
     obj.flowPart305:setWidth(40);
     obj.flowPart305:setName("flowPart305");
@@ -8479,66 +8660,47 @@ local function constructNew_frmFichaDePersonagem()
     obj.richEdit3:setField("anotacoes");
     obj.richEdit3:setName("richEdit3");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.image1:addEventListener("onClick",
         function (_)
-            
-                            sheet.xpAtualClasse = 0
-                            sheet.xpAtualProfissao = 0
-                            sheet.nivelClasse = 1
-                            sheet.nivelProfissao = 1
-                            sheet.xpMaxClasse = 100
-                            sheet.xpTextoClasse = '0/100'
-                            sheet.xpMaxProfissao = 5
-                            sheet.xpTextoProfissao = '0/5'
-                            sheet.pontosTreinados = 0
-                            sheet.pontosRestantes = 2
-                            sheet.pontosDeConhecimentoDistribuidos = 0
-                            sheet.pDestino = 0
-                            sheet.atributoAcerto = 0
-                            sheet.atributoMira = 0
-                            sheet.atributoEsquiva = 0
-                            sheet.atributoBloqueio = 0
-                            sheet.classeAcerto = 0
-                            sheet.armaAcerto = 0
-                            sheet.armaduraAcerto = 0
-                            sheet.extraAcerto = 0
-                            sheet.classeMira = 0
-                            sheet.armaMira = 0
-                            sheet.armaduraMira = 0
-                            sheet.extraMira = 0
-                            sheet.classeEsquiva = 0
-                            sheet.armaEsquiva = 0
-                            sheet.armaduraEsquiva = 0
-                            sheet.extraEsquiva = 0
-                            sheet.classeBloqueio = 0
-                            sheet.armaBloqueio = 0
-                            sheet.armaduraBloqueio = 0
-                            sheet.extraBloqueio = 0
-                            sheet.conVida = 0
-                            sheet.armaVida = 0
-                            sheet.armaduraVida = 0
-                            sheet.outroVida = 0
-                            sheet.extraVida = 0
-                            sheet.totalDefesa = 0
-                            sheet.percepcao = 0
-                            sheet.intimidacao = 0
-                            sheet.persuasao = 0
-                            sheet.adestrarAnimais = 0
-                            sheet.furtividade = 0
-                            sheet.intuicao = 0
-                            sheet.didatica = 0
-                            sheet.geografia = 0
-                            sheet.historia = 0
-                            sheet.magia = 0
-                            sheet.faunaflora = 0
-                            sheet.linguagemComum = 0
-                            sheet.linguagemOriental = 0
-                            sheet.linguagemElfica = 0
-                            sheet.linguagemAna = 0
-                            sheet.linguagemDraconica = 0
+            self.popupConfig:show()
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event1 = obj.button1:addEventListener("onClick",
+        function (_)
+            resetNivel();
+        end, obj);
+
+    obj._e_event2 = obj.button2:addEventListener("onClick",
+        function (_)
+            resetPontosBonus();
+        end, obj);
+
+    obj._e_event3 = obj.button3:addEventListener("onClick",
+        function (_)
+            resetDestreza();
+        end, obj);
+
+    obj._e_event4 = obj.button4:addEventListener("onClick",
+        function (_)
+            resetTabelaAtributos();
+        end, obj);
+
+    obj._e_event5 = obj.button5:addEventListener("onClick",
+        function (_)
+            resetConhecimentos();
+        end, obj);
+
+    obj._e_event6 = obj.button6:addEventListener("onClick",
+        function (_)
+            resetTotal();
+        end, obj);
+
+    obj._e_event7 = obj.button7:addEventListener("onClick",
+        function (_)
+            showMessage(sheet.addValorBase)
+        end, obj);
+
+    obj._e_event8 = obj.button8:addEventListener("onClick",
         function (_)
             if sheet.pDestino == nil then sheet.pDestino = 0 end
                                                          if sheet.pDestino > 0 then
@@ -8547,24 +8709,24 @@ local function constructNew_frmFichaDePersonagem()
                                     
         end, obj);
 
-    obj._e_event2 = obj.button3:addEventListener("onClick",
+    obj._e_event9 = obj.button9:addEventListener("onClick",
         function (_)
             if sheet.pDestino == nil then sheet.pDestino = 0 end
                                                         sheet.pDestino = sheet.pDestino + 1
                                    
         end, obj);
 
-    obj._e_event3 = obj.rectangleVida:addEventListener("onClick",
+    obj._e_event10 = obj.rectangleVida:addEventListener("onClick",
         function (_)
             self.popupVida:show('bottomCenter',self.rectangleVida)
         end, obj);
 
-    obj._e_event4 = obj.rectangleDefesa:addEventListener("onClick",
+    obj._e_event11 = obj.rectangleDefesa:addEventListener("onClick",
         function (_)
             self.popupDefesa:show('bottomCenter',self.rectangleDefesa)
         end, obj);
 
-    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.conVida = sheet.conBase
                                             sheet.totalVida = (tonumber(sheet.conVida) or 0) +
@@ -8577,12 +8739,12 @@ local function constructNew_frmFichaDePersonagem()
                                             sheet.Defesa = sheet.totalDefesa
         end, obj);
 
-    obj._e_event6 = obj.rectangleAcerto:addEventListener("onClick",
+    obj._e_event13 = obj.rectangleAcerto:addEventListener("onClick",
         function (_)
             self.popupAcerto:show('bottomCenter',self.rectangleAcerto)
         end, obj);
 
-    obj._e_event7 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.destrezaAcerto = tonumber(sheet.atributoAcerto) or 0
                             sheet.baseAcerto = (tonumber(sheet.destrezaAcerto) or 0) + (tonumber(sheet.classeAcerto) or 0)
@@ -8601,12 +8763,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.modAcerto = tostring("+"..math.floor(tonumber(sheet.totalAcerto)/10))
         end, obj);
 
-    obj._e_event8 = obj.rectangleMira:addEventListener("onClick",
+    obj._e_event15 = obj.rectangleMira:addEventListener("onClick",
         function (_)
             self.popupMira:show('bottomCenter',self.rectangleMira)
         end, obj);
 
-    obj._e_event9 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.destrezaMira = tonumber(sheet.atributoMira) or 0
                             sheet.baseMira = (tonumber(sheet.destrezaMira) or 0) + (tonumber(sheet.classeMira) or 0)
@@ -8625,12 +8787,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.modMira = tostring("+"..math.floor(tonumber(sheet.totalMira)/10))
         end, obj);
 
-    obj._e_event10 = obj.rectangleEsquiva:addEventListener("onClick",
+    obj._e_event17 = obj.rectangleEsquiva:addEventListener("onClick",
         function (_)
             self.popupEsquiva:show('bottomCenter',self.rectangleEsquiva)
         end, obj);
 
-    obj._e_event11 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.destrezaEsquiva = tonumber(sheet.atributoEsquiva) or 0
                             sheet.baseEsquiva = (tonumber(sheet.destrezaEsquiva) or 0) + (tonumber(sheet.classeEsquiva) or 0)
@@ -8649,12 +8811,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.modEsquiva = tostring("+"..math.floor(tonumber(sheet.totalEsquiva)/10))
         end, obj);
 
-    obj._e_event12 = obj.rectangleBloqueio:addEventListener("onClick",
+    obj._e_event19 = obj.rectangleBloqueio:addEventListener("onClick",
         function (_)
             self.popupBloqueio:show('bottomCenter',self.rectangleBloqueio)
         end, obj);
 
-    obj._e_event13 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.destrezaBloqueio = tonumber(sheet.atributoBloqueio) or 0
                             sheet.baseBloqueio = (tonumber(sheet.destrezaBloqueio) or 0) + (tonumber(sheet.classeBloqueio) or 0)
@@ -8673,13 +8835,13 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.modBloqueio = tostring("+"..math.floor(tonumber(sheet.totalBloqueio)/10))
         end, obj);
 
-    obj._e_event14 = obj.barraxpClasse:addEventListener("onDblClick",
+    obj._e_event21 = obj.barraxpClasse:addEventListener("onDblClick",
         function (_)
             self.popupxpClasse:show('bottomCenter', self.barraxpClasse)
                                              self.somaxpClasse:setFocus()
         end, obj);
 
-    obj._e_event15 = obj.somaxpClasse:addEventListener("onKeyDown",
+    obj._e_event22 = obj.somaxpClasse:addEventListener("onKeyDown",
         function (_, event)
             
                                     if event.keyCode == 13 then
@@ -8727,7 +8889,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event16 = obj.okButtonClasse:addEventListener("onClick",
+    obj._e_event23 = obj.okButtonClasse:addEventListener("onClick",
         function (_)
             
                                      local recebido = sheet.somaxpClasse or 0
@@ -8762,13 +8924,13 @@ local function constructNew_frmFichaDePersonagem()
                                         self.popupxpClasse:close();
         end, obj);
 
-    obj._e_event17 = obj.barraxpProfissao:addEventListener("onDblClick",
+    obj._e_event24 = obj.barraxpProfissao:addEventListener("onDblClick",
         function (_)
             self.popupxpProfissao:show('bottomCenter', self.barraxpProfissao)
                                              self.somaxpProfissao:setFocus()
         end, obj);
 
-    obj._e_event18 = obj.somaxpProfissao:addEventListener("onKeyDown",
+    obj._e_event25 = obj.somaxpProfissao:addEventListener("onKeyDown",
         function (_, event)
             
                                     if event.keyCode == 13 then
@@ -8816,7 +8978,7 @@ local function constructNew_frmFichaDePersonagem()
                                     end
         end, obj);
 
-    obj._e_event19 = obj.okButtonProfissao:addEventListener("onClick",
+    obj._e_event26 = obj.okButtonProfissao:addEventListener("onClick",
         function (_)
             
                                      local recebido = sheet.somaxpProfissao or 0
@@ -8851,7 +9013,7 @@ local function constructNew_frmFichaDePersonagem()
                                         self.popupxpProfissao:close();
         end, obj);
 
-    obj._e_event20 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.conBase = (tonumber(sheet.conNivel) or 0) +
                             (tonumber(sheet.conClasse) or 0) +
@@ -8863,7 +9025,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.conEquip) or 0);
         end, obj);
 
-    obj._e_event21 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.forBase = (tonumber(sheet.forNivel) or 0) +
                             (tonumber(sheet.forClasse) or 0) +
@@ -8875,7 +9037,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.forEquip) or 0);
         end, obj);
 
-    obj._e_event22 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.dexBase = (tonumber(sheet.dexNivel) or 0) +
                             (tonumber(sheet.dexClasse) or 0) +
@@ -8887,7 +9049,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.dexEquip) or 0);
         end, obj);
 
-    obj._e_event23 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.carBase = (tonumber(sheet.carNivel) or 0) +
                             (tonumber(sheet.carClasse) or 0) +
@@ -8899,7 +9061,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.carEquip) or 0);
         end, obj);
 
-    obj._e_event24 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.intBase = (tonumber(sheet.intNivel) or 0) +
                             (tonumber(sheet.intClasse) or 0) +
@@ -8911,7 +9073,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.intEquip) or 0);
         end, obj);
 
-    obj._e_event25 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             sheet.sabBase = (tonumber(sheet.sabNivel) or 0) +
                             (tonumber(sheet.sabClasse) or 0) +
@@ -8923,637 +9085,775 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.sabEquip) or 0);
         end, obj);
 
-    obj._e_event26 = obj.percepcaoMinus:addEventListener("onClick",
+    obj._e_event33 = obj.percepcaoMinus:addEventListener("onClick",
         function (_)
+            if sheet.percepcao == nil then sheet.percepcao = 0 end
             
-                                    if sheet.percepcao == nil then sheet.percepcao = 0 end
-                                    if sheet.percepcao > 0 then
-                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
-                                            if sheet.pontosTreinados > 0 then
-                                            removerPonto();
-                                            sheet.percepcao = sheet.percepcao - 1
-                                            else
-                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
-                                                sheet.percepcao = sheet.percepcao - 1
-                                            end
+                                    if sheet.addValorBase == false then
+                                        if sheet.pontosTreinados > 0 then
+                                            Dialogs.confirmYesNo('Remover ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1
+                                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) - 1
+                                                        else
+                                                            sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) - 1
+                                                        end
+                                                    end)
                                         else
-                                            if sheet.pontosTreinados > 0 then
-                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
-                                                sheet.percepcao = sheet.percepcao - 1
+                                            if sheet.percepcao > 0 then
+                                                sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                sheet.percepcao = (tonumber(sheet.percepcao) or 0) - 1
                                             end
                                         end
-            
-                                    end
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) - 1
+                                        end
+                                   end
         end, obj);
 
-    obj._e_event27 = obj.percepcaoPlus:addEventListener("onClick",
+    obj._e_event34 = obj.percepcaoPlus:addEventListener("onClick",
         function (_)
+            if sheet.percepcao == nil then sheet.percepcao = 0 end
             
-                                    if sheet.percepcao == nil then sheet.percepcao = 0 end
-                                    if sheet.nivelClasse == 1 then
-                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1;
-                                            else
-                                                if sheet.pontosRestantes > 0 then
-                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                                    sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
-                                                end
-                                            end
-                                         end)
-                                    else
+                                   if sheet.addValorBase == false then
                                         if sheet.pontosRestantes > 0 then
                                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                                             sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
                                         else
-                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                             	Dialogs.confirmYesNo('Pontos Insuficientes. Adicionar ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) + 1
+                                                            sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
+                                                        end
+                                                    end)
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
                                             sheet.percepcao = (tonumber(sheet.percepcao) or 0) + 1
                                         end
-                                    end
+                                   end
         end, obj);
 
-    obj._e_event28 = obj.intimidacaoMinus:addEventListener("onClick",
+    obj._e_event35 = obj.intimidacaoMinus:addEventListener("onClick",
         function (_)
+            if sheet.intimidacao == nil then sheet.intimidacao = 0 end
             
-                                    if sheet.intimidacao == nil then sheet.intimidacao = 0 end
-                                    if sheet.intimidacao > 0 then
-                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
-                                            if sheet.pontosTreinados > 0 then
-                                            removerPonto();
-                                            sheet.intimidacao = sheet.intimidacao - 1
-                                            else
-                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
-                                                sheet.intimidacao = sheet.intimidacao - 1
-                                            end
+                                    if sheet.addValorBase == false then
+                                        if sheet.pontosTreinados > 0 then
+                                            Dialogs.confirmYesNo('Remover ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1
+                                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) - 1
+                                                        else
+                                                            sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) - 1
+                                                        end
+                                                    end)
                                         else
-                                            if sheet.pontosTreinados > 0 then
-                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
-                                                sheet.intimidacao = sheet.intimidacao - 1
+                                            if sheet.intimidacao > 0 then
+                                                sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) - 1
                                             end
                                         end
-            
-                                    end
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) - 1
+                                        end
+                                   end
         end, obj);
 
-    obj._e_event29 = obj.intimidacaoPlus:addEventListener("onClick",
+    obj._e_event36 = obj.intimidacaoPlus:addEventListener("onClick",
         function (_)
+            if sheet.intimidacao == nil then sheet.intimidacao = 0 end
             
-                                    if sheet.intimidacao == nil then sheet.intimidacao = 0 end
-                                    if sheet.nivelClasse == 1 then
-                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1;
-                                            else
-                                                if sheet.pontosRestantes > 0 then
-                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                                    sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
-                                                end
-                                            end
-                                         end)
-                                    else
+                                   if sheet.addValorBase == false then
                                         if sheet.pontosRestantes > 0 then
                                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                                             sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
                                         else
-                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                             	Dialogs.confirmYesNo('Pontos Insuficientes. Adicionar ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) + 1
+                                                            sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
+                                                        end
+                                                    end)
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
                                             sheet.intimidacao = (tonumber(sheet.intimidacao) or 0) + 1
                                         end
-                                    end
+                                   end
         end, obj);
 
-    obj._e_event30 = obj.persuasaoMinus:addEventListener("onClick",
+    obj._e_event37 = obj.persuasaoMinus:addEventListener("onClick",
         function (_)
+            if sheet.persuasao == nil then sheet.persuasao = 0 end
             
-                                    if sheet.persuasao == nil then sheet.persuasao = 0 end
-                                    if sheet.persuasao > 0 then
-                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
-                                            if sheet.pontosTreinados > 0 then
-                                            removerPonto();
-                                            sheet.persuasao = sheet.persuasao - 1
-                                            else
-                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
-                                                sheet.persuasao = sheet.persuasao - 1
-                                            end
+                                    if sheet.addValorBase == false then
+                                        if sheet.pontosTreinados > 0 then
+                                            Dialogs.confirmYesNo('Remover ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1
+                                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) - 1
+                                                        else
+                                                            sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) - 1
+                                                        end
+                                                    end)
                                         else
-                                            if sheet.pontosTreinados > 0 then
-                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
-                                                sheet.persuasao = sheet.persuasao - 1
+                                            if sheet.persuasao > 0 then
+                                                sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                sheet.persuasao = (tonumber(sheet.persuasao) or 0) - 1
                                             end
                                         end
-            
-                                    end
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) - 1
+                                        end
+                                   end
         end, obj);
 
-    obj._e_event31 = obj.persuasaoPlus:addEventListener("onClick",
+    obj._e_event38 = obj.persuasaoPlus:addEventListener("onClick",
         function (_)
+            if sheet.persuasao == nil then sheet.persuasao = 0 end
             
-                                    if sheet.persuasao == nil then sheet.persuasao = 0 end
-                                    if sheet.nivelClasse == 1 then
-                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1;
-                                            else
-                                                if sheet.pontosRestantes > 0 then
-                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                                    sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
-                                                end
-                                            end
-                                         end)
-                                    else
+                                   if sheet.addValorBase == false then
                                         if sheet.pontosRestantes > 0 then
                                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                                             sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
                                         else
-                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                             	Dialogs.confirmYesNo('Pontos Insuficientes. Adicionar ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) + 1
+                                                            sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
+                                                        end
+                                                    end)
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
                                             sheet.persuasao = (tonumber(sheet.persuasao) or 0) + 1
                                         end
-                                    end
+                                   end
         end, obj);
 
-    obj._e_event32 = obj.adestrarAnimaisMinus:addEventListener("onClick",
+    obj._e_event39 = obj.adestrarAnimaisMinus:addEventListener("onClick",
         function (_)
+            if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end
             
-                                    if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end
-                                    if sheet.adestrarAnimais > 0 then
-                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
-                                            if sheet.pontosTreinados > 0 then
-                                            removerPonto();
-                                            sheet.adestrarAnimais = sheet.adestrarAnimais - 1
-                                            else
-                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
-                                                sheet.adestrarAnimais = sheet.adestrarAnimais - 1
-                                            end
+                                    if sheet.addValorBase == false then
+                                        if sheet.pontosTreinados > 0 then
+                                            Dialogs.confirmYesNo('Remover ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1
+                                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) - 1
+                                                        else
+                                                            sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) - 1
+                                                        end
+                                                    end)
                                         else
-                                            if sheet.pontosTreinados > 0 then
-                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
-                                                sheet.adestrarAnimais = sheet.adestrarAnimais - 1
+                                            if sheet.adestrarAnimais > 0 then
+                                                sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) - 1
                                             end
                                         end
-            
-                                    end
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) - 1
+                                        end
+                                   end
         end, obj);
 
-    obj._e_event33 = obj.adestrarAnimaisPlus:addEventListener("onClick",
+    obj._e_event40 = obj.adestrarAnimaisPlus:addEventListener("onClick",
         function (_)
+            if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end
             
-                                    if sheet.adestrarAnimais == nil then sheet.adestrarAnimais = 0 end
-                                    if sheet.nivelClasse == 1 then
-                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1;
-                                            else
-                                                if sheet.pontosRestantes > 0 then
-                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                                    sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
-                                                end
-                                            end
-                                         end)
-                                    else
+                                   if sheet.addValorBase == false then
                                         if sheet.pontosRestantes > 0 then
                                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                                             sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
                                         else
-                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                             	Dialogs.confirmYesNo('Pontos Insuficientes. Adicionar ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) + 1
+                                                            sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
+                                                        end
+                                                    end)
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
                                             sheet.adestrarAnimais = (tonumber(sheet.adestrarAnimais) or 0) + 1
                                         end
-                                    end
+                                   end
         end, obj);
 
-    obj._e_event34 = obj.furtividadeMinus:addEventListener("onClick",
+    obj._e_event41 = obj.furtividadeMinus:addEventListener("onClick",
         function (_)
+            if sheet.furtividade == nil then sheet.furtividade = 0 end
             
-                                    if sheet.furtividade == nil then sheet.furtividade = 0 end
-                                    if sheet.furtividade > 0 then
-                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
-                                            if sheet.pontosTreinados > 0 then
-                                            removerPonto();
-                                            sheet.furtividade = sheet.furtividade - 1
-                                            else
-                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
-                                                sheet.furtividade = sheet.furtividade - 1
-                                            end
+                                    if sheet.addValorBase == false then
+                                        if sheet.pontosTreinados > 0 then
+                                            Dialogs.confirmYesNo('Remover ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1
+                                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) - 1
+                                                        else
+                                                            sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) - 1
+                                                        end
+                                                    end)
                                         else
-                                            if sheet.pontosTreinados > 0 then
-                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
-                                                sheet.furtividade = sheet.furtividade - 1
+                                            if sheet.furtividade > 0 then
+                                                sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                sheet.furtividade = (tonumber(sheet.furtividade) or 0) - 1
                                             end
                                         end
-            
-                                    end
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) - 1
+                                        end
+                                   end
         end, obj);
 
-    obj._e_event35 = obj.furtividadePlus:addEventListener("onClick",
+    obj._e_event42 = obj.furtividadePlus:addEventListener("onClick",
         function (_)
+            if sheet.furtividade == nil then sheet.furtividade = 0 end
             
-                                    if sheet.furtividade == nil then sheet.furtividade = 0 end
-                                    if sheet.nivelClasse == 1 then
-                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1;
-                                            else
-                                                if sheet.pontosRestantes > 0 then
-                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                                    sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
-                                                end
-                                            end
-                                         end)
-                                    else
+                                   if sheet.addValorBase == false then
                                         if sheet.pontosRestantes > 0 then
                                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                                             sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
                                         else
-                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                             	Dialogs.confirmYesNo('Pontos Insuficientes. Adicionar ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) + 1
+                                                            sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
+                                                        end
+                                                    end)
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
                                             sheet.furtividade = (tonumber(sheet.furtividade) or 0) + 1
                                         end
-                                    end
+                                   end
         end, obj);
 
-    obj._e_event36 = obj.intuicaoMinus:addEventListener("onClick",
+    obj._e_event43 = obj.intuicaoMinus:addEventListener("onClick",
         function (_)
+            if sheet.intuicao == nil then sheet.intuicao = 0 end
             
-                                    if sheet.intuicao == nil then sheet.intuicao = 0 end
-                                    if sheet.intuicao > 0 then
-                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
-                                            if sheet.pontosTreinados > 0 then
-                                            removerPonto();
-                                            sheet.intuicao = sheet.intuicao - 1
-                                            else
-                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
-                                                sheet.intuicao = sheet.intuicao - 1
-                                            end
+                                    if sheet.addValorBase == false then
+                                        if sheet.pontosTreinados > 0 then
+                                            Dialogs.confirmYesNo('Remover ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1
+                                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) - 1
+                                                        else
+                                                            sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) - 1
+                                                        end
+                                                    end)
                                         else
-                                            if sheet.pontosTreinados > 0 then
-                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
-                                                sheet.intuicao = sheet.intuicao - 1
+                                            if sheet.intuicao > 0 then
+                                                sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                sheet.intuicao = (tonumber(sheet.intuicao) or 0) - 1
                                             end
                                         end
-            
-                                    end
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) - 1
+                                        end
+                                   end
         end, obj);
 
-    obj._e_event37 = obj.intuicaoPlus:addEventListener("onClick",
+    obj._e_event44 = obj.intuicaoPlus:addEventListener("onClick",
         function (_)
+            if sheet.intuicao == nil then sheet.intuicao = 0 end
             
-                                    if sheet.intuicao == nil then sheet.intuicao = 0 end
-                                    if sheet.nivelClasse == 1 then
-                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1;
-                                            else
-                                                if sheet.pontosRestantes > 0 then
-                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                                    sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
-                                                end
-                                            end
-                                         end)
-                                    else
+                                   if sheet.addValorBase == false then
                                         if sheet.pontosRestantes > 0 then
                                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                                             sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
                                         else
-                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                             	Dialogs.confirmYesNo('Pontos Insuficientes. Adicionar ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) + 1
+                                                            sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
+                                                        end
+                                                    end)
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
                                             sheet.intuicao = (tonumber(sheet.intuicao) or 0) + 1
                                         end
-                                    end
+                                   end
         end, obj);
 
-    obj._e_event38 = obj.didaticaMinus:addEventListener("onClick",
+    obj._e_event45 = obj.didaticaMinus:addEventListener("onClick",
         function (_)
+            if sheet.didatica == nil then sheet.didatica = 0 end
             
-                                    if sheet.didatica == nil then sheet.didatica = 0 end
-                                    if sheet.didatica > 0 then
-                                        if (tonumber(sheet.nivelClasse) * 2) > tonumber(sheet.pontosRestantes) then
-                                            if sheet.pontosTreinados > 0 then
-                                            removerPonto();
-                                            sheet.didatica = sheet.didatica - 1
-                                            else
-                                                sheet.pontosRestantes = sheet.pontosRestantes + 1
-                                                sheet.didatica = sheet.didatica - 1
-                                            end
+                                    if sheet.addValorBase == false then
+                                        if sheet.pontosTreinados > 0 then
+                                            Dialogs.confirmYesNo('Remover ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1
+                                                            sheet.didatica = (tonumber(sheet.didatica) or 0) - 1
+                                                        else
+                                                            sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                            sheet.didatica = (tonumber(sheet.didatica) or 0) - 1
+                                                        end
+                                                    end)
                                         else
-                                            if sheet.pontosTreinados > 0 then
-                                                sheet.pontosTreinados = sheet.pontosTreinados - 1
-                                                sheet.didatica = sheet.didatica - 1
+                                            if sheet.didatica > 0 then
+                                                sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
+                                                sheet.didatica = (tonumber(sheet.didatica) or 0) - 1
                                             end
                                         end
-            
-                                    end
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.didatica = (tonumber(sheet.didatica) or 0) - 1
+                                        end
+                                   end
         end, obj);
 
-    obj._e_event39 = obj.didaticaPlus:addEventListener("onClick",
+    obj._e_event46 = obj.didaticaPlus:addEventListener("onClick",
         function (_)
+            if sheet.didatica == nil then sheet.didatica = 0 end
             
-                                    if sheet.didatica == nil then sheet.didatica = 0 end
-                                    if sheet.nivelClasse == 1 then
-                                       Dialogs.confirmYesNo('Vejo que está no nível 1. Deseja adicionar estes pontos como base de classe/raça? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.didatica = (tonumber(sheet.didatica) or 0) + 1;
-                                            else
-                                                if sheet.pontosRestantes > 0 then
-                                                    sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
-                                                    sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
-                                                end
-                                            end
-                                         end)
-                                    else
+                                   if sheet.addValorBase == false then
                                         if sheet.pontosRestantes > 0 then
                                             sheet.pontosRestantes = tonumber(sheet.pontosRestantes) - 1
                                             sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
                                         else
-                                            sheet.pontosTreinados = tonumber(sheet.pontosTreinados) + 1
+                                             	Dialogs.confirmYesNo('Pontos Insuficientes. Adicionar ponto de treinamento?',
+                                                    function (confirmado)
+                                                        if confirmado then
+                                                            sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) + 1
+                                                            sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
+                                                        end
+                                                    end)
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
                                             sheet.didatica = (tonumber(sheet.didatica) or 0) + 1
                                         end
-                                    end
+                                   end
         end, obj);
 
-    obj._e_event40 = obj.geografiaMinus:addEventListener("onClick",
+    obj._e_event47 = obj.geografiaMinus:addEventListener("onClick",
         function (_)
+            if sheet.geografia == nil then sheet.geografia = 0 end
             
-                                    if sheet.geografia > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                if sheet.geografia > 0 then
+                                   if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.geografia = (tonumber(sheet.geografia) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.geografia = (tonumber(sheet.geografia) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event48 = obj.geografiaPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.geografia = (tonumber(sheet.geografia) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.geografia = (tonumber(sheet.geografia) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event41 = obj.geografiaPlus:addEventListener("onClick",
+    obj._e_event49 = obj.historiaMinus:addEventListener("onClick",
         function (_)
+            if sheet.historia == nil then sheet.historia = 0 end
             
-                                    if sheet.geografia == nil then sheet.geografia = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.geografia = (tonumber(sheet.geografia) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.geografia = (tonumber(sheet.geografia) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event42 = obj.historiaMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.historia > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.historia > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.historia = (tonumber(sheet.historia) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.historia = (tonumber(sheet.historia) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event50 = obj.historiaPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.historia = (tonumber(sheet.historia) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.historia = (tonumber(sheet.historia) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event43 = obj.historiaPlus:addEventListener("onClick",
+    obj._e_event51 = obj.religiaoMinus:addEventListener("onClick",
         function (_)
+            if sheet.religiao == nil then sheet.religiao = 0 end
             
-                                    if sheet.historia == nil then sheet.historia = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.historia = (tonumber(sheet.historia) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.historia = (tonumber(sheet.historia) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event44 = obj.religiaoMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.religiao > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.religiao > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.religiao = (tonumber(sheet.religiao) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.religiao = (tonumber(sheet.religiao) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event52 = obj.religiaoPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.religiao = (tonumber(sheet.religiao) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.religiao = (tonumber(sheet.religiao) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event45 = obj.religiaoPlus:addEventListener("onClick",
+    obj._e_event53 = obj.magiaMinus:addEventListener("onClick",
         function (_)
+            if sheet.magia == nil then sheet.magia = 0 end
             
-                                    if sheet.religiao == nil then sheet.religiao = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.religiao = (tonumber(sheet.religiao) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.religiao = (tonumber(sheet.religiao) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event46 = obj.magiaMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.magia > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.magia > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.magia = (tonumber(sheet.magia) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.magia = (tonumber(sheet.magia) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event54 = obj.magiaPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.magia = (tonumber(sheet.magia) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.magia = (tonumber(sheet.magia) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event47 = obj.magiaPlus:addEventListener("onClick",
+    obj._e_event55 = obj.faunafloraMinus:addEventListener("onClick",
         function (_)
+            if sheet.faunaflora == nil then sheet.faunaflora = 0 end
             
-                                    if sheet.magia == nil then sheet.magia = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.magia = (tonumber(sheet.magia) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.magia = (tonumber(sheet.magia) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event48 = obj.faunafloraMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.faunaflora > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.faunaflora > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event56 = obj.faunafloraPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event49 = obj.faunafloraPlus:addEventListener("onClick",
+    obj._e_event57 = obj.linguagemComumMinus:addEventListener("onClick",
         function (_)
+            if sheet.linguagemComum == nil then sheet.linguagemComum = 0 end
             
-                                    if sheet.faunaflora == nil then sheet.faunaflora = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event50 = obj.linguagemComumMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.linguagemComum > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.linguagemComum > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event58 = obj.linguagemComumPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event51 = obj.linguagemComumPlus:addEventListener("onClick",
+    obj._e_event59 = obj.linguagemOrientalMinus:addEventListener("onClick",
         function (_)
+            if sheet.linguagemOriental == nil then sheet.linguagemOriental = 0 end
             
-                                    if sheet.linguagemComum == nil then sheet.linguagemComum = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event52 = obj.linguagemOrientalMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.linguagemOriental > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.linguagemOriental > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event60 = obj.linguagemOrientalPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event53 = obj.linguagemOrientalPlus:addEventListener("onClick",
+    obj._e_event61 = obj.linguagemElficaMinus:addEventListener("onClick",
         function (_)
+            if sheet.linguagemElfica == nil then sheet.linguagemElfica = 0 end
             
-                                    if sheet.linguagemOriental == nil then sheet.linguagemOriental = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event54 = obj.linguagemElficaMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.linguagemElfica > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.linguagemElfica > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event62 = obj.linguagemElficaPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event55 = obj.linguagemElficaPlus:addEventListener("onClick",
+    obj._e_event63 = obj.linguagemAnaMinus:addEventListener("onClick",
         function (_)
+            if sheet.linguagemAna == nil then sheet.linguagemAna = 0 end
             
-                                    if sheet.linguagemElfica == nil then sheet.linguagemElfica = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event56 = obj.linguagemAnaMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.linguagemAna > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.linguagemAna > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
+                                        end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) - 1
+                                        end
+                                   end
+                                end
+        end, obj);
+
+    obj._e_event64 = obj.linguagemAnaPlus:addEventListener("onClick",
+        function (_)
+            
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1
+                                        end
+            
+                                    else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1
                                         end
                                     end
+                                    
         end, obj);
 
-    obj._e_event57 = obj.linguagemAnaPlus:addEventListener("onClick",
+    obj._e_event65 = obj.linguagemDraconicaMinus:addEventListener("onClick",
         function (_)
+            if sheet.linguagemDraconica == nil then sheet.linguagemDraconica = 0 end
             
-                                    if sheet.linguagemAna == nil then sheet.linguagemAna = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1
-                                    else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) + 1;
-                                            end
-                                         end)
-                                    end
-        end, obj);
-
-    obj._e_event58 = obj.linguagemDraconicaMinus:addEventListener("onClick",
-        function (_)
+                                if sheet.linguagemDraconica > 0 then
+                                   if sheet.addValorBase == false then
             
-                                    if sheet.linguagemDraconica > 0 then
-                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) - 1
-                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                         end
-                                    end
+            
+                                   else
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) - 1
+                                        end
+                                   end
+                                end
         end, obj);
 
-    obj._e_event59 = obj.linguagemDraconicaPlus:addEventListener("onClick",
+    obj._e_event66 = obj.linguagemDraconicaPlus:addEventListener("onClick",
         function (_)
             
-                                    if sheet.linguagemDraconica == nil then sheet.linguagemDraconica = 0 end
-                                    if sheet.pontosDeConhecimento > 0 then
-                                        sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
-                                        sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1
+            
+                                    if sheet.addValorBase == false then
+            
+                                        if sheet.pontosDeConhecimento > 0 then
+                                            sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) + 1
+                                            sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1
+                                        end
+            
                                     else
-                                         Dialogs.confirmYesNo('Pontos insuficientes. Deseja adicionar como valor base de raça/classe? - Estes pontos só poderão ser removidos mais tarde zerando a ficha -',
-                                         function (confirmado)
-                                            if confirmado then
-                                                sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1;
-                                            end
-                                         end)
+                                        if sheet.addValorBase == true then
+                                            sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) + 1
+                                        end
                                     end
+                                    
         end, obj);
 
-    obj._e_event60 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event67 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             -- ###### REMOVE VALORES NULOS ######
             
@@ -9595,83 +9895,83 @@ local function constructNew_frmFichaDePersonagem()
                         tonumber(sheet.pontosDeConhecimentoDistribuidos)
         end, obj);
 
-    obj._e_event61 = obj.button4:addEventListener("onClick",
+    obj._e_event68 = obj.button10:addEventListener("onClick",
         function (_)
             self.rclHabilidadesbase:append();
         end, obj);
 
-    obj._e_event62 = obj.button5:addEventListener("onClick",
+    obj._e_event69 = obj.button11:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel1:append();
         end, obj);
 
-    obj._e_event63 = obj.button6:addEventListener("onClick",
+    obj._e_event70 = obj.button12:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel2:append();
         end, obj);
 
-    obj._e_event64 = obj.button7:addEventListener("onClick",
+    obj._e_event71 = obj.button13:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel3:append();
         end, obj);
 
-    obj._e_event65 = obj.button8:addEventListener("onClick",
+    obj._e_event72 = obj.button14:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel4:append();
         end, obj);
 
-    obj._e_event66 = obj.button9:addEventListener("onClick",
+    obj._e_event73 = obj.button15:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel5:append();
         end, obj);
 
-    obj._e_event67 = obj.button10:addEventListener("onClick",
+    obj._e_event74 = obj.button16:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel6:append();
         end, obj);
 
-    obj._e_event68 = obj.button11:addEventListener("onClick",
+    obj._e_event75 = obj.button17:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel7:append();
         end, obj);
 
-    obj._e_event69 = obj.button12:addEventListener("onClick",
+    obj._e_event76 = obj.button18:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel8:append();
         end, obj);
 
-    obj._e_event70 = obj.button13:addEventListener("onClick",
+    obj._e_event77 = obj.button19:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel9:append();
         end, obj);
 
-    obj._e_event71 = obj.button14:addEventListener("onClick",
+    obj._e_event78 = obj.button20:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel10:append();
         end, obj);
 
-    obj._e_event72 = obj.button15:addEventListener("onClick",
+    obj._e_event79 = obj.button21:addEventListener("onClick",
         function (_)
             self.rclHabilidadesnivel11:append();
         end, obj);
 
-    obj._e_event73 = obj.button16:addEventListener("onClick",
+    obj._e_event80 = obj.button22:addEventListener("onClick",
         function (_)
             self.rclHabilidadesextras:append();
         end, obj);
 
-    obj._e_event74 = obj.buttonbronze:addEventListener("onClick",
+    obj._e_event81 = obj.buttonbronze:addEventListener("onClick",
         function (_)
             self.popupRiquezasbronze:show('right',self.buttonbronze)
                                          self.somaRiquezasEditbronze:setFocus()
                                         
         end, obj);
 
-    obj._e_event75 = obj.somaRiquezasEditbronze:addEventListener("onKeyDown",
+    obj._e_event82 = obj.somaRiquezasEditbronze:addEventListener("onKeyDown",
         function (_, event)
         end, obj);
 
-    obj._e_event76 = obj.button17:addEventListener("onClick",
+    obj._e_event83 = obj.button23:addEventListener("onClick",
         function (_)
             
                                                 local moeda = 'bronze'
@@ -9766,18 +10066,18 @@ local function constructNew_frmFichaDePersonagem()
                                                 
         end, obj);
 
-    obj._e_event77 = obj.buttonprata:addEventListener("onClick",
+    obj._e_event84 = obj.buttonprata:addEventListener("onClick",
         function (_)
             self.popupRiquezasprata:show('right',self.buttonprata)
                                          self.somaRiquezasEditprata:setFocus()
                                         
         end, obj);
 
-    obj._e_event78 = obj.somaRiquezasEditprata:addEventListener("onKeyDown",
+    obj._e_event85 = obj.somaRiquezasEditprata:addEventListener("onKeyDown",
         function (_, event)
         end, obj);
 
-    obj._e_event79 = obj.button18:addEventListener("onClick",
+    obj._e_event86 = obj.button24:addEventListener("onClick",
         function (_)
             
                                                 local moeda = 'prata'
@@ -9872,18 +10172,18 @@ local function constructNew_frmFichaDePersonagem()
                                                 
         end, obj);
 
-    obj._e_event80 = obj.buttonouro:addEventListener("onClick",
+    obj._e_event87 = obj.buttonouro:addEventListener("onClick",
         function (_)
             self.popupRiquezasouro:show('right',self.buttonouro)
                                          self.somaRiquezasEditouro:setFocus()
                                         
         end, obj);
 
-    obj._e_event81 = obj.somaRiquezasEditouro:addEventListener("onKeyDown",
+    obj._e_event88 = obj.somaRiquezasEditouro:addEventListener("onKeyDown",
         function (_, event)
         end, obj);
 
-    obj._e_event82 = obj.button19:addEventListener("onClick",
+    obj._e_event89 = obj.button25:addEventListener("onClick",
         function (_)
             
                                                 local moeda = 'ouro'
@@ -9978,18 +10278,18 @@ local function constructNew_frmFichaDePersonagem()
                                                 
         end, obj);
 
-    obj._e_event83 = obj.buttonplatina:addEventListener("onClick",
+    obj._e_event90 = obj.buttonplatina:addEventListener("onClick",
         function (_)
             self.popupRiquezasplatina:show('right',self.buttonplatina)
                                          self.somaRiquezasEditplatina:setFocus()
                                         
         end, obj);
 
-    obj._e_event84 = obj.somaRiquezasEditplatina:addEventListener("onKeyDown",
+    obj._e_event91 = obj.somaRiquezasEditplatina:addEventListener("onKeyDown",
         function (_, event)
         end, obj);
 
-    obj._e_event85 = obj.button20:addEventListener("onClick",
+    obj._e_event92 = obj.button26:addEventListener("onClick",
         function (_)
             
                                                 local moeda = 'platina'
@@ -10084,18 +10384,18 @@ local function constructNew_frmFichaDePersonagem()
                                                 
         end, obj);
 
-    obj._e_event86 = obj.buttonraras:addEventListener("onClick",
+    obj._e_event93 = obj.buttonraras:addEventListener("onClick",
         function (_)
             self.popupRiquezasraras:show('right',self.buttonraras)
                                          self.somaRiquezasEditraras:setFocus()
                                         
         end, obj);
 
-    obj._e_event87 = obj.somaRiquezasEditraras:addEventListener("onKeyDown",
+    obj._e_event94 = obj.somaRiquezasEditraras:addEventListener("onKeyDown",
         function (_, event)
         end, obj);
 
-    obj._e_event88 = obj.button21:addEventListener("onClick",
+    obj._e_event95 = obj.button27:addEventListener("onClick",
         function (_)
             
                                                 local gema = 'raras'
@@ -10147,18 +10447,18 @@ local function constructNew_frmFichaDePersonagem()
                                                 
         end, obj);
 
-    obj._e_event89 = obj.buttonpreciosas:addEventListener("onClick",
+    obj._e_event96 = obj.buttonpreciosas:addEventListener("onClick",
         function (_)
             self.popupRiquezaspreciosas:show('right',self.buttonpreciosas)
                                          self.somaRiquezasEditpreciosas:setFocus()
                                         
         end, obj);
 
-    obj._e_event90 = obj.somaRiquezasEditpreciosas:addEventListener("onKeyDown",
+    obj._e_event97 = obj.somaRiquezasEditpreciosas:addEventListener("onKeyDown",
         function (_, event)
         end, obj);
 
-    obj._e_event91 = obj.button22:addEventListener("onClick",
+    obj._e_event98 = obj.button28:addEventListener("onClick",
         function (_)
             
                                                 local gema = 'preciosas'
@@ -10210,18 +10510,18 @@ local function constructNew_frmFichaDePersonagem()
                                                 
         end, obj);
 
-    obj._e_event92 = obj.buttondesconhecidas:addEventListener("onClick",
+    obj._e_event99 = obj.buttondesconhecidas:addEventListener("onClick",
         function (_)
             self.popupRiquezasdesconhecidas:show('right',self.buttondesconhecidas)
                                          self.somaRiquezasEditdesconhecidas:setFocus()
                                         
         end, obj);
 
-    obj._e_event93 = obj.somaRiquezasEditdesconhecidas:addEventListener("onKeyDown",
+    obj._e_event100 = obj.somaRiquezasEditdesconhecidas:addEventListener("onKeyDown",
         function (_, event)
         end, obj);
 
-    obj._e_event94 = obj.button23:addEventListener("onClick",
+    obj._e_event101 = obj.button29:addEventListener("onClick",
         function (_)
             
                                                 local gema = 'desconhecidas'
@@ -10274,6 +10574,13 @@ local function constructNew_frmFichaDePersonagem()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event101);
+        __o_rrpgObjs.removeEventListenerById(self._e_event100);
+        __o_rrpgObjs.removeEventListenerById(self._e_event99);
+        __o_rrpgObjs.removeEventListenerById(self._e_event98);
+        __o_rrpgObjs.removeEventListenerById(self._e_event97);
+        __o_rrpgObjs.removeEventListenerById(self._e_event96);
+        __o_rrpgObjs.removeEventListenerById(self._e_event95);
         __o_rrpgObjs.removeEventListenerById(self._e_event94);
         __o_rrpgObjs.removeEventListenerById(self._e_event93);
         __o_rrpgObjs.removeEventListenerById(self._e_event92);
@@ -10494,6 +10801,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.perfilLayout ~= nil then self.perfilLayout:destroy(); self.perfilLayout = nil; end;
         if self.flowPart96 ~= nil then self.flowPart96:destroy(); self.flowPart96 = nil; end;
         if self.horzLine63 ~= nil then self.horzLine63:destroy(); self.horzLine63 = nil; end;
+        if self.button28 ~= nil then self.button28:destroy(); self.button28 = nil; end;
         if self.flowPart80 ~= nil then self.flowPart80:destroy(); self.flowPart80 = nil; end;
         if self.flowPart72 ~= nil then self.flowPart72:destroy(); self.flowPart72 = nil; end;
         if self.label73 ~= nil then self.label73:destroy(); self.label73 = nil; end;
@@ -10547,10 +10855,12 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLayout10 ~= nil then self.flowLayout10:destroy(); self.flowLayout10 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.flowLayout53 ~= nil then self.flowLayout53:destroy(); self.flowLayout53 = nil; end;
+        if self.button27 ~= nil then self.button27:destroy(); self.button27 = nil; end;
         if self.label133 ~= nil then self.label133:destroy(); self.label133 = nil; end;
         if self.tabelaPontosBonus ~= nil then self.tabelaPontosBonus:destroy(); self.tabelaPontosBonus = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.horzLine64 ~= nil then self.horzLine64:destroy(); self.horzLine64 = nil; end;
+        if self.button24 ~= nil then self.button24:destroy(); self.button24 = nil; end;
         if self.dadosDeNivel ~= nil then self.dadosDeNivel:destroy(); self.dadosDeNivel = nil; end;
         if self.flowPart257 ~= nil then self.flowPart257:destroy(); self.flowPart257 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
@@ -10568,9 +10878,9 @@ local function constructNew_frmFichaDePersonagem()
         if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
         if self.flowPart276 ~= nil then self.flowPart276:destroy(); self.flowPart276 = nil; end;
         if self.horzLine83 ~= nil then self.horzLine83:destroy(); self.horzLine83 = nil; end;
+        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.flowPart180 ~= nil then self.flowPart180:destroy(); self.flowPart180 = nil; end;
         if self.adestrarAnimaisPlus ~= nil then self.adestrarAnimaisPlus:destroy(); self.adestrarAnimaisPlus = nil; end;
-        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.dadosDestaque ~= nil then self.dadosDestaque:destroy(); self.dadosDestaque = nil; end;
         if self.radioButton2 ~= nil then self.radioButton2:destroy(); self.radioButton2 = nil; end;
         if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
@@ -10599,6 +10909,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.radioButton8 ~= nil then self.radioButton8:destroy(); self.radioButton8 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.horzLine6 ~= nil then self.horzLine6:destroy(); self.horzLine6 = nil; end;
+        if self.image44 ~= nil then self.image44:destroy(); self.image44 = nil; end;
         if self.flowPart291 ~= nil then self.flowPart291:destroy(); self.flowPart291 = nil; end;
         if self.popupRiquezasdesconhecidas ~= nil then self.popupRiquezasdesconhecidas:destroy(); self.popupRiquezasdesconhecidas = nil; end;
         if self.flowLayout37 ~= nil then self.flowLayout37:destroy(); self.flowLayout37 = nil; end;
@@ -10654,6 +10965,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.buttonplatina ~= nil then self.buttonplatina:destroy(); self.buttonplatina = nil; end;
         if self.label131 ~= nil then self.label131:destroy(); self.label131 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
+        if self.button29 ~= nil then self.button29:destroy(); self.button29 = nil; end;
         if self.horzLine44 ~= nil then self.horzLine44:destroy(); self.horzLine44 = nil; end;
         if self.image29 ~= nil then self.image29:destroy(); self.image29 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
@@ -10713,24 +11025,25 @@ local function constructNew_frmFichaDePersonagem()
         if self.rclHabilidadesbase ~= nil then self.rclHabilidadesbase:destroy(); self.rclHabilidadesbase = nil; end;
         if self.flowLayout60 ~= nil then self.flowLayout60:destroy(); self.flowLayout60 = nil; end;
         if self.tabelaDadosImagem ~= nil then self.tabelaDadosImagem:destroy(); self.tabelaDadosImagem = nil; end;
-        if self.horzLine52 ~= nil then self.horzLine52:destroy(); self.horzLine52 = nil; end;
+        if self.popupConfig ~= nil then self.popupConfig:destroy(); self.popupConfig = nil; end;
         if self.flowPart139 ~= nil then self.flowPart139:destroy(); self.flowPart139 = nil; end;
-        if self.label117 ~= nil then self.label117:destroy(); self.label117 = nil; end;
+        if self.horzLine52 ~= nil then self.horzLine52:destroy(); self.horzLine52 = nil; end;
         if self.flowPart138 ~= nil then self.flowPart138:destroy(); self.flowPart138 = nil; end;
         if self.flowPart88 ~= nil then self.flowPart88:destroy(); self.flowPart88 = nil; end;
+        if self.label117 ~= nil then self.label117:destroy(); self.label117 = nil; end;
         if self.flowPart191 ~= nil then self.flowPart191:destroy(); self.flowPart191 = nil; end;
         if self.flowPart123 ~= nil then self.flowPart123:destroy(); self.flowPart123 = nil; end;
         if self.horzLine74 ~= nil then self.horzLine74:destroy(); self.horzLine74 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
         if self.rectangle11 ~= nil then self.rectangle11:destroy(); self.rectangle11 = nil; end;
-        if self.flowPart242 ~= nil then self.flowPart242:destroy(); self.flowPart242 = nil; end;
+        if self.flowLayout48 ~= nil then self.flowLayout48:destroy(); self.flowLayout48 = nil; end;
         if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
         if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
         if self.flowPart218 ~= nil then self.flowPart218:destroy(); self.flowPart218 = nil; end;
         if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
         if self.label95 ~= nil then self.label95:destroy(); self.label95 = nil; end;
-        if self.flowLayout48 ~= nil then self.flowLayout48:destroy(); self.flowLayout48 = nil; end;
+        if self.flowPart242 ~= nil then self.flowPart242:destroy(); self.flowPart242 = nil; end;
         if self.platina ~= nil then self.platina:destroy(); self.platina = nil; end;
         if self.radioButton13 ~= nil then self.radioButton13:destroy(); self.radioButton13 = nil; end;
         if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
@@ -10866,8 +11179,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.radioButton7 ~= nil then self.radioButton7:destroy(); self.radioButton7 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.horzLine70 ~= nil then self.horzLine70:destroy(); self.horzLine70 = nil; end;
-        if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
+        if self.rectangle16 ~= nil then self.rectangle16:destroy(); self.rectangle16 = nil; end;
         if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.radioButton6 ~= nil then self.radioButton6:destroy(); self.radioButton6 = nil; end;
         if self.horzLine14 ~= nil then self.horzLine14:destroy(); self.horzLine14 = nil; end;
@@ -10917,18 +11230,19 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.flowPart53 ~= nil then self.flowPart53:destroy(); self.flowPart53 = nil; end;
+        if self.button26 ~= nil then self.button26:destroy(); self.button26 = nil; end;
         if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
         if self.okButtonProfissao ~= nil then self.okButtonProfissao:destroy(); self.okButtonProfissao = nil; end;
         if self.edit77 ~= nil then self.edit77:destroy(); self.edit77 = nil; end;
-        if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
-        if self.popupxpClasse ~= nil then self.popupxpClasse:destroy(); self.popupxpClasse = nil; end;
-        if self.image42 ~= nil then self.image42:destroy(); self.image42 = nil; end;
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
+        if self.popupxpClasse ~= nil then self.popupxpClasse:destroy(); self.popupxpClasse = nil; end;
+        if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
+        if self.image42 ~= nil then self.image42:destroy(); self.image42 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.flowPart57 ~= nil then self.flowPart57:destroy(); self.flowPart57 = nil; end;
+        if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.edit58 ~= nil then self.edit58:destroy(); self.edit58 = nil; end;
         if self.horzLine56 ~= nil then self.horzLine56:destroy(); self.horzLine56 = nil; end;
-        if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.label109 ~= nil then self.label109:destroy(); self.label109 = nil; end;
         if self.label106 ~= nil then self.label106:destroy(); self.label106 = nil; end;
         if self.flowLayout33 ~= nil then self.flowLayout33:destroy(); self.flowLayout33 = nil; end;
@@ -11011,8 +11325,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart102 ~= nil then self.flowPart102:destroy(); self.flowPart102 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.horzLine23 ~= nil then self.horzLine23:destroy(); self.horzLine23 = nil; end;
-        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
         if self.image25 ~= nil then self.image25:destroy(); self.image25 = nil; end;
+        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
         if self.label93 ~= nil then self.label93:destroy(); self.label93 = nil; end;
         if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
         if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
@@ -11188,6 +11502,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowLayout35 ~= nil then self.flowLayout35:destroy(); self.flowLayout35 = nil; end;
         if self.label135 ~= nil then self.label135:destroy(); self.label135 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
+        if self.flowLayout63 ~= nil then self.flowLayout63:destroy(); self.flowLayout63 = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
         if self.flowPart29 ~= nil then self.flowPart29:destroy(); self.flowPart29 = nil; end;
         if self.flowPart262 ~= nil then self.flowPart262:destroy(); self.flowPart262 = nil; end;
@@ -11332,6 +11647,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart146 ~= nil then self.flowPart146:destroy(); self.flowPart146 = nil; end;
         if self.flowPart17 ~= nil then self.flowPart17:destroy(); self.flowPart17 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
+        if self.button25 ~= nil then self.button25:destroy(); self.button25 = nil; end;
         if self.flowPart61 ~= nil then self.flowPart61:destroy(); self.flowPart61 = nil; end;
         if self.flowPart27 ~= nil then self.flowPart27:destroy(); self.flowPart27 = nil; end;
         if self.flowPart171 ~= nil then self.flowPart171:destroy(); self.flowPart171 = nil; end;
@@ -11359,6 +11675,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart289 ~= nil then self.flowPart289:destroy(); self.flowPart289 = nil; end;
         if self.image43 ~= nil then self.image43:destroy(); self.image43 = nil; end;
         if self.flowPart303 ~= nil then self.flowPart303:destroy(); self.flowPart303 = nil; end;
+        if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.image21 ~= nil then self.image21:destroy(); self.image21 = nil; end;
         if self.edit20 ~= nil then self.edit20:destroy(); self.edit20 = nil; end;
         self:_oldLFMDestroy();

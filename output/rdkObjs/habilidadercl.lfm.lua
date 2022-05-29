@@ -31,14 +31,6 @@ local function constructNew_habilidadercl()
     obj:setMargins({top=2,bottom=2});
 
 
-                local function possui(campo, valor)
-			        if string.find(campo, valor) ~= nil then
-			            return true
-			        else
-			            return false
-			        end
-			    end
-
                 local function sobeNivel(campo)
                     if campo == 'classe' then
                         sheet.nivelClasse = sheet.nivelClasse + 1
@@ -47,17 +39,6 @@ local function constructNew_habilidadercl()
                         sheet.nivelProfissao = sheet.nivelProfissao + 1
                     end
                 end
-
-                local function removerPonto()
-				Dialogs.confirmYesNo("Deseja reduzir dos pontos treinados?",
-									 function (confirmado)
-										if confirmado then
-											sheet.pontosTreinados = (tonumber(sheet.pontosTreinados) or 0) - 1;
-										else
-										    sheet.pontosRestantes = (tonumber(sheet.pontosRestantes) or 0) + 1
-										end;
-									 end);
-			end;
 			
 
 
