@@ -9470,7 +9470,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.geografia > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.geografia = (tonumber(sheet.geografia) or 0) - 1
                                         end
@@ -9509,7 +9509,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.historia > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.historia = (tonumber(sheet.historia) or 0) - 1
                                         end
@@ -9548,7 +9548,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.religiao > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.religiao = (tonumber(sheet.religiao) or 0) - 1
                                         end
@@ -9587,7 +9587,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.magia > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.magia = (tonumber(sheet.magia) or 0) - 1
                                         end
@@ -9626,7 +9626,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.faunaflora > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.faunaflora = (tonumber(sheet.faunaflora) or 0) - 1
                                         end
@@ -9665,7 +9665,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.linguagemComum > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemComum = (tonumber(sheet.linguagemComum) or 0) - 1
                                         end
@@ -9704,7 +9704,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.linguagemOriental > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemOriental = (tonumber(sheet.linguagemOriental) or 0) - 1
                                         end
@@ -9743,7 +9743,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.linguagemElfica > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemElfica = (tonumber(sheet.linguagemElfica) or 0) - 1
                                         end
@@ -9782,7 +9782,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.linguagemAna > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemAna = (tonumber(sheet.linguagemAna) or 0) - 1
                                         end
@@ -9821,7 +9821,7 @@ local function constructNew_frmFichaDePersonagem()
                                 if sheet.linguagemDraconica > 0 then
                                    if sheet.addValorBase == false then
             
-                                        if sheet.pontosDeConhecimento > 0 then
+                                        if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                             sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                             sheet.linguagemDraconica = (tonumber(sheet.linguagemDraconica) or 0) - 1
                                         end

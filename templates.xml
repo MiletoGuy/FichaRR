@@ -342,7 +342,7 @@
                     if sheet.$(field) > 0 then
                        if sheet.addValorBase == false then
 
-                            if sheet.pontosDeConhecimento > 0 then
+                            if sheet.pontosDeConhecimentoDistribuidos > 0 then
                                 sheet.pontosDeConhecimentoDistribuidos = tonumber(sheet.pontosDeConhecimentoDistribuidos) - 1
                                 sheet.$(field) = (tonumber(sheet.$(field)) or 0) - 1
                             end
