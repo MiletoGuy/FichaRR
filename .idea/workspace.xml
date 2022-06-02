@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="Correção nos pt bonus e implementação do botão de configurações.">
+    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.26">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/FichaRR.rpk" beforeDir="false" afterPath="$PROJECT_DIR$/output/FichaRR.rpk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" afterDir="false" />
@@ -18,11 +20,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ALPHA_1.1" />
+        <entry key="$PROJECT_DIR$" value="ALPHA_1.0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -56,11 +57,7 @@
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Coisas\FichaRR" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Coisas\FichaRR\imagens" />
       <recent name="C:\Coisas\FichaRR\frames\atributos" />
     </key>
   </component>
@@ -78,8 +75,13 @@
       <workItem from="1651665487450" duration="24790000" />
       <workItem from="1651799754177" duration="594000" />
       <workItem from="1651866363119" duration="699000" />
-      <workItem from="1653691814429" duration="4105000" />
-      <workItem from="1653854149208" duration="4913000" />
+      <workItem from="1652877014529" duration="4840000" />
+      <workItem from="1652885611269" duration="7000" />
+      <workItem from="1653585134712" duration="595000" />
+      <workItem from="1653914043596" duration="2421000" />
+      <workItem from="1653927761703" duration="19000" />
+      <workItem from="1653936704298" duration="1212000" />
+      <workItem from="1654189888744" duration="2494000" />
     </task>
     <task id="LOCAL-00001" summary="alt_2022.04.27">
       <created>1651084302753</created>
@@ -101,17 +103,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -123,7 +114,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/ALPHA" />
+                        <option value="origin/ALPHA_1.0" />
                       </list>
                     </value>
                   </entry>
@@ -138,7 +129,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="alt_2022.04.27" />
     <MESSAGE value="alt_2022.05.03" />
-    <MESSAGE value="Correção nos pt bonus e implementação do botão de configurações." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correção nos pt bonus e implementação do botão de configurações." />
+    <option name="LAST_COMMIT_MESSAGE" value="alt_2022.05.03" />
   </component>
 </project>

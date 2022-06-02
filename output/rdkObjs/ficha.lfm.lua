@@ -6382,10 +6382,9 @@ local function constructNew_frmFichaDePersonagem()
                 sheet.linguagemElfica = 0
                 sheet.linguagemAna = 0
                 sheet.linguagemDraconica = 0
+                sheet.pontosDeConhecimentoDistribuidos = 0
                 sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intBase)/5)) -
                 tonumber(sheet.pontosDeConhecimentoDistribuidos)
-                sheet.pontosDeConhecimentoDistribuidos = 0
-
             end
 
             local function resetTotal()
