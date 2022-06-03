@@ -77,9 +77,9 @@
                 sheet.destreza$(titulo) = tonumber(sheet.atributo$(titulo)) or 0
                 sheet.base$(titulo) = (tonumber(sheet.destreza$(titulo)) or 0) + (tonumber(sheet.classe$(titulo)) or 0)
                 sheet.total$(titulo) = (tonumber(sheet.base$(titulo)) or 0) +
-                                        (tonumber(sheet.arma$(titulo)) or 0) +
-                                        (tonumber(sheet.armadura$(titulo)) or 0) +
-                                        (tonumber(sheet.extra$(titulo)) or 0)
+                (tonumber(sheet.arma$(titulo)) or 0) +
+                (tonumber(sheet.armadura$(titulo)) or 0) +
+                (tonumber(sheet.extra$(titulo)) or 0)
 
                 sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0) - (
                 (tonumber(sheet.atributoAcerto) or 0) +
@@ -376,6 +376,56 @@
         </flowLayout>
     </template>
 
+    <template name="armasContent">
+        <rectangle cornerType="innerLine" align="client"
+                   xradius="8" yradius="8" margins="{left=5,right=5,top=5,bottom=5}"
+                   height="600" width="800" color="#40000000" strokeColor="black" strokeSize="2">
+            <flowLayout align="top"
+                        autoHeight="true" maxControlsPerLine="1"
+                        horzAlign="center" maxWidth="800">
+                <edit transparent="true" field="nomeArma" fontSize="18" fontColor="black" fontStyle="italic bold" width="600" horzTextAlign="center"/>
+                <horzLine align="bottom" strokeColor="#FFFFFF50" strokeSize="1"/>
+                <rectangle cornerType="innerLine" align="client"
+                           xradius="15" yradius="15"
+                           height="250" width="250">
+                    <image src="" style="proportional" optimize="true" editable="true" align="client" field="imagemArma"
+                           margins="{left=5,right=5,top=5,bottom=5}"/>
+                </rectangle>
+                <flowPart width="100" height="20" margins="{top=5,bottom=5}">
+                    <label text="Acerto: +" width="54" align="left"/>
+                    <edit align="client" transparent="true" field="acertoArma" horzTextAlign="leading" type="number"/>
+                </flowPart>
+                <flowPart width="100" height="20" margins="{top=5,bottom=5}">
+                    <label text="Mira: +" width="42" align="left"/>
+                    <edit align="client" transparent="true" field="miraArma" horzTextAlign="leading" type="number"/>
+                </flowPart>
+                <flowPart width="100" height="20" margins="{top=5,bottom=5}">
+                    <label text="Esquiva: +" width="59" align="left"/>
+                    <edit align="client" transparent="true" field="esquivaArma" horzTextAlign="leading" type="number"/>
+                </flowPart>
+                <flowPart width="100" height="20" margins="{top=5,bottom=5}">
+                    <label text="Bloqueio: +" width="68" align="left"/>
+                    <edit align="client" transparent="true" field="bloqueioArma" horzTextAlign="leading" type="number"/>
+                </flowPart>
+
+            <button text="excluir" height="20" width="50" margins="{left=5,right=5}"
+                    onClick="askForDelete();"/>
+            </flowLayout>
+        </rectangle>
+        <script>
+            <![CDATA[
+			local function askForDelete()
+				Dialogs.confirmYesNo("Deseja realmente apagar esta arma?",
+									 function (confirmado)
+										if confirmado then
+											NDB.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+			]]>
+        </script>
+    </template>
+
     <template name="habilidadeContent">
         <rectangle cornerType="innerLine" align="client"
                    xradius="10" yradius="10" margins="{left=5,right=5,top=5,bottom=5}"
@@ -383,7 +433,7 @@
             <flowLayout height="60" width="400" maxControlsPerLine="3">
                 <flowPart width="280" height="25" align="left" margins="{left=10,top=5}">
                     <edit textPrompt="Nome da Habilidade" fontSize="15" transparent="true"
-                          field="habilidadeNome($baseName)"
+                          field="habilidadeNome"
                           vertTextAlign="center" horzTextAlign="leading" width="280"/>
                     <horzLine align="bottom" strokeSize="1" strokeColor="black"/>
                 </flowPart>
@@ -392,7 +442,7 @@
                            height="20" width="55"
                            color="#40000000" strokeColor="black" strokeSize="2">
                     <comboBox width="50" items="{'', 'C', 'C+','B', 'B+', 'A', 'A+', 'S', 'S+'}"
-                              field="habilidadeRank$(baseName)"
+                              field="habilidadeRank"
                               transparent="true"/>
                 </rectangle>
                 <flowPart height="20" width="30" align="right" margins="{right=10, top=5}">
@@ -401,15 +451,13 @@
                                height="20" width="30"
                                color="#40000000" strokeColor="black" strokeSize="2">
                         <edit height="20" width="30" horzTextAlign="center" vertTextAlign="center" fontSize="15"
-                              fontStyle="bold" fontColor="black" field="habilidadeCargas$(baseName)"
+                              fontStyle="bold" fontColor="black" field="habilidadeCargas"
                               type="number" transparent="true"/>
                     </rectangle>
                 </flowPart>
                 <flowLayout height="35" width="400" align="client" margins="{top=5,left=15}">
-                    <comboBox width="150" field="habilidadeTipo$(baseName)" transparent="true" left="35" fontSize="16"
-                              fontStyle="italic bold" fontColor="silver"
-                              onChange="if sheet.habilidadeTipo$(baseName) == 'bencao' then
-                                         self.sheet.fontColor = 'black' end;" name="habilidadeTipoComboBox$(baseName)"
+                    <comboBox width="150" field="habilidadeTipo" transparent="true" left="35" fontSize="16"
+                              fontStyle="italic bold" fontColor="silver" name="habilidadeTipoComboBox"
                               items="{'Benção', 'Brasão','Canção', 'Conjuração', 'Combo', 'Dança', 'Evocação','Habilidade', 'Ilusão',
                            'Ki', 'Kokyuu (呼吸)', 'Magia', 'Magia Nula', 'Maldição','Od', 'Postura', 'Sinal'}"
                               values="{'bencao', 'brasao', 'cancao', 'conjuracao', 'combo', 'danca', 'evocacao','habilidade', 'ilusao',

@@ -2,11 +2,10 @@
 <module sdkVersion="3.5">
 
     <id>FICHA_DE_PERSONAGEM_GAIA</id>
-    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
-    <version>0.1 - ALPHA</version>
+    <version>1.1 - ALPHA</version>
     <name>Ficha Padrão de Personagem</name>
     <description>Ficha padrão de Personagem do sistema Gaia</description>
-    <author>Tales</author>
-    <site>http://www.yourwebsite.com</site>
+    <author>Tales Moreira</author>
+    <site></site>
     <contact>+55 45 9 98494274</contact>
 </module>

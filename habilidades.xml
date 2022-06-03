@@ -20,7 +20,6 @@
                     <flowLayout width="400" height="40" maxControlsPerLine="1" horzAlign="center">
                         <flowPart height="20" width="$(width or 75)" vertAlign="center" align="client" margins="{top=10}">
                             <label text="$(titulo)" fontSize="18" fontStyle="italic bold" align="client" horzTextAlign="center"/>
-                            <horzLine align="bottom" strokeSize="1" strokeColor="silver"/>
 
                         </flowPart>
                     </flowLayout>

@@ -6382,9 +6382,10 @@ local function constructNew_frmFichaDePersonagem()
                 sheet.linguagemElfica = 0
                 sheet.linguagemAna = 0
                 sheet.linguagemDraconica = 0
-                sheet.pontosDeConhecimentoDistribuidos = 0
                 sheet.pontosDeConhecimento = tonumber(math.floor(tonumber(sheet.intBase)/5)) -
                 tonumber(sheet.pontosDeConhecimentoDistribuidos)
+                sheet.pontosDeConhecimentoDistribuidos = 0
+
             end
 
             local function resetTotal()
@@ -6484,13 +6485,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label119:setHorzTextAlign("center");
     obj.label119:setName("label119");
 
-    obj.horzLine81 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine81:setParent(obj.flowPart222);
-    obj.horzLine81:setAlign("bottom");
-    obj.horzLine81:setStrokeSize(1);
-    obj.horzLine81:setStrokeColor("silver");
-    obj.horzLine81:setName("horzLine81");
-
     obj.flowPart223 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart223:setParent(obj.rectangle8);
     obj.flowPart223:setWidth(16);
@@ -6566,13 +6560,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label120:setAlign("client");
     obj.label120:setHorzTextAlign("center");
     obj.label120:setName("label120");
-
-    obj.horzLine82 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine82:setParent(obj.flowPart224);
-    obj.horzLine82:setAlign("bottom");
-    obj.horzLine82:setStrokeSize(1);
-    obj.horzLine82:setStrokeColor("silver");
-    obj.horzLine82:setName("horzLine82");
 
     obj.flowPart225 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart225:setParent(obj.rectangle9);
@@ -6650,13 +6637,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label121:setHorzTextAlign("center");
     obj.label121:setName("label121");
 
-    obj.horzLine83 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine83:setParent(obj.flowPart226);
-    obj.horzLine83:setAlign("bottom");
-    obj.horzLine83:setStrokeSize(1);
-    obj.horzLine83:setStrokeColor("silver");
-    obj.horzLine83:setName("horzLine83");
-
     obj.flowPart227 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart227:setParent(obj.rectangle10);
     obj.flowPart227:setWidth(16);
@@ -6732,13 +6712,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label122:setAlign("client");
     obj.label122:setHorzTextAlign("center");
     obj.label122:setName("label122");
-
-    obj.horzLine84 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine84:setParent(obj.flowPart228);
-    obj.horzLine84:setAlign("bottom");
-    obj.horzLine84:setStrokeSize(1);
-    obj.horzLine84:setStrokeColor("silver");
-    obj.horzLine84:setName("horzLine84");
 
     obj.flowPart229 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart229:setParent(obj.rectangle11);
@@ -6816,13 +6789,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label123:setHorzTextAlign("center");
     obj.label123:setName("label123");
 
-    obj.horzLine85 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine85:setParent(obj.flowPart230);
-    obj.horzLine85:setAlign("bottom");
-    obj.horzLine85:setStrokeSize(1);
-    obj.horzLine85:setStrokeColor("silver");
-    obj.horzLine85:setName("horzLine85");
-
     obj.flowPart231 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart231:setParent(obj.rectangle12);
     obj.flowPart231:setWidth(16);
@@ -6898,13 +6864,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label124:setAlign("client");
     obj.label124:setHorzTextAlign("center");
     obj.label124:setName("label124");
-
-    obj.horzLine86 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine86:setParent(obj.flowPart232);
-    obj.horzLine86:setAlign("bottom");
-    obj.horzLine86:setStrokeSize(1);
-    obj.horzLine86:setStrokeColor("silver");
-    obj.horzLine86:setName("horzLine86");
 
     obj.flowPart233 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart233:setParent(obj.rectangle13);
@@ -6982,13 +6941,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label125:setHorzTextAlign("center");
     obj.label125:setName("label125");
 
-    obj.horzLine87 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine87:setParent(obj.flowPart234);
-    obj.horzLine87:setAlign("bottom");
-    obj.horzLine87:setStrokeSize(1);
-    obj.horzLine87:setStrokeColor("silver");
-    obj.horzLine87:setName("horzLine87");
-
     obj.flowPart235 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart235:setParent(obj.rectangle14);
     obj.flowPart235:setWidth(16);
@@ -7064,13 +7016,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label126:setAlign("client");
     obj.label126:setHorzTextAlign("center");
     obj.label126:setName("label126");
-
-    obj.horzLine88 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine88:setParent(obj.flowPart236);
-    obj.horzLine88:setAlign("bottom");
-    obj.horzLine88:setStrokeSize(1);
-    obj.horzLine88:setStrokeColor("silver");
-    obj.horzLine88:setName("horzLine88");
 
     obj.flowPart237 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart237:setParent(obj.rectangle15);
@@ -7148,13 +7093,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label127:setHorzTextAlign("center");
     obj.label127:setName("label127");
 
-    obj.horzLine89 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine89:setParent(obj.flowPart238);
-    obj.horzLine89:setAlign("bottom");
-    obj.horzLine89:setStrokeSize(1);
-    obj.horzLine89:setStrokeColor("silver");
-    obj.horzLine89:setName("horzLine89");
-
     obj.flowPart239 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart239:setParent(obj.rectangle16);
     obj.flowPart239:setWidth(16);
@@ -7230,13 +7168,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label128:setAlign("client");
     obj.label128:setHorzTextAlign("center");
     obj.label128:setName("label128");
-
-    obj.horzLine90 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine90:setParent(obj.flowPart240);
-    obj.horzLine90:setAlign("bottom");
-    obj.horzLine90:setStrokeSize(1);
-    obj.horzLine90:setStrokeColor("silver");
-    obj.horzLine90:setName("horzLine90");
 
     obj.flowPart241 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart241:setParent(obj.rectangle17);
@@ -7314,13 +7245,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label129:setHorzTextAlign("center");
     obj.label129:setName("label129");
 
-    obj.horzLine91 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine91:setParent(obj.flowPart242);
-    obj.horzLine91:setAlign("bottom");
-    obj.horzLine91:setStrokeSize(1);
-    obj.horzLine91:setStrokeColor("silver");
-    obj.horzLine91:setName("horzLine91");
-
     obj.flowPart243 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart243:setParent(obj.rectangle18);
     obj.flowPart243:setWidth(16);
@@ -7397,13 +7321,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label130:setHorzTextAlign("center");
     obj.label130:setName("label130");
 
-    obj.horzLine92 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine92:setParent(obj.flowPart244);
-    obj.horzLine92:setAlign("bottom");
-    obj.horzLine92:setStrokeSize(1);
-    obj.horzLine92:setStrokeColor("silver");
-    obj.horzLine92:setName("horzLine92");
-
     obj.flowPart245 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart245:setParent(obj.rectangle19);
     obj.flowPart245:setWidth(16);
@@ -7479,13 +7396,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.label131:setAlign("client");
     obj.label131:setHorzTextAlign("center");
     obj.label131:setName("label131");
-
-    obj.horzLine93 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine93:setParent(obj.flowPart246);
-    obj.horzLine93:setAlign("bottom");
-    obj.horzLine93:setStrokeSize(1);
-    obj.horzLine93:setStrokeColor("silver");
-    obj.horzLine93:setName("horzLine93");
 
     obj.flowPart247 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart247:setParent(obj.rectangle20);
@@ -7589,13 +7499,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit104:setTransparent(true);
     obj.edit104:setName("edit104");
 
-    obj.horzLine94 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine94:setParent(obj.flowPart248);
-    obj.horzLine94:setAlign("bottom");
-    obj.horzLine94:setStrokeColor("#FFFFFF50");
-    obj.horzLine94:setStrokeSize(1);
-    obj.horzLine94:setMargins({right=5});
-    obj.horzLine94:setName("horzLine94");
+    obj.horzLine81 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine81:setParent(obj.flowPart248);
+    obj.horzLine81:setAlign("bottom");
+    obj.horzLine81:setStrokeColor("#FFFFFF50");
+    obj.horzLine81:setStrokeSize(1);
+    obj.horzLine81:setMargins({right=5});
+    obj.horzLine81:setName("horzLine81");
 
     obj.flowPart249 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart249:setParent(obj.flowLayout53);
@@ -7613,14 +7523,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.label133:setAlign("left");
     obj.label133:setName("label133");
 
-    obj.horzLine95 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine95:setParent(obj.flowPart249);
-    obj.horzLine95:setAlign("bottom");
-    obj.horzLine95:setStrokeColor("#FFFFFF50");
-    obj.horzLine95:setStrokeSize(1);
-    obj.horzLine95:setMargins({right=5});
-    obj.horzLine95:setWidth(35);
-    obj.horzLine95:setName("horzLine95");
+    obj.horzLine82 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine82:setParent(obj.flowPart249);
+    obj.horzLine82:setAlign("bottom");
+    obj.horzLine82:setStrokeColor("#FFFFFF50");
+    obj.horzLine82:setStrokeSize(1);
+    obj.horzLine82:setMargins({right=5});
+    obj.horzLine82:setWidth(35);
+    obj.horzLine82:setName("horzLine82");
 
     obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.pgcPrincipal);
@@ -7673,13 +7583,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.bronze:setAlign("client");
     obj.bronze:setName("bronze");
 
-    obj.horzLine96 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine96:setParent(obj.flowPart250);
-    obj.horzLine96:setAlign("bottom");
-    obj.horzLine96:setStrokeColor("#FFFFFF50");
-    obj.horzLine96:setStrokeSize(1);
-    obj.horzLine96:setMargins({right=5});
-    obj.horzLine96:setName("horzLine96");
+    obj.horzLine83 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine83:setParent(obj.flowPart250);
+    obj.horzLine83:setAlign("bottom");
+    obj.horzLine83:setStrokeColor("#FFFFFF50");
+    obj.horzLine83:setStrokeSize(1);
+    obj.horzLine83:setMargins({right=5});
+    obj.horzLine83:setName("horzLine83");
 
     obj.flowPart251 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart251:setParent(obj.flowLayout55);
@@ -7748,12 +7658,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.somaRiquezasEditbronze:setVertTextAlign("center");
     obj.somaRiquezasEditbronze:setTransparent(true);
 
-    obj.horzLine97 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine97:setParent(obj.flowPart254);
-    obj.horzLine97:setAlign("bottom");
-    obj.horzLine97:setStrokeColor("#FFFFFF50");
-    obj.horzLine97:setStrokeSize(1);
-    obj.horzLine97:setName("horzLine97");
+    obj.horzLine84 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine84:setParent(obj.flowPart254);
+    obj.horzLine84:setAlign("bottom");
+    obj.horzLine84:setStrokeColor("#FFFFFF50");
+    obj.horzLine84:setStrokeSize(1);
+    obj.horzLine84:setName("horzLine84");
 
     obj.flowPart255 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart255:setParent(obj.flowLayout56);
@@ -7810,13 +7720,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.prata:setAlign("client");
     obj.prata:setName("prata");
 
-    obj.horzLine98 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine98:setParent(obj.flowPart258);
-    obj.horzLine98:setAlign("bottom");
-    obj.horzLine98:setStrokeColor("#FFFFFF50");
-    obj.horzLine98:setStrokeSize(1);
-    obj.horzLine98:setMargins({right=5});
-    obj.horzLine98:setName("horzLine98");
+    obj.horzLine85 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine85:setParent(obj.flowPart258);
+    obj.horzLine85:setAlign("bottom");
+    obj.horzLine85:setStrokeColor("#FFFFFF50");
+    obj.horzLine85:setStrokeSize(1);
+    obj.horzLine85:setMargins({right=5});
+    obj.horzLine85:setName("horzLine85");
 
     obj.flowPart259 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart259:setParent(obj.flowLayout55);
@@ -7885,12 +7795,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.somaRiquezasEditprata:setVertTextAlign("center");
     obj.somaRiquezasEditprata:setTransparent(true);
 
-    obj.horzLine99 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine99:setParent(obj.flowPart262);
-    obj.horzLine99:setAlign("bottom");
-    obj.horzLine99:setStrokeColor("#FFFFFF50");
-    obj.horzLine99:setStrokeSize(1);
-    obj.horzLine99:setName("horzLine99");
+    obj.horzLine86 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine86:setParent(obj.flowPart262);
+    obj.horzLine86:setAlign("bottom");
+    obj.horzLine86:setStrokeColor("#FFFFFF50");
+    obj.horzLine86:setStrokeSize(1);
+    obj.horzLine86:setName("horzLine86");
 
     obj.flowPart263 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart263:setParent(obj.flowLayout57);
@@ -7947,13 +7857,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.ouro:setAlign("client");
     obj.ouro:setName("ouro");
 
-    obj.horzLine100 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine100:setParent(obj.flowPart266);
-    obj.horzLine100:setAlign("bottom");
-    obj.horzLine100:setStrokeColor("#FFFFFF50");
-    obj.horzLine100:setStrokeSize(1);
-    obj.horzLine100:setMargins({right=5});
-    obj.horzLine100:setName("horzLine100");
+    obj.horzLine87 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine87:setParent(obj.flowPart266);
+    obj.horzLine87:setAlign("bottom");
+    obj.horzLine87:setStrokeColor("#FFFFFF50");
+    obj.horzLine87:setStrokeSize(1);
+    obj.horzLine87:setMargins({right=5});
+    obj.horzLine87:setName("horzLine87");
 
     obj.flowPart267 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart267:setParent(obj.flowLayout55);
@@ -8022,12 +7932,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.somaRiquezasEditouro:setVertTextAlign("center");
     obj.somaRiquezasEditouro:setTransparent(true);
 
-    obj.horzLine101 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine101:setParent(obj.flowPart270);
-    obj.horzLine101:setAlign("bottom");
-    obj.horzLine101:setStrokeColor("#FFFFFF50");
-    obj.horzLine101:setStrokeSize(1);
-    obj.horzLine101:setName("horzLine101");
+    obj.horzLine88 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine88:setParent(obj.flowPart270);
+    obj.horzLine88:setAlign("bottom");
+    obj.horzLine88:setStrokeColor("#FFFFFF50");
+    obj.horzLine88:setStrokeSize(1);
+    obj.horzLine88:setName("horzLine88");
 
     obj.flowPart271 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart271:setParent(obj.flowLayout58);
@@ -8084,13 +7994,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.platina:setAlign("client");
     obj.platina:setName("platina");
 
-    obj.horzLine102 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine102:setParent(obj.flowPart274);
-    obj.horzLine102:setAlign("bottom");
-    obj.horzLine102:setStrokeColor("#FFFFFF50");
-    obj.horzLine102:setStrokeSize(1);
-    obj.horzLine102:setMargins({right=5});
-    obj.horzLine102:setName("horzLine102");
+    obj.horzLine89 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine89:setParent(obj.flowPart274);
+    obj.horzLine89:setAlign("bottom");
+    obj.horzLine89:setStrokeColor("#FFFFFF50");
+    obj.horzLine89:setStrokeSize(1);
+    obj.horzLine89:setMargins({right=5});
+    obj.horzLine89:setName("horzLine89");
 
     obj.flowPart275 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart275:setParent(obj.flowLayout55);
@@ -8159,12 +8069,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.somaRiquezasEditplatina:setVertTextAlign("center");
     obj.somaRiquezasEditplatina:setTransparent(true);
 
-    obj.horzLine103 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine103:setParent(obj.flowPart278);
-    obj.horzLine103:setAlign("bottom");
-    obj.horzLine103:setStrokeColor("#FFFFFF50");
-    obj.horzLine103:setStrokeSize(1);
-    obj.horzLine103:setName("horzLine103");
+    obj.horzLine90 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine90:setParent(obj.flowPart278);
+    obj.horzLine90:setAlign("bottom");
+    obj.horzLine90:setStrokeColor("#FFFFFF50");
+    obj.horzLine90:setStrokeSize(1);
+    obj.horzLine90:setName("horzLine90");
 
     obj.flowPart279 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart279:setParent(obj.flowLayout59);
@@ -8228,13 +8138,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.label138:setAlign("client");
     obj.label138:setName("label138");
 
-    obj.horzLine104 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine104:setParent(obj.flowPart282);
-    obj.horzLine104:setAlign("bottom");
-    obj.horzLine104:setStrokeColor("#FFFFFF50");
-    obj.horzLine104:setStrokeSize(1);
-    obj.horzLine104:setMargins({right=5});
-    obj.horzLine104:setName("horzLine104");
+    obj.horzLine91 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine91:setParent(obj.flowPart282);
+    obj.horzLine91:setAlign("bottom");
+    obj.horzLine91:setStrokeColor("#FFFFFF50");
+    obj.horzLine91:setStrokeSize(1);
+    obj.horzLine91:setMargins({right=5});
+    obj.horzLine91:setName("horzLine91");
 
     obj.flowPart283 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart283:setParent(obj.flowLayout60);
@@ -8303,12 +8213,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.somaRiquezasEditraras:setVertTextAlign("center");
     obj.somaRiquezasEditraras:setTransparent(true);
 
-    obj.horzLine105 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine105:setParent(obj.flowPart286);
-    obj.horzLine105:setAlign("bottom");
-    obj.horzLine105:setStrokeColor("#FFFFFF50");
-    obj.horzLine105:setStrokeSize(1);
-    obj.horzLine105:setName("horzLine105");
+    obj.horzLine92 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine92:setParent(obj.flowPart286);
+    obj.horzLine92:setAlign("bottom");
+    obj.horzLine92:setStrokeColor("#FFFFFF50");
+    obj.horzLine92:setStrokeSize(1);
+    obj.horzLine92:setName("horzLine92");
 
     obj.flowPart287 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart287:setParent(obj.flowLayout61);
@@ -8365,13 +8275,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.label140:setAlign("client");
     obj.label140:setName("label140");
 
-    obj.horzLine106 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine106:setParent(obj.flowPart290);
-    obj.horzLine106:setAlign("bottom");
-    obj.horzLine106:setStrokeColor("#FFFFFF50");
-    obj.horzLine106:setStrokeSize(1);
-    obj.horzLine106:setMargins({right=5});
-    obj.horzLine106:setName("horzLine106");
+    obj.horzLine93 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine93:setParent(obj.flowPart290);
+    obj.horzLine93:setAlign("bottom");
+    obj.horzLine93:setStrokeColor("#FFFFFF50");
+    obj.horzLine93:setStrokeSize(1);
+    obj.horzLine93:setMargins({right=5});
+    obj.horzLine93:setName("horzLine93");
 
     obj.flowPart291 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart291:setParent(obj.flowLayout60);
@@ -8440,12 +8350,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.somaRiquezasEditpreciosas:setVertTextAlign("center");
     obj.somaRiquezasEditpreciosas:setTransparent(true);
 
-    obj.horzLine107 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine107:setParent(obj.flowPart294);
-    obj.horzLine107:setAlign("bottom");
-    obj.horzLine107:setStrokeColor("#FFFFFF50");
-    obj.horzLine107:setStrokeSize(1);
-    obj.horzLine107:setName("horzLine107");
+    obj.horzLine94 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine94:setParent(obj.flowPart294);
+    obj.horzLine94:setAlign("bottom");
+    obj.horzLine94:setStrokeColor("#FFFFFF50");
+    obj.horzLine94:setStrokeSize(1);
+    obj.horzLine94:setName("horzLine94");
 
     obj.flowPart295 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart295:setParent(obj.flowLayout62);
@@ -8502,13 +8412,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.label142:setAlign("client");
     obj.label142:setName("label142");
 
-    obj.horzLine108 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine108:setParent(obj.flowPart298);
-    obj.horzLine108:setAlign("bottom");
-    obj.horzLine108:setStrokeColor("#FFFFFF50");
-    obj.horzLine108:setStrokeSize(1);
-    obj.horzLine108:setMargins({right=5});
-    obj.horzLine108:setName("horzLine108");
+    obj.horzLine95 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine95:setParent(obj.flowPart298);
+    obj.horzLine95:setAlign("bottom");
+    obj.horzLine95:setStrokeColor("#FFFFFF50");
+    obj.horzLine95:setStrokeSize(1);
+    obj.horzLine95:setMargins({right=5});
+    obj.horzLine95:setName("horzLine95");
 
     obj.flowPart299 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart299:setParent(obj.flowLayout60);
@@ -8577,12 +8487,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.somaRiquezasEditdesconhecidas:setVertTextAlign("center");
     obj.somaRiquezasEditdesconhecidas:setTransparent(true);
 
-    obj.horzLine109 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine109:setParent(obj.flowPart302);
-    obj.horzLine109:setAlign("bottom");
-    obj.horzLine109:setStrokeColor("#FFFFFF50");
-    obj.horzLine109:setStrokeSize(1);
-    obj.horzLine109:setName("horzLine109");
+    obj.horzLine96 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine96:setParent(obj.flowPart302);
+    obj.horzLine96:setAlign("bottom");
+    obj.horzLine96:setStrokeColor("#FFFFFF50");
+    obj.horzLine96:setStrokeSize(1);
+    obj.horzLine96:setName("horzLine96");
 
     obj.flowPart303 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart303:setParent(obj.flowLayout63);
@@ -8627,28 +8537,116 @@ local function constructNew_frmFichaDePersonagem()
     obj.radioButton14:setVertTextAlign("center");
     obj.radioButton14:setName("radioButton14");
 
+    obj.flowLayout64 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout64:setParent(obj.scrollBox3);
+    obj.flowLayout64:setAlign("top");
+    obj.flowLayout64:setAutoHeight(true);
+    obj.flowLayout64:setMargins({left=10, right=10, top=10});
+    obj.flowLayout64:setMaxWidth(1600);
+    obj.flowLayout64:setName("flowLayout64");
+    obj.flowLayout64:setStepSizes({310, 420, 640, 760, 1150});
+    obj.flowLayout64:setMinScaledWidth(300);
+
     obj.richEdit2 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit2:setParent(obj.scrollBox3);
+    obj.richEdit2:setParent(obj.flowLayout64);
     obj.richEdit2:setAlign("client");
     lfm_setPropAsString(obj.richEdit2, "backgroundColor",  "#40000000");
     obj.richEdit2:setField("inventario");
     obj.richEdit2:setName("richEdit2");
+
+    obj.flowLayout65 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout65:setParent(obj.scrollBox3);
+    obj.flowLayout65:setAlign("top");
+    obj.flowLayout65:setMargins({left=10, right=10, top=10});
+    obj.flowLayout65:setAutoHeight(true);
+    obj.flowLayout65:setMaxControlsPerLine(1);
+    obj.flowLayout65:setHorzAlign("center");
+    obj.flowLayout65:setMaxWidth(1600);
+    obj.flowLayout65:setName("flowLayout65");
+    obj.flowLayout65:setStepSizes({310, 420, 640, 760, 1150});
+    obj.flowLayout65:setMinScaledWidth(300);
+
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23:setParent(obj.flowLayout65);
+    obj.rectangle23:setCornerType("bevel");
+    obj.rectangle23:setAlign("client");
+    obj.rectangle23:setXradius(10);
+    obj.rectangle23:setYradius(20);
+    obj.rectangle23:setHeight(30);
+    obj.rectangle23:setWidth(1200);
+    obj.rectangle23:setColor("black");
+    obj.rectangle23:setStrokeColor("silver");
+    obj.rectangle23:setStrokeSize(2);
+    obj.rectangle23:setName("rectangle23");
+
+    obj.flowLayout66 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout66:setParent(obj.rectangle23);
+    obj.flowLayout66:setWidth(1200);
+    obj.flowLayout66:setHeight(30);
+    obj.flowLayout66:setMaxControlsPerLine(1);
+    obj.flowLayout66:setHorzAlign("center");
+    obj.flowLayout66:setName("flowLayout66");
+
+    obj.flowPart306 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart306:setParent(obj.flowLayout66);
+    obj.flowPart306:setHeight(30);
+    obj.flowPart306:setWidth(75);
+    obj.flowPart306:setVertAlign("center");
+    obj.flowPart306:setAlign("client");
+    obj.flowPart306:setName("flowPart306");
+
+    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label144:setParent(obj.flowPart306);
+    obj.label144:setText("Armas");
+    obj.label144:setFontSize(18);
+    lfm_setPropAsString(obj.label144, "fontStyle",  "italic bold");
+    obj.label144:setAlign("client");
+    obj.label144:setHorzTextAlign("center");
+    obj.label144:setVertTextAlign("center");
+    obj.label144:setName("label144");
+
+    obj.rclArmas = GUI.fromHandle(_obj_newObject("recordList"));
+    obj.rclArmas:setParent(obj.flowLayout65);
+    obj.rclArmas:setName("rclArmas");
+    obj.rclArmas:setField("armas");
+    obj.rclArmas:setTemplateForm("armasrcl");
+    obj.rclArmas:setAlign("client");
+    obj.rclArmas:setMinHeight(70);
+    obj.rclArmas:setLayout("horizontalTiles");
+    obj.rclArmas:setWidth(1200);
+    obj.rclArmas:setAutoHeight(true);
+    obj.rclArmas:setHitTest(false);
+
+    obj.flowPart307 = GUI.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart307:setParent(obj.flowLayout65);
+    obj.flowPart307:setWidth(80);
+    obj.flowPart307:setHeight(16);
+    obj.flowPart307:setName("flowPart307");
+
+    obj.button30 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button30:setParent(obj.flowPart307);
+    obj.button30:setAlign("client");
+    obj.button30:setText("Nova Arma");
+    obj.button30:setWidth(80);
+    obj.button30:setHeight(16);
+    obj.button30:setHorzTextAlign("center");
+    obj.button30:setName("button30");
 
     obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.pgcPrincipal);
     obj.tab4:setTitle("Anotações");
     obj.tab4:setName("tab4");
 
-    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj.tab4);
-    obj.rectangle23:setName("rectangle23");
-    obj.rectangle23:setAlign("client");
-    obj.rectangle23:setColor("#40000000");
-    obj.rectangle23:setXradius(10);
-    obj.rectangle23:setYradius(10);
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24:setParent(obj.tab4);
+    obj.rectangle24:setName("rectangle24");
+    obj.rectangle24:setAlign("client");
+    obj.rectangle24:setColor("#40000000");
+    obj.rectangle24:setXradius(10);
+    obj.rectangle24:setYradius(10);
 
     obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox4:setParent(obj.rectangle23);
+    obj.scrollBox4:setParent(obj.rectangle24);
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
@@ -8748,9 +8746,9 @@ local function constructNew_frmFichaDePersonagem()
             sheet.destrezaAcerto = tonumber(sheet.atributoAcerto) or 0
                             sheet.baseAcerto = (tonumber(sheet.destrezaAcerto) or 0) + (tonumber(sheet.classeAcerto) or 0)
                             sheet.totalAcerto = (tonumber(sheet.baseAcerto) or 0) +
-                                                    (tonumber(sheet.armaAcerto) or 0) +
-                                                    (tonumber(sheet.armaduraAcerto) or 0) +
-                                                    (tonumber(sheet.extraAcerto) or 0)
+                            (tonumber(sheet.armaAcerto) or 0) +
+                            (tonumber(sheet.armaduraAcerto) or 0) +
+                            (tonumber(sheet.extraAcerto) or 0)
             
                             sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0) - (
                             (tonumber(sheet.atributoAcerto) or 0) +
@@ -8772,9 +8770,9 @@ local function constructNew_frmFichaDePersonagem()
             sheet.destrezaMira = tonumber(sheet.atributoMira) or 0
                             sheet.baseMira = (tonumber(sheet.destrezaMira) or 0) + (tonumber(sheet.classeMira) or 0)
                             sheet.totalMira = (tonumber(sheet.baseMira) or 0) +
-                                                    (tonumber(sheet.armaMira) or 0) +
-                                                    (tonumber(sheet.armaduraMira) or 0) +
-                                                    (tonumber(sheet.extraMira) or 0)
+                            (tonumber(sheet.armaMira) or 0) +
+                            (tonumber(sheet.armaduraMira) or 0) +
+                            (tonumber(sheet.extraMira) or 0)
             
                             sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0) - (
                             (tonumber(sheet.atributoAcerto) or 0) +
@@ -8796,9 +8794,9 @@ local function constructNew_frmFichaDePersonagem()
             sheet.destrezaEsquiva = tonumber(sheet.atributoEsquiva) or 0
                             sheet.baseEsquiva = (tonumber(sheet.destrezaEsquiva) or 0) + (tonumber(sheet.classeEsquiva) or 0)
                             sheet.totalEsquiva = (tonumber(sheet.baseEsquiva) or 0) +
-                                                    (tonumber(sheet.armaEsquiva) or 0) +
-                                                    (tonumber(sheet.armaduraEsquiva) or 0) +
-                                                    (tonumber(sheet.extraEsquiva) or 0)
+                            (tonumber(sheet.armaEsquiva) or 0) +
+                            (tonumber(sheet.armaduraEsquiva) or 0) +
+                            (tonumber(sheet.extraEsquiva) or 0)
             
                             sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0) - (
                             (tonumber(sheet.atributoAcerto) or 0) +
@@ -8820,9 +8818,9 @@ local function constructNew_frmFichaDePersonagem()
             sheet.destrezaBloqueio = tonumber(sheet.atributoBloqueio) or 0
                             sheet.baseBloqueio = (tonumber(sheet.destrezaBloqueio) or 0) + (tonumber(sheet.classeBloqueio) or 0)
                             sheet.totalBloqueio = (tonumber(sheet.baseBloqueio) or 0) +
-                                                    (tonumber(sheet.armaBloqueio) or 0) +
-                                                    (tonumber(sheet.armaduraBloqueio) or 0) +
-                                                    (tonumber(sheet.extraBloqueio) or 0)
+                            (tonumber(sheet.armaBloqueio) or 0) +
+                            (tonumber(sheet.armaduraBloqueio) or 0) +
+                            (tonumber(sheet.extraBloqueio) or 0)
             
                             sheet.destrezaDisponivel = (tonumber(sheet.dexBase) or 0) - (
                             (tonumber(sheet.atributoAcerto) or 0) +
@@ -10572,7 +10570,13 @@ local function constructNew_frmFichaDePersonagem()
                                                 
         end, obj);
 
+    obj._e_event102 = obj.button30:addEventListener("onClick",
+        function (_)
+            self.rclArmas:append();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event102);
         __o_rrpgObjs.removeEventListenerById(self._e_event101);
         __o_rrpgObjs.removeEventListenerById(self._e_event100);
         __o_rrpgObjs.removeEventListenerById(self._e_event99);
@@ -10693,6 +10697,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.label119 ~= nil then self.label119:destroy(); self.label119 = nil; end;
         if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
         if self.horzLine7 ~= nil then self.horzLine7:destroy(); self.horzLine7 = nil; end;
+        if self.flowLayout65 ~= nil then self.flowLayout65:destroy(); self.flowLayout65 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.flowPart129 ~= nil then self.flowPart129:destroy(); self.flowPart129 = nil; end;
         if self.label97 ~= nil then self.label97:destroy(); self.label97 = nil; end;
@@ -10860,6 +10865,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.horzLine64 ~= nil then self.horzLine64:destroy(); self.horzLine64 = nil; end;
         if self.button24 ~= nil then self.button24:destroy(); self.button24 = nil; end;
+        if self.rclArmas ~= nil then self.rclArmas:destroy(); self.rclArmas = nil; end;
         if self.dadosDeNivel ~= nil then self.dadosDeNivel:destroy(); self.dadosDeNivel = nil; end;
         if self.flowPart257 ~= nil then self.flowPart257:destroy(); self.flowPart257 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
@@ -10880,6 +10886,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.flowPart180 ~= nil then self.flowPart180:destroy(); self.flowPart180 = nil; end;
         if self.adestrarAnimaisPlus ~= nil then self.adestrarAnimaisPlus:destroy(); self.adestrarAnimaisPlus = nil; end;
+        if self.flowLayout66 ~= nil then self.flowLayout66:destroy(); self.flowLayout66 = nil; end;
         if self.dadosDestaque ~= nil then self.dadosDestaque:destroy(); self.dadosDestaque = nil; end;
         if self.radioButton2 ~= nil then self.radioButton2:destroy(); self.radioButton2 = nil; end;
         if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
@@ -10912,7 +10919,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart291 ~= nil then self.flowPart291:destroy(); self.flowPart291 = nil; end;
         if self.popupRiquezasdesconhecidas ~= nil then self.popupRiquezasdesconhecidas:destroy(); self.popupRiquezasdesconhecidas = nil; end;
         if self.flowLayout37 ~= nil then self.flowLayout37:destroy(); self.flowLayout37 = nil; end;
-        if self.horzLine99 ~= nil then self.horzLine99:destroy(); self.horzLine99 = nil; end;
         if self.flowPart108 ~= nil then self.flowPart108:destroy(); self.flowPart108 = nil; end;
         if self.label110 ~= nil then self.label110:destroy(); self.label110 = nil; end;
         if self.flowLayout22 ~= nil then self.flowLayout22:destroy(); self.flowLayout22 = nil; end;
@@ -10938,6 +10944,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart192 ~= nil then self.flowPart192:destroy(); self.flowPart192 = nil; end;
         if self.edit85 ~= nil then self.edit85:destroy(); self.edit85 = nil; end;
         if self.horzLine45 ~= nil then self.horzLine45:destroy(); self.horzLine45 = nil; end;
+        if self.label144 ~= nil then self.label144:destroy(); self.label144 = nil; end;
         if self.rectangleVida ~= nil then self.rectangleVida:destroy(); self.rectangleVida = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
@@ -10948,6 +10955,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.somaRiquezasEditprata ~= nil then self.somaRiquezasEditprata:destroy(); self.somaRiquezasEditprata = nil; end;
         if self.label140 ~= nil then self.label140:destroy(); self.label140 = nil; end;
         if self.label69 ~= nil then self.label69:destroy(); self.label69 = nil; end;
+        if self.flowLayout64 ~= nil then self.flowLayout64:destroy(); self.flowLayout64 = nil; end;
         if self.label105 ~= nil then self.label105:destroy(); self.label105 = nil; end;
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
@@ -10997,7 +11005,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.horzLine33 ~= nil then self.horzLine33:destroy(); self.horzLine33 = nil; end;
         if self.flowPart197 ~= nil then self.flowPart197:destroy(); self.flowPart197 = nil; end;
         if self.flowLayout49 ~= nil then self.flowLayout49:destroy(); self.flowLayout49 = nil; end;
-        if self.horzLine105 ~= nil then self.horzLine105:destroy(); self.horzLine105 = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.label120 ~= nil then self.label120:destroy(); self.label120 = nil; end;
@@ -11090,7 +11097,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.button22 ~= nil then self.button22:destroy(); self.button22 = nil; end;
         if self.adestrarAnimaisMinus ~= nil then self.adestrarAnimaisMinus:destroy(); self.adestrarAnimaisMinus = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
-        if self.horzLine106 ~= nil then self.horzLine106:destroy(); self.horzLine106 = nil; end;
         if self.flowLayout9 ~= nil then self.flowLayout9:destroy(); self.flowLayout9 = nil; end;
         if self.image16 ~= nil then self.image16:destroy(); self.image16 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
@@ -11150,6 +11156,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.flowLineBreak4 ~= nil then self.flowLineBreak4:destroy(); self.flowLineBreak4 = nil; end;
         if self.label134 ~= nil then self.label134:destroy(); self.label134 = nil; end;
+        if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
         if self.flowPart100 ~= nil then self.flowPart100:destroy(); self.flowPart100 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.horzLine11 ~= nil then self.horzLine11:destroy(); self.horzLine11 = nil; end;
@@ -11165,8 +11172,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit33 ~= nil then self.edit33:destroy(); self.edit33 = nil; end;
         if self.flowLayout47 ~= nil then self.flowLayout47:destroy(); self.flowLayout47 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
-        if self.horzLine90 ~= nil then self.horzLine90:destroy(); self.horzLine90 = nil; end;
         if self.flowPart247 ~= nil then self.flowPart247:destroy(); self.flowPart247 = nil; end;
+        if self.horzLine90 ~= nil then self.horzLine90:destroy(); self.horzLine90 = nil; end;
         if self.flowPart32 ~= nil then self.flowPart32:destroy(); self.flowPart32 = nil; end;
         if self.flowLayout19 ~= nil then self.flowLayout19:destroy(); self.flowLayout19 = nil; end;
         if self.popupRiquezasprata ~= nil then self.popupRiquezasprata:destroy(); self.popupRiquezasprata = nil; end;
@@ -11191,15 +11198,14 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart74 ~= nil then self.flowPart74:destroy(); self.flowPart74 = nil; end;
         if self.flowPart101 ~= nil then self.flowPart101:destroy(); self.flowPart101 = nil; end;
         if self.label122 ~= nil then self.label122:destroy(); self.label122 = nil; end;
-        if self.horzLine97 ~= nil then self.horzLine97:destroy(); self.horzLine97 = nil; end;
+        if self.somaRiquezasEditraras ~= nil then self.somaRiquezasEditraras:destroy(); self.somaRiquezasEditraras = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.flowPart19 ~= nil then self.flowPart19:destroy(); self.flowPart19 = nil; end;
         if self.flowPart203 ~= nil then self.flowPart203:destroy(); self.flowPart203 = nil; end;
-        if self.somaRiquezasEditraras ~= nil then self.somaRiquezasEditraras:destroy(); self.somaRiquezasEditraras = nil; end;
-        if self.flowPart233 ~= nil then self.flowPart233:destroy(); self.flowPart233 = nil; end;
         if self.flowPart290 ~= nil then self.flowPart290:destroy(); self.flowPart290 = nil; end;
-        if self.flowPart161 ~= nil then self.flowPart161:destroy(); self.flowPart161 = nil; end;
+        if self.flowPart233 ~= nil then self.flowPart233:destroy(); self.flowPart233 = nil; end;
         if self.flowPart294 ~= nil then self.flowPart294:destroy(); self.flowPart294 = nil; end;
+        if self.flowPart161 ~= nil then self.flowPart161:destroy(); self.flowPart161 = nil; end;
         if self.flowPart272 ~= nil then self.flowPart272:destroy(); self.flowPart272 = nil; end;
         if self.flowPart225 ~= nil then self.flowPart225:destroy(); self.flowPart225 = nil; end;
         if self.rclHabilidadesnivel11 ~= nil then self.rclHabilidadesnivel11:destroy(); self.rclHabilidadesnivel11 = nil; end;
@@ -11225,7 +11231,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart54 ~= nil then self.flowPart54:destroy(); self.flowPart54 = nil; end;
         if self.flowPart190 ~= nil then self.flowPart190:destroy(); self.flowPart190 = nil; end;
         if self.flowLayout23 ~= nil then self.flowLayout23:destroy(); self.flowLayout23 = nil; end;
-        if self.horzLine109 ~= nil then self.horzLine109:destroy(); self.horzLine109 = nil; end;
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
         if self.flowPart53 ~= nil then self.flowPart53:destroy(); self.flowPart53 = nil; end;
@@ -11264,7 +11269,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.edit99 ~= nil then self.edit99:destroy(); self.edit99 = nil; end;
         if self.flowPart39 ~= nil then self.flowPart39:destroy(); self.flowPart39 = nil; end;
-        if self.horzLine108 ~= nil then self.horzLine108:destroy(); self.horzLine108 = nil; end;
         if self.horzLine62 ~= nil then self.horzLine62:destroy(); self.horzLine62 = nil; end;
         if self.popupRiquezasouro ~= nil then self.popupRiquezasouro:destroy(); self.popupRiquezasouro = nil; end;
         if self.flowPart287 ~= nil then self.flowPart287:destroy(); self.flowPart287 = nil; end;
@@ -11272,7 +11276,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart60 ~= nil then self.flowPart60:destroy(); self.flowPart60 = nil; end;
         if self.horzLine80 ~= nil then self.horzLine80:destroy(); self.horzLine80 = nil; end;
         if self.flowPart28 ~= nil then self.flowPart28:destroy(); self.flowPart28 = nil; end;
-        if self.horzLine101 ~= nil then self.horzLine101:destroy(); self.horzLine101 = nil; end;
         if self.flowPart209 ~= nil then self.flowPart209:destroy(); self.flowPart209 = nil; end;
         if self.rectangle18 ~= nil then self.rectangle18:destroy(); self.rectangle18 = nil; end;
         if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
@@ -11316,8 +11319,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart97 ~= nil then self.flowPart97:destroy(); self.flowPart97 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
         if self.flowLayout12 ~= nil then self.flowLayout12:destroy(); self.flowLayout12 = nil; end;
-        if self.horzLine89 ~= nil then self.horzLine89:destroy(); self.horzLine89 = nil; end;
         if self.flowPart256 ~= nil then self.flowPart256:destroy(); self.flowPart256 = nil; end;
+        if self.horzLine89 ~= nil then self.horzLine89:destroy(); self.horzLine89 = nil; end;
         if self.flowPart280 ~= nil then self.flowPart280:destroy(); self.flowPart280 = nil; end;
         if self.horzLine2 ~= nil then self.horzLine2:destroy(); self.horzLine2 = nil; end;
         if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
@@ -11329,6 +11332,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.label93 ~= nil then self.label93:destroy(); self.label93 = nil; end;
         if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
         if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
+        if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
         if self.radioButton14 ~= nil then self.radioButton14:destroy(); self.radioButton14 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.horzLine53 ~= nil then self.horzLine53:destroy(); self.horzLine53 = nil; end;
@@ -11471,13 +11475,12 @@ local function constructNew_frmFichaDePersonagem()
         if self.linguagemOrientalPlus ~= nil then self.linguagemOrientalPlus:destroy(); self.linguagemOrientalPlus = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
-        if self.horzLine87 ~= nil then self.horzLine87:destroy(); self.horzLine87 = nil; end;
         if self.flowLayout52 ~= nil then self.flowLayout52:destroy(); self.flowLayout52 = nil; end;
+        if self.horzLine87 ~= nil then self.horzLine87:destroy(); self.horzLine87 = nil; end;
         if self.somaRiquezasEditplatina ~= nil then self.somaRiquezasEditplatina:destroy(); self.somaRiquezasEditplatina = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.flowPart160 ~= nil then self.flowPart160:destroy(); self.flowPart160 = nil; end;
         if self.flowPart267 ~= nil then self.flowPart267:destroy(); self.flowPart267 = nil; end;
-        if self.horzLine98 ~= nil then self.horzLine98:destroy(); self.horzLine98 = nil; end;
         if self.flowPart245 ~= nil then self.flowPart245:destroy(); self.flowPart245 = nil; end;
         if self.flowPart143 ~= nil then self.flowPart143:destroy(); self.flowPart143 = nil; end;
         if self.flowPart20 ~= nil then self.flowPart20:destroy(); self.flowPart20 = nil; end;
@@ -11487,11 +11490,11 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit106 ~= nil then self.edit106:destroy(); self.edit106 = nil; end;
         if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
         if self.flowPart273 ~= nil then self.flowPart273:destroy(); self.flowPart273 = nil; end;
+        if self.flowPart306 ~= nil then self.flowPart306:destroy(); self.flowPart306 = nil; end;
         if self.popupxpProfissao ~= nil then self.popupxpProfissao:destroy(); self.popupxpProfissao = nil; end;
         if self.horzLine34 ~= nil then self.horzLine34:destroy(); self.horzLine34 = nil; end;
         if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
         if self.somaxpProfissao ~= nil then self.somaxpProfissao:destroy(); self.somaxpProfissao = nil; end;
-        if self.horzLine100 ~= nil then self.horzLine100:destroy(); self.horzLine100 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.flowLayout46 ~= nil then self.flowLayout46:destroy(); self.flowLayout46 = nil; end;
         if self.image8 ~= nil then self.image8:destroy(); self.image8 = nil; end;
@@ -11521,6 +11524,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart258 ~= nil then self.flowPart258:destroy(); self.flowPart258 = nil; end;
         if self.flowPart186 ~= nil then self.flowPart186:destroy(); self.flowPart186 = nil; end;
         if self.flowPart302 ~= nil then self.flowPart302:destroy(); self.flowPart302 = nil; end;
+        if self.flowPart307 ~= nil then self.flowPart307:destroy(); self.flowPart307 = nil; end;
         if self.horzLine16 ~= nil then self.horzLine16:destroy(); self.horzLine16 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.flowPart301 ~= nil then self.flowPart301:destroy(); self.flowPart301 = nil; end;
@@ -11543,7 +11547,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart120 ~= nil then self.flowPart120:destroy(); self.flowPart120 = nil; end;
         if self.edit94 ~= nil then self.edit94:destroy(); self.edit94 = nil; end;
         if self.flowPart277 ~= nil then self.flowPart277:destroy(); self.flowPart277 = nil; end;
-        if self.horzLine107 ~= nil then self.horzLine107:destroy(); self.horzLine107 = nil; end;
         if self.flowPart212 ~= nil then self.flowPart212:destroy(); self.flowPart212 = nil; end;
         if self.label123 ~= nil then self.label123:destroy(); self.label123 = nil; end;
         if self.flowPart14 ~= nil then self.flowPart14:destroy(); self.flowPart14 = nil; end;
@@ -11597,13 +11600,11 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart182 ~= nil then self.flowPart182:destroy(); self.flowPart182 = nil; end;
         if self.flowPart284 ~= nil then self.flowPart284:destroy(); self.flowPart284 = nil; end;
         if self.flowPart285 ~= nil then self.flowPart285:destroy(); self.flowPart285 = nil; end;
-        if self.horzLine104 ~= nil then self.horzLine104:destroy(); self.horzLine104 = nil; end;
         if self.image40 ~= nil then self.image40:destroy(); self.image40 = nil; end;
         if self.flowPart114 ~= nil then self.flowPart114:destroy(); self.flowPart114 = nil; end;
         if self.linguagemComumPlus ~= nil then self.linguagemComumPlus:destroy(); self.linguagemComumPlus = nil; end;
         if self.flowPart194 ~= nil then self.flowPart194:destroy(); self.flowPart194 = nil; end;
         if self.flowLayout50 ~= nil then self.flowLayout50:destroy(); self.flowLayout50 = nil; end;
-        if self.horzLine102 ~= nil then self.horzLine102:destroy(); self.horzLine102 = nil; end;
         if self.tabelaPtBonusEConhecimentos ~= nil then self.tabelaPtBonusEConhecimentos:destroy(); self.tabelaPtBonusEConhecimentos = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
@@ -11628,7 +11629,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart63 ~= nil then self.flowPart63:destroy(); self.flowPart63 = nil; end;
         if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
         if self.flowPart238 ~= nil then self.flowPart238:destroy(); self.flowPart238 = nil; end;
-        if self.horzLine103 ~= nil then self.horzLine103:destroy(); self.horzLine103 = nil; end;
         if self.flowPart70 ~= nil then self.flowPart70:destroy(); self.flowPart70 = nil; end;
         if self.flowPart11 ~= nil then self.flowPart11:destroy(); self.flowPart11 = nil; end;
         if self.flowPart185 ~= nil then self.flowPart185:destroy(); self.flowPart185 = nil; end;

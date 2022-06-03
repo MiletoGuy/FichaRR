@@ -76,7 +76,7 @@ local function constructNew_habilidadercl()
     obj.edit1:setTextPrompt("Nome da Habilidade");
     obj.edit1:setFontSize(15);
     obj.edit1:setTransparent(true);
-    obj.edit1:setField("habilidadeNome($baseName)");
+    obj.edit1:setField("habilidadeNome");
     obj.edit1:setVertTextAlign("center");
     obj.edit1:setHorzTextAlign("leading");
     obj.edit1:setWidth(280);
@@ -218,24 +218,17 @@ local function constructNew_habilidadercl()
 			
 
 
-    obj._e_event0 = obj.habilidadeTipoComboBox:addEventListener("onChange",
-        function (_)
-            if sheet.habilidadeTipo == 'bencao' then
-                                                     self.sheet.fontColor = 'black' end;
-        end, obj);
-
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event0 = obj.button2:addEventListener("onClick",
         function (_)
             showHabilidadePopup();
         end, obj);
 
-    obj._e_event2 = obj.button3:addEventListener("onClick",
+    obj._e_event1 = obj.button3:addEventListener("onClick",
         function (_)
             askForDelete();
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;

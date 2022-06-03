@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.26">
+    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="Só o lançamento do README mesmo">
+      <change afterPath="$PROJECT_DIR$/armasrcl.lfm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/rdkObjs/armasrcl.lfm.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ficha.lfm" beforeDir="false" afterPath="$PROJECT_DIR$/ficha.lfm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/habilidades.xml" beforeDir="false" afterPath="$PROJECT_DIR$/habilidades.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventario.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/module.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/FichaRR.rpk" beforeDir="false" afterPath="$PROJECT_DIR$/output/FichaRR.rpk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/templates.xml" afterDir="false" />
     </list>
     <list id="e2e643b6-ebeb-411c-8b90-c3587032065d" name="ImagensChange" comment="Recuperando os png" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,24 +45,31 @@
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="28Jdk3ICPXrbzk49paNr115rYfl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Coisas/FichaRR&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Coisas/FichaRR",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Coisas\FichaRR" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Coisas\FichaRR\frames\atributos" />
     </key>
@@ -81,7 +94,7 @@
       <workItem from="1653914043596" duration="2421000" />
       <workItem from="1653927761703" duration="19000" />
       <workItem from="1653936704298" duration="1212000" />
-      <workItem from="1654189888744" duration="2494000" />
+      <workItem from="1654189888744" duration="17022000" />
     </task>
     <task id="LOCAL-00001" summary="alt_2022.04.27">
       <created>1651084302753</created>
@@ -97,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651601180724</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Só o lançamento do README mesmo">
+      <created>1654193756974</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654193756974</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,7 +134,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/ALPHA_1.0" />
+                        <option value="origin/ALPHA_1.1" />
                       </list>
                     </value>
                   </entry>
@@ -127,8 +147,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="alt_2022.04.27" />
     <MESSAGE value="alt_2022.05.03" />
-    <option name="LAST_COMMIT_MESSAGE" value="alt_2022.05.03" />
+    <MESSAGE value="Só o lançamento do README mesmo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Só o lançamento do README mesmo" />
   </component>
 </project>

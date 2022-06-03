@@ -252,7 +252,29 @@
                 <campoGemas text="Gemas Desconhecidas: " field="desconhecidas"/>
             </flowLayout>
         </flowLayout>
-        <richEdit align="client" backgroundColor="#40000000" field="inventario"/>
+        <flowLayout class="tile" align="top" autoHeight="true" margins="{left=10, right=10, top=10}" maxWidth="1600">
+            <richEdit align="client" backgroundColor="#40000000" field="inventario"/>
+        </flowLayout>
+        <flowLayout class="tile" align="top" margins="{left=10, right=10, top=10}"
+                    autoHeight="true" maxControlsPerLine="1"
+                    horzAlign="center" maxWidth="1600">
+            <rectangle cornerType="bevel" align="client"
+                       xradius="10" yradius="20"
+                       height="30" width="1200" color="black" strokeColor="silver" strokeSize="2">
+                <flowLayout width="1200" height="30" maxControlsPerLine="1" horzAlign="center">
+                    <flowPart height="30" width="75" vertAlign="center" align="client">
+                        <label text="Armas" fontSize="18" fontStyle="italic bold" align="client" horzTextAlign="center"
+                               vertTextAlign="center"/>
+                    </flowPart>
+                </flowLayout>
+            </rectangle>
+            <recordList name="rclArmas" field="armas" templateForm="armasrcl" align="client"
+                        minHeight="70" layout="horizontalTiles"
+                        width="1200" autoHeight="true" hitTest="false"/>
+            <flowPart width="80" height="16">
+                <button align="client" text="Nova Arma" width="80" height="16" horzTextAlign="center"
+                        onClick="self.rclArmas:append();"/>
+            </flowPart>
+        </flowLayout>
     </scrollBox>
-
 </rectangle>
