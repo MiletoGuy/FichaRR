@@ -19,6 +19,7 @@
             <import file="inventario.xml"/>
         </tab>
 
+
         <tab title="Anotações">
             <rectangle class="fundo">
                 <scrollBox align="client">
@@ -26,6 +27,21 @@
                 </scrollBox>
             </rectangle>
         </tab>
+        <tab title="Anotações 2">
+            <rectangle class="fundo">
+                <scrollBox align="client">
+                    <richEdit align="client" backgroundColor="#40000000" field="anotacoes2"/>
+                </scrollBox>
+            </rectangle>
+        </tab>
+        <tab title="Anotações 3">
+            <rectangle class="fundo">
+                <scrollBox align="client">
+                    <richEdit align="client" backgroundColor="#40000000" field="anotacoes3"/>
+                </scrollBox>
+            </rectangle>
+        </tab>
+
 
     </tabControl>
 </form>

@@ -69,7 +69,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
-    obj.image1:setSRC("/imagens/settings.png");
+    obj.image1:setSRC("src/imagens/settings.png");
     obj.image1:setHeight(25);
     obj.image1:setWidth(25);
     obj.image1:setLeft(5);
@@ -2720,7 +2720,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.flowPart93);
-    obj.image3:setSRC("/imagens/plus.png");
+    obj.image3:setSRC("src/imagens/plus.png");
     obj.image3:setHeight(15);
     obj.image3:setWidth(15);
     obj.image3:setLeft(15);
@@ -2767,7 +2767,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.flowPart95);
-    obj.image4:setSRC("/imagens/plus.png");
+    obj.image4:setSRC("src/imagens/plus.png");
     obj.image4:setHeight(15);
     obj.image4:setWidth(15);
     obj.image4:setLeft(15);
@@ -2814,7 +2814,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image5 = GUI.fromHandle(_obj_newObject("image"));
     obj.image5:setParent(obj.flowPart97);
-    obj.image5:setSRC("/imagens/plus.png");
+    obj.image5:setSRC("src/imagens/plus.png");
     obj.image5:setHeight(15);
     obj.image5:setWidth(15);
     obj.image5:setLeft(15);
@@ -2861,7 +2861,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image6 = GUI.fromHandle(_obj_newObject("image"));
     obj.image6:setParent(obj.flowPart99);
-    obj.image6:setSRC("/imagens/plus.png");
+    obj.image6:setSRC("src/imagens/plus.png");
     obj.image6:setHeight(15);
     obj.image6:setWidth(15);
     obj.image6:setLeft(15);
@@ -2908,7 +2908,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image7 = GUI.fromHandle(_obj_newObject("image"));
     obj.image7:setParent(obj.flowPart101);
-    obj.image7:setSRC("/imagens/equals.png");
+    obj.image7:setSRC("src/imagens/equals.png");
     obj.image7:setHeight(15);
     obj.image7:setWidth(15);
     obj.image7:setLeft(15);
@@ -2955,7 +2955,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image8 = GUI.fromHandle(_obj_newObject("image"));
     obj.image8:setParent(obj.flowPart103);
-    obj.image8:setSRC("/imagens/plus.png");
+    obj.image8:setSRC("src/imagens/plus.png");
     obj.image8:setHeight(15);
     obj.image8:setWidth(15);
     obj.image8:setLeft(15);
@@ -3002,7 +3002,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image9 = GUI.fromHandle(_obj_newObject("image"));
     obj.image9:setParent(obj.flowPart105);
-    obj.image9:setSRC("/imagens/equals.png");
+    obj.image9:setSRC("src/imagens/equals.png");
     obj.image9:setHeight(15);
     obj.image9:setWidth(15);
     obj.image9:setLeft(15);
@@ -3102,7 +3102,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image10 = GUI.fromHandle(_obj_newObject("image"));
     obj.image10:setParent(obj.flowPart109);
-    obj.image10:setSRC("/imagens/plus.png");
+    obj.image10:setSRC("src/imagens/plus.png");
     obj.image10:setHeight(15);
     obj.image10:setWidth(15);
     obj.image10:setLeft(15);
@@ -3149,7 +3149,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image11 = GUI.fromHandle(_obj_newObject("image"));
     obj.image11:setParent(obj.flowPart111);
-    obj.image11:setSRC("/imagens/plus.png");
+    obj.image11:setSRC("src/imagens/plus.png");
     obj.image11:setHeight(15);
     obj.image11:setWidth(15);
     obj.image11:setLeft(15);
@@ -3196,7 +3196,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image12 = GUI.fromHandle(_obj_newObject("image"));
     obj.image12:setParent(obj.flowPart113);
-    obj.image12:setSRC("/imagens/plus.png");
+    obj.image12:setSRC("src/imagens/plus.png");
     obj.image12:setHeight(15);
     obj.image12:setWidth(15);
     obj.image12:setLeft(15);
@@ -3243,7 +3243,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image13 = GUI.fromHandle(_obj_newObject("image"));
     obj.image13:setParent(obj.flowPart115);
-    obj.image13:setSRC("/imagens/plus.png");
+    obj.image13:setSRC("src/imagens/plus.png");
     obj.image13:setHeight(15);
     obj.image13:setWidth(15);
     obj.image13:setLeft(15);
@@ -3290,7 +3290,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image14 = GUI.fromHandle(_obj_newObject("image"));
     obj.image14:setParent(obj.flowPart117);
-    obj.image14:setSRC("/imagens/equals.png");
+    obj.image14:setSRC("src/imagens/equals.png");
     obj.image14:setHeight(15);
     obj.image14:setWidth(15);
     obj.image14:setLeft(15);
@@ -3337,7 +3337,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image15 = GUI.fromHandle(_obj_newObject("image"));
     obj.image15:setParent(obj.flowPart119);
-    obj.image15:setSRC("/imagens/plus.png");
+    obj.image15:setSRC("src/imagens/plus.png");
     obj.image15:setHeight(15);
     obj.image15:setWidth(15);
     obj.image15:setLeft(15);
@@ -3384,7 +3384,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image16 = GUI.fromHandle(_obj_newObject("image"));
     obj.image16:setParent(obj.flowPart121);
-    obj.image16:setSRC("/imagens/equals.png");
+    obj.image16:setSRC("src/imagens/equals.png");
     obj.image16:setHeight(15);
     obj.image16:setWidth(15);
     obj.image16:setLeft(15);
@@ -3484,7 +3484,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image17 = GUI.fromHandle(_obj_newObject("image"));
     obj.image17:setParent(obj.flowPart125);
-    obj.image17:setSRC("/imagens/plus.png");
+    obj.image17:setSRC("src/imagens/plus.png");
     obj.image17:setHeight(15);
     obj.image17:setWidth(15);
     obj.image17:setLeft(15);
@@ -3531,7 +3531,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image18 = GUI.fromHandle(_obj_newObject("image"));
     obj.image18:setParent(obj.flowPart127);
-    obj.image18:setSRC("/imagens/plus.png");
+    obj.image18:setSRC("src/imagens/plus.png");
     obj.image18:setHeight(15);
     obj.image18:setWidth(15);
     obj.image18:setLeft(15);
@@ -3578,7 +3578,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image19 = GUI.fromHandle(_obj_newObject("image"));
     obj.image19:setParent(obj.flowPart129);
-    obj.image19:setSRC("/imagens/plus.png");
+    obj.image19:setSRC("src/imagens/plus.png");
     obj.image19:setHeight(15);
     obj.image19:setWidth(15);
     obj.image19:setLeft(15);
@@ -3625,7 +3625,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image20 = GUI.fromHandle(_obj_newObject("image"));
     obj.image20:setParent(obj.flowPart131);
-    obj.image20:setSRC("/imagens/plus.png");
+    obj.image20:setSRC("src/imagens/plus.png");
     obj.image20:setHeight(15);
     obj.image20:setWidth(15);
     obj.image20:setLeft(15);
@@ -3672,7 +3672,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image21 = GUI.fromHandle(_obj_newObject("image"));
     obj.image21:setParent(obj.flowPart133);
-    obj.image21:setSRC("/imagens/equals.png");
+    obj.image21:setSRC("src/imagens/equals.png");
     obj.image21:setHeight(15);
     obj.image21:setWidth(15);
     obj.image21:setLeft(15);
@@ -3719,7 +3719,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image22 = GUI.fromHandle(_obj_newObject("image"));
     obj.image22:setParent(obj.flowPart135);
-    obj.image22:setSRC("/imagens/plus.png");
+    obj.image22:setSRC("src/imagens/plus.png");
     obj.image22:setHeight(15);
     obj.image22:setWidth(15);
     obj.image22:setLeft(15);
@@ -3766,7 +3766,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image23 = GUI.fromHandle(_obj_newObject("image"));
     obj.image23:setParent(obj.flowPart137);
-    obj.image23:setSRC("/imagens/equals.png");
+    obj.image23:setSRC("src/imagens/equals.png");
     obj.image23:setHeight(15);
     obj.image23:setWidth(15);
     obj.image23:setLeft(15);
@@ -3866,7 +3866,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image24 = GUI.fromHandle(_obj_newObject("image"));
     obj.image24:setParent(obj.flowPart141);
-    obj.image24:setSRC("/imagens/plus.png");
+    obj.image24:setSRC("src/imagens/plus.png");
     obj.image24:setHeight(15);
     obj.image24:setWidth(15);
     obj.image24:setLeft(15);
@@ -3913,7 +3913,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image25 = GUI.fromHandle(_obj_newObject("image"));
     obj.image25:setParent(obj.flowPart143);
-    obj.image25:setSRC("/imagens/plus.png");
+    obj.image25:setSRC("src/imagens/plus.png");
     obj.image25:setHeight(15);
     obj.image25:setWidth(15);
     obj.image25:setLeft(15);
@@ -3960,7 +3960,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image26 = GUI.fromHandle(_obj_newObject("image"));
     obj.image26:setParent(obj.flowPart145);
-    obj.image26:setSRC("/imagens/plus.png");
+    obj.image26:setSRC("src/imagens/plus.png");
     obj.image26:setHeight(15);
     obj.image26:setWidth(15);
     obj.image26:setLeft(15);
@@ -4007,7 +4007,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image27 = GUI.fromHandle(_obj_newObject("image"));
     obj.image27:setParent(obj.flowPart147);
-    obj.image27:setSRC("/imagens/plus.png");
+    obj.image27:setSRC("src/imagens/plus.png");
     obj.image27:setHeight(15);
     obj.image27:setWidth(15);
     obj.image27:setLeft(15);
@@ -4054,7 +4054,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image28 = GUI.fromHandle(_obj_newObject("image"));
     obj.image28:setParent(obj.flowPart149);
-    obj.image28:setSRC("/imagens/equals.png");
+    obj.image28:setSRC("src/imagens/equals.png");
     obj.image28:setHeight(15);
     obj.image28:setWidth(15);
     obj.image28:setLeft(15);
@@ -4101,7 +4101,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image29 = GUI.fromHandle(_obj_newObject("image"));
     obj.image29:setParent(obj.flowPart151);
-    obj.image29:setSRC("/imagens/plus.png");
+    obj.image29:setSRC("src/imagens/plus.png");
     obj.image29:setHeight(15);
     obj.image29:setWidth(15);
     obj.image29:setLeft(15);
@@ -4148,7 +4148,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image30 = GUI.fromHandle(_obj_newObject("image"));
     obj.image30:setParent(obj.flowPart153);
-    obj.image30:setSRC("/imagens/equals.png");
+    obj.image30:setSRC("src/imagens/equals.png");
     obj.image30:setHeight(15);
     obj.image30:setWidth(15);
     obj.image30:setLeft(15);
@@ -4248,7 +4248,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image31 = GUI.fromHandle(_obj_newObject("image"));
     obj.image31:setParent(obj.flowPart157);
-    obj.image31:setSRC("/imagens/plus.png");
+    obj.image31:setSRC("src/imagens/plus.png");
     obj.image31:setHeight(15);
     obj.image31:setWidth(15);
     obj.image31:setLeft(15);
@@ -4295,7 +4295,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image32 = GUI.fromHandle(_obj_newObject("image"));
     obj.image32:setParent(obj.flowPart159);
-    obj.image32:setSRC("/imagens/plus.png");
+    obj.image32:setSRC("src/imagens/plus.png");
     obj.image32:setHeight(15);
     obj.image32:setWidth(15);
     obj.image32:setLeft(15);
@@ -4342,7 +4342,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image33 = GUI.fromHandle(_obj_newObject("image"));
     obj.image33:setParent(obj.flowPart161);
-    obj.image33:setSRC("/imagens/plus.png");
+    obj.image33:setSRC("src/imagens/plus.png");
     obj.image33:setHeight(15);
     obj.image33:setWidth(15);
     obj.image33:setLeft(15);
@@ -4389,7 +4389,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image34 = GUI.fromHandle(_obj_newObject("image"));
     obj.image34:setParent(obj.flowPart163);
-    obj.image34:setSRC("/imagens/plus.png");
+    obj.image34:setSRC("src/imagens/plus.png");
     obj.image34:setHeight(15);
     obj.image34:setWidth(15);
     obj.image34:setLeft(15);
@@ -4436,7 +4436,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image35 = GUI.fromHandle(_obj_newObject("image"));
     obj.image35:setParent(obj.flowPart165);
-    obj.image35:setSRC("/imagens/equals.png");
+    obj.image35:setSRC("src/imagens/equals.png");
     obj.image35:setHeight(15);
     obj.image35:setWidth(15);
     obj.image35:setLeft(15);
@@ -4483,7 +4483,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image36 = GUI.fromHandle(_obj_newObject("image"));
     obj.image36:setParent(obj.flowPart167);
-    obj.image36:setSRC("/imagens/plus.png");
+    obj.image36:setSRC("src/imagens/plus.png");
     obj.image36:setHeight(15);
     obj.image36:setWidth(15);
     obj.image36:setLeft(15);
@@ -4530,7 +4530,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image37 = GUI.fromHandle(_obj_newObject("image"));
     obj.image37:setParent(obj.flowPart169);
-    obj.image37:setSRC("/imagens/equals.png");
+    obj.image37:setSRC("src/imagens/equals.png");
     obj.image37:setHeight(15);
     obj.image37:setWidth(15);
     obj.image37:setLeft(15);
@@ -4630,7 +4630,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image38 = GUI.fromHandle(_obj_newObject("image"));
     obj.image38:setParent(obj.flowPart173);
-    obj.image38:setSRC("/imagens/plus.png");
+    obj.image38:setSRC("src/imagens/plus.png");
     obj.image38:setHeight(15);
     obj.image38:setWidth(15);
     obj.image38:setLeft(15);
@@ -4677,7 +4677,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image39 = GUI.fromHandle(_obj_newObject("image"));
     obj.image39:setParent(obj.flowPart175);
-    obj.image39:setSRC("/imagens/plus.png");
+    obj.image39:setSRC("src/imagens/plus.png");
     obj.image39:setHeight(15);
     obj.image39:setWidth(15);
     obj.image39:setLeft(15);
@@ -4724,7 +4724,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image40 = GUI.fromHandle(_obj_newObject("image"));
     obj.image40:setParent(obj.flowPart177);
-    obj.image40:setSRC("/imagens/plus.png");
+    obj.image40:setSRC("src/imagens/plus.png");
     obj.image40:setHeight(15);
     obj.image40:setWidth(15);
     obj.image40:setLeft(15);
@@ -4771,7 +4771,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image41 = GUI.fromHandle(_obj_newObject("image"));
     obj.image41:setParent(obj.flowPart179);
-    obj.image41:setSRC("/imagens/plus.png");
+    obj.image41:setSRC("src/imagens/plus.png");
     obj.image41:setHeight(15);
     obj.image41:setWidth(15);
     obj.image41:setLeft(15);
@@ -4818,7 +4818,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image42 = GUI.fromHandle(_obj_newObject("image"));
     obj.image42:setParent(obj.flowPart181);
-    obj.image42:setSRC("/imagens/equals.png");
+    obj.image42:setSRC("src/imagens/equals.png");
     obj.image42:setHeight(15);
     obj.image42:setWidth(15);
     obj.image42:setLeft(15);
@@ -4865,7 +4865,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image43 = GUI.fromHandle(_obj_newObject("image"));
     obj.image43:setParent(obj.flowPart183);
-    obj.image43:setSRC("/imagens/plus.png");
+    obj.image43:setSRC("src/imagens/plus.png");
     obj.image43:setHeight(15);
     obj.image43:setWidth(15);
     obj.image43:setLeft(15);
@@ -4912,7 +4912,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.image44 = GUI.fromHandle(_obj_newObject("image"));
     obj.image44:setParent(obj.flowPart185);
-    obj.image44:setSRC("/imagens/equals.png");
+    obj.image44:setSRC("src/imagens/equals.png");
     obj.image44:setHeight(15);
     obj.image44:setWidth(15);
     obj.image44:setLeft(15);
@@ -7446,7 +7446,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.rectangle21:setYradius(10);
     obj.rectangle21:setHeight(300);
     obj.rectangle21:setWidth(732);
-    obj.rectangle21:setColor("silver");
+    obj.rectangle21:setColor("#414041");
     obj.rectangle21:setStrokeColor("black");
     obj.rectangle21:setStrokeSize(2);
     obj.rectangle21:setName("rectangle21");
@@ -7463,7 +7463,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.richEdit1:setParent(obj.flowLayout54);
     obj.richEdit1:setHeight(280);
     obj.richEdit1:setWidth(712);
-    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#40000000");
+    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#414041");
     obj.richEdit1:setField("descricao");
     lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
     obj.richEdit1:setAlign("client");
@@ -8656,6 +8656,56 @@ local function constructNew_frmFichaDePersonagem()
     lfm_setPropAsString(obj.richEdit3, "backgroundColor",  "#40000000");
     obj.richEdit3:setField("anotacoes");
     obj.richEdit3:setName("richEdit3");
+
+    obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab5:setParent(obj.pgcPrincipal);
+    obj.tab5:setTitle("Anotações 2");
+    obj.tab5:setName("tab5");
+
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25:setParent(obj.tab5);
+    obj.rectangle25:setName("rectangle25");
+    obj.rectangle25:setAlign("client");
+    obj.rectangle25:setColor("#40000000");
+    obj.rectangle25:setXradius(10);
+    obj.rectangle25:setYradius(10);
+
+    obj.scrollBox5 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox5:setParent(obj.rectangle25);
+    obj.scrollBox5:setAlign("client");
+    obj.scrollBox5:setName("scrollBox5");
+
+    obj.richEdit4 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit4:setParent(obj.scrollBox5);
+    obj.richEdit4:setAlign("client");
+    lfm_setPropAsString(obj.richEdit4, "backgroundColor",  "#40000000");
+    obj.richEdit4:setField("anotacoes2");
+    obj.richEdit4:setName("richEdit4");
+
+    obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
+    obj.tab6:setParent(obj.pgcPrincipal);
+    obj.tab6:setTitle("Anotações 3");
+    obj.tab6:setName("tab6");
+
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26:setParent(obj.tab6);
+    obj.rectangle26:setName("rectangle26");
+    obj.rectangle26:setAlign("client");
+    obj.rectangle26:setColor("#40000000");
+    obj.rectangle26:setXradius(10);
+    obj.rectangle26:setYradius(10);
+
+    obj.scrollBox6 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox6:setParent(obj.rectangle26);
+    obj.scrollBox6:setAlign("client");
+    obj.scrollBox6:setName("scrollBox6");
+
+    obj.richEdit5 = GUI.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit5:setParent(obj.scrollBox6);
+    obj.richEdit5:setAlign("client");
+    lfm_setPropAsString(obj.richEdit5, "backgroundColor",  "#40000000");
+    obj.richEdit5:setField("anotacoes3");
+    obj.richEdit5:setName("richEdit5");
 
     obj._e_event0 = obj.image1:addEventListener("onClick",
         function (_)
@@ -10786,6 +10836,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart142 ~= nil then self.flowPart142:destroy(); self.flowPart142 = nil; end;
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;
         if self.label115 ~= nil then self.label115:destroy(); self.label115 = nil; end;
+        if self.scrollBox5 ~= nil then self.scrollBox5:destroy(); self.scrollBox5 = nil; end;
         if self.tabelaConhecimentosEspecificos ~= nil then self.tabelaConhecimentosEspecificos:destroy(); self.tabelaConhecimentosEspecificos = nil; end;
         if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
         if self.flowPart246 ~= nil then self.flowPart246:destroy(); self.flowPart246 = nil; end;
@@ -10960,6 +11011,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.horzLine88 ~= nil then self.horzLine88:destroy(); self.horzLine88 = nil; end;
+        if self.tab5 ~= nil then self.tab5:destroy(); self.tab5 = nil; end;
         if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
         if self.horzLine40 ~= nil then self.horzLine40:destroy(); self.horzLine40 = nil; end;
         if self.flowPart230 ~= nil then self.flowPart230:destroy(); self.flowPart230 = nil; end;
@@ -11137,6 +11189,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart84 ~= nil then self.flowPart84:destroy(); self.flowPart84 = nil; end;
         if self.radioButton9 ~= nil then self.radioButton9:destroy(); self.radioButton9 = nil; end;
         if self.percepcaoMinus ~= nil then self.percepcaoMinus:destroy(); self.percepcaoMinus = nil; end;
+        if self.scrollBox6 ~= nil then self.scrollBox6:destroy(); self.scrollBox6 = nil; end;
         if self.persuasaoMinus ~= nil then self.persuasaoMinus:destroy(); self.persuasaoMinus = nil; end;
         if self.faunafloraPlus ~= nil then self.faunafloraPlus:destroy(); self.faunafloraPlus = nil; end;
         if self.edit70 ~= nil then self.edit70:destroy(); self.edit70 = nil; end;
@@ -11333,6 +11386,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
         if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
         if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
+        if self.richEdit4 ~= nil then self.richEdit4:destroy(); self.richEdit4 = nil; end;
         if self.radioButton14 ~= nil then self.radioButton14:destroy(); self.radioButton14 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.horzLine53 ~= nil then self.horzLine53:destroy(); self.horzLine53 = nil; end;
@@ -11492,6 +11546,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart273 ~= nil then self.flowPart273:destroy(); self.flowPart273 = nil; end;
         if self.flowPart306 ~= nil then self.flowPart306:destroy(); self.flowPart306 = nil; end;
         if self.popupxpProfissao ~= nil then self.popupxpProfissao:destroy(); self.popupxpProfissao = nil; end;
+        if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
         if self.horzLine34 ~= nil then self.horzLine34:destroy(); self.horzLine34 = nil; end;
         if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
         if self.somaxpProfissao ~= nil then self.somaxpProfissao:destroy(); self.somaxpProfissao = nil; end;
@@ -11547,6 +11602,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.flowPart120 ~= nil then self.flowPart120:destroy(); self.flowPart120 = nil; end;
         if self.edit94 ~= nil then self.edit94:destroy(); self.edit94 = nil; end;
         if self.flowPart277 ~= nil then self.flowPart277:destroy(); self.flowPart277 = nil; end;
+        if self.tab6 ~= nil then self.tab6:destroy(); self.tab6 = nil; end;
         if self.flowPart212 ~= nil then self.flowPart212:destroy(); self.flowPart212 = nil; end;
         if self.label123 ~= nil then self.label123:destroy(); self.label123 = nil; end;
         if self.flowPart14 ~= nil then self.flowPart14:destroy(); self.flowPart14 = nil; end;
@@ -11591,6 +11647,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.label136 ~= nil then self.label136:destroy(); self.label136 = nil; end;
         if self.image39 ~= nil then self.image39:destroy(); self.image39 = nil; end;
         if self.flowPart229 ~= nil then self.flowPart229:destroy(); self.flowPart229 = nil; end;
+        if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.flowPart12 ~= nil then self.flowPart12:destroy(); self.flowPart12 = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;
         if self.flowPart168 ~= nil then self.flowPart168:destroy(); self.flowPart168 = nil; end;
@@ -11657,6 +11714,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.furtividadeMinus ~= nil then self.furtividadeMinus:destroy(); self.furtividadeMinus = nil; end;
         if self.edit91 ~= nil then self.edit91:destroy(); self.edit91 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
+        if self.richEdit5 ~= nil then self.richEdit5:destroy(); self.richEdit5 = nil; end;
         if self.flowPart119 ~= nil then self.flowPart119:destroy(); self.flowPart119 = nil; end;
         if self.flowLayout28 ~= nil then self.flowLayout28:destroy(); self.flowLayout28 = nil; end;
         if self.flowPart21 ~= nil then self.flowPart21:destroy(); self.flowPart21 = nil; end;

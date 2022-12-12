@@ -59,10 +59,10 @@
         <flowLayout align="client" maxControlsPerLine="1" margins="{left=10,right=10,top=10,bottom=10}">
             <rectangle cornerType="innerLine"
                        xradius="10" yradius="10"
-                       height="300" width="732" color="silver" strokeColor="black" strokeSize="2">
+                       height="300" width="732" color="#414041" strokeColor="black" strokeSize="2">
                 <flowLayout height="300" width="732" padding="{left=10,right=10,top=10,bottom=10}"
                             align="client">
-                    <richEdit height="280" width="712" backgroundColor="#40000000" field="descricao"
+                    <richEdit height="280" width="712" backgroundColor="#414041" field="descricao"
                               defaultFontColor="white" align="client"/>
                 </flowLayout>
             </rectangle>

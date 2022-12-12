@@ -213,7 +213,7 @@
 
     <template name="sinal">
         <flowPart name="$(baseName)" height="50" minScaledWidth="30" maxScaledWidth="50">
-            <image src="/imagens/$(sinal).png" height="15" width="15" left="15" top="5"/>
+            <image src="src/imagens/$(sinal).png" height="15" width="15" left="15" top="5"/>
         </flowPart>
     </template>
 

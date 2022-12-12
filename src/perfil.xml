@@ -4,7 +4,7 @@
 <rectangle class="fundo">
     <scrollBox align="client">
 
-        <image src="/imagens/settings.png" height="25" width="25" left="5" top="5"
+        <image src="src/imagens/settings.png" height="25" width="25" left="5" top="5"
                hitTest="true" onClick="self.popupConfig:show()"/>
 
         <popup name="popupConfig" width="400" height="500">

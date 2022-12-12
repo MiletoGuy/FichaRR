@@ -4,18 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="Só o lançamento do README mesmo">
-      <change afterPath="$PROJECT_DIR$/armasrcl.lfm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output/rdkObjs/armasrcl.lfm.lua" afterDir="false" />
+    <list default="true" id="3514d529-fb70-4c17-a71e-c66ade66ab2c" name="Default Changelist" comment="alt_2022.05.08">
+      <change afterPath="$PROJECT_DIR$/output/rdkObjs/src/armasrcl.lfm.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/rdkObjs/src/ficha.lfm.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/rdkObjs/src/habilidadercl.lfm.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_28_2022_4_37_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_28_2022_4_37_PM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_30_2022_9_36_AM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_30_2022_9_36_AM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ficha.lfm" beforeDir="false" afterPath="$PROJECT_DIR$/ficha.lfm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habilidades.xml" beforeDir="false" afterPath="$PROJECT_DIR$/habilidades.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventario.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module.xml" beforeDir="false" afterPath="$PROJECT_DIR$/module.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/armasrcl.lfm" beforeDir="false" afterPath="$PROJECT_DIR$/src/armasrcl.lfm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ficha.lfm" beforeDir="false" afterPath="$PROJECT_DIR$/src/ficha.lfm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/atributos/corner.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/frames/atributos/corner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/atributos/frames.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/frames/atributos/frames.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/atributos/imagem.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/frames/atributos/imagem.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/atributos/linhaSup.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/frames/atributos/linhaSup.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/atributos/quadrado.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/frames/atributos/quadrado.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/habilidadercl.lfm" beforeDir="false" afterPath="$PROJECT_DIR$/src/habilidadercl.lfm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/habilidades.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/habilidades.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagens/equals.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/imagens/equals.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagens/minus.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/imagens/minus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagens/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/imagens/plus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagens/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/imagens/settings.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventario.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventario.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/FichaRR.rpk" beforeDir="false" afterPath="$PROJECT_DIR$/output/FichaRR.rpk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" beforeDir="false" afterPath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/templates.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/rdkObjs/armasrcl.lfm.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/rdkObjs/ficha.lfm.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/rdkObjs/habilidadercl.lfm.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/perfil.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates.xml" afterDir="false" />
     </list>
     <list id="e2e643b6-ebeb-411c-8b90-c3587032065d" name="ImagensChange" comment="Recuperando os png" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ALPHA_1.0" />
+        <entry key="$PROJECT_DIR$" value="d18a9a2db9f056ab6214dbeb717061f419b1aacb" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,14 +79,13 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Coisas\FichaRR" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Edson Ricardo\WebstormProjects\FichaRR\src" />
       <recent name="C:\Coisas\FichaRR\frames\atributos" />
     </key>
   </component>
@@ -94,7 +109,8 @@
       <workItem from="1653914043596" duration="2421000" />
       <workItem from="1653927761703" duration="19000" />
       <workItem from="1653936704298" duration="1212000" />
-      <workItem from="1654189888744" duration="17022000" />
+      <workItem from="1654189888744" duration="2494000" />
+      <workItem from="1670848672038" duration="2365000" />
     </task>
     <task id="LOCAL-00001" summary="alt_2022.04.27">
       <created>1651084302753</created>
@@ -110,14 +126,7 @@
       <option name="project" value="LOCAL" />
       <updated>1651601180724</updated>
     </task>
-    <task id="LOCAL-00003" summary="Só o lançamento do README mesmo">
-      <created>1654193756974</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1654193756974</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +159,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="alt_2022.04.27" />
     <MESSAGE value="alt_2022.05.03" />
-    <MESSAGE value="Só o lançamento do README mesmo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Só o lançamento do README mesmo" />
+    <option name="LAST_COMMIT_MESSAGE" value="alt_2022.05.03" />
   </component>
 </project>
