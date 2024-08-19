@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <template name="Titulo">
+        <label text="$(text)" g="col" g-width="1" g-min-height="20" horzTextAlign="center" />
+    </template>
+
+    <template name="RotuloTabela">
+        <layout g="row" g-min-height="20" g-cnt-horz-align="center">
+            <Titulo text="" />
+            <Titulo text="Nível" />
+            <Titulo text="Classe" />
+            <Titulo text="Raça" />
+            <Titulo text="Treino" />
+            <Titulo text="Outro" />
+            <Titulo text="Base" />
+            <Titulo text="Multiplicador" />
+            <Titulo text="Extra" />
+            <Titulo text="Total" />
+        </layout>
+    </template>
+
+</group>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <template name="CampoAtributo">
+        <edit horzTextAlign="center" g="col" g-width="1"
+            readOnly="$(readOnly or 'false')" canFocus="$(canFocus or 'true')"
+            cursor="$(cursor or 'IBeam')" field="$(field)" type="number" />
+    </template>
+
+    <template name="TabelaDeAtributo">
+
+        <layout g="row" g-min-height="20" g-cnt-horz-align="center">
+            <label g="col" g-width="1" text="$(title)" />
+            <CampoAtributo field="$(field)Nivel" />
+            <CampoAtributo field="$(field)Classe" />
+            <CampoAtributo field="$(field)Raca" />
+            <CampoAtributo field="$(field)Treino" />
+            <CampoAtributo field="$(field)Outro" />
+            <CampoAtributo field="$(field)Base" readOnly="true" canFocus="false" cursor="default" />
+            <CampoAtributo field="$(field)Multiplicador" />
+            <CampoAtributo field="$(field)Extra" />
+            <CampoAtributo field="$(field)Total" readOnly="true" canFocus="false" cursor="default" />
+        </layout>
+
+        <dataLink
+            fields="{'$(field)Nivel', '$(field)Classe', '$(field)Raca', '$(field)Treino', '$(field)Outro', '$(field)Multiplicador', '$(field)Extra'}">
+            <event name="onChange">
+                sheet.$(field)Base = (tonumber(sheet.$(field)Nivel) or 0) +
+                (tonumber(sheet.$(field)Classe) or 0 ) +
+                (tonumber(sheet.$(field)Raca) or 0) +
+                (tonumber(sheet.$(field)Treino) or 0) +
+                (tonumber(sheet.$(field)Outro) or 0);
+
+                sheet.$(field)Total = math.floor((tonumber(sheet.$(field)Base) or 0) + 
+                ((((tonumber(sheet.$(field)Multiplicador) or 0)/100)) * sheet.$(field)Base) +
+                (tonumber(sheet.$(field)Extra) or 0 ))
+            </event>
+
+        </dataLink>
+    </template>
+
+</group>

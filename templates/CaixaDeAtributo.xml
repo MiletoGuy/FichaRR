@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="CaixaDeAtributo">
+
+    <layout g="col" g-width="4" g-min-height="60">
+        <label g="row" g-min-height="40" text="$(value)" fontSize="30" horzTextAlign="center" />
+        <label g="row" g-min-height="20" text="$(title)" horzTextAlign="center" />
+    </layout>
+
+</template>
