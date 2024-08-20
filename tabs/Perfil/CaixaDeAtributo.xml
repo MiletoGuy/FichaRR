@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="CaixaDeAtributo">
+
+    <layout g="col" g-width="4" g-min-height="60">
+        <label g="row" g-min-height="40" field="mod$(field)" fontSize="30" horzTextAlign="center" />
+        <label g="row" g-min-height="20" text="$(title)" horzTextAlign="center" />
+    </layout>
+
+    <dataLink field="$(field)Total">
+        <event name="onChange">
+            sheet.mod$(field) = '+' .. tostring(math.floor(tonumber(sheet.$(field)Total)/10));
+        </event>
+    </dataLink>
+
+</template>

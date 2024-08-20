@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <template name="ColunaDupla">
+        <layout g="col" height="15" g-width="1">
+            <label text="$(text1)" g="col" g-width="6" g-min-height="15" horzTextAlign="center" />
+            <label text="$(text2)" g="col" g-width="6" g-min-height="15" horzTextAlign="center" />
+        </layout>
+    </template>
+
+    <template name="EditDuplo">
+        <layout g="col" height="30" g-width="1">
+            <edit g="col" g-width="6" g-min-height="30" horzTextAlign="center" field="$(field1)"
+                type="number" />
+            <edit g="col" g-width="6" g-min-height="30" horzTextAlign="center" field="$(field2)"
+                type="number" />
+        </layout>
+    </template>
+
+    <template name="AtributoPorNivel">
+        <layout g="row">
+            <label text="$(title)" g="col" g-width="1" g-min-height="20" horzTextAlign="center" />
+            <ColunaDupla text1="1" text2="2" />
+            <ColunaDupla text1="3" text2="4" />
+            <ColunaDupla text1="5" text2="6" />
+            <ColunaDupla text1="7" text2="8" />
+            <ColunaDupla text1="9" text2="10" />
+            <ColunaDupla text1="11" text2="12" />
+            <ColunaDupla text1="13" text2="14" />
+            <ColunaDupla text1="15" text2="16" />
+            <ColunaDupla text1="17" text2="18" />
+            <ColunaDupla text1="19" text2="20" />
+            <label text="Total" g="col" g-width="1" g-min-height="15" horzTextAlign="center" />
+            <label text="" g="col" g-width="1" g-min-height="15" horzTextAlign="center" />
+            <EditDuplo field1="$(field)Nivel1" field2="$(field)Nivel2" />
+            <EditDuplo field1="$(field)Nivel3" field2="$(field)Nivel4" />
+            <EditDuplo field1="$(field)Nivel5" field2="$(field)Nivel6" />
+            <EditDuplo field1="$(field)Nivel7" field2="$(field)Nivel8" />
+            <EditDuplo field1="$(field)Nivel9" field2="$(field)Nivel10" />
+            <EditDuplo field1="$(field)Nivel11" field2="$(field)Nivel12" />
+            <EditDuplo field1="$(field)Nivel13" field2="$(field)Nivel14" />
+            <EditDuplo field1="$(field)Nivel15" field2="$(field)Nivel16" />
+            <EditDuplo field1="$(field)Nivel17" field2="$(field)Nivel18" />
+            <EditDuplo field1="$(field)Nivel19" field2="$(field)Nivel20" />
+            <edit field="$(field)NivelTotal" g="col" g-width="1" g-min-height="15"
+                horzTextAlign="center" readOnly="true" canFocus="false" cursor="default" />
+
+        </layout>
+
+        <dataLink
+            fields="{'$(field)Nivel1','$(field)Nivel2','$(field)Nivel3','$(field)Nivel4','$(field)Nivel5',
+            '$(field)Nivel6','$(field)Nivel7','$(field)Nivel8','$(field)Nivel9','$(field)Nivel10',
+            '$(field)Nivel11','$(field)Nivel12','$(field)Nivel13','$(field)Nivel14','$(field)Nivel15',
+            '$(field)Nivel16','$(field)Nivel17','$(field)Nivel18','$(field)Nivel19','$(field)Nivel20',}">
+
+            <event name="onChange">
+                local total = 0
+
+                for i = 1, 20 do
+                local nivel = tonumber(sheet["$(field)Nivel" .. i]) or 0
+                total = total + nivel
+                end
+
+                sheet.$(field)NivelTotal = total
+            </event>
+        </dataLink>
+
+        <dataLink field="$(field)NivelTotal" >
+            <event name="onChange">
+                sheet.$(field)Nivel = sheet.$(field)NivelTotal;
+            </event>
+        </dataLink>
+    </template>
+
+</group>

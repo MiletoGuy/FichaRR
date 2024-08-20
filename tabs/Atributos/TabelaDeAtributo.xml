@@ -11,7 +11,7 @@
 
         <layout g="row" g-min-height="20" g-cnt-horz-align="center">
             <label g="col" g-width="1" text="$(title)" />
-            <CampoAtributo field="$(field)Nivel" />
+            <CampoAtributo field="$(field)Nivel" readOnly="true" canFocus="false" cursor="default" />
             <CampoAtributo field="$(field)Classe" />
             <CampoAtributo field="$(field)Raca" />
             <CampoAtributo field="$(field)Treino" />
@@ -31,12 +31,12 @@
                 (tonumber(sheet.$(field)Treino) or 0) +
                 (tonumber(sheet.$(field)Outro) or 0);
 
-                sheet.$(field)Total = math.floor((tonumber(sheet.$(field)Base) or 0) + 
+                sheet.$(field)Total = math.floor((tonumber(sheet.$(field)Base) or 0) +
                 ((((tonumber(sheet.$(field)Multiplicador) or 0)/100)) * sheet.$(field)Base) +
                 (tonumber(sheet.$(field)Extra) or 0 ))
             </event>
-
         </dataLink>
+
     </template>
 
 </group>

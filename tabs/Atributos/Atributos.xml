@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout align="client" g="container" >
+    <import file="TabelaDeAtributo.xml"/>
+    <import file="RotuloTabela.xml"/>
+    <import file="RotuloNiveis.xml" />
+
+    <RotuloTabela/>
+    <TabelaDeAtributo title="Constituição" field="con"/>
+    <TabelaDeAtributo title="Força" field="for"/>
+    <TabelaDeAtributo title="Destreza" field="dex"/>
+    <TabelaDeAtributo title="Inteligência" field="int"/>
+    <TabelaDeAtributo title="Sabedoria" field="sab"/>
+    <TabelaDeAtributo title="Carisma" field="car"/>
+
+    <AtributoPorNivel title="Constituição" field="con" />
+    <AtributoPorNivel title="Força" field="for" />
+    <AtributoPorNivel title="Destreza" field="dex" />
+    <AtributoPorNivel title="Inteligência" field="int" />
+    <AtributoPorNivel title="Sabedoria" field="sab" />
+    <AtributoPorNivel title="Carisma" field="car" />
+</layout>

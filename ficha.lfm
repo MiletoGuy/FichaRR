@@ -5,13 +5,15 @@
 
       <tabControl align="client">
 
+            <tab title="Perfil">
+                  <import file="./tabs/Perfil/Perfil.xml" />
+            </tab>
+            
             <tab title="Atributos">
-                  <import file="./tabs/Atributos.xml" />
+                  <import file="./tabs/Atributos/Atributos.xml" />
             </tab>
 
-            <tab title="Perfil">
-                  <import file="./tabs/Perfil.xml" />
-            </tab>
+
 
 
       </tabControl>
