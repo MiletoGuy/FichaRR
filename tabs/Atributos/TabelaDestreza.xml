@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <template name="TabelaDestreza">
+
+        <layout g="row" g-min-height="20" g-cnt-horz-align="center">
+            <label g="col" g-width="1" text="$(title)" />
+            <CampoAtributo field="$(field)Destreza" />
+            <CampoAtributo field="$(field)Classe" />
+            <CampoAtributo field="$(field)Base" readOnly="true" canFocus="false" cursor="default" />
+            <CampoAtributo field="$(field)Multiplicador" />
+            <CampoAtributo field="$(field)Arma" readOnly="true" canFocus="false" cursor="default" />
+            <CampoAtributo field="$(field)Armadura" readOnly="true" canFocus="false" cursor="default" />
+            <CampoAtributo field="$(field)Extra" />
+            <CampoAtributo field="$(field)Total" readOnly="true" canFocus="false" cursor="default" />
+        </layout>
+
+        <dataLink
+            fields="{'$(field)Destreza', '$(field)Classe', '$(field)Multiplicador', '$(field)Arma', '$(field)Armadura', '$(field)Extra'}">
+            <event name="onChange">
+                sheet.$(field)Base = (tonumber(sheet.$(field)Destreza) or 0) + (tonumber(sheet.$(field)Classe) or 0 );
+
+                sheet.$(field)Total = math.floor((tonumber(sheet.$(field)Base) or 0) +
+                ((((tonumber(sheet.$(field)Multiplicador) or 0)/100)) * sheet.$(field)Base) +
+                (tonumber(sheet.$(field)Extra) or 0 ) + 
+                (tonumber(sheet.$(field)Arma) or 0) + 
+                (tonumber(sheet.$(field)Armadura) or 0 ))
+            </event>
+        </dataLink>
+
+    </template>
+
+</group>

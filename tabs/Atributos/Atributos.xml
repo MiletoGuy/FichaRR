@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout align="client" g="container" >
-    <import file="TabelaDeAtributo.xml"/>
-    <import file="RotuloTabela.xml"/>
-    <import file="RotuloNiveis.xml" />
+<scrollBox align="client" g="container">
+    <import file="TabelaDeAtributo.xml" />
+    <import file="RotuloTabela.xml" />
+    <import file="AtributoPorNivel.xml" />
+    <import file="TabelaDestreza.xml" />
+    <import file="RotuloDestreza.xml" />
+    <import file="Sanidade.xml"/>
 
-    <RotuloTabela/>
-    <TabelaDeAtributo title="Constituição" field="con"/>
-    <TabelaDeAtributo title="Força" field="for"/>
-    <TabelaDeAtributo title="Destreza" field="dex"/>
-    <TabelaDeAtributo title="Inteligência" field="int"/>
-    <TabelaDeAtributo title="Sabedoria" field="sab"/>
-    <TabelaDeAtributo title="Carisma" field="car"/>
+    <RotuloTabela />
+    <TabelaDeAtributo title="Constituição" field="con" />
+    <TabelaDeAtributo title="Força" field="for" />
+    <TabelaDeAtributo title="Destreza" field="dex" />
+    <TabelaDeAtributo title="Inteligência" field="int" />
+    <TabelaDeAtributo title="Sabedoria" field="sab" />
+    <TabelaDeAtributo title="Carisma" field="car" />
+
+    <Sanidade />
+
+    <RotuloDestreza />
+    <TabelaDestreza title="Acerto" field="acerto" />
+    <TabelaDestreza title="Mira" field="mira" />
+    <TabelaDestreza title="Bloqueio" field="bloqueio" />
+    <TabelaDestreza title="Esquiva" field="esquiva" />
 
     <AtributoPorNivel title="Constituição" field="con" />
     <AtributoPorNivel title="Força" field="for" />
@@ -18,4 +29,4 @@
     <AtributoPorNivel title="Inteligência" field="int" />
     <AtributoPorNivel title="Sabedoria" field="sab" />
     <AtributoPorNivel title="Carisma" field="car" />
-</layout>
+</scrollBox>

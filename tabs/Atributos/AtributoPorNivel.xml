@@ -20,16 +20,16 @@
     <template name="AtributoPorNivel">
         <layout g="row">
             <label text="$(title)" g="col" g-width="1" g-min-height="20" horzTextAlign="center" />
-            <ColunaDupla text1="1" text2="2" />
-            <ColunaDupla text1="3" text2="4" />
-            <ColunaDupla text1="5" text2="6" />
-            <ColunaDupla text1="7" text2="8" />
-            <ColunaDupla text1="9" text2="10" />
-            <ColunaDupla text1="11" text2="12" />
-            <ColunaDupla text1="13" text2="14" />
-            <ColunaDupla text1="15" text2="16" />
-            <ColunaDupla text1="17" text2="18" />
-            <ColunaDupla text1="19" text2="20" />
+            <ColunaDupla text1="2" text2="3" />
+            <ColunaDupla text1="4" text2="5" />
+            <ColunaDupla text1="6" text2="7" />
+            <ColunaDupla text1="8" text2="9" />
+            <ColunaDupla text1="10" text2="11" />
+            <ColunaDupla text1="12" text2="13" />
+            <ColunaDupla text1="14" text2="15" />
+            <ColunaDupla text1="16" text2="17" />
+            <ColunaDupla text1="18" text2="19" />
+            <ColunaDupla text1="20" text2="20+" />
             <label text="Total" g="col" g-width="1" g-min-height="15" horzTextAlign="center" />
             <label text="" g="col" g-width="1" g-min-height="15" horzTextAlign="center" />
             <EditDuplo field1="$(field)Nivel1" field2="$(field)Nivel2" />

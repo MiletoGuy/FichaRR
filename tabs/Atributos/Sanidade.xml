@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="Sanidade">
+    <layout g="row" g-cnt-horz-align="center" g-min-height="30">
+        <label text="Sanidade:" g="col" g-width="1" g-vert-align="center" />
+        <edit field="Sanidade" g="col" g-width="1" readOnly="true" canFocus="false" cursor="default" horzTextAlign="center" />
+    </layout>
+
+    <dataLink fields="{'Nivel', 'sabTotal'}">
+        <event name="onChange">
+            local modSab = math.floor((tonumber(sheet.sabTotal) or 0)/25) * 0.25
+
+            sheet.Sanidade = math.floor(((tonumber(sheet.Nivel) or 0) * 10) * (1 + modSab))
+        </event>
+
+    </dataLink>
+</template>

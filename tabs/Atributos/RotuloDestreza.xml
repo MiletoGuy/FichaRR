@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="RotuloDestreza">
+    <layout g="row" g-min-height="20" g-cnt-horz-align="center">
+        <Titulo text="" />
+        <Titulo text="Destreza" />
+        <Titulo text="Classe" />
+        <Titulo text="Base" />
+        <Titulo text="Multiplicador" />
+        <Titulo text="Arma" />
+        <Titulo text="Armadura" />
+        <Titulo text="Extra" />
+        <Titulo text="Total" />
+    </layout>
+</template>

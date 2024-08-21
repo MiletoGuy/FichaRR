@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout g="container" g-cnt-horz-align="center" >
+    <label text="Atributos totais recebidos de equipamentos" g="row" g-min-height="20" horzTextAlign="center"/>
+</layout>
