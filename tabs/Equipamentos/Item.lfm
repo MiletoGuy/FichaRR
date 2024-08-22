@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="ItemForm" g="container" g-cnt-horz-align="center" margins="{top=2,bottom=2}">
+
+        <edit g="col" g-width="1" field="nome" />
+        <button text="Apagar" g="col" g-width="1" onClick="NDB.deleteNode(sheet);" />
+</form>
