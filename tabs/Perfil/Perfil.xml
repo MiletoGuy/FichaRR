@@ -11,9 +11,9 @@
     <CaixaDeAtributo title="Constituição" field="con" />
     <CaixaDeAtributo title="Força" field="for" />
     <CaixaDeAtributo title="Destreza" field="dex" breakLineAfter="true" />
+    <CaixaDeAtributo title="Carisma" field="car"/>
     <CaixaDeAtributo title="Inteligência" field="int" />
-    <CaixaDeAtributo title="Sabedoria" field="sab" />
-    <CaixaDeAtributo title="Carisma" field="car" breakLineAfter="true" />
+    <CaixaDeAtributo title="Sabedoria" field="sab" breakLineAfter="true"  />
 
     <CaixaDeAtributo title="Acerto" field="acerto"/>
     <CaixaDeAtributo title="Mira" field="mira" breakLineAfter="true"/>

@@ -11,9 +11,9 @@
     <TabelaDeAtributo title="Constituição" field="con" />
     <TabelaDeAtributo title="Força" field="for" />
     <TabelaDeAtributo title="Destreza" field="dex" />
+    <TabelaDeAtributo title="Carisma" field="car" />
     <TabelaDeAtributo title="Inteligência" field="int" />
     <TabelaDeAtributo title="Sabedoria" field="sab" />
-    <TabelaDeAtributo title="Carisma" field="car" />
 
     <Sanidade />
 
@@ -26,7 +26,7 @@
     <AtributoPorNivel title="Constituição" field="con" />
     <AtributoPorNivel title="Força" field="for" />
     <AtributoPorNivel title="Destreza" field="dex" />
+    <AtributoPorNivel title="Carisma" field="car" />
     <AtributoPorNivel title="Inteligência" field="int" />
     <AtributoPorNivel title="Sabedoria" field="sab" />
-    <AtributoPorNivel title="Carisma" field="car" />
 </scrollBox>

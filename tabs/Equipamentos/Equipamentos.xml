@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout g="container" g-cnt-horz-align="center">
+<scrollBox g="container" g-cnt-horz-align="center" align="client">
     <import file="AtributosRecebidos.xml" />
 
     <AtributosRecebidos />
@@ -9,4 +9,4 @@
 
 
 
-</layout>
+</scrollBox>

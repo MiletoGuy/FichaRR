@@ -15,9 +15,9 @@
         <CampoAtributoEquip title="Destreza" />
         <CampoAtributoEquip title="Acerto" />
         <CampoAtributoEquip title="Mira" breakLineAfter="true" />
+        <CampoAtributoEquip title="Carisma" />
         <CampoAtributoEquip title="Inteligência" />
         <CampoAtributoEquip title="Sabedoria" />
-        <CampoAtributoEquip title="Carisma" />
         <CampoAtributoEquip title="Esquiva" />
         <CampoAtributoEquip title="Bloqueio" breakLineAfter="true" />
     </template>
