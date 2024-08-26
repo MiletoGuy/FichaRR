@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scrollBox g="container" g-cnt-horz-align="center" align="client">
-    <import file="AtributosRecebidos.xml" />
+    <import file="TabelaAtributosTotais.xml" />
 
-    <AtributosRecebidos />
+    <TabelaAtributosTotais />
     <button g="col" g-width="3" g-min-height="30" text="Adiciona Item" onClick="self.rclEquipamentos:append();" g-break-line-after="true" />
     
     <gridRecordList name="rclEquipamentos" field="equipamentos" templateForm="ItemForm" g="container" g-width="10" />

@@ -6,7 +6,7 @@
             cursor="default" g-break-line-after="$(breakLineAfter or 'false')" />
     </template>
 
-    <template name="AtributosRecebidos" g="container" g-cnt-horz-align="center">
+    <template name="TabelaAtributosTotais" g="container" g-cnt-horz-align="center">
 
         <label text="Atributos totais recebidos de equipamentos" g="row" g-min-height="20"
             horzTextAlign="center" />

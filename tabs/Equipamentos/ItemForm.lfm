@@ -1,37 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="ItemForm" g="container" g-cnt-horz-align="center" margins="{top=5, bottom=5}">
 
-        <template name="AtributoItem">
-                <layout g="row" g-min-height="30" g-cnt-horz-align="center" g-vert-align="center" 
-                        margins="{top=2, bottom=2}">
-                        <label g="col" g-width="1" text="+" horzTextAlign="trailing"
-                                g-vert-align="center" />
-                        <edit g="col" g-width="1" field="$(field)" horzTextAlign="center" />
-                        <label g="col" g-width="2" text="de $(title)"/>
-                </layout>
-        </template>
-
-        <button text="Apagar" g="col" g-width="1" onClick="NDB.deleteNode(sheet);"
+        <button text="Apagar" g="col" g-width="1" onClick="NDB.deleteNode(sheet);" />
+        <button text="+Atributo" g="col" g-width="1" onClick="self.rclAtributoEquipamento:append();"
                 g-break-line-after="true" />
+
         <rectangle g="block" width="150" height="150" g-break-line-after="true"
                 margins="{top=5, bottom=5}" xradius="25" yradius="25" color="#40000000"
                 strokeColor="silver" strokeSize="1">
                 <image optimize="true" field="ImagemEquipamento" editable="true" align="client"
                         style="autoFit" />
         </rectangle>
+
         <label text="Nome do Equipamento muito foda que conta historia no nome" g="row"
-                g-min-height="20" fontStyle="bold" fontColor="black"
-                horzTextAlign="center" fontSize="20" />
+                g-min-height="20" fontStyle="bold"
+                horzTextAlign="center" fontSize="25" />
 
 
-        <AtributoItem title="Constituição" field="conEquip" />
-        <AtributoItem title="Força" field="forEquip" />
-        <AtributoItem title="Destreza" field="dexEquip" />
-        <AtributoItem title="Carisma" field="dexEquip" />
-        <AtributoItem title="Inteligência" field="dexEquip" />
-        <AtributoItem title="Sabedoria" field="dexEquip" />
-        <AtributoItem title="Acerto" field="dexEquip" />
-        <AtributoItem title="Mira" field="dexEquip" />
-        <AtributoItem title="Esquiva" field="dexEquip" />
-        <AtributoItem title="Bloqueio" field="dexEquip" />
+        <gridRecordList name="rclAtributoEquipamento" field="atributoEquipamento"
+                templateForm="AtributoDeEquipamento"
+                g="container" g-width="10" />
+
 </form>
