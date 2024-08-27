@@ -31,6 +31,64 @@ local function constructNew_AtributoDeEquipamento()
     obj.grid["cnt-horz-align"] = "center";
     obj:setMargins({top=5, bottom=5});
 
+
+                function calcularTotaisAtributos()
+                        somacon = 0
+                        somafor = 0
+                        somadex = 0
+                        somacar = 0
+                        somaint = 0
+                        somasab = 0
+                        somaacerto = 0
+                        somamira = 0
+                        somaesquiva = 0
+                        somabloqueio = 0
+
+                        for _, equipamento in ipairs(sheet.rclEquipamentos) do
+                                for _, atributo in ipairs(equipamento.rclAtributoEquipamento) do
+                                        showMessage("até aqui ok")
+                                        if atributo.nomeAtributo == "con" then
+                                                somacon = somacon + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "for" then
+                                                somafor = somafor + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "dex" then
+                                                somadex = somadex + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "car" then
+                                                somacar = somacar + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "int" then
+                                                somaint = somaint + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "sab" then
+                                                somasab = somasab + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "acerto" then
+                                                somaacerto = somaacerto + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "mira" then
+                                                somamira = somamira + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "esquiva" then
+                                                somaesquiva = somaesquiva + (atributo.valorAtributo or 0)
+                                        elseif atributo.nomeAtributo == "bloqueio" then
+                                                somabloqueio = somabloqueio + (atributo.valorAtributo or 0)
+                                        end
+                                end
+                        end
+
+                        sheet.conEquipTotal = somacon
+                        sheet.forEquipTotal = somafor
+                        sheet.dexEquipTotal = somadex
+                        sheet.carEquipTotal = somacar
+                        sheet.intEquipTotal = somaint
+                        sheet.sabEquipTotal = somasab
+                        sheet.acertoEquipTotal = somaacerto
+                        sheet.miraEquipTotal = somamira
+                        sheet.esquivaEquipTotal = somaesquiva
+                        sheet.bloqueioEquipTotal = somabloqueio
+                end
+
+                function calcularTotaisAtributosaaa()
+                        showMessage(sheet.equipamentos.atributoEquipamentos)
+                end
+        
+
+
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1.grid.role = "row";
@@ -89,7 +147,7 @@ local function constructNew_AtributoDeEquipamento()
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
         function (field, oldValue, newValue)
-            showMessage(tostring(sheet.valorAtributo) .. sheet.nomeAtributo);
+            calcularTotaisAtributos()
         end);
 
     function obj:_releaseEvents()

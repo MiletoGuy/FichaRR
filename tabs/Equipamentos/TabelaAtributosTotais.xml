@@ -2,7 +2,7 @@
 <group>
     <template name="CampoAtributoEquip">
         <label text="$(title)" g="col" g-width="1" />
-        <edit horzTextAlign="center" g="col" g-width="1" readOnly="true" canFocus="false"
+        <edit horzTextAlign="center" g="col" g-width="1" readOnly="true" canFocus="false" field="$(field)Total"
             cursor="default" g-break-line-after="$(breakLineAfter or 'false')" />
     </template>
 
@@ -10,15 +10,15 @@
 
         <label text="Atributos totais recebidos de equipamentos" g="row" g-min-height="20"
             horzTextAlign="center" />
-        <CampoAtributoEquip title="Constituição" />
-        <CampoAtributoEquip title="Força" />
-        <CampoAtributoEquip title="Destreza" />
-        <CampoAtributoEquip title="Acerto" />
-        <CampoAtributoEquip title="Mira" breakLineAfter="true" />
-        <CampoAtributoEquip title="Carisma" />
-        <CampoAtributoEquip title="Inteligência" />
-        <CampoAtributoEquip title="Sabedoria" />
-        <CampoAtributoEquip title="Esquiva" />
-        <CampoAtributoEquip title="Bloqueio" breakLineAfter="true" />
+        <CampoAtributoEquip title="Constituição" field="conEquip" />
+        <CampoAtributoEquip title="Força" field="forEquip"  />
+        <CampoAtributoEquip title="Destreza" field="dexEquip"  />
+        <CampoAtributoEquip title="Acerto" field="acertoEquip"  />
+        <CampoAtributoEquip title="Mira" field="miraEquip"  breakLineAfter="true" />
+        <CampoAtributoEquip title="Carisma" field="carEquip"  />
+        <CampoAtributoEquip title="Inteligência" field="intEquip"  />
+        <CampoAtributoEquip title="Sabedoria" field="sabEquip"  />
+        <CampoAtributoEquip title="Esquiva" field="esquivaEquip"  />
+        <CampoAtributoEquip title="Bloqueio" field="bloqueioEquip"  breakLineAfter="true" />
     </template>
 </group>

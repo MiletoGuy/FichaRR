@@ -71,6 +71,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit1.grid.width = 1;
     obj.edit1:setReadOnly(true);
     obj.edit1:setCanFocus(false);
+    obj.edit1:setField("conEquipTotal");
     obj.edit1:setCursor("default");
     obj.edit1.grid["break-line-after"] = false;
     obj.edit1:setName("edit1");
@@ -89,6 +90,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit2.grid.width = 1;
     obj.edit2:setReadOnly(true);
     obj.edit2:setCanFocus(false);
+    obj.edit2:setField("forEquipTotal");
     obj.edit2:setCursor("default");
     obj.edit2.grid["break-line-after"] = false;
     obj.edit2:setName("edit2");
@@ -107,6 +109,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit3.grid.width = 1;
     obj.edit3:setReadOnly(true);
     obj.edit3:setCanFocus(false);
+    obj.edit3:setField("dexEquipTotal");
     obj.edit3:setCursor("default");
     obj.edit3.grid["break-line-after"] = false;
     obj.edit3:setName("edit3");
@@ -125,6 +128,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit4.grid.width = 1;
     obj.edit4:setReadOnly(true);
     obj.edit4:setCanFocus(false);
+    obj.edit4:setField("acertoEquipTotal");
     obj.edit4:setCursor("default");
     obj.edit4.grid["break-line-after"] = false;
     obj.edit4:setName("edit4");
@@ -143,6 +147,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit5.grid.width = 1;
     obj.edit5:setReadOnly(true);
     obj.edit5:setCanFocus(false);
+    obj.edit5:setField("miraEquipTotal");
     obj.edit5:setCursor("default");
     obj.edit5.grid["break-line-after"] = true;
     obj.edit5:setName("edit5");
@@ -161,6 +166,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit6.grid.width = 1;
     obj.edit6:setReadOnly(true);
     obj.edit6:setCanFocus(false);
+    obj.edit6:setField("carEquipTotal");
     obj.edit6:setCursor("default");
     obj.edit6.grid["break-line-after"] = false;
     obj.edit6:setName("edit6");
@@ -179,6 +185,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit7.grid.width = 1;
     obj.edit7:setReadOnly(true);
     obj.edit7:setCanFocus(false);
+    obj.edit7:setField("intEquipTotal");
     obj.edit7:setCursor("default");
     obj.edit7.grid["break-line-after"] = false;
     obj.edit7:setName("edit7");
@@ -197,6 +204,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit8.grid.width = 1;
     obj.edit8:setReadOnly(true);
     obj.edit8:setCanFocus(false);
+    obj.edit8:setField("sabEquipTotal");
     obj.edit8:setCursor("default");
     obj.edit8.grid["break-line-after"] = false;
     obj.edit8:setName("edit8");
@@ -215,6 +223,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit9.grid.width = 1;
     obj.edit9:setReadOnly(true);
     obj.edit9:setCanFocus(false);
+    obj.edit9:setField("esquivaEquipTotal");
     obj.edit9:setCursor("default");
     obj.edit9.grid["break-line-after"] = false;
     obj.edit9:setName("edit9");
@@ -233,6 +242,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit10.grid.width = 1;
     obj.edit10:setReadOnly(true);
     obj.edit10:setCanFocus(false);
+    obj.edit10:setField("bloqueioEquipTotal");
     obj.edit10:setCursor("default");
     obj.edit10.grid["break-line-after"] = true;
     obj.edit10:setName("edit10");
