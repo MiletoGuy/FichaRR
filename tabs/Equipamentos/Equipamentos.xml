@@ -2,11 +2,69 @@
 <scrollBox g="container" g-cnt-horz-align="center" align="client">
     <import file="TabelaAtributosTotais.xml" />
 
+    <script>
+        function atualizaAtributos()
+            local con  = 0
+            local forc  = 0
+            local dex  = 0
+            local car  = 0
+            local int  = 0
+            local sab  = 0
+            local acerto  = 0
+            local mira  = 0
+            local esquiva  = 0
+            local bloqueio  = 0
+            local equipamentos = NDB.getChildNodes(sheet.equipamentos)
+
+
+            for i, item in ipairs(equipamentos) do
+                local atributos = NDB.getChildNodes(item.atributosEquipamento)
+
+                for r, atributo in ipairs(atributos) do
+                    if atributo.nomeAtributo == "con" then
+                        con = con + (atributo.valorAtributo or 0)
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc + (atributo.valorAtributo or 0)
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex + (atributo.valorAtributo or 0)   
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio + (atributo.valorAtributo or 0) 
+                    end
+                end
+            end
+
+            sheet.conEquipTotal = con
+            sheet.forEquipTotal = forc
+            sheet.dexEquipTotal = dex
+            sheet.carEquipTotal = car
+            sheet.intEquipTotal = int
+            sheet.sabEquipTotal = sab
+            sheet.acertoEquipTotal = acerto
+            sheet.miraEquipTotal = mira
+            sheet.esquivaEquipTotal = esquiva
+            sheet.bloqueioEquipTotal = bloqueio
+        end
+    </script>
+
+
     <TabelaAtributosTotais />
-    <button g="col" g-width="3" g-min-height="30" text="Adiciona Item" onClick="self.rclEquipamentos:append();" g-break-line-after="true" />
-    
-    <gridRecordList name="rclEquipamentos" field="equipamentos" templateForm="ItemForm" g="container" g-width="10" />
+    <button g="col" g-width="3" g-min-height="30" text="Adiciona Item"
+        onClick="self.rclEquipamentos:append();" g-break-line-after="true" />
 
-
+    <gridRecordList name="rclEquipamentos" field="equipamentos" templateForm="frmEquipamentos"
+        g="container" g-width="10" />
+    <button text="Atualiza" onClick="atualizaAtributos()" />
 
 </scrollBox>

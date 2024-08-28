@@ -49,6 +49,63 @@ local function constructNew_frmFichaDePersonagem()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+
+        function atualizaAtributos()
+            local con  = 0
+            local forc  = 0
+            local dex  = 0
+            local car  = 0
+            local int  = 0
+            local sab  = 0
+            local acerto  = 0
+            local mira  = 0
+            local esquiva  = 0
+            local bloqueio  = 0
+            local equipamentos = NDB.getChildNodes(sheet.equipamentos)
+
+
+            for i, item in ipairs(equipamentos) do
+                local atributos = NDB.getChildNodes(item.atributosEquipamento)
+
+                for r, atributo in ipairs(atributos) do
+                    if atributo.nomeAtributo == "con" then
+                        con = con + (atributo.valorAtributo or 0)
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc + (atributo.valorAtributo or 0)
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex + (atributo.valorAtributo or 0)   
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva + (atributo.valorAtributo or 0) 
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio + (atributo.valorAtributo or 0) 
+                    end
+                end
+            end
+
+            sheet.conEquipTotal = con
+            sheet.forEquipTotal = forc
+            sheet.dexEquipTotal = dex
+            sheet.carEquipTotal = car
+            sheet.intEquipTotal = int
+            sheet.sabEquipTotal = sab
+            sheet.acertoEquipTotal = acerto
+            sheet.miraEquipTotal = mira
+            sheet.esquivaEquipTotal = esquiva
+            sheet.bloqueioEquipTotal = bloqueio
+        end
+    
+
+
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.scrollBox1);
     obj.label1:setText("Atributos totais recebidos de equipamentos");
@@ -260,9 +317,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.rclEquipamentos:setParent(obj.scrollBox1);
     obj.rclEquipamentos:setName("rclEquipamentos");
     obj.rclEquipamentos.field = "equipamentos";
-    obj.rclEquipamentos.templateForm = "ItemForm";
+    obj.rclEquipamentos.templateForm = "frmEquipamentos";
     obj.rclEquipamentos.grid.role = "container";
     obj.rclEquipamentos.grid.width = 10;
+
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.scrollBox1);
+    obj.button2:setText("Atualiza");
+    obj.button2:setName("button2");
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
@@ -5512,57 +5574,62 @@ local function constructNew_frmFichaDePersonagem()
             self.rclEquipamentos:append();
         end);
 
-    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event1 = obj.button2:addEventListener("onClick",
+        function (event)
+            atualizaAtributos()
+        end);
+
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modcon = '+' .. tostring(math.floor(tonumber(sheet.conTotal)/10));
         end);
 
-    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modfor = '+' .. tostring(math.floor(tonumber(sheet.forTotal)/10));
         end);
 
-    obj._e_event3 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.moddex = '+' .. tostring(math.floor(tonumber(sheet.dexTotal)/10));
         end);
 
-    obj._e_event4 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink4:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modcar = '+' .. tostring(math.floor(tonumber(sheet.carTotal)/10));
         end);
 
-    obj._e_event5 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink5:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modint = '+' .. tostring(math.floor(tonumber(sheet.intTotal)/10));
         end);
 
-    obj._e_event6 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink6:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modsab = '+' .. tostring(math.floor(tonumber(sheet.sabTotal)/10));
         end);
 
-    obj._e_event7 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink7:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modacerto = '+' .. tostring(math.floor(tonumber(sheet.acertoTotal)/10));
         end);
 
-    obj._e_event8 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink8:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modmira = '+' .. tostring(math.floor(tonumber(sheet.miraTotal)/10));
         end);
 
-    obj._e_event9 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink9:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modbloqueio = '+' .. tostring(math.floor(tonumber(sheet.bloqueioTotal)/10));
         end);
 
-    obj._e_event10 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink10:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.modesquiva = '+' .. tostring(math.floor(tonumber(sheet.esquivaTotal)/10));
         end);
 
-    obj._e_event11 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink11:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.conBase = (tonumber(sheet.conNivel) or 0) +
                             (tonumber(sheet.conClasse) or 0 ) +
@@ -5575,7 +5642,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.conExtra) or 0 ))
         end);
 
-    obj._e_event12 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink12:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.forBase = (tonumber(sheet.forNivel) or 0) +
                             (tonumber(sheet.forClasse) or 0 ) +
@@ -5588,7 +5655,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.forExtra) or 0 ))
         end);
 
-    obj._e_event13 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink13:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.dexBase = (tonumber(sheet.dexNivel) or 0) +
                             (tonumber(sheet.dexClasse) or 0 ) +
@@ -5601,7 +5668,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.dexExtra) or 0 ))
         end);
 
-    obj._e_event14 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink14:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.carBase = (tonumber(sheet.carNivel) or 0) +
                             (tonumber(sheet.carClasse) or 0 ) +
@@ -5614,7 +5681,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.carExtra) or 0 ))
         end);
 
-    obj._e_event15 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink15:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.intBase = (tonumber(sheet.intNivel) or 0) +
                             (tonumber(sheet.intClasse) or 0 ) +
@@ -5627,7 +5694,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.intExtra) or 0 ))
         end);
 
-    obj._e_event16 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink16:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.sabBase = (tonumber(sheet.sabNivel) or 0) +
                             (tonumber(sheet.sabClasse) or 0 ) +
@@ -5640,14 +5707,14 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.sabExtra) or 0 ))
         end);
 
-    obj._e_event17 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink17:addEventListener("onChange",
         function (field, oldValue, newValue)
             local modSab = math.floor((tonumber(sheet.sabTotal) or 0)/25) * 0.25
             
                         sheet.Sanidade = math.floor(((tonumber(sheet.Nivel) or 0) * 10) * (1 + modSab))
         end);
 
-    obj._e_event18 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event19 = obj.dataLink18:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.acertoBase = (tonumber(sheet.acertoDestreza) or 0) + (tonumber(sheet.acertoClasse) or 0 );
             
@@ -5658,7 +5725,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.acertoArmadura) or 0 ))
         end);
 
-    obj._e_event19 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink19:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.miraBase = (tonumber(sheet.miraDestreza) or 0) + (tonumber(sheet.miraClasse) or 0 );
             
@@ -5669,7 +5736,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.miraArmadura) or 0 ))
         end);
 
-    obj._e_event20 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink20:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.bloqueioBase = (tonumber(sheet.bloqueioDestreza) or 0) + (tonumber(sheet.bloqueioClasse) or 0 );
             
@@ -5680,7 +5747,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.bloqueioArmadura) or 0 ))
         end);
 
-    obj._e_event21 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink21:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.esquivaBase = (tonumber(sheet.esquivaDestreza) or 0) + (tonumber(sheet.esquivaClasse) or 0 );
             
@@ -5691,7 +5758,7 @@ local function constructNew_frmFichaDePersonagem()
                             (tonumber(sheet.esquivaArmadura) or 0 ))
         end);
 
-    obj._e_event22 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink22:addEventListener("onChange",
         function (field, oldValue, newValue)
             local total = 0
             
@@ -5703,12 +5770,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.conNivelTotal = total
         end);
 
-    obj._e_event23 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink23:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.conNivel = sheet.conNivelTotal;
         end);
 
-    obj._e_event24 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event25 = obj.dataLink24:addEventListener("onChange",
         function (field, oldValue, newValue)
             local total = 0
             
@@ -5720,12 +5787,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.forNivelTotal = total
         end);
 
-    obj._e_event25 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink25:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.forNivel = sheet.forNivelTotal;
         end);
 
-    obj._e_event26 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink26:addEventListener("onChange",
         function (field, oldValue, newValue)
             local total = 0
             
@@ -5737,12 +5804,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.dexNivelTotal = total
         end);
 
-    obj._e_event27 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink27:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.dexNivel = sheet.dexNivelTotal;
         end);
 
-    obj._e_event28 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink28:addEventListener("onChange",
         function (field, oldValue, newValue)
             local total = 0
             
@@ -5754,12 +5821,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.carNivelTotal = total
         end);
 
-    obj._e_event29 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink29:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.carNivel = sheet.carNivelTotal;
         end);
 
-    obj._e_event30 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink30:addEventListener("onChange",
         function (field, oldValue, newValue)
             local total = 0
             
@@ -5771,12 +5838,12 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.intNivelTotal = total
         end);
 
-    obj._e_event31 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink31:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.intNivel = sheet.intNivelTotal;
         end);
 
-    obj._e_event32 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink32:addEventListener("onChange",
         function (field, oldValue, newValue)
             local total = 0
             
@@ -5788,12 +5855,13 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.sabNivelTotal = total
         end);
 
-    obj._e_event33 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink33:addEventListener("onChange",
         function (field, oldValue, newValue)
             sheet.sabNivel = sheet.sabNivelTotal;
         end);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event34);
         __o_rrpgObjs.removeEventListenerById(self._e_event33);
         __o_rrpgObjs.removeEventListenerById(self._e_event32);
         __o_rrpgObjs.removeEventListenerById(self._e_event31);
@@ -6267,6 +6335,7 @@ local function constructNew_frmFichaDePersonagem()
         if self.layout54 ~= nil then self.layout54:destroy(); self.layout54 = nil; end;
         if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.edit38 ~= nil then self.edit38:destroy(); self.edit38 = nil; end;
         if self.label129 ~= nil then self.label129:destroy(); self.label129 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;

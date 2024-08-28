@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="ItemForm" g="container" g-cnt-horz-align="center" margins="{top=5, bottom=5}">
+<form name="frmEquipamentos" g="container" g-cnt-horz-align="center" margins="{top=5, bottom=5}">
 
         <button text="Apagar" g="col" g-width="1" onClick="NDB.deleteNode(sheet);" />
-        <button text="+Atributo" g="col" g-width="1" onClick="self.rclAtributoEquipamento:append();"
+        <button text="+Atributo" g="col" g-width="1"
+                onClick="self.rclAtributosEquipamento:append();"
                 g-break-line-after="true" />
 
         <rectangle g="block" width="150" height="150" g-break-line-after="true"
@@ -16,9 +17,8 @@
                 g-min-height="20" fontStyle="bold"
                 horzTextAlign="center" fontSize="25" />
 
-
-        <gridRecordList name="rclAtributoEquipamento" field="atributoEquipamento"
-                templateForm="AtributoDeEquipamento"
+        <gridRecordList name="rclAtributosEquipamento" field="atributosEquipamento"
+                templateForm="frmAtributosEquipamento"
                 g="container" g-width="10" />
 
 </form>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtributosEquipamento" g="container" g-cnt-horz-align="center"
+        margins="{top=5, bottom=5}">
+
+
+
+        <layout g="row" g-min-height="30" g-cnt-horz-align="center" g-cnt-vert-align="center"
+                margins="{top=2, bottom=2}" g-cnt-gutter="10">
+                <label g="block" text="+" width="10" />
+                <edit g="col" field="valorAtributo" horzTextAlign="center" />
+                <label g="block" text="de" width="15" />
+                <comboBox g="col" field="nomeAtributo"
+                        items="{'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto', 'Mira', 'Esquiva', 'Bloqueio'}"
+                        values="{'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'}" />
+                <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
+        </layout>
+</form>

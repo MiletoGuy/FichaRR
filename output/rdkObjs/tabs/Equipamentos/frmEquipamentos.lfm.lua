@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_ItemForm()
+local function constructNew_frmEquipamentos()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_ItemForm()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("ItemForm");
+    obj:setName("frmEquipamentos");
     obj.grid.role = "container";
     obj.grid["cnt-horz-align"] = "center";
     obj:setMargins({top=5, bottom=5});
@@ -79,13 +79,13 @@ local function constructNew_ItemForm()
     obj.label1:setFontSize(25);
     obj.label1:setName("label1");
 
-    obj.rclAtributoEquipamento = GUI.fromHandle(_obj_newObject("gridRecordList"));
-    obj.rclAtributoEquipamento:setParent(obj);
-    obj.rclAtributoEquipamento:setName("rclAtributoEquipamento");
-    obj.rclAtributoEquipamento.field = "atributoEquipamento";
-    obj.rclAtributoEquipamento.templateForm = "AtributoDeEquipamento";
-    obj.rclAtributoEquipamento.grid.role = "container";
-    obj.rclAtributoEquipamento.grid.width = 10;
+    obj.rclAtributosEquipamento = GUI.fromHandle(_obj_newObject("gridRecordList"));
+    obj.rclAtributosEquipamento:setParent(obj);
+    obj.rclAtributosEquipamento:setName("rclAtributosEquipamento");
+    obj.rclAtributosEquipamento.field = "atributosEquipamento";
+    obj.rclAtributosEquipamento.templateForm = "frmAtributosEquipamento";
+    obj.rclAtributosEquipamento.grid.role = "container";
+    obj.rclAtributosEquipamento.grid.width = 10;
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (event)
@@ -94,7 +94,7 @@ local function constructNew_ItemForm()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (event)
-            self.rclAtributoEquipamento:append();
+            self.rclAtributosEquipamento:append();
         end);
 
     function obj:_releaseEvents()
@@ -116,7 +116,7 @@ local function constructNew_ItemForm()
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.rclAtributoEquipamento ~= nil then self.rclAtributoEquipamento:destroy(); self.rclAtributoEquipamento = nil; end;
+        if self.rclAtributosEquipamento ~= nil then self.rclAtributosEquipamento:destroy(); self.rclAtributosEquipamento = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -125,13 +125,13 @@ local function constructNew_ItemForm()
     return obj;
 end;
 
-function newItemForm()
+function newfrmEquipamentos()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_ItemForm();
+        retObj = constructNew_frmEquipamentos();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -141,10 +141,10 @@ function newItemForm()
     return retObj;
 end;
 
-local _ItemForm = {
-    newEditor = newItemForm, 
-    new = newItemForm, 
-    name = "ItemForm", 
+local _frmEquipamentos = {
+    newEditor = newfrmEquipamentos, 
+    new = newfrmEquipamentos, 
+    name = "frmEquipamentos", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
@@ -152,7 +152,7 @@ local _ItemForm = {
     title = "", 
     description=""};
 
-ItemForm = _ItemForm;
-Firecast.registrarForm(_ItemForm);
+frmEquipamentos = _frmEquipamentos;
+Firecast.registrarForm(_frmEquipamentos);
 
-return _ItemForm;
+return _frmEquipamentos;
