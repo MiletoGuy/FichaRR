@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <template name="TabelaVida">
+
+        <layout g="row" g-min-height="20" g-cnt-horz-align="center">
+            <label g="col" g-width="1" text="$(title)" fontColor="red"/>
+            <CampoAtributo field="$(field)Con" fontColor="red" />
+            <CampoAtributo field="$(field)Multiplicador" fontColor="red" />
+            <CampoAtributo field="$(field)Equipamento" readOnly="true" canFocus="false" cursor="default" fontColor="red" />
+            <CampoAtributo field="$(field)Extra" fontColor="red" />
+            <CampoAtributo field="$(field)Total" readOnly="true" canFocus="false" cursor="default" fontColor="red" />
+        </layout>
+
+        <dataLink
+            fields="{'conBase','conEquipTotal', '$(field)Con', '$(field)Multiplicador', '$(field)Equipamento', '$(field)Extra', '$(field)Total'}">
+            <event name="onChange">
+                sheet.$(field)Con = tonumber(sheet.conBase or 0)
+                sheet.$(field)Equipamento = tonumber(sheet.conEquipTotal or 0)
+
+                sheet.$(field)Total = math.floor(
+                    (tonumber(sheet.$(field)Con) or 0 ) +
+                    ((((tonumber(sheet.$(field)Multiplicador) or 0)/100)) * sheet.$(field)Con) +
+                    (tonumber(sheet.$(field)Equipamento) or 0 ) + 
+                    (tonumber(sheet.$(field)Extra) or 0)
+                )
+            </event>
+        </dataLink>
+
+    </template>
+
+</group>

@@ -31,6 +31,15 @@ local function constructNew_frmEquipamentos()
     obj.grid["cnt-horz-align"] = "center";
     obj:setMargins({top=5, bottom=5});
 
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1:setParent(obj);
+    obj.horzLine1.grid.role = "col";
+    obj.horzLine1.grid.width = 4;
+    obj.horzLine1.grid["break-line-after"] = true;
+    obj.horzLine1:setMargins({top=10;bottom=10});
+    obj.horzLine1:setStrokeColor("silver");
+    obj.horzLine1:setName("horzLine1");
+
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setText("Apagar");
@@ -63,21 +72,22 @@ local function constructNew_frmEquipamentos()
     obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setOptimize(true);
-    obj.image1:setField("ImagemEquipamento");
+    obj.image1:setField("imagemEquipamento");
     obj.image1:setEditable(true);
     obj.image1:setAlign("client");
     obj.image1:setStyle("autoFit");
     obj.image1:setName("image1");
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj);
-    obj.label1:setText("Nome do Equipamento muito foda que conta historia no nome");
-    obj.label1.grid.role = "row";
-    obj.label1.grid["min-height"] = 20;
-    lfm_setPropAsString(obj.label1, "fontStyle", "bold");
-    obj.label1:setHorzTextAlign("center");
-    obj.label1:setFontSize(25);
-    obj.label1:setName("label1");
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit1:setParent(obj);
+    obj.edit1.grid.role = "row";
+    obj.edit1:setTransparent(true);
+    obj.edit1:setField("nomeEquipamento");
+    obj.edit1.grid["min-height"] = 40;
+    lfm_setPropAsString(obj.edit1, "fontStyle", "bold");
+    obj.edit1:setHorzTextAlign("center");
+    obj.edit1:setFontSize(25);
+    obj.edit1:setName("edit1");
 
     obj.rclAtributosEquipamento = GUI.fromHandle(_obj_newObject("gridRecordList"));
     obj.rclAtributosEquipamento:setParent(obj);
@@ -112,10 +122,11 @@ local function constructNew_frmEquipamentos()
         end;
 
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.rclAtributosEquipamento ~= nil then self.rclAtributosEquipamento:destroy(); self.rclAtributosEquipamento = nil; end;
         self:_oldLFMDestroy();
     end;

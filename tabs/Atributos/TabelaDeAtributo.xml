@@ -2,7 +2,7 @@
 <group>
 
     <template name="CampoAtributo">
-        <edit horzTextAlign="center" g="col" g-width="1"
+        <edit horzTextAlign="center" g="col" g-width="1" fontColor="$(fontColor or 'white')"
             readOnly="$(readOnly or 'false')" canFocus="$(canFocus or 'true')"
             cursor="$(cursor or 'IBeam')" field="$(field)" type="number" />
     </template>

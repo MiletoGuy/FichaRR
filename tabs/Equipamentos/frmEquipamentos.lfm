@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmEquipamentos" g="container" g-cnt-horz-align="center" margins="{top=5, bottom=5}">
 
+        <horzLine g="col" g-width="4" g-break-line-after="true" margins="{top=10;bottom=10}" strokeColor="silver" />
         <button text="Apagar" g="col" g-width="1" onClick="NDB.deleteNode(sheet);" />
         <button text="+Atributo" g="col" g-width="1"
                 onClick="self.rclAtributosEquipamento:append();"
@@ -9,12 +10,12 @@
         <rectangle g="block" width="150" height="150" g-break-line-after="true"
                 margins="{top=5, bottom=5}" xradius="25" yradius="25" color="#40000000"
                 strokeColor="silver" strokeSize="1">
-                <image optimize="true" field="ImagemEquipamento" editable="true" align="client"
+                <image optimize="true" field="imagemEquipamento" editable="true" align="client"
                         style="autoFit" />
         </rectangle>
 
-        <label text="Nome do Equipamento muito foda que conta historia no nome" g="row"
-                g-min-height="20" fontStyle="bold"
+        <edit g="row" transparent="true" field="nomeEquipamento"
+                g-min-height="40" fontStyle="bold"
                 horzTextAlign="center" fontSize="25" />
 
         <gridRecordList name="rclAtributosEquipamento" field="atributosEquipamento"

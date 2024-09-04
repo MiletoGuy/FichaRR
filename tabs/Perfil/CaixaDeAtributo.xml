@@ -2,8 +2,10 @@
 <template name="CaixaDeAtributo">
 
     <layout g="col" g-width="2" g-min-height="60" g-break-line-after="$(breakLineAfter or 'false')">
-        <label g="row" g-min-height="40" field="mod$(field)" fontSize="30" horzTextAlign="center" />
-        <label g="row" g-min-height="20" text="$(title)" horzTextAlign="center" />
+        <label g="row" g-min-height="40" field="mod$(field)" fontSize="30" horzTextAlign="center"
+            fontColor="$(fontColor or 'white')" />
+        <label g="row" g-min-height="20" text="$(title)" horzTextAlign="center"
+            fontColor="$(fontColor or 'white')" />
     </layout>
 
     <dataLink field="$(field)Total">

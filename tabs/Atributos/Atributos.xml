@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scrollBox align="client" g="container">
-    <import file="TabelaDeAtributo.xml" />
+    <import file="RotuloVida.xml" />
+    <import file="TabelaVida.xml" />
     <import file="RotuloTabela.xml" />
+    <import file="TabelaDeAtributo.xml" />
     <import file="AtributoPorNivel.xml" />
     <import file="TabelaDestreza.xml" />
     <import file="RotuloDestreza.xml" />
-    <import file="Sanidade.xml"/>
+    <import file="Sanidade.xml" />
+
+    <RotuloVida />
+    <TabelaVida title="Vida" field="vida" />
 
     <RotuloTabela />
     <TabelaDeAtributo title="Constituição" field="con" />

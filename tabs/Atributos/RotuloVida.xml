@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="RotuloVida">
+    <layout g="row" g-min-height="20" g-cnt-horz-align="center">
+        <Titulo text="" fontColor="red" />
+        <Titulo text="Constituição" fontColor="red" />
+        <Titulo text="Multiplicador" fontColor="red" />
+        <Titulo text="Equipamento" fontColor="red" />
+        <Titulo text="Extra" fontColor="red" />
+        <Titulo text="Total" fontColor="red" />
+    </layout>
+</template>

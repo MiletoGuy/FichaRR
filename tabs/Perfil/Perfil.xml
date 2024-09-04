@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout align="client" g="container" g-cnt-horz-align="center">
     <import file="CaixaDeAtributo.xml" />
+    <import file="Vida.xml" />
 
     <layout g="row">
-        <label text="Nível:" g="col" g-width="1"/>
-        <edit g-width="1" g="col" horzTextAlign="center" field="Nivel"/>
+        <label text="Nível:" g="col" g-width="1" />
+        <edit g-width="1" g="col" horzTextAlign="center" field="Nivel" />
 
     </layout>
+
+    <CaixaDeVida />
 
     <CaixaDeAtributo title="Constituição" field="con" />
     <CaixaDeAtributo title="Força" field="for" />
     <CaixaDeAtributo title="Destreza" field="dex" breakLineAfter="true" />
-    <CaixaDeAtributo title="Carisma" field="car"/>
+    <CaixaDeAtributo title="Carisma" field="car" />
     <CaixaDeAtributo title="Inteligência" field="int" />
-    <CaixaDeAtributo title="Sabedoria" field="sab" breakLineAfter="true"  />
+    <CaixaDeAtributo title="Sabedoria" field="sab" breakLineAfter="true" />
 
-    <CaixaDeAtributo title="Acerto" field="acerto"/>
-    <CaixaDeAtributo title="Mira" field="mira" breakLineAfter="true"/>
-    <CaixaDeAtributo title="Bloqueio" field="bloqueio"/>
-    <CaixaDeAtributo title="Esquiva" field="esquiva"/>
+    <CaixaDeAtributo title="Acerto" field="acerto" />
+    <CaixaDeAtributo title="Mira" field="mira" breakLineAfter="true" />
+    <CaixaDeAtributo title="Bloqueio" field="bloqueio" />
+    <CaixaDeAtributo title="Esquiva" field="esquiva" />
 
 </layout>

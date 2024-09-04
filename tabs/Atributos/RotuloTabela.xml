@@ -2,7 +2,7 @@
 <group>
 
     <template name="Titulo">
-        <label text="$(text)" g="col" g-width="1" g-min-height="20" horzTextAlign="center" />
+        <label text="$(text)" g="col" g-width="1" g-min-height="20" horzTextAlign="center" fontColor="$(fontColor or 'white')"/>
     </template>
 
     <template name="RotuloTabela">

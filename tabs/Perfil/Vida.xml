@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="CaixaDeVida">
+
+    <layout g="col" g-width="2" g-min-height="60" g-break-line-after="true">
+        <label g="row" g-min-height="40" field="vida" fontSize="30" horzTextAlign="center"
+            fontColor="red" />
+        <label g="row" g-min-height="20" text="Vida" horzTextAlign="center"
+            fontColor="red" />
+    </layout>
+
+    <dataLink field="vidaTotal">
+        <event name="onChange">
+            sheet.vida = tostring(sheet.vidaTotal);
+        </event>
+    </dataLink>
+
+</template>
