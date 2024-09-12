@@ -2,16 +2,60 @@
 <form name="frmAtributosEquipamento" g="container" g-cnt-horz-align="center"
         margins="{top=5, bottom=5}">
 
+        <layout g="row" g-min-height="30" margins="{top=2, bottom=2}">
+                <rectangle name="retanguloVerde" align="client" color="green" visible="false" />
+                <rectangle name="retanguloAmarelo" align="client" color="yellow" visible="false" />
+                <rectangle name="retanguloVermelho" align="client" color="red" visible="false" />
+                <button name="botaoOpcoes" text="🛈" onClick="self.popOpcoesRetangulo:show('bottom', self.botaoOpcoes)"/>
+            
+                <popup name="popOpcoesRetangulo" width="100" height="100">
+                    <radioButton text="verde" groupName="grupo1" top="5"
+                            field="radioTeste" fieldValue="verde" 
+                            onChange="atualizaRetangulos(); self.popOpcoesRetangulo:close()"/>
+                    <radioButton text="vermelho" groupName="grupo1" top="25"
+                            field="radioTeste" fieldValue="vermelho" 
+                            onChange="atualizaRetangulos(); self.popOpcoesRetangulo:close()"/>
+                    <radioButton text="amarelo" groupName="grupo1" top="45"
+                            field="radioTeste" fieldValue="amarelo" 
+                            onChange="atualizaRetangulos(); self.popOpcoesRetangulo:close()"/>
+                </popup>
+            </layout>
+            
+            <dataLink field="radioTeste">
+                <event name="onChange">
+                    atualizaRetangulos()
+                </event>
+            </dataLink>
+            
+            <script>
+            function atualizaRetangulos()
+                if sheet.radioTeste == "verde" then
+                    self.retanguloVerde.visible = true
+                    self.retanguloAmarelo.visible = false
+                    self.retanguloVermelho.visible = false
+                elseif sheet.radioTeste == "amarelo" then
+                    self.retanguloVerde.visible = false
+                    self.retanguloAmarelo.visible = true
+                    self.retanguloVermelho.visible = false
+                elseif sheet.radioTeste == "vermelho" then
+                    self.retanguloVerde.visible = false
+                    self.retanguloAmarelo.visible = false
+                    self.retanguloVermelho.visible = true
+                end
+            end
+            </script>
+            
 
 
-        <layout g="row" g-min-height="30" g-cnt-horz-align="center" g-cnt-vert-align="center"
+        <!-- <layout g="row" g-min-height="30" g-cnt-horz-align="center" g-cnt-vert-align="center"
                 margins="{top=2, bottom=2}" g-cnt-gutter="10">
                 <label g="block" text="+" width="10" />
                 <edit g="col" field="valorAtributo" horzTextAlign="center" />
                 <label g="block" text="de" width="15" />
                 <comboBox g="col" field="nomeAtributo"
-                        items="{'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto', 'Mira', 'Esquiva', 'Bloqueio'}"
+                        items="{'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+        'Mira', 'Esquiva', 'Bloqueio'}"
                         values="{'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'}" />
                 <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
-        </layout>
+        </layout> -->
 </form>

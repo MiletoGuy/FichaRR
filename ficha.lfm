@@ -4,17 +4,15 @@
       theme="dark">
 
       <tabControl align="client">
-            
-            <tab title="Atributos">
-                  <import file="./tabs/Atributos/Atributos.xml" />
-            </tab>
-
             <tab title="Equipamentos">
                   <import file="./tabs/Equipamentos/Equipamentos.xml" />
             </tab>
 
             <tab title="Perfil">
                   <import file="./tabs/Perfil/Perfil.xml" />
+            </tab>
+            <tab title="Atributos">
+                  <import file="./tabs/Atributos/Atributos.xml" />
             </tab>
 
 

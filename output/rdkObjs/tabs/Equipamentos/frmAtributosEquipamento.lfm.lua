@@ -35,54 +35,122 @@ local function constructNew_frmAtributosEquipamento()
     obj.layout1:setParent(obj);
     obj.layout1.grid.role = "row";
     obj.layout1.grid["min-height"] = 30;
-    obj.layout1.grid["cnt-horz-align"] = "center";
-    obj.layout1.grid["cnt-vert-align"] = "center";
     obj.layout1:setMargins({top=2, bottom=2});
-    obj.layout1.grid["cnt-gutter"] = 10;
     obj.layout1:setName("layout1");
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label1:setParent(obj.layout1);
-    obj.label1.grid.role = "block";
-    obj.label1:setText("+");
-    obj.label1:setWidth(10);
-    obj.label1:setName("label1");
+    obj.retanguloVerde = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.retanguloVerde:setParent(obj.layout1);
+    obj.retanguloVerde:setName("retanguloVerde");
+    obj.retanguloVerde:setAlign("client");
+    obj.retanguloVerde:setColor("green");
+    obj.retanguloVerde:setVisible(false);
 
-    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit1:setParent(obj.layout1);
-    obj.edit1.grid.role = "col";
-    obj.edit1:setField("valorAtributo");
-    obj.edit1:setHorzTextAlign("center");
-    obj.edit1:setName("edit1");
+    obj.retanguloAmarelo = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.retanguloAmarelo:setParent(obj.layout1);
+    obj.retanguloAmarelo:setName("retanguloAmarelo");
+    obj.retanguloAmarelo:setAlign("client");
+    obj.retanguloAmarelo:setColor("yellow");
+    obj.retanguloAmarelo:setVisible(false);
 
-    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.layout1);
-    obj.label2.grid.role = "block";
-    obj.label2:setText("de");
-    obj.label2:setWidth(15);
-    obj.label2:setName("label2");
+    obj.retanguloVermelho = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.retanguloVermelho:setParent(obj.layout1);
+    obj.retanguloVermelho:setName("retanguloVermelho");
+    obj.retanguloVermelho:setAlign("client");
+    obj.retanguloVermelho:setColor("red");
+    obj.retanguloVermelho:setVisible(false);
 
-    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox1:setParent(obj.layout1);
-    obj.comboBox1.grid.role = "col";
-    obj.comboBox1:setField("nomeAtributo");
-    obj.comboBox1:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto', 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox1:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
-    obj.comboBox1:setName("comboBox1");
+    obj.botaoOpcoes = GUI.fromHandle(_obj_newObject("button"));
+    obj.botaoOpcoes:setParent(obj.layout1);
+    obj.botaoOpcoes:setName("botaoOpcoes");
+    obj.botaoOpcoes:setText("🛈");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.layout1);
-    obj.button1:setText("X");
-    obj.button1.grid.role = "block";
-    obj.button1:setWidth(20);
-    obj.button1:setName("button1");
+    obj.popOpcoesRetangulo = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popOpcoesRetangulo:setParent(obj.layout1);
+    obj.popOpcoesRetangulo:setName("popOpcoesRetangulo");
+    obj.popOpcoesRetangulo:setWidth(100);
+    obj.popOpcoesRetangulo:setHeight(100);
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton1:setParent(obj.popOpcoesRetangulo);
+    obj.radioButton1:setText("verde");
+    obj.radioButton1:setGroupName("grupo1");
+    obj.radioButton1:setTop(5);
+    obj.radioButton1:setField("radioTeste");
+    obj.radioButton1:setFieldValue("verde");
+    obj.radioButton1:setName("radioButton1");
+
+    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton2:setParent(obj.popOpcoesRetangulo);
+    obj.radioButton2:setText("vermelho");
+    obj.radioButton2:setGroupName("grupo1");
+    obj.radioButton2:setTop(25);
+    obj.radioButton2:setField("radioTeste");
+    obj.radioButton2:setFieldValue("vermelho");
+    obj.radioButton2:setName("radioButton2");
+
+    obj.radioButton3 = GUI.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton3:setParent(obj.popOpcoesRetangulo);
+    obj.radioButton3:setText("amarelo");
+    obj.radioButton3:setGroupName("grupo1");
+    obj.radioButton3:setTop(45);
+    obj.radioButton3:setField("radioTeste");
+    obj.radioButton3:setFieldValue("amarelo");
+    obj.radioButton3:setName("radioButton3");
+
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj);
+    obj.dataLink1:setField("radioTeste");
+    obj.dataLink1:setName("dataLink1");
+
+
+            function atualizaRetangulos()
+                if sheet.radioTeste == "verde" then
+                    self.retanguloVerde.visible = true
+                    self.retanguloAmarelo.visible = false
+                    self.retanguloVermelho.visible = false
+                elseif sheet.radioTeste == "amarelo" then
+                    self.retanguloVerde.visible = false
+                    self.retanguloAmarelo.visible = true
+                    self.retanguloVermelho.visible = false
+                elseif sheet.radioTeste == "vermelho" then
+                    self.retanguloVerde.visible = false
+                    self.retanguloAmarelo.visible = false
+                    self.retanguloVermelho.visible = true
+                end
+            end
+            
+
+
+    obj._e_event0 = obj.botaoOpcoes:addEventListener("onClick",
         function (event)
-            NDB.deleteNode(sheet);
+            self.popOpcoesRetangulo:show('bottom', self.botaoOpcoes)
+        end);
+
+    obj._e_event1 = obj.radioButton1:addEventListener("onChange",
+        function ()
+            atualizaRetangulos(); self.popOpcoesRetangulo:close()
+        end);
+
+    obj._e_event2 = obj.radioButton2:addEventListener("onChange",
+        function ()
+            atualizaRetangulos(); self.popOpcoesRetangulo:close()
+        end);
+
+    obj._e_event3 = obj.radioButton3:addEventListener("onChange",
+        function ()
+            atualizaRetangulos(); self.popOpcoesRetangulo:close()
+        end);
+
+    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
+        function (field, oldValue, newValue)
+            atualizaRetangulos()
         end);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
+        __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
 
@@ -95,11 +163,15 @@ local function constructNew_frmAtributosEquipamento()
           self:setNodeDatabase(nil);
         end;
 
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.radioButton3 ~= nil then self.radioButton3:destroy(); self.radioButton3 = nil; end;
+        if self.popOpcoesRetangulo ~= nil then self.popOpcoesRetangulo:destroy(); self.popOpcoesRetangulo = nil; end;
+        if self.radioButton1 ~= nil then self.radioButton1:destroy(); self.radioButton1 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.botaoOpcoes ~= nil then self.botaoOpcoes:destroy(); self.botaoOpcoes = nil; end;
+        if self.retanguloVerde ~= nil then self.retanguloVerde:destroy(); self.retanguloVerde = nil; end;
+        if self.retanguloAmarelo ~= nil then self.retanguloAmarelo:destroy(); self.retanguloAmarelo = nil; end;
+        if self.retanguloVermelho ~= nil then self.retanguloVermelho:destroy(); self.retanguloVermelho = nil; end;
+        if self.radioButton2 ~= nil then self.radioButton2:destroy(); self.radioButton2 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         self:_oldLFMDestroy();
     end;
