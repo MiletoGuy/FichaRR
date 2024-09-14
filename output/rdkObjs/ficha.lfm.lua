@@ -51,58 +51,81 @@ local function constructNew_frmFichaDePersonagem()
 
 
         function atualizaAtributos()
-            local con  = 0
-            local forc  = 0
-            local dex  = 0
-            local car  = 0
-            local int  = 0
-            local sab  = 0
-            local acerto  = 0
-            local mira  = 0
-            local esquiva  = 0
-            local bloqueio  = 0
-            local equipamentos = NDB.getChildNodes(sheet.equipamentos)
-
-
-            for i, item in ipairs(equipamentos) do
-                local atributos = NDB.getChildNodes(item.atributosEquipamento)
-
-                for r, atributo in ipairs(atributos) do
+        local con          = 0
+        local forc         = 0
+        local dex          = 0
+        local car          = 0
+        local int          = 0
+        local sab          = 0
+        local acerto       = 0
+        local mira         = 0
+        local esquiva      = 0
+        local bloqueio     = 0
+        local equipamentos = NDB.getChildNodes(sheet.equipamentos)
+    
+    
+        for i, item in ipairs(equipamentos) do
+            local atributos = NDB.getChildNodes(item.atributosEquipamento)
+            for r, atributo in ipairs(atributos) do
+                if atributo.tipoDeCalculo == "flat" then
                     if atributo.nomeAtributo == "con" then
                         con = con + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "for" then
                         forc = forc + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "dex" then
-                        dex = dex + (atributo.valorAtributo or 0)   
+                        dex = dex + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "car" then
-                        car = car + (atributo.valorAtributo or 0) 
+                        car = car + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "int" then
-                        int = int + (atributo.valorAtributo or 0) 
+                        int = int + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "sab" then
-                        sab = sab + (atributo.valorAtributo or 0) 
+                        sab = sab + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "acerto" then
-                        acerto = acerto + (atributo.valorAtributo or 0) 
+                        acerto = acerto + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "mira" then
-                        mira = mira + (atributo.valorAtributo or 0) 
+                        mira = mira + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "esquiva" then
-                        esquiva = esquiva + (atributo.valorAtributo or 0) 
+                        esquiva = esquiva + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "bloqueio" then
-                        bloqueio = bloqueio + (atributo.valorAtributo or 0) 
+                        bloqueio = bloqueio + (atributo.valorAtributo or 0)
+                    end
+                elseif atributo.tipoDeCalculo == "porcentagem" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase)
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc + math.floor((atributo.valorAtributo or 0) / 100 * sheet.forBase)
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex + math.floor((atributo.valorAtributo or 0) / 100 * sheet.dexBase)
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car + math.floor((atributo.valorAtributo or 0) / 100 * sheet.carBase)
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int + math.floor((atributo.valorAtributo or 0) / 100 * sheet.intBase)
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab + math.floor((atributo.valorAtributo or 0) / 100 * sheet.sabBase)
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto + math.floor((atributo.valorAtributo or 0) / 100 * sheet.acertoBase)
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira + math.floor((atributo.valorAtributo or 0) / 100 * sheet.miraBase)
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva + math.floor((atributo.valorAtributo or 0) / 100 * sheet.esquivaBase)
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio + math.floor((atributo.valorAtributo or 0) / 100 * sheet.bloqueioBase)
                     end
                 end
             end
-
-            sheet.conEquipTotal = con
-            sheet.forEquipTotal = forc
-            sheet.dexEquipTotal = dex
-            sheet.carEquipTotal = car
-            sheet.intEquipTotal = int
-            sheet.sabEquipTotal = sab
-            sheet.acertoEquipTotal = acerto
-            sheet.miraEquipTotal = mira
-            sheet.esquivaEquipTotal = esquiva
-            sheet.bloqueioEquipTotal = bloqueio
         end
+    
+        sheet.conEquipTotal = con
+        sheet.forEquipTotal = forc
+        sheet.dexEquipTotal = dex
+        sheet.carEquipTotal = car
+        sheet.intEquipTotal = int
+        sheet.sabEquipTotal = sab
+        sheet.acertoEquipTotal = acerto
+        sheet.miraEquipTotal = mira
+        sheet.esquivaEquipTotal = esquiva
+        sheet.bloqueioEquipTotal = bloqueio
+    end
     
 
 

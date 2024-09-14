@@ -10,7 +10,7 @@
     </template>
 
     <template name="listaTipoDeCalculo">
-        <comboBox field="radioTeste" g="col" g-width="1"
+        <comboBox field="tipoDeCalculo" g="col" g-width="1"
             items="{'Flat', 'Porcentagem', 'Vermelho'}"
             values="{'flat', 'porcentagem', 'vermelho'}" />
     </template>
@@ -52,17 +52,17 @@
     </layout>
 
 
-    <dataLink field="radioTeste">
+    <dataLink field="tipoDeCalculo">
         <event name="onChange">
-            if sheet.radioTeste == "flat" then
+            if sheet.tipoDeCalculo == "flat" then
             self.atributoFlat.visible = true
             self.atributoPorcentagem.visible = false
             self.retanguloVermelho.visible = false
-            elseif sheet.radioTeste == "porcentagem" then
+            elseif sheet.tipoDeCalculo == "porcentagem" then
             self.atributoFlat.visible = false
             self.atributoPorcentagem.visible = true
             self.retanguloVermelho.visible = false
-            elseif sheet.radioTeste == "vermelho" then
+            elseif sheet.tipoDeCalculo == "vermelho" then
             self.atributoFlat.visible = false
             self.atributoPorcentagem.visible = false
             self.retanguloVermelho.visible = true

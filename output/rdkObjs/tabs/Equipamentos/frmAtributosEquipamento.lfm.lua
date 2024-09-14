@@ -80,7 +80,7 @@ local function constructNew_frmAtributosEquipamento()
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.atributoFlat);
-    obj.comboBox2:setField("radioTeste");
+    obj.comboBox2:setField("tipoDeCalculo");
     obj.comboBox2.grid.role = "col";
     obj.comboBox2.grid.width = 1;
     obj.comboBox2:setItems({'Flat', 'Porcentagem', 'Vermelho'});
@@ -137,7 +137,7 @@ local function constructNew_frmAtributosEquipamento()
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.atributoPorcentagem);
-    obj.comboBox4:setField("radioTeste");
+    obj.comboBox4:setField("tipoDeCalculo");
     obj.comboBox4.grid.role = "col";
     obj.comboBox4.grid.width = 1;
     obj.comboBox4:setItems({'Flat', 'Porcentagem', 'Vermelho'});
@@ -160,7 +160,7 @@ local function constructNew_frmAtributosEquipamento()
 
     obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.retanguloVermelho);
-    obj.comboBox5:setField("radioTeste");
+    obj.comboBox5:setField("tipoDeCalculo");
     obj.comboBox5.grid.role = "col";
     obj.comboBox5.grid.width = 1;
     obj.comboBox5:setItems({'Flat', 'Porcentagem', 'Vermelho'});
@@ -169,7 +169,7 @@ local function constructNew_frmAtributosEquipamento()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setField("radioTeste");
+    obj.dataLink1:setField("tipoDeCalculo");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
@@ -184,15 +184,15 @@ local function constructNew_frmAtributosEquipamento()
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (field, oldValue, newValue)
-            if sheet.radioTeste == "flat" then
+            if sheet.tipoDeCalculo == "flat" then
                         self.atributoFlat.visible = true
                         self.atributoPorcentagem.visible = false
                         self.retanguloVermelho.visible = false
-                        elseif sheet.radioTeste == "porcentagem" then
+                        elseif sheet.tipoDeCalculo == "porcentagem" then
                         self.atributoFlat.visible = false
                         self.atributoPorcentagem.visible = true
                         self.retanguloVermelho.visible = false
-                        elseif sheet.radioTeste == "vermelho" then
+                        elseif sheet.tipoDeCalculo == "vermelho" then
                         self.atributoFlat.visible = false
                         self.atributoPorcentagem.visible = false
                         self.retanguloVermelho.visible = true
