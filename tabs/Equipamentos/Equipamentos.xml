@@ -3,6 +3,7 @@
     <import file="TabelaAtributosTotais.xml" />
 
     <script>
+
         function atualizaAtributos()
         local con          = 0
         local forc         = 0
@@ -16,11 +17,10 @@
         local bloqueio     = 0
         local equipamentos = NDB.getChildNodes(sheet.equipamentos)
     
-    
         for i, item in ipairs(equipamentos) do
             local atributos = NDB.getChildNodes(item.atributosEquipamento)
             for r, atributo in ipairs(atributos) do
-                if atributo.tipoDeCalculo == "flat" then
+                if atributo.tipoDeCalculo == "Fixo" then
                     if atributo.nomeAtributo == "con" then
                         con = con + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "for" then
@@ -42,7 +42,7 @@
                     elseif atributo.nomeAtributo == "bloqueio" then
                         bloqueio = bloqueio + (atributo.valorAtributo or 0)
                     end
-                elseif atributo.tipoDeCalculo == "porcentagem" then
+                elseif atributo.tipoDeCalculo == "Porcentagem" then
                     if atributo.nomeAtributo == "con" then
                         con = con + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase)
                     elseif atributo.nomeAtributo == "for" then
@@ -64,6 +64,137 @@
                     elseif atributo.nomeAtributo == "bloqueio" then
                         bloqueio = bloqueio + math.floor((atributo.valorAtributo or 0) / 100 * sheet.bloqueioBase)
                     end
+                elseif atributo.tipoDeCalculo == "Incremento" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    end
+                elseif atributo.tipoDeCalculo == "FixoXNivel" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio + atributo.valorAtributo * (sheet.Nivel or 0)
+                    end
+                elseif atributo.tipoDeCalculo == "PorcentagemXNivel" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc + math.floor((atributo.valorAtributo or 0) / 100 * sheet.forBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex + math.floor((atributo.valorAtributo or 0) / 100 * sheet.dexBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car + math.floor((atributo.valorAtributo or 0) / 100 * sheet.carBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int + math.floor((atributo.valorAtributo or 0) / 100 * sheet.intBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab + math.floor((atributo.valorAtributo or 0) / 100 * sheet.sabBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet.acertoBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira + math.floor((atributo.valorAtributo or 0) / 100 * sheet.miraBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet.esquivaBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet.bloqueioBase * (sheet.Nivel or 0))
+                    end
+                elseif atributo.tipoDeCalculo == "IncrementoXNivel" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    end
                 end
             end
         end
@@ -78,6 +209,18 @@
         sheet.miraEquipTotal = mira
         sheet.esquivaEquipTotal = esquiva
         sheet.bloqueioEquipTotal = bloqueio
+    
+        sheet.acertoEquipamentos = acerto
+        sheet.miraEquipamentos = mira
+        sheet.esquivaEquipamentos = esquiva
+        sheet.bloqueioEquipamentos = bloqueio
+        sheet.conExtra = con
+        sheet.forExtra = forc
+        sheet.dexExtra = dex
+        sheet.carExtra = car
+        sheet.intExtra = int
+        sheet.sabExtra = sab
+    
     end
     </script>
 

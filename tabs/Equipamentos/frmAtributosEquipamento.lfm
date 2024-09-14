@@ -3,21 +3,38 @@
     margins="{top=5, bottom=5}">
 
     <template name="listaDeAtributos">
-        <comboBox g="col" field="nomeAtributo"
+        <comboBox g="col" field="$(field or 'nomeAtributo')"
             items="{'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'}"
             values="{'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'}" />
     </template>
 
     <template name="listaTipoDeCalculo">
-        <comboBox field="tipoDeCalculo" g="col" g-width="1"
-            items="{'Flat', 'Porcentagem', 'Vermelho'}"
-            values="{'flat', 'porcentagem', 'vermelho'}" />
+        <comboBox field="tipoDeCalculo" g="col" g-width="2" name="$(name)"
+            items="{'Fixo', 'Porcentagem', 'Incremento', 'Fixo * Nível', 'Porcentagem * Nível', 'Incremento * Nível'}"
+            values="{'Fixo', 'Porcentagem', 'Incremento', 'FixoXNivel', 'PorcentagemXNivel', 'IncrementoXNivel'}"
+        />
+
+        <dataLink field="tipoDeCalculo">
+            <event name="onChange">
+                self.$(name).visible = false;
+
+                for i, componente in ipairs({ self.atributoFixo, self.atributoPorcentagem,
+                self.atributoIncremento, self.atributoFixoXNivel, self.atributoPorcentagemXNivel,
+                self.atributoIncrementoXNivel }) do
+                    if componente.name ~= "atributo" .. sheet.tipoDeCalculo then
+                        componente:destroy()
+                    end
+                end
+
+                self['atributo'..tostring(sheet.tipodeCalculo)].visible = true
+            </event>
+        </dataLink>
     </template>
 
     <layout g="row" g-min-height="30" margins="{top=2, bottom=2}">
 
-        <layout name="atributoFlat" g="row" g-min-height="30" g-cnt-horz-align="center"
+        <layout name="atributoFixo" g="row" g-min-height="30" g-cnt-horz-align="center"
             g-cnt-vert-align="center"
             margins="{top=2, bottom=2}" g-cnt-gutter="10">
             <label g="block" text="+" width="10" />
@@ -25,7 +42,7 @@
             <label g="block" text="de" width="15" />
 
             <listaDeAtributos />
-            <listaTipoDeCalculo />
+            <listaTipoDeCalculo name="Fixo" />
             <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
         </layout>
 
@@ -37,38 +54,71 @@
             <label g="block" text="% de" width="30" />
 
             <listaDeAtributos />
-            <listaTipoDeCalculo />
+            <listaTipoDeCalculo name="Porcentagem" />
+            <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
+
+        </layout>
+
+        <layout name="atributoIncremento" g="row" g-min-height="30"
+            g-cnt-horz-align="center" visible="false"
+            g-cnt-vert-align="center"
+            margins="{top=2, bottom=2}" g-cnt-gutter="10">
+            <label g="block" text="+" width="10" />
+            <edit g="col" field="valorAtributo" horzTextAlign="center" />
+            <label g="block" text="% de" width="30" />
+
+            <listaDeAtributos field="nomeAtributoOrigem" />
+            <label g="block" text="em" width="20" />
+
+            <listaDeAtributos />
+            <listaTipoDeCalculo name="Incremento" />
+            <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
+
+        </layout>
+
+        <layout name="atributoFixoXNivel" g="row" g-min-height="30" g-cnt-horz-align="center"
+            g-cnt-vert-align="center" visible="false"
+            margins="{top=2, bottom=2}" g-cnt-gutter="10">
+            <label g="block" text="+" width="10" />
+            <edit g="col" field="valorAtributo" horzTextAlign="center" />
+            <label g="block" text="x Nível de" width="60" />
+
+            <listaDeAtributos />
+            <listaTipoDeCalculo name="FixoXNivel" />
+            <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
+        </layout>
+
+        <layout name="atributoPorcentagemXNivel" g="row" g-min-height="30" g-cnt-horz-align="center"
+            g-cnt-vert-align="center" visible="false"
+            margins="{top=2, bottom=2}" g-cnt-gutter="10">
+            <label g="block" text="+" width="10" />
+            <edit g="col" field="valorAtributo" horzTextAlign="center" />
+            <label g="block" text="x Nível % de" width="80" />
+
+            <listaDeAtributos />
+            <listaTipoDeCalculo name="PorcentagemXNivel" />
+            <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
+
+        </layout>
+
+        <layout name="atributoIncrementoXNivel" g="row" g-min-height="30"
+            g-cnt-horz-align="center" visible="false"
+            g-cnt-vert-align="center"
+            margins="{top=2, bottom=2}" g-cnt-gutter="10">
+            <label g="block" text="+" width="10" />
+            <edit g="col" field="valorAtributo" horzTextAlign="center" />
+            <label g="block" text="x Nível % de" width="80" />
+
+            <listaDeAtributos field="nomeAtributoOrigem" />
+            <label g="block" text="em" width="20" />
+
+            <listaDeAtributos />
+            <listaTipoDeCalculo name="IncrementoXNivel" />
             <button text="X" g="block" width="20" onClick="NDB.deleteNode(sheet);" />
 
         </layout>
 
 
-        <rectangle name="retanguloVermelho" align="client" color="red" visible="false">
-            <listaTipoDeCalculo />
-
-        </rectangle>
-
-
     </layout>
-
-
-    <dataLink field="tipoDeCalculo">
-        <event name="onChange">
-            if sheet.tipoDeCalculo == "flat" then
-            self.atributoFlat.visible = true
-            self.atributoPorcentagem.visible = false
-            self.retanguloVermelho.visible = false
-            elseif sheet.tipoDeCalculo == "porcentagem" then
-            self.atributoFlat.visible = false
-            self.atributoPorcentagem.visible = true
-            self.retanguloVermelho.visible = false
-            elseif sheet.tipoDeCalculo == "vermelho" then
-            self.atributoFlat.visible = false
-            self.atributoPorcentagem.visible = false
-            self.retanguloVermelho.visible = true
-            end
-        </event>
-    </dataLink>
-
 
 </form>

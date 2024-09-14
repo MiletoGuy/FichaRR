@@ -50,6 +50,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.scrollBox1:setName("scrollBox1");
 
 
+
         function atualizaAtributos()
         local con          = 0
         local forc         = 0
@@ -63,11 +64,10 @@ local function constructNew_frmFichaDePersonagem()
         local bloqueio     = 0
         local equipamentos = NDB.getChildNodes(sheet.equipamentos)
     
-    
         for i, item in ipairs(equipamentos) do
             local atributos = NDB.getChildNodes(item.atributosEquipamento)
             for r, atributo in ipairs(atributos) do
-                if atributo.tipoDeCalculo == "flat" then
+                if atributo.tipoDeCalculo == "Fixo" then
                     if atributo.nomeAtributo == "con" then
                         con = con + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "for" then
@@ -89,7 +89,7 @@ local function constructNew_frmFichaDePersonagem()
                     elseif atributo.nomeAtributo == "bloqueio" then
                         bloqueio = bloqueio + (atributo.valorAtributo or 0)
                     end
-                elseif atributo.tipoDeCalculo == "porcentagem" then
+                elseif atributo.tipoDeCalculo == "Porcentagem" then
                     if atributo.nomeAtributo == "con" then
                         con = con + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase)
                     elseif atributo.nomeAtributo == "for" then
@@ -111,6 +111,137 @@ local function constructNew_frmFichaDePersonagem()
                     elseif atributo.nomeAtributo == "bloqueio" then
                         bloqueio = bloqueio + math.floor((atributo.valorAtributo or 0) / 100 * sheet.bloqueioBase)
                     end
+                elseif atributo.tipoDeCalculo == "Incremento" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    end
+                elseif atributo.tipoDeCalculo == "FixoXNivel" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio + atributo.valorAtributo * (sheet.Nivel or 0)
+                    end
+                elseif atributo.tipoDeCalculo == "PorcentagemXNivel" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc + math.floor((atributo.valorAtributo or 0) / 100 * sheet.forBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex + math.floor((atributo.valorAtributo or 0) / 100 * sheet.dexBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car + math.floor((atributo.valorAtributo or 0) / 100 * sheet.carBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int + math.floor((atributo.valorAtributo or 0) / 100 * sheet.intBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab + math.floor((atributo.valorAtributo or 0) / 100 * sheet.sabBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet.acertoBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira + math.floor((atributo.valorAtributo or 0) / 100 * sheet.miraBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet.esquivaBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet.bloqueioBase * (sheet.Nivel or 0))
+                    end
+                elseif atributo.tipoDeCalculo == "IncrementoXNivel" then
+                    if atributo.nomeAtributo == "con" then
+                        con = con +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "for" then
+                        forc = forc +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "dex" then
+                        dex = dex +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "car" then
+                        car = car +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "int" then
+                        int = int +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "sab" then
+                        sab = sab +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "acerto" then
+                        acerto = acerto +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "mira" then
+                        mira = mira +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "esquiva" then
+                        esquiva = esquiva +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "bloqueio" then
+                        bloqueio = bloqueio +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    end
                 end
             end
         end
@@ -125,6 +256,18 @@ local function constructNew_frmFichaDePersonagem()
         sheet.miraEquipTotal = mira
         sheet.esquivaEquipTotal = esquiva
         sheet.bloqueioEquipTotal = bloqueio
+    
+        sheet.acertoEquipamentos = acerto
+        sheet.miraEquipamentos = mira
+        sheet.esquivaEquipamentos = esquiva
+        sheet.bloqueioEquipamentos = bloqueio
+        sheet.conExtra = con
+        sheet.forExtra = forc
+        sheet.dexExtra = dex
+        sheet.carExtra = car
+        sheet.intExtra = int
+        sheet.sabExtra = sab
+    
     end
     
 
@@ -1114,9 +1257,9 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit24.grid.role = "col";
     obj.edit24.grid.width = 1;
     obj.edit24:setFontColor("white");
-    obj.edit24:setReadOnly(false);
-    obj.edit24:setCanFocus(true);
-    obj.edit24:setCursor("IBeam");
+    obj.edit24:setReadOnly(true);
+    obj.edit24:setCanFocus(false);
+    obj.edit24:setCursor("default");
     obj.edit24:setField("conExtra");
     obj.edit24:setType("number");
     obj.edit24:setName("edit24");
@@ -1250,9 +1393,9 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit33.grid.role = "col";
     obj.edit33.grid.width = 1;
     obj.edit33:setFontColor("white");
-    obj.edit33:setReadOnly(false);
-    obj.edit33:setCanFocus(true);
-    obj.edit33:setCursor("IBeam");
+    obj.edit33:setReadOnly(true);
+    obj.edit33:setCanFocus(false);
+    obj.edit33:setCursor("default");
     obj.edit33:setField("forExtra");
     obj.edit33:setType("number");
     obj.edit33:setName("edit33");
@@ -1386,9 +1529,9 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit42.grid.role = "col";
     obj.edit42.grid.width = 1;
     obj.edit42:setFontColor("white");
-    obj.edit42:setReadOnly(false);
-    obj.edit42:setCanFocus(true);
-    obj.edit42:setCursor("IBeam");
+    obj.edit42:setReadOnly(true);
+    obj.edit42:setCanFocus(false);
+    obj.edit42:setCursor("default");
     obj.edit42:setField("dexExtra");
     obj.edit42:setType("number");
     obj.edit42:setName("edit42");
@@ -1522,9 +1665,9 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit51.grid.role = "col";
     obj.edit51.grid.width = 1;
     obj.edit51:setFontColor("white");
-    obj.edit51:setReadOnly(false);
-    obj.edit51:setCanFocus(true);
-    obj.edit51:setCursor("IBeam");
+    obj.edit51:setReadOnly(true);
+    obj.edit51:setCanFocus(false);
+    obj.edit51:setCursor("default");
     obj.edit51:setField("carExtra");
     obj.edit51:setType("number");
     obj.edit51:setName("edit51");
@@ -1658,9 +1801,9 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit60.grid.role = "col";
     obj.edit60.grid.width = 1;
     obj.edit60:setFontColor("white");
-    obj.edit60:setReadOnly(false);
-    obj.edit60:setCanFocus(true);
-    obj.edit60:setCursor("IBeam");
+    obj.edit60:setReadOnly(true);
+    obj.edit60:setCanFocus(false);
+    obj.edit60:setCursor("default");
     obj.edit60:setField("intExtra");
     obj.edit60:setType("number");
     obj.edit60:setName("edit60");
@@ -1794,9 +1937,9 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit69.grid.role = "col";
     obj.edit69.grid.width = 1;
     obj.edit69:setFontColor("white");
-    obj.edit69:setReadOnly(false);
-    obj.edit69:setCanFocus(true);
-    obj.edit69:setCursor("IBeam");
+    obj.edit69:setReadOnly(true);
+    obj.edit69:setCanFocus(false);
+    obj.edit69:setCursor("default");
     obj.edit69:setField("sabExtra");
     obj.edit69:setType("number");
     obj.edit69:setName("edit69");
@@ -1909,7 +2052,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.label64 = GUI.fromHandle(_obj_newObject("label"));
     obj.label64:setParent(obj.layout24);
-    obj.label64:setText("Arma");
+    obj.label64:setText("Equipamentos");
     obj.label64.grid.role = "col";
     obj.label64.grid.width = 1;
     obj.label64.grid["min-height"] = 20;
@@ -1919,7 +2062,7 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.layout24);
-    obj.label65:setText("Armadura");
+    obj.label65:setText("Extra");
     obj.label65.grid.role = "col";
     obj.label65.grid.width = 1;
     obj.label65.grid["min-height"] = 20;
@@ -1929,23 +2072,13 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.label66 = GUI.fromHandle(_obj_newObject("label"));
     obj.label66:setParent(obj.layout24);
-    obj.label66:setText("Extra");
+    obj.label66:setText("Total");
     obj.label66.grid.role = "col";
     obj.label66.grid.width = 1;
     obj.label66.grid["min-height"] = 20;
     obj.label66:setHorzTextAlign("center");
     obj.label66:setFontColor("white");
     obj.label66:setName("label66");
-
-    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label67:setParent(obj.layout24);
-    obj.label67:setText("Total");
-    obj.label67.grid.role = "col";
-    obj.label67.grid.width = 1;
-    obj.label67.grid["min-height"] = 20;
-    obj.label67:setHorzTextAlign("center");
-    obj.label67:setFontColor("white");
-    obj.label67:setName("label67");
 
     obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.scrollBox2);
@@ -1954,12 +2087,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout25.grid["cnt-horz-align"] = "center";
     obj.layout25:setName("layout25");
 
-    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label68:setParent(obj.layout25);
-    obj.label68.grid.role = "col";
-    obj.label68.grid.width = 1;
-    obj.label68:setText("Acerto");
-    obj.label68:setName("label68");
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label67:setParent(obj.layout25);
+    obj.label67.grid.role = "col";
+    obj.label67.grid.width = 1;
+    obj.label67:setText("Acerto");
+    obj.label67:setName("label67");
 
     obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit72:setParent(obj.layout25);
@@ -2022,7 +2155,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit76:setReadOnly(true);
     obj.edit76:setCanFocus(false);
     obj.edit76:setCursor("default");
-    obj.edit76:setField("acertoArma");
+    obj.edit76:setField("acertoEquipamentos");
     obj.edit76:setType("number");
     obj.edit76:setName("edit76");
 
@@ -2032,10 +2165,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit77.grid.role = "col";
     obj.edit77.grid.width = 1;
     obj.edit77:setFontColor("white");
-    obj.edit77:setReadOnly(true);
-    obj.edit77:setCanFocus(false);
-    obj.edit77:setCursor("default");
-    obj.edit77:setField("acertoArmadura");
+    obj.edit77:setReadOnly(false);
+    obj.edit77:setCanFocus(true);
+    obj.edit77:setCursor("IBeam");
+    obj.edit77:setField("acertoExtra");
     obj.edit77:setType("number");
     obj.edit77:setName("edit77");
 
@@ -2045,29 +2178,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit78.grid.role = "col";
     obj.edit78.grid.width = 1;
     obj.edit78:setFontColor("white");
-    obj.edit78:setReadOnly(false);
-    obj.edit78:setCanFocus(true);
-    obj.edit78:setCursor("IBeam");
-    obj.edit78:setField("acertoExtra");
+    obj.edit78:setReadOnly(true);
+    obj.edit78:setCanFocus(false);
+    obj.edit78:setCursor("default");
+    obj.edit78:setField("acertoTotal");
     obj.edit78:setType("number");
     obj.edit78:setName("edit78");
 
-    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit79:setParent(obj.layout25);
-    obj.edit79:setHorzTextAlign("center");
-    obj.edit79.grid.role = "col";
-    obj.edit79.grid.width = 1;
-    obj.edit79:setFontColor("white");
-    obj.edit79:setReadOnly(true);
-    obj.edit79:setCanFocus(false);
-    obj.edit79:setCursor("default");
-    obj.edit79:setField("acertoTotal");
-    obj.edit79:setType("number");
-    obj.edit79:setName("edit79");
-
     obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.scrollBox2);
-    obj.dataLink20:setFields({'acertoDestreza', 'acertoClasse', 'acertoMultiplicador', 'acertoArma', 'acertoArmadura', 'acertoExtra'});
+    obj.dataLink20:setFields({'acertoDestreza', 'acertoClasse', 'acertoMultiplicador', 'acertoEquipamentos', 'acertoExtra'});
     obj.dataLink20:setName("dataLink20");
 
     obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2077,12 +2197,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout26.grid["cnt-horz-align"] = "center";
     obj.layout26:setName("layout26");
 
-    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label69:setParent(obj.layout26);
-    obj.label69.grid.role = "col";
-    obj.label69.grid.width = 1;
-    obj.label69:setText("Mira");
-    obj.label69:setName("label69");
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label68:setParent(obj.layout26);
+    obj.label68.grid.role = "col";
+    obj.label68.grid.width = 1;
+    obj.label68:setText("Mira");
+    obj.label68:setName("label68");
+
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit79:setParent(obj.layout26);
+    obj.edit79:setHorzTextAlign("center");
+    obj.edit79.grid.role = "col";
+    obj.edit79.grid.width = 1;
+    obj.edit79:setFontColor("white");
+    obj.edit79:setReadOnly(false);
+    obj.edit79:setCanFocus(true);
+    obj.edit79:setCursor("IBeam");
+    obj.edit79:setField("miraDestreza");
+    obj.edit79:setType("number");
+    obj.edit79:setName("edit79");
 
     obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout26);
@@ -2093,7 +2226,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit80:setReadOnly(false);
     obj.edit80:setCanFocus(true);
     obj.edit80:setCursor("IBeam");
-    obj.edit80:setField("miraDestreza");
+    obj.edit80:setField("miraClasse");
     obj.edit80:setType("number");
     obj.edit80:setName("edit80");
 
@@ -2103,10 +2236,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit81.grid.role = "col";
     obj.edit81.grid.width = 1;
     obj.edit81:setFontColor("white");
-    obj.edit81:setReadOnly(false);
-    obj.edit81:setCanFocus(true);
-    obj.edit81:setCursor("IBeam");
-    obj.edit81:setField("miraClasse");
+    obj.edit81:setReadOnly(true);
+    obj.edit81:setCanFocus(false);
+    obj.edit81:setCursor("default");
+    obj.edit81:setField("miraBase");
     obj.edit81:setType("number");
     obj.edit81:setName("edit81");
 
@@ -2116,10 +2249,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit82.grid.role = "col";
     obj.edit82.grid.width = 1;
     obj.edit82:setFontColor("white");
-    obj.edit82:setReadOnly(true);
-    obj.edit82:setCanFocus(false);
-    obj.edit82:setCursor("default");
-    obj.edit82:setField("miraBase");
+    obj.edit82:setReadOnly(false);
+    obj.edit82:setCanFocus(true);
+    obj.edit82:setCursor("IBeam");
+    obj.edit82:setField("miraMultiplicador");
     obj.edit82:setType("number");
     obj.edit82:setName("edit82");
 
@@ -2129,10 +2262,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit83.grid.role = "col";
     obj.edit83.grid.width = 1;
     obj.edit83:setFontColor("white");
-    obj.edit83:setReadOnly(false);
-    obj.edit83:setCanFocus(true);
-    obj.edit83:setCursor("IBeam");
-    obj.edit83:setField("miraMultiplicador");
+    obj.edit83:setReadOnly(true);
+    obj.edit83:setCanFocus(false);
+    obj.edit83:setCursor("default");
+    obj.edit83:setField("miraEquipamentos");
     obj.edit83:setType("number");
     obj.edit83:setName("edit83");
 
@@ -2142,10 +2275,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit84.grid.role = "col";
     obj.edit84.grid.width = 1;
     obj.edit84:setFontColor("white");
-    obj.edit84:setReadOnly(true);
-    obj.edit84:setCanFocus(false);
-    obj.edit84:setCursor("default");
-    obj.edit84:setField("miraArma");
+    obj.edit84:setReadOnly(false);
+    obj.edit84:setCanFocus(true);
+    obj.edit84:setCursor("IBeam");
+    obj.edit84:setField("miraExtra");
     obj.edit84:setType("number");
     obj.edit84:setName("edit84");
 
@@ -2158,39 +2291,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit85:setReadOnly(true);
     obj.edit85:setCanFocus(false);
     obj.edit85:setCursor("default");
-    obj.edit85:setField("miraArmadura");
+    obj.edit85:setField("miraTotal");
     obj.edit85:setType("number");
     obj.edit85:setName("edit85");
 
-    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit86:setParent(obj.layout26);
-    obj.edit86:setHorzTextAlign("center");
-    obj.edit86.grid.role = "col";
-    obj.edit86.grid.width = 1;
-    obj.edit86:setFontColor("white");
-    obj.edit86:setReadOnly(false);
-    obj.edit86:setCanFocus(true);
-    obj.edit86:setCursor("IBeam");
-    obj.edit86:setField("miraExtra");
-    obj.edit86:setType("number");
-    obj.edit86:setName("edit86");
-
-    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit87:setParent(obj.layout26);
-    obj.edit87:setHorzTextAlign("center");
-    obj.edit87.grid.role = "col";
-    obj.edit87.grid.width = 1;
-    obj.edit87:setFontColor("white");
-    obj.edit87:setReadOnly(true);
-    obj.edit87:setCanFocus(false);
-    obj.edit87:setCursor("default");
-    obj.edit87:setField("miraTotal");
-    obj.edit87:setType("number");
-    obj.edit87:setName("edit87");
-
     obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.scrollBox2);
-    obj.dataLink21:setFields({'miraDestreza', 'miraClasse', 'miraMultiplicador', 'miraArma', 'miraArmadura', 'miraExtra'});
+    obj.dataLink21:setFields({'miraDestreza', 'miraClasse', 'miraMultiplicador', 'miraEquipamentos', 'miraExtra'});
     obj.dataLink21:setName("dataLink21");
 
     obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2200,12 +2307,38 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout27.grid["cnt-horz-align"] = "center";
     obj.layout27:setName("layout27");
 
-    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label70:setParent(obj.layout27);
-    obj.label70.grid.role = "col";
-    obj.label70.grid.width = 1;
-    obj.label70:setText("Bloqueio");
-    obj.label70:setName("label70");
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label69:setParent(obj.layout27);
+    obj.label69.grid.role = "col";
+    obj.label69.grid.width = 1;
+    obj.label69:setText("Bloqueio");
+    obj.label69:setName("label69");
+
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit86:setParent(obj.layout27);
+    obj.edit86:setHorzTextAlign("center");
+    obj.edit86.grid.role = "col";
+    obj.edit86.grid.width = 1;
+    obj.edit86:setFontColor("white");
+    obj.edit86:setReadOnly(false);
+    obj.edit86:setCanFocus(true);
+    obj.edit86:setCursor("IBeam");
+    obj.edit86:setField("bloqueioDestreza");
+    obj.edit86:setType("number");
+    obj.edit86:setName("edit86");
+
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit87:setParent(obj.layout27);
+    obj.edit87:setHorzTextAlign("center");
+    obj.edit87.grid.role = "col";
+    obj.edit87.grid.width = 1;
+    obj.edit87:setFontColor("white");
+    obj.edit87:setReadOnly(false);
+    obj.edit87:setCanFocus(true);
+    obj.edit87:setCursor("IBeam");
+    obj.edit87:setField("bloqueioClasse");
+    obj.edit87:setType("number");
+    obj.edit87:setName("edit87");
 
     obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout27);
@@ -2213,10 +2346,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit88.grid.role = "col";
     obj.edit88.grid.width = 1;
     obj.edit88:setFontColor("white");
-    obj.edit88:setReadOnly(false);
-    obj.edit88:setCanFocus(true);
-    obj.edit88:setCursor("IBeam");
-    obj.edit88:setField("bloqueioDestreza");
+    obj.edit88:setReadOnly(true);
+    obj.edit88:setCanFocus(false);
+    obj.edit88:setCursor("default");
+    obj.edit88:setField("bloqueioBase");
     obj.edit88:setType("number");
     obj.edit88:setName("edit88");
 
@@ -2229,7 +2362,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit89:setReadOnly(false);
     obj.edit89:setCanFocus(true);
     obj.edit89:setCursor("IBeam");
-    obj.edit89:setField("bloqueioClasse");
+    obj.edit89:setField("bloqueioMultiplicador");
     obj.edit89:setType("number");
     obj.edit89:setName("edit89");
 
@@ -2242,7 +2375,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit90:setReadOnly(true);
     obj.edit90:setCanFocus(false);
     obj.edit90:setCursor("default");
-    obj.edit90:setField("bloqueioBase");
+    obj.edit90:setField("bloqueioEquipamentos");
     obj.edit90:setType("number");
     obj.edit90:setName("edit90");
 
@@ -2255,7 +2388,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit91:setReadOnly(false);
     obj.edit91:setCanFocus(true);
     obj.edit91:setCursor("IBeam");
-    obj.edit91:setField("bloqueioMultiplicador");
+    obj.edit91:setField("bloqueioExtra");
     obj.edit91:setType("number");
     obj.edit91:setName("edit91");
 
@@ -2268,52 +2401,13 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit92:setReadOnly(true);
     obj.edit92:setCanFocus(false);
     obj.edit92:setCursor("default");
-    obj.edit92:setField("bloqueioArma");
+    obj.edit92:setField("bloqueioTotal");
     obj.edit92:setType("number");
     obj.edit92:setName("edit92");
 
-    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit93:setParent(obj.layout27);
-    obj.edit93:setHorzTextAlign("center");
-    obj.edit93.grid.role = "col";
-    obj.edit93.grid.width = 1;
-    obj.edit93:setFontColor("white");
-    obj.edit93:setReadOnly(true);
-    obj.edit93:setCanFocus(false);
-    obj.edit93:setCursor("default");
-    obj.edit93:setField("bloqueioArmadura");
-    obj.edit93:setType("number");
-    obj.edit93:setName("edit93");
-
-    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit94:setParent(obj.layout27);
-    obj.edit94:setHorzTextAlign("center");
-    obj.edit94.grid.role = "col";
-    obj.edit94.grid.width = 1;
-    obj.edit94:setFontColor("white");
-    obj.edit94:setReadOnly(false);
-    obj.edit94:setCanFocus(true);
-    obj.edit94:setCursor("IBeam");
-    obj.edit94:setField("bloqueioExtra");
-    obj.edit94:setType("number");
-    obj.edit94:setName("edit94");
-
-    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit95:setParent(obj.layout27);
-    obj.edit95:setHorzTextAlign("center");
-    obj.edit95.grid.role = "col";
-    obj.edit95.grid.width = 1;
-    obj.edit95:setFontColor("white");
-    obj.edit95:setReadOnly(true);
-    obj.edit95:setCanFocus(false);
-    obj.edit95:setCursor("default");
-    obj.edit95:setField("bloqueioTotal");
-    obj.edit95:setType("number");
-    obj.edit95:setName("edit95");
-
     obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.scrollBox2);
-    obj.dataLink22:setFields({'bloqueioDestreza', 'bloqueioClasse', 'bloqueioMultiplicador', 'bloqueioArma', 'bloqueioArmadura', 'bloqueioExtra'});
+    obj.dataLink22:setFields({'bloqueioDestreza', 'bloqueioClasse', 'bloqueioMultiplicador', 'bloqueioEquipamentos', 'bloqueioExtra'});
     obj.dataLink22:setName("dataLink22");
 
     obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2323,12 +2417,51 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout28.grid["cnt-horz-align"] = "center";
     obj.layout28:setName("layout28");
 
-    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label71:setParent(obj.layout28);
-    obj.label71.grid.role = "col";
-    obj.label71.grid.width = 1;
-    obj.label71:setText("Esquiva");
-    obj.label71:setName("label71");
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label70:setParent(obj.layout28);
+    obj.label70.grid.role = "col";
+    obj.label70.grid.width = 1;
+    obj.label70:setText("Esquiva");
+    obj.label70:setName("label70");
+
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit93:setParent(obj.layout28);
+    obj.edit93:setHorzTextAlign("center");
+    obj.edit93.grid.role = "col";
+    obj.edit93.grid.width = 1;
+    obj.edit93:setFontColor("white");
+    obj.edit93:setReadOnly(false);
+    obj.edit93:setCanFocus(true);
+    obj.edit93:setCursor("IBeam");
+    obj.edit93:setField("esquivaDestreza");
+    obj.edit93:setType("number");
+    obj.edit93:setName("edit93");
+
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit94:setParent(obj.layout28);
+    obj.edit94:setHorzTextAlign("center");
+    obj.edit94.grid.role = "col";
+    obj.edit94.grid.width = 1;
+    obj.edit94:setFontColor("white");
+    obj.edit94:setReadOnly(false);
+    obj.edit94:setCanFocus(true);
+    obj.edit94:setCursor("IBeam");
+    obj.edit94:setField("esquivaClasse");
+    obj.edit94:setType("number");
+    obj.edit94:setName("edit94");
+
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit95:setParent(obj.layout28);
+    obj.edit95:setHorzTextAlign("center");
+    obj.edit95.grid.role = "col";
+    obj.edit95.grid.width = 1;
+    obj.edit95:setFontColor("white");
+    obj.edit95:setReadOnly(true);
+    obj.edit95:setCanFocus(false);
+    obj.edit95:setCursor("default");
+    obj.edit95:setField("esquivaBase");
+    obj.edit95:setType("number");
+    obj.edit95:setName("edit95");
 
     obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout28);
@@ -2339,7 +2472,7 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit96:setReadOnly(false);
     obj.edit96:setCanFocus(true);
     obj.edit96:setCursor("IBeam");
-    obj.edit96:setField("esquivaDestreza");
+    obj.edit96:setField("esquivaMultiplicador");
     obj.edit96:setType("number");
     obj.edit96:setName("edit96");
 
@@ -2349,10 +2482,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit97.grid.role = "col";
     obj.edit97.grid.width = 1;
     obj.edit97:setFontColor("white");
-    obj.edit97:setReadOnly(false);
-    obj.edit97:setCanFocus(true);
-    obj.edit97:setCursor("IBeam");
-    obj.edit97:setField("esquivaClasse");
+    obj.edit97:setReadOnly(true);
+    obj.edit97:setCanFocus(false);
+    obj.edit97:setCursor("default");
+    obj.edit97:setField("esquivaEquipamentos");
     obj.edit97:setType("number");
     obj.edit97:setName("edit97");
 
@@ -2362,10 +2495,10 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit98.grid.role = "col";
     obj.edit98.grid.width = 1;
     obj.edit98:setFontColor("white");
-    obj.edit98:setReadOnly(true);
-    obj.edit98:setCanFocus(false);
-    obj.edit98:setCursor("default");
-    obj.edit98:setField("esquivaBase");
+    obj.edit98:setReadOnly(false);
+    obj.edit98:setCanFocus(true);
+    obj.edit98:setCursor("IBeam");
+    obj.edit98:setField("esquivaExtra");
     obj.edit98:setType("number");
     obj.edit98:setName("edit98");
 
@@ -2375,68 +2508,16 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit99.grid.role = "col";
     obj.edit99.grid.width = 1;
     obj.edit99:setFontColor("white");
-    obj.edit99:setReadOnly(false);
-    obj.edit99:setCanFocus(true);
-    obj.edit99:setCursor("IBeam");
-    obj.edit99:setField("esquivaMultiplicador");
+    obj.edit99:setReadOnly(true);
+    obj.edit99:setCanFocus(false);
+    obj.edit99:setCursor("default");
+    obj.edit99:setField("esquivaTotal");
     obj.edit99:setType("number");
     obj.edit99:setName("edit99");
 
-    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit100:setParent(obj.layout28);
-    obj.edit100:setHorzTextAlign("center");
-    obj.edit100.grid.role = "col";
-    obj.edit100.grid.width = 1;
-    obj.edit100:setFontColor("white");
-    obj.edit100:setReadOnly(true);
-    obj.edit100:setCanFocus(false);
-    obj.edit100:setCursor("default");
-    obj.edit100:setField("esquivaArma");
-    obj.edit100:setType("number");
-    obj.edit100:setName("edit100");
-
-    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit101:setParent(obj.layout28);
-    obj.edit101:setHorzTextAlign("center");
-    obj.edit101.grid.role = "col";
-    obj.edit101.grid.width = 1;
-    obj.edit101:setFontColor("white");
-    obj.edit101:setReadOnly(true);
-    obj.edit101:setCanFocus(false);
-    obj.edit101:setCursor("default");
-    obj.edit101:setField("esquivaArmadura");
-    obj.edit101:setType("number");
-    obj.edit101:setName("edit101");
-
-    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit102:setParent(obj.layout28);
-    obj.edit102:setHorzTextAlign("center");
-    obj.edit102.grid.role = "col";
-    obj.edit102.grid.width = 1;
-    obj.edit102:setFontColor("white");
-    obj.edit102:setReadOnly(false);
-    obj.edit102:setCanFocus(true);
-    obj.edit102:setCursor("IBeam");
-    obj.edit102:setField("esquivaExtra");
-    obj.edit102:setType("number");
-    obj.edit102:setName("edit102");
-
-    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit103:setParent(obj.layout28);
-    obj.edit103:setHorzTextAlign("center");
-    obj.edit103.grid.role = "col";
-    obj.edit103.grid.width = 1;
-    obj.edit103:setFontColor("white");
-    obj.edit103:setReadOnly(true);
-    obj.edit103:setCanFocus(false);
-    obj.edit103:setCursor("default");
-    obj.edit103:setField("esquivaTotal");
-    obj.edit103:setType("number");
-    obj.edit103:setName("edit103");
-
     obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink23:setParent(obj.scrollBox2);
-    obj.dataLink23:setFields({'esquivaDestreza', 'esquivaClasse', 'esquivaMultiplicador', 'esquivaArma', 'esquivaArmadura', 'esquivaExtra'});
+    obj.dataLink23:setFields({'esquivaDestreza', 'esquivaClasse', 'esquivaMultiplicador', 'esquivaEquipamentos', 'esquivaExtra'});
     obj.dataLink23:setName("dataLink23");
 
     obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2444,14 +2525,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout29.grid.role = "row";
     obj.layout29:setName("layout29");
 
-    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label72:setParent(obj.layout29);
-    obj.label72:setText("Constituição");
-    obj.label72.grid.role = "col";
-    obj.label72.grid.width = 1;
-    obj.label72.grid["min-height"] = 20;
-    obj.label72:setHorzTextAlign("center");
-    obj.label72:setName("label72");
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label71:setParent(obj.layout29);
+    obj.label71:setText("Constituição");
+    obj.label71.grid.role = "col";
+    obj.label71.grid.width = 1;
+    obj.label71.grid["min-height"] = 20;
+    obj.label71:setHorzTextAlign("center");
+    obj.label71:setName("label71");
 
     obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.layout29);
@@ -2460,23 +2541,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout30.grid.width = 1;
     obj.layout30:setName("layout30");
 
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label72:setParent(obj.layout30);
+    obj.label72:setText("2");
+    obj.label72.grid.role = "col";
+    obj.label72.grid.width = 6;
+    obj.label72.grid["min-height"] = 15;
+    obj.label72:setHorzTextAlign("center");
+    obj.label72:setName("label72");
+
     obj.label73 = GUI.fromHandle(_obj_newObject("label"));
     obj.label73:setParent(obj.layout30);
-    obj.label73:setText("2");
+    obj.label73:setText("3");
     obj.label73.grid.role = "col";
     obj.label73.grid.width = 6;
     obj.label73.grid["min-height"] = 15;
     obj.label73:setHorzTextAlign("center");
     obj.label73:setName("label73");
-
-    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label74:setParent(obj.layout30);
-    obj.label74:setText("3");
-    obj.label74.grid.role = "col";
-    obj.label74.grid.width = 6;
-    obj.label74.grid["min-height"] = 15;
-    obj.label74:setHorzTextAlign("center");
-    obj.label74:setName("label74");
 
     obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout29);
@@ -2485,23 +2566,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout31.grid.width = 1;
     obj.layout31:setName("layout31");
 
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label74:setParent(obj.layout31);
+    obj.label74:setText("4");
+    obj.label74.grid.role = "col";
+    obj.label74.grid.width = 6;
+    obj.label74.grid["min-height"] = 15;
+    obj.label74:setHorzTextAlign("center");
+    obj.label74:setName("label74");
+
     obj.label75 = GUI.fromHandle(_obj_newObject("label"));
     obj.label75:setParent(obj.layout31);
-    obj.label75:setText("4");
+    obj.label75:setText("5");
     obj.label75.grid.role = "col";
     obj.label75.grid.width = 6;
     obj.label75.grid["min-height"] = 15;
     obj.label75:setHorzTextAlign("center");
     obj.label75:setName("label75");
-
-    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label76:setParent(obj.layout31);
-    obj.label76:setText("5");
-    obj.label76.grid.role = "col";
-    obj.label76.grid.width = 6;
-    obj.label76.grid["min-height"] = 15;
-    obj.label76:setHorzTextAlign("center");
-    obj.label76:setName("label76");
 
     obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.layout29);
@@ -2510,23 +2591,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout32.grid.width = 1;
     obj.layout32:setName("layout32");
 
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label76:setParent(obj.layout32);
+    obj.label76:setText("6");
+    obj.label76.grid.role = "col";
+    obj.label76.grid.width = 6;
+    obj.label76.grid["min-height"] = 15;
+    obj.label76:setHorzTextAlign("center");
+    obj.label76:setName("label76");
+
     obj.label77 = GUI.fromHandle(_obj_newObject("label"));
     obj.label77:setParent(obj.layout32);
-    obj.label77:setText("6");
+    obj.label77:setText("7");
     obj.label77.grid.role = "col";
     obj.label77.grid.width = 6;
     obj.label77.grid["min-height"] = 15;
     obj.label77:setHorzTextAlign("center");
     obj.label77:setName("label77");
-
-    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label78:setParent(obj.layout32);
-    obj.label78:setText("7");
-    obj.label78.grid.role = "col";
-    obj.label78.grid.width = 6;
-    obj.label78.grid["min-height"] = 15;
-    obj.label78:setHorzTextAlign("center");
-    obj.label78:setName("label78");
 
     obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.layout29);
@@ -2535,23 +2616,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout33.grid.width = 1;
     obj.layout33:setName("layout33");
 
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label78:setParent(obj.layout33);
+    obj.label78:setText("8");
+    obj.label78.grid.role = "col";
+    obj.label78.grid.width = 6;
+    obj.label78.grid["min-height"] = 15;
+    obj.label78:setHorzTextAlign("center");
+    obj.label78:setName("label78");
+
     obj.label79 = GUI.fromHandle(_obj_newObject("label"));
     obj.label79:setParent(obj.layout33);
-    obj.label79:setText("8");
+    obj.label79:setText("9");
     obj.label79.grid.role = "col";
     obj.label79.grid.width = 6;
     obj.label79.grid["min-height"] = 15;
     obj.label79:setHorzTextAlign("center");
     obj.label79:setName("label79");
-
-    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label80:setParent(obj.layout33);
-    obj.label80:setText("9");
-    obj.label80.grid.role = "col";
-    obj.label80.grid.width = 6;
-    obj.label80.grid["min-height"] = 15;
-    obj.label80:setHorzTextAlign("center");
-    obj.label80:setName("label80");
 
     obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.layout29);
@@ -2560,23 +2641,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout34.grid.width = 1;
     obj.layout34:setName("layout34");
 
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label80:setParent(obj.layout34);
+    obj.label80:setText("10");
+    obj.label80.grid.role = "col";
+    obj.label80.grid.width = 6;
+    obj.label80.grid["min-height"] = 15;
+    obj.label80:setHorzTextAlign("center");
+    obj.label80:setName("label80");
+
     obj.label81 = GUI.fromHandle(_obj_newObject("label"));
     obj.label81:setParent(obj.layout34);
-    obj.label81:setText("10");
+    obj.label81:setText("11");
     obj.label81.grid.role = "col";
     obj.label81.grid.width = 6;
     obj.label81.grid["min-height"] = 15;
     obj.label81:setHorzTextAlign("center");
     obj.label81:setName("label81");
-
-    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label82:setParent(obj.layout34);
-    obj.label82:setText("11");
-    obj.label82.grid.role = "col";
-    obj.label82.grid.width = 6;
-    obj.label82.grid["min-height"] = 15;
-    obj.label82:setHorzTextAlign("center");
-    obj.label82:setName("label82");
 
     obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout29);
@@ -2585,23 +2666,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout35.grid.width = 1;
     obj.layout35:setName("layout35");
 
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout35);
+    obj.label82:setText("12");
+    obj.label82.grid.role = "col";
+    obj.label82.grid.width = 6;
+    obj.label82.grid["min-height"] = 15;
+    obj.label82:setHorzTextAlign("center");
+    obj.label82:setName("label82");
+
     obj.label83 = GUI.fromHandle(_obj_newObject("label"));
     obj.label83:setParent(obj.layout35);
-    obj.label83:setText("12");
+    obj.label83:setText("13");
     obj.label83.grid.role = "col";
     obj.label83.grid.width = 6;
     obj.label83.grid["min-height"] = 15;
     obj.label83:setHorzTextAlign("center");
     obj.label83:setName("label83");
-
-    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label84:setParent(obj.layout35);
-    obj.label84:setText("13");
-    obj.label84.grid.role = "col";
-    obj.label84.grid.width = 6;
-    obj.label84.grid["min-height"] = 15;
-    obj.label84:setHorzTextAlign("center");
-    obj.label84:setName("label84");
 
     obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.layout29);
@@ -2610,23 +2691,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout36.grid.width = 1;
     obj.layout36:setName("layout36");
 
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.layout36);
+    obj.label84:setText("14");
+    obj.label84.grid.role = "col";
+    obj.label84.grid.width = 6;
+    obj.label84.grid["min-height"] = 15;
+    obj.label84:setHorzTextAlign("center");
+    obj.label84:setName("label84");
+
     obj.label85 = GUI.fromHandle(_obj_newObject("label"));
     obj.label85:setParent(obj.layout36);
-    obj.label85:setText("14");
+    obj.label85:setText("15");
     obj.label85.grid.role = "col";
     obj.label85.grid.width = 6;
     obj.label85.grid["min-height"] = 15;
     obj.label85:setHorzTextAlign("center");
     obj.label85:setName("label85");
-
-    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label86:setParent(obj.layout36);
-    obj.label86:setText("15");
-    obj.label86.grid.role = "col";
-    obj.label86.grid.width = 6;
-    obj.label86.grid["min-height"] = 15;
-    obj.label86:setHorzTextAlign("center");
-    obj.label86:setName("label86");
 
     obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.layout29);
@@ -2635,23 +2716,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout37.grid.width = 1;
     obj.layout37:setName("layout37");
 
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label86:setParent(obj.layout37);
+    obj.label86:setText("16");
+    obj.label86.grid.role = "col";
+    obj.label86.grid.width = 6;
+    obj.label86.grid["min-height"] = 15;
+    obj.label86:setHorzTextAlign("center");
+    obj.label86:setName("label86");
+
     obj.label87 = GUI.fromHandle(_obj_newObject("label"));
     obj.label87:setParent(obj.layout37);
-    obj.label87:setText("16");
+    obj.label87:setText("17");
     obj.label87.grid.role = "col";
     obj.label87.grid.width = 6;
     obj.label87.grid["min-height"] = 15;
     obj.label87:setHorzTextAlign("center");
     obj.label87:setName("label87");
-
-    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label88:setParent(obj.layout37);
-    obj.label88:setText("17");
-    obj.label88.grid.role = "col";
-    obj.label88.grid.width = 6;
-    obj.label88.grid["min-height"] = 15;
-    obj.label88:setHorzTextAlign("center");
-    obj.label88:setName("label88");
 
     obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.layout29);
@@ -2660,23 +2741,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout38.grid.width = 1;
     obj.layout38:setName("layout38");
 
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label88:setParent(obj.layout38);
+    obj.label88:setText("18");
+    obj.label88.grid.role = "col";
+    obj.label88.grid.width = 6;
+    obj.label88.grid["min-height"] = 15;
+    obj.label88:setHorzTextAlign("center");
+    obj.label88:setName("label88");
+
     obj.label89 = GUI.fromHandle(_obj_newObject("label"));
     obj.label89:setParent(obj.layout38);
-    obj.label89:setText("18");
+    obj.label89:setText("19");
     obj.label89.grid.role = "col";
     obj.label89.grid.width = 6;
     obj.label89.grid["min-height"] = 15;
     obj.label89:setHorzTextAlign("center");
     obj.label89:setName("label89");
-
-    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label90:setParent(obj.layout38);
-    obj.label90:setText("19");
-    obj.label90.grid.role = "col";
-    obj.label90.grid.width = 6;
-    obj.label90.grid["min-height"] = 15;
-    obj.label90:setHorzTextAlign("center");
-    obj.label90:setName("label90");
 
     obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.layout29);
@@ -2685,9 +2766,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout39.grid.width = 1;
     obj.layout39:setName("layout39");
 
+    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label90:setParent(obj.layout39);
+    obj.label90:setText("20");
+    obj.label90.grid.role = "col";
+    obj.label90.grid.width = 6;
+    obj.label90.grid["min-height"] = 15;
+    obj.label90:setHorzTextAlign("center");
+    obj.label90:setName("label90");
+
     obj.label91 = GUI.fromHandle(_obj_newObject("label"));
     obj.label91:setParent(obj.layout39);
-    obj.label91:setText("20");
+    obj.label91:setText("20+");
     obj.label91.grid.role = "col";
     obj.label91.grid.width = 6;
     obj.label91.grid["min-height"] = 15;
@@ -2695,31 +2785,22 @@ local function constructNew_frmFichaDePersonagem()
     obj.label91:setName("label91");
 
     obj.label92 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label92:setParent(obj.layout39);
-    obj.label92:setText("20+");
+    obj.label92:setParent(obj.layout29);
+    obj.label92:setText("Total");
     obj.label92.grid.role = "col";
-    obj.label92.grid.width = 6;
+    obj.label92.grid.width = 1;
     obj.label92.grid["min-height"] = 15;
     obj.label92:setHorzTextAlign("center");
     obj.label92:setName("label92");
 
     obj.label93 = GUI.fromHandle(_obj_newObject("label"));
     obj.label93:setParent(obj.layout29);
-    obj.label93:setText("Total");
+    obj.label93:setText("");
     obj.label93.grid.role = "col";
     obj.label93.grid.width = 1;
     obj.label93.grid["min-height"] = 15;
     obj.label93:setHorzTextAlign("center");
     obj.label93:setName("label93");
-
-    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label94:setParent(obj.layout29);
-    obj.label94:setText("");
-    obj.label94.grid.role = "col";
-    obj.label94.grid.width = 1;
-    obj.label94.grid["min-height"] = 15;
-    obj.label94:setHorzTextAlign("center");
-    obj.label94:setName("label94");
 
     obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.layout29);
@@ -2728,25 +2809,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout40.grid.width = 1;
     obj.layout40:setName("layout40");
 
-    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit104:setParent(obj.layout40);
-    obj.edit104.grid.role = "col";
-    obj.edit104.grid.width = 6;
-    obj.edit104.grid["min-height"] = 30;
-    obj.edit104:setHorzTextAlign("center");
-    obj.edit104:setField("conNivel1");
-    obj.edit104:setType("number");
-    obj.edit104:setName("edit104");
+    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit100:setParent(obj.layout40);
+    obj.edit100.grid.role = "col";
+    obj.edit100.grid.width = 6;
+    obj.edit100.grid["min-height"] = 30;
+    obj.edit100:setHorzTextAlign("center");
+    obj.edit100:setField("conNivel1");
+    obj.edit100:setType("number");
+    obj.edit100:setName("edit100");
 
-    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit105:setParent(obj.layout40);
-    obj.edit105.grid.role = "col";
-    obj.edit105.grid.width = 6;
-    obj.edit105.grid["min-height"] = 30;
-    obj.edit105:setHorzTextAlign("center");
-    obj.edit105:setField("conNivel2");
-    obj.edit105:setType("number");
-    obj.edit105:setName("edit105");
+    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit101:setParent(obj.layout40);
+    obj.edit101.grid.role = "col";
+    obj.edit101.grid.width = 6;
+    obj.edit101.grid["min-height"] = 30;
+    obj.edit101:setHorzTextAlign("center");
+    obj.edit101:setField("conNivel2");
+    obj.edit101:setType("number");
+    obj.edit101:setName("edit101");
 
     obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout29);
@@ -2755,25 +2836,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout41.grid.width = 1;
     obj.layout41:setName("layout41");
 
-    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit106:setParent(obj.layout41);
-    obj.edit106.grid.role = "col";
-    obj.edit106.grid.width = 6;
-    obj.edit106.grid["min-height"] = 30;
-    obj.edit106:setHorzTextAlign("center");
-    obj.edit106:setField("conNivel3");
-    obj.edit106:setType("number");
-    obj.edit106:setName("edit106");
+    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit102:setParent(obj.layout41);
+    obj.edit102.grid.role = "col";
+    obj.edit102.grid.width = 6;
+    obj.edit102.grid["min-height"] = 30;
+    obj.edit102:setHorzTextAlign("center");
+    obj.edit102:setField("conNivel3");
+    obj.edit102:setType("number");
+    obj.edit102:setName("edit102");
 
-    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit107:setParent(obj.layout41);
-    obj.edit107.grid.role = "col";
-    obj.edit107.grid.width = 6;
-    obj.edit107.grid["min-height"] = 30;
-    obj.edit107:setHorzTextAlign("center");
-    obj.edit107:setField("conNivel4");
-    obj.edit107:setType("number");
-    obj.edit107:setName("edit107");
+    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit103:setParent(obj.layout41);
+    obj.edit103.grid.role = "col";
+    obj.edit103.grid.width = 6;
+    obj.edit103.grid["min-height"] = 30;
+    obj.edit103:setHorzTextAlign("center");
+    obj.edit103:setField("conNivel4");
+    obj.edit103:setType("number");
+    obj.edit103:setName("edit103");
 
     obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.layout29);
@@ -2782,25 +2863,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout42.grid.width = 1;
     obj.layout42:setName("layout42");
 
-    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit108:setParent(obj.layout42);
-    obj.edit108.grid.role = "col";
-    obj.edit108.grid.width = 6;
-    obj.edit108.grid["min-height"] = 30;
-    obj.edit108:setHorzTextAlign("center");
-    obj.edit108:setField("conNivel5");
-    obj.edit108:setType("number");
-    obj.edit108:setName("edit108");
+    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit104:setParent(obj.layout42);
+    obj.edit104.grid.role = "col";
+    obj.edit104.grid.width = 6;
+    obj.edit104.grid["min-height"] = 30;
+    obj.edit104:setHorzTextAlign("center");
+    obj.edit104:setField("conNivel5");
+    obj.edit104:setType("number");
+    obj.edit104:setName("edit104");
 
-    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit109:setParent(obj.layout42);
-    obj.edit109.grid.role = "col";
-    obj.edit109.grid.width = 6;
-    obj.edit109.grid["min-height"] = 30;
-    obj.edit109:setHorzTextAlign("center");
-    obj.edit109:setField("conNivel6");
-    obj.edit109:setType("number");
-    obj.edit109:setName("edit109");
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit105:setParent(obj.layout42);
+    obj.edit105.grid.role = "col";
+    obj.edit105.grid.width = 6;
+    obj.edit105.grid["min-height"] = 30;
+    obj.edit105:setHorzTextAlign("center");
+    obj.edit105:setField("conNivel6");
+    obj.edit105:setType("number");
+    obj.edit105:setName("edit105");
 
     obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.layout29);
@@ -2809,25 +2890,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout43.grid.width = 1;
     obj.layout43:setName("layout43");
 
-    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit110:setParent(obj.layout43);
-    obj.edit110.grid.role = "col";
-    obj.edit110.grid.width = 6;
-    obj.edit110.grid["min-height"] = 30;
-    obj.edit110:setHorzTextAlign("center");
-    obj.edit110:setField("conNivel7");
-    obj.edit110:setType("number");
-    obj.edit110:setName("edit110");
+    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit106:setParent(obj.layout43);
+    obj.edit106.grid.role = "col";
+    obj.edit106.grid.width = 6;
+    obj.edit106.grid["min-height"] = 30;
+    obj.edit106:setHorzTextAlign("center");
+    obj.edit106:setField("conNivel7");
+    obj.edit106:setType("number");
+    obj.edit106:setName("edit106");
 
-    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit111:setParent(obj.layout43);
-    obj.edit111.grid.role = "col";
-    obj.edit111.grid.width = 6;
-    obj.edit111.grid["min-height"] = 30;
-    obj.edit111:setHorzTextAlign("center");
-    obj.edit111:setField("conNivel8");
-    obj.edit111:setType("number");
-    obj.edit111:setName("edit111");
+    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit107:setParent(obj.layout43);
+    obj.edit107.grid.role = "col";
+    obj.edit107.grid.width = 6;
+    obj.edit107.grid["min-height"] = 30;
+    obj.edit107:setHorzTextAlign("center");
+    obj.edit107:setField("conNivel8");
+    obj.edit107:setType("number");
+    obj.edit107:setName("edit107");
 
     obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.layout29);
@@ -2836,25 +2917,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout44.grid.width = 1;
     obj.layout44:setName("layout44");
 
-    obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit112:setParent(obj.layout44);
-    obj.edit112.grid.role = "col";
-    obj.edit112.grid.width = 6;
-    obj.edit112.grid["min-height"] = 30;
-    obj.edit112:setHorzTextAlign("center");
-    obj.edit112:setField("conNivel9");
-    obj.edit112:setType("number");
-    obj.edit112:setName("edit112");
+    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit108:setParent(obj.layout44);
+    obj.edit108.grid.role = "col";
+    obj.edit108.grid.width = 6;
+    obj.edit108.grid["min-height"] = 30;
+    obj.edit108:setHorzTextAlign("center");
+    obj.edit108:setField("conNivel9");
+    obj.edit108:setType("number");
+    obj.edit108:setName("edit108");
 
-    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit113:setParent(obj.layout44);
-    obj.edit113.grid.role = "col";
-    obj.edit113.grid.width = 6;
-    obj.edit113.grid["min-height"] = 30;
-    obj.edit113:setHorzTextAlign("center");
-    obj.edit113:setField("conNivel10");
-    obj.edit113:setType("number");
-    obj.edit113:setName("edit113");
+    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit109:setParent(obj.layout44);
+    obj.edit109.grid.role = "col";
+    obj.edit109.grid.width = 6;
+    obj.edit109.grid["min-height"] = 30;
+    obj.edit109:setHorzTextAlign("center");
+    obj.edit109:setField("conNivel10");
+    obj.edit109:setType("number");
+    obj.edit109:setName("edit109");
 
     obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.layout29);
@@ -2863,25 +2944,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout45.grid.width = 1;
     obj.layout45:setName("layout45");
 
-    obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit114:setParent(obj.layout45);
-    obj.edit114.grid.role = "col";
-    obj.edit114.grid.width = 6;
-    obj.edit114.grid["min-height"] = 30;
-    obj.edit114:setHorzTextAlign("center");
-    obj.edit114:setField("conNivel11");
-    obj.edit114:setType("number");
-    obj.edit114:setName("edit114");
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit110:setParent(obj.layout45);
+    obj.edit110.grid.role = "col";
+    obj.edit110.grid.width = 6;
+    obj.edit110.grid["min-height"] = 30;
+    obj.edit110:setHorzTextAlign("center");
+    obj.edit110:setField("conNivel11");
+    obj.edit110:setType("number");
+    obj.edit110:setName("edit110");
 
-    obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit115:setParent(obj.layout45);
-    obj.edit115.grid.role = "col";
-    obj.edit115.grid.width = 6;
-    obj.edit115.grid["min-height"] = 30;
-    obj.edit115:setHorzTextAlign("center");
-    obj.edit115:setField("conNivel12");
-    obj.edit115:setType("number");
-    obj.edit115:setName("edit115");
+    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit111:setParent(obj.layout45);
+    obj.edit111.grid.role = "col";
+    obj.edit111.grid.width = 6;
+    obj.edit111.grid["min-height"] = 30;
+    obj.edit111:setHorzTextAlign("center");
+    obj.edit111:setField("conNivel12");
+    obj.edit111:setType("number");
+    obj.edit111:setName("edit111");
 
     obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.layout29);
@@ -2890,25 +2971,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout46.grid.width = 1;
     obj.layout46:setName("layout46");
 
-    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit116:setParent(obj.layout46);
-    obj.edit116.grid.role = "col";
-    obj.edit116.grid.width = 6;
-    obj.edit116.grid["min-height"] = 30;
-    obj.edit116:setHorzTextAlign("center");
-    obj.edit116:setField("conNivel13");
-    obj.edit116:setType("number");
-    obj.edit116:setName("edit116");
+    obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit112:setParent(obj.layout46);
+    obj.edit112.grid.role = "col";
+    obj.edit112.grid.width = 6;
+    obj.edit112.grid["min-height"] = 30;
+    obj.edit112:setHorzTextAlign("center");
+    obj.edit112:setField("conNivel13");
+    obj.edit112:setType("number");
+    obj.edit112:setName("edit112");
 
-    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit117:setParent(obj.layout46);
-    obj.edit117.grid.role = "col";
-    obj.edit117.grid.width = 6;
-    obj.edit117.grid["min-height"] = 30;
-    obj.edit117:setHorzTextAlign("center");
-    obj.edit117:setField("conNivel14");
-    obj.edit117:setType("number");
-    obj.edit117:setName("edit117");
+    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit113:setParent(obj.layout46);
+    obj.edit113.grid.role = "col";
+    obj.edit113.grid.width = 6;
+    obj.edit113.grid["min-height"] = 30;
+    obj.edit113:setHorzTextAlign("center");
+    obj.edit113:setField("conNivel14");
+    obj.edit113:setType("number");
+    obj.edit113:setName("edit113");
 
     obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout29);
@@ -2917,25 +2998,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout47.grid.width = 1;
     obj.layout47:setName("layout47");
 
-    obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit118:setParent(obj.layout47);
-    obj.edit118.grid.role = "col";
-    obj.edit118.grid.width = 6;
-    obj.edit118.grid["min-height"] = 30;
-    obj.edit118:setHorzTextAlign("center");
-    obj.edit118:setField("conNivel15");
-    obj.edit118:setType("number");
-    obj.edit118:setName("edit118");
+    obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit114:setParent(obj.layout47);
+    obj.edit114.grid.role = "col";
+    obj.edit114.grid.width = 6;
+    obj.edit114.grid["min-height"] = 30;
+    obj.edit114:setHorzTextAlign("center");
+    obj.edit114:setField("conNivel15");
+    obj.edit114:setType("number");
+    obj.edit114:setName("edit114");
 
-    obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit119:setParent(obj.layout47);
-    obj.edit119.grid.role = "col";
-    obj.edit119.grid.width = 6;
-    obj.edit119.grid["min-height"] = 30;
-    obj.edit119:setHorzTextAlign("center");
-    obj.edit119:setField("conNivel16");
-    obj.edit119:setType("number");
-    obj.edit119:setName("edit119");
+    obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit115:setParent(obj.layout47);
+    obj.edit115.grid.role = "col";
+    obj.edit115.grid.width = 6;
+    obj.edit115.grid["min-height"] = 30;
+    obj.edit115:setHorzTextAlign("center");
+    obj.edit115:setField("conNivel16");
+    obj.edit115:setType("number");
+    obj.edit115:setName("edit115");
 
     obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.layout29);
@@ -2944,25 +3025,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout48.grid.width = 1;
     obj.layout48:setName("layout48");
 
-    obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit120:setParent(obj.layout48);
-    obj.edit120.grid.role = "col";
-    obj.edit120.grid.width = 6;
-    obj.edit120.grid["min-height"] = 30;
-    obj.edit120:setHorzTextAlign("center");
-    obj.edit120:setField("conNivel17");
-    obj.edit120:setType("number");
-    obj.edit120:setName("edit120");
+    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit116:setParent(obj.layout48);
+    obj.edit116.grid.role = "col";
+    obj.edit116.grid.width = 6;
+    obj.edit116.grid["min-height"] = 30;
+    obj.edit116:setHorzTextAlign("center");
+    obj.edit116:setField("conNivel17");
+    obj.edit116:setType("number");
+    obj.edit116:setName("edit116");
 
-    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit121:setParent(obj.layout48);
-    obj.edit121.grid.role = "col";
-    obj.edit121.grid.width = 6;
-    obj.edit121.grid["min-height"] = 30;
-    obj.edit121:setHorzTextAlign("center");
-    obj.edit121:setField("conNivel18");
-    obj.edit121:setType("number");
-    obj.edit121:setName("edit121");
+    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit117:setParent(obj.layout48);
+    obj.edit117.grid.role = "col";
+    obj.edit117.grid.width = 6;
+    obj.edit117.grid["min-height"] = 30;
+    obj.edit117:setHorzTextAlign("center");
+    obj.edit117:setField("conNivel18");
+    obj.edit117:setType("number");
+    obj.edit117:setName("edit117");
 
     obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.layout29);
@@ -2971,37 +3052,37 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout49.grid.width = 1;
     obj.layout49:setName("layout49");
 
-    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit122:setParent(obj.layout49);
-    obj.edit122.grid.role = "col";
-    obj.edit122.grid.width = 6;
-    obj.edit122.grid["min-height"] = 30;
-    obj.edit122:setHorzTextAlign("center");
-    obj.edit122:setField("conNivel19");
-    obj.edit122:setType("number");
-    obj.edit122:setName("edit122");
+    obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit118:setParent(obj.layout49);
+    obj.edit118.grid.role = "col";
+    obj.edit118.grid.width = 6;
+    obj.edit118.grid["min-height"] = 30;
+    obj.edit118:setHorzTextAlign("center");
+    obj.edit118:setField("conNivel19");
+    obj.edit118:setType("number");
+    obj.edit118:setName("edit118");
 
-    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit123:setParent(obj.layout49);
-    obj.edit123.grid.role = "col";
-    obj.edit123.grid.width = 6;
-    obj.edit123.grid["min-height"] = 30;
-    obj.edit123:setHorzTextAlign("center");
-    obj.edit123:setField("conNivel20");
-    obj.edit123:setType("number");
-    obj.edit123:setName("edit123");
+    obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit119:setParent(obj.layout49);
+    obj.edit119.grid.role = "col";
+    obj.edit119.grid.width = 6;
+    obj.edit119.grid["min-height"] = 30;
+    obj.edit119:setHorzTextAlign("center");
+    obj.edit119:setField("conNivel20");
+    obj.edit119:setType("number");
+    obj.edit119:setName("edit119");
 
-    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit124:setParent(obj.layout29);
-    obj.edit124:setField("conNivelTotal");
-    obj.edit124.grid.role = "col";
-    obj.edit124.grid.width = 1;
-    obj.edit124.grid["min-height"] = 15;
-    obj.edit124:setHorzTextAlign("center");
-    obj.edit124:setReadOnly(true);
-    obj.edit124:setCanFocus(false);
-    obj.edit124:setCursor("default");
-    obj.edit124:setName("edit124");
+    obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit120:setParent(obj.layout29);
+    obj.edit120:setField("conNivelTotal");
+    obj.edit120.grid.role = "col";
+    obj.edit120.grid.width = 1;
+    obj.edit120.grid["min-height"] = 15;
+    obj.edit120:setHorzTextAlign("center");
+    obj.edit120:setReadOnly(true);
+    obj.edit120:setCanFocus(false);
+    obj.edit120:setCursor("default");
+    obj.edit120:setName("edit120");
 
     obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.scrollBox2);
@@ -3021,14 +3102,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout50.grid.role = "row";
     obj.layout50:setName("layout50");
 
-    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label95:setParent(obj.layout50);
-    obj.label95:setText("Força");
-    obj.label95.grid.role = "col";
-    obj.label95.grid.width = 1;
-    obj.label95.grid["min-height"] = 20;
-    obj.label95:setHorzTextAlign("center");
-    obj.label95:setName("label95");
+    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label94:setParent(obj.layout50);
+    obj.label94:setText("Força");
+    obj.label94.grid.role = "col";
+    obj.label94.grid.width = 1;
+    obj.label94.grid["min-height"] = 20;
+    obj.label94:setHorzTextAlign("center");
+    obj.label94:setName("label94");
 
     obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.layout50);
@@ -3037,23 +3118,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout51.grid.width = 1;
     obj.layout51:setName("layout51");
 
+    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label95:setParent(obj.layout51);
+    obj.label95:setText("2");
+    obj.label95.grid.role = "col";
+    obj.label95.grid.width = 6;
+    obj.label95.grid["min-height"] = 15;
+    obj.label95:setHorzTextAlign("center");
+    obj.label95:setName("label95");
+
     obj.label96 = GUI.fromHandle(_obj_newObject("label"));
     obj.label96:setParent(obj.layout51);
-    obj.label96:setText("2");
+    obj.label96:setText("3");
     obj.label96.grid.role = "col";
     obj.label96.grid.width = 6;
     obj.label96.grid["min-height"] = 15;
     obj.label96:setHorzTextAlign("center");
     obj.label96:setName("label96");
-
-    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label97:setParent(obj.layout51);
-    obj.label97:setText("3");
-    obj.label97.grid.role = "col";
-    obj.label97.grid.width = 6;
-    obj.label97.grid["min-height"] = 15;
-    obj.label97:setHorzTextAlign("center");
-    obj.label97:setName("label97");
 
     obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.layout50);
@@ -3062,23 +3143,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout52.grid.width = 1;
     obj.layout52:setName("layout52");
 
+    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label97:setParent(obj.layout52);
+    obj.label97:setText("4");
+    obj.label97.grid.role = "col";
+    obj.label97.grid.width = 6;
+    obj.label97.grid["min-height"] = 15;
+    obj.label97:setHorzTextAlign("center");
+    obj.label97:setName("label97");
+
     obj.label98 = GUI.fromHandle(_obj_newObject("label"));
     obj.label98:setParent(obj.layout52);
-    obj.label98:setText("4");
+    obj.label98:setText("5");
     obj.label98.grid.role = "col";
     obj.label98.grid.width = 6;
     obj.label98.grid["min-height"] = 15;
     obj.label98:setHorzTextAlign("center");
     obj.label98:setName("label98");
-
-    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label99:setParent(obj.layout52);
-    obj.label99:setText("5");
-    obj.label99.grid.role = "col";
-    obj.label99.grid.width = 6;
-    obj.label99.grid["min-height"] = 15;
-    obj.label99:setHorzTextAlign("center");
-    obj.label99:setName("label99");
 
     obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.layout50);
@@ -3087,23 +3168,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout53.grid.width = 1;
     obj.layout53:setName("layout53");
 
+    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label99:setParent(obj.layout53);
+    obj.label99:setText("6");
+    obj.label99.grid.role = "col";
+    obj.label99.grid.width = 6;
+    obj.label99.grid["min-height"] = 15;
+    obj.label99:setHorzTextAlign("center");
+    obj.label99:setName("label99");
+
     obj.label100 = GUI.fromHandle(_obj_newObject("label"));
     obj.label100:setParent(obj.layout53);
-    obj.label100:setText("6");
+    obj.label100:setText("7");
     obj.label100.grid.role = "col";
     obj.label100.grid.width = 6;
     obj.label100.grid["min-height"] = 15;
     obj.label100:setHorzTextAlign("center");
     obj.label100:setName("label100");
-
-    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label101:setParent(obj.layout53);
-    obj.label101:setText("7");
-    obj.label101.grid.role = "col";
-    obj.label101.grid.width = 6;
-    obj.label101.grid["min-height"] = 15;
-    obj.label101:setHorzTextAlign("center");
-    obj.label101:setName("label101");
 
     obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.layout50);
@@ -3112,23 +3193,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout54.grid.width = 1;
     obj.layout54:setName("layout54");
 
+    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label101:setParent(obj.layout54);
+    obj.label101:setText("8");
+    obj.label101.grid.role = "col";
+    obj.label101.grid.width = 6;
+    obj.label101.grid["min-height"] = 15;
+    obj.label101:setHorzTextAlign("center");
+    obj.label101:setName("label101");
+
     obj.label102 = GUI.fromHandle(_obj_newObject("label"));
     obj.label102:setParent(obj.layout54);
-    obj.label102:setText("8");
+    obj.label102:setText("9");
     obj.label102.grid.role = "col";
     obj.label102.grid.width = 6;
     obj.label102.grid["min-height"] = 15;
     obj.label102:setHorzTextAlign("center");
     obj.label102:setName("label102");
-
-    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label103:setParent(obj.layout54);
-    obj.label103:setText("9");
-    obj.label103.grid.role = "col";
-    obj.label103.grid.width = 6;
-    obj.label103.grid["min-height"] = 15;
-    obj.label103:setHorzTextAlign("center");
-    obj.label103:setName("label103");
 
     obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.layout50);
@@ -3137,23 +3218,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout55.grid.width = 1;
     obj.layout55:setName("layout55");
 
+    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label103:setParent(obj.layout55);
+    obj.label103:setText("10");
+    obj.label103.grid.role = "col";
+    obj.label103.grid.width = 6;
+    obj.label103.grid["min-height"] = 15;
+    obj.label103:setHorzTextAlign("center");
+    obj.label103:setName("label103");
+
     obj.label104 = GUI.fromHandle(_obj_newObject("label"));
     obj.label104:setParent(obj.layout55);
-    obj.label104:setText("10");
+    obj.label104:setText("11");
     obj.label104.grid.role = "col";
     obj.label104.grid.width = 6;
     obj.label104.grid["min-height"] = 15;
     obj.label104:setHorzTextAlign("center");
     obj.label104:setName("label104");
-
-    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label105:setParent(obj.layout55);
-    obj.label105:setText("11");
-    obj.label105.grid.role = "col";
-    obj.label105.grid.width = 6;
-    obj.label105.grid["min-height"] = 15;
-    obj.label105:setHorzTextAlign("center");
-    obj.label105:setName("label105");
 
     obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.layout50);
@@ -3162,23 +3243,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout56.grid.width = 1;
     obj.layout56:setName("layout56");
 
+    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label105:setParent(obj.layout56);
+    obj.label105:setText("12");
+    obj.label105.grid.role = "col";
+    obj.label105.grid.width = 6;
+    obj.label105.grid["min-height"] = 15;
+    obj.label105:setHorzTextAlign("center");
+    obj.label105:setName("label105");
+
     obj.label106 = GUI.fromHandle(_obj_newObject("label"));
     obj.label106:setParent(obj.layout56);
-    obj.label106:setText("12");
+    obj.label106:setText("13");
     obj.label106.grid.role = "col";
     obj.label106.grid.width = 6;
     obj.label106.grid["min-height"] = 15;
     obj.label106:setHorzTextAlign("center");
     obj.label106:setName("label106");
-
-    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label107:setParent(obj.layout56);
-    obj.label107:setText("13");
-    obj.label107.grid.role = "col";
-    obj.label107.grid.width = 6;
-    obj.label107.grid["min-height"] = 15;
-    obj.label107:setHorzTextAlign("center");
-    obj.label107:setName("label107");
 
     obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.layout50);
@@ -3187,23 +3268,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout57.grid.width = 1;
     obj.layout57:setName("layout57");
 
+    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label107:setParent(obj.layout57);
+    obj.label107:setText("14");
+    obj.label107.grid.role = "col";
+    obj.label107.grid.width = 6;
+    obj.label107.grid["min-height"] = 15;
+    obj.label107:setHorzTextAlign("center");
+    obj.label107:setName("label107");
+
     obj.label108 = GUI.fromHandle(_obj_newObject("label"));
     obj.label108:setParent(obj.layout57);
-    obj.label108:setText("14");
+    obj.label108:setText("15");
     obj.label108.grid.role = "col";
     obj.label108.grid.width = 6;
     obj.label108.grid["min-height"] = 15;
     obj.label108:setHorzTextAlign("center");
     obj.label108:setName("label108");
-
-    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label109:setParent(obj.layout57);
-    obj.label109:setText("15");
-    obj.label109.grid.role = "col";
-    obj.label109.grid.width = 6;
-    obj.label109.grid["min-height"] = 15;
-    obj.label109:setHorzTextAlign("center");
-    obj.label109:setName("label109");
 
     obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.layout50);
@@ -3212,23 +3293,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout58.grid.width = 1;
     obj.layout58:setName("layout58");
 
+    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label109:setParent(obj.layout58);
+    obj.label109:setText("16");
+    obj.label109.grid.role = "col";
+    obj.label109.grid.width = 6;
+    obj.label109.grid["min-height"] = 15;
+    obj.label109:setHorzTextAlign("center");
+    obj.label109:setName("label109");
+
     obj.label110 = GUI.fromHandle(_obj_newObject("label"));
     obj.label110:setParent(obj.layout58);
-    obj.label110:setText("16");
+    obj.label110:setText("17");
     obj.label110.grid.role = "col";
     obj.label110.grid.width = 6;
     obj.label110.grid["min-height"] = 15;
     obj.label110:setHorzTextAlign("center");
     obj.label110:setName("label110");
-
-    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label111:setParent(obj.layout58);
-    obj.label111:setText("17");
-    obj.label111.grid.role = "col";
-    obj.label111.grid.width = 6;
-    obj.label111.grid["min-height"] = 15;
-    obj.label111:setHorzTextAlign("center");
-    obj.label111:setName("label111");
 
     obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.layout50);
@@ -3237,23 +3318,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout59.grid.width = 1;
     obj.layout59:setName("layout59");
 
+    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label111:setParent(obj.layout59);
+    obj.label111:setText("18");
+    obj.label111.grid.role = "col";
+    obj.label111.grid.width = 6;
+    obj.label111.grid["min-height"] = 15;
+    obj.label111:setHorzTextAlign("center");
+    obj.label111:setName("label111");
+
     obj.label112 = GUI.fromHandle(_obj_newObject("label"));
     obj.label112:setParent(obj.layout59);
-    obj.label112:setText("18");
+    obj.label112:setText("19");
     obj.label112.grid.role = "col";
     obj.label112.grid.width = 6;
     obj.label112.grid["min-height"] = 15;
     obj.label112:setHorzTextAlign("center");
     obj.label112:setName("label112");
-
-    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label113:setParent(obj.layout59);
-    obj.label113:setText("19");
-    obj.label113.grid.role = "col";
-    obj.label113.grid.width = 6;
-    obj.label113.grid["min-height"] = 15;
-    obj.label113:setHorzTextAlign("center");
-    obj.label113:setName("label113");
 
     obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.layout50);
@@ -3262,9 +3343,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout60.grid.width = 1;
     obj.layout60:setName("layout60");
 
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label113:setParent(obj.layout60);
+    obj.label113:setText("20");
+    obj.label113.grid.role = "col";
+    obj.label113.grid.width = 6;
+    obj.label113.grid["min-height"] = 15;
+    obj.label113:setHorzTextAlign("center");
+    obj.label113:setName("label113");
+
     obj.label114 = GUI.fromHandle(_obj_newObject("label"));
     obj.label114:setParent(obj.layout60);
-    obj.label114:setText("20");
+    obj.label114:setText("20+");
     obj.label114.grid.role = "col";
     obj.label114.grid.width = 6;
     obj.label114.grid["min-height"] = 15;
@@ -3272,31 +3362,22 @@ local function constructNew_frmFichaDePersonagem()
     obj.label114:setName("label114");
 
     obj.label115 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label115:setParent(obj.layout60);
-    obj.label115:setText("20+");
+    obj.label115:setParent(obj.layout50);
+    obj.label115:setText("Total");
     obj.label115.grid.role = "col";
-    obj.label115.grid.width = 6;
+    obj.label115.grid.width = 1;
     obj.label115.grid["min-height"] = 15;
     obj.label115:setHorzTextAlign("center");
     obj.label115:setName("label115");
 
     obj.label116 = GUI.fromHandle(_obj_newObject("label"));
     obj.label116:setParent(obj.layout50);
-    obj.label116:setText("Total");
+    obj.label116:setText("");
     obj.label116.grid.role = "col";
     obj.label116.grid.width = 1;
     obj.label116.grid["min-height"] = 15;
     obj.label116:setHorzTextAlign("center");
     obj.label116:setName("label116");
-
-    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label117:setParent(obj.layout50);
-    obj.label117:setText("");
-    obj.label117.grid.role = "col";
-    obj.label117.grid.width = 1;
-    obj.label117.grid["min-height"] = 15;
-    obj.label117:setHorzTextAlign("center");
-    obj.label117:setName("label117");
 
     obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.layout50);
@@ -3305,25 +3386,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout61.grid.width = 1;
     obj.layout61:setName("layout61");
 
-    obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit125:setParent(obj.layout61);
-    obj.edit125.grid.role = "col";
-    obj.edit125.grid.width = 6;
-    obj.edit125.grid["min-height"] = 30;
-    obj.edit125:setHorzTextAlign("center");
-    obj.edit125:setField("forNivel1");
-    obj.edit125:setType("number");
-    obj.edit125:setName("edit125");
+    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit121:setParent(obj.layout61);
+    obj.edit121.grid.role = "col";
+    obj.edit121.grid.width = 6;
+    obj.edit121.grid["min-height"] = 30;
+    obj.edit121:setHorzTextAlign("center");
+    obj.edit121:setField("forNivel1");
+    obj.edit121:setType("number");
+    obj.edit121:setName("edit121");
 
-    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit126:setParent(obj.layout61);
-    obj.edit126.grid.role = "col";
-    obj.edit126.grid.width = 6;
-    obj.edit126.grid["min-height"] = 30;
-    obj.edit126:setHorzTextAlign("center");
-    obj.edit126:setField("forNivel2");
-    obj.edit126:setType("number");
-    obj.edit126:setName("edit126");
+    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit122:setParent(obj.layout61);
+    obj.edit122.grid.role = "col";
+    obj.edit122.grid.width = 6;
+    obj.edit122.grid["min-height"] = 30;
+    obj.edit122:setHorzTextAlign("center");
+    obj.edit122:setField("forNivel2");
+    obj.edit122:setType("number");
+    obj.edit122:setName("edit122");
 
     obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.layout50);
@@ -3332,25 +3413,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout62.grid.width = 1;
     obj.layout62:setName("layout62");
 
-    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit127:setParent(obj.layout62);
-    obj.edit127.grid.role = "col";
-    obj.edit127.grid.width = 6;
-    obj.edit127.grid["min-height"] = 30;
-    obj.edit127:setHorzTextAlign("center");
-    obj.edit127:setField("forNivel3");
-    obj.edit127:setType("number");
-    obj.edit127:setName("edit127");
+    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit123:setParent(obj.layout62);
+    obj.edit123.grid.role = "col";
+    obj.edit123.grid.width = 6;
+    obj.edit123.grid["min-height"] = 30;
+    obj.edit123:setHorzTextAlign("center");
+    obj.edit123:setField("forNivel3");
+    obj.edit123:setType("number");
+    obj.edit123:setName("edit123");
 
-    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit128:setParent(obj.layout62);
-    obj.edit128.grid.role = "col";
-    obj.edit128.grid.width = 6;
-    obj.edit128.grid["min-height"] = 30;
-    obj.edit128:setHorzTextAlign("center");
-    obj.edit128:setField("forNivel4");
-    obj.edit128:setType("number");
-    obj.edit128:setName("edit128");
+    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit124:setParent(obj.layout62);
+    obj.edit124.grid.role = "col";
+    obj.edit124.grid.width = 6;
+    obj.edit124.grid["min-height"] = 30;
+    obj.edit124:setHorzTextAlign("center");
+    obj.edit124:setField("forNivel4");
+    obj.edit124:setType("number");
+    obj.edit124:setName("edit124");
 
     obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.layout50);
@@ -3359,25 +3440,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout63.grid.width = 1;
     obj.layout63:setName("layout63");
 
-    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit129:setParent(obj.layout63);
-    obj.edit129.grid.role = "col";
-    obj.edit129.grid.width = 6;
-    obj.edit129.grid["min-height"] = 30;
-    obj.edit129:setHorzTextAlign("center");
-    obj.edit129:setField("forNivel5");
-    obj.edit129:setType("number");
-    obj.edit129:setName("edit129");
+    obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit125:setParent(obj.layout63);
+    obj.edit125.grid.role = "col";
+    obj.edit125.grid.width = 6;
+    obj.edit125.grid["min-height"] = 30;
+    obj.edit125:setHorzTextAlign("center");
+    obj.edit125:setField("forNivel5");
+    obj.edit125:setType("number");
+    obj.edit125:setName("edit125");
 
-    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit130:setParent(obj.layout63);
-    obj.edit130.grid.role = "col";
-    obj.edit130.grid.width = 6;
-    obj.edit130.grid["min-height"] = 30;
-    obj.edit130:setHorzTextAlign("center");
-    obj.edit130:setField("forNivel6");
-    obj.edit130:setType("number");
-    obj.edit130:setName("edit130");
+    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit126:setParent(obj.layout63);
+    obj.edit126.grid.role = "col";
+    obj.edit126.grid.width = 6;
+    obj.edit126.grid["min-height"] = 30;
+    obj.edit126:setHorzTextAlign("center");
+    obj.edit126:setField("forNivel6");
+    obj.edit126:setType("number");
+    obj.edit126:setName("edit126");
 
     obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layout50);
@@ -3386,25 +3467,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout64.grid.width = 1;
     obj.layout64:setName("layout64");
 
-    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit131:setParent(obj.layout64);
-    obj.edit131.grid.role = "col";
-    obj.edit131.grid.width = 6;
-    obj.edit131.grid["min-height"] = 30;
-    obj.edit131:setHorzTextAlign("center");
-    obj.edit131:setField("forNivel7");
-    obj.edit131:setType("number");
-    obj.edit131:setName("edit131");
+    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit127:setParent(obj.layout64);
+    obj.edit127.grid.role = "col";
+    obj.edit127.grid.width = 6;
+    obj.edit127.grid["min-height"] = 30;
+    obj.edit127:setHorzTextAlign("center");
+    obj.edit127:setField("forNivel7");
+    obj.edit127:setType("number");
+    obj.edit127:setName("edit127");
 
-    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit132:setParent(obj.layout64);
-    obj.edit132.grid.role = "col";
-    obj.edit132.grid.width = 6;
-    obj.edit132.grid["min-height"] = 30;
-    obj.edit132:setHorzTextAlign("center");
-    obj.edit132:setField("forNivel8");
-    obj.edit132:setType("number");
-    obj.edit132:setName("edit132");
+    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit128:setParent(obj.layout64);
+    obj.edit128.grid.role = "col";
+    obj.edit128.grid.width = 6;
+    obj.edit128.grid["min-height"] = 30;
+    obj.edit128:setHorzTextAlign("center");
+    obj.edit128:setField("forNivel8");
+    obj.edit128:setType("number");
+    obj.edit128:setName("edit128");
 
     obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.layout50);
@@ -3413,25 +3494,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout65.grid.width = 1;
     obj.layout65:setName("layout65");
 
-    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit133:setParent(obj.layout65);
-    obj.edit133.grid.role = "col";
-    obj.edit133.grid.width = 6;
-    obj.edit133.grid["min-height"] = 30;
-    obj.edit133:setHorzTextAlign("center");
-    obj.edit133:setField("forNivel9");
-    obj.edit133:setType("number");
-    obj.edit133:setName("edit133");
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit129:setParent(obj.layout65);
+    obj.edit129.grid.role = "col";
+    obj.edit129.grid.width = 6;
+    obj.edit129.grid["min-height"] = 30;
+    obj.edit129:setHorzTextAlign("center");
+    obj.edit129:setField("forNivel9");
+    obj.edit129:setType("number");
+    obj.edit129:setName("edit129");
 
-    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit134:setParent(obj.layout65);
-    obj.edit134.grid.role = "col";
-    obj.edit134.grid.width = 6;
-    obj.edit134.grid["min-height"] = 30;
-    obj.edit134:setHorzTextAlign("center");
-    obj.edit134:setField("forNivel10");
-    obj.edit134:setType("number");
-    obj.edit134:setName("edit134");
+    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit130:setParent(obj.layout65);
+    obj.edit130.grid.role = "col";
+    obj.edit130.grid.width = 6;
+    obj.edit130.grid["min-height"] = 30;
+    obj.edit130:setHorzTextAlign("center");
+    obj.edit130:setField("forNivel10");
+    obj.edit130:setType("number");
+    obj.edit130:setName("edit130");
 
     obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.layout50);
@@ -3440,25 +3521,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout66.grid.width = 1;
     obj.layout66:setName("layout66");
 
-    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit135:setParent(obj.layout66);
-    obj.edit135.grid.role = "col";
-    obj.edit135.grid.width = 6;
-    obj.edit135.grid["min-height"] = 30;
-    obj.edit135:setHorzTextAlign("center");
-    obj.edit135:setField("forNivel11");
-    obj.edit135:setType("number");
-    obj.edit135:setName("edit135");
+    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit131:setParent(obj.layout66);
+    obj.edit131.grid.role = "col";
+    obj.edit131.grid.width = 6;
+    obj.edit131.grid["min-height"] = 30;
+    obj.edit131:setHorzTextAlign("center");
+    obj.edit131:setField("forNivel11");
+    obj.edit131:setType("number");
+    obj.edit131:setName("edit131");
 
-    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit136:setParent(obj.layout66);
-    obj.edit136.grid.role = "col";
-    obj.edit136.grid.width = 6;
-    obj.edit136.grid["min-height"] = 30;
-    obj.edit136:setHorzTextAlign("center");
-    obj.edit136:setField("forNivel12");
-    obj.edit136:setType("number");
-    obj.edit136:setName("edit136");
+    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit132:setParent(obj.layout66);
+    obj.edit132.grid.role = "col";
+    obj.edit132.grid.width = 6;
+    obj.edit132.grid["min-height"] = 30;
+    obj.edit132:setHorzTextAlign("center");
+    obj.edit132:setField("forNivel12");
+    obj.edit132:setType("number");
+    obj.edit132:setName("edit132");
 
     obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.layout50);
@@ -3467,25 +3548,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout67.grid.width = 1;
     obj.layout67:setName("layout67");
 
-    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit137:setParent(obj.layout67);
-    obj.edit137.grid.role = "col";
-    obj.edit137.grid.width = 6;
-    obj.edit137.grid["min-height"] = 30;
-    obj.edit137:setHorzTextAlign("center");
-    obj.edit137:setField("forNivel13");
-    obj.edit137:setType("number");
-    obj.edit137:setName("edit137");
+    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit133:setParent(obj.layout67);
+    obj.edit133.grid.role = "col";
+    obj.edit133.grid.width = 6;
+    obj.edit133.grid["min-height"] = 30;
+    obj.edit133:setHorzTextAlign("center");
+    obj.edit133:setField("forNivel13");
+    obj.edit133:setType("number");
+    obj.edit133:setName("edit133");
 
-    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit138:setParent(obj.layout67);
-    obj.edit138.grid.role = "col";
-    obj.edit138.grid.width = 6;
-    obj.edit138.grid["min-height"] = 30;
-    obj.edit138:setHorzTextAlign("center");
-    obj.edit138:setField("forNivel14");
-    obj.edit138:setType("number");
-    obj.edit138:setName("edit138");
+    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit134:setParent(obj.layout67);
+    obj.edit134.grid.role = "col";
+    obj.edit134.grid.width = 6;
+    obj.edit134.grid["min-height"] = 30;
+    obj.edit134:setHorzTextAlign("center");
+    obj.edit134:setField("forNivel14");
+    obj.edit134:setType("number");
+    obj.edit134:setName("edit134");
 
     obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.layout50);
@@ -3494,25 +3575,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout68.grid.width = 1;
     obj.layout68:setName("layout68");
 
-    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit139:setParent(obj.layout68);
-    obj.edit139.grid.role = "col";
-    obj.edit139.grid.width = 6;
-    obj.edit139.grid["min-height"] = 30;
-    obj.edit139:setHorzTextAlign("center");
-    obj.edit139:setField("forNivel15");
-    obj.edit139:setType("number");
-    obj.edit139:setName("edit139");
+    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit135:setParent(obj.layout68);
+    obj.edit135.grid.role = "col";
+    obj.edit135.grid.width = 6;
+    obj.edit135.grid["min-height"] = 30;
+    obj.edit135:setHorzTextAlign("center");
+    obj.edit135:setField("forNivel15");
+    obj.edit135:setType("number");
+    obj.edit135:setName("edit135");
 
-    obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit140:setParent(obj.layout68);
-    obj.edit140.grid.role = "col";
-    obj.edit140.grid.width = 6;
-    obj.edit140.grid["min-height"] = 30;
-    obj.edit140:setHorzTextAlign("center");
-    obj.edit140:setField("forNivel16");
-    obj.edit140:setType("number");
-    obj.edit140:setName("edit140");
+    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit136:setParent(obj.layout68);
+    obj.edit136.grid.role = "col";
+    obj.edit136.grid.width = 6;
+    obj.edit136.grid["min-height"] = 30;
+    obj.edit136:setHorzTextAlign("center");
+    obj.edit136:setField("forNivel16");
+    obj.edit136:setType("number");
+    obj.edit136:setName("edit136");
 
     obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.layout50);
@@ -3521,25 +3602,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout69.grid.width = 1;
     obj.layout69:setName("layout69");
 
-    obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit141:setParent(obj.layout69);
-    obj.edit141.grid.role = "col";
-    obj.edit141.grid.width = 6;
-    obj.edit141.grid["min-height"] = 30;
-    obj.edit141:setHorzTextAlign("center");
-    obj.edit141:setField("forNivel17");
-    obj.edit141:setType("number");
-    obj.edit141:setName("edit141");
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit137:setParent(obj.layout69);
+    obj.edit137.grid.role = "col";
+    obj.edit137.grid.width = 6;
+    obj.edit137.grid["min-height"] = 30;
+    obj.edit137:setHorzTextAlign("center");
+    obj.edit137:setField("forNivel17");
+    obj.edit137:setType("number");
+    obj.edit137:setName("edit137");
 
-    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit142:setParent(obj.layout69);
-    obj.edit142.grid.role = "col";
-    obj.edit142.grid.width = 6;
-    obj.edit142.grid["min-height"] = 30;
-    obj.edit142:setHorzTextAlign("center");
-    obj.edit142:setField("forNivel18");
-    obj.edit142:setType("number");
-    obj.edit142:setName("edit142");
+    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit138:setParent(obj.layout69);
+    obj.edit138.grid.role = "col";
+    obj.edit138.grid.width = 6;
+    obj.edit138.grid["min-height"] = 30;
+    obj.edit138:setHorzTextAlign("center");
+    obj.edit138:setField("forNivel18");
+    obj.edit138:setType("number");
+    obj.edit138:setName("edit138");
 
     obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.layout50);
@@ -3548,37 +3629,37 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout70.grid.width = 1;
     obj.layout70:setName("layout70");
 
-    obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit143:setParent(obj.layout70);
-    obj.edit143.grid.role = "col";
-    obj.edit143.grid.width = 6;
-    obj.edit143.grid["min-height"] = 30;
-    obj.edit143:setHorzTextAlign("center");
-    obj.edit143:setField("forNivel19");
-    obj.edit143:setType("number");
-    obj.edit143:setName("edit143");
+    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit139:setParent(obj.layout70);
+    obj.edit139.grid.role = "col";
+    obj.edit139.grid.width = 6;
+    obj.edit139.grid["min-height"] = 30;
+    obj.edit139:setHorzTextAlign("center");
+    obj.edit139:setField("forNivel19");
+    obj.edit139:setType("number");
+    obj.edit139:setName("edit139");
 
-    obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit144:setParent(obj.layout70);
-    obj.edit144.grid.role = "col";
-    obj.edit144.grid.width = 6;
-    obj.edit144.grid["min-height"] = 30;
-    obj.edit144:setHorzTextAlign("center");
-    obj.edit144:setField("forNivel20");
-    obj.edit144:setType("number");
-    obj.edit144:setName("edit144");
+    obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit140:setParent(obj.layout70);
+    obj.edit140.grid.role = "col";
+    obj.edit140.grid.width = 6;
+    obj.edit140.grid["min-height"] = 30;
+    obj.edit140:setHorzTextAlign("center");
+    obj.edit140:setField("forNivel20");
+    obj.edit140:setType("number");
+    obj.edit140:setName("edit140");
 
-    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit145:setParent(obj.layout50);
-    obj.edit145:setField("forNivelTotal");
-    obj.edit145.grid.role = "col";
-    obj.edit145.grid.width = 1;
-    obj.edit145.grid["min-height"] = 15;
-    obj.edit145:setHorzTextAlign("center");
-    obj.edit145:setReadOnly(true);
-    obj.edit145:setCanFocus(false);
-    obj.edit145:setCursor("default");
-    obj.edit145:setName("edit145");
+    obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit141:setParent(obj.layout50);
+    obj.edit141:setField("forNivelTotal");
+    obj.edit141.grid.role = "col";
+    obj.edit141.grid.width = 1;
+    obj.edit141.grid["min-height"] = 15;
+    obj.edit141:setHorzTextAlign("center");
+    obj.edit141:setReadOnly(true);
+    obj.edit141:setCanFocus(false);
+    obj.edit141:setCursor("default");
+    obj.edit141:setName("edit141");
 
     obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink26:setParent(obj.scrollBox2);
@@ -3598,14 +3679,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout71.grid.role = "row";
     obj.layout71:setName("layout71");
 
-    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label118:setParent(obj.layout71);
-    obj.label118:setText("Destreza");
-    obj.label118.grid.role = "col";
-    obj.label118.grid.width = 1;
-    obj.label118.grid["min-height"] = 20;
-    obj.label118:setHorzTextAlign("center");
-    obj.label118:setName("label118");
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label117:setParent(obj.layout71);
+    obj.label117:setText("Destreza");
+    obj.label117.grid.role = "col";
+    obj.label117.grid.width = 1;
+    obj.label117.grid["min-height"] = 20;
+    obj.label117:setHorzTextAlign("center");
+    obj.label117:setName("label117");
 
     obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.layout71);
@@ -3614,23 +3695,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout72.grid.width = 1;
     obj.layout72:setName("layout72");
 
+    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label118:setParent(obj.layout72);
+    obj.label118:setText("2");
+    obj.label118.grid.role = "col";
+    obj.label118.grid.width = 6;
+    obj.label118.grid["min-height"] = 15;
+    obj.label118:setHorzTextAlign("center");
+    obj.label118:setName("label118");
+
     obj.label119 = GUI.fromHandle(_obj_newObject("label"));
     obj.label119:setParent(obj.layout72);
-    obj.label119:setText("2");
+    obj.label119:setText("3");
     obj.label119.grid.role = "col";
     obj.label119.grid.width = 6;
     obj.label119.grid["min-height"] = 15;
     obj.label119:setHorzTextAlign("center");
     obj.label119:setName("label119");
-
-    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label120:setParent(obj.layout72);
-    obj.label120:setText("3");
-    obj.label120.grid.role = "col";
-    obj.label120.grid.width = 6;
-    obj.label120.grid["min-height"] = 15;
-    obj.label120:setHorzTextAlign("center");
-    obj.label120:setName("label120");
 
     obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.layout71);
@@ -3639,23 +3720,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout73.grid.width = 1;
     obj.layout73:setName("layout73");
 
+    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label120:setParent(obj.layout73);
+    obj.label120:setText("4");
+    obj.label120.grid.role = "col";
+    obj.label120.grid.width = 6;
+    obj.label120.grid["min-height"] = 15;
+    obj.label120:setHorzTextAlign("center");
+    obj.label120:setName("label120");
+
     obj.label121 = GUI.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout73);
-    obj.label121:setText("4");
+    obj.label121:setText("5");
     obj.label121.grid.role = "col";
     obj.label121.grid.width = 6;
     obj.label121.grid["min-height"] = 15;
     obj.label121:setHorzTextAlign("center");
     obj.label121:setName("label121");
-
-    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label122:setParent(obj.layout73);
-    obj.label122:setText("5");
-    obj.label122.grid.role = "col";
-    obj.label122.grid.width = 6;
-    obj.label122.grid["min-height"] = 15;
-    obj.label122:setHorzTextAlign("center");
-    obj.label122:setName("label122");
 
     obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.layout71);
@@ -3664,23 +3745,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout74.grid.width = 1;
     obj.layout74:setName("layout74");
 
+    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label122:setParent(obj.layout74);
+    obj.label122:setText("6");
+    obj.label122.grid.role = "col";
+    obj.label122.grid.width = 6;
+    obj.label122.grid["min-height"] = 15;
+    obj.label122:setHorzTextAlign("center");
+    obj.label122:setName("label122");
+
     obj.label123 = GUI.fromHandle(_obj_newObject("label"));
     obj.label123:setParent(obj.layout74);
-    obj.label123:setText("6");
+    obj.label123:setText("7");
     obj.label123.grid.role = "col";
     obj.label123.grid.width = 6;
     obj.label123.grid["min-height"] = 15;
     obj.label123:setHorzTextAlign("center");
     obj.label123:setName("label123");
-
-    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label124:setParent(obj.layout74);
-    obj.label124:setText("7");
-    obj.label124.grid.role = "col";
-    obj.label124.grid.width = 6;
-    obj.label124.grid["min-height"] = 15;
-    obj.label124:setHorzTextAlign("center");
-    obj.label124:setName("label124");
 
     obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.layout71);
@@ -3689,23 +3770,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout75.grid.width = 1;
     obj.layout75:setName("layout75");
 
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label124:setParent(obj.layout75);
+    obj.label124:setText("8");
+    obj.label124.grid.role = "col";
+    obj.label124.grid.width = 6;
+    obj.label124.grid["min-height"] = 15;
+    obj.label124:setHorzTextAlign("center");
+    obj.label124:setName("label124");
+
     obj.label125 = GUI.fromHandle(_obj_newObject("label"));
     obj.label125:setParent(obj.layout75);
-    obj.label125:setText("8");
+    obj.label125:setText("9");
     obj.label125.grid.role = "col";
     obj.label125.grid.width = 6;
     obj.label125.grid["min-height"] = 15;
     obj.label125:setHorzTextAlign("center");
     obj.label125:setName("label125");
-
-    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label126:setParent(obj.layout75);
-    obj.label126:setText("9");
-    obj.label126.grid.role = "col";
-    obj.label126.grid.width = 6;
-    obj.label126.grid["min-height"] = 15;
-    obj.label126:setHorzTextAlign("center");
-    obj.label126:setName("label126");
 
     obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.layout71);
@@ -3714,23 +3795,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout76.grid.width = 1;
     obj.layout76:setName("layout76");
 
+    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label126:setParent(obj.layout76);
+    obj.label126:setText("10");
+    obj.label126.grid.role = "col";
+    obj.label126.grid.width = 6;
+    obj.label126.grid["min-height"] = 15;
+    obj.label126:setHorzTextAlign("center");
+    obj.label126:setName("label126");
+
     obj.label127 = GUI.fromHandle(_obj_newObject("label"));
     obj.label127:setParent(obj.layout76);
-    obj.label127:setText("10");
+    obj.label127:setText("11");
     obj.label127.grid.role = "col";
     obj.label127.grid.width = 6;
     obj.label127.grid["min-height"] = 15;
     obj.label127:setHorzTextAlign("center");
     obj.label127:setName("label127");
-
-    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label128:setParent(obj.layout76);
-    obj.label128:setText("11");
-    obj.label128.grid.role = "col";
-    obj.label128.grid.width = 6;
-    obj.label128.grid["min-height"] = 15;
-    obj.label128:setHorzTextAlign("center");
-    obj.label128:setName("label128");
 
     obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.layout71);
@@ -3739,23 +3820,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout77.grid.width = 1;
     obj.layout77:setName("layout77");
 
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label128:setParent(obj.layout77);
+    obj.label128:setText("12");
+    obj.label128.grid.role = "col";
+    obj.label128.grid.width = 6;
+    obj.label128.grid["min-height"] = 15;
+    obj.label128:setHorzTextAlign("center");
+    obj.label128:setName("label128");
+
     obj.label129 = GUI.fromHandle(_obj_newObject("label"));
     obj.label129:setParent(obj.layout77);
-    obj.label129:setText("12");
+    obj.label129:setText("13");
     obj.label129.grid.role = "col";
     obj.label129.grid.width = 6;
     obj.label129.grid["min-height"] = 15;
     obj.label129:setHorzTextAlign("center");
     obj.label129:setName("label129");
-
-    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label130:setParent(obj.layout77);
-    obj.label130:setText("13");
-    obj.label130.grid.role = "col";
-    obj.label130.grid.width = 6;
-    obj.label130.grid["min-height"] = 15;
-    obj.label130:setHorzTextAlign("center");
-    obj.label130:setName("label130");
 
     obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.layout71);
@@ -3764,23 +3845,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout78.grid.width = 1;
     obj.layout78:setName("layout78");
 
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label130:setParent(obj.layout78);
+    obj.label130:setText("14");
+    obj.label130.grid.role = "col";
+    obj.label130.grid.width = 6;
+    obj.label130.grid["min-height"] = 15;
+    obj.label130:setHorzTextAlign("center");
+    obj.label130:setName("label130");
+
     obj.label131 = GUI.fromHandle(_obj_newObject("label"));
     obj.label131:setParent(obj.layout78);
-    obj.label131:setText("14");
+    obj.label131:setText("15");
     obj.label131.grid.role = "col";
     obj.label131.grid.width = 6;
     obj.label131.grid["min-height"] = 15;
     obj.label131:setHorzTextAlign("center");
     obj.label131:setName("label131");
-
-    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label132:setParent(obj.layout78);
-    obj.label132:setText("15");
-    obj.label132.grid.role = "col";
-    obj.label132.grid.width = 6;
-    obj.label132.grid["min-height"] = 15;
-    obj.label132:setHorzTextAlign("center");
-    obj.label132:setName("label132");
 
     obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.layout71);
@@ -3789,23 +3870,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout79.grid.width = 1;
     obj.layout79:setName("layout79");
 
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label132:setParent(obj.layout79);
+    obj.label132:setText("16");
+    obj.label132.grid.role = "col";
+    obj.label132.grid.width = 6;
+    obj.label132.grid["min-height"] = 15;
+    obj.label132:setHorzTextAlign("center");
+    obj.label132:setName("label132");
+
     obj.label133 = GUI.fromHandle(_obj_newObject("label"));
     obj.label133:setParent(obj.layout79);
-    obj.label133:setText("16");
+    obj.label133:setText("17");
     obj.label133.grid.role = "col";
     obj.label133.grid.width = 6;
     obj.label133.grid["min-height"] = 15;
     obj.label133:setHorzTextAlign("center");
     obj.label133:setName("label133");
-
-    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label134:setParent(obj.layout79);
-    obj.label134:setText("17");
-    obj.label134.grid.role = "col";
-    obj.label134.grid.width = 6;
-    obj.label134.grid["min-height"] = 15;
-    obj.label134:setHorzTextAlign("center");
-    obj.label134:setName("label134");
 
     obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.layout71);
@@ -3814,23 +3895,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout80.grid.width = 1;
     obj.layout80:setName("layout80");
 
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label134:setParent(obj.layout80);
+    obj.label134:setText("18");
+    obj.label134.grid.role = "col";
+    obj.label134.grid.width = 6;
+    obj.label134.grid["min-height"] = 15;
+    obj.label134:setHorzTextAlign("center");
+    obj.label134:setName("label134");
+
     obj.label135 = GUI.fromHandle(_obj_newObject("label"));
     obj.label135:setParent(obj.layout80);
-    obj.label135:setText("18");
+    obj.label135:setText("19");
     obj.label135.grid.role = "col";
     obj.label135.grid.width = 6;
     obj.label135.grid["min-height"] = 15;
     obj.label135:setHorzTextAlign("center");
     obj.label135:setName("label135");
-
-    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label136:setParent(obj.layout80);
-    obj.label136:setText("19");
-    obj.label136.grid.role = "col";
-    obj.label136.grid.width = 6;
-    obj.label136.grid["min-height"] = 15;
-    obj.label136:setHorzTextAlign("center");
-    obj.label136:setName("label136");
 
     obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.layout71);
@@ -3839,9 +3920,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout81.grid.width = 1;
     obj.layout81:setName("layout81");
 
+    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label136:setParent(obj.layout81);
+    obj.label136:setText("20");
+    obj.label136.grid.role = "col";
+    obj.label136.grid.width = 6;
+    obj.label136.grid["min-height"] = 15;
+    obj.label136:setHorzTextAlign("center");
+    obj.label136:setName("label136");
+
     obj.label137 = GUI.fromHandle(_obj_newObject("label"));
     obj.label137:setParent(obj.layout81);
-    obj.label137:setText("20");
+    obj.label137:setText("20+");
     obj.label137.grid.role = "col";
     obj.label137.grid.width = 6;
     obj.label137.grid["min-height"] = 15;
@@ -3849,31 +3939,22 @@ local function constructNew_frmFichaDePersonagem()
     obj.label137:setName("label137");
 
     obj.label138 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label138:setParent(obj.layout81);
-    obj.label138:setText("20+");
+    obj.label138:setParent(obj.layout71);
+    obj.label138:setText("Total");
     obj.label138.grid.role = "col";
-    obj.label138.grid.width = 6;
+    obj.label138.grid.width = 1;
     obj.label138.grid["min-height"] = 15;
     obj.label138:setHorzTextAlign("center");
     obj.label138:setName("label138");
 
     obj.label139 = GUI.fromHandle(_obj_newObject("label"));
     obj.label139:setParent(obj.layout71);
-    obj.label139:setText("Total");
+    obj.label139:setText("");
     obj.label139.grid.role = "col";
     obj.label139.grid.width = 1;
     obj.label139.grid["min-height"] = 15;
     obj.label139:setHorzTextAlign("center");
     obj.label139:setName("label139");
-
-    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label140:setParent(obj.layout71);
-    obj.label140:setText("");
-    obj.label140.grid.role = "col";
-    obj.label140.grid.width = 1;
-    obj.label140.grid["min-height"] = 15;
-    obj.label140:setHorzTextAlign("center");
-    obj.label140:setName("label140");
 
     obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.layout71);
@@ -3882,25 +3963,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout82.grid.width = 1;
     obj.layout82:setName("layout82");
 
-    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit146:setParent(obj.layout82);
-    obj.edit146.grid.role = "col";
-    obj.edit146.grid.width = 6;
-    obj.edit146.grid["min-height"] = 30;
-    obj.edit146:setHorzTextAlign("center");
-    obj.edit146:setField("dexNivel1");
-    obj.edit146:setType("number");
-    obj.edit146:setName("edit146");
+    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit142:setParent(obj.layout82);
+    obj.edit142.grid.role = "col";
+    obj.edit142.grid.width = 6;
+    obj.edit142.grid["min-height"] = 30;
+    obj.edit142:setHorzTextAlign("center");
+    obj.edit142:setField("dexNivel1");
+    obj.edit142:setType("number");
+    obj.edit142:setName("edit142");
 
-    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit147:setParent(obj.layout82);
-    obj.edit147.grid.role = "col";
-    obj.edit147.grid.width = 6;
-    obj.edit147.grid["min-height"] = 30;
-    obj.edit147:setHorzTextAlign("center");
-    obj.edit147:setField("dexNivel2");
-    obj.edit147:setType("number");
-    obj.edit147:setName("edit147");
+    obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit143:setParent(obj.layout82);
+    obj.edit143.grid.role = "col";
+    obj.edit143.grid.width = 6;
+    obj.edit143.grid["min-height"] = 30;
+    obj.edit143:setHorzTextAlign("center");
+    obj.edit143:setField("dexNivel2");
+    obj.edit143:setType("number");
+    obj.edit143:setName("edit143");
 
     obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.layout71);
@@ -3909,25 +3990,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout83.grid.width = 1;
     obj.layout83:setName("layout83");
 
-    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit148:setParent(obj.layout83);
-    obj.edit148.grid.role = "col";
-    obj.edit148.grid.width = 6;
-    obj.edit148.grid["min-height"] = 30;
-    obj.edit148:setHorzTextAlign("center");
-    obj.edit148:setField("dexNivel3");
-    obj.edit148:setType("number");
-    obj.edit148:setName("edit148");
+    obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit144:setParent(obj.layout83);
+    obj.edit144.grid.role = "col";
+    obj.edit144.grid.width = 6;
+    obj.edit144.grid["min-height"] = 30;
+    obj.edit144:setHorzTextAlign("center");
+    obj.edit144:setField("dexNivel3");
+    obj.edit144:setType("number");
+    obj.edit144:setName("edit144");
 
-    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit149:setParent(obj.layout83);
-    obj.edit149.grid.role = "col";
-    obj.edit149.grid.width = 6;
-    obj.edit149.grid["min-height"] = 30;
-    obj.edit149:setHorzTextAlign("center");
-    obj.edit149:setField("dexNivel4");
-    obj.edit149:setType("number");
-    obj.edit149:setName("edit149");
+    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit145:setParent(obj.layout83);
+    obj.edit145.grid.role = "col";
+    obj.edit145.grid.width = 6;
+    obj.edit145.grid["min-height"] = 30;
+    obj.edit145:setHorzTextAlign("center");
+    obj.edit145:setField("dexNivel4");
+    obj.edit145:setType("number");
+    obj.edit145:setName("edit145");
 
     obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.layout71);
@@ -3936,25 +4017,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout84.grid.width = 1;
     obj.layout84:setName("layout84");
 
-    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit150:setParent(obj.layout84);
-    obj.edit150.grid.role = "col";
-    obj.edit150.grid.width = 6;
-    obj.edit150.grid["min-height"] = 30;
-    obj.edit150:setHorzTextAlign("center");
-    obj.edit150:setField("dexNivel5");
-    obj.edit150:setType("number");
-    obj.edit150:setName("edit150");
+    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit146:setParent(obj.layout84);
+    obj.edit146.grid.role = "col";
+    obj.edit146.grid.width = 6;
+    obj.edit146.grid["min-height"] = 30;
+    obj.edit146:setHorzTextAlign("center");
+    obj.edit146:setField("dexNivel5");
+    obj.edit146:setType("number");
+    obj.edit146:setName("edit146");
 
-    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit151:setParent(obj.layout84);
-    obj.edit151.grid.role = "col";
-    obj.edit151.grid.width = 6;
-    obj.edit151.grid["min-height"] = 30;
-    obj.edit151:setHorzTextAlign("center");
-    obj.edit151:setField("dexNivel6");
-    obj.edit151:setType("number");
-    obj.edit151:setName("edit151");
+    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit147:setParent(obj.layout84);
+    obj.edit147.grid.role = "col";
+    obj.edit147.grid.width = 6;
+    obj.edit147.grid["min-height"] = 30;
+    obj.edit147:setHorzTextAlign("center");
+    obj.edit147:setField("dexNivel6");
+    obj.edit147:setType("number");
+    obj.edit147:setName("edit147");
 
     obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.layout71);
@@ -3963,25 +4044,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout85.grid.width = 1;
     obj.layout85:setName("layout85");
 
-    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit152:setParent(obj.layout85);
-    obj.edit152.grid.role = "col";
-    obj.edit152.grid.width = 6;
-    obj.edit152.grid["min-height"] = 30;
-    obj.edit152:setHorzTextAlign("center");
-    obj.edit152:setField("dexNivel7");
-    obj.edit152:setType("number");
-    obj.edit152:setName("edit152");
+    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit148:setParent(obj.layout85);
+    obj.edit148.grid.role = "col";
+    obj.edit148.grid.width = 6;
+    obj.edit148.grid["min-height"] = 30;
+    obj.edit148:setHorzTextAlign("center");
+    obj.edit148:setField("dexNivel7");
+    obj.edit148:setType("number");
+    obj.edit148:setName("edit148");
 
-    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit153:setParent(obj.layout85);
-    obj.edit153.grid.role = "col";
-    obj.edit153.grid.width = 6;
-    obj.edit153.grid["min-height"] = 30;
-    obj.edit153:setHorzTextAlign("center");
-    obj.edit153:setField("dexNivel8");
-    obj.edit153:setType("number");
-    obj.edit153:setName("edit153");
+    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit149:setParent(obj.layout85);
+    obj.edit149.grid.role = "col";
+    obj.edit149.grid.width = 6;
+    obj.edit149.grid["min-height"] = 30;
+    obj.edit149:setHorzTextAlign("center");
+    obj.edit149:setField("dexNivel8");
+    obj.edit149:setType("number");
+    obj.edit149:setName("edit149");
 
     obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.layout71);
@@ -3990,25 +4071,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout86.grid.width = 1;
     obj.layout86:setName("layout86");
 
-    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit154:setParent(obj.layout86);
-    obj.edit154.grid.role = "col";
-    obj.edit154.grid.width = 6;
-    obj.edit154.grid["min-height"] = 30;
-    obj.edit154:setHorzTextAlign("center");
-    obj.edit154:setField("dexNivel9");
-    obj.edit154:setType("number");
-    obj.edit154:setName("edit154");
+    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit150:setParent(obj.layout86);
+    obj.edit150.grid.role = "col";
+    obj.edit150.grid.width = 6;
+    obj.edit150.grid["min-height"] = 30;
+    obj.edit150:setHorzTextAlign("center");
+    obj.edit150:setField("dexNivel9");
+    obj.edit150:setType("number");
+    obj.edit150:setName("edit150");
 
-    obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit155:setParent(obj.layout86);
-    obj.edit155.grid.role = "col";
-    obj.edit155.grid.width = 6;
-    obj.edit155.grid["min-height"] = 30;
-    obj.edit155:setHorzTextAlign("center");
-    obj.edit155:setField("dexNivel10");
-    obj.edit155:setType("number");
-    obj.edit155:setName("edit155");
+    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit151:setParent(obj.layout86);
+    obj.edit151.grid.role = "col";
+    obj.edit151.grid.width = 6;
+    obj.edit151.grid["min-height"] = 30;
+    obj.edit151:setHorzTextAlign("center");
+    obj.edit151:setField("dexNivel10");
+    obj.edit151:setType("number");
+    obj.edit151:setName("edit151");
 
     obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.layout71);
@@ -4017,25 +4098,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout87.grid.width = 1;
     obj.layout87:setName("layout87");
 
-    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit156:setParent(obj.layout87);
-    obj.edit156.grid.role = "col";
-    obj.edit156.grid.width = 6;
-    obj.edit156.grid["min-height"] = 30;
-    obj.edit156:setHorzTextAlign("center");
-    obj.edit156:setField("dexNivel11");
-    obj.edit156:setType("number");
-    obj.edit156:setName("edit156");
+    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit152:setParent(obj.layout87);
+    obj.edit152.grid.role = "col";
+    obj.edit152.grid.width = 6;
+    obj.edit152.grid["min-height"] = 30;
+    obj.edit152:setHorzTextAlign("center");
+    obj.edit152:setField("dexNivel11");
+    obj.edit152:setType("number");
+    obj.edit152:setName("edit152");
 
-    obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit157:setParent(obj.layout87);
-    obj.edit157.grid.role = "col";
-    obj.edit157.grid.width = 6;
-    obj.edit157.grid["min-height"] = 30;
-    obj.edit157:setHorzTextAlign("center");
-    obj.edit157:setField("dexNivel12");
-    obj.edit157:setType("number");
-    obj.edit157:setName("edit157");
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit153:setParent(obj.layout87);
+    obj.edit153.grid.role = "col";
+    obj.edit153.grid.width = 6;
+    obj.edit153.grid["min-height"] = 30;
+    obj.edit153:setHorzTextAlign("center");
+    obj.edit153:setField("dexNivel12");
+    obj.edit153:setType("number");
+    obj.edit153:setName("edit153");
 
     obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.layout71);
@@ -4044,25 +4125,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout88.grid.width = 1;
     obj.layout88:setName("layout88");
 
-    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit158:setParent(obj.layout88);
-    obj.edit158.grid.role = "col";
-    obj.edit158.grid.width = 6;
-    obj.edit158.grid["min-height"] = 30;
-    obj.edit158:setHorzTextAlign("center");
-    obj.edit158:setField("dexNivel13");
-    obj.edit158:setType("number");
-    obj.edit158:setName("edit158");
+    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit154:setParent(obj.layout88);
+    obj.edit154.grid.role = "col";
+    obj.edit154.grid.width = 6;
+    obj.edit154.grid["min-height"] = 30;
+    obj.edit154:setHorzTextAlign("center");
+    obj.edit154:setField("dexNivel13");
+    obj.edit154:setType("number");
+    obj.edit154:setName("edit154");
 
-    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit159:setParent(obj.layout88);
-    obj.edit159.grid.role = "col";
-    obj.edit159.grid.width = 6;
-    obj.edit159.grid["min-height"] = 30;
-    obj.edit159:setHorzTextAlign("center");
-    obj.edit159:setField("dexNivel14");
-    obj.edit159:setType("number");
-    obj.edit159:setName("edit159");
+    obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit155:setParent(obj.layout88);
+    obj.edit155.grid.role = "col";
+    obj.edit155.grid.width = 6;
+    obj.edit155.grid["min-height"] = 30;
+    obj.edit155:setHorzTextAlign("center");
+    obj.edit155:setField("dexNivel14");
+    obj.edit155:setType("number");
+    obj.edit155:setName("edit155");
 
     obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.layout71);
@@ -4071,25 +4152,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout89.grid.width = 1;
     obj.layout89:setName("layout89");
 
-    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit160:setParent(obj.layout89);
-    obj.edit160.grid.role = "col";
-    obj.edit160.grid.width = 6;
-    obj.edit160.grid["min-height"] = 30;
-    obj.edit160:setHorzTextAlign("center");
-    obj.edit160:setField("dexNivel15");
-    obj.edit160:setType("number");
-    obj.edit160:setName("edit160");
+    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit156:setParent(obj.layout89);
+    obj.edit156.grid.role = "col";
+    obj.edit156.grid.width = 6;
+    obj.edit156.grid["min-height"] = 30;
+    obj.edit156:setHorzTextAlign("center");
+    obj.edit156:setField("dexNivel15");
+    obj.edit156:setType("number");
+    obj.edit156:setName("edit156");
 
-    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit161:setParent(obj.layout89);
-    obj.edit161.grid.role = "col";
-    obj.edit161.grid.width = 6;
-    obj.edit161.grid["min-height"] = 30;
-    obj.edit161:setHorzTextAlign("center");
-    obj.edit161:setField("dexNivel16");
-    obj.edit161:setType("number");
-    obj.edit161:setName("edit161");
+    obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit157:setParent(obj.layout89);
+    obj.edit157.grid.role = "col";
+    obj.edit157.grid.width = 6;
+    obj.edit157.grid["min-height"] = 30;
+    obj.edit157:setHorzTextAlign("center");
+    obj.edit157:setField("dexNivel16");
+    obj.edit157:setType("number");
+    obj.edit157:setName("edit157");
 
     obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.layout71);
@@ -4098,25 +4179,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout90.grid.width = 1;
     obj.layout90:setName("layout90");
 
-    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit162:setParent(obj.layout90);
-    obj.edit162.grid.role = "col";
-    obj.edit162.grid.width = 6;
-    obj.edit162.grid["min-height"] = 30;
-    obj.edit162:setHorzTextAlign("center");
-    obj.edit162:setField("dexNivel17");
-    obj.edit162:setType("number");
-    obj.edit162:setName("edit162");
+    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit158:setParent(obj.layout90);
+    obj.edit158.grid.role = "col";
+    obj.edit158.grid.width = 6;
+    obj.edit158.grid["min-height"] = 30;
+    obj.edit158:setHorzTextAlign("center");
+    obj.edit158:setField("dexNivel17");
+    obj.edit158:setType("number");
+    obj.edit158:setName("edit158");
 
-    obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit163:setParent(obj.layout90);
-    obj.edit163.grid.role = "col";
-    obj.edit163.grid.width = 6;
-    obj.edit163.grid["min-height"] = 30;
-    obj.edit163:setHorzTextAlign("center");
-    obj.edit163:setField("dexNivel18");
-    obj.edit163:setType("number");
-    obj.edit163:setName("edit163");
+    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit159:setParent(obj.layout90);
+    obj.edit159.grid.role = "col";
+    obj.edit159.grid.width = 6;
+    obj.edit159.grid["min-height"] = 30;
+    obj.edit159:setHorzTextAlign("center");
+    obj.edit159:setField("dexNivel18");
+    obj.edit159:setType("number");
+    obj.edit159:setName("edit159");
 
     obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.layout71);
@@ -4125,37 +4206,37 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout91.grid.width = 1;
     obj.layout91:setName("layout91");
 
-    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit164:setParent(obj.layout91);
-    obj.edit164.grid.role = "col";
-    obj.edit164.grid.width = 6;
-    obj.edit164.grid["min-height"] = 30;
-    obj.edit164:setHorzTextAlign("center");
-    obj.edit164:setField("dexNivel19");
-    obj.edit164:setType("number");
-    obj.edit164:setName("edit164");
+    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit160:setParent(obj.layout91);
+    obj.edit160.grid.role = "col";
+    obj.edit160.grid.width = 6;
+    obj.edit160.grid["min-height"] = 30;
+    obj.edit160:setHorzTextAlign("center");
+    obj.edit160:setField("dexNivel19");
+    obj.edit160:setType("number");
+    obj.edit160:setName("edit160");
 
-    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit165:setParent(obj.layout91);
-    obj.edit165.grid.role = "col";
-    obj.edit165.grid.width = 6;
-    obj.edit165.grid["min-height"] = 30;
-    obj.edit165:setHorzTextAlign("center");
-    obj.edit165:setField("dexNivel20");
-    obj.edit165:setType("number");
-    obj.edit165:setName("edit165");
+    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit161:setParent(obj.layout91);
+    obj.edit161.grid.role = "col";
+    obj.edit161.grid.width = 6;
+    obj.edit161.grid["min-height"] = 30;
+    obj.edit161:setHorzTextAlign("center");
+    obj.edit161:setField("dexNivel20");
+    obj.edit161:setType("number");
+    obj.edit161:setName("edit161");
 
-    obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit166:setParent(obj.layout71);
-    obj.edit166:setField("dexNivelTotal");
-    obj.edit166.grid.role = "col";
-    obj.edit166.grid.width = 1;
-    obj.edit166.grid["min-height"] = 15;
-    obj.edit166:setHorzTextAlign("center");
-    obj.edit166:setReadOnly(true);
-    obj.edit166:setCanFocus(false);
-    obj.edit166:setCursor("default");
-    obj.edit166:setName("edit166");
+    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit162:setParent(obj.layout71);
+    obj.edit162:setField("dexNivelTotal");
+    obj.edit162.grid.role = "col";
+    obj.edit162.grid.width = 1;
+    obj.edit162.grid["min-height"] = 15;
+    obj.edit162:setHorzTextAlign("center");
+    obj.edit162:setReadOnly(true);
+    obj.edit162:setCanFocus(false);
+    obj.edit162:setCursor("default");
+    obj.edit162:setName("edit162");
 
     obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink28:setParent(obj.scrollBox2);
@@ -4175,14 +4256,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout92.grid.role = "row";
     obj.layout92:setName("layout92");
 
-    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label141:setParent(obj.layout92);
-    obj.label141:setText("Carisma");
-    obj.label141.grid.role = "col";
-    obj.label141.grid.width = 1;
-    obj.label141.grid["min-height"] = 20;
-    obj.label141:setHorzTextAlign("center");
-    obj.label141:setName("label141");
+    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label140:setParent(obj.layout92);
+    obj.label140:setText("Carisma");
+    obj.label140.grid.role = "col";
+    obj.label140.grid.width = 1;
+    obj.label140.grid["min-height"] = 20;
+    obj.label140:setHorzTextAlign("center");
+    obj.label140:setName("label140");
 
     obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.layout92);
@@ -4191,23 +4272,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout93.grid.width = 1;
     obj.layout93:setName("layout93");
 
+    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label141:setParent(obj.layout93);
+    obj.label141:setText("2");
+    obj.label141.grid.role = "col";
+    obj.label141.grid.width = 6;
+    obj.label141.grid["min-height"] = 15;
+    obj.label141:setHorzTextAlign("center");
+    obj.label141:setName("label141");
+
     obj.label142 = GUI.fromHandle(_obj_newObject("label"));
     obj.label142:setParent(obj.layout93);
-    obj.label142:setText("2");
+    obj.label142:setText("3");
     obj.label142.grid.role = "col";
     obj.label142.grid.width = 6;
     obj.label142.grid["min-height"] = 15;
     obj.label142:setHorzTextAlign("center");
     obj.label142:setName("label142");
-
-    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label143:setParent(obj.layout93);
-    obj.label143:setText("3");
-    obj.label143.grid.role = "col";
-    obj.label143.grid.width = 6;
-    obj.label143.grid["min-height"] = 15;
-    obj.label143:setHorzTextAlign("center");
-    obj.label143:setName("label143");
 
     obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout94:setParent(obj.layout92);
@@ -4216,23 +4297,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout94.grid.width = 1;
     obj.layout94:setName("layout94");
 
+    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label143:setParent(obj.layout94);
+    obj.label143:setText("4");
+    obj.label143.grid.role = "col";
+    obj.label143.grid.width = 6;
+    obj.label143.grid["min-height"] = 15;
+    obj.label143:setHorzTextAlign("center");
+    obj.label143:setName("label143");
+
     obj.label144 = GUI.fromHandle(_obj_newObject("label"));
     obj.label144:setParent(obj.layout94);
-    obj.label144:setText("4");
+    obj.label144:setText("5");
     obj.label144.grid.role = "col";
     obj.label144.grid.width = 6;
     obj.label144.grid["min-height"] = 15;
     obj.label144:setHorzTextAlign("center");
     obj.label144:setName("label144");
-
-    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label145:setParent(obj.layout94);
-    obj.label145:setText("5");
-    obj.label145.grid.role = "col";
-    obj.label145.grid.width = 6;
-    obj.label145.grid["min-height"] = 15;
-    obj.label145:setHorzTextAlign("center");
-    obj.label145:setName("label145");
 
     obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout95:setParent(obj.layout92);
@@ -4241,23 +4322,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout95.grid.width = 1;
     obj.layout95:setName("layout95");
 
+    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label145:setParent(obj.layout95);
+    obj.label145:setText("6");
+    obj.label145.grid.role = "col";
+    obj.label145.grid.width = 6;
+    obj.label145.grid["min-height"] = 15;
+    obj.label145:setHorzTextAlign("center");
+    obj.label145:setName("label145");
+
     obj.label146 = GUI.fromHandle(_obj_newObject("label"));
     obj.label146:setParent(obj.layout95);
-    obj.label146:setText("6");
+    obj.label146:setText("7");
     obj.label146.grid.role = "col";
     obj.label146.grid.width = 6;
     obj.label146.grid["min-height"] = 15;
     obj.label146:setHorzTextAlign("center");
     obj.label146:setName("label146");
-
-    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label147:setParent(obj.layout95);
-    obj.label147:setText("7");
-    obj.label147.grid.role = "col";
-    obj.label147.grid.width = 6;
-    obj.label147.grid["min-height"] = 15;
-    obj.label147:setHorzTextAlign("center");
-    obj.label147:setName("label147");
 
     obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.layout92);
@@ -4266,23 +4347,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout96.grid.width = 1;
     obj.layout96:setName("layout96");
 
+    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label147:setParent(obj.layout96);
+    obj.label147:setText("8");
+    obj.label147.grid.role = "col";
+    obj.label147.grid.width = 6;
+    obj.label147.grid["min-height"] = 15;
+    obj.label147:setHorzTextAlign("center");
+    obj.label147:setName("label147");
+
     obj.label148 = GUI.fromHandle(_obj_newObject("label"));
     obj.label148:setParent(obj.layout96);
-    obj.label148:setText("8");
+    obj.label148:setText("9");
     obj.label148.grid.role = "col";
     obj.label148.grid.width = 6;
     obj.label148.grid["min-height"] = 15;
     obj.label148:setHorzTextAlign("center");
     obj.label148:setName("label148");
-
-    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label149:setParent(obj.layout96);
-    obj.label149:setText("9");
-    obj.label149.grid.role = "col";
-    obj.label149.grid.width = 6;
-    obj.label149.grid["min-height"] = 15;
-    obj.label149:setHorzTextAlign("center");
-    obj.label149:setName("label149");
 
     obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout97:setParent(obj.layout92);
@@ -4291,23 +4372,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout97.grid.width = 1;
     obj.layout97:setName("layout97");
 
+    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label149:setParent(obj.layout97);
+    obj.label149:setText("10");
+    obj.label149.grid.role = "col";
+    obj.label149.grid.width = 6;
+    obj.label149.grid["min-height"] = 15;
+    obj.label149:setHorzTextAlign("center");
+    obj.label149:setName("label149");
+
     obj.label150 = GUI.fromHandle(_obj_newObject("label"));
     obj.label150:setParent(obj.layout97);
-    obj.label150:setText("10");
+    obj.label150:setText("11");
     obj.label150.grid.role = "col";
     obj.label150.grid.width = 6;
     obj.label150.grid["min-height"] = 15;
     obj.label150:setHorzTextAlign("center");
     obj.label150:setName("label150");
-
-    obj.label151 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label151:setParent(obj.layout97);
-    obj.label151:setText("11");
-    obj.label151.grid.role = "col";
-    obj.label151.grid.width = 6;
-    obj.label151.grid["min-height"] = 15;
-    obj.label151:setHorzTextAlign("center");
-    obj.label151:setName("label151");
 
     obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.layout92);
@@ -4316,23 +4397,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout98.grid.width = 1;
     obj.layout98:setName("layout98");
 
+    obj.label151 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label151:setParent(obj.layout98);
+    obj.label151:setText("12");
+    obj.label151.grid.role = "col";
+    obj.label151.grid.width = 6;
+    obj.label151.grid["min-height"] = 15;
+    obj.label151:setHorzTextAlign("center");
+    obj.label151:setName("label151");
+
     obj.label152 = GUI.fromHandle(_obj_newObject("label"));
     obj.label152:setParent(obj.layout98);
-    obj.label152:setText("12");
+    obj.label152:setText("13");
     obj.label152.grid.role = "col";
     obj.label152.grid.width = 6;
     obj.label152.grid["min-height"] = 15;
     obj.label152:setHorzTextAlign("center");
     obj.label152:setName("label152");
-
-    obj.label153 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label153:setParent(obj.layout98);
-    obj.label153:setText("13");
-    obj.label153.grid.role = "col";
-    obj.label153.grid.width = 6;
-    obj.label153.grid["min-height"] = 15;
-    obj.label153:setHorzTextAlign("center");
-    obj.label153:setName("label153");
 
     obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout99:setParent(obj.layout92);
@@ -4341,23 +4422,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout99.grid.width = 1;
     obj.layout99:setName("layout99");
 
+    obj.label153 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label153:setParent(obj.layout99);
+    obj.label153:setText("14");
+    obj.label153.grid.role = "col";
+    obj.label153.grid.width = 6;
+    obj.label153.grid["min-height"] = 15;
+    obj.label153:setHorzTextAlign("center");
+    obj.label153:setName("label153");
+
     obj.label154 = GUI.fromHandle(_obj_newObject("label"));
     obj.label154:setParent(obj.layout99);
-    obj.label154:setText("14");
+    obj.label154:setText("15");
     obj.label154.grid.role = "col";
     obj.label154.grid.width = 6;
     obj.label154.grid["min-height"] = 15;
     obj.label154:setHorzTextAlign("center");
     obj.label154:setName("label154");
-
-    obj.label155 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label155:setParent(obj.layout99);
-    obj.label155:setText("15");
-    obj.label155.grid.role = "col";
-    obj.label155.grid.width = 6;
-    obj.label155.grid["min-height"] = 15;
-    obj.label155:setHorzTextAlign("center");
-    obj.label155:setName("label155");
 
     obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.layout92);
@@ -4366,23 +4447,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout100.grid.width = 1;
     obj.layout100:setName("layout100");
 
+    obj.label155 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label155:setParent(obj.layout100);
+    obj.label155:setText("16");
+    obj.label155.grid.role = "col";
+    obj.label155.grid.width = 6;
+    obj.label155.grid["min-height"] = 15;
+    obj.label155:setHorzTextAlign("center");
+    obj.label155:setName("label155");
+
     obj.label156 = GUI.fromHandle(_obj_newObject("label"));
     obj.label156:setParent(obj.layout100);
-    obj.label156:setText("16");
+    obj.label156:setText("17");
     obj.label156.grid.role = "col";
     obj.label156.grid.width = 6;
     obj.label156.grid["min-height"] = 15;
     obj.label156:setHorzTextAlign("center");
     obj.label156:setName("label156");
-
-    obj.label157 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label157:setParent(obj.layout100);
-    obj.label157:setText("17");
-    obj.label157.grid.role = "col";
-    obj.label157.grid.width = 6;
-    obj.label157.grid["min-height"] = 15;
-    obj.label157:setHorzTextAlign("center");
-    obj.label157:setName("label157");
 
     obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout101:setParent(obj.layout92);
@@ -4391,23 +4472,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout101.grid.width = 1;
     obj.layout101:setName("layout101");
 
+    obj.label157 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label157:setParent(obj.layout101);
+    obj.label157:setText("18");
+    obj.label157.grid.role = "col";
+    obj.label157.grid.width = 6;
+    obj.label157.grid["min-height"] = 15;
+    obj.label157:setHorzTextAlign("center");
+    obj.label157:setName("label157");
+
     obj.label158 = GUI.fromHandle(_obj_newObject("label"));
     obj.label158:setParent(obj.layout101);
-    obj.label158:setText("18");
+    obj.label158:setText("19");
     obj.label158.grid.role = "col";
     obj.label158.grid.width = 6;
     obj.label158.grid["min-height"] = 15;
     obj.label158:setHorzTextAlign("center");
     obj.label158:setName("label158");
-
-    obj.label159 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label159:setParent(obj.layout101);
-    obj.label159:setText("19");
-    obj.label159.grid.role = "col";
-    obj.label159.grid.width = 6;
-    obj.label159.grid["min-height"] = 15;
-    obj.label159:setHorzTextAlign("center");
-    obj.label159:setName("label159");
 
     obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout102:setParent(obj.layout92);
@@ -4416,9 +4497,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout102.grid.width = 1;
     obj.layout102:setName("layout102");
 
+    obj.label159 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label159:setParent(obj.layout102);
+    obj.label159:setText("20");
+    obj.label159.grid.role = "col";
+    obj.label159.grid.width = 6;
+    obj.label159.grid["min-height"] = 15;
+    obj.label159:setHorzTextAlign("center");
+    obj.label159:setName("label159");
+
     obj.label160 = GUI.fromHandle(_obj_newObject("label"));
     obj.label160:setParent(obj.layout102);
-    obj.label160:setText("20");
+    obj.label160:setText("20+");
     obj.label160.grid.role = "col";
     obj.label160.grid.width = 6;
     obj.label160.grid["min-height"] = 15;
@@ -4426,31 +4516,22 @@ local function constructNew_frmFichaDePersonagem()
     obj.label160:setName("label160");
 
     obj.label161 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label161:setParent(obj.layout102);
-    obj.label161:setText("20+");
+    obj.label161:setParent(obj.layout92);
+    obj.label161:setText("Total");
     obj.label161.grid.role = "col";
-    obj.label161.grid.width = 6;
+    obj.label161.grid.width = 1;
     obj.label161.grid["min-height"] = 15;
     obj.label161:setHorzTextAlign("center");
     obj.label161:setName("label161");
 
     obj.label162 = GUI.fromHandle(_obj_newObject("label"));
     obj.label162:setParent(obj.layout92);
-    obj.label162:setText("Total");
+    obj.label162:setText("");
     obj.label162.grid.role = "col";
     obj.label162.grid.width = 1;
     obj.label162.grid["min-height"] = 15;
     obj.label162:setHorzTextAlign("center");
     obj.label162:setName("label162");
-
-    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label163:setParent(obj.layout92);
-    obj.label163:setText("");
-    obj.label163.grid.role = "col";
-    obj.label163.grid.width = 1;
-    obj.label163.grid["min-height"] = 15;
-    obj.label163:setHorzTextAlign("center");
-    obj.label163:setName("label163");
 
     obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.layout92);
@@ -4459,25 +4540,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout103.grid.width = 1;
     obj.layout103:setName("layout103");
 
-    obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit167:setParent(obj.layout103);
-    obj.edit167.grid.role = "col";
-    obj.edit167.grid.width = 6;
-    obj.edit167.grid["min-height"] = 30;
-    obj.edit167:setHorzTextAlign("center");
-    obj.edit167:setField("carNivel1");
-    obj.edit167:setType("number");
-    obj.edit167:setName("edit167");
+    obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit163:setParent(obj.layout103);
+    obj.edit163.grid.role = "col";
+    obj.edit163.grid.width = 6;
+    obj.edit163.grid["min-height"] = 30;
+    obj.edit163:setHorzTextAlign("center");
+    obj.edit163:setField("carNivel1");
+    obj.edit163:setType("number");
+    obj.edit163:setName("edit163");
 
-    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit168:setParent(obj.layout103);
-    obj.edit168.grid.role = "col";
-    obj.edit168.grid.width = 6;
-    obj.edit168.grid["min-height"] = 30;
-    obj.edit168:setHorzTextAlign("center");
-    obj.edit168:setField("carNivel2");
-    obj.edit168:setType("number");
-    obj.edit168:setName("edit168");
+    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit164:setParent(obj.layout103);
+    obj.edit164.grid.role = "col";
+    obj.edit164.grid.width = 6;
+    obj.edit164.grid["min-height"] = 30;
+    obj.edit164:setHorzTextAlign("center");
+    obj.edit164:setField("carNivel2");
+    obj.edit164:setType("number");
+    obj.edit164:setName("edit164");
 
     obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.layout92);
@@ -4486,25 +4567,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout104.grid.width = 1;
     obj.layout104:setName("layout104");
 
-    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit169:setParent(obj.layout104);
-    obj.edit169.grid.role = "col";
-    obj.edit169.grid.width = 6;
-    obj.edit169.grid["min-height"] = 30;
-    obj.edit169:setHorzTextAlign("center");
-    obj.edit169:setField("carNivel3");
-    obj.edit169:setType("number");
-    obj.edit169:setName("edit169");
+    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit165:setParent(obj.layout104);
+    obj.edit165.grid.role = "col";
+    obj.edit165.grid.width = 6;
+    obj.edit165.grid["min-height"] = 30;
+    obj.edit165:setHorzTextAlign("center");
+    obj.edit165:setField("carNivel3");
+    obj.edit165:setType("number");
+    obj.edit165:setName("edit165");
 
-    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit170:setParent(obj.layout104);
-    obj.edit170.grid.role = "col";
-    obj.edit170.grid.width = 6;
-    obj.edit170.grid["min-height"] = 30;
-    obj.edit170:setHorzTextAlign("center");
-    obj.edit170:setField("carNivel4");
-    obj.edit170:setType("number");
-    obj.edit170:setName("edit170");
+    obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit166:setParent(obj.layout104);
+    obj.edit166.grid.role = "col";
+    obj.edit166.grid.width = 6;
+    obj.edit166.grid["min-height"] = 30;
+    obj.edit166:setHorzTextAlign("center");
+    obj.edit166:setField("carNivel4");
+    obj.edit166:setType("number");
+    obj.edit166:setName("edit166");
 
     obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout105:setParent(obj.layout92);
@@ -4513,25 +4594,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout105.grid.width = 1;
     obj.layout105:setName("layout105");
 
-    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit171:setParent(obj.layout105);
-    obj.edit171.grid.role = "col";
-    obj.edit171.grid.width = 6;
-    obj.edit171.grid["min-height"] = 30;
-    obj.edit171:setHorzTextAlign("center");
-    obj.edit171:setField("carNivel5");
-    obj.edit171:setType("number");
-    obj.edit171:setName("edit171");
+    obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit167:setParent(obj.layout105);
+    obj.edit167.grid.role = "col";
+    obj.edit167.grid.width = 6;
+    obj.edit167.grid["min-height"] = 30;
+    obj.edit167:setHorzTextAlign("center");
+    obj.edit167:setField("carNivel5");
+    obj.edit167:setType("number");
+    obj.edit167:setName("edit167");
 
-    obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit172:setParent(obj.layout105);
-    obj.edit172.grid.role = "col";
-    obj.edit172.grid.width = 6;
-    obj.edit172.grid["min-height"] = 30;
-    obj.edit172:setHorzTextAlign("center");
-    obj.edit172:setField("carNivel6");
-    obj.edit172:setType("number");
-    obj.edit172:setName("edit172");
+    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit168:setParent(obj.layout105);
+    obj.edit168.grid.role = "col";
+    obj.edit168.grid.width = 6;
+    obj.edit168.grid["min-height"] = 30;
+    obj.edit168:setHorzTextAlign("center");
+    obj.edit168:setField("carNivel6");
+    obj.edit168:setType("number");
+    obj.edit168:setName("edit168");
 
     obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout106:setParent(obj.layout92);
@@ -4540,25 +4621,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout106.grid.width = 1;
     obj.layout106:setName("layout106");
 
-    obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit173:setParent(obj.layout106);
-    obj.edit173.grid.role = "col";
-    obj.edit173.grid.width = 6;
-    obj.edit173.grid["min-height"] = 30;
-    obj.edit173:setHorzTextAlign("center");
-    obj.edit173:setField("carNivel7");
-    obj.edit173:setType("number");
-    obj.edit173:setName("edit173");
+    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit169:setParent(obj.layout106);
+    obj.edit169.grid.role = "col";
+    obj.edit169.grid.width = 6;
+    obj.edit169.grid["min-height"] = 30;
+    obj.edit169:setHorzTextAlign("center");
+    obj.edit169:setField("carNivel7");
+    obj.edit169:setType("number");
+    obj.edit169:setName("edit169");
 
-    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit174:setParent(obj.layout106);
-    obj.edit174.grid.role = "col";
-    obj.edit174.grid.width = 6;
-    obj.edit174.grid["min-height"] = 30;
-    obj.edit174:setHorzTextAlign("center");
-    obj.edit174:setField("carNivel8");
-    obj.edit174:setType("number");
-    obj.edit174:setName("edit174");
+    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit170:setParent(obj.layout106);
+    obj.edit170.grid.role = "col";
+    obj.edit170.grid.width = 6;
+    obj.edit170.grid["min-height"] = 30;
+    obj.edit170:setHorzTextAlign("center");
+    obj.edit170:setField("carNivel8");
+    obj.edit170:setType("number");
+    obj.edit170:setName("edit170");
 
     obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout107:setParent(obj.layout92);
@@ -4567,25 +4648,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout107.grid.width = 1;
     obj.layout107:setName("layout107");
 
-    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit175:setParent(obj.layout107);
-    obj.edit175.grid.role = "col";
-    obj.edit175.grid.width = 6;
-    obj.edit175.grid["min-height"] = 30;
-    obj.edit175:setHorzTextAlign("center");
-    obj.edit175:setField("carNivel9");
-    obj.edit175:setType("number");
-    obj.edit175:setName("edit175");
+    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit171:setParent(obj.layout107);
+    obj.edit171.grid.role = "col";
+    obj.edit171.grid.width = 6;
+    obj.edit171.grid["min-height"] = 30;
+    obj.edit171:setHorzTextAlign("center");
+    obj.edit171:setField("carNivel9");
+    obj.edit171:setType("number");
+    obj.edit171:setName("edit171");
 
-    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit176:setParent(obj.layout107);
-    obj.edit176.grid.role = "col";
-    obj.edit176.grid.width = 6;
-    obj.edit176.grid["min-height"] = 30;
-    obj.edit176:setHorzTextAlign("center");
-    obj.edit176:setField("carNivel10");
-    obj.edit176:setType("number");
-    obj.edit176:setName("edit176");
+    obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit172:setParent(obj.layout107);
+    obj.edit172.grid.role = "col";
+    obj.edit172.grid.width = 6;
+    obj.edit172.grid["min-height"] = 30;
+    obj.edit172:setHorzTextAlign("center");
+    obj.edit172:setField("carNivel10");
+    obj.edit172:setType("number");
+    obj.edit172:setName("edit172");
 
     obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout108:setParent(obj.layout92);
@@ -4594,25 +4675,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout108.grid.width = 1;
     obj.layout108:setName("layout108");
 
-    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit177:setParent(obj.layout108);
-    obj.edit177.grid.role = "col";
-    obj.edit177.grid.width = 6;
-    obj.edit177.grid["min-height"] = 30;
-    obj.edit177:setHorzTextAlign("center");
-    obj.edit177:setField("carNivel11");
-    obj.edit177:setType("number");
-    obj.edit177:setName("edit177");
+    obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit173:setParent(obj.layout108);
+    obj.edit173.grid.role = "col";
+    obj.edit173.grid.width = 6;
+    obj.edit173.grid["min-height"] = 30;
+    obj.edit173:setHorzTextAlign("center");
+    obj.edit173:setField("carNivel11");
+    obj.edit173:setType("number");
+    obj.edit173:setName("edit173");
 
-    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit178:setParent(obj.layout108);
-    obj.edit178.grid.role = "col";
-    obj.edit178.grid.width = 6;
-    obj.edit178.grid["min-height"] = 30;
-    obj.edit178:setHorzTextAlign("center");
-    obj.edit178:setField("carNivel12");
-    obj.edit178:setType("number");
-    obj.edit178:setName("edit178");
+    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit174:setParent(obj.layout108);
+    obj.edit174.grid.role = "col";
+    obj.edit174.grid.width = 6;
+    obj.edit174.grid["min-height"] = 30;
+    obj.edit174:setHorzTextAlign("center");
+    obj.edit174:setField("carNivel12");
+    obj.edit174:setType("number");
+    obj.edit174:setName("edit174");
 
     obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout109:setParent(obj.layout92);
@@ -4621,25 +4702,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout109.grid.width = 1;
     obj.layout109:setName("layout109");
 
-    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit179:setParent(obj.layout109);
-    obj.edit179.grid.role = "col";
-    obj.edit179.grid.width = 6;
-    obj.edit179.grid["min-height"] = 30;
-    obj.edit179:setHorzTextAlign("center");
-    obj.edit179:setField("carNivel13");
-    obj.edit179:setType("number");
-    obj.edit179:setName("edit179");
+    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit175:setParent(obj.layout109);
+    obj.edit175.grid.role = "col";
+    obj.edit175.grid.width = 6;
+    obj.edit175.grid["min-height"] = 30;
+    obj.edit175:setHorzTextAlign("center");
+    obj.edit175:setField("carNivel13");
+    obj.edit175:setType("number");
+    obj.edit175:setName("edit175");
 
-    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit180:setParent(obj.layout109);
-    obj.edit180.grid.role = "col";
-    obj.edit180.grid.width = 6;
-    obj.edit180.grid["min-height"] = 30;
-    obj.edit180:setHorzTextAlign("center");
-    obj.edit180:setField("carNivel14");
-    obj.edit180:setType("number");
-    obj.edit180:setName("edit180");
+    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit176:setParent(obj.layout109);
+    obj.edit176.grid.role = "col";
+    obj.edit176.grid.width = 6;
+    obj.edit176.grid["min-height"] = 30;
+    obj.edit176:setHorzTextAlign("center");
+    obj.edit176:setField("carNivel14");
+    obj.edit176:setType("number");
+    obj.edit176:setName("edit176");
 
     obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout110:setParent(obj.layout92);
@@ -4648,25 +4729,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout110.grid.width = 1;
     obj.layout110:setName("layout110");
 
-    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit181:setParent(obj.layout110);
-    obj.edit181.grid.role = "col";
-    obj.edit181.grid.width = 6;
-    obj.edit181.grid["min-height"] = 30;
-    obj.edit181:setHorzTextAlign("center");
-    obj.edit181:setField("carNivel15");
-    obj.edit181:setType("number");
-    obj.edit181:setName("edit181");
+    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit177:setParent(obj.layout110);
+    obj.edit177.grid.role = "col";
+    obj.edit177.grid.width = 6;
+    obj.edit177.grid["min-height"] = 30;
+    obj.edit177:setHorzTextAlign("center");
+    obj.edit177:setField("carNivel15");
+    obj.edit177:setType("number");
+    obj.edit177:setName("edit177");
 
-    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit182:setParent(obj.layout110);
-    obj.edit182.grid.role = "col";
-    obj.edit182.grid.width = 6;
-    obj.edit182.grid["min-height"] = 30;
-    obj.edit182:setHorzTextAlign("center");
-    obj.edit182:setField("carNivel16");
-    obj.edit182:setType("number");
-    obj.edit182:setName("edit182");
+    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit178:setParent(obj.layout110);
+    obj.edit178.grid.role = "col";
+    obj.edit178.grid.width = 6;
+    obj.edit178.grid["min-height"] = 30;
+    obj.edit178:setHorzTextAlign("center");
+    obj.edit178:setField("carNivel16");
+    obj.edit178:setType("number");
+    obj.edit178:setName("edit178");
 
     obj.layout111 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout111:setParent(obj.layout92);
@@ -4675,25 +4756,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout111.grid.width = 1;
     obj.layout111:setName("layout111");
 
-    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit183:setParent(obj.layout111);
-    obj.edit183.grid.role = "col";
-    obj.edit183.grid.width = 6;
-    obj.edit183.grid["min-height"] = 30;
-    obj.edit183:setHorzTextAlign("center");
-    obj.edit183:setField("carNivel17");
-    obj.edit183:setType("number");
-    obj.edit183:setName("edit183");
+    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit179:setParent(obj.layout111);
+    obj.edit179.grid.role = "col";
+    obj.edit179.grid.width = 6;
+    obj.edit179.grid["min-height"] = 30;
+    obj.edit179:setHorzTextAlign("center");
+    obj.edit179:setField("carNivel17");
+    obj.edit179:setType("number");
+    obj.edit179:setName("edit179");
 
-    obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit184:setParent(obj.layout111);
-    obj.edit184.grid.role = "col";
-    obj.edit184.grid.width = 6;
-    obj.edit184.grid["min-height"] = 30;
-    obj.edit184:setHorzTextAlign("center");
-    obj.edit184:setField("carNivel18");
-    obj.edit184:setType("number");
-    obj.edit184:setName("edit184");
+    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit180:setParent(obj.layout111);
+    obj.edit180.grid.role = "col";
+    obj.edit180.grid.width = 6;
+    obj.edit180.grid["min-height"] = 30;
+    obj.edit180:setHorzTextAlign("center");
+    obj.edit180:setField("carNivel18");
+    obj.edit180:setType("number");
+    obj.edit180:setName("edit180");
 
     obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout112:setParent(obj.layout92);
@@ -4702,37 +4783,37 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout112.grid.width = 1;
     obj.layout112:setName("layout112");
 
-    obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit185:setParent(obj.layout112);
-    obj.edit185.grid.role = "col";
-    obj.edit185.grid.width = 6;
-    obj.edit185.grid["min-height"] = 30;
-    obj.edit185:setHorzTextAlign("center");
-    obj.edit185:setField("carNivel19");
-    obj.edit185:setType("number");
-    obj.edit185:setName("edit185");
+    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit181:setParent(obj.layout112);
+    obj.edit181.grid.role = "col";
+    obj.edit181.grid.width = 6;
+    obj.edit181.grid["min-height"] = 30;
+    obj.edit181:setHorzTextAlign("center");
+    obj.edit181:setField("carNivel19");
+    obj.edit181:setType("number");
+    obj.edit181:setName("edit181");
 
-    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit186:setParent(obj.layout112);
-    obj.edit186.grid.role = "col";
-    obj.edit186.grid.width = 6;
-    obj.edit186.grid["min-height"] = 30;
-    obj.edit186:setHorzTextAlign("center");
-    obj.edit186:setField("carNivel20");
-    obj.edit186:setType("number");
-    obj.edit186:setName("edit186");
+    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit182:setParent(obj.layout112);
+    obj.edit182.grid.role = "col";
+    obj.edit182.grid.width = 6;
+    obj.edit182.grid["min-height"] = 30;
+    obj.edit182:setHorzTextAlign("center");
+    obj.edit182:setField("carNivel20");
+    obj.edit182:setType("number");
+    obj.edit182:setName("edit182");
 
-    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit187:setParent(obj.layout92);
-    obj.edit187:setField("carNivelTotal");
-    obj.edit187.grid.role = "col";
-    obj.edit187.grid.width = 1;
-    obj.edit187.grid["min-height"] = 15;
-    obj.edit187:setHorzTextAlign("center");
-    obj.edit187:setReadOnly(true);
-    obj.edit187:setCanFocus(false);
-    obj.edit187:setCursor("default");
-    obj.edit187:setName("edit187");
+    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit183:setParent(obj.layout92);
+    obj.edit183:setField("carNivelTotal");
+    obj.edit183.grid.role = "col";
+    obj.edit183.grid.width = 1;
+    obj.edit183.grid["min-height"] = 15;
+    obj.edit183:setHorzTextAlign("center");
+    obj.edit183:setReadOnly(true);
+    obj.edit183:setCanFocus(false);
+    obj.edit183:setCursor("default");
+    obj.edit183:setName("edit183");
 
     obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink30:setParent(obj.scrollBox2);
@@ -4752,14 +4833,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout113.grid.role = "row";
     obj.layout113:setName("layout113");
 
-    obj.label164 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label164:setParent(obj.layout113);
-    obj.label164:setText("Inteligência");
-    obj.label164.grid.role = "col";
-    obj.label164.grid.width = 1;
-    obj.label164.grid["min-height"] = 20;
-    obj.label164:setHorzTextAlign("center");
-    obj.label164:setName("label164");
+    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label163:setParent(obj.layout113);
+    obj.label163:setText("Inteligência");
+    obj.label163.grid.role = "col";
+    obj.label163.grid.width = 1;
+    obj.label163.grid["min-height"] = 20;
+    obj.label163:setHorzTextAlign("center");
+    obj.label163:setName("label163");
 
     obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout114:setParent(obj.layout113);
@@ -4768,23 +4849,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout114.grid.width = 1;
     obj.layout114:setName("layout114");
 
+    obj.label164 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label164:setParent(obj.layout114);
+    obj.label164:setText("2");
+    obj.label164.grid.role = "col";
+    obj.label164.grid.width = 6;
+    obj.label164.grid["min-height"] = 15;
+    obj.label164:setHorzTextAlign("center");
+    obj.label164:setName("label164");
+
     obj.label165 = GUI.fromHandle(_obj_newObject("label"));
     obj.label165:setParent(obj.layout114);
-    obj.label165:setText("2");
+    obj.label165:setText("3");
     obj.label165.grid.role = "col";
     obj.label165.grid.width = 6;
     obj.label165.grid["min-height"] = 15;
     obj.label165:setHorzTextAlign("center");
     obj.label165:setName("label165");
-
-    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label166:setParent(obj.layout114);
-    obj.label166:setText("3");
-    obj.label166.grid.role = "col";
-    obj.label166.grid.width = 6;
-    obj.label166.grid["min-height"] = 15;
-    obj.label166:setHorzTextAlign("center");
-    obj.label166:setName("label166");
 
     obj.layout115 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout115:setParent(obj.layout113);
@@ -4793,23 +4874,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout115.grid.width = 1;
     obj.layout115:setName("layout115");
 
+    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label166:setParent(obj.layout115);
+    obj.label166:setText("4");
+    obj.label166.grid.role = "col";
+    obj.label166.grid.width = 6;
+    obj.label166.grid["min-height"] = 15;
+    obj.label166:setHorzTextAlign("center");
+    obj.label166:setName("label166");
+
     obj.label167 = GUI.fromHandle(_obj_newObject("label"));
     obj.label167:setParent(obj.layout115);
-    obj.label167:setText("4");
+    obj.label167:setText("5");
     obj.label167.grid.role = "col";
     obj.label167.grid.width = 6;
     obj.label167.grid["min-height"] = 15;
     obj.label167:setHorzTextAlign("center");
     obj.label167:setName("label167");
-
-    obj.label168 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label168:setParent(obj.layout115);
-    obj.label168:setText("5");
-    obj.label168.grid.role = "col";
-    obj.label168.grid.width = 6;
-    obj.label168.grid["min-height"] = 15;
-    obj.label168:setHorzTextAlign("center");
-    obj.label168:setName("label168");
 
     obj.layout116 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout116:setParent(obj.layout113);
@@ -4818,23 +4899,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout116.grid.width = 1;
     obj.layout116:setName("layout116");
 
+    obj.label168 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label168:setParent(obj.layout116);
+    obj.label168:setText("6");
+    obj.label168.grid.role = "col";
+    obj.label168.grid.width = 6;
+    obj.label168.grid["min-height"] = 15;
+    obj.label168:setHorzTextAlign("center");
+    obj.label168:setName("label168");
+
     obj.label169 = GUI.fromHandle(_obj_newObject("label"));
     obj.label169:setParent(obj.layout116);
-    obj.label169:setText("6");
+    obj.label169:setText("7");
     obj.label169.grid.role = "col";
     obj.label169.grid.width = 6;
     obj.label169.grid["min-height"] = 15;
     obj.label169:setHorzTextAlign("center");
     obj.label169:setName("label169");
-
-    obj.label170 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label170:setParent(obj.layout116);
-    obj.label170:setText("7");
-    obj.label170.grid.role = "col";
-    obj.label170.grid.width = 6;
-    obj.label170.grid["min-height"] = 15;
-    obj.label170:setHorzTextAlign("center");
-    obj.label170:setName("label170");
 
     obj.layout117 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout117:setParent(obj.layout113);
@@ -4843,23 +4924,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout117.grid.width = 1;
     obj.layout117:setName("layout117");
 
+    obj.label170 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label170:setParent(obj.layout117);
+    obj.label170:setText("8");
+    obj.label170.grid.role = "col";
+    obj.label170.grid.width = 6;
+    obj.label170.grid["min-height"] = 15;
+    obj.label170:setHorzTextAlign("center");
+    obj.label170:setName("label170");
+
     obj.label171 = GUI.fromHandle(_obj_newObject("label"));
     obj.label171:setParent(obj.layout117);
-    obj.label171:setText("8");
+    obj.label171:setText("9");
     obj.label171.grid.role = "col";
     obj.label171.grid.width = 6;
     obj.label171.grid["min-height"] = 15;
     obj.label171:setHorzTextAlign("center");
     obj.label171:setName("label171");
-
-    obj.label172 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label172:setParent(obj.layout117);
-    obj.label172:setText("9");
-    obj.label172.grid.role = "col";
-    obj.label172.grid.width = 6;
-    obj.label172.grid["min-height"] = 15;
-    obj.label172:setHorzTextAlign("center");
-    obj.label172:setName("label172");
 
     obj.layout118 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout118:setParent(obj.layout113);
@@ -4868,23 +4949,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout118.grid.width = 1;
     obj.layout118:setName("layout118");
 
+    obj.label172 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label172:setParent(obj.layout118);
+    obj.label172:setText("10");
+    obj.label172.grid.role = "col";
+    obj.label172.grid.width = 6;
+    obj.label172.grid["min-height"] = 15;
+    obj.label172:setHorzTextAlign("center");
+    obj.label172:setName("label172");
+
     obj.label173 = GUI.fromHandle(_obj_newObject("label"));
     obj.label173:setParent(obj.layout118);
-    obj.label173:setText("10");
+    obj.label173:setText("11");
     obj.label173.grid.role = "col";
     obj.label173.grid.width = 6;
     obj.label173.grid["min-height"] = 15;
     obj.label173:setHorzTextAlign("center");
     obj.label173:setName("label173");
-
-    obj.label174 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label174:setParent(obj.layout118);
-    obj.label174:setText("11");
-    obj.label174.grid.role = "col";
-    obj.label174.grid.width = 6;
-    obj.label174.grid["min-height"] = 15;
-    obj.label174:setHorzTextAlign("center");
-    obj.label174:setName("label174");
 
     obj.layout119 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout119:setParent(obj.layout113);
@@ -4893,23 +4974,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout119.grid.width = 1;
     obj.layout119:setName("layout119");
 
+    obj.label174 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label174:setParent(obj.layout119);
+    obj.label174:setText("12");
+    obj.label174.grid.role = "col";
+    obj.label174.grid.width = 6;
+    obj.label174.grid["min-height"] = 15;
+    obj.label174:setHorzTextAlign("center");
+    obj.label174:setName("label174");
+
     obj.label175 = GUI.fromHandle(_obj_newObject("label"));
     obj.label175:setParent(obj.layout119);
-    obj.label175:setText("12");
+    obj.label175:setText("13");
     obj.label175.grid.role = "col";
     obj.label175.grid.width = 6;
     obj.label175.grid["min-height"] = 15;
     obj.label175:setHorzTextAlign("center");
     obj.label175:setName("label175");
-
-    obj.label176 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label176:setParent(obj.layout119);
-    obj.label176:setText("13");
-    obj.label176.grid.role = "col";
-    obj.label176.grid.width = 6;
-    obj.label176.grid["min-height"] = 15;
-    obj.label176:setHorzTextAlign("center");
-    obj.label176:setName("label176");
 
     obj.layout120 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout120:setParent(obj.layout113);
@@ -4918,23 +4999,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout120.grid.width = 1;
     obj.layout120:setName("layout120");
 
+    obj.label176 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label176:setParent(obj.layout120);
+    obj.label176:setText("14");
+    obj.label176.grid.role = "col";
+    obj.label176.grid.width = 6;
+    obj.label176.grid["min-height"] = 15;
+    obj.label176:setHorzTextAlign("center");
+    obj.label176:setName("label176");
+
     obj.label177 = GUI.fromHandle(_obj_newObject("label"));
     obj.label177:setParent(obj.layout120);
-    obj.label177:setText("14");
+    obj.label177:setText("15");
     obj.label177.grid.role = "col";
     obj.label177.grid.width = 6;
     obj.label177.grid["min-height"] = 15;
     obj.label177:setHorzTextAlign("center");
     obj.label177:setName("label177");
-
-    obj.label178 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label178:setParent(obj.layout120);
-    obj.label178:setText("15");
-    obj.label178.grid.role = "col";
-    obj.label178.grid.width = 6;
-    obj.label178.grid["min-height"] = 15;
-    obj.label178:setHorzTextAlign("center");
-    obj.label178:setName("label178");
 
     obj.layout121 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout121:setParent(obj.layout113);
@@ -4943,23 +5024,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout121.grid.width = 1;
     obj.layout121:setName("layout121");
 
+    obj.label178 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label178:setParent(obj.layout121);
+    obj.label178:setText("16");
+    obj.label178.grid.role = "col";
+    obj.label178.grid.width = 6;
+    obj.label178.grid["min-height"] = 15;
+    obj.label178:setHorzTextAlign("center");
+    obj.label178:setName("label178");
+
     obj.label179 = GUI.fromHandle(_obj_newObject("label"));
     obj.label179:setParent(obj.layout121);
-    obj.label179:setText("16");
+    obj.label179:setText("17");
     obj.label179.grid.role = "col";
     obj.label179.grid.width = 6;
     obj.label179.grid["min-height"] = 15;
     obj.label179:setHorzTextAlign("center");
     obj.label179:setName("label179");
-
-    obj.label180 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label180:setParent(obj.layout121);
-    obj.label180:setText("17");
-    obj.label180.grid.role = "col";
-    obj.label180.grid.width = 6;
-    obj.label180.grid["min-height"] = 15;
-    obj.label180:setHorzTextAlign("center");
-    obj.label180:setName("label180");
 
     obj.layout122 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout122:setParent(obj.layout113);
@@ -4968,23 +5049,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout122.grid.width = 1;
     obj.layout122:setName("layout122");
 
+    obj.label180 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label180:setParent(obj.layout122);
+    obj.label180:setText("18");
+    obj.label180.grid.role = "col";
+    obj.label180.grid.width = 6;
+    obj.label180.grid["min-height"] = 15;
+    obj.label180:setHorzTextAlign("center");
+    obj.label180:setName("label180");
+
     obj.label181 = GUI.fromHandle(_obj_newObject("label"));
     obj.label181:setParent(obj.layout122);
-    obj.label181:setText("18");
+    obj.label181:setText("19");
     obj.label181.grid.role = "col";
     obj.label181.grid.width = 6;
     obj.label181.grid["min-height"] = 15;
     obj.label181:setHorzTextAlign("center");
     obj.label181:setName("label181");
-
-    obj.label182 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label182:setParent(obj.layout122);
-    obj.label182:setText("19");
-    obj.label182.grid.role = "col";
-    obj.label182.grid.width = 6;
-    obj.label182.grid["min-height"] = 15;
-    obj.label182:setHorzTextAlign("center");
-    obj.label182:setName("label182");
 
     obj.layout123 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout123:setParent(obj.layout113);
@@ -4993,9 +5074,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout123.grid.width = 1;
     obj.layout123:setName("layout123");
 
+    obj.label182 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label182:setParent(obj.layout123);
+    obj.label182:setText("20");
+    obj.label182.grid.role = "col";
+    obj.label182.grid.width = 6;
+    obj.label182.grid["min-height"] = 15;
+    obj.label182:setHorzTextAlign("center");
+    obj.label182:setName("label182");
+
     obj.label183 = GUI.fromHandle(_obj_newObject("label"));
     obj.label183:setParent(obj.layout123);
-    obj.label183:setText("20");
+    obj.label183:setText("20+");
     obj.label183.grid.role = "col";
     obj.label183.grid.width = 6;
     obj.label183.grid["min-height"] = 15;
@@ -5003,31 +5093,22 @@ local function constructNew_frmFichaDePersonagem()
     obj.label183:setName("label183");
 
     obj.label184 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label184:setParent(obj.layout123);
-    obj.label184:setText("20+");
+    obj.label184:setParent(obj.layout113);
+    obj.label184:setText("Total");
     obj.label184.grid.role = "col";
-    obj.label184.grid.width = 6;
+    obj.label184.grid.width = 1;
     obj.label184.grid["min-height"] = 15;
     obj.label184:setHorzTextAlign("center");
     obj.label184:setName("label184");
 
     obj.label185 = GUI.fromHandle(_obj_newObject("label"));
     obj.label185:setParent(obj.layout113);
-    obj.label185:setText("Total");
+    obj.label185:setText("");
     obj.label185.grid.role = "col";
     obj.label185.grid.width = 1;
     obj.label185.grid["min-height"] = 15;
     obj.label185:setHorzTextAlign("center");
     obj.label185:setName("label185");
-
-    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label186:setParent(obj.layout113);
-    obj.label186:setText("");
-    obj.label186.grid.role = "col";
-    obj.label186.grid.width = 1;
-    obj.label186.grid["min-height"] = 15;
-    obj.label186:setHorzTextAlign("center");
-    obj.label186:setName("label186");
 
     obj.layout124 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout124:setParent(obj.layout113);
@@ -5036,25 +5117,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout124.grid.width = 1;
     obj.layout124:setName("layout124");
 
-    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit188:setParent(obj.layout124);
-    obj.edit188.grid.role = "col";
-    obj.edit188.grid.width = 6;
-    obj.edit188.grid["min-height"] = 30;
-    obj.edit188:setHorzTextAlign("center");
-    obj.edit188:setField("intNivel1");
-    obj.edit188:setType("number");
-    obj.edit188:setName("edit188");
+    obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit184:setParent(obj.layout124);
+    obj.edit184.grid.role = "col";
+    obj.edit184.grid.width = 6;
+    obj.edit184.grid["min-height"] = 30;
+    obj.edit184:setHorzTextAlign("center");
+    obj.edit184:setField("intNivel1");
+    obj.edit184:setType("number");
+    obj.edit184:setName("edit184");
 
-    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit189:setParent(obj.layout124);
-    obj.edit189.grid.role = "col";
-    obj.edit189.grid.width = 6;
-    obj.edit189.grid["min-height"] = 30;
-    obj.edit189:setHorzTextAlign("center");
-    obj.edit189:setField("intNivel2");
-    obj.edit189:setType("number");
-    obj.edit189:setName("edit189");
+    obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit185:setParent(obj.layout124);
+    obj.edit185.grid.role = "col";
+    obj.edit185.grid.width = 6;
+    obj.edit185.grid["min-height"] = 30;
+    obj.edit185:setHorzTextAlign("center");
+    obj.edit185:setField("intNivel2");
+    obj.edit185:setType("number");
+    obj.edit185:setName("edit185");
 
     obj.layout125 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout125:setParent(obj.layout113);
@@ -5063,25 +5144,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout125.grid.width = 1;
     obj.layout125:setName("layout125");
 
-    obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit190:setParent(obj.layout125);
-    obj.edit190.grid.role = "col";
-    obj.edit190.grid.width = 6;
-    obj.edit190.grid["min-height"] = 30;
-    obj.edit190:setHorzTextAlign("center");
-    obj.edit190:setField("intNivel3");
-    obj.edit190:setType("number");
-    obj.edit190:setName("edit190");
+    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit186:setParent(obj.layout125);
+    obj.edit186.grid.role = "col";
+    obj.edit186.grid.width = 6;
+    obj.edit186.grid["min-height"] = 30;
+    obj.edit186:setHorzTextAlign("center");
+    obj.edit186:setField("intNivel3");
+    obj.edit186:setType("number");
+    obj.edit186:setName("edit186");
 
-    obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit191:setParent(obj.layout125);
-    obj.edit191.grid.role = "col";
-    obj.edit191.grid.width = 6;
-    obj.edit191.grid["min-height"] = 30;
-    obj.edit191:setHorzTextAlign("center");
-    obj.edit191:setField("intNivel4");
-    obj.edit191:setType("number");
-    obj.edit191:setName("edit191");
+    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit187:setParent(obj.layout125);
+    obj.edit187.grid.role = "col";
+    obj.edit187.grid.width = 6;
+    obj.edit187.grid["min-height"] = 30;
+    obj.edit187:setHorzTextAlign("center");
+    obj.edit187:setField("intNivel4");
+    obj.edit187:setType("number");
+    obj.edit187:setName("edit187");
 
     obj.layout126 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout126:setParent(obj.layout113);
@@ -5090,25 +5171,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout126.grid.width = 1;
     obj.layout126:setName("layout126");
 
-    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit192:setParent(obj.layout126);
-    obj.edit192.grid.role = "col";
-    obj.edit192.grid.width = 6;
-    obj.edit192.grid["min-height"] = 30;
-    obj.edit192:setHorzTextAlign("center");
-    obj.edit192:setField("intNivel5");
-    obj.edit192:setType("number");
-    obj.edit192:setName("edit192");
+    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit188:setParent(obj.layout126);
+    obj.edit188.grid.role = "col";
+    obj.edit188.grid.width = 6;
+    obj.edit188.grid["min-height"] = 30;
+    obj.edit188:setHorzTextAlign("center");
+    obj.edit188:setField("intNivel5");
+    obj.edit188:setType("number");
+    obj.edit188:setName("edit188");
 
-    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit193:setParent(obj.layout126);
-    obj.edit193.grid.role = "col";
-    obj.edit193.grid.width = 6;
-    obj.edit193.grid["min-height"] = 30;
-    obj.edit193:setHorzTextAlign("center");
-    obj.edit193:setField("intNivel6");
-    obj.edit193:setType("number");
-    obj.edit193:setName("edit193");
+    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit189:setParent(obj.layout126);
+    obj.edit189.grid.role = "col";
+    obj.edit189.grid.width = 6;
+    obj.edit189.grid["min-height"] = 30;
+    obj.edit189:setHorzTextAlign("center");
+    obj.edit189:setField("intNivel6");
+    obj.edit189:setType("number");
+    obj.edit189:setName("edit189");
 
     obj.layout127 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout127:setParent(obj.layout113);
@@ -5117,25 +5198,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout127.grid.width = 1;
     obj.layout127:setName("layout127");
 
-    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit194:setParent(obj.layout127);
-    obj.edit194.grid.role = "col";
-    obj.edit194.grid.width = 6;
-    obj.edit194.grid["min-height"] = 30;
-    obj.edit194:setHorzTextAlign("center");
-    obj.edit194:setField("intNivel7");
-    obj.edit194:setType("number");
-    obj.edit194:setName("edit194");
+    obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit190:setParent(obj.layout127);
+    obj.edit190.grid.role = "col";
+    obj.edit190.grid.width = 6;
+    obj.edit190.grid["min-height"] = 30;
+    obj.edit190:setHorzTextAlign("center");
+    obj.edit190:setField("intNivel7");
+    obj.edit190:setType("number");
+    obj.edit190:setName("edit190");
 
-    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit195:setParent(obj.layout127);
-    obj.edit195.grid.role = "col";
-    obj.edit195.grid.width = 6;
-    obj.edit195.grid["min-height"] = 30;
-    obj.edit195:setHorzTextAlign("center");
-    obj.edit195:setField("intNivel8");
-    obj.edit195:setType("number");
-    obj.edit195:setName("edit195");
+    obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit191:setParent(obj.layout127);
+    obj.edit191.grid.role = "col";
+    obj.edit191.grid.width = 6;
+    obj.edit191.grid["min-height"] = 30;
+    obj.edit191:setHorzTextAlign("center");
+    obj.edit191:setField("intNivel8");
+    obj.edit191:setType("number");
+    obj.edit191:setName("edit191");
 
     obj.layout128 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout128:setParent(obj.layout113);
@@ -5144,25 +5225,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout128.grid.width = 1;
     obj.layout128:setName("layout128");
 
-    obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit196:setParent(obj.layout128);
-    obj.edit196.grid.role = "col";
-    obj.edit196.grid.width = 6;
-    obj.edit196.grid["min-height"] = 30;
-    obj.edit196:setHorzTextAlign("center");
-    obj.edit196:setField("intNivel9");
-    obj.edit196:setType("number");
-    obj.edit196:setName("edit196");
+    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit192:setParent(obj.layout128);
+    obj.edit192.grid.role = "col";
+    obj.edit192.grid.width = 6;
+    obj.edit192.grid["min-height"] = 30;
+    obj.edit192:setHorzTextAlign("center");
+    obj.edit192:setField("intNivel9");
+    obj.edit192:setType("number");
+    obj.edit192:setName("edit192");
 
-    obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit197:setParent(obj.layout128);
-    obj.edit197.grid.role = "col";
-    obj.edit197.grid.width = 6;
-    obj.edit197.grid["min-height"] = 30;
-    obj.edit197:setHorzTextAlign("center");
-    obj.edit197:setField("intNivel10");
-    obj.edit197:setType("number");
-    obj.edit197:setName("edit197");
+    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit193:setParent(obj.layout128);
+    obj.edit193.grid.role = "col";
+    obj.edit193.grid.width = 6;
+    obj.edit193.grid["min-height"] = 30;
+    obj.edit193:setHorzTextAlign("center");
+    obj.edit193:setField("intNivel10");
+    obj.edit193:setType("number");
+    obj.edit193:setName("edit193");
 
     obj.layout129 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout129:setParent(obj.layout113);
@@ -5171,25 +5252,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout129.grid.width = 1;
     obj.layout129:setName("layout129");
 
-    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit198:setParent(obj.layout129);
-    obj.edit198.grid.role = "col";
-    obj.edit198.grid.width = 6;
-    obj.edit198.grid["min-height"] = 30;
-    obj.edit198:setHorzTextAlign("center");
-    obj.edit198:setField("intNivel11");
-    obj.edit198:setType("number");
-    obj.edit198:setName("edit198");
+    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit194:setParent(obj.layout129);
+    obj.edit194.grid.role = "col";
+    obj.edit194.grid.width = 6;
+    obj.edit194.grid["min-height"] = 30;
+    obj.edit194:setHorzTextAlign("center");
+    obj.edit194:setField("intNivel11");
+    obj.edit194:setType("number");
+    obj.edit194:setName("edit194");
 
-    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit199:setParent(obj.layout129);
-    obj.edit199.grid.role = "col";
-    obj.edit199.grid.width = 6;
-    obj.edit199.grid["min-height"] = 30;
-    obj.edit199:setHorzTextAlign("center");
-    obj.edit199:setField("intNivel12");
-    obj.edit199:setType("number");
-    obj.edit199:setName("edit199");
+    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit195:setParent(obj.layout129);
+    obj.edit195.grid.role = "col";
+    obj.edit195.grid.width = 6;
+    obj.edit195.grid["min-height"] = 30;
+    obj.edit195:setHorzTextAlign("center");
+    obj.edit195:setField("intNivel12");
+    obj.edit195:setType("number");
+    obj.edit195:setName("edit195");
 
     obj.layout130 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout130:setParent(obj.layout113);
@@ -5198,25 +5279,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout130.grid.width = 1;
     obj.layout130:setName("layout130");
 
-    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit200:setParent(obj.layout130);
-    obj.edit200.grid.role = "col";
-    obj.edit200.grid.width = 6;
-    obj.edit200.grid["min-height"] = 30;
-    obj.edit200:setHorzTextAlign("center");
-    obj.edit200:setField("intNivel13");
-    obj.edit200:setType("number");
-    obj.edit200:setName("edit200");
+    obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit196:setParent(obj.layout130);
+    obj.edit196.grid.role = "col";
+    obj.edit196.grid.width = 6;
+    obj.edit196.grid["min-height"] = 30;
+    obj.edit196:setHorzTextAlign("center");
+    obj.edit196:setField("intNivel13");
+    obj.edit196:setType("number");
+    obj.edit196:setName("edit196");
 
-    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit201:setParent(obj.layout130);
-    obj.edit201.grid.role = "col";
-    obj.edit201.grid.width = 6;
-    obj.edit201.grid["min-height"] = 30;
-    obj.edit201:setHorzTextAlign("center");
-    obj.edit201:setField("intNivel14");
-    obj.edit201:setType("number");
-    obj.edit201:setName("edit201");
+    obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit197:setParent(obj.layout130);
+    obj.edit197.grid.role = "col";
+    obj.edit197.grid.width = 6;
+    obj.edit197.grid["min-height"] = 30;
+    obj.edit197:setHorzTextAlign("center");
+    obj.edit197:setField("intNivel14");
+    obj.edit197:setType("number");
+    obj.edit197:setName("edit197");
 
     obj.layout131 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout131:setParent(obj.layout113);
@@ -5225,25 +5306,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout131.grid.width = 1;
     obj.layout131:setName("layout131");
 
-    obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit202:setParent(obj.layout131);
-    obj.edit202.grid.role = "col";
-    obj.edit202.grid.width = 6;
-    obj.edit202.grid["min-height"] = 30;
-    obj.edit202:setHorzTextAlign("center");
-    obj.edit202:setField("intNivel15");
-    obj.edit202:setType("number");
-    obj.edit202:setName("edit202");
+    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit198:setParent(obj.layout131);
+    obj.edit198.grid.role = "col";
+    obj.edit198.grid.width = 6;
+    obj.edit198.grid["min-height"] = 30;
+    obj.edit198:setHorzTextAlign("center");
+    obj.edit198:setField("intNivel15");
+    obj.edit198:setType("number");
+    obj.edit198:setName("edit198");
 
-    obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit203:setParent(obj.layout131);
-    obj.edit203.grid.role = "col";
-    obj.edit203.grid.width = 6;
-    obj.edit203.grid["min-height"] = 30;
-    obj.edit203:setHorzTextAlign("center");
-    obj.edit203:setField("intNivel16");
-    obj.edit203:setType("number");
-    obj.edit203:setName("edit203");
+    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit199:setParent(obj.layout131);
+    obj.edit199.grid.role = "col";
+    obj.edit199.grid.width = 6;
+    obj.edit199.grid["min-height"] = 30;
+    obj.edit199:setHorzTextAlign("center");
+    obj.edit199:setField("intNivel16");
+    obj.edit199:setType("number");
+    obj.edit199:setName("edit199");
 
     obj.layout132 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout132:setParent(obj.layout113);
@@ -5252,25 +5333,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout132.grid.width = 1;
     obj.layout132:setName("layout132");
 
-    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit204:setParent(obj.layout132);
-    obj.edit204.grid.role = "col";
-    obj.edit204.grid.width = 6;
-    obj.edit204.grid["min-height"] = 30;
-    obj.edit204:setHorzTextAlign("center");
-    obj.edit204:setField("intNivel17");
-    obj.edit204:setType("number");
-    obj.edit204:setName("edit204");
+    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit200:setParent(obj.layout132);
+    obj.edit200.grid.role = "col";
+    obj.edit200.grid.width = 6;
+    obj.edit200.grid["min-height"] = 30;
+    obj.edit200:setHorzTextAlign("center");
+    obj.edit200:setField("intNivel17");
+    obj.edit200:setType("number");
+    obj.edit200:setName("edit200");
 
-    obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit205:setParent(obj.layout132);
-    obj.edit205.grid.role = "col";
-    obj.edit205.grid.width = 6;
-    obj.edit205.grid["min-height"] = 30;
-    obj.edit205:setHorzTextAlign("center");
-    obj.edit205:setField("intNivel18");
-    obj.edit205:setType("number");
-    obj.edit205:setName("edit205");
+    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit201:setParent(obj.layout132);
+    obj.edit201.grid.role = "col";
+    obj.edit201.grid.width = 6;
+    obj.edit201.grid["min-height"] = 30;
+    obj.edit201:setHorzTextAlign("center");
+    obj.edit201:setField("intNivel18");
+    obj.edit201:setType("number");
+    obj.edit201:setName("edit201");
 
     obj.layout133 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout133:setParent(obj.layout113);
@@ -5279,37 +5360,37 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout133.grid.width = 1;
     obj.layout133:setName("layout133");
 
-    obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit206:setParent(obj.layout133);
-    obj.edit206.grid.role = "col";
-    obj.edit206.grid.width = 6;
-    obj.edit206.grid["min-height"] = 30;
-    obj.edit206:setHorzTextAlign("center");
-    obj.edit206:setField("intNivel19");
-    obj.edit206:setType("number");
-    obj.edit206:setName("edit206");
+    obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit202:setParent(obj.layout133);
+    obj.edit202.grid.role = "col";
+    obj.edit202.grid.width = 6;
+    obj.edit202.grid["min-height"] = 30;
+    obj.edit202:setHorzTextAlign("center");
+    obj.edit202:setField("intNivel19");
+    obj.edit202:setType("number");
+    obj.edit202:setName("edit202");
 
-    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit207:setParent(obj.layout133);
-    obj.edit207.grid.role = "col";
-    obj.edit207.grid.width = 6;
-    obj.edit207.grid["min-height"] = 30;
-    obj.edit207:setHorzTextAlign("center");
-    obj.edit207:setField("intNivel20");
-    obj.edit207:setType("number");
-    obj.edit207:setName("edit207");
+    obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit203:setParent(obj.layout133);
+    obj.edit203.grid.role = "col";
+    obj.edit203.grid.width = 6;
+    obj.edit203.grid["min-height"] = 30;
+    obj.edit203:setHorzTextAlign("center");
+    obj.edit203:setField("intNivel20");
+    obj.edit203:setType("number");
+    obj.edit203:setName("edit203");
 
-    obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit208:setParent(obj.layout113);
-    obj.edit208:setField("intNivelTotal");
-    obj.edit208.grid.role = "col";
-    obj.edit208.grid.width = 1;
-    obj.edit208.grid["min-height"] = 15;
-    obj.edit208:setHorzTextAlign("center");
-    obj.edit208:setReadOnly(true);
-    obj.edit208:setCanFocus(false);
-    obj.edit208:setCursor("default");
-    obj.edit208:setName("edit208");
+    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit204:setParent(obj.layout113);
+    obj.edit204:setField("intNivelTotal");
+    obj.edit204.grid.role = "col";
+    obj.edit204.grid.width = 1;
+    obj.edit204.grid["min-height"] = 15;
+    obj.edit204:setHorzTextAlign("center");
+    obj.edit204:setReadOnly(true);
+    obj.edit204:setCanFocus(false);
+    obj.edit204:setCursor("default");
+    obj.edit204:setName("edit204");
 
     obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink32:setParent(obj.scrollBox2);
@@ -5329,14 +5410,14 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout134.grid.role = "row";
     obj.layout134:setName("layout134");
 
-    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label187:setParent(obj.layout134);
-    obj.label187:setText("Sabedoria");
-    obj.label187.grid.role = "col";
-    obj.label187.grid.width = 1;
-    obj.label187.grid["min-height"] = 20;
-    obj.label187:setHorzTextAlign("center");
-    obj.label187:setName("label187");
+    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label186:setParent(obj.layout134);
+    obj.label186:setText("Sabedoria");
+    obj.label186.grid.role = "col";
+    obj.label186.grid.width = 1;
+    obj.label186.grid["min-height"] = 20;
+    obj.label186:setHorzTextAlign("center");
+    obj.label186:setName("label186");
 
     obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout135:setParent(obj.layout134);
@@ -5345,23 +5426,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout135.grid.width = 1;
     obj.layout135:setName("layout135");
 
+    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label187:setParent(obj.layout135);
+    obj.label187:setText("2");
+    obj.label187.grid.role = "col";
+    obj.label187.grid.width = 6;
+    obj.label187.grid["min-height"] = 15;
+    obj.label187:setHorzTextAlign("center");
+    obj.label187:setName("label187");
+
     obj.label188 = GUI.fromHandle(_obj_newObject("label"));
     obj.label188:setParent(obj.layout135);
-    obj.label188:setText("2");
+    obj.label188:setText("3");
     obj.label188.grid.role = "col";
     obj.label188.grid.width = 6;
     obj.label188.grid["min-height"] = 15;
     obj.label188:setHorzTextAlign("center");
     obj.label188:setName("label188");
-
-    obj.label189 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label189:setParent(obj.layout135);
-    obj.label189:setText("3");
-    obj.label189.grid.role = "col";
-    obj.label189.grid.width = 6;
-    obj.label189.grid["min-height"] = 15;
-    obj.label189:setHorzTextAlign("center");
-    obj.label189:setName("label189");
 
     obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout136:setParent(obj.layout134);
@@ -5370,23 +5451,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout136.grid.width = 1;
     obj.layout136:setName("layout136");
 
+    obj.label189 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label189:setParent(obj.layout136);
+    obj.label189:setText("4");
+    obj.label189.grid.role = "col";
+    obj.label189.grid.width = 6;
+    obj.label189.grid["min-height"] = 15;
+    obj.label189:setHorzTextAlign("center");
+    obj.label189:setName("label189");
+
     obj.label190 = GUI.fromHandle(_obj_newObject("label"));
     obj.label190:setParent(obj.layout136);
-    obj.label190:setText("4");
+    obj.label190:setText("5");
     obj.label190.grid.role = "col";
     obj.label190.grid.width = 6;
     obj.label190.grid["min-height"] = 15;
     obj.label190:setHorzTextAlign("center");
     obj.label190:setName("label190");
-
-    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label191:setParent(obj.layout136);
-    obj.label191:setText("5");
-    obj.label191.grid.role = "col";
-    obj.label191.grid.width = 6;
-    obj.label191.grid["min-height"] = 15;
-    obj.label191:setHorzTextAlign("center");
-    obj.label191:setName("label191");
 
     obj.layout137 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout137:setParent(obj.layout134);
@@ -5395,23 +5476,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout137.grid.width = 1;
     obj.layout137:setName("layout137");
 
+    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label191:setParent(obj.layout137);
+    obj.label191:setText("6");
+    obj.label191.grid.role = "col";
+    obj.label191.grid.width = 6;
+    obj.label191.grid["min-height"] = 15;
+    obj.label191:setHorzTextAlign("center");
+    obj.label191:setName("label191");
+
     obj.label192 = GUI.fromHandle(_obj_newObject("label"));
     obj.label192:setParent(obj.layout137);
-    obj.label192:setText("6");
+    obj.label192:setText("7");
     obj.label192.grid.role = "col";
     obj.label192.grid.width = 6;
     obj.label192.grid["min-height"] = 15;
     obj.label192:setHorzTextAlign("center");
     obj.label192:setName("label192");
-
-    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label193:setParent(obj.layout137);
-    obj.label193:setText("7");
-    obj.label193.grid.role = "col";
-    obj.label193.grid.width = 6;
-    obj.label193.grid["min-height"] = 15;
-    obj.label193:setHorzTextAlign("center");
-    obj.label193:setName("label193");
 
     obj.layout138 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout138:setParent(obj.layout134);
@@ -5420,23 +5501,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout138.grid.width = 1;
     obj.layout138:setName("layout138");
 
+    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label193:setParent(obj.layout138);
+    obj.label193:setText("8");
+    obj.label193.grid.role = "col";
+    obj.label193.grid.width = 6;
+    obj.label193.grid["min-height"] = 15;
+    obj.label193:setHorzTextAlign("center");
+    obj.label193:setName("label193");
+
     obj.label194 = GUI.fromHandle(_obj_newObject("label"));
     obj.label194:setParent(obj.layout138);
-    obj.label194:setText("8");
+    obj.label194:setText("9");
     obj.label194.grid.role = "col";
     obj.label194.grid.width = 6;
     obj.label194.grid["min-height"] = 15;
     obj.label194:setHorzTextAlign("center");
     obj.label194:setName("label194");
-
-    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label195:setParent(obj.layout138);
-    obj.label195:setText("9");
-    obj.label195.grid.role = "col";
-    obj.label195.grid.width = 6;
-    obj.label195.grid["min-height"] = 15;
-    obj.label195:setHorzTextAlign("center");
-    obj.label195:setName("label195");
 
     obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout139:setParent(obj.layout134);
@@ -5445,23 +5526,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout139.grid.width = 1;
     obj.layout139:setName("layout139");
 
+    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label195:setParent(obj.layout139);
+    obj.label195:setText("10");
+    obj.label195.grid.role = "col";
+    obj.label195.grid.width = 6;
+    obj.label195.grid["min-height"] = 15;
+    obj.label195:setHorzTextAlign("center");
+    obj.label195:setName("label195");
+
     obj.label196 = GUI.fromHandle(_obj_newObject("label"));
     obj.label196:setParent(obj.layout139);
-    obj.label196:setText("10");
+    obj.label196:setText("11");
     obj.label196.grid.role = "col";
     obj.label196.grid.width = 6;
     obj.label196.grid["min-height"] = 15;
     obj.label196:setHorzTextAlign("center");
     obj.label196:setName("label196");
-
-    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label197:setParent(obj.layout139);
-    obj.label197:setText("11");
-    obj.label197.grid.role = "col";
-    obj.label197.grid.width = 6;
-    obj.label197.grid["min-height"] = 15;
-    obj.label197:setHorzTextAlign("center");
-    obj.label197:setName("label197");
 
     obj.layout140 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout140:setParent(obj.layout134);
@@ -5470,23 +5551,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout140.grid.width = 1;
     obj.layout140:setName("layout140");
 
+    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label197:setParent(obj.layout140);
+    obj.label197:setText("12");
+    obj.label197.grid.role = "col";
+    obj.label197.grid.width = 6;
+    obj.label197.grid["min-height"] = 15;
+    obj.label197:setHorzTextAlign("center");
+    obj.label197:setName("label197");
+
     obj.label198 = GUI.fromHandle(_obj_newObject("label"));
     obj.label198:setParent(obj.layout140);
-    obj.label198:setText("12");
+    obj.label198:setText("13");
     obj.label198.grid.role = "col";
     obj.label198.grid.width = 6;
     obj.label198.grid["min-height"] = 15;
     obj.label198:setHorzTextAlign("center");
     obj.label198:setName("label198");
-
-    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label199:setParent(obj.layout140);
-    obj.label199:setText("13");
-    obj.label199.grid.role = "col";
-    obj.label199.grid.width = 6;
-    obj.label199.grid["min-height"] = 15;
-    obj.label199:setHorzTextAlign("center");
-    obj.label199:setName("label199");
 
     obj.layout141 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout141:setParent(obj.layout134);
@@ -5495,23 +5576,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout141.grid.width = 1;
     obj.layout141:setName("layout141");
 
+    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label199:setParent(obj.layout141);
+    obj.label199:setText("14");
+    obj.label199.grid.role = "col";
+    obj.label199.grid.width = 6;
+    obj.label199.grid["min-height"] = 15;
+    obj.label199:setHorzTextAlign("center");
+    obj.label199:setName("label199");
+
     obj.label200 = GUI.fromHandle(_obj_newObject("label"));
     obj.label200:setParent(obj.layout141);
-    obj.label200:setText("14");
+    obj.label200:setText("15");
     obj.label200.grid.role = "col";
     obj.label200.grid.width = 6;
     obj.label200.grid["min-height"] = 15;
     obj.label200:setHorzTextAlign("center");
     obj.label200:setName("label200");
-
-    obj.label201 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label201:setParent(obj.layout141);
-    obj.label201:setText("15");
-    obj.label201.grid.role = "col";
-    obj.label201.grid.width = 6;
-    obj.label201.grid["min-height"] = 15;
-    obj.label201:setHorzTextAlign("center");
-    obj.label201:setName("label201");
 
     obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout142:setParent(obj.layout134);
@@ -5520,23 +5601,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout142.grid.width = 1;
     obj.layout142:setName("layout142");
 
+    obj.label201 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label201:setParent(obj.layout142);
+    obj.label201:setText("16");
+    obj.label201.grid.role = "col";
+    obj.label201.grid.width = 6;
+    obj.label201.grid["min-height"] = 15;
+    obj.label201:setHorzTextAlign("center");
+    obj.label201:setName("label201");
+
     obj.label202 = GUI.fromHandle(_obj_newObject("label"));
     obj.label202:setParent(obj.layout142);
-    obj.label202:setText("16");
+    obj.label202:setText("17");
     obj.label202.grid.role = "col";
     obj.label202.grid.width = 6;
     obj.label202.grid["min-height"] = 15;
     obj.label202:setHorzTextAlign("center");
     obj.label202:setName("label202");
-
-    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label203:setParent(obj.layout142);
-    obj.label203:setText("17");
-    obj.label203.grid.role = "col";
-    obj.label203.grid.width = 6;
-    obj.label203.grid["min-height"] = 15;
-    obj.label203:setHorzTextAlign("center");
-    obj.label203:setName("label203");
 
     obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout143:setParent(obj.layout134);
@@ -5545,23 +5626,23 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout143.grid.width = 1;
     obj.layout143:setName("layout143");
 
+    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label203:setParent(obj.layout143);
+    obj.label203:setText("18");
+    obj.label203.grid.role = "col";
+    obj.label203.grid.width = 6;
+    obj.label203.grid["min-height"] = 15;
+    obj.label203:setHorzTextAlign("center");
+    obj.label203:setName("label203");
+
     obj.label204 = GUI.fromHandle(_obj_newObject("label"));
     obj.label204:setParent(obj.layout143);
-    obj.label204:setText("18");
+    obj.label204:setText("19");
     obj.label204.grid.role = "col";
     obj.label204.grid.width = 6;
     obj.label204.grid["min-height"] = 15;
     obj.label204:setHorzTextAlign("center");
     obj.label204:setName("label204");
-
-    obj.label205 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label205:setParent(obj.layout143);
-    obj.label205:setText("19");
-    obj.label205.grid.role = "col";
-    obj.label205.grid.width = 6;
-    obj.label205.grid["min-height"] = 15;
-    obj.label205:setHorzTextAlign("center");
-    obj.label205:setName("label205");
 
     obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout144:setParent(obj.layout134);
@@ -5570,9 +5651,18 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout144.grid.width = 1;
     obj.layout144:setName("layout144");
 
+    obj.label205 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label205:setParent(obj.layout144);
+    obj.label205:setText("20");
+    obj.label205.grid.role = "col";
+    obj.label205.grid.width = 6;
+    obj.label205.grid["min-height"] = 15;
+    obj.label205:setHorzTextAlign("center");
+    obj.label205:setName("label205");
+
     obj.label206 = GUI.fromHandle(_obj_newObject("label"));
     obj.label206:setParent(obj.layout144);
-    obj.label206:setText("20");
+    obj.label206:setText("20+");
     obj.label206.grid.role = "col";
     obj.label206.grid.width = 6;
     obj.label206.grid["min-height"] = 15;
@@ -5580,31 +5670,22 @@ local function constructNew_frmFichaDePersonagem()
     obj.label206:setName("label206");
 
     obj.label207 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label207:setParent(obj.layout144);
-    obj.label207:setText("20+");
+    obj.label207:setParent(obj.layout134);
+    obj.label207:setText("Total");
     obj.label207.grid.role = "col";
-    obj.label207.grid.width = 6;
+    obj.label207.grid.width = 1;
     obj.label207.grid["min-height"] = 15;
     obj.label207:setHorzTextAlign("center");
     obj.label207:setName("label207");
 
     obj.label208 = GUI.fromHandle(_obj_newObject("label"));
     obj.label208:setParent(obj.layout134);
-    obj.label208:setText("Total");
+    obj.label208:setText("");
     obj.label208.grid.role = "col";
     obj.label208.grid.width = 1;
     obj.label208.grid["min-height"] = 15;
     obj.label208:setHorzTextAlign("center");
     obj.label208:setName("label208");
-
-    obj.label209 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label209:setParent(obj.layout134);
-    obj.label209:setText("");
-    obj.label209.grid.role = "col";
-    obj.label209.grid.width = 1;
-    obj.label209.grid["min-height"] = 15;
-    obj.label209:setHorzTextAlign("center");
-    obj.label209:setName("label209");
 
     obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout145:setParent(obj.layout134);
@@ -5613,25 +5694,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout145.grid.width = 1;
     obj.layout145:setName("layout145");
 
-    obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit209:setParent(obj.layout145);
-    obj.edit209.grid.role = "col";
-    obj.edit209.grid.width = 6;
-    obj.edit209.grid["min-height"] = 30;
-    obj.edit209:setHorzTextAlign("center");
-    obj.edit209:setField("sabNivel1");
-    obj.edit209:setType("number");
-    obj.edit209:setName("edit209");
+    obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit205:setParent(obj.layout145);
+    obj.edit205.grid.role = "col";
+    obj.edit205.grid.width = 6;
+    obj.edit205.grid["min-height"] = 30;
+    obj.edit205:setHorzTextAlign("center");
+    obj.edit205:setField("sabNivel1");
+    obj.edit205:setType("number");
+    obj.edit205:setName("edit205");
 
-    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit210:setParent(obj.layout145);
-    obj.edit210.grid.role = "col";
-    obj.edit210.grid.width = 6;
-    obj.edit210.grid["min-height"] = 30;
-    obj.edit210:setHorzTextAlign("center");
-    obj.edit210:setField("sabNivel2");
-    obj.edit210:setType("number");
-    obj.edit210:setName("edit210");
+    obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit206:setParent(obj.layout145);
+    obj.edit206.grid.role = "col";
+    obj.edit206.grid.width = 6;
+    obj.edit206.grid["min-height"] = 30;
+    obj.edit206:setHorzTextAlign("center");
+    obj.edit206:setField("sabNivel2");
+    obj.edit206:setType("number");
+    obj.edit206:setName("edit206");
 
     obj.layout146 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout146:setParent(obj.layout134);
@@ -5640,25 +5721,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout146.grid.width = 1;
     obj.layout146:setName("layout146");
 
-    obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit211:setParent(obj.layout146);
-    obj.edit211.grid.role = "col";
-    obj.edit211.grid.width = 6;
-    obj.edit211.grid["min-height"] = 30;
-    obj.edit211:setHorzTextAlign("center");
-    obj.edit211:setField("sabNivel3");
-    obj.edit211:setType("number");
-    obj.edit211:setName("edit211");
+    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit207:setParent(obj.layout146);
+    obj.edit207.grid.role = "col";
+    obj.edit207.grid.width = 6;
+    obj.edit207.grid["min-height"] = 30;
+    obj.edit207:setHorzTextAlign("center");
+    obj.edit207:setField("sabNivel3");
+    obj.edit207:setType("number");
+    obj.edit207:setName("edit207");
 
-    obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit212:setParent(obj.layout146);
-    obj.edit212.grid.role = "col";
-    obj.edit212.grid.width = 6;
-    obj.edit212.grid["min-height"] = 30;
-    obj.edit212:setHorzTextAlign("center");
-    obj.edit212:setField("sabNivel4");
-    obj.edit212:setType("number");
-    obj.edit212:setName("edit212");
+    obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit208:setParent(obj.layout146);
+    obj.edit208.grid.role = "col";
+    obj.edit208.grid.width = 6;
+    obj.edit208.grid["min-height"] = 30;
+    obj.edit208:setHorzTextAlign("center");
+    obj.edit208:setField("sabNivel4");
+    obj.edit208:setType("number");
+    obj.edit208:setName("edit208");
 
     obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout147:setParent(obj.layout134);
@@ -5667,25 +5748,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout147.grid.width = 1;
     obj.layout147:setName("layout147");
 
-    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit213:setParent(obj.layout147);
-    obj.edit213.grid.role = "col";
-    obj.edit213.grid.width = 6;
-    obj.edit213.grid["min-height"] = 30;
-    obj.edit213:setHorzTextAlign("center");
-    obj.edit213:setField("sabNivel5");
-    obj.edit213:setType("number");
-    obj.edit213:setName("edit213");
+    obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit209:setParent(obj.layout147);
+    obj.edit209.grid.role = "col";
+    obj.edit209.grid.width = 6;
+    obj.edit209.grid["min-height"] = 30;
+    obj.edit209:setHorzTextAlign("center");
+    obj.edit209:setField("sabNivel5");
+    obj.edit209:setType("number");
+    obj.edit209:setName("edit209");
 
-    obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit214:setParent(obj.layout147);
-    obj.edit214.grid.role = "col";
-    obj.edit214.grid.width = 6;
-    obj.edit214.grid["min-height"] = 30;
-    obj.edit214:setHorzTextAlign("center");
-    obj.edit214:setField("sabNivel6");
-    obj.edit214:setType("number");
-    obj.edit214:setName("edit214");
+    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit210:setParent(obj.layout147);
+    obj.edit210.grid.role = "col";
+    obj.edit210.grid.width = 6;
+    obj.edit210.grid["min-height"] = 30;
+    obj.edit210:setHorzTextAlign("center");
+    obj.edit210:setField("sabNivel6");
+    obj.edit210:setType("number");
+    obj.edit210:setName("edit210");
 
     obj.layout148 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout148:setParent(obj.layout134);
@@ -5694,25 +5775,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout148.grid.width = 1;
     obj.layout148:setName("layout148");
 
-    obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit215:setParent(obj.layout148);
-    obj.edit215.grid.role = "col";
-    obj.edit215.grid.width = 6;
-    obj.edit215.grid["min-height"] = 30;
-    obj.edit215:setHorzTextAlign("center");
-    obj.edit215:setField("sabNivel7");
-    obj.edit215:setType("number");
-    obj.edit215:setName("edit215");
+    obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit211:setParent(obj.layout148);
+    obj.edit211.grid.role = "col";
+    obj.edit211.grid.width = 6;
+    obj.edit211.grid["min-height"] = 30;
+    obj.edit211:setHorzTextAlign("center");
+    obj.edit211:setField("sabNivel7");
+    obj.edit211:setType("number");
+    obj.edit211:setName("edit211");
 
-    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit216:setParent(obj.layout148);
-    obj.edit216.grid.role = "col";
-    obj.edit216.grid.width = 6;
-    obj.edit216.grid["min-height"] = 30;
-    obj.edit216:setHorzTextAlign("center");
-    obj.edit216:setField("sabNivel8");
-    obj.edit216:setType("number");
-    obj.edit216:setName("edit216");
+    obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit212:setParent(obj.layout148);
+    obj.edit212.grid.role = "col";
+    obj.edit212.grid.width = 6;
+    obj.edit212.grid["min-height"] = 30;
+    obj.edit212:setHorzTextAlign("center");
+    obj.edit212:setField("sabNivel8");
+    obj.edit212:setType("number");
+    obj.edit212:setName("edit212");
 
     obj.layout149 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout149:setParent(obj.layout134);
@@ -5721,25 +5802,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout149.grid.width = 1;
     obj.layout149:setName("layout149");
 
-    obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit217:setParent(obj.layout149);
-    obj.edit217.grid.role = "col";
-    obj.edit217.grid.width = 6;
-    obj.edit217.grid["min-height"] = 30;
-    obj.edit217:setHorzTextAlign("center");
-    obj.edit217:setField("sabNivel9");
-    obj.edit217:setType("number");
-    obj.edit217:setName("edit217");
+    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit213:setParent(obj.layout149);
+    obj.edit213.grid.role = "col";
+    obj.edit213.grid.width = 6;
+    obj.edit213.grid["min-height"] = 30;
+    obj.edit213:setHorzTextAlign("center");
+    obj.edit213:setField("sabNivel9");
+    obj.edit213:setType("number");
+    obj.edit213:setName("edit213");
 
-    obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit218:setParent(obj.layout149);
-    obj.edit218.grid.role = "col";
-    obj.edit218.grid.width = 6;
-    obj.edit218.grid["min-height"] = 30;
-    obj.edit218:setHorzTextAlign("center");
-    obj.edit218:setField("sabNivel10");
-    obj.edit218:setType("number");
-    obj.edit218:setName("edit218");
+    obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit214:setParent(obj.layout149);
+    obj.edit214.grid.role = "col";
+    obj.edit214.grid.width = 6;
+    obj.edit214.grid["min-height"] = 30;
+    obj.edit214:setHorzTextAlign("center");
+    obj.edit214:setField("sabNivel10");
+    obj.edit214:setType("number");
+    obj.edit214:setName("edit214");
 
     obj.layout150 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout150:setParent(obj.layout134);
@@ -5748,25 +5829,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout150.grid.width = 1;
     obj.layout150:setName("layout150");
 
-    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit219:setParent(obj.layout150);
-    obj.edit219.grid.role = "col";
-    obj.edit219.grid.width = 6;
-    obj.edit219.grid["min-height"] = 30;
-    obj.edit219:setHorzTextAlign("center");
-    obj.edit219:setField("sabNivel11");
-    obj.edit219:setType("number");
-    obj.edit219:setName("edit219");
+    obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit215:setParent(obj.layout150);
+    obj.edit215.grid.role = "col";
+    obj.edit215.grid.width = 6;
+    obj.edit215.grid["min-height"] = 30;
+    obj.edit215:setHorzTextAlign("center");
+    obj.edit215:setField("sabNivel11");
+    obj.edit215:setType("number");
+    obj.edit215:setName("edit215");
 
-    obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit220:setParent(obj.layout150);
-    obj.edit220.grid.role = "col";
-    obj.edit220.grid.width = 6;
-    obj.edit220.grid["min-height"] = 30;
-    obj.edit220:setHorzTextAlign("center");
-    obj.edit220:setField("sabNivel12");
-    obj.edit220:setType("number");
-    obj.edit220:setName("edit220");
+    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit216:setParent(obj.layout150);
+    obj.edit216.grid.role = "col";
+    obj.edit216.grid.width = 6;
+    obj.edit216.grid["min-height"] = 30;
+    obj.edit216:setHorzTextAlign("center");
+    obj.edit216:setField("sabNivel12");
+    obj.edit216:setType("number");
+    obj.edit216:setName("edit216");
 
     obj.layout151 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout151:setParent(obj.layout134);
@@ -5775,25 +5856,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout151.grid.width = 1;
     obj.layout151:setName("layout151");
 
-    obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit221:setParent(obj.layout151);
-    obj.edit221.grid.role = "col";
-    obj.edit221.grid.width = 6;
-    obj.edit221.grid["min-height"] = 30;
-    obj.edit221:setHorzTextAlign("center");
-    obj.edit221:setField("sabNivel13");
-    obj.edit221:setType("number");
-    obj.edit221:setName("edit221");
+    obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit217:setParent(obj.layout151);
+    obj.edit217.grid.role = "col";
+    obj.edit217.grid.width = 6;
+    obj.edit217.grid["min-height"] = 30;
+    obj.edit217:setHorzTextAlign("center");
+    obj.edit217:setField("sabNivel13");
+    obj.edit217:setType("number");
+    obj.edit217:setName("edit217");
 
-    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit222:setParent(obj.layout151);
-    obj.edit222.grid.role = "col";
-    obj.edit222.grid.width = 6;
-    obj.edit222.grid["min-height"] = 30;
-    obj.edit222:setHorzTextAlign("center");
-    obj.edit222:setField("sabNivel14");
-    obj.edit222:setType("number");
-    obj.edit222:setName("edit222");
+    obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit218:setParent(obj.layout151);
+    obj.edit218.grid.role = "col";
+    obj.edit218.grid.width = 6;
+    obj.edit218.grid["min-height"] = 30;
+    obj.edit218:setHorzTextAlign("center");
+    obj.edit218:setField("sabNivel14");
+    obj.edit218:setType("number");
+    obj.edit218:setName("edit218");
 
     obj.layout152 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout152:setParent(obj.layout134);
@@ -5802,25 +5883,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout152.grid.width = 1;
     obj.layout152:setName("layout152");
 
-    obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit223:setParent(obj.layout152);
-    obj.edit223.grid.role = "col";
-    obj.edit223.grid.width = 6;
-    obj.edit223.grid["min-height"] = 30;
-    obj.edit223:setHorzTextAlign("center");
-    obj.edit223:setField("sabNivel15");
-    obj.edit223:setType("number");
-    obj.edit223:setName("edit223");
+    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit219:setParent(obj.layout152);
+    obj.edit219.grid.role = "col";
+    obj.edit219.grid.width = 6;
+    obj.edit219.grid["min-height"] = 30;
+    obj.edit219:setHorzTextAlign("center");
+    obj.edit219:setField("sabNivel15");
+    obj.edit219:setType("number");
+    obj.edit219:setName("edit219");
 
-    obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit224:setParent(obj.layout152);
-    obj.edit224.grid.role = "col";
-    obj.edit224.grid.width = 6;
-    obj.edit224.grid["min-height"] = 30;
-    obj.edit224:setHorzTextAlign("center");
-    obj.edit224:setField("sabNivel16");
-    obj.edit224:setType("number");
-    obj.edit224:setName("edit224");
+    obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit220:setParent(obj.layout152);
+    obj.edit220.grid.role = "col";
+    obj.edit220.grid.width = 6;
+    obj.edit220.grid["min-height"] = 30;
+    obj.edit220:setHorzTextAlign("center");
+    obj.edit220:setField("sabNivel16");
+    obj.edit220:setType("number");
+    obj.edit220:setName("edit220");
 
     obj.layout153 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout153:setParent(obj.layout134);
@@ -5829,25 +5910,25 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout153.grid.width = 1;
     obj.layout153:setName("layout153");
 
-    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit225:setParent(obj.layout153);
-    obj.edit225.grid.role = "col";
-    obj.edit225.grid.width = 6;
-    obj.edit225.grid["min-height"] = 30;
-    obj.edit225:setHorzTextAlign("center");
-    obj.edit225:setField("sabNivel17");
-    obj.edit225:setType("number");
-    obj.edit225:setName("edit225");
+    obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit221:setParent(obj.layout153);
+    obj.edit221.grid.role = "col";
+    obj.edit221.grid.width = 6;
+    obj.edit221.grid["min-height"] = 30;
+    obj.edit221:setHorzTextAlign("center");
+    obj.edit221:setField("sabNivel17");
+    obj.edit221:setType("number");
+    obj.edit221:setName("edit221");
 
-    obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit226:setParent(obj.layout153);
-    obj.edit226.grid.role = "col";
-    obj.edit226.grid.width = 6;
-    obj.edit226.grid["min-height"] = 30;
-    obj.edit226:setHorzTextAlign("center");
-    obj.edit226:setField("sabNivel18");
-    obj.edit226:setType("number");
-    obj.edit226:setName("edit226");
+    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit222:setParent(obj.layout153);
+    obj.edit222.grid.role = "col";
+    obj.edit222.grid.width = 6;
+    obj.edit222.grid["min-height"] = 30;
+    obj.edit222:setHorzTextAlign("center");
+    obj.edit222:setField("sabNivel18");
+    obj.edit222:setType("number");
+    obj.edit222:setName("edit222");
 
     obj.layout154 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout154:setParent(obj.layout134);
@@ -5856,37 +5937,37 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout154.grid.width = 1;
     obj.layout154:setName("layout154");
 
-    obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit227:setParent(obj.layout154);
-    obj.edit227.grid.role = "col";
-    obj.edit227.grid.width = 6;
-    obj.edit227.grid["min-height"] = 30;
-    obj.edit227:setHorzTextAlign("center");
-    obj.edit227:setField("sabNivel19");
-    obj.edit227:setType("number");
-    obj.edit227:setName("edit227");
+    obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit223:setParent(obj.layout154);
+    obj.edit223.grid.role = "col";
+    obj.edit223.grid.width = 6;
+    obj.edit223.grid["min-height"] = 30;
+    obj.edit223:setHorzTextAlign("center");
+    obj.edit223:setField("sabNivel19");
+    obj.edit223:setType("number");
+    obj.edit223:setName("edit223");
 
-    obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit228:setParent(obj.layout154);
-    obj.edit228.grid.role = "col";
-    obj.edit228.grid.width = 6;
-    obj.edit228.grid["min-height"] = 30;
-    obj.edit228:setHorzTextAlign("center");
-    obj.edit228:setField("sabNivel20");
-    obj.edit228:setType("number");
-    obj.edit228:setName("edit228");
+    obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit224:setParent(obj.layout154);
+    obj.edit224.grid.role = "col";
+    obj.edit224.grid.width = 6;
+    obj.edit224.grid["min-height"] = 30;
+    obj.edit224:setHorzTextAlign("center");
+    obj.edit224:setField("sabNivel20");
+    obj.edit224:setType("number");
+    obj.edit224:setName("edit224");
 
-    obj.edit229 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit229:setParent(obj.layout134);
-    obj.edit229:setField("sabNivelTotal");
-    obj.edit229.grid.role = "col";
-    obj.edit229.grid.width = 1;
-    obj.edit229.grid["min-height"] = 15;
-    obj.edit229:setHorzTextAlign("center");
-    obj.edit229:setReadOnly(true);
-    obj.edit229:setCanFocus(false);
-    obj.edit229:setCursor("default");
-    obj.edit229:setName("edit229");
+    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit225:setParent(obj.layout134);
+    obj.edit225:setField("sabNivelTotal");
+    obj.edit225.grid.role = "col";
+    obj.edit225.grid.width = 1;
+    obj.edit225.grid["min-height"] = 15;
+    obj.edit225:setHorzTextAlign("center");
+    obj.edit225:setReadOnly(true);
+    obj.edit225:setCanFocus(false);
+    obj.edit225:setCursor("default");
+    obj.edit225:setName("edit225");
 
     obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink34:setParent(obj.scrollBox2);
@@ -6071,8 +6152,7 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.acertoTotal = math.floor((tonumber(sheet.acertoBase) or 0) +
                             ((((tonumber(sheet.acertoMultiplicador) or 0)/100)) * sheet.acertoBase) +
                             (tonumber(sheet.acertoExtra) or 0 ) + 
-                            (tonumber(sheet.acertoArma) or 0) + 
-                            (tonumber(sheet.acertoArmadura) or 0 ))
+                            (tonumber(sheet.acertoEquipamentos) or 0))
         end);
 
     obj._e_event22 = obj.dataLink21:addEventListener("onChange",
@@ -6082,8 +6162,7 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.miraTotal = math.floor((tonumber(sheet.miraBase) or 0) +
                             ((((tonumber(sheet.miraMultiplicador) or 0)/100)) * sheet.miraBase) +
                             (tonumber(sheet.miraExtra) or 0 ) + 
-                            (tonumber(sheet.miraArma) or 0) + 
-                            (tonumber(sheet.miraArmadura) or 0 ))
+                            (tonumber(sheet.miraEquipamentos) or 0))
         end);
 
     obj._e_event23 = obj.dataLink22:addEventListener("onChange",
@@ -6093,8 +6172,7 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.bloqueioTotal = math.floor((tonumber(sheet.bloqueioBase) or 0) +
                             ((((tonumber(sheet.bloqueioMultiplicador) or 0)/100)) * sheet.bloqueioBase) +
                             (tonumber(sheet.bloqueioExtra) or 0 ) + 
-                            (tonumber(sheet.bloqueioArma) or 0) + 
-                            (tonumber(sheet.bloqueioArmadura) or 0 ))
+                            (tonumber(sheet.bloqueioEquipamentos) or 0))
         end);
 
     obj._e_event24 = obj.dataLink23:addEventListener("onChange",
@@ -6104,8 +6182,7 @@ local function constructNew_frmFichaDePersonagem()
                             sheet.esquivaTotal = math.floor((tonumber(sheet.esquivaBase) or 0) +
                             ((((tonumber(sheet.esquivaMultiplicador) or 0)/100)) * sheet.esquivaBase) +
                             (tonumber(sheet.esquivaExtra) or 0 ) + 
-                            (tonumber(sheet.esquivaArma) or 0) + 
-                            (tonumber(sheet.esquivaArmadura) or 0 ))
+                            (tonumber(sheet.esquivaEquipamentos) or 0))
         end);
 
     obj._e_event25 = obj.dataLink24:addEventListener("onChange",
@@ -6274,11 +6351,11 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
         if self.label164 ~= nil then self.label164:destroy(); self.label164 = nil; end;
         if self.layout150 ~= nil then self.layout150:destroy(); self.layout150 = nil; end;
-        if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
+        if self.label161 ~= nil then self.label161:destroy(); self.label161 = nil; end;
         if self.label115 ~= nil then self.label115:destroy(); self.label115 = nil; end;
         if self.edit153 ~= nil then self.edit153:destroy(); self.edit153 = nil; end;
         if self.layout70 ~= nil then self.layout70:destroy(); self.layout70 = nil; end;
-        if self.label161 ~= nil then self.label161:destroy(); self.label161 = nil; end;
+        if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
         if self.layout116 ~= nil then self.layout116:destroy(); self.layout116 = nil; end;
         if self.edit49 ~= nil then self.edit49:destroy(); self.edit49 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
@@ -6318,7 +6395,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.layout138 ~= nil then self.layout138:destroy(); self.layout138 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.label128 ~= nil then self.label128:destroy(); self.label128 = nil; end;
-        if self.label209 ~= nil then self.label209:destroy(); self.label209 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.label33 ~= nil then self.label33:destroy(); self.label33 = nil; end;
         if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
@@ -6349,8 +6425,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
         if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
         if self.dataLink29 ~= nil then self.dataLink29:destroy(); self.dataLink29 = nil; end;
-        if self.edit184 ~= nil then self.edit184:destroy(); self.edit184 = nil; end;
         if self.layout123 ~= nil then self.layout123:destroy(); self.layout123 = nil; end;
+        if self.edit184 ~= nil then self.edit184:destroy(); self.edit184 = nil; end;
         if self.edit192 ~= nil then self.edit192:destroy(); self.edit192 = nil; end;
         if self.edit221 ~= nil then self.edit221:destroy(); self.edit221 = nil; end;
         if self.edit149 ~= nil then self.edit149:destroy(); self.edit149 = nil; end;
@@ -6369,16 +6445,16 @@ local function constructNew_frmFichaDePersonagem()
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.label132 ~= nil then self.label132:destroy(); self.label132 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
-        if self.edit146 ~= nil then self.edit146:destroy(); self.edit146 = nil; end;
         if self.layout83 ~= nil then self.layout83:destroy(); self.layout83 = nil; end;
+        if self.edit146 ~= nil then self.edit146:destroy(); self.edit146 = nil; end;
         if self.layout93 ~= nil then self.layout93:destroy(); self.layout93 = nil; end;
         if self.label195 ~= nil then self.label195:destroy(); self.label195 = nil; end;
         if self.layout146 ~= nil then self.layout146:destroy(); self.layout146 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
         if self.label105 ~= nil then self.label105:destroy(); self.label105 = nil; end;
-        if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
-        if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
         if self.label139 ~= nil then self.label139:destroy(); self.label139 = nil; end;
+        if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
+        if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
         if self.label146 ~= nil then self.label146:destroy(); self.label146 = nil; end;
         if self.layout104 ~= nil then self.layout104:destroy(); self.layout104 = nil; end;
         if self.edit208 ~= nil then self.edit208:destroy(); self.edit208 = nil; end;
@@ -6463,7 +6539,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.label124 ~= nil then self.label124:destroy(); self.label124 = nil; end;
         if self.label205 ~= nil then self.label205:destroy(); self.label205 = nil; end;
         if self.edit80 ~= nil then self.edit80:destroy(); self.edit80 = nil; end;
-        if self.edit229 ~= nil then self.edit229:destroy(); self.edit229 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
@@ -6491,7 +6566,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.dataLink22 ~= nil then self.dataLink22:destroy(); self.dataLink22 = nil; end;
         if self.label190 ~= nil then self.label190:destroy(); self.label190 = nil; end;
         if self.layout143 ~= nil then self.layout143:destroy(); self.layout143 = nil; end;
-        if self.edit226 ~= nil then self.edit226:destroy(); self.edit226 = nil; end;
         if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
         if self.label106 ~= nil then self.label106:destroy(); self.label106 = nil; end;
         if self.edit136 ~= nil then self.edit136:destroy(); self.edit136 = nil; end;
@@ -6618,8 +6692,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.label103 ~= nil then self.label103:destroy(); self.label103 = nil; end;
         if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
-        if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
         if self.label133 ~= nil then self.label133:destroy(); self.label133 = nil; end;
+        if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
@@ -6632,8 +6706,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.label104 ~= nil then self.label104:destroy(); self.label104 = nil; end;
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.edit134 ~= nil then self.edit134:destroy(); self.edit134 = nil; end;
-        if self.edit142 ~= nil then self.edit142:destroy(); self.edit142 = nil; end;
         if self.label136 ~= nil then self.label136:destroy(); self.label136 = nil; end;
+        if self.edit142 ~= nil then self.edit142:destroy(); self.edit142 = nil; end;
         if self.label149 ~= nil then self.label149:destroy(); self.label149 = nil; end;
         if self.layout107 ~= nil then self.layout107:destroy(); self.layout107 = nil; end;
         if self.edit209 ~= nil then self.edit209:destroy(); self.edit209 = nil; end;
@@ -6740,7 +6814,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit50 ~= nil then self.edit50:destroy(); self.edit50 = nil; end;
         if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
         if self.layout142 ~= nil then self.layout142:destroy(); self.layout142 = nil; end;
-        if self.edit227 ~= nil then self.edit227:destroy(); self.edit227 = nil; end;
         if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
         if self.label101 ~= nil then self.label101:destroy(); self.label101 = nil; end;
         if self.edit137 ~= nil then self.edit137:destroy(); self.edit137 = nil; end;
@@ -6845,7 +6918,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.layout124 ~= nil then self.layout124:destroy(); self.layout124 = nil; end;
         if self.edit83 ~= nil then self.edit83:destroy(); self.edit83 = nil; end;
         if self.label204 ~= nil then self.label204:destroy(); self.label204 = nil; end;
-        if self.edit228 ~= nil then self.edit228:destroy(); self.edit228 = nil; end;
         if self.label159 ~= nil then self.label159:destroy(); self.label159 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
@@ -6868,15 +6940,15 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit222 ~= nil then self.edit222:destroy(); self.edit222 = nil; end;
         if self.label102 ~= nil then self.label102:destroy(); self.label102 = nil; end;
         if self.edit132 ~= nil then self.edit132:destroy(); self.edit132 = nil; end;
-        if self.edit144 ~= nil then self.edit144:destroy(); self.edit144 = nil; end;
         if self.label130 ~= nil then self.label130:destroy(); self.label130 = nil; end;
+        if self.edit144 ~= nil then self.edit144:destroy(); self.edit144 = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
         if self.layout85 ~= nil then self.layout85:destroy(); self.layout85 = nil; end;
         if self.edit52 ~= nil then self.edit52:destroy(); self.edit52 = nil; end;
         if self.dataLink21 ~= nil then self.dataLink21:destroy(); self.dataLink21 = nil; end;
         if self.layout95 ~= nil then self.layout95:destroy(); self.layout95 = nil; end;
-        if self.label197 ~= nil then self.label197:destroy(); self.label197 = nil; end;
         if self.layout140 ~= nil then self.layout140:destroy(); self.layout140 = nil; end;
+        if self.label197 ~= nil then self.label197:destroy(); self.label197 = nil; end;
         if self.layout21 ~= nil then self.layout21:destroy(); self.layout21 = nil; end;
         if self.label78 ~= nil then self.label78:destroy(); self.label78 = nil; end;
         if self.label107 ~= nil then self.label107:destroy(); self.label107 = nil; end;

@@ -7,8 +7,7 @@
         <Titulo text="Classe" />
         <Titulo text="Base" />
         <Titulo text="Multiplicador" />
-        <Titulo text="Arma" />
-        <Titulo text="Armadura" />
+        <Titulo text="Equipamentos" />
         <Titulo text="Extra" />
         <Titulo text="Total" />
     </layout>
