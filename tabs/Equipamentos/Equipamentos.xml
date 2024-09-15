@@ -5,6 +5,7 @@
     <script>
 
         function atualizaAtributos()
+        local vida         = 0
         local con          = 0
         local forc         = 0
         local dex          = 0
@@ -21,7 +22,9 @@
             local atributos = NDB.getChildNodes(item.atributosEquipamento)
             for r, atributo in ipairs(atributos) do
                 if atributo.tipoDeCalculo == "Fixo" then
-                    if atributo.nomeAtributo == "con" then
+                    if atributo.nomeAtributo == "vida" then
+                        vida = vida + (atributo.valorAtributo or 0)
+                    elseif atributo.nomeAtributo == "con" then
                         con = con + (atributo.valorAtributo or 0)
                     elseif atributo.nomeAtributo == "for" then
                         forc = forc + (atributo.valorAtributo or 0)
@@ -43,7 +46,9 @@
                         bloqueio = bloqueio + (atributo.valorAtributo or 0)
                     end
                 elseif atributo.tipoDeCalculo == "Porcentagem" then
-                    if atributo.nomeAtributo == "con" then
+                    if atributo.nomeAtributo == "vida" then
+                        vida = vida + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase)
+                    elseif atributo.nomeAtributo == "con" then
                         con = con + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase)
                     elseif atributo.nomeAtributo == "for" then
                         forc = forc + math.floor((atributo.valorAtributo or 0) / 100 * sheet.forBase)
@@ -65,7 +70,11 @@
                         bloqueio = bloqueio + math.floor((atributo.valorAtributo or 0) / 100 * sheet.bloqueioBase)
                     end
                 elseif atributo.tipoDeCalculo == "Incremento" then
-                    if atributo.nomeAtributo == "con" then
+                    if atributo.nomeAtributo == "vida" then
+                        vida = vida +
+                            math.floor((atributo.valorAtributo or 0) / 100 * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "con" then
                         con = con +
                             math.floor((atributo.valorAtributo or 0) / 100 * sheet
                                 [tostring(atributo.nomeAtributoOrigem .. "Base")])
@@ -107,7 +116,9 @@
                                 [tostring(atributo.nomeAtributoOrigem .. "Base")])
                     end
                 elseif atributo.tipoDeCalculo == "FixoXNivel" then
-                    if atributo.nomeAtributo == "con" then
+                    if atributo.nomeAtributo == "vida" then
+                        vida = vida + atributo.valorAtributo * (sheet.Nivel or 0)
+                    elseif atributo.nomeAtributo == "con" then
                         con = con + atributo.valorAtributo * (sheet.Nivel or 0)
                     elseif atributo.nomeAtributo == "for" then
                         forc = forc + atributo.valorAtributo * (sheet.Nivel or 0)
@@ -129,7 +140,9 @@
                         bloqueio = bloqueio + atributo.valorAtributo * (sheet.Nivel or 0)
                     end
                 elseif atributo.tipoDeCalculo == "PorcentagemXNivel" then
-                    if atributo.nomeAtributo == "con" then
+                    if atributo.nomeAtributo == "vida" then
+                        vida = vida + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase * (sheet.Nivel or 0))
+                    elseif atributo.nomeAtributo == "con" then
                         con = con + math.floor((atributo.valorAtributo or 0) / 100 * sheet.conBase * (sheet.Nivel or 0))
                     elseif atributo.nomeAtributo == "for" then
                         forc = forc + math.floor((atributo.valorAtributo or 0) / 100 * sheet.forBase * (sheet.Nivel or 0))
@@ -154,7 +167,11 @@
                             math.floor((atributo.valorAtributo or 0) / 100 * sheet.bloqueioBase * (sheet.Nivel or 0))
                     end
                 elseif atributo.tipoDeCalculo == "IncrementoXNivel" then
-                    if atributo.nomeAtributo == "con" then
+                    if atributo.nomeAtributo == "vida" then
+                        vida = vida +
+                            math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
+                                [tostring(atributo.nomeAtributoOrigem .. "Base")])
+                    elseif atributo.nomeAtributo == "con" then
                         con = con +
                             math.floor(((atributo.valorAtributo or 0) / 100 * (sheet.Nivel or 0)) * sheet
                                 [tostring(atributo.nomeAtributoOrigem .. "Base")])
@@ -210,17 +227,17 @@
         sheet.esquivaEquipTotal = esquiva
         sheet.bloqueioEquipTotal = bloqueio
     
+        sheet.vidaEquipamentos = vida
         sheet.acertoEquipamentos = acerto
         sheet.miraEquipamentos = mira
         sheet.esquivaEquipamentos = esquiva
         sheet.bloqueioEquipamentos = bloqueio
-        sheet.conExtra = con
-        sheet.forExtra = forc
-        sheet.dexExtra = dex
-        sheet.carExtra = car
-        sheet.intExtra = int
-        sheet.sabExtra = sab
-    
+        sheet.conEquipamentos = con
+        sheet.forEquipamentos = forc
+        sheet.dexEquipamentos = dex
+        sheet.carEquipamentos = car
+        sheet.intEquipamentos = int
+        sheet.sabEquipamentos = sab
     end
     </script>
 

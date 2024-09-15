@@ -73,9 +73,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox1:setParent(obj.atributoFixo);
     obj.comboBox1.grid.role = "col";
     obj.comboBox1:setField("nomeAtributo");
-    obj.comboBox1:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox1:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox1:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox1:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox1:setName("comboBox1");
 
     obj.Fixo = GUI.fromHandle(_obj_newObject("comboBox"));
@@ -135,9 +135,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox2:setParent(obj.atributoPorcentagem);
     obj.comboBox2.grid.role = "col";
     obj.comboBox2:setField("nomeAtributo");
-    obj.comboBox2:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox2:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox2:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox2:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox2:setName("comboBox2");
 
     obj.Porcentagem = GUI.fromHandle(_obj_newObject("comboBox"));
@@ -197,9 +197,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox3:setParent(obj.atributoIncremento);
     obj.comboBox3.grid.role = "col";
     obj.comboBox3:setField("nomeAtributoOrigem");
-    obj.comboBox3:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox3:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox3:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox3:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox3:setName("comboBox3");
 
     obj.label7 = GUI.fromHandle(_obj_newObject("label"));
@@ -213,9 +213,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox4:setParent(obj.atributoIncremento);
     obj.comboBox4.grid.role = "col";
     obj.comboBox4:setField("nomeAtributo");
-    obj.comboBox4:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox4:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox4:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox4:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox4:setName("comboBox4");
 
     obj.Incremento = GUI.fromHandle(_obj_newObject("comboBox"));
@@ -275,9 +275,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox5:setParent(obj.atributoFixoXNivel);
     obj.comboBox5.grid.role = "col";
     obj.comboBox5:setField("nomeAtributo");
-    obj.comboBox5:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox5:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox5:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox5:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox5:setName("comboBox5");
 
     obj.FixoXNivel = GUI.fromHandle(_obj_newObject("comboBox"));
@@ -337,9 +337,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox6:setParent(obj.atributoPorcentagemXNivel);
     obj.comboBox6.grid.role = "col";
     obj.comboBox6:setField("nomeAtributo");
-    obj.comboBox6:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox6:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox6:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox6:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox6:setName("comboBox6");
 
     obj.PorcentagemXNivel = GUI.fromHandle(_obj_newObject("comboBox"));
@@ -399,9 +399,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox7:setParent(obj.atributoIncrementoXNivel);
     obj.comboBox7.grid.role = "col";
     obj.comboBox7:setField("nomeAtributoOrigem");
-    obj.comboBox7:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox7:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox7:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox7:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox7:setName("comboBox7");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
@@ -415,9 +415,9 @@ local function constructNew_frmAtributosEquipamento()
     obj.comboBox8:setParent(obj.atributoIncrementoXNivel);
     obj.comboBox8.grid.role = "col";
     obj.comboBox8:setField("nomeAtributo");
-    obj.comboBox8:setItems({'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+    obj.comboBox8:setItems({'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'});
-    obj.comboBox8:setValues({'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
+    obj.comboBox8:setValues({'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'});
     obj.comboBox8:setName("comboBox8");
 
     obj.IncrementoXNivel = GUI.fromHandle(_obj_newObject("comboBox"));

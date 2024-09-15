@@ -10,7 +10,7 @@
     <import file="Sanidade.xml" />
 
     <RotuloVida />
-    <TabelaVida title="Vida" field="vida" />
+    <TabelaVida />
 
     <RotuloTabela />
     <TabelaDeAtributo title="Constituição" field="con" />

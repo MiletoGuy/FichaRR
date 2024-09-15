@@ -4,9 +4,9 @@
 
     <template name="listaDeAtributos">
         <comboBox g="col" field="$(field or 'nomeAtributo')"
-            items="{'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
+            items="{'Vida', 'Constituição', 'Força', 'Destreza', 'Carisma', 'Inteligência', 'Sabedoria', 'Acerto',
 'Mira', 'Esquiva', 'Bloqueio'}"
-            values="{'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'}" />
+            values="{'vida', 'con', 'for', 'dex', 'car', 'int', 'sab', 'acerto', 'mira', 'esquiva', 'bloqueio'}" />
     </template>
 
     <template name="listaTipoDeCalculo">

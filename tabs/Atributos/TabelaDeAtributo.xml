@@ -18,7 +18,8 @@
             <CampoAtributo field="$(field)Outro" />
             <CampoAtributo field="$(field)Base" readOnly="true" canFocus="false" cursor="default" />
             <CampoAtributo field="$(field)Multiplicador" />
-            <CampoAtributo field="$(field)Extra" readOnly="true" canFocus="false" cursor="default" />
+            <CampoAtributo field="$(field)Equipamentos" readOnly="true" canFocus="false" cursor="default" />
+            <CampoAtributo field="$(field)Extra" />
             <CampoAtributo field="$(field)Total" readOnly="true" canFocus="false" cursor="default" />
         </layout>
 
@@ -33,7 +34,8 @@
 
                 sheet.$(field)Total = math.floor((tonumber(sheet.$(field)Base) or 0) +
                 ((((tonumber(sheet.$(field)Multiplicador) or 0)/100)) * sheet.$(field)Base) +
-                (tonumber(sheet.$(field)Extra) or 0 ))
+                (tonumber(sheet.$(field)Extra) or 0 ) + 
+                (tonumber(sheet.$(field)Equipamentos) or 0))
             </event>
         </dataLink>
 

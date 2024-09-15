@@ -15,6 +15,7 @@
             <Titulo text="Outro" />
             <Titulo text="Base" />
             <Titulo text="Multiplicador" />
+            <Titulo text="Equipamentos" />
             <Titulo text="Extra" />
             <Titulo text="Total" />
         </layout>
