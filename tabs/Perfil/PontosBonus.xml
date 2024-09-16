@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+
+    <template name="LinhaPontos">
+        <label g="col" g-width="1" text="$(text)" />
+        <edit g="col" g-width="1" field="$(field)" g-break-line-after="true" horzTextAlign="center"
+            readOnly="$(readOnly or 'false')" canFocus="$(canFocus or 'true')"
+            cursor="$(cursor or 'IBeam')" type="number" />
+    </template>
+
+
+    <template name="PontosBonus">
+        <layout g="container" g-cnt-horz-align="center" g-cnt-vert-align="center" margins="{top=10}">
+            <LinhaPontos text="Adestramento" field="Adestramento" />
+            <LinhaPontos text="Artesanato" field="Artesanato" />
+            <LinhaPontos text="Furtividade" field="Furtividade" />
+            <LinhaPontos text="Intimidação" field="Intimidacao" />
+            <LinhaPontos text="Intuição" field="Intuicao" />
+            <LinhaPontos text="Percepção" field="Percepcao" />
+            <LinhaPontos text="Persuasão" field="Persuasao" />
+            <LinhaPontos text="Didática" field="Didatica" readOnly="true" canFocus="false"
+                cursor="default" />
+        </layout>
+
+        <dataLink fields="{'sabTotal', 'Nivel'}">
+            <event name="onChange">
+                <![CDATA[
+                    local sab = tonumber(sheet.sabTotal or 0)
+                    local nivel = tonumber(sheet.Nivel or 0)
+                    local didatica = math.floor(sab/10) + math.floor(nivel/2)
+
+                    if (didatica > 20) then
+                        sheet.Didatica = 20
+                    else
+                        sheet.Didatica = didatica
+                    end
+                ]]>
+            </event>
+        </dataLink>
+    </template>
+</group>

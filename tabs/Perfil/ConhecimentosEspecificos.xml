@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="ConhecimentosEspecificos">
+    <layout g="container" g-cnt-horz-align="center" g-cnt-vert-align="center" margins="{top=10}">
+        <LinhaPontos text="Alquimia" field="Alquimia" />
+        <LinhaPontos text="Biologia" field="Biologia" />
+        <LinhaPontos text="Geografia" field="Geografia" />
+        <LinhaPontos text="História" field="Historia" />
+        <LinhaPontos text="Magia" field="Magia" />
+        <LinhaPontos text="Religião" field="Religiao" />
+        <LinhaPontos text="Sobrevivência" field="Sobrevivencia" />
+        <LinhaPontos text="L. Comum" field="Comum" />
+        <LinhaPontos text="L. Oriental" field="Oriental" />
+        <LinhaPontos text="L. Élfica" field="Elfica" />
+        <LinhaPontos text="L. Anã" field="Ana" />
+        <LinhaPontos text="L. Dracônica" field="Draconica" />
+        <LinhaPontos text="L. Espiritual" field="Espiritual" />
+        <LinhaPontos text="L. Abissal" field="Abissal" />
+        <LinhaPontos text="L. Divina" field="Divina" />
+        <LinhaPontos text="L. Demoníaca" field="Demoniaca" />
+        <LinhaPontos text="L. Antiga" field="Antiga" readOnly="true" canFocus="false"
+            cursor="default" />
+    </layout>
+
+    <dataLink fields="{'Elfica', 'Draconica'}">
+        <event name="onChange">
+            <![CDATA[
+                local elfica = tonumber(sheet.Elfica or 0)
+                local draconica = tonumber(sheet.Draconica or 0)
+
+                if (elfica < draconica) then
+                    sheet.Antiga = elfica
+                else
+                    sheet.Antiga = draconica
+                end
+            ]]>
+        </event>
+    </dataLink>
+</template>

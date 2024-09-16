@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout align="client" g="container" g-cnt-horz-align="center">
+<scrollBox align="client" g="container" g-cnt-horz-align="center">
     <import file="CaixaDeAtributo.xml" />
     <import file="Vida.xml" />
+    <import file="InformacoesDoPersonagem.xml" />
+    <import file="PontosBonus.xml" />
+    <import file="ConhecimentosEspecificos.xml" />
 
-    <layout g="row">
-        <label text="Nível:" g="col" g-width="1" />
-        <edit g-width="1" g="col" horzTextAlign="center" field="Nivel" />
-
-    </layout>
+    <InformacoesDoPersonagem />
 
     <CaixaDeVida />
 
@@ -23,4 +22,14 @@
     <CaixaDeAtributo title="Bloqueio" field="bloqueio" />
     <CaixaDeAtributo title="Esquiva" field="esquiva" />
 
-</layout>
+    <label text="Pontos Bônus" fontSize="40" fontStyle="bold italic" g="row" g-min-height="40"
+        horzTextAlign="center" margins="{top=10, bottom=10}" />
+
+    <PontosBonus />
+
+    <label text="Conhecimentos Específicos" fontSize="40" fontStyle="bold italic" g="row"
+        g-min-height="40" horzTextAlign="center" margins="{top=10, bottom=10}" />
+
+    <ConhecimentosEspecificos />
+
+</scrollBox>
