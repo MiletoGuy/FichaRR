@@ -2,57 +2,35 @@
 <template name="InformacoesDoPersonagem">
     <layout g="container" g-cnt-vert-align="center" margins="{top=5, bottom=5}">
 
-        <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
-            <edit align="top" transparent="true" horzTextAlign="center" field="Nome" />
+        <layout g="col" g-width="12" g-width-md="6" padding="{left=10,right=10,top=4,bottom=4}">
+            <edit align="top" transparent="true" field="Nome" />
             <horzLine align="bottom" strokeColor="silver" />
-            <label align="bottom" text="Nome do Personagem" fontStyle="bold" margins="{left=10}"/>
+            <label align="bottom" text="Nome do Personagem" fontStyle="bold" margins="{left=10}" />
         </layout>
 
-        <layout g="col" g-width="6" g-min-height="100">
+        <layout g="col" g-width="12" g-width-md="6" g-min-height="100">
             <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="Classe" />
+                <edit align="top" transparent="true" field="Classe" />
                 <horzLine align="bottom" strokeColor="silver" />
-                <label align="bottom" text="Classe" fontStyle="bold" margins="{left=10}"/>
+                <label align="bottom" text="Classe" fontStyle="bold" margins="{left=10}" />
             </layout>
             <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="Raca" />
+                <edit align="top" transparent="true" field="Raca" />
                 <horzLine align="bottom" strokeColor="silver" />
-                <label align="bottom" text="Raça" fontStyle="bold" margins="{left=10}"/>
+                <label align="bottom" text="Raça" fontStyle="bold" margins="{left=10}" />
             </layout>
-            <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="Classe" />
-                <horzLine align="bottom" strokeColor="silver" />
-                <label align="bottom" text="Classe" fontStyle="bold" margins="{left=10}"/>
+            <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
+                <edit align="top" transparent="true" horzTextAlign="center" field="Nivel" fontSize="20" fontStyle="bold" type="number"/>
+                <label align="bottom" text="Nivel Classe" horzTextAlign="center" fontStyle="bold" />
             </layout>
-            <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="Raca" />
-                <horzLine align="bottom" strokeColor="silver" />
-                <label align="bottom" text="Raça" fontStyle="bold" margins="{left=10}"/>
+            <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
+                <edit align="top" transparent="true" horzTextAlign="center" field="NivelProfissao" fontSize="20" fontStyle="bold" type="number"/>
+                <label align="bottom" text="Nivel Profissão" horzTextAlign="center" fontStyle="bold" />
+            </layout>
+            <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
+                <edit align="top" transparent="true" horzTextAlign="center" field="PtDestino" fontSize="20" fontStyle="bold" type="number"/>
+                <label align="bottom" text="Pt. Destino" horzTextAlign="center" fontStyle="bold" />
             </layout>
         </layout>
-
-
-        <layout g="col" g-width="1" g-cnt-gutter="5">
-            <label g="col" g-width="6" horzTextAlign="center" text="Nível:" fontStyle="bold" />
-            <edit g="col" g-width="6" horzTextAlign="center" field="Nivel" type="number" />
-        </layout>
-
-
-        <layout g="col" g-width="3" g-cnt-gutter="5">
-            <label g="col" g-width="2" horzTextAlign="center" text="Classe:" fontStyle="bold" />
-            <edit g="col" g-width="10" horzTextAlign="center" field="Classe" />
-        </layout>
-
-        <layout g="col" g-width="3" g-cnt-gutter="5">
-            <label g="col" g-width="2" horzTextAlign="center" text="Raça:" fontStyle="bold" />
-            <edit g="col" g-width="10" horzTextAlign="center" field="Raca" />
-        </layout>
-
-        <layout g="col" g-width="2" g-cnt-gutter="5">
-            <label g="col" g-width="7" horzTextAlign="center" text="Pontos de Destino:"
-                fontStyle="bold" wordWrap="true" g-min-height="40" />
-            <edit g="col" g-width="5" horzTextAlign="center" field="PontosDeDestino" type="number" />
-        </layout>
-
     </layout>
 </template>

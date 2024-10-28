@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template name="CaixaDeAtributo">
+<template name="CaixaDeDestreza">
 
-    <layout g="col" g-width="4" padding="{top=5,bottom=5}">
+    <layout g="col" g-width="6" padding="{top=5,bottom=5}">
         <label align="top" field="mod$(field)" fontSize="30" horzTextAlign="center"
             fontColor="white" />
         <label align="bottom" text="$(title)" horzTextAlign="center"
