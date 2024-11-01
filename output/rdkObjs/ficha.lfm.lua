@@ -53,7 +53,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1.grid.role = "container";
     obj.layout1.grid["cnt-vert-align"] = "center";
-    obj.layout1:setMargins({top=5, bottom=5});
     obj.layout1:setName("layout1");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
@@ -61,27 +60,21 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout2.grid.role = "col";
     obj.layout2.grid.width = 12;
     obj.layout2.grid["width-md"] = 6;
-    obj.layout2:setPadding({left=10,right=10,top=4,bottom=4});
+    obj.layout2:setFrameStyle("/frames/gaia/Gaia.xml");
     obj.layout2:setName("layout2");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setAlign("top");
     obj.edit1:setTransparent(true);
+    lfm_setPropAsString(obj.edit1, "fontStyle", "bold");
     obj.edit1:setField("Nome");
     obj.edit1:setName("edit1");
-
-    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine1:setParent(obj.layout2);
-    obj.horzLine1:setAlign("bottom");
-    obj.horzLine1:setStrokeColor("silver");
-    obj.horzLine1:setName("horzLine1");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
     obj.label1:setAlign("bottom");
-    obj.label1:setText("Nome do Personagem");
-    lfm_setPropAsString(obj.label1, "fontStyle", "bold");
+    obj.label1:setText("NOME DO PERSONAGEM");
     obj.label1:setMargins({left=10});
     obj.label1:setName("label1");
 
@@ -107,11 +100,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit2:setField("Classe");
     obj.edit2:setName("edit2");
 
-    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine2:setParent(obj.layout4);
-    obj.horzLine2:setAlign("bottom");
-    obj.horzLine2:setStrokeColor("silver");
-    obj.horzLine2:setName("horzLine2");
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1:setParent(obj.layout4);
+    obj.horzLine1:setAlign("bottom");
+    obj.horzLine1:setStrokeColor("silver");
+    obj.horzLine1:setName("horzLine1");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout4);
@@ -135,11 +128,11 @@ local function constructNew_frmFichaDePersonagem()
     obj.edit3:setField("Raca");
     obj.edit3:setName("edit3");
 
-    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
-    obj.horzLine3:setParent(obj.layout5);
-    obj.horzLine3:setAlign("bottom");
-    obj.horzLine3:setStrokeColor("silver");
-    obj.horzLine3:setName("horzLine3");
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2:setParent(obj.layout5);
+    obj.horzLine2:setAlign("bottom");
+    obj.horzLine2:setStrokeColor("silver");
+    obj.horzLine2:setName("horzLine2");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout5);
@@ -153,12 +146,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout6:setParent(obj.layout3);
     obj.layout6.grid.role = "col";
     obj.layout6.grid.width = 4;
-    obj.layout6:setPadding({left=10,right=10,top=4,bottom=4});
+    obj.layout6.grid["cnt-horz-align"] = "center";
     obj.layout6:setName("layout6");
 
     obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout6);
-    obj.edit4:setAlign("top");
+    obj.edit4.grid.role = "block";
     obj.edit4:setTransparent(true);
     obj.edit4:setHorzTextAlign("center");
     obj.edit4:setField("Nivel");
@@ -169,10 +162,11 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout6);
-    obj.label4:setAlign("bottom");
+    obj.label4.grid.role = "block";
     obj.label4:setText("Nivel Classe");
     obj.label4:setHorzTextAlign("center");
     lfm_setPropAsString(obj.label4, "fontStyle", "bold");
+    obj.label4:setTextTrimming("none");
     obj.label4:setWordWrap(true);
     obj.label4:setName("label4");
 
@@ -180,12 +174,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout7:setParent(obj.layout3);
     obj.layout7.grid.role = "col";
     obj.layout7.grid.width = 4;
-    obj.layout7:setPadding({left=10,right=10,top=4,bottom=4});
+    obj.layout7.grid["cnt-horz-align"] = "center";
     obj.layout7:setName("layout7");
 
     obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout7);
-    obj.edit5:setAlign("top");
+    obj.edit5.grid.role = "block";
     obj.edit5:setTransparent(true);
     obj.edit5:setHorzTextAlign("center");
     obj.edit5:setField("NivelProfissao");
@@ -196,10 +190,11 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout7);
-    obj.label5:setAlign("bottom");
+    obj.label5.grid.role = "block";
     obj.label5:setText("Nivel Profissão");
     obj.label5:setHorzTextAlign("center");
     lfm_setPropAsString(obj.label5, "fontStyle", "bold");
+    obj.label5:setTextTrimming("none");
     obj.label5:setWordWrap(true);
     obj.label5:setName("label5");
 
@@ -207,12 +202,12 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout8:setParent(obj.layout3);
     obj.layout8.grid.role = "col";
     obj.layout8.grid.width = 4;
-    obj.layout8:setPadding({left=10,right=10,top=4,bottom=4});
+    obj.layout8.grid["cnt-horz-align"] = "center";
     obj.layout8:setName("layout8");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout8);
-    obj.edit6:setAlign("top");
+    obj.edit6.grid.role = "block";
     obj.edit6:setTransparent(true);
     obj.edit6:setHorzTextAlign("center");
     obj.edit6:setField("PtDestino");
@@ -223,10 +218,11 @@ local function constructNew_frmFichaDePersonagem()
 
     obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout8);
-    obj.label6:setAlign("bottom");
+    obj.label6.grid.role = "block";
     obj.label6:setText("Pt. Destino");
     obj.label6:setHorzTextAlign("center");
     lfm_setPropAsString(obj.label6, "fontStyle", "bold");
+    obj.label6:setTextTrimming("none");
     obj.label6:setWordWrap(true);
     obj.label6:setName("label6");
 
@@ -277,12 +273,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout12.grid["cnt-horz-align"] = "center";
     obj.layout12:setName("layout12");
 
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.layout12);
-    obj.rectangle1:setAlign("client");
-    obj.rectangle1:setColor("green");
-    obj.rectangle1:setName("rectangle1");
-
     obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout12);
     obj.label9.grid.role = "block";
@@ -315,12 +305,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout13.grid.width = 4;
     obj.layout13.grid["cnt-horz-align"] = "center";
     obj.layout13:setName("layout13");
-
-    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.layout13);
-    obj.rectangle2:setAlign("client");
-    obj.rectangle2:setColor("green");
-    obj.rectangle2:setName("rectangle2");
 
     obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout13);
@@ -355,12 +339,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout14.grid["cnt-horz-align"] = "center";
     obj.layout14:setName("layout14");
 
-    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.layout14);
-    obj.rectangle3:setAlign("client");
-    obj.rectangle3:setColor("green");
-    obj.rectangle3:setName("rectangle3");
-
     obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout14);
     obj.label11.grid.role = "block";
@@ -393,12 +371,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout15.grid.width = 4;
     obj.layout15.grid["cnt-horz-align"] = "center";
     obj.layout15:setName("layout15");
-
-    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.layout15);
-    obj.rectangle4:setAlign("client");
-    obj.rectangle4:setColor("green");
-    obj.rectangle4:setName("rectangle4");
 
     obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout15);
@@ -433,12 +405,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout16.grid["cnt-horz-align"] = "center";
     obj.layout16:setName("layout16");
 
-    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.layout16);
-    obj.rectangle5:setAlign("client");
-    obj.rectangle5:setColor("green");
-    obj.rectangle5:setName("rectangle5");
-
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout16);
     obj.label13.grid.role = "block";
@@ -471,12 +437,6 @@ local function constructNew_frmFichaDePersonagem()
     obj.layout17.grid.width = 4;
     obj.layout17.grid["cnt-horz-align"] = "center";
     obj.layout17:setName("layout17");
-
-    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle6:setParent(obj.layout17);
-    obj.rectangle6:setAlign("client");
-    obj.rectangle6:setColor("green");
-    obj.rectangle6:setName("rectangle6");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout17);
@@ -7278,14 +7238,13 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit60 ~= nil then self.edit60:destroy(); self.edit60 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.edit171 ~= nil then self.edit171:destroy(); self.edit171 = nil; end;
-        if self.horzLine3 ~= nil then self.horzLine3:destroy(); self.horzLine3 = nil; end;
+        if self.label173 ~= nil then self.label173:destroy(); self.label173 = nil; end;
         if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
         if self.layout60 ~= nil then self.layout60:destroy(); self.layout60 = nil; end;
-        if self.label173 ~= nil then self.label173:destroy(); self.label173 = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.layout57 ~= nil then self.layout57:destroy(); self.layout57 = nil; end;
@@ -7340,7 +7299,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit231 ~= nil then self.edit231:destroy(); self.edit231 = nil; end;
         if self.layout88 ~= nil then self.layout88:destroy(); self.layout88 = nil; end;
         if self.layout96 ~= nil then self.layout96:destroy(); self.layout96 = nil; end;
-        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.edit57 ~= nil then self.edit57:destroy(); self.edit57 = nil; end;
@@ -7348,19 +7306,20 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit189 ~= nil then self.edit189:destroy(); self.edit189 = nil; end;
         if self.label192 ~= nil then self.label192:destroy(); self.label192 = nil; end;
         if self.edit224 ~= nil then self.edit224:destroy(); self.edit224 = nil; end;
+        if self.edit236 ~= nil then self.edit236:destroy(); self.edit236 = nil; end;
         if self.layout24 ~= nil then self.layout24:destroy(); self.layout24 = nil; end;
         if self.label100 ~= nil then self.label100:destroy(); self.label100 = nil; end;
         if self.edit130 ~= nil then self.edit130:destroy(); self.edit130 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edit146 ~= nil then self.edit146:destroy(); self.edit146 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.label132 ~= nil then self.label132:destroy(); self.label132 = nil; end;
         if self.layout83 ~= nil then self.layout83:destroy(); self.layout83 = nil; end;
         if self.layout93 ~= nil then self.layout93:destroy(); self.layout93 = nil; end;
         if self.label195 ~= nil then self.label195:destroy(); self.label195 = nil; end;
-        if self.edit236 ~= nil then self.edit236:destroy(); self.edit236 = nil; end;
         if self.layout146 ~= nil then self.layout146:destroy(); self.layout146 = nil; end;
+        if self.label221 ~= nil then self.label221:destroy(); self.label221 = nil; end;
+        if self.label231 ~= nil then self.label231:destroy(); self.label231 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
         if self.label105 ~= nil then self.label105:destroy(); self.label105 = nil; end;
         if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
@@ -7369,11 +7328,9 @@ local function constructNew_frmFichaDePersonagem()
         if self.label146 ~= nil then self.label146:destroy(); self.label146 = nil; end;
         if self.layout104 ~= nil then self.layout104:destroy(); self.layout104 = nil; end;
         if self.edit208 ~= nil then self.edit208:destroy(); self.edit208 = nil; end;
-        if self.label221 ~= nil then self.label221:destroy(); self.label221 = nil; end;
         if self.label224 ~= nil then self.label224:destroy(); self.label224 = nil; end;
         if self.edit111 ~= nil then self.edit111:destroy(); self.edit111 = nil; end;
         if self.label210 ~= nil then self.label210:destroy(); self.label210 = nil; end;
-        if self.label231 ~= nil then self.label231:destroy(); self.label231 = nil; end;
         if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.label143 ~= nil then self.label143:destroy(); self.label143 = nil; end;
         if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
@@ -7581,8 +7538,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.layout139 ~= nil then self.layout139:destroy(); self.layout139 = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
         if self.edit178 ~= nil then self.edit178:destroy(); self.edit178 = nil; end;
-        if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
+        if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.edit255 ~= nil then self.edit255:destroy(); self.edit255 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
@@ -7623,7 +7580,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.label198 ~= nil then self.label198:destroy(); self.label198 = nil; end;
         if self.layout89 ~= nil then self.layout89:destroy(); self.layout89 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
-        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
         if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
@@ -7631,19 +7587,20 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit188 ~= nil then self.edit188:destroy(); self.edit188 = nil; end;
         if self.edit196 ~= nil then self.edit196:destroy(); self.edit196 = nil; end;
         if self.label193 ~= nil then self.label193:destroy(); self.label193 = nil; end;
+        if self.edit225 ~= nil then self.edit225:destroy(); self.edit225 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.label103 ~= nil then self.label103:destroy(); self.label103 = nil; end;
         if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
         if self.edit145 ~= nil then self.edit145:destroy(); self.edit145 = nil; end;
         if self.label133 ~= nil then self.label133:destroy(); self.label133 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
+        if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
         if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
-        if self.layout84 ~= nil then self.layout84:destroy(); self.layout84 = nil; end;
         if self.layout92 ~= nil then self.layout92:destroy(); self.layout92 = nil; end;
         if self.label196 ~= nil then self.label196:destroy(); self.label196 = nil; end;
-        if self.edit225 ~= nil then self.edit225:destroy(); self.edit225 = nil; end;
+        if self.edit230 ~= nil then self.edit230:destroy(); self.edit230 = nil; end;
+        if self.layout141 ~= nil then self.layout141:destroy(); self.layout141 = nil; end;
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.label79 ~= nil then self.label79:destroy(); self.label79 = nil; end;
         if self.edit134 ~= nil then self.edit134:destroy(); self.edit134 = nil; end;
@@ -7654,18 +7611,16 @@ local function constructNew_frmFichaDePersonagem()
         if self.label149 ~= nil then self.label149:destroy(); self.label149 = nil; end;
         if self.layout107 ~= nil then self.layout107:destroy(); self.layout107 = nil; end;
         if self.edit209 ~= nil then self.edit209:destroy(); self.edit209 = nil; end;
-        if self.edit230 ~= nil then self.edit230:destroy(); self.edit230 = nil; end;
-        if self.layout141 ~= nil then self.layout141:destroy(); self.layout141 = nil; end;
         if self.edit235 ~= nil then self.edit235:destroy(); self.edit235 = nil; end;
-        if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
         if self.label222 ~= nil then self.label222:destroy(); self.label222 = nil; end;
+        if self.label225 ~= nil then self.label225:destroy(); self.label225 = nil; end;
+        if self.label76 ~= nil then self.label76:destroy(); self.label76 = nil; end;
+        if self.label230 ~= nil then self.label230:destroy(); self.label230 = nil; end;
         if self.label142 ~= nil then self.label142:destroy(); self.label142 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
         if self.layout98 ~= nil then self.layout98:destroy(); self.layout98 = nil; end;
         if self.layout100 ~= nil then self.layout100:destroy(); self.layout100 = nil; end;
         if self.edit212 ~= nil then self.edit212:destroy(); self.edit212 = nil; end;
-        if self.label225 ~= nil then self.label225:destroy(); self.label225 = nil; end;
-        if self.label230 ~= nil then self.label230:destroy(); self.label230 = nil; end;
         if self.label235 ~= nil then self.label235:destroy(); self.label235 = nil; end;
         if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
         if self.label168 ~= nil then self.label168:destroy(); self.label168 = nil; end;
@@ -7772,11 +7727,10 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit232 ~= nil then self.edit232:destroy(); self.edit232 = nil; end;
         if self.layout87 ~= nil then self.layout87:destroy(); self.layout87 = nil; end;
         if self.layout97 ~= nil then self.layout97:destroy(); self.layout97 = nil; end;
-        if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
+        if self.label191 ~= nil then self.label191:destroy(); self.label191 = nil; end;
         if self.edit50 ~= nil then self.edit50:destroy(); self.edit50 = nil; end;
         if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
-        if self.label191 ~= nil then self.label191:destroy(); self.label191 = nil; end;
         if self.edit227 ~= nil then self.edit227:destroy(); self.edit227 = nil; end;
         if self.layout142 ~= nil then self.layout142:destroy(); self.layout142 = nil; end;
         if self.edit237 ~= nil then self.edit237:destroy(); self.edit237 = nil; end;
@@ -7785,7 +7739,6 @@ local function constructNew_frmFichaDePersonagem()
         if self.edit137 ~= nil then self.edit137:destroy(); self.edit137 = nil; end;
         if self.edit147 ~= nil then self.edit147:destroy(); self.edit147 = nil; end;
         if self.label135 ~= nil then self.label135:destroy(); self.label135 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.layout82 ~= nil then self.layout82:destroy(); self.layout82 = nil; end;
         if self.layout90 ~= nil then self.layout90:destroy(); self.layout90 = nil; end;
@@ -7793,8 +7746,8 @@ local function constructNew_frmFichaDePersonagem()
         if self.label194 ~= nil then self.label194:destroy(); self.label194 = nil; end;
         if self.layout147 ~= nil then self.layout147:destroy(); self.layout147 = nil; end;
         if self.label220 ~= nil then self.label220:destroy(); self.label220 = nil; end;
-        if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.edit261 ~= nil then self.edit261:destroy(); self.edit261 = nil; end;
+        if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.label138 ~= nil then self.label138:destroy(); self.label138 = nil; end;
         if self.dataLink16 ~= nil then self.dataLink16:destroy(); self.dataLink16 = nil; end;
         if self.label147 ~= nil then self.label147:destroy(); self.label147 = nil; end;

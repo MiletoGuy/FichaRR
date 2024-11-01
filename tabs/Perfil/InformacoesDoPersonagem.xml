@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template name="InformacoesDoPersonagem">
-    <layout g="container" g-cnt-vert-align="center" margins="{top=5, bottom=5}">
+<group>
 
-        <layout g="col" g-width="12" g-width-md="6" padding="{left=10,right=10,top=4,bottom=4}">
-            <edit align="top" transparent="true" field="Nome" />
+    <template name="InfoTextFieldGrande">
+        <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
+            <edit align="top" transparent="true" field="$(field)" />
             <horzLine align="bottom" strokeColor="silver" />
-            <label align="bottom" text="Nome do Personagem" fontStyle="bold" margins="{left=10}" />
+            <label align="bottom" text="$(text)" fontStyle="bold" margins="{left=10}" />
         </layout>
+    </template>
 
-        <layout g="col" g-width="12" g-width-md="6" g-min-height="100">
-            <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" field="Classe" />
-                <horzLine align="bottom" strokeColor="silver" />
-                <label align="bottom" text="Classe" fontStyle="bold" margins="{left=10}" />
+    <template name="InfoTextFieldPequeno">
+        <layout g="col" g-width="4" g-cnt-horz-align="center">
+            <edit g="block" transparent="true" horzTextAlign="center" field="$(field)"
+                fontSize="20" fontStyle="bold" type="number" />
+            <label g="block" text="$(text)" horzTextAlign="center"
+                fontStyle="bold" textTrimming="none"
+                wordWrap="true" />
+        </layout>
+    </template>
+
+    <template name="InformacoesDoPersonagem">
+        <layout g="container" g-cnt-vert-align="center">
+            <layout g="col" g-width="12" g-width-md="6" frameStyle="/frames/gaia/Gaia.xml">
+                <edit align="top" transparent="true" fontStyle="bold" field="Nome" />
+                <label align="bottom" text="NOME DO PERSONAGEM" margins="{left=10}" />
             </layout>
-            <layout g="col" g-width="6" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" field="Raca" />
-                <horzLine align="bottom" strokeColor="silver" />
-                <label align="bottom" text="Raça" fontStyle="bold" margins="{left=10}" />
-            </layout>
-            <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="Nivel"
-                    fontSize="20" fontStyle="bold" type="number" />
-                <label align="bottom" text="Nivel Classe" horzTextAlign="center" fontStyle="bold"
-                    wordWrap="true" />
-            </layout>
-            <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="NivelProfissao"
-                    fontSize="20" fontStyle="bold" type="number" />
-                <label align="bottom" text="Nivel Profissão" horzTextAlign="center" fontStyle="bold"
-                    wordWrap="true" />
-            </layout>
-            <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="PtDestino"
-                    fontSize="20" fontStyle="bold" type="number" />
-                <label align="bottom" text="Pt. Destino" horzTextAlign="center" fontStyle="bold"
-                    wordWrap="true" />
+
+            <layout g="col" g-width="12" g-width-md="6" g-min-height="100">
+                <InfoTextFieldGrande field="Classe" text="Classe" />
+                <InfoTextFieldGrande field="Raca" text="Raça" />
+                <InfoTextFieldPequeno field="Nivel" text="Nivel Classe" />
+                <InfoTextFieldPequeno field="NivelProfissao" text="Nivel Profissão" />
+                <InfoTextFieldPequeno field="PtDestino" text="Pt. Destino" />
             </layout>
         </layout>
-    </layout>
-</template>
+    </template>
+</group>

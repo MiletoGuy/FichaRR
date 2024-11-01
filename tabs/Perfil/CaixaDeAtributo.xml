@@ -2,7 +2,6 @@
 <template name="CaixaDeAtributo">
 
     <layout g="col" g-width="4" g-cnt-horz-align="center">
-        <rectangle align="client" color="green" />
         <label g="block" field="mod$(field)" fontSize="30" horzTextAlign="center"
             fontColor="white" />
         <button g="block" width="80" height="15" text="$(title)" horzTextAlign="center" margins="{top=10}"
