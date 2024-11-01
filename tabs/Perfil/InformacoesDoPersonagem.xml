@@ -20,16 +20,22 @@
                 <label align="bottom" text="Raça" fontStyle="bold" margins="{left=10}" />
             </layout>
             <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="Nivel" fontSize="20" fontStyle="bold" type="number"/>
-                <label align="bottom" text="Nivel Classe" horzTextAlign="center" fontStyle="bold" />
+                <edit align="top" transparent="true" horzTextAlign="center" field="Nivel"
+                    fontSize="20" fontStyle="bold" type="number" />
+                <label align="bottom" text="Nivel Classe" horzTextAlign="center" fontStyle="bold"
+                    wordWrap="true" />
             </layout>
             <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="NivelProfissao" fontSize="20" fontStyle="bold" type="number"/>
-                <label align="bottom" text="Nivel Profissão" horzTextAlign="center" fontStyle="bold" />
+                <edit align="top" transparent="true" horzTextAlign="center" field="NivelProfissao"
+                    fontSize="20" fontStyle="bold" type="number" />
+                <label align="bottom" text="Nivel Profissão" horzTextAlign="center" fontStyle="bold"
+                    wordWrap="true" />
             </layout>
             <layout g="col" g-width="4" padding="{left=10,right=10,top=4,bottom=4}">
-                <edit align="top" transparent="true" horzTextAlign="center" field="PtDestino" fontSize="20" fontStyle="bold" type="number"/>
-                <label align="bottom" text="Pt. Destino" horzTextAlign="center" fontStyle="bold" />
+                <edit align="top" transparent="true" horzTextAlign="center" field="PtDestino"
+                    fontSize="20" fontStyle="bold" type="number" />
+                <label align="bottom" text="Pt. Destino" horzTextAlign="center" fontStyle="bold"
+                    wordWrap="true" />
             </layout>
         </layout>
     </layout>

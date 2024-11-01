@@ -2,7 +2,7 @@
 <template name="VidaEAtributosFisicos">
     <layout g="container" g-cnt-vert-align="center">
 
-        <layout g="col" g-width="12" g-width-md="6" g-min-height="150">
+        <layout g="col" g-width="12" g-width-md="6" g-cnt-gutter="20" g-cnt-line-spacing="10" g-auto-height="true">
             <layout g="col" g-width="12" padding="{top=5,bottom=5}">
                 <label align="top" field="vida" fontSize="30" horzTextAlign="center"
                     fontColor="red" />

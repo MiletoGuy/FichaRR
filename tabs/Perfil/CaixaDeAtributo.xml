@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template name="CaixaDeAtributo">
 
-    <layout g="col" g-width="4" padding="{top=5,bottom=5}">
-        <label align="top" field="mod$(field)" fontSize="30" horzTextAlign="center"
+    <layout g="col" g-width="4" g-cnt-horz-align="center">
+        <rectangle align="client" color="green" />
+        <label g="block" field="mod$(field)" fontSize="30" horzTextAlign="center"
             fontColor="white" />
-        <label align="bottom" text="$(title)" horzTextAlign="center"
-            fontColor="white" />
+        <button g="block" width="80" height="15" text="$(title)" horzTextAlign="center" margins="{top=10}"
+            fontColor="white" fontSize="11" />
     </layout>
 
     <dataLink field="$(field)Total">
